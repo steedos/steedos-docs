@@ -92,13 +92,26 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Getting Started',
                 to: '/docs/',
               },
             ],
-          }
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'Steedos Community',
+                href: 'https://github.com/steedos/steedos-platform',
+              },
+              {
+                label: 'Steedos Enterprise',
+                href: 'https://www.steedos.com',
+              }
+            ],
+          },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Steedos Inc.`,
       },
       algolia: {
         appId: 'TL0K9Y2YIH',
