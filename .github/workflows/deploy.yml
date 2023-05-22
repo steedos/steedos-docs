@@ -23,13 +23,13 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: cn-northwest-1
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
-          AWS_S3_BUCKET: my-docusaurus-site-bucket
-          AWS_S3_REGION: us-east-1
+          AWS_S3_BUCKET: docs-steedos-com
+          AWS_S3_REGION: cn-northwest-1
           SOURCE_DIR: ./build/
