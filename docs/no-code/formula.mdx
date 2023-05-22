@@ -70,7 +70,7 @@ ROUND((amount*0.02), 2)
 
 ### 公式中的运算符和函数
 
-在构建公式时可以使用很多运算符和函数，请参考：[公式中的运算符和函数](/docs/admin/functions)。
+在构建公式时可以使用很多运算符和函数，请参考：[公式中的运算符和函数](/docs/no-code/functions)。
 
 
 ### 在哪些地方可以使用公式?
@@ -136,7 +136,7 @@ ROUND((amount*0.02), 2)
 ### 使用日期和日期时间公式字段的提示
 
 * 日期和日期时间字段不能交替使用。名称本身不能表示某个字段是日期还是日期时间。例如，创建日期和上次修改日期是日期时间字段，而上次活动日期是日期字段。使用 DATEVALUE 函数可将日期时间字段转换为日期字段。
-* 将加和减运算符与日期或日期时间字段结合使用来计算持续时间。例如，从一个日期中减去另一个日期来计算两者之间相差的天数。同样，您可以从一个日期时间中减去另一个日期时间，获得以数字表示的两者之间相差的天数。有关建议的使用方法，请参阅[NOW](/docs/admin/functions#now) 或[TODAY](/docs/admin/functions#today)。
+* 将加和减运算符与日期或日期时间字段结合使用来计算持续时间。例如，从一个日期中减去另一个日期来计算两者之间相差的天数。同样，您可以从一个日期时间中减去另一个日期时间，获得以数字表示的两者之间相差的天数。有关建议的使用方法，请参阅[NOW](/docs/no-code/functions#now) 或[TODAY](/docs/no-code/functions#today)。
 * 将加和减运算符与数字结合使用，返回其他日期或日期时间。例如，`CreatedDate + 5` 计算记录的创建日期之后五天的日期和时间。注意，表达式返回的数据类型与给定的数据类型相同；日期字段加上或减去某个数字会返回日期，日期时间字段加上或减去某个数字会返回日期时间。
 * 在使用小数计算日期时，公式会忽略小数点后的所有数字。例如：
 * 公式TEXT(TODAY())将返回当天的日期字符串，比如2020-09-30, TODAY是按utc时间取日期，这点跟TODAY()一样。
@@ -168,7 +168,7 @@ ROUND((amount*0.02), 2)
 
 ### 使用布尔公式字段的提示
 
-部分函数是不支持输出boolean类型值的，已知不支持的函数有 [BLANKVALUE](/docs/admin/functions#blankvalue), [CASE](/docs/admin/functions#case), [IF](/docs/admin/functions#if)。
+部分函数是不支持输出boolean类型值的，已知不支持的函数有 [BLANKVALUE](/docs/no-code/functions#blankvalue), [CASE](/docs/no-code/functions#case), [IF](/docs/no-code/functions#if)。
 
 比如以下公式配置会报错：
 
@@ -195,15 +195,15 @@ CASE(Days_Open__c, 1,  true,false)
 
 #### 支持单选选项列表的函数
 
-* [ISPICKVAL](/docs/admin/functions#ispickval): 将选项列表的值与单个值进行比较。
-* [CASE](/docs/admin/functions#case)：将选项列表的值与多个值进行比较。
-* [TEXT](/docs/admin/functions#text)：返回选项列表值的 API 名称，以便您可在支持文本值的函数（例如 CONTAINS）中使用对值的引用（即使显示值已更改）。
-* [ISBLANK](/docs/admin/functions#isblank)：判断字段值是否为空。
+* [ISPICKVAL](/docs/no-code/functions#ispickval): 将选项列表的值与单个值进行比较。
+* [CASE](/docs/no-code/functions#case)：将选项列表的值与多个值进行比较。
+* [TEXT](/docs/no-code/functions#text)：返回选项列表值的 API 名称，以便您可在支持文本值的函数（例如 CONTAINS）中使用对值的引用（即使显示值已更改）。
+* [ISBLANK](/docs/no-code/functions#isblank)：判断字段值是否为空。
 
 #### 支持多选选项列表的函数
 
-* [INCLUDES](/docs/admin/functions#includes)：决定多选选项列表字段中选择的任何值是否等于您所指定的文本文字。
-* [ISBLANK](/docs/admin/functions#isblank)：判断字段值是否为空。
+* [INCLUDES](/docs/no-code/functions#includes)：决定多选选项列表字段中选择的任何值是否等于您所指定的文本文字。
+* [ISBLANK](/docs/no-code/functions#isblank)：判断字段值是否为空。
 
 ### 跨对象公式
 
