@@ -53,7 +53,7 @@ broker.call("v2.posts.find");
 ```
 
 {% note info REST call %}
-通过[API Gateway](moleculer-web.html), 发出请求 `GET /v2/posts/find`.
+通过API Gateway, 发出请求 `GET /v2/posts/find`.
 {% endnote %}
 
 > 要禁用服务名称前缀, 请在服务设置中修改 `$noVersionPrefix: true` 。
@@ -161,7 +161,7 @@ __合并 & 覆盖__: 如果 serviceA 有 `a: 5`, `b: 8` 且 serviceB 有`c: 10` 
 {% endnote %}
 
 ## Actions
-服务公开的可调用的方法称为活动或动作或行为 (actions, 以后不加区分)。 他们可以使用 `broker.call` 或 `ctx.call` 来调用。 该动作可以是 `Function` (简写为 handler) 或一个对象具有 `handler` 属性及更多属性。 该动作应该放置在方案中的 `actions` 下. 参见 [actions documentation](actions.html).
+服务公开的可调用的方法称为活动或动作或行为 (actions, 以后不加区分)。 他们可以使用 `broker.call` 或 `ctx.call` 来调用。 该动作可以是 `Function` (简写为 handler) 或一个对象具有 `handler` 属性及更多属性。 该动作应该放置在方案中的 `actions` 下.
 
 ```js
 // math.service.js
@@ -223,7 +223,7 @@ module.exports = {
 
 
 ## Events
-您可以在 `events` 中订阅事件。 参见 [events documentation](events.html).
+您可以在 `events` 中订阅事件。
 
 ```js
 // report.service.js
@@ -298,7 +298,7 @@ module.exports = {
     }
 };
 ```
-If you want to wrap a method with a [middleware](middlewares.html#localMethod-next-method) use the following notation:
+If you want to wrap a method with a middleware use the following notation:
 
 ```js
 // posts.service.js

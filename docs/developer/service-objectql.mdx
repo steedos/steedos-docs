@@ -44,7 +44,7 @@ ObjectQL微服务支持以下微服务动作，实现了对数据的增删改查
     - objectName: `String`对象的name。
     - query: 查询数据相关参数[json]，选填。
       - fields: `Array` 返回字段选择，例如：['字段名1', '字段名2']。
-      - filters: `SteedosQueryFilters` 查询条件数组。更多细节请参考[过滤条件规范](/docs/protocol/api-records-filters)。
+      - filters: `SteedosQueryFilters` 查询条件数组。更多细节请参考[过滤条件规范](/docs/developer/filters)。
       - sort: `string` 排序规则，例如：'name desc'。
       - top: `number` 返回记录数。
       - skip: `number` 跳过记录数，通常用于分页显示。
@@ -244,7 +244,7 @@ const res = await this.broker.call(
   - params: 
     - objectName: `String` 对象的name。
     - query: 查询数据相关参数[json]。
-      - filters: `Array`查询条件数组，选填。请参考[过滤条件规范](/docs/protocol/api-records-filters)。
+      - filters: `Array`查询条件数组，选填。请参考[过滤条件规范](/docs/developer/filters)。
     - externalPipeline: ArrayMongodb ggregation Pipeline。[mongodb聚合文档](https://www.mongodb.com/docs/manual/reference/aggregation/)。
   - opt: 
     - meta:
@@ -289,7 +289,7 @@ ObjectQL微服务支持以下带 `direct` 前缀的微服务动作，实现了�
     - objectName: `String`对象的name。
     - query: 查询数据相关参数[json]，选填。
         - fields: `Array` 返回字段选择，选填。例如：['字段名1', '字段名2']。
-        - filters: `SteedosQueryFilters` 查询条件数组，选填。请参考[过滤条件规范](/docs/protocol/api-records-filters)。
+        - filters: `SteedosQueryFilters` 查询条件数组，选填。请参考[过滤条件规范](/docs/developer/filters)。
         - sort: `string` 排序规则，选填。例如：'name desc'。
         - top: `number` 返回记录数，选填。
         - skip: `number` 跳过记录数，通常用于分页显示，选填。
@@ -437,7 +437,7 @@ const res = await this.broker.call(
   - params: 
     - objectName: `String` 对象的name。
     - query: 查询数据相关参数[json]。
-      - filters: `Array`查询条件数组，选填。请参考[过滤条件规范](/docs/protocol/api-records-filters)。
+      - filters: `Array`查询条件数组，选填。请参考[过滤条件规范](/docs/developer/filters)。
     - externalPipeline: ArrayMongodb ggregation Pipeline。[mongodb聚合文档](https://www.mongodb.com/docs/manual/reference/aggregation/)。
   - opt: 
     - meta:
