@@ -24,7 +24,7 @@
     "description": "The label of footer link with label=Github linking to https://github.com/steedos/steedos-platform"
   },
   "link.item.label.Steedos Enterprise": {
-    "message": "Steedos Enterprise",
+    "message": "企业版",
     "description": "The label of footer link with label=Steedos Enterprise linking to https://www.steedos.com"
   },
   "copyright": {
