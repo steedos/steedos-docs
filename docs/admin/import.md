@@ -1,9 +1,15 @@
----
+# Import Data Into Steedos
+
+Steedos offers several ways to import your data. You can import up to 50,000 records into Steedos.
+
+
+
+<!-- ---
 title: 数据导入
 description: 本文档介绍系统管理员如何通过对象数据导入功能，批量导入来维护对象相关数据。
 ---
 
-## **数据导入功能使用**
+## 数据导入功能使用
 
 ### 导入入口
 
@@ -63,4 +69,4 @@ description: 本文档介绍系统管理员如何通过对象数据导入功能�
 
  ![](https://console.steedos.cn/api/files/images/tkctaQP8cnBmqYHKC)另外，管理员能够后后台配置的导入记录中能够看到所有的导入明细记录情况，点击记录序号，也可以查看导入完成后的相关信息。
 
- ![](https://console.steedos.cn/api/files/images/qthEZ8RzWjnvuK5sh)
+ ![](https://console.steedos.cn/api/files/images/qthEZ8RzWjnvuK5sh) -->

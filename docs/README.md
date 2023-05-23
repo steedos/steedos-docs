@@ -4,6 +4,6 @@ title: Getting Started
 sidebar_position: 0
 ---
 
-华炎魔方是 Salesforce DX 敏捷开发平台的开源替代方案，将低代码技术融入传统开发工作中，为应用开发的整个生命周期赋能， 实现敏捷开发的新高度。
+Steedos Platform is open source alterative to Salesforce Platform, that enable organizations to build custom applications quickly and easily, with little to no coding required. These platforms typically provide a visual drag-and-drop interface, pre-built templates, and a library of pre-built components that can be used to create applications with minimal coding.
 
-华炎魔方基于 [Nodejs](https://nodejs.org/zh-cn/) 开发，运行环境需要 [mongodb 数据库](https://www.mongodb.com/docs/v4.2/administration/install-community/) 和 [redis 缓存](https://redis.io/docs/getting-started/) 服务。
+Steedos Platform are designed to help organizations accelerate their application development and delivery processes, while reducing the need for specialized technical skills. They can be used to build a wide range of applications, from simple web and mobile apps to complex enterprise-grade systems.
