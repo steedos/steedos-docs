@@ -72,6 +72,10 @@ const config = {
             position: 'right',
           },
           {
+            type: 'localeDropdown',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/steedos/steedos-platform',
             position: 'right',
             className: 'navbar-social-link navbar-github-logo',
