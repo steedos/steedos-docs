@@ -1,5 +1,12 @@
 ---
-title: 管理员向导
+title: Set Up and Maintain Your Steedos Organization
 ---
 
-系统管理员可以设定公司的组织机构，创建用户，配置数据访问权限。
+As a Steedos administrator—that is, a user assigned to the Administrator profile—you’re responsible for setting up your steedos organization, which means adding users and configuring the system for your needs.
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList/>
+```
