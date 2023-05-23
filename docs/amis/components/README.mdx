@@ -1,5 +1,5 @@
 ---
-title: 组件
+title: Amis 组件
 description: 组件是微页面的基本元素，微页面中不但有非常丰富的组件可以直接使用，同时还支持自定义组件。
 ---
 
@@ -11,11 +11,11 @@ description: 组件是微页面的基本元素，微页面中不但有非常丰�
 
 我们为 amis 扩展了以下组件用于快速实现华炎魔方各种界面能力。
 
-- [对象表单 ObjectForm](/docs/amis/components/object_form)
-- [列表视图 ObjectListView](/docs/amis/components/object_listview)
-- [对象表格 ObjectTable](/docs/amis/components/object_table)
-- [标题面板 RecordDetailHeader](/docs/amis/components/record_detail_header)
-- [相关表 RecordDetailRelatedList](/docs/amis/components/record_detail_related_list)
+- [对象表单 ObjectForm](./object_form)
+- [列表视图 ObjectListView](./object_listview)
+- [对象表格 ObjectTable](./object_table)
+- [标题面板 RecordDetailHeader](./record_detail_header)
+- [相关表 RecordDetailRelatedList](./record_detail_related_list)
 
 
 ## @data.change事件
@@ -86,9 +86,9 @@ description: 组件是微页面的基本元素，微页面中不但有非常丰�
 
 
 以下组件通过监听对象的`@data.change`事件实现了组件的各种动作能力：
-- [列表视图组件](/docs/amis/components/object_listview#刷新)
-- [对象表单组件](/docs/amis/components/object_form#刷新对象表单组件)
-- [相关表组件](/docs/amis/components/record_detail_related_list#刷新)
+- [列表视图组件](./object_listview#刷新)
+- [对象表单组件](./object_form#刷新对象表单组件)
+- [相关表组件](./record_detail_related_list#刷新)
 
 
 ## 自定义组件
@@ -104,7 +104,3 @@ STEEDOS_PUBLIC_PAGE_ASSETURLS=https://unpkg.com/@steedos-widgets/example@0.0.6/d
 ```
 
 资产包的地址只要可以访问即可，它可以是发布到npm的包(unpkg.com)地址，也可以是其他任何可以被当前服务访问的地址，比如在远程开发环境中公开的资产包地址。
-
-下面的示例 [amis-custom-components](/docs/amis/example#amis-custom-components) 完整演示了如何在华炎魔方项目中通过引用自定义资产包的方式来集成自定义组件。
-
-关于自定义资产包及自定义组件的开发，请参考下面的示例 [steedos-widgets](/docs/amis/example#steedos-widgets)。

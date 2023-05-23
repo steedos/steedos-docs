@@ -6,7 +6,7 @@ description: 华炎魔方提供灵活的多维度数据权限架构，这允许�
 [         ![权限引擎 示意图](https://console.steedos.cn/api/files/images/hiRT2YQZYjKPvqL6o "权限引擎 示意图")](https://console.steedos.cn/api/files/images/hiRT2YQZYjKPvqL6o)
 
 
-[     ![权限计算-查询 示意图](https://console.steedos.cn/api/files/images/2T54fG8LvDhdkwazR "权限计算-查询 示意图")](https://console.steedos.cn/api/files/images/2T54fG8LvDhdkwazR)华炎魔方基于权限集为每一个对象设置权限，支持对象级、分部级和字段级的权限控制，还可以通过在对象上配置共享规则和限制规则，或者编写 [beforeFind 触发器](https://beta.steedos.cn/docs/developer/getting-started#%E8%A7%A6%E5%8F%91%E5%99%A8) 来实现记录级的数据查看权限。
+[     ![权限计算-查询 示意图](https://console.steedos.cn/api/files/images/2T54fG8LvDhdkwazR "权限计算-查询 示意图")](https://console.steedos.cn/api/files/images/2T54fG8LvDhdkwazR)华炎魔方基于权限集为每一个对象设置权限，支持对象级、分部级和字段级的权限控制，还可以通过在对象上配置共享规则和限制规则，或者编写 beforeFind 触发器 来实现记录级的数据查看权限。
 
 ## 权限集&简档
 
@@ -333,7 +333,7 @@ description: 华炎魔方提供灵活的多维度数据权限架构，这允许�
 * 字段类型：相关表
 * 默认值：`{{global.user.profile}}`
 
-这里默认值是一个表单公式，详情请参考文档 [表单公式](https://beta.steedos.cn/docs/developer/getting-started#%E8%A1%A8%E5%8D%95%E5%85%AC%E5%BC%8F)。
+这里默认值是一个表单公式。
 
 ### 示例2
 
@@ -364,7 +364,7 @@ PS: 这里如果通过给部门对象配置自定义对象权限，去掉“查�
 
 ## 触发器&权限
 
-虽然在华炎魔方中使用上面介绍过的各种权限配置方法已经能轻松实现精确到字段和记录级的权限控制，但在千奇百怪的实际项目场景中还是会有些权限需求未能企及，所以华炎魔方权限引擎还结合了 [对象触发器](https://beta.steedos.cn/docs/developer/getting-started#%E8%A7%A6%E5%8F%91%E5%99%A8)，允许通过编写代码的方式来解决各种个性化的更高级别的权限问题。
+虽然在华炎魔方中使用上面介绍过的各种权限配置方法已经能轻松实现精确到字段和记录级的权限控制，但在千奇百怪的实际项目场景中还是会有些权限需求未能企及，所以华炎魔方权限引擎还结合了 beforeFind触发器，允许通过编写代码的方式来解决各种个性化的更高级别的权限问题。
 
 ### 原理
 
@@ -515,7 +515,7 @@ const userSession = await auth.getSessionByUserId(userId, spaceId);
 
 华炎魔方自动为业务对象生成的 GraphQL API，ODATA API都自带身份验证并与华炎魔方权限引擎集成，实现数据权限控制。
 
-另外在微服务中对数据执行增删改查等操作，或是在触发器中调用 [ObjectQL](https://beta.steedos.cn/docs/developer/objectql) 数据查询或操作函数，都会经过华炎魔方权限引擎校验，只有校验通过的操作才会被执行。
+另外在微服务中对数据执行增删改查等操作，或是在触发器中调用 ObjectQL 数据查询或操作函数，都会经过华炎魔方权限引擎校验，只有校验通过的操作才会被执行。
 
 ## 查询过滤条件详解
 

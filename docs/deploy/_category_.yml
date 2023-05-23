@@ -2,6 +2,3 @@ label: 安装部署
 position: 1
 link:
   type: generated-index
-  title: 'Deploy Steedos Platform'
-  description:
-    "Check out the different methods you can use to deploy ToolJet on your machine."

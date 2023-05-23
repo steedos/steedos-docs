@@ -26,7 +26,7 @@ description: 华炎魔方微页面引擎，内置对象表单组件 ObjectForm�
     ]
 }
 ```
-如果我们按照教程 [Amis微页面 - 记录页面](/docs/amis/page-type#%E8%AE%B0%E5%BD%95%E9%A1%B5%E9%9D%A2) 新建一个指向人员对象的微页面，并拖动一个对象表单组件到画布，可以看到该组件生成了类似上面的amis Schema配置。
+如果我们新建一个指向人员对象的微页面，并拖动一个对象表单组件到画布，可以看到该组件生成了类似上面的amis Schema配置。
 
 发布后，我们就可以在人员对象的记录详细页面看到只读的人员记录表单效果。
 
@@ -167,7 +167,7 @@ recordId属性类似的可以配置为某个具体的记录id值，但是一般�
 
 支持 [amis Form 表单动作表](https://aisuda.bce.baidu.com/amis/zh-CN/components/form/index#%E5%8A%A8%E4%BD%9C%E8%A1%A8) 中的所有动作。
 
-另外所有的对象表单组件只读模式都监听了对象的[`@data.change`事件](/docs/amis/component#@data.change事件)，只要触发对象的`@data.change`事件，就能间接调用该组件的以下动作： 
+另外所有的对象表单组件只读模式都监听了对象的`@data.change`事件，只要触发对象的`@data.change`事件，就能间接调用该组件的以下动作： 
 - [刷新](#刷新)
 - [跳转到列表页面](#跳转到列表页面)
 

@@ -11,7 +11,7 @@ const config = {
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
-  url: 'https://docs.steedos.com',
+  url: 'https://docs.steedos.cn',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -42,7 +42,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/steedos/steedos-docs/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -64,12 +64,12 @@ const config = {
         },
         items: [
           {
-            type: 'docsVersionDropdown',
+            type: 'search',
             position: 'right',
           },
           {
-            type: 'search',
-            position: 'left',
+            type: 'docsVersionDropdown',
+            position: 'right',
           },
           {
             href: 'https://github.com/steedos/steedos-platform',
@@ -93,7 +93,15 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/docs/',
+                to: '/docs/deploy',
+              },
+              {
+                label: 'Admin',
+                to: '/docs/admin',
+              },
+              {
+                label: 'Developer',
+                to: '/docs/developer',
               },
             ],
           },
@@ -101,7 +109,7 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Steedos Community',
+                label: 'Github',
                 href: 'https://github.com/steedos/steedos-platform',
               },
               {

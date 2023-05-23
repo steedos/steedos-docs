@@ -23,7 +23,7 @@ description: 华炎魔方微页面引擎，内置相关表组件 RecordDetailRel
     },
   }
 ```
-如果我们按照教程 [Amis微页面 - 记录页面](/docs/amis/page-type#%E8%AE%B0%E5%BD%95%E9%A1%B5%E9%9D%A2) 新建一个指向业务伙伴 accounts 对象的微页面，并拖动一个相关表组件到画布，可以看到该组件生成了类似上面的amis Schema配置。
+如果我们新建一个指向业务伙伴 accounts 对象的微页面，并拖动一个相关表组件到画布，可以看到该组件生成了类似上面的amis Schema配置。
 
 发布后，我们就可以在业务伙伴对象的记录详细页面看到当前记录关联的联系人子表列表界面效果。
 
@@ -61,7 +61,7 @@ recordId属性类似的可以配置为某个具体的记录id值，但是一般�
 
 ## 动作表
 
-所有的相关表组件都监听了对象的[`@data.change`事件](/docs/amis/component#@data.change事件)，只要触发对象的`@data.change`事件，就能间接调用该组件的以下动作： 
+所有的相关表组件都监听了对象的 `@data.change`事件，只要触发对象的`@data.change`事件，就能间接调用该组件的以下动作： 
 - [刷新](#刷新)
 
 详情请参考 [相关表组件源码](https://github.com/steedos/steedos-widgets/blob/1.2/packages/%40steedos-widgets/amis-lib/src/lib/objectsRelated.js#L162)。
