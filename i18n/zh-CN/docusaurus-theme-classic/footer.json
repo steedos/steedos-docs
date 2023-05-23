@@ -1,0 +1,34 @@
+{
+  "link.title.Docs": {
+    "message": "文档",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.More": {
+    "message": "更多",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Getting Started": {
+    "message": "安装部署",
+    "description": "The label of footer link with label=Getting Started linking to /docs/deploy"
+  },
+  "link.item.label.Admin": {
+    "message": "管理员",
+    "description": "The label of footer link with label=Admin linking to /docs/admin"
+  },
+  "link.item.label.Developer": {
+    "message": "开发人员",
+    "description": "The label of footer link with label=Developer linking to /docs/developer"
+  },
+  "link.item.label.Github": {
+    "message": "Github",
+    "description": "The label of footer link with label=Github linking to https://github.com/steedos/steedos-platform"
+  },
+  "link.item.label.Steedos Enterprise": {
+    "message": "Steedos Enterprise",
+    "description": "The label of footer link with label=Steedos Enterprise linking to https://www.steedos.com"
+  },
+  "copyright": {
+    "message": "© 2023 华炎软件。",
+    "description": "The footer copyright"
+  }
+}
