@@ -137,7 +137,7 @@ IF(Probability = 1, ROUND(Amount*0.02, 2), 0)
 具有 100% Probability（可能性）和 100,000 美元 Amount（金额）的业务机会将获得 2,000 美元的佣金。
 
 
-> 不要使用此函数进行空比较，如 MyDateTime__c == null。而应使用[ISBLANK](/docs/no-code/functions#isblank)。
+> 不要使用此函数进行空比较，如 MyDateTime__c == null。而应使用 ISBLANK。
 
 ### `!=`（不等于）
 
@@ -155,7 +155,7 @@ IF(Maint_Amount__c + Services_Amount__c `<>` Amount, "DISCOUNTED", "FULL PRICE"
 如果产品的维护金额和服务金额之和不等于产品金额，此公式将在产品上显示“DISCOUNTED”（已折扣金额）。否则，显示“FULL PRICE”（全价）。请注意，本示例对 Maint Amount（维护金额）和 Services Amount（服务金额）使用两个自定义金额字段。
 
 
-> 不要使用此函数进行空比较，如 MyDateTime__c != null。而应使用[ISBLANK](/docs/no-code/functions#isblank)。
+> 不要使用此函数进行空比较，如 MyDateTime__c != null。而应使用 ISBLANK。
 
 ### （小于）
 
@@ -560,7 +560,7 @@ IF(Status = "Open", ROUND(NOW()-CreatedDate, 0), null)
 
 ■ 在 NOW 函数返回“日期时间”字段而不是“日期”字段。Created Date（创建日期）和 Last Modified Date（上次修改日期）为“日期/间”字段，而 Last Activity Date（上次活动日期）为“日期”字段。
 
-■ 如果您希望使用“日期”字段，请使用[TODAY](/docs/no-code/functions#today)函数。
+■ 如果您希望使用“日期”字段，请使用 TODAY 函数。
 
 ■ 始终使用用户的时区计算日期和时间，该函数本身返回的是utc时间值，比如当前是北京时间2020-11-07 15:28，NOW()返回值为"2020-11-07T07:28:00Z"。
 
@@ -616,7 +616,7 @@ IF(Rating="Hot", TEXT(TIMENOW()), TEXT(TIMEVALUE(CreatedDate)))
 
 ■ 保留括号为空。括号中不能包含值。
 
-■ 如果您希望使用“日期”字段，请使用[TODAY](/docs/no-code/functions#today)函数。
+■ 如果您希望使用“日期”字段，请使用 TODAY 函数。
 
 ■ 显示的值为GMT时区值。
 
@@ -681,7 +681,7 @@ SampleDate < TODAY()
 
 ■ 使用含 TODAY 函数的“日期”字段而不是“日期时间”字段。Last Activity Date（上次活动日期）是“日期”字段；而 Created Date（创建日期）和 Last Modified Date（上次修改日期）为“日期时间”字段
 
-■ 如果您希望使用日期时间字段，请参阅[NOW](/docs/no-code/functions#now)函数。
+■ 如果您希望使用日期时间字段，请参阅 NOW 函数。
 
 ■ 始终使用用户的时区计算日期和时间，TODAY()返回的是当天GMT时区0点值。
 
@@ -794,17 +794,17 @@ BLANKVALUE(Payment_Due_Date__c, StartDate + 5)
 此公式返回当 Payment Due Date（付款到期日期）为空时，合同开始日期之后第五天的日期。Payment Due Date（付款到期日期）是自定义日期字段。
 
 > * 如果字段包含字符、空白或零，则字段不为空。例如，如果字段包含使用空格键插入的空格，则该字段不为空。
-> * 如果字段没有值，则使用 BLANKVALUE 函数返回指定置换表达式对应的值；如果您只想检查字段是否有值，则使用[ISBLANK](/docs/no-code/functions#isblank)函数。
+> * 如果字段没有值，则使用 BLANKVALUE 函数返回指定置换表达式对应的值；如果您只想检查字段是否有值，则使用 ISBLANK函数。
 > * 传入的两个参数值类型应该一样，否则公式将直接报错。
-> * 传入的参数不支持布尔类型值，详情可参考：[使用布尔公式字段的提示](/docs/no-code/field_type#%E4%BD%BF%E7%94%A8%E5%B8%83%E5%B0%94%E5%85%AC%E5%BC%8F%E5%AD%97%E6%AE%B5%E7%9A%84%E6%8F%90%E7%A4%BA)。
-> * 传入的参数不支持select字段类型值，详情可参考：[使用选项列表公式字段的提示](/docs/no-code/field_type#%E4%BD%BF%E7%94%A8%E9%80%89%E9%A1%B9%E5%88%97%E8%A1%A8%E5%85%AC%E5%BC%8F%E5%AD%97%E6%AE%B5%E7%9A%84%E6%8F%90%E7%A4%BA)。
+> * 传入的参数不支持布尔类型值。
+> * 传入的参数不支持select字段类型值。
 > * 如果您对数值字段判断空值，比如`BLANKVALUE(Amount, 100)`，则字段没有值且配置将空白字段处理为空白时，该公式才返回第二个参数中的指定的置换表达式值，如果字段没有值且配置将空白字段处理为0时，则按0值返回而不是返回第二个参数中的指定表达式值。
 > * 因为我们的空白字段处理方式默认值是“将空白字段视为零”，所以低代码中要小心，不配置这个属性时，默认为按0值处理。零代码配置时问题不大，因为空白字段处理属性是必填的，不存在默认值问题。
 
 
 
 <alert type="info">
-■ 该函数与[ISBLANK](/docs/no-code/functions#isblank)很像，但是该函数会进一步返回字段值为空时的置换表达式对应的值，一般来说，如果您只是想判断字段值是否为空，应该使用后者而不是该函数。
+■ 该函数与 ISBLANK很像，但是该函数会进一步返回字段值为空时的置换表达式对应的值，一般来说，如果您只是想判断字段值是否为空，应该使用后者而不是该函数。
 
 ■ 该函数不支持传入select字段类型参数，但是如果字段是单选的，可以先用TEXT函数选把select类型转换为text类型，比如`BLANKVALUE(TEXT(Leave__c), "error")`，多选的select字段类型无法使用BLANKVALUE函数。
 
@@ -926,7 +926,7 @@ CASE($User.Country ,​​ "Japan", "Japanese", "US", "English","unknown")
 
 
 <alert type="info">
-* CASE函数中的任何参数都不支持布尔类型值，这不只表示第一个参数及后续用于比较值的其他参数不能是布尔类型值，最后一个参数也一样不支持布尔类型值，也就是说整个函数的返回值不可能是布尔类型值，详情可参考：[使用布尔公式字段的提示](/docs/no-code/field_type#%E4%BD%BF%E7%94%A8%E5%B8%83%E5%B0%94%E5%85%AC%E5%BC%8F%E5%AD%97%E6%AE%B5%E7%9A%84%E6%8F%90%E7%A4%BA)。
+* CASE函数中的任何参数都不支持布尔类型值，这不只表示第一个参数及后续用于比较值的其他参数不能是布尔类型值，最后一个参数也一样不支持布尔类型值，也就是说整个函数的返回值不可能是布尔类型值。
 * 表达式参数，即传入的第一个参数支持select字段，但是只支持单选的，如果传入多选的select将直接报错。
 
 </alert>
@@ -969,7 +969,7 @@ IF($user.city = "Napa", 0.0750, IF($user.city = "Paso Robles", 0.0725,  IF($us
 
 <alert type="info">
 * 请确保您的 value_if_true 和 value_if_false 表达式属于相同的数据类型，且不为布尔类型值。
-* IF函数不支持返回值为布尔类型的情况，即第二个及第三个参数不能是布尔类型，详情可参考：[使用布尔公式字段的提示](/docs/no-code/field_type#%E4%BD%BF%E7%94%A8%E5%B8%83%E5%B0%94%E5%85%AC%E5%BC%8F%E5%AD%97%E6%AE%B5%E7%9A%84%E6%8F%90%E7%A4%BA)。
+* IF函数不支持返回值为布尔类型的情况，即第二个及第三个参数不能是布尔类型。
 
 </alert>
 
@@ -997,7 +997,7 @@ IF($user.city = "Napa", 0.0750, IF($user.city = "Paso Robles", 0.0725,  IF($us
 
 ■ 如果字段包含字符、空白或零，则字段不为空。例如，如果字段包含使用空格键插入的空格，则该字段不为空。
 
-■ 如果字段没有值，则使用 [BLANKVALUE](/docs/no-code/functions#blankvalue) 函数返回指定表达式；如果您只想检查字段是否有值，则使用 ISBLANK 函数。
+■ 如果字段没有值，则使用 BLANKVALUE 函数返回指定表达式；如果您只想检查字段是否有值，则使用 ISBLANK 函数。
 
 ■ 如果您对数值字段使用该函数,比如`ISBLANK(Amount)`，则字段没有值且配置将空白字段处理为空白时，该函数才返回 TRUE。
 
@@ -1651,11 +1651,10 @@ INCLUDES(Hobbies__c, "Golf")
 
 
 <alert type="info">
-■ 该函数只支持多选的选项列表字段，要使用单选选项列表字段请使用 [ISPICKVAL](/docs/no-code/functions#ispickval)。
+■ 该函数只支持多选的选项列表字段，要使用单选选项列表字段请使用 ISPICKVAL 。
 
-■ 可以使用 [ISBLANK](/docs/no-code/functions#isblank) 决定选项列表字段是否为空。
+■ 可以使用  ISBLANK 决定选项列表字段是否为空。
 
-■ 关于选项列表字段支持哪些其他函数，请参考 [使用选项列表公式字段的提示](/docs/no-code/field_type#%E4%BD%BF%E7%94%A8%E9%80%89%E9%A1%B9%E5%88%97%E8%A1%A8%E5%85%AC%E5%BC%8F%E5%AD%97%E6%AE%B5%E7%9A%84%E6%8F%90%E7%A4%BA)。
 
 </alert>
 
@@ -1695,11 +1694,10 @@ IF(ISPICKVAL(StageName, "Closed Won"),   ROUND(Amount *0.02, 2), 0)
 
 
 <alert type="info">
-■ 该函数只支持单选的选项列表字段，要使用多选选项列表字段请使用 [INCLUDES](/docs/no-code/functions#includes)。
+■ 该函数只支持单选的选项列表字段，要使用多选选项列表字段请使用 INCLUDES 。
 
-■ 可以使用 [ISBLANK](/docs/no-code/functions#isblank) 决定选项列表字段是否为空。
+■ 可以使用  ISBLANK 决定选项列表字段是否为空。
 
-■ 关于选项列表字段支持哪些其他函数，请参考 [使用选项列表公式字段的提示](/docs/no-code/field_type#%E4%BD%BF%E7%94%A8%E9%80%89%E9%A1%B9%E5%88%97%E8%A1%A8%E5%85%AC%E5%BC%8F%E5%AD%97%E6%AE%B5%E7%9A%84%E6%8F%90%E7%A4%BA)。
 
 </alert>
 

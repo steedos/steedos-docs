@@ -56,6 +56,14 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      announcementBar: {
+        id: 'support_us',
+        content:
+          '⭐️ If you like Steedos, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/steedos/steedos-platform">GitHub</a> .',
+        backgroundColor: '#4D72DA',
+        textColor: '#ffffff',
+        isCloseable: true,
+      },
       navbar: {
         title: 'Steedos',
         logo: {
