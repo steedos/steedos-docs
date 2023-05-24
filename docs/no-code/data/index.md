@@ -14,3 +14,10 @@ Customize standard and custom fields to tailor your org to your own unique requi
 
 ## Calculate Field Values with Formulas
 A formula is an algorithm that derives its value from other fields, expressions, or values. Formulas can help you automatically calculate the value of a field based on other fields.
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList/>
+```

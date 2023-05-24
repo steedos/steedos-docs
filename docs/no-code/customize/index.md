@@ -22,18 +22,22 @@ Use field-level security as the means to restrict users’ access to fields; the
 
 Page layouts control the layout and organization of buttons, fields, and related lists on object record pages. They also help determine which fields are visible, read only, and required. Use page layouts to customize the content of record pages for your users.
 
-## Rename Object, Tab, and Field Labels
+## Rename Object, Tab, and Field Labels *
 
 You can change the name of almost any object, field, or tab in Steedos. This simple adjustment lets you continue using the terminology your users already know and helps them transition to using Steedos.
 
-:::info
-This feature is under development.
-:::
-
-## Manage Your Translations
+## Manage Your Translations *
 
 If your Steedos org has multiple languages enabled, manage translations so that your global users can use Steedos in their language.
 
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList/>
+```
+
+
 :::info
-This feature is under development.
+*: This feature is under development.
 :::

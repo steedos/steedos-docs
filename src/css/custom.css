@@ -133,6 +133,10 @@ body {
   article h2 {
     font-size: 1.5rem;
   }
+
+  article h3 {
+    font-size: 1.25rem;
+  }
 }
 
 .menu__list {
