@@ -7,7 +7,7 @@ sidebar_position: 10
 Divisions let you segment your organization's data into logical sections, making searches, reports, and list views more meaningful to users. Divisions are useful for organizations with extremely large amounts of data.
 
 :::tip
-此功能需要企业版授权才能使用。
+Available on: Enterprise Edition
 :::
 
 ## How Divisions Work
