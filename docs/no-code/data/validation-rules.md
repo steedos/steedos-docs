@@ -1,8 +1,19 @@
----
-title: 对象验证规则
----
+# Validation Rules
 
-在华炎魔方中，用户可以为每一个对象创建验证规则。验证规则主要用于验证该对象的数据是否符合特定的规则。当用户对于对象的某个字段的更改不符合用户创建的验证规则时，华炎魔方会拒绝保存用户的输入。
+Improve the quality of your data using validation rules. Validation rules verify that the data a user enters in a record meets the standards you specify before the user can save the record. A validation rule can contain a formula or expression that evaluates the data in one or more fields and returns a value of “True” or “False”. Validation rules also include an error message to display to the user when the rule returns a value of “True” due to an invalid value.
+
+
+
+FIELD | DESCRIPTION
+-- | --
+Rule Name | Unique identifier of up to 40 characters with no spaces or special characters such as extended characters.
+Active | Checkbox that indicates if the rule is enabled.
+Description | A 255-character or less description that distinguishes the validation rule from others. For internal purposes only.
+Error Condition Formula | The expression used to validate the field. See Build a Formula Field and Formula Operators and Functions.
+Error Message | The message that displays to the user when a field fails the validation rule.
+
+
+<!-- 在华炎魔方中，用户可以为每一个对象创建验证规则。验证规则主要用于验证该对象的数据是否符合特定的规则。当用户对于对象的某个字段的更改不符合用户创建的验证规则时，华炎魔方会拒绝保存用户的输入。
 
  ![](https://console.steedos.cn/api/files/images/vtxej7xKQtdABNNLr)
 
@@ -137,4 +148,4 @@ OR (
 >
 > 如果需要，请关注TODAY函数对于时区方面的偏差，以防止出现预期不一致的效果。
 
-
+ -->

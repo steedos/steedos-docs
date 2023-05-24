@@ -1,3 +1,15 @@
+# Calculate Field Values with Formulas
+
+A formula is an algorithm that derives its value from other fields, expressions, or values. Formulas can help you automatically calculate the value of a field based on other fields.
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList/>
+```
+
+<!-- 
 ---
 title: 通过公式计算字段值
 shortTitle: 公式
@@ -403,4 +415,4 @@ TIMEVALUE() 函数返回的时间数据类型值的格式为 24 小时制的`“
 
 假定当前时间还是北京时间2020年11月10日21点，即2020-11-10T13:00:00Z，把上面的NOW换为当天日期函数TODAY： `TODAY() - DATEVALUE("2020-11-10T19:00:00Z")` 运算结果为0，因为减号左右两侧都是北京时间11月10号，但是如果假定当前时间为北京时间2020年11月10日早上7点的话，因为北京时间时区差8小时，TODAY()将输出为2020-11-09号，两者相减将得到-1（-24小时）。
 
-无法在公式中确定用户的时区。如果您的所有用户都在同一时区，则可以通过加或减用户的时区和 GMT 之间的时差以调整时区差别为您的已转换值。然而，由于时区会受夏令时的影响，同时每年的 DST 开始和结束日期都不同，因此很难在公式中管理。
+无法在公式中确定用户的时区。如果您的所有用户都在同一时区，则可以通过加或减用户的时区和 GMT 之间的时差以调整时区差别为您的已转换值。然而，由于时区会受夏令时的影响，同时每年的 DST 开始和结束日期都不同，因此很难在公式中管理。 -->

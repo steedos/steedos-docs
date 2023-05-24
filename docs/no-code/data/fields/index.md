@@ -1,10 +1,18 @@
 ---
 title: Customize Fields
-sidebar_position: 6
+sidebar_position: 2
 ---
 
 Customize standard and custom fields to tailor your org to your own unique requirements.
 
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList/>
+```
+
+<!-- 
 字段用于定义业务对象的属性。包括前台用户的填写界面和后台数据库的保存格式。简单的来说，字段是对于该对象需要阐述的属性信息。如 ”报价(offer)” 对象可能需要展示以下属性：报价编号(offer_id)、报价名称(offer_name)、业务机会名(opportunity_id)、客户(client)、小计(subtotal) 等基本信息。
 
 ## 字段类型
@@ -221,4 +229,4 @@ function(values){
 
 关于字段索引的定时器配置请参考文档 [字段索引配置](/docs/deploy/steedos-config#%E5%AD%97%E6%AE%B5%E7%B4%A2%E5%BC%95%E9%85%8D%E7%BD%AE)。
 
-适当地为对象上的字段创建索引是非常必要的，它可以极大的提升相关记录的查询速度，在公式字段、累计汇总、数据导入等功能中也能明显受益。
+适当地为对象上的字段创建索引是非常必要的，它可以极大的提升相关记录的查询速度，在公式字段、累计汇总、数据导入等功能中也能明显受益。 -->

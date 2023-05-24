@@ -1,6 +1,6 @@
 ---
 title: Custom Objects
-sidebar_position: 5
+sidebar_position: 1
 ---
 
 Create, customize, edit, delete, or truncate custom objects to extend the functionality that standard objects, like accounts and contacts, provide.
