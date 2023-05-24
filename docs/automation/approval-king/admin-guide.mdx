@@ -675,7 +675,7 @@ CoreForm.custom_numToCny({total});
 * 从业务对象台账中发起业务审批流程；
 * 将华炎魔方中的业务流程归档到业务对象台账中。
 
-首先，我们先新建一个资产调拨流程，详细步骤具体可参考 [\[表单设计\]](https://www.steedos.cn/docs/admin/workflow-admin#%E8%A1%A8%E5%8D%95%E8%AE%BE%E8%AE%A1) 和 [\[流程设计\]](https://www.steedos.cn/docs/admin/workflow-admin#%E6%B5%81%E7%A8%8B%E8%AE%BE%E8%AE%A1) 。
+首先，我们先新建一个资产调拨流程。
 
 ### 新建流程：资产调拨流程
 
@@ -763,8 +763,6 @@ CoreForm.custom_numToCny({total});
  ![](https://console.steedos.cn/api/files/images/Z7CfuQRxkz3XRYkbq)
 
 
-可参考 [审批王流程设计-流程导入导出](https://www.steedos.cn/docs/admin/workflow-admin#%E6%B5%81%E7%A8%8B%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA)。
-
 ### 如何替他人代填申请单？
 
 申请单一般为本人填写并提交。如果需要帮别人代填，该怎么操作了？
@@ -824,7 +822,7 @@ CoreForm.custom_numToCny({total});
 
 * 中间“谁能查看所有的申请单”，“授权用户”给“办公室主任”，保存即可。
 
-上图中的3种权限，如需修改，点击“授权部门”、“授权用户”，勾选相应的部门、用户即可。具体，可参考 [审批王流程设计-流程权限设置](./workflow-admin#%E6%B5%81%E7%A8%8B%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE) 。
+上图中的3种权限，如需修改，点击“授权部门”、“授权用户”，勾选相应的部门、用户即可。
 
 **表单设计类**
 
@@ -930,8 +928,6 @@ function () {
 * 只显示处理人员意见：“{yijianlan:{step:"领导批示", only_handler:true}}”
 * 多个步骤对应一个意见栏：“{yijianlan:{step:"股份公司领导意见"}};{yijianlan:{step:"集团公司领导意见"}}”。股份公司领导步骤签的意见和集团公司领导签的意见出现在同一个意见栏上。
 * 配置默认意见：“{yijianlan:{step:"领导批示", default:"已阅"}}”，处理人在提交申请单后，在意见栏为空的情况下，系统会默认为您签下“已阅”的意见。
-
-具体设置，请参考 [审批王表单设计-签字意见设置](./workflow-admin#%E7%AD%BE%E5%AD%97%E6%84%8F%E8%A7%81%E8%AE%BE%E7%BD%AE)。
 
 ### 申请人的所在部门如何自动显示在申请单上？
 
