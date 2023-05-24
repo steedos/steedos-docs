@@ -4,7 +4,7 @@ title: Introduction
 sidebar_position: 0
 ---
 
-Steedos Platform is open source alterative to Salesforce Platform, that empowers businesses to create custom applications quickly and easily. With Steedos, companies can build and deploy applications in a fraction of the time it takes with traditional software development methods. The platform's intuitive drag-and-drop interface, coupled with its powerful backend, makes it easy for even non-technical users to create robust applications that meet their specific business needs.
+Steedos Platform is open-source alternative to Salesforce Platform, that empowers businesses to create custom applications quickly and easily. With Steedos, companies can build and deploy applications in a fraction of the time it takes with traditional software development methods. The platform's intuitive drag-and-drop interface, coupled with its powerful backend, makes it easy for even non-technical users to create robust applications that meet their specific business needs.
 
 At the core of Steedos Platform is its low-code development environment, which allows developers to create custom applications using pre-built components and templates. This approach significantly reduces the time and resources required for application development, enabling businesses to get their applications up and running in record time. Steedos also offers a wide range of pre-built connectors and integrations, making it easy to connect with other enterprise systems and data sources.
 
