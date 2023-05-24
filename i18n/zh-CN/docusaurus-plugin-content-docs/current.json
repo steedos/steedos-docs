@@ -4,15 +4,15 @@
     "description": "The label for version current"
   },
   "sidebar.platform.category.Setup": {
-    "message": "设置",
+    "message": "安装部署",
     "description": "The label for category Setup in sidebar platform"
   },
   "sidebar.platform.category.Getting Started": {
-    "message": "快速向导",
+    "message": "用户向导",
     "description": "The label for category Getting Started in sidebar platform"
   },
   "sidebar.platform.category.Setup Your Organization": {
-    "message": "管理组织机构",
+    "message": "组织设置",
     "description": "The label for category Setup Your Organization in sidebar platform"
   },
   "sidebar.platform.category.Manage Data Access": {
@@ -24,7 +24,7 @@
     "description": "The label for category Extend with Clicks in sidebar platform"
   },
   "sidebar.platform.category.Customize Your Org": {
-    "message": "自定义你的企业",
+    "message": "自定义你的组织",
     "description": "The label for category Customize Your Org in sidebar platform"
   },
   "sidebar.platform.category.Set Up Your Data": {
