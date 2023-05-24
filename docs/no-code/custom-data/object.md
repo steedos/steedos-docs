@@ -3,6 +3,35 @@ title: Custom Objects
 sidebar_position: 5
 ---
 
+Create, customize, edit, delete, or truncate custom objects to extend the functionality that standard objects, like accounts and contacts, provide.
+
+Your object management settings list the custom objects that are defined for your organization. From this list, you can:
+
+- Define a custom object.
+- Display detailed information about a custom object. Optional features you can customize include enabling search and reports, tracking activities, tracking field history.
+- To update the custom object definition, click Edit and update the desired fields.
+
+## Fields Required for Creating Custom Objects
+
+When you create a custom object, several fields are required to define how you can access the object.
+
+FIELD | DESCRIPTION
+-- | --
+Label | This name is used to refer to the object in a user interface page.
+Object API Name | A unique name used to refer to the object when using the API. In managed packages, this name prevents naming conflicts with package installations. Use only alphanumeric characters and underscores. The name must begin with a letter and have no spaces. It can’t end with an underscore nor have two consecutive underscores.
+Description | An optional description of the object. A meaningful description helps you remember the differences between objects when you’re viewing them in a list.
+Allow Reports | Makes the data in the custom object records available for reporting purposes.To create reports on custom objects, choose the Other Reports report type category, unless the custom object has a relationship with a standard object. When the custom object has a master-detail relationship with a standard object or is a lookup object on a standard object, select the standard object for the report type category instead.You can still create and run reports without selecting Allow Reports; however, the custom report type isn’t visible.
+Add Tasks | Allows users to associate tasks related to the custom object records.
+Add Calendar Events | Allows users to associate scheduled calendar events related to the custom object records.
+Enable Divisions | If your org has divisions enabled, select this option to enable the custom object for divisions. Divisions group records for simplified search results, list views, reports, and other areas within Salesforce. Salesforce adds a Division field to the custom object. If the custom object is the master in a master-detail relationship, custom objects on the detail side also get the Division field and inherit their division from the master record.
+Track Field History | Enables your org to track changes to fields on the custom object records. For example, it tracks who changed the field value and when, what the value was before the edit, and what it was changed to. History data is available for reporting, so users can easily create audit trail reports when this feature is enabled.
+Deployment Status | Indicates whether the custom object is visible to other users.
+Allow Search | To allow your users to find a custom object’s records when they search, create a custom tab set to Default On or Default Off. Creating a custom tab enables the custom object's Allow Search setting. A custom object that's associated with a custom tab is searchable (by default), even if users don't add the tab for display.
+Add Attachments... | Allows users to add attachments to custom object records. You can attach external documents to any object record in much the same way that you can add a PDF file or photo as an attachment to an email. 
+
+
+
+<!-- 
 对象对应的是数据库的表。我们也可以把对象当作是一个业务分类来理解，如“合同(contract)”这个业务分类，具体到“XXX产品服务合同”就是“合同(contract)”这个业务分类的一条数据。
 
 ## 创建自定义对象
@@ -97,17 +126,4 @@ sidebar_position: 5
 
 ## 配置按钮
 
-每个对象内置了在一定条件下才会显示的基础按钮，例如: 新建、编辑按钮。您也可以给指定对象配置自定义操作按钮。从”设置 => 对象设置 => 对象“进入指定的对象设置详情页， 然后找到操作按钮子表，点击右上角新建按钮，输入显示名称、API名称等后点击提交即可。
-
-其中执行的脚本需要按照以下格式要求填写脚本代码，所有脚本都应该写入一个 `function`函数体内。
-
-```javascript
-function(object_name, record_id){
-  // 在这里补充按钮点击事件业务需求脚本。
-  // object_name : 对象名
-  // record_id   : 记录ID 
-}
-```
-
-* **当按钮显示记录详细页**：可以调用 `this.record` 、`Creator.getObjectRecord()` 获取当前记录信息。
-* **当按钮显示在列表上**：可以调用 `gridRef.current.api.getSelectedRows()` 获取当前选中的记录。
+每个对象内置了在一定条件下才会显示的基础按钮，例如: 新建、编辑按钮。您也可以给指定对象配置自定义操作按钮。从”设置 => 对象设置 => 对象“进入指定的对象设置详情页， 然后找到操作按钮子表，点击右上角新建按钮，输入显示名称、API名称等后点击提交即可。 -->
