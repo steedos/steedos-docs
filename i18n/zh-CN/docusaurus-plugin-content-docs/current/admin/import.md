@@ -1,17 +1,9 @@
 ---
 sidebar_position: 8
-sidebar_label: Import Data
----
-# Import Data Into Steedos
-
-Steedos offers several ways to import your data. You can import up to 50,000 records into Steedos.
-
-
-
-<!-- ---
 title: 数据导入
-description: 本文档介绍系统管理员如何通过对象数据导入功能，批量导入来维护对象相关数据。
 ---
+
+本文档介绍系统管理员如何通过对象数据导入功能，批量导入来维护对象相关数据。
 
 ## 数据导入功能使用
 

@@ -1,30 +1,19 @@
 ---
 sidebar_position: 10
-sidebar_label: Divisions
+sidebar_label: 分部级权限
 ---
 
-# Organize Data with Divisions
-
-Divisions let you segment your organization's data into logical sections, making searches, reports, and list views more meaningful to users. Divisions are useful for organizations with extremely large amounts of data.
+对于集团企业，可以将下属单位设定为"单位级"，称为“分部”。每个分部可以设定单独的管理员，分部管理员只能修改本分部的组织机构。各个分部组织下可以创建部门级组织。
 
 :::tip
-Available on: Enterprise Edition
+Available on: Professional Edition
 :::
-
-## How Divisions Work
-
-Divisions can be assigned to users and other kinds of records. For example, you can create a report to show the opportunities for just the North American division to get accurate sales numbers for the North American sales team.
-
-- Record-level division—Division is a field on individual records that marks the record as belonging to a particular division. 
-- Default division — Users are assigned a default division that applies to their newly created accounts, leads, and custom objects that are enabled for divisions.
-
-对于集团企业，可以将下属单位设定为"单位级"，称为“分部”。每个分部可以设定单独的管理员，分部管理员只能修改本分部的组织机构。各个分部组织下可以创建部门级组织。
 
 每个用户可以设定多个分部，其中选中的第一个分部为主分部。当员工被添加到部门级组织时，员工的所属分部会自动被设置为部门对应的分部。
 
 进入公司设置，点击“分部”后，点击页面右上角的“新建”按钮来创建新的分部，新建时输入分部名称，并关联对应的部门。
 
-## Setup Division Permissions
+## 设置分部权限
 
  ![分部](https://console.steedos.cn/api/files/images/8THrbLz9He8oiehZ3)
 
@@ -65,7 +54,3 @@ Divisions can be assigned to users and other kinds of records. For example, you 
 按以上配置方法配置完各个权限集的对象权限后，我们就完整实现了上面提到的分部级权限相关需求。
 
 
-<alert type="info">
-只有企业版才支持分部级权限相关功能。
-
-</alert>

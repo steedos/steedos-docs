@@ -101,18 +101,35 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Getting Started',
             items: [
               {
-                label: 'Getting Started',
+                label: 'Deploy',
                 to: '/docs/deploy',
               },
               {
-                label: 'Admin',
-                to: '/docs/admin',
+                label: 'User Guide',
+                to: '/docs/user',
               },
               {
-                label: 'Developer',
+                label: 'Admin Guide',
+                to: '/docs/admin',
+              },
+            ],
+          },
+          {
+            title: 'Customize Your Org',
+            items: [
+              {
+                label: 'Extend with Click',
+                to: '/docs/no-code',
+              },
+              {
+                label: 'Automation You Process',
+                to: '/docs/automation',
+              },
+              {
+                label: 'Extend with Code',
                 to: '/docs/developer',
               },
             ],
@@ -126,7 +143,7 @@ const config = {
               },
               {
                 label: 'Steedos Enterprise',
-                href: 'https://www.steedos.com',
+                href: 'https://www.steedos.com/pricing/platform',
               }
             ],
           },

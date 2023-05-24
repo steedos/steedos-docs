@@ -1,24 +1,9 @@
 ---
-title: Manage Users
+title: 管理用户
 sidebar_position: 2
 ---
 
-In Steedos, each user is uniquely identified with a username, password, and profile. Together with other settings, the profile determines which tasks a user can perform, what data the user can see, and what the user can do with the data.
-
-## View and Manage Users
-
-In the user list, you can view and manage all users in your org.
-
-From the user list, you can:
-
-- Create one user or multiple users.
-- Reset passwords for selected users.
-- Edit a user.
-- View a user’s detail page.
-
-<!-- # 管理用户
-
-管理员添加完部门之后，点击“用户”菜单继续添加部门人员信息。
+管理员可以添加、编辑和删除用户。
 
 ### 添加/编辑用户
 
@@ -60,4 +45,4 @@ From the user list, you can:
 
 华炎魔方是一个支持多租户的开源系统，使用华炎魔方是可以开发出租户数据完全隔离的云平台产品的，人员指的就是某个租户（或者称为工作区或公司）下的人员信息，而用户指的就是用于登录系统的账户信息。
 
-管理员可以在某个租户（即公司）下新建人员，然后其账户信息会自动同步到平台登录账户中，所以管理员维护的人员都是可以直接登录系统的。 -->
+管理员可以在某个租户（即公司）下新建人员，然后其账户信息会自动同步到平台登录账户中，所以管理员维护的人员都是可以直接登录系统的。 
