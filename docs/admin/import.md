@@ -1,3 +1,6 @@
+---
+sidebar_position: 6
+---
 # Import Data Into Steedos
 
 Steedos offers several ways to import your data. You can import up to 50,000 records into Steedos.

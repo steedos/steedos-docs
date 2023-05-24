@@ -1,4 +1,7 @@
-# Manage Users
+---
+title: Manage Users
+sidebar_position: 2
+---
 
 In Steedos, each user is uniquely identified with a username, password, and profile. Together with other settings, the profile determines which tasks a user can perform, what data the user can see, and what the user can do with the data.
 

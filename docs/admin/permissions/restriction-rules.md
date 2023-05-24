@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 # Restriction Rules
 
 Restriction rules let you enhance your security by allowing certain users to access only specified records. They prevent users from accessing records that can contain sensitive data or information that isn’t essential to their work. Restriction rules filter the records that a user has access to so that they can access only the records that match the criteria you specify.

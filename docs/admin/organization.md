@@ -1,5 +1,6 @@
 ---
-title: Organizations
+title: Manage Organizations
+sidebar_position: 3
 ---
 
 ## 部门
