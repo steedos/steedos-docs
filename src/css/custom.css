@@ -109,11 +109,11 @@ body {
   }
 
   article header h1 {
-    font-size: 1.5rem !important;
+    font-size: 1.5rem;
   }
 
   article h2 {
-    font-size: 1.2rem !important;
+    font-size: 1.2rem;
   }
 
   .hero .hero__title {
@@ -127,23 +127,23 @@ body {
   }
 
   article h1 {
-    font-size: 40px !important;
+    font-size: 2.0rem;
   }
 
   article h2 {
-    font-size: 1.5rem !important;
+    font-size: 1.5rem;
   }
 }
 
-/* .menu__list {
-  font-size: 0.8rem;
+.menu__list {
+  font-size: 0.9rem;
 }
 
 .menu__link--sublist:after {
   padding-top: 0.3rem;
   height: 0.6rem;
   width: 0.75rem;
-} */
+}
 
 .hero--primary {
   --ifm-hero-background-color: #00bcd4;

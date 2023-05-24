@@ -1,6 +1,6 @@
 ---
 id: platform
-title: Getting Started
+title: Introduction
 sidebar_position: 0
 ---
 

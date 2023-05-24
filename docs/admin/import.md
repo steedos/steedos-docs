@@ -1,5 +1,6 @@
 ---
-sidebar_position: 6
+sidebar_position: 8
+sidebar_label: Import Data
 ---
 # Import Data Into Steedos
 
