@@ -1,4 +1,13 @@
----
+# List Views
+
+View, edit, and create records from a list. List views are a great way to sort, prioritize, and analyze the records that are most important to users.
+
+In a list view, you see only the data that you have access to. You can see records that you own, have read or write access to, or are shared with you. List views also include records owned by or shared with users in roles below you in the hierarchy. The fields you see depend on your page layout and field-level security settings.
+
+Modify and create list views from your record home page with List View Controls Settings icon. To change and reorder the columns displayed in a list view, select Select Fields to Display. Fields correspond to columns in the final list view.
+
+
+<!-- ---
 title: 列表视图
 description: 列表视图是用来定义前台数据列表展示的数据，您可以自定义需要显示的字段，从不同的维度定义视图展示不一样的数据，设定筛选条件和排序规则等参数。
 ---
@@ -9,7 +18,7 @@ description: 列表视图是用来定义前台数据列表展示的数据，您�
 
 ## 如何创建列表视图
 
-新建的对象默认有两个列表视图，分别是：所有和最近查看。默认展示的数据只有“名称”一个字段。当用户需要添加新视图的时候，可以进入对象详情界面找到“列表视图”-->“新建”弹出“新建 列表视图”窗口。填写必填项显示名称“所有报价”、API名称“offer_view”、对象“报价”、过滤范围“工作区”、并把需要显示的列添加上去，设置它的宽度和是否换行。
+新建的对象默认有两个列表视图，分别是：所有和最近查看。默认展示的数据只有“名称”一个字段。当用户需要添加新视图的时候，可以进入对象详情界面找到“列表视图”->“新建”弹出“新建 列表视图”窗口。填写必填项显示名称“所有报价”、API名称“offer_view”、对象“报价”、过滤范围“工作区”、并把需要显示的列添加上去，设置它的宽度和是否换行。
 
  ![](https://console.steedos.cn/api/files/images/NsiDe2kcaLmx3kkaH)
 
@@ -292,4 +301,4 @@ options:
 
 - 在 `options.views` 属性中明确标记“日”视图按名为 `_room` 的数据源来分组。
 - 在 `options.resources` 属性中定义一个名为 `_room` 的数据源，并且该数据源从华炎魔方标准的 OData API 接口中获取数据。
-- 在 `options.title` 属性中额外把当前对象的分组关联字段 ”所属会议室 meeting_room__c“ 显示在标题上。
+- 在 `options.title` 属性中额外把当前对象的分组关联字段 ”所属会议室 meeting_room__c“ 显示在标题上。 -->

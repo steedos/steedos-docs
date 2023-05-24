@@ -3,7 +3,7 @@
 White Label feature will allow you to remove the ToolJet branding from the Steedos platform and add your own custom logo and text.
 
 :::tip
-Available on: Enterprise Edition
+Available on: Professional Edition
 :::
 
 This feature allows you to rebrand the following:
