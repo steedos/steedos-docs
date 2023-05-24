@@ -1,7 +1,28 @@
 ---
-title: 页面布局
-description: 页面布局用于控制按钮、字段和相关子表的布局和组织方式。它们也帮助确定哪些字段可见、只读和必填。使用页面布局，为您的用户自定义记录页面的内容。
+title: Page Layouts
 ---
+
+Page layouts control the layout and organization of buttons, fields, s-controls, Visualforce, custom links, and related lists on object record pages. They also help determine which fields are visible, read only, and required. Use page layouts to customize the content of record pages for your users.
+
+## Create Page Layouts
+
+With the enhanced page layout editor, you can tailor record page layouts to the needs of your users.
+
+## Assign Page Layouts to Profiles or Record Types
+
+After defining page layouts, assign which page layouts users see. A user’s profile determines which page layout he or she sees. In addition, if your organization is using record types for a particular object, the combination of the user’s profile and the record type determine which page layout is displayed when a user views records for that object.
+
+## Customize Related Lists
+
+You can customize the buttons, columns displayed, column order, and record sort order of related lists on record detail pages in Steedos.
+
+## Customize Standard and Custom Buttons on Page Layouts
+
+When customizing page layouts, you can control which standard and custom buttons are displayed and the order in which the custom buttons appear.
+
+
+
+<!-- 页面布局用于控制按钮、字段和相关子表的布局和组织方式。它们也帮助确定哪些字段可见、只读和必填。使用页面布局，为您的用户自定义记录页面的内容。
 
 ## 默认显示页面
 
@@ -70,4 +91,4 @@ description: 页面布局用于控制按钮、字段和相关子表的布局和�
 * [显示条件](/docs/amis/visible_on)
 * 每页显示数量
 
-![](https://console.steedos.cn/api/files/images/gR3dc23TJESy88bSK)
+![](https://console.steedos.cn/api/files/images/gR3dc23TJESy88bSK) -->

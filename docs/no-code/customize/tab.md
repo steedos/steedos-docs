@@ -1,8 +1,16 @@
 ---
-title: 选项卡
-description: 华炎魔方新增选项卡功能，设置好的选项卡会显示在页面顶部的Tab导航上，
+title: Custom Tabs
 ---
 
+Custom tabs let you display custom object data or other web content in Steedos. When you add a custom tab to an app in Steedos, it appears as an item in the app’s navigation bar and in the App Launcher.
+
+Custom tabs show custom object data or other web content embedded in the app. You can create any of these types of custom tabs.
+
+- Custom Object Tabs: Custom object tabs show the data of your custom object. Custom object tabs look and function just like standard tabs.
+- Web Tabs: Custom web tabs show any external web-based application or web page. You can design web tabs to include the sidebar or span the page without the sidebar.
+- Micro page Tabs: Micro page tabs let you add micro pages to the Steedos mobile app and Steedos navigation bars.
+
+<!-- 
 ## 创建选项卡
 
 需要在“设置”应用中进入“用户界面→选项卡”来配置选项卡。
@@ -43,4 +51,4 @@ description: 华炎魔方新增选项卡功能，设置好的选项卡会显示�
 - 选项卡新建后默认对所有简档/权限集可见
 - 管理员可在简档/权限集详情页中点击 `设置选项卡权限`按钮统一设置选项卡权限
 - 默认打开表示可见、默认关闭表示不可见
-- 选项卡权限使用权限叠加规则，同一个选项卡在不同权限集中的权限叠加，如有一个是默认打开的则选项卡可见
+- 选项卡权限使用权限叠加规则，同一个选项卡在不同权限集中的权限叠加，如有一个是默认打开的则选项卡可见 -->
