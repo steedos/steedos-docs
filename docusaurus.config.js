@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Steedos',
+  title: 'Steedos Help',
   tagline: 'Open source alterative to Salesforce Platform.',
   favicon: 'img/favicon.png',
 
