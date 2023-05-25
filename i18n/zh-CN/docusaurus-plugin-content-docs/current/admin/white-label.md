@@ -1,6 +1,6 @@
 # White Label
 
-White Label feature will allow you to remove the ToolJet branding from the Steedos platform and add your own custom logo and text.
+White Label feature will allow you to remove the Steedos branding from the Steedos platform and add your own custom logo and text.
 
 :::tip
 Available on: Professional Edition
