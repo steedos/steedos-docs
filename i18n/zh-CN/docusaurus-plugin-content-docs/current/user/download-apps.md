@@ -1,5 +1,5 @@
 ---
-title: Download Apps
+title: 客户端下载
 ---
 
 华炎魔方桌面及手机客户端使用说明
@@ -68,7 +68,7 @@ title: Download Apps
 
 点击通知图标，可以看到最新的站内通知消息，这里最多只显示最新的20条消息。
 
- ![](https://console.steedos.cn/api/files/images/SuDokQJ63Tc5JcWod)
+ ![通知](/../static/img/zh-CN/notification.png)
 
 > **审批王**并没有集成系统内通知功能，所以相关审批通知并不会显示在上述站内通知消息列表中
 
