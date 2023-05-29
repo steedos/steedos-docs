@@ -1,6 +1,6 @@
-# Setup Steedos
+# 快速向导
 
-Check out the different methods you can use to deploy Steedos on your machine
+您可以选择不同的部署方式来访问华炎魔方平台。
 
 
 ```mdx-code-block
