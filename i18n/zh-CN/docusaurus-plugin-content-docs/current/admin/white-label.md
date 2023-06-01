@@ -1,15 +1,12 @@
-# White Label
+# 白名单
 
-White Label feature will allow you to remove the Steedos branding from the Steedos platform and add your own custom logo and text.
+系统可自定义登陆背景及系统logo。
 
 :::tip
-Available on: Professional Edition
+企业版可用
 :::
 
-This feature allows you to rebrand the following:
 
-## App Logo
-
-Logo on login screen and main app.
+## 应用Logo
 
 ![Customize Logo](https://console.steedos.cn/api/files/images/BQzBmPyEtRAt3X5um)

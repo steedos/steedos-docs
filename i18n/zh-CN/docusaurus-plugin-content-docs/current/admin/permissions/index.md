@@ -1,9 +1,9 @@
 ---
-title: Manage Data Access
+title: 管理数据访问权限
 sidebar_position: 5
 ---
 
-Stedos provides a flexible, layered data sharing design that lets admins control user access to data. Managing data access enhances security by exposing only data that’s relevant to users. Use permission sets, permission set groups, and profiles to control the objects and fields users can access. Use sharing rules to specify the individual records that users can view and edit.
+此部分将指导您作为系统管理人员如何在不同业务场景下进行数据权限配置于开发。
 
 
 
