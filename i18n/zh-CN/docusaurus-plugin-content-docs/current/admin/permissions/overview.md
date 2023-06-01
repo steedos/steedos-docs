@@ -1,38 +1,33 @@
 ---
-title: Control Who Sees What
+title: 权限管理
 sidebar_position: 1
 ---
 
-Steedos data sharing lets you expose specific data sets to individuals and groups of users. Permission sets, permission set groups, and profiles provide object-level and field-level security by controlling access. Record-level sharing settings, user roles, and sharing rules control the individual records that users can view and edit.
+华炎魔方提供灵活的多维度数据权限架构，这允许管理员控制用户对数据的访问权限。通过仅显示与用户相关的数据，管理数据访问权限会增强安全性。使用权限集、权限集组和简档，控制用户可以访问的对象和字段。使用组织范围的共享设置、用户角色和共享规则，以指定用户可以查看并编辑的单个记录。
 
 ![权限引擎 示意图](https://console.steedos.cn/api/files/images/hiRT2YQZYjKPvqL6o "权限引擎 示意图")
 
-### Object-Level Security (Permission Sets and Profiles)
+### 对象级权限 (简档&权限集)
 
-Object-level security—or object permissions—provide the bluntest way to control data access. You can prevent a user from seeing, creating, editing, or deleting any instance of a particular object type, such as a lead or opportunity, by using object permissions. You can hide tabs and objects from selected users, so that they don’t even know that type of data exists.
+对象级权限是控制数据访问的最基本方式。您可以使用对象权限来控制用户查看、创建、编辑或删除等操作。您可以在权限集&简档中指定对象权限。
 
-You can specify object permissions in permission sets and profiles. Permission sets and profiles are collections of settings and permissions that determine what a user can do in the application. The settings are similar to a group in a Windows network, where the members of the group have the same folder permissions and access to the same software.
+### 字段级权限 (简档&权限集)
 
-Typically, profiles are defined by a user’s job function, such as Salesforce admin or sales representative. You can assign one profile to many users, but you can assign only one profile per user. You can use permission sets to grant more permissions and access settings to users. Now it’s easier to manage users’ permissions and access because you can assign multiple permission sets to a single user.
+有时希望用户能够访问对象，同时限制他们对该对象中各个字段的访问权限。字段级安全性或字段权限控制用户是否可以在对象上查看、编辑和删除制定字段的值。
 
-### Field-Level Security (Permission Sets and Profiles)
+您可以通过字段级保护敏感字段，而不隐藏整个对象。字段权限控制业务对象中字段的可见性，包括相关列表、列表视图和搜索结果。其中，页面布局仅控制详细信息和编辑页面上字段的可见性。
 
-Sometimes you want users to have access to an object while limiting their access to individual fields in that object. Field-level security—or field permissions—control whether a user can see, edit, and delete the value for a particular field on an object. You can protect sensitive fields without hiding the entire object. You also can control field permissions in permission sets and profiles.
+### 记录级权限 
 
-Field permissions control the visibility of fields in any part of the app, including related lists, list views, reports, and search results. To ensure that a user can’t access a particular field, use field permissions. No other settings provide as much protection for a field. Page layouts only control the visibility of fields on detail and edit pages.
+在设置对象和字段级别的访问权限之后，您可以配置记录的访问权限。记录级安全性允许让用户访问对象指定记录，而不是其他记录。通常情况下，每个记录的所有者对记录拥有完全访问权限。
 
-### Record-Level Security (Sharing)
+#### 共享规则
 
-After setting object- and field-level access permissions, you can configure access settings for records. Record-level security lets you give users access to some object records, but not others. Every record is owned by a user or a queue. The owner has full access to the record. In a hierarchy, users higher in the hierarchy always have the same access to users below them in the hierarchy. This access applies to records owned by users and records shared with them.
+通过共享规则，您可以为用户进行对象权限外的共享设置。使用共享规则，使这些用户可以访问他们不拥有或通常无法查看的记录。
+#### 限制规则
 
-#### Sharing rules
+当对象设置限制规则后，对用户访问对象数据进行限定，使得用户只能访问相应限制条件的数据。类似于列表视图过滤功能。
 
-With sharing rules you can make automatic exceptions to organization-wide sharing settings for sets of users. Use sharing rules to give these users access to records they don’t own or can’t normally see. Sharing rules, like role hierarchies, are only used to give more users access to records—they can’t be stricter than your organization-wide default settings.
+#### 触发器管理权限
 
-#### Restriction rules
-
-When a restriction rule is applied to a user, the data that they had read access to via your sharing settings is further scoped to only records matching the record criteria that you set. This behavior is similar to how you can filter results in a list view or report, except that it’s permanent.
-
-#### Trigger managed permissions
-
-If sharing rules and manual sharing don’t provide the required control, you can use trigger managed sharing. trigger managed sharing allows developers to programmatically share custom objects.
+如果以上权限控制方式不能满足在指定业务场景下的权限管理，您可以使用触发器管理权限，即允许开发人员以编程方式来定义对象权限。
