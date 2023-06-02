@@ -2,7 +2,9 @@
 title: 参数配置
 ---
 
-## Required
+平台相关功能参数介绍。
+
+## 基础参数
 
 ```bash
 # Platform
