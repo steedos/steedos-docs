@@ -1,19 +1,10 @@
-# External Data Sources
+# 外部数据源
 
-An external data source specifies how to access an external system. External data sources have associated external objects, which your users and the Steedos platform use to interact with the external data and content.
-
-## Validate and Sync an External Data Source
-
-After you configure an external data source, synchronize it to map its tables with external objects in your Steedos org. The content and data of external objects appear in federated search, together with your Steedos content and data.
+华炎魔方使用 mongodb 数据库作为默认数据源，支持直接连接第三方系统的数据源。
 
 :::tip
-Available on: Enterprise Edition
+此功能需要企业版授权才能使用。
 :::
-
-<!-- ---
-title: 外部数据源
-description: 华炎魔方使用 mongodb 数据库作为默认数据源，支持直接连接第三方系统的数据源。
----
 
 华炎魔方使用 [mongodb](https://www.mongodb.com/) 数据库作为默认数据源，该默认数据源是必须的，而且无法使用其他数据库作为默认数据源。
 
@@ -128,4 +119,4 @@ description: 华炎魔方使用 mongodb 数据库作为默认数据源，支持�
 
 然后再进入“设置”应用的“应用程序→应用程序”界面，新建一个新应用或者选择已有应用，然后在应用的“选项卡”属性中选择刚设置的几个选项卡。
 
-设置完成后，您就可以在相关应用中看到上面配置过的外部数据源对象了。 -->
+设置完成后，您就可以在相关应用中看到上面配置过的外部数据源对象了。 
