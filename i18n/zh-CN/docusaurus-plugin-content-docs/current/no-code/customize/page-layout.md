@@ -1,5 +1,5 @@
 ---
-title: Page Layouts
+title: 页面布局
 ---
 
 Page layouts control the layout and organization of buttons, fields and related lists on object record pages. They also help determine which fields are visible, read only, and required. Use page layouts to customize the content of record pages for your users.

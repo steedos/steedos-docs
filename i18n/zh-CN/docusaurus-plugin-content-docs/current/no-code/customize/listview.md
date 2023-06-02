@@ -1,4 +1,4 @@
-# List Views
+# 列表视图
 
 View, edit, and create records from a list. List views are a great way to sort, prioritize, and analyze the records that are most important to users.
 
