@@ -3,15 +3,8 @@ title: 选项卡
 sidebar_position: 1
 ---
 
-Custom tabs let you display custom object data or other web content in Steedos. When you add a custom tab to an app in Steedos, it appears as an item in the app’s navigation bar and in the App Launcher.
+华炎魔方选项卡功能，会将设置好的选项卡会显示在页面顶部的Tab导航上，
 
-Custom tabs show custom object data or other web content embedded in the app. You can create any of these types of custom tabs.
-
-- Custom Object Tabs: Custom object tabs show the data of your custom object. Custom object tabs look and function just like standard tabs.
-- Web Tabs: Custom web tabs show any external web-based application or web page. You can design web tabs to include the sidebar or span the page without the sidebar.
-- Micro page Tabs: Micro page tabs let you add micro pages to the Steedos mobile app and Steedos navigation bars.
-
-<!-- 
 ## 创建选项卡
 
 需要在“设置”应用中进入“用户界面→选项卡”来配置选项卡。
@@ -37,6 +30,24 @@ Custom tabs show custom object data or other web content embedded in the app. Yo
 
 当选项卡类型为“外部链接”时，需要配置其要跳转到的链接地址，这里可以输入系统内的相关地址，也可以输入外部的绝对地址。
 
+值得一提的是在外部链接属性中输入的地址是支持 [开发人员快速向导](/docs/developer/getting-started) 中提到的 [表单公式](/docs/developer/getting-started#%E8%A1%A8%E5%8D%95%E5%85%AC%E5%BC%8F) 这种公式脚本的，当需要给地址配置动态参数时可以通过设置公式脚本来实现。
+
+通常来说我们会使用这种类型的选项卡来显示第三方应用，而且也可以在这里输入带参数url实现访问以下页面：
+
+#### 微页面
+
+微页面设计好后默认是不可以带url参数的，如果需要实现带参数的微页面，只要在选项卡中按格式`/app/${appApiName}/page/${pageApiName}[?动态参数]`来配置外部链接属性即可。详情请参考 [微页面](/docs/amis/start)。
+
+#### 仪表盘
+
+仪表盘报表设计好后默认是不可以带url参数的，如果需要实现带参数的仪表盘报表，只要在选项卡中按格式`/builder/[?动态参数，以p_开头]#/page/public/${pageApiName}[?hidden_title]`来配置外部链接属性即可，详情请参考 [仪表盘开发向导](/docs/admin/dashboard)。
+
+
+### 页面选项卡
+
+这里的页面指的就是 [微页面](/docs/amis/start) 和 [仪表盘](/docs/admin/dashboard)，当我们想在应用中展示开发好的仪表盘报表时就需要配置该类型的选项卡，不过这种类型的选项卡只能配置出不带参数的微页面和仪表盘，需要带参数的话，只能使用上面提到的外部链接选项卡。
+
+
 ## 选项卡权限
 
 选项卡权限指定选项卡在权限集关联的应用程序中是否可见。
@@ -52,4 +63,4 @@ Custom tabs show custom object data or other web content embedded in the app. Yo
 - 选项卡新建后默认对所有简档/权限集可见
 - 管理员可在简档/权限集详情页中点击 `设置选项卡权限`按钮统一设置选项卡权限
 - 默认打开表示可见、默认关闭表示不可见
-- 选项卡权限使用权限叠加规则，同一个选项卡在不同权限集中的权限叠加，如有一个是默认打开的则选项卡可见 -->
+- 选项卡权限使用权限叠加规则，同一个选项卡在不同权限集中的权限叠加，如有一个是默认打开的则选项卡可见

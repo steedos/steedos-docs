@@ -3,15 +3,25 @@ sidebar_position: 3
 sidebar_label: 跨对象公式计算
 ---
 
-# What Is a Cross-Object Formula?
+# 跨对象公式
 
-A Cross-object formula is a formula that spans two related objects and references merge fields on those objects. A cross-object formula can reference merge fields from a master (“parent”) object if an object is on the detail side of a master-detail relationship. A cross-object formula also works with lookup relationships.
+我们有时需要在当前对象上通过公式字段来引用其他关联对象上的字段值，这种跨越两个及以上的对象的公式我们称为跨对象公式。
 
-You can reference fields from objects that are up to 10 relationships away. A cross-object formula is available anywhere formulas are used except when creating default values.
+可以在当前对象上配置“相关表”或“主表/子表”类型的字段来引用其他对象，相关规则请参考之前 [主键/外键字段](/docs/admin/field_type#%E4%B8%BB%E9%94%AE%E5%A4%96%E9%94%AE%E5%AD%97%E6%AE%B5) 小节，跨对象公式就是通过在公式中引用当前对象上这两种字段型，然后进一步引用其关联对象上的字段来实现跨对象公式。
 
-:::tip
-If you create a formula that references a field on another object and display that formula in your page layout, users can see the field on the object even if they don’t have access to that object record. For example, if you create a formula field on the Case object that references an account field, and display that formula field in the case page layout, users can see this field even if they don’t have access to the account record.
-:::
+跨对象公式一般形如`fieldNameA.fieldNameB`，其中`fieldNameA`是当前对象上的“相关表”或“主表/子表”字段名称，`fieldNameB`是`fieldNameA`字段关联到的对象上的某个字段名称，比如联系人对象上有一个名为“所属客户”`（account）`的“主表/子表”字段，引用了对象“业务伙伴”`(accounts)`，我们可以在联系人对象定义一个公式字段来输出联系人所属客户的网址，该公式字段的公式表达式应该配置为`account.website`。
 
-You can't include an object as the lookup field in a formula. To reference an object, reference the object's ID field or another field on the object. For example, Account.Owner is invalid because it references the object directly. account.owner.name or account.owner are valid references for your formula.
+可以在跨对象公式中用点符号连接各级对象上的外键字段以形成引用链，理论上支持无限层次的引用，但是出于性能考虑请避免引用层级过多，比如上面提到的联系人对象上可以配置公式`account.created_by.name`表示输出联系人所属客户的记录创建人的名称。
+
+需要注意的是，跨对象公式最后一个引用链不可以是外键字段，即不可以是相关表”或“主表/子表”类型的字段，比如上面提到的联系人对象上的公式如果配置为`account.created_by`是表示输出联系人的创建人，但是这是不合法的，因为`created_by`是一个外键字段，它指向了关联创建人整条记录，而不是只输出关联创建人的某个字段值，所以正确的写法是需要再向`created_by`这个外键字段进一步扩展引用其下一级对象的字段，比如上面提到的`account.created_by.name`就是一个合法的跨对象公式。
+
+如果是想让公式输出外键字段值本身，可以在最后扩展引用下其关联对象的主键字段（即`_id`）即可，也就是把公式表达式写成`account.created_by._id`就可以输出联系人所属客户的创建人`_id`值。
+
+公式在服务端执行，因此可以在公式中引用当前记录相关表中的数据。
+
+例如以下语法可以引用付款记录对应的合同记录对应的客户名称。
+
+```js
+  payment.contract.account.name
+```
 

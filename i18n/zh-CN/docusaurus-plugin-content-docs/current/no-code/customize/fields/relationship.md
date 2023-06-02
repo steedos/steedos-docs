@@ -3,45 +3,123 @@ sidebar_position: 5
 ---
 # 对象关联关系类型字段
 
-Create relationships to link objects with each other, so that when your users view records, they can also see related data. For example, link a custom object called Bugs to cases to track product defects that are associated with customer cases.
+在设置对象和对象关系之间的字段可以使用相关表关系和主表/子表关系字段。
 
-You can define different types of relationships by creating custom relationship fields on an object. Before you begin creating relationships, determine the type of relationship that suits your needs.
+## 相关表关系字段
 
-Different types of relationships between objects in Steedos determine how they handle data deletion, sharing, and required fields in page layouts. Let’s review the types of relationships.
+当我们需要描述两个对象之间的关联关系时，可以在其中一个对象中创建一个“相关表”字段来关联两个对象。比如每个“报价”记录都应该有对应的“所属客户”与之关联，此时我们可以在“报价”对象上创建一个“报价客户”字段跟“客户”对象关联起来。
 
-## Master-detail
+ ![](https://console.steedos.cn/api/files/images/vzFBER4y7caPQGfy7)
 
-Closely links objects together such that the master record controls certain behaviors of the detail and subdetail record. For example, you can define a two-object master-detail relationship, such as Account—Expense Report that extends the relationship to subdetail records, such as Account—Expense Report—Expense Line Item. You can then perform operations across the master—detail—subdetail relationship.
+### 引用对象
 
-Behaviors of master-detail relationships:
+该相关表字段要关联到的另一个对象，这里设置了“客户”表示通过该相关表字段把“报价”与“客户”两个对象关联起来。
 
-- Deleting a detail record and leaves the master record intact; deleting a master record also deletes related detail and subdetail records. 
-<!-- - By default, records can’t be reparented in master-detail relationships. Administrators can, however, allow child records in master-detail relationships on custom objects to be reparented to different parent records by selecting the Allow reparenting option in the master-detail relationship definition. -->
-- The Owner field on the detail and subdetail records is automatically set to the owner of the master record. 
-<!-- - Detail and subdetail records inherit security settings and permissions from the master record. You can’t set permissions on the detail record independently. -->
-- The master-detail relationship field (which is the field linking the objects) is required on the page layout of the detail and subdetail records.
-- The master object can be a standard object, such as Account or Opportunity, or a custom object.
-- Each custom object can have up to two master-detail relationships.
-<!-- - The Related To entry can’t be changed after you save the relationship. -->
-<!-- - A profile or a permission set can have an entity, such as Account, with a master-detail relationship. A broken permission dependency exists if the child entity has permissions that the parent should have. Steedos updates the parent entity for a broken permission dependency on the first save action for the profile or permission set. -->
+### 过滤器函数
 
-## Lookup
+默认情况下，用户在新建和编辑对象记录界面上填写相关表字段值时会列出相关表的所有记录供选择，可以在这里配置可选项范围，比如输入以下内容作为过滤器函数值可让用户在新建和编辑 “报价” 记录界面上填写“报价客户”字段值时只列出有效客户供选择。
 
-Links two objects together. Lookup relationships are similar to master-detail relationships, except they don’t support sharing or roll-up summary fields. With a lookup relationship, you can:
+```javascript
+function(filters, values){
+  return [["state","=","active"]];
+}
+```
 
-- Link two different objects.
-- Link an object with itself . For example, link a custom object called Bug with itself to show how two different bugs are related to the same problem.
+关于该函数返回值，目前推荐使用数组语法。详情请查看 “[查询过滤条件详解](/docs/developer/graphql-api#%E6%9F%A5%E8%AF%A2%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6%E8%AF%A6%E8%A7%A3)”。
 
-When you create a lookup relationship, you can set these options:
+### 选择项函数
 
-- Make the lookup field required for saving a record, requiring it on the corresponding page layout as well.
-- If the lookup field is optional, you can specify one of three behaviors to occur if the lookup record is deleted:
-  - Clear the value of this field: This is the default. Clearing the field is a good choice when the field doesn’t have to contain a value from the associated lookup record.
-  - Don’t allow deletion of the lookup record that’s part of a lookup relationship: If you have dependencies built on the lookup relationship, such as a workflow rule, this option doesn’t allow the lookup record to be deleted.
-  - Delete this record also: Available only if a custom object contains the lookup relationship, not if it’s contained by a standard object. However, the lookup object can be either standard or custom. Choose when the lookup field and its associated record are tightly coupled and you want to completely delete related data. For example, say that you have an expense report record with a lookup relationship to individual expense records. When you delete the report, you probably want to delete all the expense records, too.
+与上述过滤器函数类似，你可以在这里描述用户在填写相关表字段值列出哪些选项供选择，比如输入以下内容作为选择项函数值可以实现上述过滤器函数中内容同样的效果。
 
-When you define a lookup relationship, you can include a lookup field on the page layouts for that object and create a related list on the associated object's page layouts. For example, if you have a custom object called PTO Requests and you want your users to link a PTO request with the employee submitting the request, create a lookup relationship from the PTO Request custom object with the user object.
+```javascript
+function(values){
+  var result = [];
+  var queryFilters = [["state", "=", "active"]];
+  var steedosFilters = require("@steedos/filters");
+  var odataFilter = steedosFilters.formatFiltersToODataQuery(queryFilters);
+  var options = {
+    $select: 'name'
+  };
+  options.$filter = odataFilter;
+  var accounts = Creator.odata.query('accounts', options, true);
+  accounts.forEach(function (item) {
+    result.push({
+      label: item.name,
+      value: item._id
+    });
+  });
+  return result;
+}
+```
 
-If the parent record in a lookup relationship is deleted, the field history tracking for the child record doesn't record the deletion. For example, if a parent account is deleted, the Account History related list for the child account doesn’t show the deletion.
+### 多选
 
-When you delete an object used by a lookup field, delete the field, too. use Setup in the UI to delete the field first. Otherwise, the object can’t be deleted.
+如果对象使用的是华炎魔方默认数据源，即使用的是mongodb数据库，那么可以勾选该属性来允许用户选择多个关联值，比如用户可以在新建或编辑某个“报价”记录界面上，选择多个“报价客户”来关联到该“报价”记录。
+
+
+相关表字段展示选择项时有两种模式：一种是普通下拉选择框模式；另一种是弹出窗口查找模式，该模式需要在对象设置界面将该对象的“[启用弹出窗口查找模式](/docs/admin/object#对象功能开关)”功能开启。以下是两种模式的示例图：
+
+ ![下拉选择框](https://console.steedos.cn/api/files/images/C2Zkb6F5dF7GcaFWG)
+
+ ![弹出窗口查找](https://console.steedos.cn/api/files/images/Yx4AccjxkYsaR37Fa)
+
+<alert type="info">
+该字段类型的字段也被称为外键字段，其值保存的是关联对象记录的主键字段值而不是名称字段值，详细请参考后续小节 <a href="/docs/admin/field_type#%E5%90%8D%E7%A7%B0%E5%AD%97%E6%AE%B5">名称字段</a> 及 <a href="/docs/admin/field_type#%E4%B8%BB%E9%94%AE/%E5%A4%96%E9%94%AE%E5%AD%97%E6%AE%B5">主键/外键字段</a>。
+</alert>
+
+## 主表/子表关系字段
+
+在相关表字段的基础上，我们可以通过创建一个“主表/子表”字段来描述两个对象间的主从关系，需要注意的是应该把“主表/子表”字段添加到“子表”对象侧，来表示“子表”对象是通过这个字段来关联其“主表”的，而不是把“主表/子表”字段添加到“主表”对象侧。比如 “报价行条目” 都应该有对应的 “报价” 与之关联，此时我们可以在 ”报价行条目“ 对象上建立一个 “报价名称” 字段，类型为主表/子表跟 “报价” 对象关联起来。
+
+**区别**：设置为主表/子表类型的字段可以在主表的“相关子表”里设置关联子表显示的列。
+
+ ![](https://console.steedos.cn/api/files/images/oE5HkKqvj4DkTejzh)
+
+设置该对象相关子表：
+
+ ![](https://console.steedos.cn/api/files/images/797diCyoLRFTF5oqq)
+
+### 引用对象
+
+该相关表字段要关联到的另一个对象，这里设置了“客户”表示通过该相关表字段把“报价”与“客户”两个对象关联起来。
+
+### 过滤器函数
+
+默认情况下，用户在新建和编辑对象记录界面上填写相关表字段值时会列出相关表的所有记录供选择，可以在这里配置可选项范围，比如输入以下内容作为过滤器函数值可让用户在新建和编辑 “报价” 记录界面上填写“报价客户”字段值时只列出有效客户供选择。
+
+```javascript
+function(filters, values){
+  return [["state","=","active"]];
+}
+```
+
+关于该函数返回值，目前推荐使用数组语法。详情请查看 “[查询过滤条件详解](/docs/developer/graphql-api#%E6%9F%A5%E8%AF%A2%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6%E8%AF%A6%E8%A7%A3)”。
+
+### 选择项函数
+
+与上述过滤器函数类似，你可以在这里描述用户在填写相关表字段值列出哪些选项供选择，比如输入以下内容作为选择项函数值可以实现上述过滤器函数中内容同样的效果。
+
+```javascript
+function(values){
+  var result = [];
+  var queryFilters = [["state", "=", "active"]];
+  var steedosFilters = require("@steedos/filters");
+  var odataFilter = steedosFilters.formatFiltersToODataQuery(queryFilters);
+  var options = {
+    $select: 'name'
+  };
+  options.$filter = odataFilter;
+  var accounts = Creator.odata.query('accounts', options, true);
+  accounts.forEach(function (item) {
+    result.push({
+      label: item.name,
+      value: item._id
+    });
+  });
+  return result;
+}
+```
+
+<alert type="info">
+该字段类型的字段也被称为外键字段，其值保存的是关联对象记录的主键字段值而不是名称字段值，详细请参考后续小节 <a href="/docs/admin/field_type#%E5%90%8D%E7%A7%B0%E5%AD%97%E6%AE%B5">名称字段</a> 及 <a href="/docs/admin/field_type#%E4%B8%BB%E9%94%AE/%E5%A4%96%E9%94%AE%E5%AD%97%E6%AE%B5">主键/外键字段</a>。
+</alert>

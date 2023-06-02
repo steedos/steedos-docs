@@ -4,27 +4,63 @@ sidebar_position: 2
 
 # 字段属性
 
-FIELD | DESCRIPTION
--- | --
-Visible Lines | For long text area fields, set the number of lines to be displayed on edit pages. You can display between 2 and 50 lines (the default is 6 lines). If the text does not fit in the specified number of visible lines, scroll bars appear. Long text area fields are fully displayed on detail pages and printable views.
-Calculation Options | Determines how a roll-up summary field is recalculated after its properties change. Choose Automatic calculation to recalculate a field the next time it’s displayed. Choose Force a mass recalculation of this field as a safety net option to force recalculation of the roll-up summary field values.
-Data Type | The data type of a field determines what type of information is in the field. For example, a field with the Number data type contains a positive or negative integer. For more information on data types, see Custom Field Types.
-Decimal Places | For currency, geolocation, number, and percent fields, this field represents the number of digits you can enter to the right of a decimal point. The system rounds the decimal numbers you enter, if necessary. For example, if you enter 4.986 in a field with Decimal Places set to 2, the number rounds to 4.99.
-Default Value | The value to apply when a user creates a record. For checkbox custom fields, choose Checked or Unchecked as the default value to indicate the default when creating records. Don’t assign default values to fields that are both required and unique, because uniqueness errors can result. 
-Description | Text that describes the custom field. This description is for administration purposes only and doesn’t display to users on record detail and edit pages that include the field.
-Display Format | For auto-number fields, enter a Display Format to control formatting details such as the minimum number of leading zeros and any prefix or suffix for the number.Begin by entering the required minimum {0} as a placeholder for the auto-number without any leading zeros. Add any prefix to your number before this placeholder and insert any suffix text after the placeholder. Insert any date prefixes or suffixes in the form of {YY}, {YYYY}, {MM}, or {DD}, which represent the record creation date in Greenwich Mean Time (GMT).For information on using auto-number formats when entering your Display Format, see Auto-Number Formatting Examples.
-Filter Criteria | The criteria used to select a group of records to calculate the value of a roll-up summary field.
-Formulas | Enter the formula for the custom formula field or custom summary formula for reports.
-Help Text | The text that displays in the field-level help hover text for this field.
-Is Name Field | For external object fields of type text, specifies this custom field as the name field for the external object. Not available for text area fields. By default, the External ID standard field is the name field for the external object.If you select this checkbox, make sure that the External Column Name specifies a table column that contains name values. Each external object can have only one name field.For internal use only, Salesforce stores the value of the name field from each row that’s retrieved from the external system. This behavior doesn’t apply to external objects that are associated with high-data-volume external data sources.
-Label | The name of the custom field as you want it to appear.
-Length (for number, currency, percent fields) | For number, currency, and percent fields, the number of digits you can enter to the left of the decimal point, for example, 123.98 for an entry of 3.
-Master Object | The object on the master side of a master-detail relationship used to display the value of a roll-up summary field.
-Related To | For relationship fields, the name of the associated object.
-Required | Makes the field required everywhere in Salesforce. Not available for external objects.You must specify a Default Value for required campaign member custom fields.Don’t assign default values to fields that are both required and unique, because uniqueness errors can result. 
-Roll-Up Type | For roll-up summary fields, choose the type of calculation to make:COUNT: Totals the number of related records.SUM: Totals the values in the field you select in the Field to Aggregate option. Only number, currency, and percent fields are available.MIN: Displays the lowest value of the field you select in the Field to Aggregate option for all directly related records. Only number, currency, percent, date, and date/time fields are available.MAX: Displays the highest value of the field you select in the Field to Aggregate option for all directly related records. Only number, currency, percent, date, and date/time fields are available.
-Starting Number | For auto-number fields, enter a Starting Number that’s less than 1 billion. .
-Sharing Setting | For master-detail relationship fields, the Sharing Setting attribute determines the sharing access that users must have to a master record to create, edit, or delete its associated detail records.
-Summarized Object | The object on the detail side of a master-detail relationship used to provide the values calculated in a roll-up summary field.
-Unique | If checked, prevents duplicate field values.For text fields, you can control whether values that are identical except for their case are considered unique.
-Values | For picklist fields, a list of available values (up to 255 characters for each value).
+创建字段时需要填写的属性介绍。
+
+## 名称字段
+
+名称字段的作用是在对象列表中把该字段显示为链接，点击该链接可以跳转到记录详细页面。
+
+在华炎魔方中对象上默认以名为`name`的字段作为”名称字段”。可以通过在对象设置界面编辑这个字段以外的其他字段的属性，勾选其“名称字段”属性来把其他字段设置为名称字段。
+
+如果某个对象没有配置名称字段，那么该对象列表界面的列表中第一列，即序号列里面的序号值会显示为链接，点击这个链接一样可以跳转到记录详细页面。
+
+支持配置为”名称字段“的字段类型有：文本、多行文本、自动编号、公式、日期、日期时间，请不要将其他类型的字段配置为名称字段。
+
+## 默认值
+配置字段默认值目前分为可编辑字段、只读或隐藏字段两种情况。
+
+### 可编辑字段
+这种情况下字段默认值是在前端赋值，字段的默认值可以在新建记录界面上显示出来，有以下两种方式编写字段默认值。
+
+- 固定值：如果只是要给字段设置一个固定值作为默认值，直接输入希望设置的固定值即可，不需要用引号括起来。
+- 公式：可以输入一段表单公式脚本来描述希望设置的动态默认值，详情请参阅文档 表单公式。
+​
+### 非可编辑字段
+字段不可编辑，包括以下几种情况：
+
+- 只读字段：即当前用户有查看权限但是没有编辑权限的字段，包括系统内置的只读字段，除非通过配置字段权限改为可编辑字段。
+- 隐藏字段：即当前用户没有查看权限的字段，包括系统内置的隐藏字段，除非通过配置字段权限改为可编辑字段。
+
+只要字段不可编辑，那么该字段值就不是由前端界面传入，而是由后台接口自动生成，所以其字段默认值只能配置为后台字段公式表达式，详情请参阅文档 字段公式。
+
+需要注意的是，后台字段公式配置一个固定值表达式时，需要用引号括起来，否则它将不是一个合法的字段公式表达式。
+
+### 字段显示公式
+
+可以在高级-字段显示公式为该字段增加显示条件，比如输入{{formData.type === 'leader' ? true: false}}，表示当字段type等于leader值时，才显示当前字段，否则隐藏该字段。
+
+### 与关联表建立联系
+
+以“报价(offer)”对象为例，我们可能希望描述每份报价关联客户是谁，此时我们可以新建一个“客户(client)”对象与之关联，关于如何创建业务对象关联的方法请阅览[相关表字段类型](../fields/relationship#相关表关系字段) 。
+
+### 建立主表/子表关系
+
+在相关表字段的基础上，可以额外设置两个对象间的主表/子表关系，比如 “报价(offer)” 中可能需要引用 ”业务机会“ 对象，字段类型设置为主表/子表，引用 “业务机会“ 对象 。使用方法和相关表一样，区别在于设置为主表/子表类型的字段可以在“相关子表”里设置关联子表显示的列。有关如何使用的详情信息请阅览[主表/子表字段类型](../fields/relationship#主表子表关系字段) 。
+
+## 主键/外键字段
+
+与传统项目中表结构类似，华炎魔方中每个对象都必须有一个主键字段来唯一标识其每条记录，默认数据源使用MongoDB作为数据库，所有对象的主键字段都是名为`_id`的字段，外部数据源可能使用关系型数据库，所以可以在对象设置中编辑字段属性，勾选其“外部数据源”栏的“主键”勾选框来把该字段设置为主键字段。
+
+上面我们有提到“相关表”和“主表/子表”两种特殊的字段类型，通过这两种字段类型的字段可以把两个对象关联起来，所以它们也被称为外键字段，需要注意的是这个外键字段是配置在子表对象一侧的，其字段值保存的是其引用对象的主键字段值。
+
+比如联系人对象上有一个名为“所属客户”（`account`）的“主表/子表”字段，该字段引用的是一个名为“业务伙伴”（`accounts`）的对象，假设有一条联系人记录“张三”，其“所属客户”是“中国石油”，那么“张三”这条记录中会在其“所属客户“字段中保存“中国石油”这个“业务伙伴”记录的主键字段值，即`_id`字段值。
+
+## 字段索引
+
+字段上有一个名为“创建索引 index”的勾选框属性，勾选该属性后系统会在创建索引的定时程序中为该字段创建索引，默认是每小时检测一次未创建索引的字段并为其创建好索引。
+
+![](https://console.steedos.cn/api/files/images/gimrJBva6J6bmRz2J)
+
+关于字段索引的定时器配置请参考文档 [字段索引配置](/docs/deploy/steedos-config#%E5%AD%97%E6%AE%B5%E7%B4%A2%E5%BC%95%E9%85%8D%E7%BD%AE)。
+
+适当地为对象上的字段创建索引是非常必要的，它可以极大的提升相关记录的查询速度，在公式字段、累计汇总、数据导入等功能中也能明显受益。

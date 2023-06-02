@@ -1,19 +1,6 @@
 # 验证规则
 
-Improve the quality of your data using validation rules. Validation rules verify that the data a user enters in a record meets the standards you specify before the user can save the record. A validation rule can contain a formula or expression that evaluates the data in one or more fields and returns a value of “True” or “False”. Validation rules also include an error message to display to the user when the rule returns a value of “True” due to an invalid value.
-
-
-
-FIELD | DESCRIPTION
--- | --
-Rule Name | Unique identifier of up to 40 characters with no spaces or special characters such as extended characters.
-Active | Checkbox that indicates if the rule is enabled.
-Description | A 255-character or less description that distinguishes the validation rule from others. For internal purposes only.
-Error Condition Formula | The expression used to validate the field. See Build a Formula Field and Formula Operators and Functions.
-Error Message | The message that displays to the user when a field fails the validation rule.
-
-
-<!-- 在华炎魔方中，用户可以为每一个对象创建验证规则。验证规则主要用于验证该对象的数据是否符合特定的规则。当用户对于对象的某个字段的更改不符合用户创建的验证规则时，华炎魔方会拒绝保存用户的输入。
+在华炎魔方中，用户可以为每一个对象创建验证规则。验证规则主要用于验证该对象的数据是否符合特定的规则。当用户对于对象的某个字段的更改不符合用户创建的验证规则时，华炎魔方会拒绝保存用户的输入。
 
  ![](https://console.steedos.cn/api/files/images/vtxej7xKQtdABNNLr)
 
@@ -38,7 +25,7 @@ Error Message | The message that displays to the user when a field fails the val
 * 为验证规则输入规则名，该名称作为API名称是唯一标识符，只能包含小写字母、数字，必须以字母开头，不能以下划线字符结尾或包含两个连续的下划线字符。
 * 如果想立即启用请勾选上已启用。
 * 可以为验证规则输入说明。
-* 设置错误条件公式，用于验证字段的表达式。
+* 设置错误条件公式，用于验证字段的表达式，请参阅[通过公式计算字段值](/docs/admin/field_type#%E9%80%9A%E8%BF%87%E5%85%AC%E5%BC%8F%E8%AE%A1%E7%AE%97%E5%AD%97%E6%AE%B5%E5%80%BC)
 * 设置错误消息，当字段的错误条件公式成立时向用户显示的消息。
 * 选择错误位置，确定错误消息显示在页面上的位置。\[暂不支持，目前是统一显示在右上角。\]
 * 设置完成后点击保存。
@@ -70,7 +57,7 @@ Error Message | The message that displays to the user when a field fails the val
 * 使用验证规则时需要注意字段值为空的情况，请使用 ISBLANK 函数判断字段是否为空。例如，要验证自定义字段不为空且不能等于1，请使用下面的验证规则以在该字段为空白或1时显示错误：OR (ISBLANK (field**c), field**c=1)
 
 
-> 与公式字段不同，在配置验证规则时不可以配置空值处理方式，如果公式中引用了值为空的数值类型的字段时，是按0值处理的，即 ISBLANK(count__c) 这样的表达式，只要count__c字段类型是数值，任何情况下在验证规则中它的返回值都是TRUE，另一个空值处理函数 BLANKVALUE 也类似。
+> 与公式字段不同，在配置验证规则时不可以配置空值处理方式，如果公式中引用了值为空的数值类型的字段时，是按0值处理的，即 [ISBLANK(count__c)](/docs/admin/functions#isblank) 这样的表达式，只要count__c字段类型是数值，任何情况下在验证规则中它的返回值都是TRUE，另一个空值处理函数 [BLANKVALUE](/docs/admin/functions#blankvalue) 也类似。
 
 #### 编写验证规则错误消息的提示
 
@@ -90,7 +77,7 @@ Error Message | The message that displays to the user when a field fails the val
 
 ### 验证规则示例
 
-请按您的实际目的，查看以下有参考价值的验证规则示例。用户保存记录之前，验证规则会验证用户在记录中输入的数据是否符合您指定的标准。
+请按您的实际目的，查看以下有参考价值的验证规则示例。用户保存记录之前，验证规则会验证用户在记录中输入的数据是否符合您指定的标准。 有关这些示例中使用的任何公式函数的详细信息，请参阅 [公式运算符和函数](/docs/admin/functions)。
 
 
 **客户编号为数字**
@@ -109,7 +96,7 @@ AND(
 * **错误位置**：客户编号
 
 
-> 华炎魔方公式引擎暂时不支持ISNUMBER函数，可以用正则代替，请参考 REGEX 函数,该示例可替换为：
+> 华炎魔方公式引擎暂时不支持ISNUMBER函数，可以用正则代替，请参考 [REGEX](/docs/admin/functions#regex) ,该示例可替换为：
 
 
 ```javascript
@@ -146,6 +133,4 @@ OR (
 
 > `My_Date__c`是一个日期类型字段，而不是日期时间类型字段，否则上述公式会报错。
 >
-> 如果需要，请关注TODAY函数对于时区方面的偏差，以防止出现预期不一致的效果。
-
- -->
+> 如果需要，请关注TODAY函数对于时区方面的偏差，以防止出现预期不一致的效果，可以参考：[有关日期时间和时区的备注](/docs/admin/field_type#%E6%9C%89%E5%85%B3%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%92%8C%E6%97%B6%E5%8C%BA%E7%9A%84%E5%A4%87%E6%B3%A8)

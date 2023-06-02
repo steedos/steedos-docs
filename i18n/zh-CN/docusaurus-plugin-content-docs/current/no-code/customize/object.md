@@ -3,33 +3,51 @@ title: 对象
 sidebar_position: 1
 ---
 
-Create, customize, edit, delete, or truncate custom objects to extend the functionality that standard objects, like accounts and contacts, provide.
+华炎魔方提供创建、编辑、删除、拓展等自定义对象的功能。
 
-Your object management settings list the custom objects that are defined for your organization. From this list, you can:
+对象列表中展示系统中所有业务及系统定义的对象。从该列表中，您可以：
 
-- Define a custom object.
-- Display detailed information about a custom object. Optional features you can customize include enabling search and reports, tracking activities, tracking field history.
-- To update the custom object definition, click Edit and update the desired fields.
+- 定义一个自定义对象。
+- 要更新自定义对象定义，请单击“编辑”并更新所需字段。
+- 显示有关自定义对象的详细信息。您可以自定义的可选功能包括字段、列表视图、对象权限等内容。
 
-## Fields Required for Creating Custom Objects
+## 对象属性介绍
 
-When you create a custom object, several fields are required to define how you can access the object.
+创建自定义对象时，需要定义对象属性来搭建对象。
 
-FIELD | DESCRIPTION
+### 基本属性
+
+属性 | 说明
 -- | --
-Label | This name is used to refer to the object in a user interface page.
-Object API Name | A unique name used to refer to the object when using the API. In managed packages, this name prevents naming conflicts with package installations. Use only alphanumeric characters and underscores. The name must begin with a letter and have no spaces. It can’t end with an underscore nor have two consecutive underscores.
-Description | An optional description of the object. A meaningful description helps you remember the differences between objects when you’re viewing them in a list.
-Allow Reports | Makes the data in the custom object records available for reporting purposes.To create reports on custom objects, choose the Other Reports report type category, unless the custom object has a relationship with a standard object. When the custom object has a master-detail relationship with a standard object or is a lookup object on a standard object, select the standard object for the report type category instead.You can still create and run reports without selecting Allow Reports; however, the custom report type isn’t visible.
-Add Tasks | Allows users to associate tasks related to the custom object records.
-Add Calendar Events | Allows users to associate scheduled calendar events related to the custom object records.
-Enable Divisions | If your org has divisions enabled, select this option to enable the custom object for divisions. Divisions group records for simplified search results, list views, reports, and other areas within Salesforce. Salesforce adds a Division field to the custom object. If the custom object is the master in a master-detail relationship, custom objects on the detail side also get the Division field and inherit their division from the master record.
-Track Field History | Enables your org to track changes to fields on the custom object records. For example, it tracks who changed the field value and when, what the value was before the edit, and what it was changed to. History data is available for reporting, so users can easily create audit trail reports when this feature is enabled.
-Deployment Status | Indicates whether the custom object is visible to other users.
-Allow Search | To allow your users to find a custom object’s records when they search, create a custom tab set to Default On or Default Off. Creating a custom tab enables the custom object's Allow Search setting. A custom object that's associated with a custom tab is searchable (by default), even if users don't add the tab for display.
-Add Attachments... | Allows users to add attachments to custom object records. You can attach external documents to any object record in much the same way that you can add a PDF file or photo as an attachment to an email. 
+数据源 | 该对象的数据将保存到指定数据源中，默认数据源使用的是mongodb数据库。
+显示名 | 界面上将显示该名称来表示该对象。
+API名称 | 字段唯一标识符，只能包含小写字母、数字，必须以字母开头，不能以下划线字符结尾或包含两个连续的下划线字符。
+图标 | 为您的对象选择合适的图标。
+开发状态 | 此对象的开发状态，“开发中”的对象只有管理员才可以访问，当对象相关功能已经就绪时，您应该把它设置为“已部署”。
+备注 | 输入此对象的描述。
+外部数据源 | 引用第三方数据库的数据。
+功能开关 | 设置此对象上开放的功能，勾选表示开启相关功能。
+脚本 | 表单事件的脚本，例如：在“数据变化时”中添加脚本实现字段级联（联动）效果。
 
+### 功能开关
 
+属性 | 说明
+-- | --
+允许搜索 | 此对象可以通过全局检索查询。
+允许上传附件 | 此对象可以上传附件。
+允许添加任务 | 此对象中的业务数据，可以添加任务。
+允许添加备注 | 此对象中的业务数据，可以添加备忘。
+允许添加事件 | 此对象中的业务数据，可以添加任务。
+允许共享记录 | 启用此功能可以设置该对象对于其他对象的记录共享。
+允许配置对象流程 | 只有启用此功能的业务对象，才能显示在对象流程的配置菜单中。
+允许查看申请单 | 此对象中的业务数据，可以进行审批。
+记录字段历史 | 启用此功能后系统会自动记录此字段的修改记录。
+启用树状结构显示记录 | 当启用时，与此对象关联的查找字段将以树状结构的形式显示其选项。
+启用弹出窗口查找模式 | 当启用时，与此对象关联的查找字段将以弹出窗口的形式显示其选项。
+
+:::tip
+记录字段历史功能需要企业版授权才能使用。
+:::
 
 <!-- 
 对象对应的是数据库的表。我们也可以把对象当作是一个业务分类来理解，如“合同(contract)”这个业务分类，具体到“XXX产品服务合同”就是“合同(contract)”这个业务分类的一条数据。
@@ -40,17 +58,8 @@ Add Attachments... | Allows users to add attachments to custom object records. 
 
  ![](https://console.steedos.cn/api/files/images/Tadsy6eNHKtnYGHRW)
 
-* **数据源**：选择该对象所属数据源，该对象的数据将保存到指定数据源中，默认数据源使用的是mongodb数据库。
-* **显示名**：界面上将显示该名称来表示该对象。
-* **API名称**：字段唯一标识符，只能包含小写字母、数字，必须以字母开头，不能以下划线字符结尾或包含两个连续的下划线字符。
-* **图标：** 为您的对象选择合适的图标。
-* **开发状态**：此对象的开发状态，“开发中”的对象只有管理员才可以访问，当对象相关功能已经就绪时，您应该把它设置为“已部署”。
-* **备注**：输入此对象的描述。
-* **外部数据源**：引用第三方数据库的数据。
-* **功能开关**：设置此对象上开放的功能，勾选表示开启相关功能。
-* **脚本**：表单事件的脚本，例如：在“数据变化时”中添加脚本实现字段级联（联动）效果。
 
-## 对象功能开关
+## 对象
 
 * **允许搜索**：此对象可以通过全局检索查询。
 * **允许上传附件**：此对象可以上传附件。

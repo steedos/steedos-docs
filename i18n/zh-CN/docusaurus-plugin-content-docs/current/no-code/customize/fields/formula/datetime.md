@@ -2,129 +2,78 @@
 sidebar_position: 3
 sidebar_label: 日期时间公式计算
 ---
+# 在公式中使用日期、日期时间和时间值
 
-# Using Date, Date/Time, and Time Values in Formulas
+日期使用了两种数据类型：日期和日期时间。数据类型时间不包括日期值，例如工作时间。处理日期时使用的大部分值都是日期数据类型，存储年、月和日。CreatedDate 等一些字段是日期时间字段，意味着它们不仅存储日期值，而且还存储时间值（以 GMT 存储，但以用户的时区显示）。当在记录详细信息页面查看时，日期、日期时间和时间字段以用户的区域设置格式化。时间值的精度以毫秒为单位。日期时间值的精度以秒为单位。
 
-Date formulas are useful for managing payment deadlines, contract ages, or any other features of your organization that are time or date dependent.
+您可在日期、日期时间和时间值上使用加和减等运算符，以计算未来日期或两个日期或时间之间的已过去的时间。例如，如果您将一个日期减去另一个日期，由此得出的值将是两个初始值之差（天）（数字数据类型）。两个日期时间值之间的同一操作将返回十进制值，表示天、小时和分钟数之差。两个时间值的相同操作会返回毫秒。
 
-Two data types are used for working with dates: Date and Date/Time. ﻿ One data type, Time, is independent of the date for tracking time such as business hours. Most values that are used when working with dates are of the Date data type, which store the year, month, and day. Some fields, such as CreatedDate, are Date/Time fields, meaning they not only store a date value, but also a time value (stored in GMT but displayed in the users’ time zone). Date, Date/Time, and Time fields are formatted in the user’s locale when viewed in reports and record detail pages. A Time value’s precision is in milliseconds. A Date/Time value’s precision is in seconds.
+例如，如果两个日期时间值之差是 5.52，这意味着两个值分隔 5 天、12 小时（1 天的 0.5）和 28 分钟（1 天的 0.02）。您还可以添加数字值到日期和日期时间。例如，操作 `TODAY() + 3` 将返回今天日期后的三天。
 
-You can use operations like addition and subtraction on Date, Date/Time, and TIme values to calculate a future date or elapsed time between two dates or times. If you subtract one date from another, for example, the resulting value will be the difference between the two initial values in days (Number data type). The same operation between two Date/Time values returns a decimal value indicating the difference in number of days, hours, and minutes. ﻿The same operation between two Time values returns millisecond
+在整个示例中，使用了变量日期和日期时间以代替实际日期和日期时间字段或值。
 
-For example, if the difference between two Date/Time values is 5.52, that means the two values are separated by five days, 12 hours (0.5 of a day), and 28 minutes (0.02 of a day). You can also add numeric values to Dates and Date/Times. For example, the operation TODAY() + 3 returns three days after today’s date. For more information and examples of working with dates, see the list of Sample Date Formulas.
+## today()、now() 和 timenow()
 
-Throughout the examples, the variables date and date/time are used in place of actual Date and Date/Time fields or values.
+* TODAY() 函数以日期数据类别返回当前日、月和年。对于希望了解自上一天过去的天数、未来某些天数中的日期或仅仅希望显示当前日期的公式，本函数非常有用。
+* NOW() 函数返回当前时刻的日期时间值。当关心当天的特定时间以及日期时，这将非常有用。
+* TIMENOW() 函数会返回 GMT 的值，并表示不带日期的当前时间。如果您需要当前小时、分钟、秒或毫秒，使用此函数，而不是 NOW() 函数。此值对跟踪时间（例如轮班或经过时间）有用。
 
-Keep in mind that complex date functions tend to compile to a larger size than text or number formula functions, so you might run into issues with formula compile size. See Tips for Reducing Formula Size for help with this problem.
+有关如何在日期值和日期时间值之间转换的详细信息，请参阅 [在日期时间和日期之间转换](/docs/admin/field_type#%E5%9C%A8%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%92%8C%E6%97%A5%E6%9C%9F%E4%B9%8B%E9%97%B4%E8%BD%AC%E6%8D%A2)
 
-## TODAY(), NOW() and TIMENOW()
+## date()函数
 
-The TODAY() function returns the current day, month, and year as a Date data type. This function is useful for formulas where you are concerned with how many days have passed since a previous date, the date of a certain number of days in the future, or if you just want to display the current date.
+DATE() 函数返回日期值，给定年、月和日。数字 Y/M/D 值和 YEAR()、MONTH() 和 DAY() 函数是 DATE() 的有效参数。例如，`DATE( 2013, 6, 1 )` 返回2013 年 6 月 1 日。同样，`DATE( YEAR( TODAY() ), MONTH( TODAY() ) + 3, 1)` 返回当年今天起三个月的第一天的日期值，假定该日期有效（例如，月份在 1 和 12 之间）。
 
-The NOW() function returns the Date/Time value of the current moment. It’s useful when you are concerned with specific times of day as well as the date.
+如果输入的 Y/M/D 值导致无效的日期，DATE() 函数并不会报错，而是会返回一个可能错误的值，比如非闰年的DATE(2021,2,29)将返回2021-03-01，DATE(2021,121,29)将返回2031-01-29，因此错误检查是使用日期值的重要部分。您可在示例日期格式中阅读有关处理无效日期的方法。
 
-The TIMENOW() function returns a value in GMT representing the current time without the date. Use this function instead of the NOW() function if you want the current hour, minute, seconds, or milliseconds. This value is useful for tracking time like work shifts or elapsed time,
+## 在日期时间和日期之间转换
 
-For details on how to convert between Date values and Date/Time values, see Converting Between Date/Time and Date.
+日期和日期时间是不可交换的数据类型，因此在日期和日期时间值之间执行操作时，您需要转换这些值，使它们具有相同的类型。一些函数（如 `YEAR()`、`MONTH()` 和 `DAY()`）还仅适用于日期值，因此必须首先转换日期时间值。
 
-## The DATE() Function
+使用 `DATEVALUE( datetime )` 函数返回日期时间的日期值。例如，要从日期时间获取年，使用 `YEAR( DATEVALUE( datetime ) )`。
 
-The DATE() function returns a Date value, given a year, month, and day. Numerical Y/M/D values and the YEAR(), MONTH(), and DAY() functions are valid parameters for DATE(). For example DATE( 2013, 6, 1 ) returns June 1, 2013. Similarly, DATE( YEAR( TODAY() ), MONTH( TODAY() ) + 3, 1) returns the Date value of the first day three months from today in the current year, assuming the date is valid (for example, the month falls between 1 and 12).
+您可以使用 `DATETIMEVALUE( TEXT(date) )` 函数将日期值按GMT时区转换为日期时间。时间将设置为格林威治标准时间 (GMT) ，然后显示时会按用户所有时区显示。对于北京时间，`DATETIMEVALUE( TEXT(TODAY()) )` 将返回当天的utc0点，华炎魔方界面上将显示为当天的上午8:00而不是当天的 00:00。有关详细信息，请参阅[有关日期时间和时区的备注](https://www.steedos.cn/docs/admin/field_type#%E6%9C%89%E5%85%B3%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%92%8C%E6%97%B6%E5%8C%BA%E7%9A%84%E5%A4%87%E6%B3%A8)
 
-If the inputted Y/M/D values result in an invalid date, the DATE() function returns an error, so error checking is an important part of working with Date values. You can read about methods for handling invalid dates in Sample Date Formulas.
+## 在日期时间和时间之间转换
 
-## Converting Between Date/Time and Date
+TIMEVALUE() 函数返回的时间数据类型值的格式为 24 小时制的`“HH:MM:SS.MS”(hours:minutes:seconds.milliseconds)`数字 H/M/S/MS 值和 HOUR()、MINUTE()、SECOND() 和 MILLISECOND() 函数是 TIMEVALUE() 的有效参数。
 
-Date and Date/Time aren’t interchangeable data types, so when you want to perform operations between Date and Date/Time values, you need to convert the values so they are both the same type. Some functions (such as YEAR(), MONTH(), and DAY()) also only work on Date values, so Date/Time values must be converted first.
+使用 TIMEVALUE(text) 函数，把文本值、文本类型合并字段或表达式转换为时间类型。例如，使用 `TIMEVALUE(LPAD(TEXT(HOUR(ClosedDate)), 2, "0") & ":" & LPAD(TEXT(MINUTE(ClosedDate)), 2, "0") & ":" & LPAD(TEXT(SECOND(ClosedDate)), 2, "0") & "." & LPAD(TEXT(MILLISECOND(ClosedDate)), 3, "0"))` 从 ClosedDate 日期时间值中提取时间。
 
-Use the DATEVALUE( date/time ) function to return the Date value of a Date/Time. For example, to get the year from a Date/Time, use YEAR( DATEVALUE( date/time ) ) ).
+## 在日期和文本之间转换
 
-You can convert a Date value to a Date/Time using the DATETIMEVALUE( date ) function. The time will be set to 12:00 a.m. in Greenwich Mean Time (GMT), and then converted to the time zone of the user viewing the record when it’s displayed. For a user located in San Francisco, DATETIMEVALUE( TODAY() ) returns 5:00 p.m. on the previous day (during Daylight Saving Time) rather than 12:00 a.m. of the current day. See A Note About Date/Time and Time Zones for more information.
+如果希望将日期作为字符串一部分包含，在 TEXT() 函数中包含日期值以转换为文本。例如，如果希望将今天的日期转换为文本，使用： `"Today's date is " & TEXT( TODAY() )`
 
-## Converting Between Date/Time and Time
+这将以格式“YYYY-MM-DD”而不是取决于区域设置的格式返回日期。先从日期中提取日、月、年，然后按所需格式重新组合，即可更改公式。例如： `"Today's date is " & TEXT( MONTH( date ) ) & "/" & TEXT( DAY( date ) ) & "/" & TEXT( YEAR( date ) )`
 
-The TIMEVALUE() function returns a Time data type value in “HH:MM:SS.MS” (hours:minutes:seconds.milliseconds) format using a 24-hour clock. Numerical H/M/S/MS values and the HOUR(), MINUTE(), SECONDS(), and MILLISECONDS() functions are valid parameters for TIMEVALUE().
+您还可以将文本转换为日期，以便将字符串值与您的其他日期字段和公式一起使用。您将希望文本的格式为“YYYY-MM-DD”。使用本公式以返回日期值： `DATEVALUE( "YYYY-MM-DD" )`
 
-Use the TIMEVALUE(value) function to return the Time value of a Date/Time type, text, merge field or expression. For example, extract the time from a ClosedDate Date/Time value with TIMEVALUE(ClosedDate).
+## 在日期时间和文本之间转换
 
-## Converting Between Date and Text
+您可使用 TEXT() 函数在字符串包含日期时间值，但需要小心时区。例如，考虑本公式： `"The current date and time is " & TEXT( NOW() )`
 
-If you want to include a date as part of a string, wrap the Date value in the TEXT() function to convert it to text. For example, if you want to return today’s date as text, use:
+在本公式中，NOW() 偏移到 GMT。通常，NOW() 将在查看时转换成用户的时区，但由于被转换为文本，因此转换不会发生。因此，如果您在 8 月 1 日北京时间 (GMT-10) 下午6点 执行本公式，结果是“The current date and time is 2021-08-01 10:00:00Z”。
 
-```
-"Today's date is " & TEXT( TODAY() )
-```
+当将日期时间转换为文本时，将在最后包含“Z”以表示 GMT。
 
-This returns the date in the format “YYYY-MM-DD” rather than in the locale-dependent format. You can change the format by extracting the day, month, and year from the date first and then recombining them in the format you want. For example:
+要将字符串转换为日期时间值，使用 DATETIMEVALUE() 将以“YYYY-MM-DD HH:MM:SS”的格式传输字符串。本方法将返回 GMT 的日期时间值。
 
-```
-"Today's date is " & TEXT( MONTH( date ) ) & "/" & TEXT( DAY( date ) ) & "/" & TEXT( YEAR( date ) ) ) 
-```
+## 在时间和文本之间转换
 
-You can also convert text to a Date so you can use the string value with your other Date fields and formulas. You’ll want your text to be formatted as “YYYY-MM-DD”. Use this formula to return the Date value:
+如果您想要将时间作为字符串的一部分包含，在 TEXT() 函数中封装时间值，以将其转换为文本。例如，如果您想要将当前时间返回为文本，使用： `"The time is " & TEXT( TIMENOW() )` 此函数会返回格式为“HH:MM:SS.MS”的时间。
 
-```
-DATEVALUE( "YYYY-MM-DD" )
-```
+您也可以将文本转换为时间数据类型，以便将字符串值与其他时间字段和公式一起使用。按 24 小时制将文本格式化为“HH:MM:SS.MS”。使用 TIMEVALUE() 函数： `TIMEVALUE("17:30:45.125")`
 
-## Converting Between Date/Time and Text
+## 有关日期时间和时区的备注
 
-You can include Date/Time values in a string using the TEXT() function, but you need to be careful of time zones. For example, consider this formula:
+日期和日期时间值以 GMT 存储。保存好记录后，字段值存储为 GMT时区下的值，然后在记录详细信息页面显示时以查看者的时区显示。不会因日期转换而造成问题，因为转换日期时间为日期会得到相同的日期值。
 
-```
-"The current date and time is " & TEXT( NOW() )
-```
+然而，当使用日期时间值时，转换始终以 GMT 而不是用户的时区完成。如果在两个日期时间字段之前比较不会有时区问题，因为这两个字段都在同一时区。然而，当计算中的一个值从文本或日期值转换为日期时间值时，结果将不同。
 
-In this formula, NOW() is offset to GMT. Normally, NOW() would be converted to the user’s time zone when viewed, but because it’s been converted to text, the conversion won’t happen. So if you execute this formula on August 1st at 5:00 PM in San Francisco time (GMT-7), the result is “The current date and time is 2013–08–02 00:00:00Z”.
+让我们假定北京用户在名为 Date_Time_c 的自定义日期时间字段输入 2020 年 8 月 2 日 9点的值。该值被存储为 2020-08-02 01:00:00Z，因为存在 GMT+8的时区差。在北京时间 8 月 2 日21:00，用户编辑记录时运行以下公式字段： `Date_Time_c - NOW()` 在计算中，NOW() 是 2020-08-02 13:00:00Z，然后从 2020-08-02 01:00:00Z 相减会返回 -0.5（-12 小时）的预期结果。
 
-When you convert a Date/Time to text, a “Z” is included at the end to indicate GMT. TEXT( date/time ) returns “Z” if the field is blank. So if the Date/Time value you’re working with might be blank, check for this before converting to text:
+假定不使用 NOW()，公式将转换字符串“2020-08-02 21:00:00”为日期时间值： `Date_Time_c - DATETIMEVALUE( "2020-08-02 21:00:00")` 在这种情况下，DATETIMEVALUE( "2020-08-02 21:00:00")是 2020-08-02 21:00:00Z，最后运算结果会返回-0.8333333333333334（-20小时），与之前的-12小时不同。
 
-```
-IF(
-	ISBLANK( date/time ),
-	"",
-	TEXT( date/time )
-)
-```
+假定当前时间还是北京时间2020年11月10日21点，即2020-11-10T13:00:00Z，把上面的NOW换为当天日期函数TODAY： `TODAY() - DATEVALUE("2020-11-10T19:00:00Z")` 运算结果为0，因为减号左右两侧都是北京时间11月10号，但是如果假定当前时间为北京时间2020年11月10日早上7点的话，因为北京时间时区差8小时，TODAY()将输出为2020-11-09号，两者相减将得到-1（-24小时）。
 
-To convert a string to a Date/Time value, use DATETIMEVALUE() passing in a string in the format “YYYY-MM-DD HH:MM:SS”. This method returns the Date/Time value in GMT.
-
-## Converting Between Time and Text
-If you want to include time as part of a string, wrap the Time value in the TEXT() function to convert it to text. For example, if you want to return the current time as text, use:
-
-```
-"The time is " & TEXT( TIMENOW() )
-```
-
-This function returns the time in the format “HH:MM:SS.MS”.
-
-You can also convert text to a Time data type so you can use the string value with your other Time fields and formulas. Format your text as “HH:MM:SS.MS” on a 24-hour clock. Use the TIMEVALUE() function:
-
-```
-TIMEVALUE("17:30:45.125")
-```
-
-## A Note About Date/Time and Time Zones
-
-Date and Date/Time values are stored in GMT. When a record is saved, field values are adjusted from the user’s time zone to GMT, and then adjusted back to the viewer’s time zone when displayed in record detail pages and reports. With Date conversions this doesn't pose a problem, since converting a Date/Time to a Date results in the same Date value.
-
-When working with Date/Time fields and values, however, the conversion is always done in GMT, not the user’s time zone. Subtracting a standard Date/Time field from another isn’t a problem because both fields are in the same time zone. When one of the values in the calculation is a conversion from a Text or Date value to a Date/Time value, however, the results are different.
-
-Let’s say a San Francisco user enters a value of 12:00 AM on August 2, 2013 in a custom Date/Time field called Date_Time_c. This value is stored as 2013–08–02 07:00:00Z, because the time difference in Pacific Daylight Time is GMT-7. At 12:00 p.m. PDT on August 1st, the user views the record and the following formula is run:
-
-```
-Date_Time_c - NOW()
-```
-
-In the calculation, NOW() is 2013–08–01 19:00:00Z, and then subtracted from 2013–08–02 07:00:00Z, to return the expected result of 0.5 (12 hours).
-
-Suppose that instead of NOW(), the formula converts the string “2013–08–01 12:00:00” to a Date/Time value:
-
-```
-Date_Time_c - DATETIMEVALUE( "2013-08-01 12:00:00" )
-```
-
-In this case, DATETIMEVALUE( “2013–08–01 12:00:00” ) is 2013–08–01 12:00:00Z, and returns a result of 0.79167, or 19 hours.
-
-There’s no way to determine a user’s time zone in a formula. If all of your users are in the same time zone, you can adjust the time zone difference by adding or subtracting the time difference between the users’ time zone and GMT to your converted values. However, since time zones can be affected by Daylight Saving Time, and the start and end dates for DST are different each year, this is difficult to manage in a formula. We recommend using Apex for transactions that require converting between Date/Time values and Text or Date values.
-
+无法在公式中确定用户的时区。如果您的所有用户都在同一时区，则可以通过加或减用户的时区和 GMT 之间的时差以调整时区差别为您的已转换值。然而，由于时区会受夏令时的影响，同时每年的 DST 开始和结束日期都不同，因此很难在公式中管理。

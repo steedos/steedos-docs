@@ -2,95 +2,92 @@
 sidebar_position: 1
 ---
 
-# 为什么使用公式字段
+# 为什么使用公式
 
-## Where are Formulas Used in Steedos?
+华炎魔方的公式引擎可以帮助非程序员快速实现一些简单的业务逻辑，类似Excel公式，它是从其他字段、表达式或值派生其值的一种算法，通过公式字段，可以帮助您根据其他字段自动计算一个字段的值。
 
-Many areas in Salesforce use formulas. Before you begin using formulas, review the differences in their uses.
+## 什么是公式？
 
-USE FORMULAS FOR: | TO:
--- | --
-Approval Processes | Define the criteria a record must meet to enter the approval process.
-Approval Steps | Define the criteria a record must meet to enter the approval step.
-Assignment Rules for Leads and Cases | Define the criteria the lead or case must meet for it to be assigned.
-Custom Fields | Create custom formula fields that automatically calculate a value based on other values, merge fields, or expressions. Users can view formula fields on record detail pages but can’t see the underlying algorithm or edit the value of a formula field.
-Data Validations | Verify that the data a user enters in a record meets the standards you specify before the user can save the record. A validation rule can include a formula such as CloseDate >= TODAY().
-Default Field Values | Apply a value to a custom field when a user creates a record. Use formulas to define a default value such as TODAY() + 7.Users can change a default value. Default field values can be based on a formula using values, merge fields, or expressions you specify.
-Formula Fields | Automatically calculate the value of a custom field using the values, merge fields, or expressions you specify. Users can’t change the value of a formula field.
-Validation Rules | Prevent users from entering an invalid value in a standard or custom field. Validation rules can be based on formulas and display an error message to users when the value they enter is not valid.
-Workflow Field Updates | Automatically change the value of a field to a value you specify. The formula can include other values, merge fields, or expressions. You can set field updates to occur as a result of a workflow rule or an approval process.
-Workflow Rules | Define the criteria a record must meet to trigger a workflow rule.
+### 公式实例
 
-
-## Formula Data Types
-The data type of a formula determines the type of data you expect returned from your formula.
-
-DATA TYPE | DESCRIPTION
--- | --
-Checkbox | Returns a true or false value. The field appears as a checkbox in record detail pages and reports. Use True for checked values and False for unchecked values.
-Currency | Returns a number in currency format of up to 18 digits with a currency sign.NOTE Salesforce uses the round-half-to-even tie-breaking rule for currency fields. For example, 23.5 becomes 24, 22.5 becomes 22, −22.5 becomes −22, and −23.5 becomes −24.
-Date | Returns data that represents a day on the calendar. The current date can be acquired by calling the built-in function TODAY() in a formula. This data type isn’t available for custom summary formulas in reports.
-Date/Time | Returns data that represents a moment in time. A date/time field includes the date and also the time of day including hour, minutes, and seconds. You can insert the current date and time in a formula using the NOW() function. This data type isn’t available for custom summary formulas in reports.
-Number | Returns a positive or negative integer or decimal of up to 18 digits. Salesforce uses the round half up tie-breaking rule for numbers in formula fields. For example, 12.345 becomes 12.35 and −12.345 becomes −12.35.NOTE A formula field of type Number can store more decimals than are defined. For more information, see "Data type number field can store more decimal places than defined."
-Percent | Returns a number in percent format of up to 18 digits followed by a percent sign. Percent data is stored as a decimal divided by 100, which means that 90% is equal to 0.90.
-Text | Returns a string of up to 3900 characters. To display text in addition to the formula output, insert that text in quotes. Use the text data type for text, text area, URL, phone, email, address, and auto-number fields. This data type isn’t available for custom summary formulas in reports.NOTE Text area isn’t a supported data type.
-Time | Returns data that represents a moment in time, without the date. A time field includes the time of day by hour, minutes, seconds, and milliseconds. You can insert the current time in a formula using the TIMENOW() function.NOTE In formula expressions, use the international date format (ISO) for text arguments. For example, use TIMEVALUE("11:30:00.000") instead of TIMEVALUE("11:30 AM").
-
-## Elements of a Formula
-
-A formula can contain references to the values of fields, operators, functions, literal values, or other formulas.
-
-Use any or all of these elements to build a formula.
-
-### Literal Value
-
-A text string or number you enter that is not calculated or changed. For example, if you have a value that’s always multiplied by 2% of an amount, your formula would contain the literal value of 2% of that amount:
-
-```
-ROUND((Amount*0.02), 2)
+```js
+Total_Pay = 
+IF(Total_Hours__c <= 40, Total_Hours__c * Hourly_Rate__c, 
+40 * Hourly_Rate__c + 
+(Total_Hours__c - 40) * Overtime_Rate__c)
 ```
 
-This example contains every possible part of a formula:
+### 公式中的元素
 
-- A function called ROUND used to return a number rounded to a specified number of decimal places.
-- A field reference called Amount.
-- An operator, *, that tells the formula builder to multiply the contents of the Amount field by the literal value, 0.02.
-- A literal number, 0.02. Use the decimal value for all percents. To include actual text in your formula, enclose it in quotes.
-- The last number 2 in this formula is the input required for the ROUND function that determines the number of decimal places to return.
+公式可以包含对字段值、运算符、函数、文字表示值或其他公式的引用。使用任意或所有这些元素构建公式。
 
-### Field Reference	
+### 文字表示值
 
-Reference the value of another custom or standard field using a merge field. The syntax for a merge field is field_name for a standard field or field_name__c for a custom field. The syntax for a merge field on a related object is object_name__r.field_name. 
+您输入的未经计算或更改的文本字符串或数字。
 
-### Function	
+例如，如果您有一个总是要乘以金额的 2% 的值，公式将会包含该金额的 2% 的文字表示值：
 
-A system-defined formula that can require input from you and returns a value or values. For example, TODAY() does not require input but returns the current date. The TEXT(value) function requires your percent, number, or currency input and returns text.
-
-### Operator	
-
-A symbol that specifies the type of calculation to perform or the order in which to do it. For example, the + symbol specifies two values should be added. The open and close parentheses specify which expressions you want evaluated first.
-
-### Comment	
-
-An annotation within a formula that begins with a forward slash followed by an asterisk (/*). and concludes with an asterisk followed by a forward slash (*/). For example,
-
-```
-/*This is a formula comment*/
+```javascript
+ROUND((amount*0.02), 2)
 ```
 
-Comments are ignored when processing a formula.
 
-Comments are useful for explaining specific parts of a formula to anyone viewing the formula definition. For example:
+此示例包含公式每个可能的部分：
 
-```
-AND( 
-/*competitor field is required, check to see if field is empty */
-LEN(Competitor__c) = 0, 
-/* rule only enforced for ABCD record types */
-RecordType.Name = "ABCD Value",
-/* checking for any closed status, allows for additional closed picklist values in the future */
-CONTAINS(TEXT(StageName), "Closed") 
-)
-```
+* 一个称为 ROUND 的函数，用于返回一个数值舍入为指定小数位数的数值。
+* 名为“金额”的字段引用。
+* 一个运算符 \*，告诉公式生成器用文字表示值 0.02 乘以金额字段的值。
+* 一个文字表示数值 0.02。对所有百分数使用小数值。要在您的公式中包括实际文本，应将其括在引号内。
+* 此公式中的最后一个数字 2 是确定要返回的小数位数的 ROUND 函数所需的输入。
 
-You can also use comments to comment out sections of your formula when debugging and checking the syntax to locate errors in the formula.
+### 字段引用
+
+使用合并字段引用另一个自定义字段或标准字段的值。
+
+合并字段的语法对于标准字段是 `field_name`，对于自定义字段是 `field_name__c`。相关对象上合并字段的语法是 `reference_to_field_name.field_name`，必要时可在您的公式中插入合并字段，并且理论上支持无限层次的扩展引用，比如三层引用写法为`reference_to1_field_name.reference_to2_field_name.field_name`。
+
+支持引用当前登录用户相关字段，写法是以`$user`开头来表示当前登录用户的引用，并用点符号来连接后续要扩展引用的属性，比如`$user.name`表示引用当前用户的名称，`$user.organization.name`表示引用当前用户所属组织的名称。
+
+要引用关联字段指向的记录id只要用点符号来连接`_id`即可，比如`reference_to_field_name._id`，`$user._id`。
+
+除了可以用 `$user` 开头的表达式来引用当前登录用户信息，还可以用 `$userSession` 开头的表达式来引用当前登录用户的 UserSession，详情请参阅 [如何创建公式字段 - $userSession](#$userSession)。
+
+### 公式中的运算符和函数
+
+在构建公式时可以使用很多运算符和函数，请参考：[公式中的运算符和函数](functions)。
+
+
+### 在哪些地方可以使用公式?
+
+华炎魔方的许多地方都可以使用公式。开始使用公式之前，请了解其用法的差别。
+
+* **批准过程：** 定义记录必须满足才能进入批准过程的条件。
+* **批准步骤：** 定义记录必须满足才能进入批准步骤的条件。
+* **字段默认值：** 在用户创建记录时向自定义字段应用一个值。使用公式可以定义默认值。用户可以更改默认值。默认值可以由使用您指定的值、合并字段或表达式的公式确定。
+* **公式字段：** 使用您指定的值、合并字段或表达式。自动计算自定义字段的值。用户不能更改公式字段的值。
+* **验证规则：** 防止用户在标准/自定义字段中输入无效值。验证规则可以基于公式，并在用户输入无效值时，向用户显示出错消息。
+* **字段更新：** 自动将字段值更改为您指定的值。公式中可以包括其他值、合并字段或表达式。可以将字段更新设置为因工作流规则或批准过程而发生。
+* **工作流规则：** 定义记录触发工作流规则时必须满足的条件。
+
+| 用法 | 何时执行？ | 只读？ | 可以指定空处理？ |
+|----|----|----|----|
+| **批准过程** | 记录提交待批准 | 不适用 | 否 |
+| **批准步骤** | 记录提交待批准 | 不适用 | 否 |
+| **字段默认值** | 创建记录时 | 否 | 否 |
+| **公式字段** | 记录被保存后 | 是 | 是 |
+| **验证规则** | 记录被保存前 | 不适用 | 否 |
+| **字段更新** | 工作流或批准过程中 | 不适用 | 否 |
+| **工作流规则** | 保存记录时 | 不适用 | 否 |
+
+### 公式返回的数据类型
+
+公式的数据类型决定预期从公式返回的数据的类型。
+
+* **文本：** 返回字符串。除公式输出外，若还要显示文本，请将该文本放入引号中。对文本、多行文本、网址、邮件地址和自动编号等字段使用文本数据类型。
+* **布尔：** 返回 true（真） 或false（假）。该字段在记录详细信息页面和报表中显示为复选框。使用 true 作为选中值，使用 false 作为未选中值。
+* **金额：**  只能输入数值内容，默认2位小数，也可以指定小数位数。
+* **日期：** 返回代表日历中某一天的日期。当前日期可通过在公式中调用内部函数 TODAY() 获得。
+* **日期时间：** 返回表示时间中某一时刻的数据。日期时间字段包括日期，还包括由小时、分钟和秒组成的一天中的时刻。您可以使用 NOW() 函数在公式中插入当前日期和时间。
+* **数字：** 返回正负整数或小数（最多 18 位）。华炎魔方对公式字段使用四舍五入平分规则。例如，12.345 变为 12.35 和 -12.345 变为 -12.35。
+* **百分比：** 返回后跟百分号的百分比格式数字（最多 18 位）。百分比数据存储为小数，值为除以 100 后得到的小数，即 90% 等于 0.90。
+* **时间（暂不支持）：** 返回表示时间中某一时刻的数据，没有日期。时间字段包含小时、分钟、秒和毫秒的时间。您可以使用 TIMENOW() 函数在公式中插入当前日期。

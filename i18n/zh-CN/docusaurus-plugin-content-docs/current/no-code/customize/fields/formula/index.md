@@ -1,6 +1,6 @@
 # 使用公式计算字段值
 
-A formula is an algorithm that derives its value from other fields, expressions, or values. Formulas can help you automatically calculate the value of a field based on other fields.
+本部分重点介绍公式字段的使用。
 
 
 ```mdx-code-block

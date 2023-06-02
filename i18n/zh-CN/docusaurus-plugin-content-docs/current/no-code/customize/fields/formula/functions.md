@@ -3,9 +3,14 @@ sidebar_position: 2
 title: 公式运算及函数
 ---
 
-Use operators and functions when building formulas. All functions are available everywhere that you can include a formula such as formula fields, validation rules, approval processes, and workflow rules, unless otherwise specified.
+## 函数
 
-Steedos Formula Engine is compatible with Salesforce, allowing you to directly use Salesforce's function syntax to write formulas.
+函数即系统定义的公式，可能需要您的输入值，并返回一个或几个值。例如，TODAY() 不需要输入值，但会返回当前日期。TEXT(value) 函数需要您输入百分比、数字或货币并返回文本。
+
+## 运算符
+
+一个符号，指定要执行的计算类型或其执行顺序。例如，“+”号指定两个值应相加。左括号和右括号指定想要先计算的表达式。
+
 
 [Salesforce Formula Operators and Functions by Context
 ](https://help.salesforce.com/s/articleView?language=en_US&id=sf.customize_functions.htm&type=5)
