@@ -2,23 +2,9 @@
 sidebar_position: 2
 ---
 
-# Workflow Rules
+# 工作流规则
 
-Workflow rules let you automate standard internal procedures and processes to save time across your org. A workflow rule is the main container for a set of workflow instructions. These instructions can always be summed up in an if/then statement.
-
-or example: If it’s raining, then bring an umbrella.
-
-Workflow rules can be broken into two main components.
-
-- Criteria: the “if” part of the “if/then” statement. In other words, what must be true of the record for the workflow rule to execute the associated actions.
-- Actions: the “then” part of the “if/then” statement. In other words, what to do when the record meets the criteria.
-
-In the raining example, the criteria is “it’s raining” and the action is “bring an umbrella”. If the criteria isn’t met (it isn’t raining), then the action isn’t executed (you don’t bring an umbrella).
-
-<!-- ---
-title: 工作流规则
-description: 工作流规则可让您自动化标准内部过程和进程，以在贵组织范围内节省时间。工作流规则是一组工作流指示的主要容器。这些指示始终可以用“如果/则”语句概括。
----
+ 工作流规则可让您自动化标准内部过程和进程，以在贵组织范围内节省时间。工作流规则是一组工作流指示的主要容器。这些指示始终可以用“如果/则”语句概括。
 
 ## 什么是工作流规则？
 
@@ -216,4 +202,4 @@ description: 工作流规则可让您自动化标准内部过程和进程，以�
 * **规则条件**：无
 * **过滤条件**：公式：`[ ['Status', '=', 'Activated'] ]`
 * **即时操作**：无
-* **依赖于时间的操作**：合同收款计划前 10 天：计划收款日期——工作流通知：通过工作流通知为展期管理员发送提醒，以确认客户是否按期付款；发送出站消息将收款提醒推送给财务系统。 -->
+* **依赖于时间的操作**：合同收款计划前 10 天：计划收款日期——工作流通知：通过工作流通知为展期管理员发送提醒，以确认客户是否按期付款；发送出站消息将收款提醒推送给财务系统。 

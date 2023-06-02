@@ -2,15 +2,9 @@
 sidebar_position: 1
 ---
 
-# Automated Actions
+# 自动化操作
 
-An automated action is a reusable component that performs some sort of action behind the scenes—like updating a field or sending an email. After you create an automated action, add it to a process, milestone, or other automated process.
-
-
-<!-- ---
-title: 自动化操作
-description: 自动操作是可重复使用的组件，可在后台执行某种操作，如更新字段或发送电子邮件。创建自动操作后，将其添加到批准过程、工作流规则中。
----
+自动操作是可重复使用的组件，可在后台执行某种操作，如更新字段或发送电子邮件。创建自动操作后，将其添加到批准过程、工作流规则中。
 
 ## 字段更新
 
@@ -204,8 +198,3 @@ router.post('/api/test', async function (req, res) {
 });
 exports.default = router;
 ```
-
-
-
-
- -->

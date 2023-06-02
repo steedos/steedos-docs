@@ -1,5 +1,10 @@
 ---
-title: Plugins
+title: 插件
 ---
 
-Steedos can be extended through the use of plugins.
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList/>
+```
