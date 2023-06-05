@@ -47,7 +47,7 @@ title: 页面布局
 
 ### 调整字段的属性
 
-每个字段可以修改只读、必填、分组、[显示条件](/docs/developer/visible_on)这些属性。
+每个字段可以修改只读、必填、分组、显示条件这些属性。
 
 ## 配置相关子表
 
@@ -68,7 +68,7 @@ title: 页面布局
 * 排序字段
 * 排序方式：正序/倒序。
 * 过滤规则
-* [显示条件](/docs/developer/visible_on)
+* 显示条件
 * 每页显示数量
 
 ![](https://console.steedos.cn/api/files/images/gR3dc23TJESy88bSK)

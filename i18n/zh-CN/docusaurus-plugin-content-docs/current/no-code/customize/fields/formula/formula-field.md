@@ -29,7 +29,7 @@ sidebar_position: 1.5
 ### 使用日期和日期时间公式字段的提示
 
 * 日期和日期时间字段不能交替使用。名称本身不能表示某个字段是日期还是日期时间。例如，创建日期和上次修改日期是日期时间字段，而上次活动日期是日期字段。使用 DATEVALUE 函数可将日期时间字段转换为日期字段。
-* 将加和减运算符与日期或日期时间字段结合使用来计算持续时间。例如，从一个日期中减去另一个日期来计算两者之间相差的天数。同样，您可以从一个日期时间中减去另一个日期时间，获得以数字表示的两者之间相差的天数。有关建议的使用方法，请参阅[NOW](/docs/admin/functions#now) 或[TODAY](/docs/admin/functions#today)。
+* 将加和减运算符与日期或日期时间字段结合使用来计算持续时间。例如，从一个日期中减去另一个日期来计算两者之间相差的天数。同样，您可以从一个日期时间中减去另一个日期时间，获得以数字表示的两者之间相差的天数。有关建议的使用方法，请参阅[NOW或TODAY](datetime)。
 * 将加和减运算符与数字结合使用，返回其他日期或日期时间。例如，`CreatedDate + 5` 计算记录的创建日期之后五天的日期和时间。注意，表达式返回的数据类型与给定的数据类型相同；日期字段加上或减去某个数字会返回日期，日期时间字段加上或减去某个数字会返回日期时间。
 * 在使用小数计算日期时，公式会忽略小数点后的所有数字。例如：
 * 公式TEXT(TODAY())将返回当天的日期字符串，比如2020-09-30, TODAY是按utc时间取日期，这点跟TODAY()一样。
@@ -61,7 +61,7 @@ sidebar_position: 1.5
 
 ### 使用布尔公式字段的提示
 
-部分函数是不支持输出boolean类型值的，已知不支持的函数有 [BLANKVALUE](/docs/admin/functions#blankvalue), [CASE](/docs/admin/functions#case), [IF](/docs/admin/functions#if)。
+部分函数是不支持输出boolean类型值的，已知不支持的函数有BLANKVALUE、CASE、IF。
 
 比如以下公式配置会报错：
 
@@ -88,15 +88,15 @@ CASE(Days_Open__c, 1,  true,false)
 
 #### 支持单选选项列表的函数
 
-* [ISPICKVAL](/docs/admin/functions#ispickval): 将选项列表的值与单个值进行比较。
-* [CASE](/docs/admin/functions#case)：将选项列表的值与多个值进行比较。
-* [TEXT](/docs/admin/functions#text)：返回选项列表值的 API 名称，以便您可在支持文本值的函数（例如 CONTAINS）中使用对值的引用（即使显示值已更改）。
-* [ISBLANK](/docs/admin/functions#isblank)：判断字段值是否为空。
+* ISPICKVAL: 将选项列表的值与单个值进行比较。
+* CASE：将选项列表的值与多个值进行比较。
+* TEXT：返回选项列表值的 API 名称，以便您可在支持文本值的函数（例如 CONTAINS）中使用对值的引用（即使显示值已更改）。
+* ISBLANK：判断字段值是否为空。
 
 #### 支持多选选项列表的函数
 
-* [INCLUDES](/docs/admin/functions#includes)：决定多选选项列表字段中选择的任何值是否等于您所指定的文本文字。
-* [ISBLANK](/docs/admin/functions#isblank)：判断字段值是否为空。
+* INCLUDES：决定多选选项列表字段中选择的任何值是否等于您所指定的文本文字。
+* ISBLANK：判断字段值是否为空。
 
 
 ### $user 
@@ -105,9 +105,9 @@ CASE(Days_Open__c, 1,  true,false)
 
 ### $userSession
 
-在公式中输入`$userSession` 变量是引用当前登录用户信息的另一种方式，与 `$user` 变量不同，它是一个指向 [userSession](/docs/admin/permission_set#userSession详解) 的变量，而 `$user` 是一个指向`space_users`表的跨对象公式。
+在公式中输入`$userSession` 变量是引用当前登录用户信息的另一种方式，与 `$user` 变量不同，它是一个指向userSession的变量，而 `$user` 是一个指向`space_users`表的跨对象公式。
 
-比如`$userSession.roles`可以获取当前用户所属权限集，`$userSession.is_space_admin`可以获取当前用户是否是工作区管理员，更多属性请参考文档 [userSession](/docs/admin/permission_set#userSession详解)。
+比如`$userSession.roles`可以获取当前用户所属权限集，`$userSession.is_space_admin`可以获取当前用户是否是工作区管理员。
 
 ### 关于公式级联触发的提示
 
