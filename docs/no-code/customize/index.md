@@ -2,33 +2,18 @@
 sidebar_position: 1
 ---
 
-# Customize Your Steedos Org
+# Set Up Your Data Your Way
 
-You can customize each of the standard tabs and types of records, including adding custom fields and setting page layouts. 
+Optimize your Steedos data to fit the unique needs of your users. You can create your own objects with data that fits together in the ways that make the most sense for you.
 
-## Customize Objects
+## Store Information That’s Unique to Your Organization
+Create custom objects to store information that’s unique to your organization. 
 
-Steedos lets you personalize your object model with features like custom fields, page layouts, and validation rules. 
+## Customize Fields
+Customize standard and custom fields to tailor your org to your own unique requirements.
 
-## Control User Access to Fields
-
-Use field-level security to control user access to fields. Use page layouts to control the layout and organization of detail and edit pages in Steedos.
-
-## Set Page Layouts and Field-Level Security
-
-Use field-level security as the means to restrict users’ access to fields; then use page layouts primarily to organize detail and edit pages within tabs. This reduces the number of page layouts for you to maintain. For example, if a field is required in the page layout and read only in the field-level security settings, the field-level security overrides the page layout and the field will be read only for the user.
-
-## Page Layouts
-
-Page layouts control the layout and organization of buttons, fields, and related lists on object record pages. They also help determine which fields are visible, read only, and required. Use page layouts to customize the content of record pages for your users.
-
-## Rename Object, Tab, and Field Labels *
-
-You can change the name of almost any object, field, or tab in Steedos. This simple adjustment lets you continue using the terminology your users already know and helps them transition to using Steedos.
-
-## Manage Your Translations *
-
-If your Steedos org has multiple languages enabled, manage translations so that your global users can use Steedos in their language.
+## Calculate Field Values with Formulas
+A formula is an algorithm that derives its value from other fields, expressions, or values. Formulas can help you automatically calculate the value of a field based on other fields.
 
 
 ```mdx-code-block
@@ -36,8 +21,3 @@ import DocCardList from '@theme/DocCardList';
 
 <DocCardList/>
 ```
-
-
-:::info
-*: This feature is under development.
-:::

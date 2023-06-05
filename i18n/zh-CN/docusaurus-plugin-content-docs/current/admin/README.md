@@ -1,8 +1,8 @@
 ---
-title: Set Up and Maintain Your Steedos Organization
+title: 快速向导
 ---
 
-As a Steedos administrator—that is, a user assigned to the Administrator profile—you’re responsible for setting up your steedos organization, which means adding users and configuring the system for your needs.
+此部分将指导您作为系统管理人员如何进行组织与权限的管理与设置。
 
 
 ```mdx-code-block

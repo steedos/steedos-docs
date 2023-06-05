@@ -2,28 +2,11 @@
 sidebar_position: 6
 ---
 
-# Field Permissions
+# 字段权限
 
-Field permissions specify the access level for each field in an object. 
+字段权限指定对象中每个字段的访问级别。
 
-## What Determines Field Access?
-
-Several factors control whether users can view and edit specific fields in Steedos. You can control users’ access to fields at the record type, user, or field level.
-
-- Page layouts—Set whether fields are visible, required, editable, or read only for a particular record type.
-- Field-level security—Further restrict users’ access to fields by setting whether those fields are visible, editable, or read only. These settings override field properties set in the page layout if the field-level security setting is more restrictive.
-- Permissions—Some user permissions override both page layouts and field-level security settings. For example, users with the “Edit Read Only Fields” permission can always edit read-only fields regardless of any other settings.
-- Object required fields—Override field-level security or any less-restrictive settings on page layouts by making a custom field universally required.
-- Lookup and system fields—If you enable the Require permission to view record names in lookup fields setting, you restrict who can view record names in lookup and system fields. Users must have Read access to these records or the View All Lookup Record Names permission to view this data.
-
-## Field-Level Security
-
-Field-level security settings let you restrict users’ access to view and edit specific fields.
-
-Page layouts and field-level security settings determine which fields a user sees. The most restrictive field access settings of the two always applies. For example, you can have a field that’s required in a page layout but is read-only in the field-level security settings. The field-level security overrides the page layout, so the field remains read-only.
-
-
-<!-- ## 字段权限
+## 字段权限
 
 之前我们提到华炎魔方权限引擎是基于权限集来计算用户对每一个对象的相关权限的，华炎魔方权限引擎还进一步实现了不同权限集下的用户对每一个对象下的不同字段的权限计算，现在我们来看看如何为合同对象配置字段级的权限控制。
 
@@ -39,4 +22,22 @@ Page layouts and field-level security settings determine which fields a user see
 
 我们只要把与财务相关的字段的”允许编辑“和”允许查看“勾选框去除即可实现业务人员查看合同记录时隐藏财务相关的字段。
 
-在华炎魔方中查询数据时，这里配置的字段权限也会被华炎魔方权限引擎识别并叠加到最终查询条件中，整个查询计算过程请参考该文档顶部提到的 [权限计算 - 查询 示意图](https://console.steedos.cn/api/files/images/2T54fG8LvDhdkwazR)。 -->
+在华炎魔方中查询数据时，这里配置的字段权限也会被华炎魔方权限引擎识别并叠加到最终查询条件中，整个查询计算过程参考下图。
+
+![权限引擎 示意图](https://console.steedos.cn/api/files/images/2T54fG8LvDhdkwazR)
+
+## 字段级安全
+
+字段级安全设置允许管理员限制用户查看和编辑指定字段的访问权限。
+
+页面布局和字段级安全设置确定用户看到哪些字段。两者中最严格的字段访问设置始终适用。例如，您可以在页面布局中设置一个字段为必填项，但在字段级安全设置中将其设置为只读。字段级安全设置将覆盖页面布局，因此该字段仍然是只读的。
+
+
+## 什么决定了对象字段可以访问
+
+有几个因素决定了用户是否可以查看和编辑华炎魔方中的特定字段。您可以在对象、记录或字段级别上控制用户对字段的访问权限。
+
+- 页面布局：设置特定记录类型的字段是否必填或只读。
+- 字段级安全：通过设置字段是否可见、可编辑，进一步限制用户对字段的访问权限。如果字段级安全设置更加严格，则这些设置会覆盖页面布局中设置的字段属性。
+- 权限：一些用户权限会覆盖页面布局和字段级安全设置。例如，具有“编辑只读字段”权限的用户可以始终编辑只读字段，而不考虑任何其他设置。
+- 对象必填字段：通过使自定义字段普遍必填，可以覆盖字段级安全或页面布局上的任何较少限制的设置。

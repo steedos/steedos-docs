@@ -2,27 +2,9 @@
 sidebar_position: 3
 ---
 
-# Approval Processes
+# 批准过程
 
-It’s likely that you’re familiar with process automation in the form of workflow rules. Approval processes take automation one step further, letting you specify a sequence of steps that are required to approve a record.
-
-An approval process automates how records are approved in Steedos. An approval process specifies each step of approval, including from whom to request approval and what to do at each point of the process.
-
-:::tip EXAMPLE
-Your org has a three-tier process for approving expenses. This approval process automatically assigns each request to right person in your org, based on the amount requested.
-
-If an expense record is submitted for approval, lock the record so that users can’t edit it and change the status to Submitted.
-
-If the amount is $50 or less, approve the request. If the amount is greater than $50, send an approval request to the direct manager. If the amount is greater than $5,000 and the first approval request is approved, send an approval request to the vice president.
-
-If all approval requests are approved, change the status to Approved and unlock the record. If any approval requests are rejected, change the status to Rejected and unlock the record.
-:::
-
-<!-- 
----
-title: 批准过程
-description: 相比工作流规则，批准过程在自动化处理方面更进一步，让您可以指定批准该类记录所必需经历的审批步骤序列。还可以指定在各个时间点、各个审批步骤的自动处理操作。
----
+相比工作流规则，批准过程在自动化处理方面更进一步，让您可以指定批准该类记录所必需经历的审批步骤序列。还可以指定在各个时间点、各个审批步骤的自动处理操作。
 
 ## 什么是批准过程？
 
@@ -328,4 +310,3 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 * 已拒绝：记录已被拒绝。
 * 已重新分配：记录已提交待批准，但被分配至其他批准人。
 * 已调回：提交记录用于批准，但是从批准过程调回。
- -->

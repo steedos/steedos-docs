@@ -2,11 +2,11 @@
 sidebar_position: 3
 ---
 
-# Profiles
+# 简档
 
-Profiles define how users access objects and data, and what they can do within the application. When you create users, you assign a profile to each one.
+简档定义用户如何访问对象和数据，以及他们在应用程序中可以执行的操作。创建账户时，需要为每个账户指定一个身份的简档。
 
-Every user is assigned only one profile, but can also have multiple permission sets. When determining access for your users, use profiles to assign the minimum permissions and access settings for specific groups of users. Then use permission sets to grant more permissions as needed.
+每个账户只能分配一个简档，但可以拥有多个权限集。在确定账户访问权限时，使用简档为指定账户分配最低权限和访问设置。然后，根据需要使用权限集授予更多权限。
 
 #### 标准简档
 

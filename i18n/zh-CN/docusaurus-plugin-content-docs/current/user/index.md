@@ -1,7 +1,6 @@
-# Get Started with Steedos
+# 快速向导
 
-Welcome to Steedos, the award-winning low-code platform designed to help you manage your data, integrate with other systems, and build your own applications! Here are some key concepts to help you understand the Steedos products and guide you through common tasks in Steedos.
-
+此部分将指导您作为前台用户如何使用华炎魔方。
 
 
 ```mdx-code-block

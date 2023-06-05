@@ -2,15 +2,13 @@
 sidebar_position: 4
 ---
 
-# Permission Sets
+# 权限集
 
-A permission set is a collection of settings and permissions that give users access to various tools and functions. Permission sets extend users’ functional access without changing their profiles and are the recommended way to manage your users’ permissions.
+权限集是一组权限设置的集合，权限集扩展了用户的功能访问权限，而不更改其简档，是管理用户权限的推荐方式。
 
-Users can have only one profile but, they can have multiple permission sets. You can assign permission sets to various types of users, regardless of their profiles.
+权限集与简档相似，是另一种权限集合，也是授予某一类的用户对各种对象和功能的访问权限的集合。但是，每个用户可以属于多个权限集，这是与简档的主要区别。用户只能有一个简档，但可以拥有多个权限集。您可以将权限集分配给各种类型的用户，而不考虑其简档。
 
-权限集，与简档相似，是另一种权限集合，也是授予某一类的用户对各种对象和功能的访问权限的集合。但是，每个用户可以属于多个权限集，这是与简档的主要区别。
-
-一般来说，简档是为大类用户配置基本权限，而权限集则可为小类用户扩展更多的功能访问权限。 华炎魔方里的每个用户，都会属于1个简档，也可能同时再属于1个或多个权限集。对系统管理员而言，再用户创建之后，用户属于哪个简档一般无需调整，更多的是对用户属于哪些权限集作适时的调整。
+一般来说，简档是为大类用户配置基本权限，而权限集则可为小类用户扩展更多的功能访问权限。对系统管理员而言，再用户创建之后，用户属于哪个简档一般无需调整，更多的是对用户属于哪些权限集作适时的调整。
 
 假设您在贵组织中拥有“库存”自定义对象。许多用户需要此对象的“读取”访问权限，而少数用户则需要“编辑”访问权限。您可以创建授予“读取”访问权限的权限集，并将其分配到适用用户。然后，您可以创建另一个权限集，可授予“库存”对象的“编辑”访问权限，并将其分配到人数较少的用户组。
 
