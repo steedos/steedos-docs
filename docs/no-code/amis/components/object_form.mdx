@@ -1,15 +1,15 @@
 ---
-title: 对象表单
+title: ObjectForm
 description: 华炎魔方微页面引擎，内置对象表单组件 ObjectForm，借助amis渲染器，可以帮助开发人员快速生成一个功能完善的对象表单组件。
 ---
 
-这是一个用于显示、新建或编辑对象记录的表单组件。
+This is a component for displaying, creating, or editing object records in a form format.
 
-## 基本用法
+## Basic Usage
 
-最基本的用法是配置组件的“对象”及“记录ID”属性，就可以显示出某条对象记录的只读表单页面。
+The most basic usage is to configure the "Object" and "Record ID" properties of the component, which can then display a read-only form page for a certain object record.
 
-如下所示我们配置对象表单的“对象”属性为当前对象，“记录ID”属性为当前记录：
+As shown below, we configure the "Object" property of the object form to be the current object and the "Record ID" property to be the current record:
 
 ```json
 {
@@ -18,198 +18,10 @@ description: 华炎魔方微页面引擎，内置对象表单组件 ObjectForm�
     "body": [
         {
             "type": "steedos-object-form",
-            "label": "对象表单",
+            "label": "ObjectForm",
             "objectApiName": "${objectName}",
             "recordId": "${recordId}",
             "className": "sm:border sm:shadow sm:rounded sm:border-gray-300 bg-white p-4"
         }
     ]
 }
-```
-如果我们新建一个指向人员对象的微页面，并拖动一个对象表单组件到画布，可以看到该组件生成了类似上面的amis Schema配置。
-
-发布后，我们就可以在人员对象的记录详细页面看到只读的人员记录表单效果。
-
-objectApiName属性可以被配置为像`space_users`或`accounts`这种固定值，也可以配置为变量，而变量`objectName`在“记录页面”、“列表页面”以及“表单”类型的微页面中存储了当前对象Api名称。
-
-recordId属性类似的可以配置为某个具体的记录id值，但是一般我们会配置为变量，比如在“记录页面”或“表单”类型的微页面中配置为当前记录Id值。
-
-## 只读/可编辑
-
-对象表单 ObjectForm 组件默认是只读的，一般用于在“记录页面”的微页面中配置一个只读的对象表单。
-
-可以通过修改其mode属性为“eidt”来把对象表单组件显示为可编辑状态。
-
-## 底部按钮栏
-
-当对象表单 ObjectForm 组件被配置为可编辑时，默认是不带提交按钮的。
-
-如果需要在表单底部显示提交按钮，只要配置 `actions` 属性即可，这是amis原生能力，具体请参阅文档 [底部按钮栏](https://aisuda.bce.baidu.com/amis/zh-CN/components/form/index#%E5%BA%95%E9%83%A8%E6%8C%89%E9%92%AE%E6%A0%8F)。
-
-```json
-{
-    "type": "page",
-    "title": "Welcome to Steedos",
-    "body": [
-        {
-            "id": "test",
-            "type": "steedos-object-form",
-            "objectApiName": "organizations",
-            "recordId": "gKfnkfbLWdqCxo8dg",
-            "mode": "edit",
-            "actions": [
-                {
-                    "type": "button",
-                    "label": "保存",
-                    "actionType": "submit",
-                    "level": "info"
-                }
-            ]
-        }
-    ]
-}
-```
-
-要提交表单，只要像上面示例一样，在 `actions` 节点配置一个 `submit` 按钮即可，而不用费力配置 api 请求接口。
-
-除了可以轻松实现提交表单外，还可以定制表单提交后行为，这些功能与amis原生表单组件没有区别，请参阅 [amis Form 表单提交后行为](https://aisuda.bce.baidu.com/amis/zh-CN/components/form/index#%E6%8F%90%E4%BA%A4%E5%90%8E%E8%A1%8C%E4%B8%BA)。
-
-## 触发表单事件
-
-对象表单 ObjectForm 组件最终输出的是一个 [amis Form 表单](https://aisuda.bce.baidu.com/amis/zh-CN/components/form/index) 组件，我们可以像使用 amis 原生表单组件 一样实现跨组件触发表单事件。
-
-以下示例演示了跨组件提交表单，只要正确的配置组件的`id`属性以及事件的`componentId`属性即可。
-
-```json
-{
-    "type": "page",
-    "title": "Welcome to Steedos",
-    "body": [
-        {
-            "id": "test",
-            "type": "steedos-object-form",
-            "objectApiName": "organizations",
-            "recordId": "gKfnkfbLWdqCxo8dg",
-            "mode": "edit"
-        },{
-            "type": "button",
-            "label": "提交上面的表单",
-            "onEvent": {
-            "click": {
-                    "actions": [
-                        {
-                            "componentId": "test",
-                            "actionType": "submit"
-                        }
-                    ]
-                }
-            }
-        }
-    ]
-}
-```
-
-## 弹出表单
-
-在微页面设计器中拖动一个普通的“按钮”组件到画布，然后在设计器中为其添加一个“打开弹窗”的动作，在“弹框内容”画布中拖动一个华炎魔方“对象表单”，配置好相关属性后就可以轻松实现弹出对象表单功能。
-
-最后设计器会生成类似如下内容的 amis Schema 配置。
-
-```json
-{
-    "type": "page",
-    "title": "Welcome to Steedos",
-    "body": [{
-        "type": "button",
-        "label": "按钮",
-        "onEvent": {
-        "click": {
-            "actions": [{
-                "actionType": "dialog",
-                "dialog": {
-                "type": "dialog",
-                "title": "弹框标题",
-                "body": [
-                    {
-                        "type": "steedos-object-form",
-                        "label": "对象表单",
-                        "objectApiName": "organizations",
-                        "recordId": "623NR6NCZJP8irB4y",
-                        "mode": "edit"
-                    }
-                ],
-                "size": "xl"
-            }]
-        }
-    }]
-}
-```
-
-## 属性表
-
-除了支持 [amis Form 表单属性表](https://aisuda.bce.baidu.com/amis/zh-CN/components/form/index#%E5%B1%9E%E6%80%A7%E8%A1%A8) 中的配置以外，还支持下面的配置。
-
-| 属性名 | 类型 | 默认值 | 说明 |
-|----|----|----|----|
-| objectApiName | string | space_users | 关联对象api名称 |
-| recordId | string | 无 | 关联记录ID值 |
-| mode | string | read | 只读read/编辑edit |
-| layout | string | normal | 表单项布局，同amis form的mode属性 |
-| fields | array | 无 | 显示的字段 |
-| excludedFields | array | 无 | 排除的字段 |
-| fieldsExtend | string | 无 | 重写字段配置 |
-
-## 事件表
-
-支持 [amis Form 表单事件表](https://aisuda.bce.baidu.com/amis/zh-CN/components/form/index#%E4%BA%8B%E4%BB%B6%E8%A1%A8) 中的所有配置。
-
-## 动作表
-
-支持 [amis Form 表单动作表](https://aisuda.bce.baidu.com/amis/zh-CN/components/form/index#%E5%8A%A8%E4%BD%9C%E8%A1%A8) 中的所有动作。
-
-另外所有的对象表单组件只读模式都监听了对象的`@data.change`事件，只要触发对象的`@data.change`事件，就能间接调用该组件的以下动作： 
-- [刷新](#刷新)
-- [跳转到列表页面](#跳转到列表页面)
-
-详情请参考 [对象表单组件只读模式源码](https://github.com/steedos/steedos-widgets/blob/1.2/packages/@steedos-widgets/amis-lib/src/lib/converter/amis/index.js#L426)。  
-
-### 刷新
-
-以下示例演示点击按钮后，刷新名为`project`的对象表单组件。
-
-```json
-{
-  "type": "button",
-  "label": "刷新对象表单组件",
-  "onEvent": {
-    "click": {
-      "actions": [
-        {
-          "actionType": "broadcast",
-          "args": {
-            "eventName": "@data.changed.project"
-          },
-          "data": {
-            "objectName": "project"
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
-在只读模式下，点击上述示例中的按钮后会触发绑定`project`对象的对象表单组件的`@data.changed`事件，在该事件中，会根据传入的参数判断是否刷新对象表单组件。
-
-要刷新对象表单组件，需在`data`中配置以下参数：
-- objectName: `String`。要触发广播事件对象的对象Api名称，即列表视图绑定的对象api名称。
-
-在华炎魔方记录详情页中编辑记录后，会刷新只读页面中的对象表单组件，就是因为在弹出的编辑表单组件中监听了提交成功事件并触发了页面中只读的对象表单组件的`@data.change`事件，在`@data.change`事件中会执行刷新动作。
-[对象表单组件源码](https://github.com/steedos/steedos-widgets/blob/1.2/packages/%40steedos-widgets/amis-lib/src/lib/converter/amis/index.js#L350)。
-
-### 跳转到列表页面
-
-在华炎魔方记录详情页中删除记录后，会跳转列表页面页面，就是因为触发了点击事件并触发了页面中只读的对象表单组件的`@data.change`事件，在`@data.change`事件中会执行跳转动作。
-
-详情请参考 [删除按钮源码](https://github.com/steedos/steedos-widgets/blob/1.2/packages/%40steedos-widgets/amis-lib/src/schema/standard_delete.amis.js#L44)。
-
