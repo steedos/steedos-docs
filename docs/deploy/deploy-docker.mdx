@@ -3,58 +3,56 @@ title: Docker
 sidebar_position: 1
 ---
 
-Docker 部署模式比较简单，会同时部署 nodejs、mongodb、redis、nats 等服务，推荐使用。
+The deployment mode of Docker is relatively straightforward, allowing for the simultaneous deployment of services such as Node.js, MongoDB, Redis, and NATS. 
 
-## 安装前准备
+## Pre-installation requirements
 
-- 安装[docker](https://docs.docker.com/get-docker/)
-- 安装[docker-compose](https://docs.docker.com/compose/install/)
-- 由于镜像存在国外，可配置阿里云[官方镜像加速](https://help.aliyun.com/document_detail/60750.html)
+- install[docker](https://docs.docker.com/get-docker/)
+- install[docker-compose](https://docs.docker.com/compose/install/)
 
-## 私有部署
+## Private deployment
 
-访问 [Steedos Docker](https://github.com/steedos/docker) 项目仓库， 下载 docker-compose.yml 模版文件。
+Access the project repository [Steedos Docker](https://github.com/steedos/docker)，and download the docker-compose.yml template file.
 
-- [Github下载](https://github.com/steedos/docker/blob/main/steedos-community/docker-compose.yml)
-- [Gitlab下载](https://gitlab.steedos.cn/steedos/docker/-/raw/main/steedos-community/docker-compose.yml)
+- [Github](https://github.com/steedos/docker/blob/main/steedos-community/docker-compose.yml)
 
-### 选择 steedos 版本
+### Choose the Steedos version.
 
-可以参考[docker hub](https://hub.docker.com/r/steedos/steedos-community/tags?page=1&ordering=last_updated)选择合适的版本号，通常建议运行最新版的 steedos 。
+- [docker hub](https://hub.docker.com/r/steedos/steedos-community/tags?page=1&ordering=last_updated)
 
-### 设定环境变量
+### Set the environment variables.
 
-参考文档 [配置环境变量](./steedos-config)
+- [Environment Variables](./steedos-config)
 
 ```yaml
 environment:
   - PORT=3000
-  - ROOT_URL=#在此填入服务运行的正式网址，包含端口号3000。例如 http://192.168.0.200:3000
+  - ROOT_URL=http://192.168.0.200:3000
 ```
 
-### 启动服务
+### Start the service
 
-使用 docker 启动服务
+Start the service by using Docker:
 
 ```yaml
 docker-compose up -d
 ```
 
-查看服务状态
+Check the status of the service:
 
 ```yaml
 docker ps
 ```
 
 
-停止服务
+Stop the service:
 
 ```yaml
 docker-compose stop
 ```
 
 
-停止并删除服务
+Stop and remove the service:
 
 ```yaml
 docker-compose down
