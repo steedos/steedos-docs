@@ -1,13 +1,13 @@
 ---
-title: 接口验证
+title: Interface Validation
 description: 华炎魔方接口都自带身份验证和权限控制，以确保业务数据的安全。
 ---
 
-调用接口前，首先需要先进行接口的身份验证。华炎魔方支持多种方式实现接口验证，可以非常方便地进行接口调用。不仅如此，还可以实现单点登录、验证登录状态以及注销等功能，这将使得接口调用更加灵活与便捷。
+Before calling an interface, interface authentication must be performed first. HuanYaMoFang supports multiple ways to authenticate interfaces, making interface calls easy and flexible. Moreover, it can also achieve functions such as single sign-on, validating login status, and logging out, making interface calls even more flexible and convenient.
 
-## 调用登录接口获取用户身份
+## Call the login interface to obtain user identity
 
-平台 ^2.2.52 版本开始支持使用非加密的密码，调用接口登录。
+Starting from version 2.2.52, the platform supports calling the interface for login using an unencrypted password.
 
 POST /accounts/password/login
 
@@ -18,34 +18,34 @@ POST /accounts/password/login
 }
 ```
 
-调用此接口会返回token。
+This interface returns the token.
 
-使用 ${spaceId}（您的魔方ID）和 ${token} 可以验证
+Use ${spaceId} and ${token} to verify
 
 ```javascript
 Authorization : Bearer ${spaceId},${token}
 ```
 
-## 使用当前浏览器用户身份验证
+## Use current browser user identity verification
 
-当前浏览器已用户登录信息保存在 localStorage 中，包括
+The current browser has user login information stored in the localStorage, which includes:
 
 - steedos:userId
 - steedos:token
 - steedos:spaceId
 
-使用 ${spaceId}（您的魔方ID）和 ${token} 可以验证
+Use ${spaceId} and ${token} to verify
 
 ```javascript
 Authorization : Bearer ${spaceId},${token}
 ```
 
-## 使用管理员 API Key 验证
+## Use administrator API key verification
 
-如果需要统一以管理员身份调用接口，可以管理员登录系统后，在设置-高级设置-API Key菜单下，获取管理员的API Key。
+If you need to call the interface uniformly as an administrator, you can log in to the system as an administrator, and on the Settings-Advanced Settings-API Key menu, get the administrator's API Key.
 
 ```javascript
 Authorization : Bearer apikey,${apikey}
 ```
 
-管理员 API Key 需要妥善保管，这种方式只能在服务端调用。
+The administrator API Key needs to be properly kept and this method can only be used for server-side calls.

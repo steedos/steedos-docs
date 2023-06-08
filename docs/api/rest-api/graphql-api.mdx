@@ -3,25 +3,25 @@ title: GraphQL API
 description: 基于华炎魔方创建的自定义对象，会自动生成 GraphQL API 接口，接口自带身份验证和权限控制，确保业务数据的安全。
 ---
 
-## GraphQL 控制台
+## GraphQL Console
 
-可以在浏览器端访问 GraphQL 控制台，查询和操作系统中的数据。访问网址为:  ${服务器地址}/graphql
+The GraphQL console can be accessed on the browser to query and manipulate data in the system. The website address is: ${server_address}/graphql.
 
-GraphQL接口内置权限控制，执行查询前必须先登录系统，当前查询的访问权限为当前登录的账户。
+GraphQL interface has built-in access control. Before executing a query, you must first log in to the system. The query's access permission is based on the current logged-in account.
 
  ![](https://console.steedos.cn/api/files/images/BTmifmnQCm98HdZ7L)
 
 ## 接口验证
 
-调用接口前，首先需要先进行接口的身份验证，请参阅 [接口验证](./api-validate)。
+Before calling an interface, interface authentication must first be performed. Please refer to [Interface Verification.](./api-validate)。
 
-## 查询数据
+## Querying Data
 
-可以在使用GraphQL查询数据时设置要查询的对象、字段、翻页、排序及过滤条件等，所有查询都基于当前登录用户被授权查看的数据范围。
+When using GraphQL to query data, you can set the object, field, pagination, sorting, and filtering conditions to be queried. All queries are based on the range of data authorized for viewing by the currently logged-in user.
 
-### 查询对象和字段
+### Querying Objects and Fields
 
-输入对象名称和字段名称，可以查询对象中的所有记录。例如以下查询可以查询分部信息。
+By inputting the object and field names, you can query all records in the object. For example, the following query can query information about branches.
 
 ```javascript
 {
@@ -34,7 +34,7 @@ GraphQL接口内置权限控制，执行查询前必须先登录系统，当前�
 ```
 
 
-查询结果
+and return
 
 ```javascript
 {
@@ -60,11 +60,11 @@ GraphQL接口内置权限控制，执行查询前必须先登录系统，当前�
 ```
 
 
-### 查询参数：翻页
+### Query parameter: Pagination
 
-您可以定义一个`skip`要跳过多少条记录，以及一个查询要返回多少条记录`top`。
+You can define a skip parameter to specify how many records to skip, and a top parameter to specify how many records to return in a query.
 
-如下查询将仅返回第二条记录：
+The following query will only return the second record:
 
 ```javascript
 query{
@@ -76,13 +76,13 @@ query{
 ```
 
 
-### 查询参数：排序
+### Query parameter: Sorting
 
-您可以定义如何用`sort`对结果进行排序。
+You can define how to sort the results using the sort parameter.
 
-关键字`desc`表示降序，关键字`asc`表示升序。
+The keyword desc indicates descending order, and the keyword asc indicates ascending order.
 
-示例：按字段`name`降序排序
+Example: Sorting in descending order by the field name.
 
 ```javascript
 query{
@@ -93,22 +93,24 @@ query{
 }
 ```
 
-### 查询参数：过滤
+### Query parameter: Filtering
 
-您可以添加 `filters` 筛选特定记录。示例：查询分部名称包含 ‘华炎’ 的记录。过滤条件详情请见下方 ”查询过滤条件详解“。
+You can add filters to query for specific records.
+
+Example: Query records where the branch name contains 'steedos'.
 
 ```javascript
 query{
-  company(filters: ["name","contains","华炎"]){
+  company(filters: ["name","contains","steedos"]){
     _id,
     name,
   } 
 }
 ```
 
-### 扩展查询相关表
+### Expanding Related Tables in Query
 
-对于 lookup 和 master/detail 类型字段，使用 ${field_api_name}__expand 语法，可以扩展查询相关表中的数据。如果相关表字段是多选类型，返回的也是数组数据。
+For lookup and master/detail type fields, you can use the ${field_api_name}__expand syntax to expand the query to include data from related tables. If the related table field is a multi-select type, the returned data will also be an array.
 
 ```javascript
 {
@@ -124,7 +126,7 @@ query{
 ```
 
 
-返回结果
+and return
 
 ```javascript
 {
@@ -147,11 +149,11 @@ query{
 ```
 
 
-### 返回格式化数据
+### Returning formatted data
 
-对于 boolean , select , date , datetime , lookup类型字段，使用 _display{ field_api_name } 语法，可以格式化查询到的数据。
+For boolean, select, date, datetime, and lookup type fields, you can use the _display{field_api_name} syntax to format the queried data.
 
-其中 0 、null 、false  值格式化后为空字符串。
+In the formatted result, the values of 0, null, and false will be replaced with an empty string.
 
 ```javascript
 query{
@@ -196,7 +198,7 @@ query{
 ```
 
 
-返回结果
+and return
 
 ```javascript
 {
@@ -253,19 +255,19 @@ query{
 ```
 
 
-### 查询相关子表
+### Querying Related Subtables
 
-当其他表与当前表关联时，可以同时查询相关的子表信息。
+When other tables are related to the current table, you can query the related subtable information at the same time.
 
 
-查询语法
+Query Syntax:
 
 ```javascript
 _related_${object_api_name}_${field_api_name}
 ```
 
 
-例如以下查询可以查询当前分部中的人员清单，也就是人员对象（space_users）中，company_ids 字段与 company 绑定的记录信息。
+For example, the following query can retrieve a list of personnel within the current division, i.e. the records in the "space_users" object where the "company_ids" field is associated with the "company":
 
 ```javascript
 {
@@ -285,10 +287,10 @@ _related_${object_api_name}_${field_api_name}
 }
 ```
 
-注意：为了提升返回结果的可读性，这里给返回结果起了一个别名： space_users
+Note: For the purpose of enhancing the readability of the returned results, an alias named "space_users" is used for the returned results.
 
 
-返回结果
+and return
 
 ```javascript
 {
@@ -317,17 +319,17 @@ _related_${object_api_name}_${field_api_name}
 ```
 
 
-## 操作数据
+## Working with Data
 
-可以使用GraphQL对数据执行增、删、改操作，所有数据处理操作都基于当前登录用户被授权的数据范围。
+GraphQL can be utilized to perform CRUD (Create, Retrieve, Update, Delete) operations on data. All data-related operations are executed based on the current user's authorized data scope.
 
-### 新增数据
+### Creating Data
 
-当调用 GraphQL API 新增数据时，系统会首先验证当前用户是否有对应的新增权限。
+When calling the GraphQL API to create new data, the system first verifies whether the current user has the permission to perform the corresponding create action.
 
-#### 新增单条数据
+#### Creating a Single Record
 
-使用 `mutation.{object_api_name}__insert` 语法，传入 `doc` 参数值。
+To create a single record, use the syntax mutation.{object_api_name}__insert and provide the value for the doc parameter.
 
 ```javascript
 mutation {
@@ -338,11 +340,11 @@ mutation {
 }
 ```
 
-其中，`tasks` 代表要插入记录的对象名称，`{name:"Task One", assignees: []}` 代表要插入的JSON数据。
+In this case, tasks represents the object name of the record you want to insert, and {name:"Task One", assignees: []} represents the JSON data to be inserted.
 
-关键字 `__insert` 表示通过 GraphQL API 在系统中插入一条记录。
+The keyword __insert indicates that a record will be added to the system via the GraphQL API.
 
-结果如下：
+and return
 
 ```javascript
 {
@@ -355,45 +357,13 @@ mutation {
 }
 ```
 
-<!--
-#### 新增多条数据
+### Modifying record
 
-使用 `mutation.{object_api_name}__insert_many` 语法，传入 `docs` 参数值。
+When calling the GraphQL API to modify data, the system first verifies whether the current user has the corresponding edit permissions.
 
-```javascript
-mutation {
-  tasks__insert_many(docs:[{name:"Task One", assignees: []}]) {
-    name
-    _id
-  }
-}
-```
+#### Modifying a single record
 
-其中， `tasks` 代表要插入记录的对象名称，`[{name:"Task One", assignees: []}]` 代表要插入的JSON数据。
-
-关键字 `__insert_many` 表示通过 GraphQL API 在系统中插入多条记录。
-
-结果如下：
-
-```javascript
-{
-  "data": {
-    "tasks__insert_many": [{
-      "name": "Task One",
-      "_id": "5cb98489d09a343e14daae95"
-    }]
-  }
-}
-```
--->
-
-### 修改数据
-
-当调用 GraphQL API 修改数据时，系统会首先验证当前用户是否有对应的修改权限。
-
-#### 修改单条数据
-
-使用 `mutation.{object_api_name}__update` 语法，传入 `id` 和 `doc` 参数值。
+To modify a single record, use the syntax mutation.{object_api_name}__update and provide the values for the id and doc parameters.
 
 ```javascript
 mutation {
@@ -404,11 +374,11 @@ mutation {
 }
 ```
 
-其中，`tasks`代表要修改记录的对象名称，`id` 的值 `5cb98489d09a343e14daae95` 代表要修改的记录的 `_id`，`{name:"Task Important"}` 代表要更新的JSON数据。
+In this case, tasks represents the object name of the record you want to modify, the value 5cb98489d09a343e14daae95 for id represents the _id of the record you want to modify, and {name:"Task Important"} represents the JSON data to be updated.
 
-关键字`__update`表示通过 GraphQL API 在系统中修改一条记录。
+The keyword __update indicates that a record will be updated in the system via the GraphQL API.
 
-结果如下：
+and return
 
 ```javascript
 {
@@ -421,46 +391,13 @@ mutation {
 }
 ```
 
-<!--
-#### 修改多条数据
+### Deleting record
 
-使用 `mutation.{object_api_name}__update_many` 语法，传入 `filters` 和 `doc` 参数值。
+When calling the GraphQL API to delete data, the system will first verify if the current user has the corresponding deletion permissions.
 
-```javascript
-mutation {
-  tasks__update_many(filters: ["name","contains","Important"], doc:{important: true}) {
-    name
-    _id
-    important
-  }
-}
-```
+#### Deleting a single record
 
-其中，`tasks` 代表要修改记录的对象名称，`filters` 的值代表要修改的数据范围的过滤条件，`{important: true}` 代表要更新的JSON数据。
-
-关键字 `__update_many` 表示通过 GraphQL API 在系统中修改多条记录。
-
-结果如下：
-
-```javascript
-{
-  "data": {
-    "tasks__update_many": [{
-      "name": "Task Important",
-      "_id": "5cb98489d09a343e14daae95",
-      "important": true
-    }]
-  }
-}
-```
--->
-### 删除数据
-
-当调用 GraphQL API 删除数据时，系统会首先验证当前用户是否有对应的删除权限。
-
-#### 删除单条数据
-
-使用 `mutation.{object_api_name}__delete` 语法，传入 `id` 参数值。
+To delete a single piece of data, use the mutation.{object_api_name}__delete syntax and provide the id parameter value.
 
 ```javascript
 mutation {
@@ -468,11 +405,11 @@ mutation {
 }
 ```
 
-其中，`tasks` 代表要删除记录的对象名，`id` 的值 `5cb98489d09a343e14daae95` 代表要删除的记录的`_id`
+In which tasks represents the name of the object to delete a record from, and the value 5cb98489d09a343e14daae95 of id represents the _id of the record to be deleted.
 
-关键字`__delete`表示通过 GraphQL API 在系统中删除一条记录。
+The keyword __delete represents deleting a record in the system through the GraphQL API.
 
-结果如下：
+and return
 
 ```javascript
 {
@@ -482,32 +419,5 @@ mutation {
 }
 ```
 
-<!--
-#### 删除多条数据
 
-使用 `mutation.{object_api_name}__delete_many` 语法，传入 `filters` 参数值。
-
-```javascript
-mutation {
-  tasks__delete_many(filters: ["name","contains","Important"]) 
-}
-```
-
-其中，`tasks`代表要删除记录的对象名称，`filters` 的值代表要删除的数据范围的过滤条件。
-
-关键字 `__delete_many` 表示通过 GraphQL API 在系统中删除多条记录。
-
-结果如下：
-
-```javascript
-{
-  "data": {
-    "tasks__delete_many": 1
-  }
-}
-```
-
-> 返回值 `1` 表示成功删除的数据条数。
--->
-
-参考：[GraphQL](https://graphql.org/)
+Reference to：[GraphQL](https://graphql.org/)
