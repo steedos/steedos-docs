@@ -1,34 +1,30 @@
 ---
-title: 流程 API
+title: Process API
 description: 根据流程的元数据定义，自动生成审批相关API。
 ---
 
-本协议约定低代码平台流程引擎需要提供的相关API接口的规范，包括请求接口参数，返回值等规则。
+Specifications for Low-code platform's workflow engine related API interfaces, including rules for request parameters and return values, are stipulated in this agreement.
 
-## 接口验证
+## Interface Validation
 
-调用接口需要在请求的Headers中添加用户身份验证信息，详情请参阅 [接口验证](./api-validate)。
+To call the API interfaces, user authentication information must be added to the request headers. For details, please refer to  [Interface Validation](./api-validate).
 
-## API 清单
+## API List
 
-| 名称 | 请求操作
+| Name | Request Operation
 |----|----|
-| 发起审批 | POST |
-| 暂存审批单 | POST |
-| 提交草稿中申请单 | POST |
-| 提交审批中申请单 | POST |
+| Start Approval | POST |
+| Save Approval as Draft | POST |
+| Submit Draft Application | POST |
+| Submit Approval Request | POST |
 
-<!--
-| 计算下一步处理人 | POST |
--->
+## API Specifications
 
-## API 规范
+Below are the detailed specifications for each workflow API.
 
-以下是各个流程 API 的详细规范。
+### Start Approval
 
-### 发起审批
-
-新建一个草稿状态的审批单。
+Create a new approval request in draft status.
 
 #### URI
 
@@ -40,21 +36,21 @@ description: 根据流程的元数据定义，自动生成审批相关API。
 
 POST
 
-#### 请求参数
+#### Request Parameters
 
-请求该接口时需要传入以下参数。
+The following parameters are required when requesting this interface.
 
-| 名称 | 类型| 描述 |
+| Name | Type| Description |
 |----|----|----|
-| instance | object | 审批单字段值 |
+| instance | object | Approval Form Field Values |
 
-其中instance属性描述如下：
+The 'instance' attribute is described as follows:
 
-| 名称 | 类型| 描述 |
+| Name | Type| Description |
 |----|----|----|
-| space | string | 工作区_id |
-| flow | string | 流程_id |
-| applicant | string | 申请人_id |
+| space | string | Workspace ID |
+| flow | string | Process ID |
+| applicant | string | Applicant ID |
 
 ```json
 {
@@ -66,24 +62,24 @@ POST
 }
 ```
 
-#### 返回值
+#### Response
 
-- 该API接口请求成功时返回值格式如下：
+- The format of the return value when the API interface request is successful is as follows:
 
-| 名称 | 类型| 描述 |
+| Name | Type| Description |
 |----|----|----|
-| instance | object | 审批单字段值 |
+| instance | object | Approval form field value |
 
-其中instance属性描述如下：
+Where the instance property is described as follows:
 
-| 名称 | 类型| 描述 |
+| Name | Type| Description |
 |----|----|----|
-| _id | string | 创建成功的申请单_id |
-| space | string | 工作区_id |
-| flow | string | 流程_id |
-| flow_version | string | 流程版本_id |
-| form | string | 表单版本_id |
-| form_version | string | 表单版本_id |
+| _id | string | The successfully created application form ID |
+| space | string | Workspace ID |
+| flow | string | Workflow ID |
+| flow_version | string | Workflow version ID |
+| form | string | Form  ID |
+| form_version | string | Form version ID |
 
 ```json
 {
@@ -98,9 +94,9 @@ POST
 }
 ```
 
-instance中返回的是创建成功的审批单记录信息。
+The instance returned in the response contains information about the successfully created approval record.
 
-### 暂存草稿审批单
+### Save Draft Approval Form
 
 #### URI
 
@@ -112,54 +108,13 @@ instance中返回的是创建成功的审批单记录信息。
 
 POST
 
-#### 请求参数
+#### Request parameters.
 
-请求该接口时需要传入以下参数。
+The following parameters need to be passed when requesting this API.
 
-| 名称 | 类型| 描述 |
+| Name | Type| Description |
 |----|----|----|
-| instance | object | 审批单字段值 |
-
-其中instance属性描述如下：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| _id | string | 申请单_id |
-| space | string | 工作区_id |
-| flow | string | 流程_id |
-| flow_version | string | 流程版本_id |
-| form | string | 表单版本_id |
-| form_version | string | 表单版本_id |
-| applicant | string | 申请人_id |
-| applicant_name | string | 申请人姓名 |
-| applicant_organization | string | 申请人所属组织_id |
-| applicant_organization_name | string | 申请人所属组织名称 |
-| applicant_organization_fullname | string | 申请人所属组织全称 |
-| code | string | 申请单Code |
-| traces | [object] | 签核历程 |
-| submit_date | datetime | 提交时间 |
-
-其中traces属性描述如下：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| _id | string | 签核历程_id |
-| approves | [object] | 审批历程 |
-
-其中approves属性描述如下：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| _id | string | 审批历程_id |
-| description | string | 审批内容 |
-| values | object | 申请单字段值 |
-| next_steps | [object] | 下一步骤信息 |
-
-其中next_steps属性描述如下：
-| 名称 | 类型| 描述 |
-|----|----|----|
-| step | string | 下一步骤_id |
-| users | [string] | 下一步骤处理人 |
+| instance | object | Approval Form Field Values  |
 
 ```json
 {
@@ -203,158 +158,24 @@ POST
 }
 ```
 
-#### 返回值
+#### Response
 
-- 该API接口请求成功时返回值格式如下：
 
-| 名称 | 类型| 描述 |
+- The format of the successful API interface request response is as follows:
+
+| Name | Type| Description |
 |----|----|----|
-| instance | boolean | 是否成功 |
+| instance | boolean | Was the operation successful? |
 
 ```json
 {
     "instance": true
 }
 ```
-<!--
-### 计算下一步处理人
 
-根据当前步骤状态计算下一步可供选择的处理人清单。
+### Submitting a Draft Application
 
-#### URI
-
-```text
-/api/workflow/nextStepUsers?spaceId=<spaceId>&deal_type=<deal_type>
-```
-
-以下表格描述了URI中的参数清单。
-
-| 名称 | 描述 |
-|----|----|
-| `<spaceId>` | 当前公司 _id 值 |
-| `<deal_type>` | 处理人类型 |
-
-#### 请求参数
-
-请求该接口时需要根据URI中传入的不同处理人类型传入不同的参数。
-
-- 处理人类型为指定人员 specifyUser 时需要传入的参数：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| specifyUserIds | string[] | 人员_id集合 |
-
-- 处理人类型为指定审批岗位 applicantRole 时需要传入的参数：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| applicantId | string | 申请人_id |
-| approveRoleIds | string[] | 审批岗位集合 |
-
-- 处理人类型为指定角色 hrRole 时需要传入的参数：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| approveHrRoleIds | string[] | 角色集合 |
-
-- 处理人类型为申请人上级 applicantSuperior 时需要传入的参数：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| applicantId | string | 申请人_id |
-
-- 处理人类型为申请人 applicant 时需要传入的参数：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| applicantId | string | 申请人_id |
-
-- 处理人类型为指定人员字段 userField 时需要传入的参数：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| userField | object | 人员字段 |
-| userFieldValue | string | 人员字段值 |
-
-userField 参数是一个json对象，以下表格描述了该参数的属性清单：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| is_multiselect | boolean | 是否多选 |
-
-- 处理人类型为指定部门字段 orgField 时需要传入的参数：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| orgField | object | 部门字段 |
-| orgFieldValue | string | 部门字段值 |
-
-orgField 参数是一个json对象，以下表格描述了该参数的属性清单：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| is_multiselect | boolean | 是否多选 |
-
-- 处理人类型为指定部门 specifyOrg 时需要传入的参数：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| specifyOrgIds | string[] | 部门_id集合 |
-
-- 处理人类型为指定人员字段相关审批岗位 userFieldRole 时需要传入的参数：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| userField | object | 人员字段 |
-| userFieldValue | string | 人员字段值 |
-| approverRoleIds | string[] | 审批岗位_id集合 |
-
-userField 参数是一个json对象，以下表格描述了该参数的属性清单：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| is_multiselect | boolean | 是否多选 |
-
-- 处理人类型为指定部门字段相关审批岗位 orgFieldRole 时需要传入的参数：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| orgField | object | 部门字段 |
-| orgFieldValue | string | 部门字段值 |
-| approverRoleIds | string[] | 审批岗位_id集合 |
-
-orgField 参数是一个json对象，以下表格描述了该参数的属性清单：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| is_multiselect | boolean | 是否多选 |
-
-- 处理人类型为指定人员 pickupAtRuntime 时不需要传入任何参数，直接返回空数组。
-
-#### 返回值
-
-该API接口返回值格式如下：
-
-```json
-{
-    "nextStepUsers": [...],
-    "error": ""
-}
-```
-
-其中 nextStepUsers 是一个对象数组，表示下一步可供选择的处理人列表，以下表格描述了该数组中每个处理人信息：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| id | string | 处理人_id |
-| name | string | 处理人姓名 |
-
-当该API接口执行过程中出现错误时，会以字符串形式返回到 error 键值中。
--->
-
-### 提交草稿中申请单
-
-把草稿状态的申请单提交到下一步骤。
+Submit an application in draft status to the next step
 
 #### URI
 
@@ -366,50 +187,15 @@ orgField 参数是一个json对象，以下表格描述了该参数的属性清�
 
 POST
 
-#### 请求参数
+#### Request Parameters
 
-请求该接口时需要传入以下参数。
+The following parameters need to be passed when requesting this API.
 
-| 名称 | 类型| 描述 |
+| Name | Type| Description |
 |----|----|----|
-| Instances | object[] | 申请单内容 |
+| Instances | object[] | The content of the application form. |
 
-以下表格描述了Instances中的对象键值信息：
 
-| 名称 | 类型| 描述 |
-|----|----|----|
-| _id | string | 审批单_id |
-| flow | string | 当前流程_id |
-| name | string | 审批单名称 |
-| applicant | string | 申请人_id |
-| submitter | string | 提交人_id |
-| inbox_users | string[] | 待审核人_id集合 |
-| traces | object[] | 签核历程 |
-
-以下表格描述了 traces 中的对象键值信息：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| _id | string | 签核历程_id |
-| step | string | 签核历程步骤_id |
-| approves | object[] | 审批历程 |
-
-以下表格描述了 approves 中的对象键值信息：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| _id | string | 审批历程_id |
-| description | string[] | 审批意见 |
-| values | object | 申请单字段值 |
-| next_steps | string[] | 下一步骤信息 |
-| attachments | string[] | 附件 |
-
-以下表格描述了 next_steps 中的对象键值信息：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| step | string | 下一步骤_id |
-| users | [string] | 下一步骤处理人 |
 
 ```json
 {
@@ -443,11 +229,11 @@ POST
 }
 ```
 
-> traces 是每个步骤的签核历程，approves 则是每个签核历程中的审批历程，里面记录了详细的审批表单信息。
+> The traces contains the signature history for each step, while approves contains the approval process within each signature history, which records detailed information about the approval form.
 
-#### 返回值
+#### Response
 
-- 该API接口请求成功时返回值格式如下：
+- When this API interface is requested successfully, the format of the return value is as follows:
 
 ```json
 {
@@ -455,15 +241,15 @@ POST
 }
 ```
 
-result中返回的是一个对象数组，该数组中包含的键值信息如下所示：
+The result returns an array of objects. The key-value information contained in this array is shown as follows:
 
-| 名称 | 类型| 描述 |
+| Name | Type| Description |
 |----|----|----|
-| alerts | string | 提示信息 |
+| alerts | string | Prompt messages |
 
-alerts中主要是提示流程版本是否已升级。
+The alerts mainly prompts whether the process version has been upgraded.
 
-- 该API接口请求失败时返回值格式如下：
+- When this API interface fails to request, the format of the return value is as follows:
 
 ```json
 {
@@ -471,9 +257,9 @@ alerts中主要是提示流程版本是否已升级。
 }
 ```
 
-### 提交审批中申请单
+### Submitting an Approval Application
 
-把审批中的申请单提交到下一步骤。
+Submit an application in approval status to the next step.
 
 #### URI
 
@@ -485,49 +271,19 @@ alerts中主要是提示流程版本是否已升级。
 
 POST
 
-#### 请求参数
+#### Request Parameters
 
-请求该接口时需要传入以下参数。
+The following parameters need to be passed when requesting this API.
 
-| 名称 | 类型| 描述 |
+| Name | Type| Description |
 |----|----|----|
-| Approvals | object[] | 审批内容 |
+| Approvals | object[] | The content of the approval |
 
-以下表格描述了Approvals中的对象键值信息：
+#### Response
 
-| 名称 | 类型| 描述 |
-|----|----|----|
-| instance | string | 当前审批单_id |
-| trace | string | 当前签核历程_id |
-| _id | string | 当前审批历程_id |
-| values | object | 审批表单值 |
-| next_steps | object[] | 下一步骤 |
-| judge | string | 审批状态 |
-| description | string | 审批意见 |
-| geolocation | string | 审批地点 |
+- When this API interface is requested successfully, an empty object is returned.
 
-以下表格描述了next_steps中的对象键值信息：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| step | string | 下一步骤_id |
-| users | string[] | 下一步骤处理人_id |
-
-以下表格描述了judge数据字典：
-
-| 名称 | 类型| 描述 |
-|----|----|----|
-| approved | string | 核准 |
-| rejected | string | 驳回 |
-| terminated | string | 被取回 |
-| reassigned | string | 转签核 |
-| relocated | string | 重定位 |
-
-#### 返回值
-
-- 该API接口请求成功时返回空对象。
-
-- 该API接口请求失败时返回值格式如下：
+- When this API interface fails to request, the format of the return value is as follows:
 
 ```json
 {

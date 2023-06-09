@@ -2,6 +2,6 @@
 title: REST API
 ---
 
-华炎魔方中创建的自定义对象，会自动生成标准的 REST API 接口。
+Custom objects created in the Steedos system will automatically generate standard REST API interfaces.
 
-接口经权限引擎过滤，以用户身份调用接口只会返回当前用户授权访问的数据。
+These interfaces are filtered by the permission engine, ensuring that users can only access data they have authorization to, even when using the API.
