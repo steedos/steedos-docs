@@ -14,6 +14,8 @@ $ yarn
 $ yarn start
 ```
 
+调试中文版 
+
 ```
 $ yarn start -- --locale zh-CN
 ```
