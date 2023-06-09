@@ -25,26 +25,26 @@
   },
   "link.item.label.Deploy": {
     "message": "安装部署",
-    "description": "The label of footer link with label=Deploy linking to /docs/deploy"
+    "description": "The label of footer link with label=Deploy linking to /deploy"
   },
   "link.item.label.User Guide": {
     "message": "用户向导",
-    "description": "The label of footer link with label=User Guide linking to /docs/user"
+    "description": "The label of footer link with label=User Guide linking to /user"
   },
   "link.item.label.Admin Guide": {
     "message": "管理员向导",
-    "description": "The label of footer link with label=Admin Guide linking to /docs/admin"
+    "description": "The label of footer link with label=Admin Guide linking to /admin"
   },
   "link.item.label.Extend with Click": {
     "message": "无代码开发",
-    "description": "The label of footer link with label=Extend with Click linking to /docs/no-code"
+    "description": "The label of footer link with label=Extend with Click linking to /no-code"
   },
   "link.item.label.Automation You Process": {
     "message": "自动化工作流",
-    "description": "The label of footer link with label=Automation You Process linking to /docs/automation"
+    "description": "The label of footer link with label=Automation You Process linking to /automation"
   },
   "link.item.label.Extend with Code": {
     "message": "开发人员向导",
-    "description": "The label of footer link with label=Extend with Code linking to /docs/developer"
+    "description": "The label of footer link with label=Extend with Code linking to /developer"
   }
 }

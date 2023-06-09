@@ -14,8 +14,16 @@ $ yarn
 $ yarn start
 ```
 
+调试中文版 
+
 ```
 $ yarn start -- --locale zh-CN
+```
+
+更新中文翻译资源
+
+```
+yarn write-translations -- --locale zh-CN
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.

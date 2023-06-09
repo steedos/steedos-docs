@@ -39,6 +39,13 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: "/",
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: '2.5',
+            },
+          },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -105,15 +112,15 @@ const config = {
             items: [
               {
                 label: 'Deploy',
-                to: '/docs/deploy',
+                to: '/deploy',
               },
               {
                 label: 'User Guide',
-                to: '/docs/user',
+                to: '/user',
               },
               {
                 label: 'Admin Guide',
-                to: '/docs/admin',
+                to: '/admin',
               },
             ],
           },
@@ -122,15 +129,15 @@ const config = {
             items: [
               {
                 label: 'Extend with Click',
-                to: '/docs/no-code',
+                to: '/no-code',
               },
               {
                 label: 'Automation You Process',
-                to: '/docs/automation',
+                to: '/automation',
               },
               {
                 label: 'Extend with Code',
-                to: '/docs/developer',
+                to: '/developer',
               },
             ],
           },

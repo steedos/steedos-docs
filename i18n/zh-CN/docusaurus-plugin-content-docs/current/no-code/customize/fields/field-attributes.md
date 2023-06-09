@@ -61,6 +61,5 @@ sidebar_position: 2
 
 ![](https://console.steedos.cn/api/files/images/gimrJBva6J6bmRz2J)
 
-关于字段索引的定时器配置请参考文档 [字段索引配置](/docs/deploy/steedos-config#%E5%AD%97%E6%AE%B5%E7%B4%A2%E5%BC%95%E9%85%8D%E7%BD%AE)。
 
 适当地为对象上的字段创建索引是非常必要的，它可以极大的提升相关记录的查询速度，在公式字段、累计汇总、数据导入等功能中也能明显受益。
