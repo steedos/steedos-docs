@@ -1,9 +1,9 @@
 ---
-title: 筛选条件
+title: Filter Criteria
 description: 筛选条件，用于向数据库查询数据。
 ---
 
-Steedos 使用数组的格式定义一个或多个筛选条件。例如以下过滤器用于查询本月创建的，责任人是本人的数据。
+Steedos uses an array format to define one or more filter criteria. For example, the following filter is used to query data that was created this month and assigned to the current user.
 
 ```javascript
 filters: [["priority", "=", "high"],["owner","=","{userId}"],["created", "=", this_month]]
@@ -12,33 +12,24 @@ filters: [["age", "between", [20,30]]]
 ```
 
 
-## 运算符 operation
+## operation
 
-* "=": 等于
-* "!=": 不等于
-* ">": 大于
-* ">=": 大于等于
-* "<": 小于
-* "<=": 小于等于
-* "startswith": 以...开始
-* "contains": 包含...
-* "notcontains": 不包含...
-* "between": 范围
+* "=": equals
+* "!=":  not equals
+* ">": greater than
+* ">=": greater than or equal to
+* "<": less than
+* "<=": less than or equal to
+* "startswith": starts with...
+* "contains": contains...
+* "notcontains": does not contain...
+* "between": within a range
 
-## 组合过滤
-<!--
-### “非”(not)操作
+## Combining Filters
 
-可以在当前筛选条件的基础上取反，例如：
+### “and”、“or”操作
 
-```javascript
-["not", ["value", "=", 3]]
-```
--->
-
-### “与(and)”、“或(or)”操作
-
-多个过滤器可以通过“与(and)”、“或(or)”操作进行组合，例如：
+Multiple filters can be combined using "and" and "or" operations. For example:
 
 * \[ \[ "value", ">", 3 \], "and", \[ "value", "<", 7 \] \]
 * \[ \[ "value", ">", 7 \], "or", \[ "value", "<", 3 \] \]
