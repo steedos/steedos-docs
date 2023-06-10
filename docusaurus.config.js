@@ -11,10 +11,10 @@ const config = {
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
-  url: 'https://docs.steedos.com/',
+  url: 'https://www.steedos.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/docs',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -112,15 +112,15 @@ const config = {
             items: [
               {
                 label: 'Deploy',
-                to: '/deploy',
+                to: 'deploy',
               },
               {
                 label: 'User Guide',
-                to: '/user',
+                to: 'user',
               },
               {
                 label: 'Admin Guide',
-                to: '/admin',
+                to: 'admin',
               },
             ],
           },
@@ -129,15 +129,15 @@ const config = {
             items: [
               {
                 label: 'Extend with Click',
-                to: '/no-code',
+                to: 'no-code',
               },
               {
                 label: 'Automation You Process',
-                to: '/automation',
+                to: 'automation',
               },
               {
                 label: 'Extend with Code',
-                to: '/developer',
+                to: 'developer',
               },
             ],
           },
