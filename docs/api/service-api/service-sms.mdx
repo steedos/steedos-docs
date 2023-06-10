@@ -1,53 +1,53 @@
 ---
-title: 短信通知
+title: MS Notification
 description: 华炎魔方支持腾讯云短信服务，配置后，可以通过手机短信登录和接受账户提醒消息。
 ---
 
-## 申请短信服务
+## Applying for SMS Service
 
-1、注册账户：登录腾讯云官网 https://cloud.tencent.com/ 进行注册
+1. Register an account: Sign up for Tencent Cloud at https://cloud.tencent.com/
 
-2、接入短信服务：腾讯云-产品-企业应用与云通信-云通信-短信  https://cloud.tencent.com/product/sms
+2. Access the SMS service: Visit Tencent Cloud-Enterprise Application and Cloud Communication-Cloud Communication-SMS at https://cloud.tencent.com/product/sms
 
-3、创建签名：国内短信-签名管理-创建签名-根据指引填入信息，例如创建签名：“华炎魔方”，审核通过可以在签名管理列表里看到已经创建的短信签名
+3. Create a signature: Go to "Signature Management" under "Domestic SMS" and create a signature. Follow the instructions and provide the required information. For example, create the signature "HuanYan Magic Cube". Once the signature is approved, you can see it in the signature management list.
 
-4、创建正文模板：国内短信-正文模板管理-创建正文模板，针对华炎魔方服务，需要创建以下正文模板：
+4. Create a content template: Go to "Content Template Management" under "Domestic SMS" and create a content template. For Steedos service, the following content templates need to be created:
 
-| 模板名称 | 内容 |
+| Template Name | Template Name |
 | ---- | ---- | 
-|验证码-登录|您的验证码为：{1}，该验证码{2}分钟内有效，请勿泄漏于他人！| 
-|系统通知-修改密码|系统通知：您的登录密码已被修改| 
-|通讯录手机被修改|通讯录中您的手机号已被修改为{1}。|
+|Verification Code-Login|Your verification code is: {1}. This code is valid for {2} minutes. Please do not share it with anyone else!| 
+|System Notification-Password Modification|System Notification: Your login password has been modified.| 
+|Address Book Mobile Phone Modification|Your mobile phone number in the address book has been changed to {1}.|
 
-5、创建应用：应用管理-应用列表，点击创建应用，例如创建应用 “华炎魔方”
+5. Create an application: In "Application Management-Application List", click on "Create Application" and create an application, for example, "Steedos".
 
 
-## 发送短信配置
+## SMS Sending Configuration
 
-编辑.env或者.env.local，添加以下三个环境变量：
+Edit .env or .env.local and add the following three environment variables:
 
 ```yaml
 STEEDOS_SMS_QCLOUD_SDKAPPID=xxxxxxxxxxx 
 STEEDOS_SMS_QCLOUD_APPKEY=xxxxxxxxxxx
-STEEDOS_SMS_QCLOUD_SIGNNAME=xxxxxxxxxxx   # 例如为：【华炎魔方】
+STEEDOS_SMS_QCLOUD_SIGNNAME=xxxxxxxxxxx   
 ```
 
- - STEEDOS_SMS_QCLOUD_SDKAPPID: 腾讯云-短信-应用管理-应用列表-华炎魔方-SDK AppID
- - STEEDOS_SMS_QCLOUD_APPKEY: 腾讯云-短信-应用管理-应用列表-华炎魔方-App Key
- - STEEDOS_SMS_QCLOUD_SIGNNAME:  腾讯云-短信-签名管理-华炎魔方（签名内容）
+- STEEDOS_SMS_QCLOUD_SDKAPPID: Tencent Cloud SMS-Application Management-Application Steedos-SDK AppID
+- STEEDOS_SMS_QCLOUD_APPKEY: Tencent Cloud SMS-Application Management-Application List-Steedos-App Key
+- STEEDOS_SMS_QCLOUD_SIGNNAME: Tencent Cloud SMS-Signature Management-Steedos (Signature Content)
 
-服务版本为2.1及旧版服务，需修改配置文件steedos-config.yml，添加以下配置：
+For service version 2.1 and older versions, you need to modify the configuration file steedos-config.yml and add the following configuration:
 
 ```yaml
 sms:
   qcloud:
-    smsqueue_interval: 1000 # 默认1秒轮询一次短信队列
+    smsqueue_interval: 1000 
     sdkappid: ${STEEDOS_SMS_QCLOUD_SDKAPPID}
     appkey: ${STEEDOS_SMS_QCLOUD_APPKEY}
     signname: ${STEEDOS_SMS_QCLOUD_SIGNNAME}
 ```
 
-服务版本为2.2及新版服务，需要修改配置文件steedos.config.js，修改为：
+For service versions 2.2 and newer, adjustments need to be made to the configuration file, steedos.config.js. Please modify the file to reflect this:
 
 ```js
 require('dotenv-flow').config({
@@ -59,11 +59,10 @@ module.exports = {
     started(broker) {
         broker.createService(require("@steedos/service-enterprise"));
     },
-    // 添加settings自定义配置
     settings: {
         sms: {
             qcloud: {
-                smsqueue_interval: 1000 //默认1秒轮询一次短信队列
+                smsqueue_interval: 1000
                 sdkappid: process.env.STEEDOS_SMS_QCLOUD_SDKAPPID
                 appkey: process.env.STEEDOS_SMS_QCLOUD_APPKEY
                 signname: process.env.STEEDOS_SMS_QCLOUD_SIGNNAME

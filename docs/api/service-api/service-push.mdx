@@ -1,27 +1,27 @@
 ---
-title: 推送通知
+title: Push Notification
 description: 华炎魔方支持在第三方应用中调用接口来发推送通知
 ---
 
-只要调用华炎魔方 GraphQL 接口往对象 `push_notifications` 中插入通知数据即可实现发送 推送通知 到魔方魔方手机客户端、PC客户端以及浏览器端。
+Sending Push Notification can be achieved by simply calling the Steedos GraphQL API to insert notification data into the push_notifications object, which will then send the notification to Steedos mobile client, PC client, and browser client.
 
-## 安装软件包 
+## 安Install Software Package.装软件包 
 
 
-## 调用GraphQL接口
+## Calling GraphQL API
 
-调用GraphQL接口往对象 `push_notifications` 中插入一条记录，系统就会自动发送推送通知。
+By calling the GraphQL API to insert a record into the push_notifications object, the system will automatically send a push notification.
 
-以下是GraphQL接口中需要发送的数据参考：
+Here's a reference for the data that needs to be sent in the GraphQL API:
 
 ```js
 mutation {
   push_notifications__insert(doc:{ 
-    name : "系统管理员为您分配了一个任务1",
-    body : "处理次款事务1",
-    owner_mobile : "xxxxxxxxxxx", //人员手机号
-    app_id : "xxxxxxxxxxxx", //自建第三方应用的appId
-    badge: 1 //待办数
+    name : "xxxxxxxxxxx",
+    body : "xxxxxxxxxxx",
+    owner_mobile : "xxxxxxxxxxx", 
+    app_id : "xxxxxxxxxxxx", 
+    badge: 1 
   }){
     name
     _id
@@ -29,10 +29,10 @@ mutation {
 }
 ```
 
-- name：通知显示的标题。
-- body：通知内容正文。
-- owner_mobile：要把通知发送给谁，这里需要输入的是华炎魔方系统中用户的手机号。
-- app_id：选填，关联应用，即在魔方项目中创建的第三方应用的Id值。
-- badge：选填。关联应用中需要显示的待办数值，即应用右上角显示的Badge数值，
+- Name: The title displayed in the notification.
+- Body: The body text of the notification message.
+- Owner_mobile: The mobile number of the user in the Steedos system to whom the notification should be sent.
+- App_id: Optional. This is the Id value of the third-party application created within Steedos project that is associated with the notification.
+- Badge: Optional. The numerical value to display in the badge on the associated application, which is the value displayed on the top-right corner of the application icon.
 
-假设华炎魔方项目访问地址为 https://huayan-test.steedos.cn， 那么其GraphQL接口地址就是 https://huayan-test.steedos.cn/graphql， 我们只要在第三方系统中调用该地址，发送以上参考数据，华炎魔方就会自动发送推送通知。
+Assuming the access address of Steedos project is https://huayan-test.steedos.cn, the GraphQL API endpoint would be https://huayan-test.steedos.cn/graphql. By calling this endpoint from a third-party system and sending the reference data mentioned above, the Steedos will automatically send the push notification.
