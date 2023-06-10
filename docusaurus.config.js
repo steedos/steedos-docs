@@ -14,7 +14,7 @@ const config = {
   url: 'https://docs.steedos.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/docs',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -58,6 +58,20 @@ const config = {
     ],
   ],
 
+  themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+        language: ["en", "zh"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        docsRouteBasePath: "/"
+      }),
+    ],
+  ],
+  
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -157,7 +171,7 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Steedos Inc.`,
       },
-      algolia: {
+      algolia2: {
         appId: 'TL0K9Y2YIH',
         apiKey: process.env.ALGOLIA_API_KEY || 'development', // Public API key: it is safe to commit it
         indexName: 'steedos',
