@@ -2,53 +2,42 @@
 title: ObjectQL 
 ---
 
-调用 ObjectQL 微服务，可以执行数据库的增删改查操作。
+By invoking the ObjectQL microservice, it's possible to perform CRUD operations on a database.
 
 ## broker.call
 
-使用 `broker.call` 方法可以调用一个服务。 服务管理者寻找具有指定动作的服务（和节点）并调用该动作，调用后返回 `Promise`。[获取更多信息](https://moleculer.services/zh/docs/0.14/actions.html)。
-- **使用：** `const res = await broker.call(actionName, params, opts);`
-- **参数：**
-  - actionName: `String`。一个点分隔的字符串，点之前是服务名称，点后面则是动作名称。若您传入'objectql.find'，则表明你要调用`objectql`服务的`find`动作。
-  - params: `Object` 传入您需要的参数。服务可以经由 `ctx.params` 访问它。若未定义，则为 `{}`。选填。
-  - opt: `Object` 设置/覆盖 某些请求参数的对象，例如`meta`、`timeout`等。选填。更多参数请参考上方链接。
-
-    <!-- | 名称              | 类型         | 默认值                             | 说明  |
-    | -----            | ----         | ----                              | ---- |
-    | timeout          | Number       | null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 请求超时，单位为毫秒。 如果请求超时且您没有定义fallbackResponse, broker 将抛出一个RequestTimeout错误。 设为 0 表示禁用。 不设置此项，将使用 broker 选项的requestTimeout值。 |
-    | retries          | Number       | null                              | 重试次数. 如果请求超时，broker 会重试调用。 设为 0 表示禁用。 不设置此项，将使用 broker 选项的retryPolicy.retries值。 |
-    | fallbackResponse | Any          | null                              | 如果请求失败，返回此替代响应。 |
-    | nodeID           | String       | null                              | 目标节点。 直接调用指定节点的动作。 |
-    | meta             | Object       | {}	                              | 请求元数据。 在动作处理器中通过 ctx.mete 来访问它。 它会在嵌套调用中传输 & 合并. |
-    | parentCtx        | Context      | null                              | 父 Context 实例。 Use it to chain the calls. |
-    | requestID        | String       | null                              | Request ID 或 Correlation ID. 用于跟踪。 |  -->
+The broker.call method can be used to invoke a service. The service manager searches for the service (and node) with the specified action and calls that action, returning a Promise after the call is made.[Learn more](https://moleculer.services/zh/docs/0.14/actions.html)。
+- **Usage:** `const res = await broker.call(actionName, params, opts);`
+- **Arguments:**
+  - actionName: String. A dot-separated string with the service name before the dot and the action name after it. If you pass 'objectql.find', it means you're calling the find action of the objectql service.
+  - params: Object - The parameter object you want to pass. Services can access it via ctx.params. If undefined, {} is used. Optional.
+  - opt: Object - An object that sets/overrides certain request parameters such as meta, timeout, and so on. Optional. Check the aforementioned link for more arguments.
 
 
 
-## 增删改查
+## CRUD
 
-ObjectQL微服务支持以下微服务动作，实现了对数据的增删改查，这些动作会触发相应的触发器。
-
+The ObjectQL microservice supports the following microservice actions that implement data manipulation (create, read, update, delete) and fire the corresponding triggers.
 
 ### find
 
-查找多条记录。该动作会触发配置的触发器函数： `beforeFind`、`afterFind`。
+Finds multiple records. This action triggers the configured trigger functions: beforeFind and afterFind.
 
-- **使用**： `broker.call('objectql.find', params, opt?)`
-- **参数**：
-  - actionName: `String`操作名称，此处执行查找多条记录操作，值为'objectql.find'。
+- **Usage**： `broker.call('objectql.find', params, opt?)`
+- **Arguments**：
+  - actionName: String - The name of the action to be executed, in this case, the action is to find multiple records, thus the value should be 'objectql.find'.
   - params: 
-    - objectName: `String`对象的name。
-    - query: 查询数据相关参数[json]，选填。
-      - fields: `Array` 返回字段选择，例如：['字段名1', '字段名2']。
-      - filters: `SteedosQueryFilters` 查询条件数组。
-      - sort: `string` 排序规则，例如：'name desc'。
-      - top: `number` 返回记录数。
-      - skip: `number` 跳过记录数，通常用于分页显示。
-  - opt: 选填。
+    - objectName: String - The object name.
+    - query: JSON - The query parameters [JSON], optional.
+      - fields: Array - The selected fields to be returned, for example: ['field1', 'field2'].
+      - filters: SteedosQueryFilters - An array of query filters.
+      - sort: String - The sorting rule, for example: 'name desc'.
+      - top: Number - The number of records to be returned.
+      - skip: Number - The number of records to skip, typically used for pagination display.
+  - opt: Optional.
     - meta:
-       - user: `SteedosUser`当前用户信息，此可以查询当前用户的权限。
-- **返回值**： 记录数组。未找到时返回空数组[]。
+       - user: SteedosUser - Current user information, which can be used to query the current user's permissions.
+- **Returns**： An array of records. Returns an empty array [] if none are found.
 
 ```js
 const res = await this.broker.call(
@@ -56,12 +45,11 @@ const res = await this.broker.call(
 {
   objectName: 'accounts',
   query: {
-    fields: ['name', 'owner'],                      // 字段选择： name, owner 
-    filters: ['owner', '=', ctx.meta.user.userId],  // 过滤条件： 所有者为当前用户
-    sort: 'name desc'                               // 排序规则： name字段降序
+    fields: ['name', 'owner'],                      
+    filters: ['owner', '=', ctx.meta.user.userId],  
+    sort: 'name desc'                               
   },
 },
-// 如果查询需要带上当前用户的权限，需要传入 user 属性。
 {
   meta:{
     user: ctx.meta.user
@@ -74,20 +62,20 @@ const res = await this.broker.call(
 
 ### findOne
 
-查找单条记录。该函数会触发配置的触发器函数： `beforeFind`、`afterFindOne` 。
+The findOne function retrieves a single record. It triggers the configured trigger functions beforeFind and afterFindOne.
 
-- **使用**： `broker.call('objectql.findOne', params, opt?)`
-- **参数**：
-  - actionName: `String` 操作名称，此处执行查找单条记录操作，值为'objectql.findOne'。
+- **Usage**： `broker.call('objectql.findOne', params, opt?)`
+- **Arguments**：
+  - actionName: String - The name of the action to be executed, in this case, the action is to find a single record, thus the value should be 'objectql.findOne'.
   - params: 
-    - objectName: `String` 对象的name。
-    - id: `number | string` 您希望查询数据的id。
-    - query: 查询数据相关参数[json]
-      - fields: `Array` 字段名数组 ，选填。 例如：['字段名1', '字段名2']。
+    - objectName: String - The name of the object.
+    - id: Number | String - The ID of the data you wish to query.
+    - query: JSON - The query parameters [JSON]. Optional.
+      - fields: Array - An array of field names. Optional. For example: ['field1', 'field2'].
   - opt: 
     - meta:
-       - user: `SteedosUser` 当前用户信息，此可以查询当前用户的权限。选填。
-- **返回值**： 单条记录[json]。
+       - user: SteedosUser - Current user information, which can be used to query the current user's permissions.
+- **Returns**： A single record [JSON].
 
 
 ```js
@@ -95,12 +83,11 @@ const res = await this.broker.call(
 'objectql.findOne', 
 {
   objectName: 'accounts',
-  id: 'CChCmkiHrNeTM9jgA',      // 查询字段的id，具有唯一性
+  id: 'CChCmkiHrNeTM9jgA',     
   query: {
-    fields: ['name', 'owner'],  // 字段选择： name, owner 
+    fields: ['name', 'owner'],  
   }    
 },
-// 如果查询需要带上当前用户的权限，需要传入 user 属性。
 {
   meta:{
     user: ctx.meta.user
@@ -112,18 +99,19 @@ const res = await this.broker.call(
 
 ### insert
 
-添加单条记录。该函数会触发配置的触发器函数： `beforeInsert` 、`afterInsert` 。添加 “任务” 等特殊记录后会发送通知给指定人员。
+This function inserts a single record. It triggers the configured trigger functions beforeInsert and afterInsert. After inserting special records like "tasks", notifications will be sent to designated personnel.
 
-- **使用：** `broker.call('objectql.insert', params, opt?)`
-- **参数：**
-  - actionName: `String`操作名称，此处执行插入操作，故值为'objectql.insert'。
+- **Usage：** `broker.call('objectql.insert', params, opt?)`
+- **Arguments：**
+  - actionName: String. The name of the action being executed, in this case it is 'objectql.insert'.
   - params: 
-    - objectName: `String`对象的name。
-    - doc: `Dictionary<any>` 您希望插入的数据，必须包含该对象的必填项。
+    - objectName: String. The name of the object.
+    - doc: `Dictionary<any>` The data you wish to insert. It must include all required fields for the object.
+
   - opt: 
     - meta:
-      - user: `SteedosUser`当前用户信息，此可以查询当前用户的权限。选填。
-- **返回值：** 插入成功后的数据。
+      - user: SteedosUser. Information about the current user, which can be used to check the user's permissions. Optional.
+- **Returns：** The data that was successfully inserted.
 
 ```js
 
@@ -132,13 +120,11 @@ const res = await this.broker.call(
 {
   objectName: 'accounts', 
   doc: {
-    // account 对象下面 name 为必填项，不同对象的必填项可能有差异
-    name: '这里是插入的数据的名称'
+    name: 'Here is the name of the inserted data.'
   }
 },
-// 如果查询需要带上当前用户的权限，需要传入 user 属性。
 {
-  需要在memetata中传入 user 属性。:{
+  meta:{
     user: ctx.me ta.user
   }
 }
@@ -146,43 +132,44 @@ const res = await this.broker.call(
 
 ```
 
-`accounts` 的name字段为必填项，不同对象间存在差异。该对象的个别字段见下表（**包含必填字段和系统字段**）。
+The name field is a required field for the accounts object, and there may be differences between objects. Below is a table containing individual fields for this object (including required fields and system fields).
   
-|基础属性       |属性含义        |是否必填      |说明   |
-| ----        | ----          | ----        | ---- |
-| name 	      | 记录名称	      | &#x2714;    | `accounts`添加记录为必填，不同对象必填项可能有差异 |
-| id 	        | id	           | &#x2716;    | 若不传入id，则系统自动维护 |
-| space 	    | 工作区          | &#x2716;    | 系统自动维护 |
-| owner 	    | 所有者          | &#x2716;    | 系统自动维护 |
-| created_by  | 创建人员	      | &#x2716;    | 系统自动维护 |
-| modified_by | 修改人员        | &#x2716;    | 系统自动维护 |
-| created	    | 创建时间	      | &#x2716;    | 系统自动维护 |
-| modified	  | 修改时间	      | &#x2716;    | 系统自动维护 |
+|Basic Properties  |Required or Not      |Description   |
+| ----        | ----        | ---- |
+| name 	      | &#x2714;    | Required when adding a record to accounts object. There may be differences in required fields among different objects. |
+| id 	        | &#x2716;    | If not provided, the system will automatically maintain it. |
+| space 	    | &#x2716;    | 	Automatically maintained by the system. |
+| owner 	    | &#x2716;    | 	Automatically maintained by the system. |
+| created_by  | &#x2716;    | 	Automatically maintained by the system. |
+| modified_by | &#x2716;    | 	Automatically maintained by the system. |
+| created	    | &#x2716;    | 	Automatically maintained by the system. |
+| modified	  | &#x2716;    | 	Automatically maintained by the system. |
 
 
 ### delete
 
-删除单条记录。该函数会触发配置的触发器函数： `beforeDelete`、`afterDelete` 。
+This function is used to delete a single record. The beforeDelete and afterDelete trigger functions configured for this operation will be triggered.
 
-- **使用**： `broker.call('objectql.delete', params, opt?)`
-- **参数**：
-  - actionName: `String`操作名称，此处执行删除操作，值为'objectql.delete'。
+- **Usage**： `broker.call('objectql.delete', params, opt?)`
+- **Arguments**：
+  - actionName: String The name of the action. In this case, the action is to delete a record, so the value should be 'objectql.delete'.
   - params: 
-    - id: `number | string` 您希望变更数据的id。
-    - objectName: `String`对象的name。
+    - id: number | string The ID of the data you want to change.
+    - objectName: String The name of the object.
   - opt: 
     - meta:
-       - user: `SteedosUser`当前用户信息，此可以查询当前用户的权限。选填。
-- **返回值**： 成功：1，失败：抛出报错信息。
+       - user: SteedosUser Information about the current user, which can be used to check the user's permissions. Optional.
+- **Returns**：
+  - Success: 1.
+  - Failure: An error message is thrown.
 
 ```js
 const res = await this.broker.call(
 'objectql.delete', 
 {
   objectName: 'accounts',
-  id: "Xgf3NxXJWAXJff9FQ" // 删除字段的id，具有唯一性
+  id: "Xgf3NxXJWAXJff9FQ" 
 },
-// 如果查询需要带上当前用户的权限，需要传入 user 属性。
 {
   meta:{
     user: ctx.meta.user
@@ -194,19 +181,19 @@ const res = await this.broker.call(
 
 ### update
 
-更新单条记录。该函数会触发配置的触发器函数： `beforeUpdate` 、`afterUpdate` 。更新 “任务” 等特殊记录后会发送通知给指定人员。
+This function is used to update a single record. The beforeUpdate and afterUpdate trigger functions configured for this operation will be triggered. After updating specific records, such as "tasks", notifications will be sent to designated personnel.
 
-- **使用**： `broker.call('objectql.update', params, opt?)`
-- **参数**：
-  - actionName: `String`操作名称，此处执行更新操作，值为'objectql.update'。
+- **Usage**： `broker.call('objectql.update', params, opt?)`
+- **Arguments**：
+  - actionName: String The name of the action. In this case, the action is to update a record, so the value should be 'objectql.update'.
   - params: 
-    - id: `number | string` 您希望变更数据的id。
-    - objectName: `String`对象的name。
-    - doc: `Dictionary<any>` 您希望更新的数据。
+    - id: number | string The ID of the data you want to change.
+    - objectName: String The name of the object.
+    - doc:`Dictionary<any>` The data you want to update.
   - opt: 
     - meta:
-       - user: `SteedosUser`当前用户信息，此可以查询当前用户的权限。选填。
-- **返回值**： 更新成功后的数据。
+       - user: SteedosUser Information about the current user, which can be used to check the user's permissions. Optional.
+- **Returns**： The data after a successful update.
 
 ```js
 const res = await this.broker.call(
@@ -214,11 +201,10 @@ const res = await this.broker.call(
 {
   objectName: 'accounts',
   doc: {
-    name: '更新的数据后的名称'
+    name: 'The name of the data after it has been updated.'
   },
   id: "CChCmkiHrNeTM9jgA"
 },
-// 如果查询需要带上当前用户的权限，需要在meta传入 user 属性。
 {
   meta:{
     user: ctx.meta.user
@@ -231,22 +217,22 @@ const res = await this.broker.call(
 
 ### aggregate
 
-查找聚合记录。该动作会触发配置的触发器函数： `beforeAggregate`、`afterAggregate` 。
+Find aggregated records. This action triggers the configured trigger functions: beforeAggregate and afterAggregate.
 
-聚合：聚合操作处理数据记录并返回计算结果。聚合操作将来自多个文档的值组合在一起，并且可以对分组的数据执行各种操作以返回单个结果。
+Aggregation: Aggregation operations process data records and return calculated results. Aggregation operations combine values from multiple documents, and various operations can be performed on grouped data to return single results.
 
-- **使用**： `broker.call('objectql.aggregate', params, opt?)`
-- **参数**：
-  - actionName: `String`操作名称，此处执行聚合操作，值为'objectql.aggregate'。
+- **Usage**： `broker.call('objectql.aggregate', params, opt?)`
+- **Arguments**：
+  - actionName: String The name of the action, which is used to perform the aggregation operation. Its value is 'objectql.aggregate'.
   - params: 
-    - objectName: `String` 对象的name。
-    - query: 查询数据相关参数[json]。
-      - filters: `Array`查询条件数组，选填。
-    - externalPipeline: ArrayMongodb ggregation Pipeline。[mongodb聚合文档](https://www.mongodb.com/docs/manual/reference/aggregation/)。
+    - objectName: String The object name.
+    - query: The parameters related to querying the data in JSON format.
+      - filters: Array An optional array of query conditions.
+    - externalPipeline: An array of MongoDB aggregation pipelines.See [MongoDB Aggregation Documentation](https://www.mongodb.com/docs/manual/reference/aggregation/)。
   - opt: 
     - meta:
-       - user: `SteedosUser`当前用户信息，此可以查询当前用户的权限。选填。
-- **返回值**：聚合记录数组。
+       - user: SteedosUser The current user information, which can be used to check the permission of the current user. Optional.
+- **Returns**: An array of aggregated records.
 
 
 ```js
@@ -255,11 +241,10 @@ const res = await this.broker.call(
 {
   objectName: 'accounts',
   query: {
-    filters: ['owner', '=', ctx.meta.user.userId],  // 过滤条件： 所有者为当前用户
+    filters: ['owner', '=', ctx.meta.user.userId],  
   },
-  externalPipeline: [{ $count: 'users_count'}]      // 查询经过query后数据的数量，将数量赋值给users_count
+  externalPipeline: [{ $count: 'users_count'}]      
 },
-// 如果查询需要带上当前用户的权限，需要传入 user 属性。
 {
   meta:{
     user: ctx.meta.user
@@ -273,27 +258,27 @@ const res = await this.broker.call(
 
 ## direct
 
-ObjectQL微服务支持以下带 `direct` 前缀的微服务动作，实现了对数据的增删改查，这些动作不会触发相应的触发器。
+ObjectQL microservices support microservice actions with the direct prefix, which implements CRUD operations on data. These actions will not trigger corresponding triggers.
 
 ### directFind
 
-查找多条记录。此动作不会执行触发器。
+This action is used to find multiple records. It does not trigger the corresponding triggers.
 
-- **使用**： `broker.call('objectql.directFind', params, opt?)`
-- **参数**：
-  - actionName: `String`操作名称，此处执行直接查找操作，值为'objectql.directFind'。
+- **Usage**： `broker.call('objectql.directFind', params, opt?)`
+- **Arguments**：
+  - actionName: String The name of the action, which is used to perform the direct find operation. Its value is 'objectql.directFind'.
   - params: 
-    - objectName: `String`对象的name。
-    - query: 查询数据相关参数[json]，选填。
-        - fields: `Array` 返回字段选择，选填。例如：['字段名1', '字段名2']。
-        - filters: `SteedosQueryFilters` 查询条件数组，选填。
-        - sort: `string` 排序规则，选填。例如：'name desc'。
-        - top: `number` 返回记录数，选填。
-        - skip: `number` 跳过记录数，通常用于分页显示，选填。
+    - objectName: String The name of the object.
+    - query: The parameters related to querying the data in JSON format. This is optional.
+        - fields: Array An optional array that specifies the fields to return. For example: ['Field1', 'Field2'].
+        - filters: SteedosQueryFilters An optional array of query conditions.
+        - sort: String An optional string defining the sorting order. For example: 'name desc'.
+        - top: Number An optional number specifying the maximum number of records to return.
+        - skip: Number An optional number specifying the number of records to skip. This is typically used for paging.
   - opt: 
     - meta:
-       - user: `SteedosUser` 当前用户信息，此可以查询当前用户的权限。选填。
-- **返回值**： 记录数组。未找到时返回空数组[]。
+       - user: SteedosUser The current user information, which can be used to check the permission of the current user. This is optional.
+- **Returns**： An array of records. Returns an empty array [] if no records are found.
 
 
 ```js
@@ -302,12 +287,11 @@ const res = await this.broker.call(
 {
   objectName: 'accounts',
   query: {
-    fields: ['name', 'owner'],                      // 字段选择： name, owner 
-    filters: ['owner', '=', ctx.meta.user.userId],  // 过滤条件： 所有者为当前用户
-    sort: 'name desc'                               // 排序规则： name字段降序
+    fields: ['name', 'owner'],                      
+    filters: ['owner', '=', ctx.meta.user.userId],  
+    sort: 'name desc'                               
   }
 },
-// 如果查询需要带上当前用户的权限，需要传入 user 属性。
 {
   meta:{
     user: ctx.meta.user
@@ -320,18 +304,18 @@ const res = await this.broker.call(
 
 ### directInsert
 
-添加单条记录。此动作不会执行触发器。
+You may add a single record using the objectql.directInsert action, which does not trigger any corresponding triggers.
 
-- **使用：** `broker.call('objectql.directInsert', params, opt?)`
-- **参数：**
-  - actionName: `String`操作名称，此处执行直接插入操作，值为'objectql.directInsert'。
+- **Usage：** `broker.call('objectql.directInsert', params, opt?)`
+- **Arguments：**
+  - actionName: String The name of the action, which is used to perform the direct insert operation. Its value is 'objectql.directInsert'.
   - params: 
     - objectName: `String`对象的name。
-    - doc: `Dictionary<any>` 您希望插入的数据，必须包含该对象的必填项。
+    - doc: `Dictionary<any>` The data you want to insert, including the required fields of the object.
   - opt: 
     - meta:
-       - user: `SteedosUser`当前用户信息，此可以查询当前用户的权限。选填。
-- **返回值：** 插入成功后的数据。
+       - user: SteedosUser The current user information, which can be used to check the permission of the current user. This is optional.
+- **Returns：** The inserted data after a successful operation.
 
 ```js
 const res = await this.broker.call(
@@ -339,11 +323,9 @@ const res = await this.broker.call(
 {
   objectName: 'accounts',
   doc: {
-    // account 对象下面 name 为必填项，不同对象的必填项可能有差异
-    name: '插入的数据的名称（直接插入）'
+    name: 'The name of the inserted data (direct insert).'
   }
 },
-// 如果查询需要带上当前用户的权限，需要传入 user 属性。
 {
   meta:{
     user: ctx.meta.user
@@ -355,27 +337,28 @@ const res = await this.broker.call(
 
 ### directDelete
 
-更新单条记录。此动作不会执行触发器。
+You may update a single record using the objectql.directUpdate action, which does not trigger any corresponding triggers.
 
-- **使用**： `broker.call('objectql.directDelete', params, opt?)`
-- **参数**：
-  - actionName: `String`操作名称，此处执行直接删除操作，值为'objectql.directDelete'。
+- **Usage**： `broker.call('objectql.directDelete', params, opt?)`
+- **Arguments**：
+  - actionName: String The name of the action, which is used to perform the direct update operation. Its value is 'objectql.directUpdate'.
   - params: 
-    - id: `number | string` 您希望变更数据的id。
-    - objectName: `String`对象的name。
+    - id: number | string The id of the data you want to modify.
+    - objectName: String The name of the object.
   - opt: 
     - meta:
-       - user: `SteedosUser`当前用户信息，此可以查询当前用户的权限。选填。
-- **返回值**： 成功：1，失败：抛出报错信息。
+       - user: SteedosUser The current user information, which can be used to check the permission of the current user. This is optional.
+- **Returns**： 
+  - Success: 1. 
+  - Failure: Throws an error message.
 
 ```js
 const res = await this.broker.call(
 'objectql.directDelete', 
 {
   objectName: 'accounts',
-  id: "Xgf3NxXJWAXJff9FQ" // 删除字段的id，具有唯一性
+  id: "Xgf3NxXJWAXJff9FQ" 
 },
-// 如果查询需要带上当前用户的权限，需要传入 user 属性。
 {
   meta:{
     user: ctx.meta.user
@@ -387,19 +370,19 @@ const res = await this.broker.call(
 
 ### directUpdate
 
-更新单条记录。此动作不会执行触发器。
+To update a single record without triggering any corresponding triggers, you may use the objectql.directUpdate action.
 
-- **使用**： `broker.call('objectql.directUpdate', params, opt?)`
-- **参数**：
-  - actionName: `String`操作名称，此处执行直接更新操作，值为'objectql.directUpdate'。
+- **Usage**： `broker.call('objectql.directUpdate', params, opt?)`
+- **Arguments**：
+  - actionName: String The name of the action to be executed. For direct update operation, its value should be 'objectql.directUpdate'.
   - params: 
-    - id: `number | string` 您希望变更数据的id。
-    - objectName: `String`对象的name。
-    - doc: `Dictionary<any>` 您希望更新的数据。
+    - id: number | string The id of the data you want to modify.
+    - objectName: String The name of the object.
+    - doc: `Dictionary<any>` The data you want to update.
   - opt: 
     - meta:
-       - user: `SteedosUser`当前用户信息，此可以查询当前用户的权限。选填。
-- **返回值**： 更新成功后的数据。
+       - user: SteedosUser The current user information, which can be used to check the permission of the current user. This is optional.
+- **Returns**： The updated data upon success.
 
 
 ```js
@@ -408,11 +391,10 @@ const res = await this.broker.call(
 {
   objectName: 'accounts',
   doc: {
-    name: '插入的数据的名称（directUpdate）'
+    name: 'The name of the inserted data（directUpdate）'
   },
   id: "9RKrpkvm8Q9Bw7mYc"
 },
-// 如果查询需要带上当前用户的权限，需要传入 user 属性。
 {
   meta:{
     user: ctx.meta.user
@@ -424,22 +406,22 @@ const res = await this.broker.call(
 
 ### directAggregate
 
-查找聚合记录。此动作不会执行触发器。
+To find aggregated records without triggering any corresponding triggers, you may use the objectql.directAggregate action.
 
-聚合：聚合操作处理数据记录并返回计算结果。聚合操作将来自多个文档的值组合在一起，并且可以对分组的数据执行各种操作以返回单个结果。
+Aggregation: Aggregation operations process data records and return computed results. Aggregation operations combine values from multiple documents and can perform various operations on grouped data to return a single result.
 
-- **使用**： `broker.call('objectql.directAggregate', params, opt?)`
-- **参数**：
-  - actionName: `String`操作名称，此处执行聚合操作，值为'objectql.directAggregate'。
+- **Usage**： `broker.call('objectql.directAggregate', params, opt?)`
+- **Arguments**：
+  - actionName: String The name of the action to be executed. For aggregate operation, its value should be 'objectql.directAggregate'.
   - params: 
-    - objectName: `String` 对象的name。
-    - query: 查询数据相关参数[json]。
-      - filters: `Array`查询条件数组，选填。
-    - externalPipeline: ArrayMongodb ggregation Pipeline。[mongodb聚合文档](https://www.mongodb.com/docs/manual/reference/aggregation/)。
+    - objectName:  String The name of the object.
+    - query: Parameters related to querying data [JSON]:
+      - filters: Array An array of query conditions. Optional.
+    - externalPipeline: Array MongoDB aggregation Pipeline. For more information, please refer to the[ MongoDB Aggregation Documentation](https://www.mongodb.com/docs/manual/reference/aggregation/)。
   - opt: 
     - meta:
-       - user: `SteedosUser`当前用户信息，此可以查询当前用户的权限。选填。
-- **返回值**：聚合记录数组。
+       - user: SteedosUser The current user information, which can be used to check the permission of the current user. This is optional.
+- **Returns**: An array of aggregated records.
 
 
 ```js
@@ -448,11 +430,10 @@ const res = await this.broker.call(
 {
   objectName: 'accounts',
   query: {
-    filters: ['owner', '=', ctx.meta.user.userId],  // 过滤条件： 所有者为当前用户
+    filters: ['owner', '=', ctx.meta.user.userId],  
   },
   externalPipeline: [{ $count: 'users_count'}]
 },
-// 如果查询需要带上当前用户的权限，需要传入 user 属性。
 {
   meta:{
     user: ctx.meta.user
@@ -463,31 +444,28 @@ const res = await this.broker.call(
 
 
 
-## 示例
+## Example
 
-以下示例在微服务中定义了一个名为 `findAccounts` 动作，在该动作中调用ObjectQL微服务，实现数据查询。
+In microservices, the "findAccounts" operation is defined, which calls the ObjectQL microservice to perform data retrieval.
 
 ```js
 module.exports = {
-  name: "example-service",      // 当前服务名称
+  name: "example-service",      
 
   actions: {
     findAccounts: {
-      // 使用微服务方式定义 API 接口。
-      // 访问地址： GET /service/api/example-service/objectql/find
       rest: { method: 'GET', path: '/objectql/find' },
       async handler(ctx) {
         return await this.broker.call(
-        'objectql.find',                                    // actionName
+        'objectql.find',                                    
         {
           objectName: 'accounts',
           query: {
-            fields: ['name', 'owner'],                      // 字段选择： name, owner 
-            filters: ['owner', '=', ctx.meta.user.userId],  // 过滤条件： 所有者为当前用户
-            sort: 'name desc'                               // 排序规则： name字段降序
+            fields: ['name', 'owner'],                     
+            filters: ['owner', '=', ctx.meta.user.userId], 
+            sort: 'name desc'                               
           }
         },
-        // 如果查询需要带上当前用户的权限，需要传入 user 属性。
         {
           meta:{
             user: ctx.meta.user

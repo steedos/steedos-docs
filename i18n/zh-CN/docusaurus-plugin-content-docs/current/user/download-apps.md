@@ -18,7 +18,7 @@ title: 客户端下载
 
 </alert>
 
- ![](https://console.steedos.cn/api/files/images/AugicaRh6QD4kExTQ)
+![移动端下载](/../static/img/zh-CN/download_qrcode.png)
 
 
 ### 桌面客户端下载

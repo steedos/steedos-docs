@@ -2,15 +2,15 @@
 title: GraphQL 
 ---
 
-调用 GraphQL 微服务，可以实现在服务端执行 GrahpQL 查询。
+You can call the GraphQL microservice to execute GraphQL queries on the server-side. 
 
-如果查询 GraphQL 需要带上当前用户的权限，需要传入 user 属性。
+If the GraphQL query needs to include the current user's permissions, the "user" attribute must be passed in.
 
 ```js
 actions: {
     graphqlQuery: {
         rest: { method: 'GET', path: '/graphql' },
-        // 在微服务中查询数据库
+        // query a database in a microservice
         async handler(ctx) {
             return await this.broker.call('api.graphql', {
                 query: `
@@ -23,7 +23,7 @@ actions: {
                     }
                     }
                 `},
-                // 如果查询 GraphQL 需要带上当前用户的权限，需要传入 user 属性。
+                // If the GraphQL query requires the current user's permissions to be included, the "user" attribute needs to be passed in.
                 {
                     user: ctx.meta.user
                 }
