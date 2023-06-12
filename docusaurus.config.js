@@ -58,6 +58,20 @@ const config = {
     ],
   ],
 
+  themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+        language: ["en", "zh"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        docsRouteBasePath: "/"
+      }),
+    ],
+  ],
+  
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -112,15 +126,15 @@ const config = {
             items: [
               {
                 label: 'Deploy',
-                to: '/deploy',
+                to: 'deploy',
               },
               {
                 label: 'User Guide',
-                to: '/user',
+                to: 'user',
               },
               {
                 label: 'Admin Guide',
-                to: '/admin',
+                to: 'admin',
               },
             ],
           },
@@ -129,15 +143,15 @@ const config = {
             items: [
               {
                 label: 'Extend with Click',
-                to: '/no-code',
+                to: 'no-code',
               },
               {
                 label: 'Automation You Process',
-                to: '/automation',
+                to: 'automation',
               },
               {
                 label: 'Extend with Code',
-                to: '/developer',
+                to: 'developer',
               },
             ],
           },
@@ -157,7 +171,7 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Steedos Inc.`,
       },
-      algolia: {
+      algolia2: {
         appId: 'TL0K9Y2YIH',
         apiKey: process.env.ALGOLIA_API_KEY || 'development', // Public API key: it is safe to commit it
         indexName: 'steedos',
