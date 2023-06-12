@@ -1,6 +1,6 @@
 backend:
   name: github
-  branch: main 
+  branch: master 
   repo: steedos/steedos-docs
 
 # These lines should *not* be indented
