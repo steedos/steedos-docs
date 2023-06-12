@@ -27,72 +27,72 @@ filters: [["age", "between", [20,30]]]
 
 ## Combining Filters
 
-### “and”、“or”操作
+### “and”、“or”
 
 Multiple filters can be combined using "and" and "or" operations. For example:
 
 * \[ \[ "value", ">", 3 \], "and", \[ "value", "<", 7 \] \]
 * \[ \[ "value", ">", 7 \], "or", \[ "value", "<", 3 \] \]
 
-如果不指定“与(and)”、“或(or)”操作，系统默认按照“与(and)”操作执行过滤。所以下两种写法结果相同：
+If no "and" or "or" operation is specified, the system will default to executing filters using the "and" operation. Therefore, the following two writing formats will yield the same result.
 
 * \[ \[ "value", ">", 3 \], "and", \[ "value", "<", 7 \] \]
 * \[ \[ "value", ">", 3 \], \[ "value", "<", 7 \] \]
 
-## 筛选条件值为数组时的增强功能
+## Enhanced functionality for filtering when the condition value is an array.
 
-运算符为"="时，条件自动按"or"裂变连接成多个筛选条件，类似实现了"in"操作功能，所以下两种写法结果相同：
+When the operator is "=", the condition will automatically be split into multiple filtering conditions using the "or" operator, similar to implementing the "in" operation function. Therefore, the following two writing formats will yield the same result.
 
 * \[\["status", "in", \["closed","open"\]\]\]
 * \[ \[ "status", "=", "closed" \], "or", \[ "status", "=", "open" \] \]
 
-运算符为"!="时，条件自动按"and"裂变连接成多个筛选条件，所以下两种写法结果相同：
+When the operator is "!=", the condition will automatically be split into multiple filtering conditions using the "and" operator, so the following two writing formats will yield the same results:
 
 * \[\["status", "not in", \["closed","open"\]\]\]
 * \[ \[ "status", "!=", "closed" \], "and", \[ "status", "!=", "open" \] \]
 
-运算符为"between"时，条件自动转换成">="及"<="运算符对应的筛选条件，以下各组效果相同：
+When the operator is "between", the condition will automatically be transformed into filtering conditions corresponding to the ">=" and "<=" operators. Therefore, the following sets of conditions will yield the same results:
 
-* \[\["age", "between", \[20,30\]\]\] 等效于 \[ \[ "age", ">=", 20 \], "and", \[ "age", "<=", 30 \] \]
-* \[\["age", "between", \[null,30\]\]\] 等效于 \[ \[ "age", "<=", 30 \] \]
-* \[\["age", "between", \[20,null\]\]\] 等效于 \[ \[ "age", ">=", 20 \] \]
+* \[\["age", "between", \[20,30\]\]\] equivalent to \[ \[ "age", ">=", 20 \], "and", \[ "age", "<=", 30 \] \]
+* \[\["age", "between", \[null,30\]\]\] equivalent to \[ \[ "age", "<=", 30 \] \]
+* \[\["age", "between", \[20,null\]\]\] equivalent to \[ \[ "age", ">=", 20 \] \]
 
 
 
 :::info
-between只支持数值及日期时间类型，且过滤值必须是两个元素的数组格式
+The "between" operator only supports numerical and datetime types, and the filtering values must be in an array format consisting of two elements.
 
 :::
 
-其他情况一律自动按"or"裂变连接成多个筛选条件
+In all other cases, the conditions will be automatically split and connected by "OR" to form multiple filtering conditions.
 
-* \[\["tag", "contains", \["start","end"\]\]\] 等效于 \[ \[ "tag", "contains", "start" \], "or", \[ "tag", "contains", "end" \] \]
+* \[\["tag", "contains", \["start","end"\]\]\] equivalent to \[ \[ "tag", "contains", "start" \], "or", \[ "tag", "contains", "end" \] \]
 
-## 公式字段支持
+## Support for formula fields
 
-筛选条件中允许指定当前状态相关属性值为value
+Formula fields are supported in filtering conditions, and the current state-related attribute values can be specified as "value".
 
-* "{userId}"：当前登录用户id
-* "{spaceId}"：当前当前所在工作区
-* "{user.xxx}"：当前登录用户信息，如user.name,user.mobile,user.email,user.company_id等
-* 其他所有Steedos.USER_CONTEXT中能取到的变量值
+* "{userId}"：the ID of the currently logged-in user
+* "{spaceId}"：the current workspace
+* "{user.xxx}"：the information of the currently logged-in user, such as user.name, user.mobile, user.email, user.company_id, etc.
+* All other variable values that can be retrieved from the Steedos.USER_CONTEXT.
 
-实例：
+Example
 
 * \[\["assignees", "=", "{userId}"\]\]
 
-## 函数支持
+## Function Support
 
-支持两种function方式：
+There are two ways to use functions:
 
-1. 整个filters为function，如：
+1. The entire filters is a function, for example:
 
 ```javascript
 filters: ()->    return [[["object_name","=","project_issues"],'or',["object_name","=","tasks"]]]
 ```
 
 \
-2\. filters内的filter.value为function，如：
+2\. The filter.value within filters is a function, for example:
 
 ```javascript
 filters: [["object_name", "=", ()->    return "project_issues"]]
@@ -106,13 +106,13 @@ filters: [{    "field": "object_name"    "operation": "="    "value": ()->      
 ```
 
 
-## 日期、时间字段与时区
+## Date, Time Fields and Timezone
 
-日期和时间类型的字段，在数据库中保存的都是UTC时间。其中日期类型字段对应的是00:00:00。
+For fields of date and time types, the database saves them in UTC time. For date type fields, the time saved is 00:00:00.
 
-查询日期时间类型字段时，必须先把时间转换为UTC时间格式再执行查询。
+When querying date and time type fields, you need to convert the time to UTC format before executing the query.
 
-例如想要查询 创建日期为北京时间下午13:00以前的文档，需要先将北京时间转换为GMT时间再执行查询。
+For example, if you want to search for documents with a creation date before 1:00 PM Beijing time, you need to convert Beijing time to GMT time before executing the query.
 
 ```javascript
 [["created","<=","2019-08-06T07:00:00Z"]]

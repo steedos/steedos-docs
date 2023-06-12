@@ -9,13 +9,13 @@ title: Environment Variables
 PORT=5000
 ROOT_URL=http://localhost:5000
 
-# 微服务通讯 [https://moleculer.services/docs/0.14/networking.html](https://moleculer.services/zh/docs/0.14/networking.html)
+# Communication in Microservices [https://moleculer.services/docs/0.14/networking.html](https://moleculer.services/zh/docs/0.14/networking.html)
 TRANSPORTER=redis://127.0.0.1:6379
 
-# 缓存 https://moleculer.services/zh/docs/0.14/caching.html
+# Cache https://moleculer.services/zh/docs/0.14/caching.html
 CACHER=redis://127.0.0.1:6379/1
 
-# 数据库
+# Database
 MONGO_URL=mongodb://127.0.0.1:27017/steedos
 MONGO_OPLOG_URL=mongodb://127.0.0.1:27017/local
 
