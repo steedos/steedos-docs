@@ -81,6 +81,28 @@ STEEDOS_CFS_AWS_S3_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD:-steedos123}
 STEEDOS_CFS_DOWNLOAD_PUBLIC=avatars,images # 可选 avatars,images,files, 默认值为avatars
 ```
 
+## 推送通知
+
+配置手机端推送通知的相关参数，用于华炎魔方手机app接收通知消息。
+
+```bash
+# iPhone
+STEEDOS_PUSH_APN_DATA=
+
+# 安卓
+STEEDOS_GCM_APIKEY=
+STEEDOS_GCM_PROJECT_NUMBER=
+
+# 华为
+STEEDOS_PUSH_HUAWEI_APPID=
+STEEDOS_PUSH_HUAWEI_APPPKGNAME=
+STEEDOS_PUSH_HUAWEI_APPSECRET=
+
+# 小米
+STEEDOS_PUSH_MI_APPSECRET=
+STEEDOS_PUSH_MI_PRODUCTION=
+```
+
 ## 邮件配置
 
 配置SMTP服务的相关参数，用于系统发送推送邮件。

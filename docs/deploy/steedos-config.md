@@ -69,6 +69,28 @@ STEEDOS_CFS_AWS_S3_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD:-steedos123}
 STEEDOS_CFS_DOWNLOAD_PUBLIC=avatars,images # Optional avatars, images, files, with the default value of avatars.
 ```
 
+## Push Notification
+
+Configure the relevant parameters of the push notification on the mobile phone, which is used for the Steedos mobile app to receive notification messages.
+
+```bash
+# iPhone
+STEEDOS_PUSH_APN_DATA=
+
+# android
+STEEDOS_GCM_APIKEY=
+STEEDOS_GCM_PROJECT_NUMBER=
+
+# huawei
+STEEDOS_PUSH_HUAWEI_APPID=
+STEEDOS_PUSH_HUAWEI_APPPKGNAME=
+STEEDOS_PUSH_HUAWEI_APPSECRET=
+
+# xiaomi
+STEEDOS_PUSH_MI_APPSECRET=
+STEEDOS_PUSH_MI_PRODUCTION=
+```
+
 ## Email
 
 ```bash
