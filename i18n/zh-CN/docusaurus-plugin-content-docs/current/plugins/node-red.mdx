@@ -38,7 +38,7 @@ httpStatic: path.join(__dirname, 'public'),
 
 其访问资源url只需以/访问。其node-red控制页面url改为[http://127.0.0.1:1880/admin](http://127.0.0.1:1880/admin)
 
- ![](/../static/img/zh-CN/node_red_run.png)
+![](/../static/img/zh-CN/node_red_run.png)
 
 ### 初始化配置
 
@@ -50,7 +50,7 @@ Node-Red服务跑起来后，我们可以在浏览器中输入控制台中提示
 
 在跑起的Node-Red服务首页，我们看到右侧有一个名为“Go to your Node-RED flow editor”的按钮，点击它即可打开一个名为“Flow Builder”的编辑器，可以访问Node-Red的官网教程 [https://Node-Red.org/docs/user-guide/](https://node-red.org/docs/user-guide/) 来学习如何在该编辑器中配置、调式和部署流程。
 
- ![](/../static/img/zh-CN/node_red_ini.png)
+![](/../static/img/zh-CN/node_red_ini.png)
 
 ## 华炎魔方节点
 
@@ -58,7 +58,7 @@ Node-Red服务跑起来后，我们可以在浏览器中输入控制台中提示
 
 ### steedos-event节点
 
-  Steedos Event 是指在华炎魔方平台中，使用 Steedos Event 服务来进行事件订阅和发布的功能。通过 Steedos Event，我们可以订阅特定的事件，例如记录创建、记录更新或记录删除等事件，以便在事件发生时执行自定义操作。在 Steedos Event 中，我们需要指定以下参数：
+Steedos Event 是指在华炎魔方平台中，使用 Steedos Event 服务来进行事件订阅和发布的功能。通过 Steedos Event，我们可以订阅特定的事件，例如记录创建、记录更新或记录删除等事件，以便在事件发生时执行自定义操作。在 Steedos Event 中，我们需要指定以下参数：
 
 - `Broker` 是在 `Node-RED` 中用来指定使用的消息代理的参数。在 `Node-RED` 中，我们可以通过配置 `Broker` 来连接 `Steedos` 项目。通常情况下，我们使用 `NATS` 作为消息代理。为了配置 `Broker`，我们需要在 `Node-RED-app` 文件夹下的 `.env` 文件中进行相应的配置，并在 `Node-RED` 中进行引用。更多关于 `NATS` 作为消息代理的详细内容，可以参考以下链接：[https://moleculer.services/zh/docs/0.14/networking.html#NATS-Transporter。](https://moleculer.services/zh/docs/0.14/networking.html#NATS-Transporter%E3%80%82)
 - Service：指定使用的服务名称。
@@ -66,9 +66,9 @@ Node-Red服务跑起来后，我们可以在浏览器中输入控制台中提示
 - Topic：指定订阅的主题或事件名称，例如创建记录事件或更新记录事件。
 - Group：指定订阅事件的组，可以是一个或多个组，以逗号分隔。
 
-       通过配置这些参数，我们可以在华炎魔方平台中使用 Steedos Event 来实现事件订阅和发布的功能，以便在事件发生时执行自定义操作。例如，我们可以订阅创建记录事件，并在事件发生时向 Slack 或微信发送通知，或者在事件发生时执行自定义的 JavaScript 代码来实现更复杂的操作。
+通过配置这些参数，我们可以在华炎魔方平台中使用 Steedos Event 来实现事件订阅和发布的功能，以便在事件发生时执行自定义操作。例如，我们可以订阅创建记录事件，并在事件发生时向 Slack 或微信发送通知，或者在事件发生时执行自定义的 JavaScript 代码来实现更复杂的操作。
 
- ![](/../static/img/zh-CN/node_red_event.png)
+![](/../static/img/zh-CN/node_red_event.png)
 
 ### steedos-emit节点
 
@@ -86,7 +86,7 @@ Node-Red服务跑起来后，我们可以在浏览器中输入控制台中提示
 
 Steedos Call 是一个 Node-RED 的节点，用于调用 Steedos 平台提供的 API。它可以通过配置 `Broker` 和 `Action` 来调用 Steedos 平台的 API，也可以通过 `msg.action` 属性来覆盖 `Action` 的值。此外，你还可以在 `Options` 中设置一些 JSON 格式的选项，以便更好地控制 API 的调用行为。如果你想了解更多关于 Steedos 平台的 API，请参考 Steedos 平台的 API 文档。具体详情可参考steedos- template模版项目
 
- ![](/../static/img/zh-CN/node_red_emit.png)
+![](/../static/img/zh-CN/node_red_emit.png)
 
 ### steedos-request节点
 
@@ -103,17 +103,17 @@ Steedos Request 是一个 Node-RED 中的节点，用于发送 HTTP 请求到 St
 
 如案例node-red自定义api：
 
-    调用api地址：[http://127.0.0.1:5000/service/api/example-service/](http://127.0.0.1:5000/service/api/example-service/hello/jack)+path
+调用api地址：[http://127.0.0.1:5000/service/api/example-service/](http://127.0.0.1:5000/service/api/example-service/hello/jack)+path
 
- ![](/../static/img/zh-CN/node_red_request.png) 
+![](/../static/img/zh-CN/node_red_request.png) 
 
 如案例node-red触发器：
 
- ![](/../static/img/zh-CN/node_red_request_ex.png) 
+![](/../static/img/zh-CN/node_red_request_ex.png) 
 
 ### steedos-response节点
 
- Steedos Response 是一个 Node-RED 中的节点，用于发送响应消息到 HTTP 请求的发起者。这个         节点需要配置以下参数：
+Steedos Response 是一个 Node-RED 中的节点，用于发送响应消息到 HTTP 请求的发起者。这个         节点需要配置以下参数：
 
 - `Name`: 这是节点的名称，用于在 Node-RED 中标识该节点。
 
@@ -141,7 +141,7 @@ Steedos Instance 是 Node-RED 中的一个节点，它可以将 Steedos 实例�
 
 ## 调用GraphQL
 
-    用msg.call进行调用
+用msg.call进行调用
 
 ```jsx
 msg.call('api.graphql', 
