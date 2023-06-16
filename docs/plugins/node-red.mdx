@@ -34,7 +34,7 @@ example：
 
 To access the stored resources, the URL only needs to be accessed using "/". The URL for the Node-Red control page has been changed to:[http://127.0.0.1:1880/admin](http://127.0.0.1:1880/admin)
 
- ![](/../static/img/zh-CN/node_red_run.png)
+![](/../static/img/zh-CN/node_red_run.png)
 
 ### Initialization Configuration
 
@@ -46,7 +46,7 @@ After completing the initialization configuration, we will be automatically redi
 
 On the homepage of the running Node-Red service, we can see a button named "Go to your Node-RED flow editor" on the right side. Clicking on it will open an editor named "Flow Builder". We can access the official Node-Red website tutorial at  [https://Node-Red.org/docs/user-guide/](https://node-red.org/docs/user-guide/)  to learn how to configure, debug, and deploy flows in the editor.
 
- ![](/../static/img/zh-CN/node_red_ini.png)
+![](/../static/img/zh-CN/node_red_ini.png)
 
 ## Steedos Node
 
@@ -64,7 +64,7 @@ Steedos Event refers to the function of event subscription and publication using
 
 By configuring these parameters, we can use Steedos Event in the Steedos platform to implement the function of event subscription and publication, so as to execute custom operations when events occur. For example, we can subscribe to record creation events, and send notifications to Slack or WeChat when events occur, or execute custom JavaScript code when events occur to achieve more complex operations.
 
- ![](/../static/img/zh-CN/node_red_event.png)
+![](/../static/img/zh-CN/node_red_event.png)
 
 ### steedos-emit
 
@@ -82,7 +82,7 @@ By configuring these parameters, we can use the Steedos Emit node in Node-RED to
 
 Steedos Call is a Node-RED node used for invoking the APIs provided by the Steedos platform. It can invoke the APIs of the Steedos platform by configuring Broker and Action. The value of Action can also be overridden by the msg.action property. Additionally, some JSON format options can be set in Options to better control the behavior of API invocation. For more information on the APIs provided by the Steedos platform, please refer to the API documentation of the Steedos platform. You can find more information about this in the steedos-template project.
 
- ![](/../static/img/zh-CN/node_red_emit.png)
+![](/../static/img/zh-CN/node_red_emit.png)
 
 ### steedos-request
 
@@ -99,13 +99,13 @@ When the node receives input messages, it sends the data in the messages as para
 
 For example, you can customize an API in Node-RED with Steedos Request.
 
-    The API Endpoint:[http://127.0.0.1:5000/service/api/example-service/](http://127.0.0.1:5000/service/api/example-service/hello/jack)+path
+The API Endpoint:[http://127.0.0.1:5000/service/api/example-service/](http://127.0.0.1:5000/service/api/example-service/hello/jack)+path
 
- ![](/../static/img/zh-CN/node_red_request.png) 
+![](/../static/img/zh-CN/node_red_request.png) 
 
 Example：
 
- ![](/../static/img/zh-CN/node_red_request_ex.png) 
+![](/../static/img/zh-CN/node_red_request_ex.png) 
 
 ### steedos-response
 
@@ -133,7 +133,7 @@ Steedos Instance is a Node-RED node that allows you to inject a Steedos instance
 
 Before using the Steedos Instance node, you need to create an application on the Steedos platform and configure its data model. Then, you need to specify the name of the application and the access token in the configuration of the Steedos Instance node. This way, when you call the Steedos instance in the flow or global context, it will automatically authenticate you with the credentials you provide and allow you to perform application-related operations. More details can be found in the steedos-template project.
 
- ![](/../static/img/zh-CN/node_red_gw.png) 
+![](/../static/img/zh-CN/node_red_gw.png) 
 
 ## To invoke GraphQL
 
