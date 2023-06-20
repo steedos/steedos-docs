@@ -1,13 +1,11 @@
 ---
-title: Interface Validation
-description: 华炎魔方接口都自带身份验证和权限控制，以确保业务数据的安全。
+title: API authentication
 ---
 
-Before calling an interface, interface authentication must be performed first. HuanYaMoFang supports multiple ways to authenticate interfaces, making interface calls easy and flexible. Moreover, it can also achieve functions such as single sign-on, validating login status, and logging out, making interface calls even more flexible and convenient.
+Before calling an api, api authentication must be performed first. Steedos supports multiple ways to authenticate apis, making api calls easy and flexible. Moreover, it can also achieve functions such as single sign-on, validating login status, and logging out, making interface calls even more flexible and convenient.
 
-## Call the login interface to obtain user identity
+## Call the login api to obtain user identity
 
-Starting from version 2.2.52, the platform supports calling the interface for login using an unencrypted password.
 
 POST /accounts/password/login
 
