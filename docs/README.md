@@ -19,19 +19,49 @@ Steedos Platform also offers a range of analytics and reporting tools that enabl
 
 Steedos Low-code PaaS platform is an open-source alternative to Salesforce Platform. It provides a powerful and flexible platform for building enterprise applications quickly and easily. With Steedos, you can create custom applications without writing a single line of code.
 
-## Core Features
-
-- Data Management: Steedos provides powerful data management functions, including data modeling, data storage, and data analysis.
-- Workflow Automation: Steedos provides flexible workflow management capabilities that help businesses customize their workflows and improve work efficiency.
-- Secure: Steedos provides enterprise-level security features to ensure your data is protected at all times.
-- Low-code development: Drag-and-drop interface for building applications.
-- Integration: Steedos provides a visual integration tool that can help enterprises achieve seamless integration between internal and external systems.
-
-## Key Highlights
-
 - Low-code development: Steedos allows you to create custom applications without the need for extensive coding knowledge. This reduces development time and costs significantly.
 - Open-source: Steedos is an open-source platform, which means you have complete control over the code and can modify it to fit your specific needs.
 - Scalable: Steedos is built on a scalable architecture, which means it can grow with your business and handle large volumes of data and users.
 - Secure: Steedos provides enterprise-level security features to ensure your data is protected at all times.
+
+## Core Features
+
+- **Low-code development**: Drag-and-drop interface for building applications.
+  - [x] Apps [Docs](./no-code/application/app)
+  - [x] Tabs [Docs](./no-code/application/tab)
+  - [x] Micro Pages [Docs](./no-code/amis/) 
+  - [x] List View [Docs](./no-code/customize/listview/)
+  - [x] Page Layout [Docs](./no-code/customize/page-layout)
+- **Data Management**: Steedos provides powerful data management functions, including data modeling, data storage, and data analysis.
+  - [x] Objects [Docs](./no-code/customize/object) 
+  - [x] Fields [Docs](./no-code/customize/fields/) 
+  - [x] Validation Rules [Docs](./no-code/customize/validation-rules) 
+  - [ ] [Metabase](https://github.com/metabase/metabase) Business Intelligence, Dashboards, and Data Visualization
+- **Secure**: Steedos provides enterprise-level security features to ensure your data is protected at all times.
+  - [x] Object Permissions [Docs](./admin/permissions/object-permissions)
+  - [x] Field Permissions [Docs](./admin/permissions/field-permissions)
+  - [x] App Permissions [Docs](./admin/permissions/app-permissions)
+  - [x] Division [Docs](./admin/permissions/division)
+  - [x] Sharing Rules [Docs](./admin/permissions/sharing-rules)
+  - [x] Restriction Rules [Docs](./admin/permissions/restriction-rules)
+  - [x] Profiles [Docs](./admin/permissions/profile)
+  - [x] Permission Sets [Docs](./admin/permissions/permission-set)
+- **Workflow Automation**: Steedos provides flexible workflow management capabilities that help businesses customize their workflows and improve work efficiency.
+  - [x] Automated Actions [Docs](./automation/automated-actions)
+  - [x] Workflow Rules [Docs](./automation/workflow-rules)
+  - [x] Process Approval [Docs](./automation/approval-process)
+  - [x] Approval King [Docs](./automation/approval-king/)
+- **Integration**: Steedos provides a visual integration tool that can help enterprises achieve seamless integration between internal and external systems.
+  - [x] [Node-RED](https://github.com/node-red/node-red) Integration [Docs](./plugins/node-red)
+  - [ ] [ToolJet](https://github.com/ToolJet/ToolJet/) Integration
+  - [ ] [n8n](https://github.com/n8n-io/n8n) Integration
+- **High Code**: Metadata can be synchronized as code, version controlled, and automated. For complex business logic, front-end and back-end code can be written to implement it。
+  - [x] create-steedos-app [Docs](./developer/create-steedos-app)
+  - [x] Steedos Packages [Docs](./developer/package)
+  - [x] Metadata Sync with Source Code [Docs](./developer/sync-metadata)
+  - [x] API [Docs](./api/rest-api/)
+  - [x] Object Triggers [Docs](./developer/action-trigger)
+  - [x] Custom API [Docs](./developer/action-api)
+
 
 Steedos Low-code PaaS platform is a powerful and flexible solution for building enterprise applications quickly and easily. With its low-code development approach, open-source nature, and scalable architecture, it is an ideal choice for businesses looking to streamline their application development process.
