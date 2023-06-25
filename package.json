@@ -7,6 +7,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "build:openapi": "redocly build-docs openapi/records.yaml -o static/openapi/records/index.html",
+    "build:openapi-cn": "redocly build-docs openapi/zh-CN/records.yaml -o static/zh-CN/openapi/records/index.html",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
