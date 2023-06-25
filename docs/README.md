@@ -24,7 +24,7 @@ Steedos Low-code PaaS platform is an open-source alternative to Salesforce Platf
 - Scalable: Steedos is built on a scalable architecture, which means it can grow with your business and handle large volumes of data and users.
 - Secure: Steedos provides enterprise-level security features to ensure your data is protected at all times.
 
-## Core Features
+## Low Code Development
 
 - **Low-code development**: Drag-and-drop interface for building applications.
   - [x] Apps [Docs](./no-code/application/app)
@@ -36,7 +36,6 @@ Steedos Low-code PaaS platform is an open-source alternative to Salesforce Platf
   - [x] Objects [Docs](./no-code/customize/object) 
   - [x] Fields [Docs](./no-code/customize/fields/) 
   - [x] Validation Rules [Docs](./no-code/customize/validation-rules) 
-  - [ ] [Metabase](https://github.com/metabase/metabase) Business Intelligence, Dashboards, and Data Visualization
 - **Secure**: Steedos provides enterprise-level security features to ensure your data is protected at all times.
   - [x] Object Permissions [Docs](./admin/permissions/object-permissions)
   - [x] Field Permissions [Docs](./admin/permissions/field-permissions)
@@ -51,11 +50,12 @@ Steedos Low-code PaaS platform is an open-source alternative to Salesforce Platf
   - [x] Workflow Rules [Docs](./automation/workflow-rules)
   - [x] Process Approval [Docs](./automation/approval-process)
   - [x] Approval King [Docs](./automation/approval-king/)
-- **Integration**: Steedos provides a visual integration tool that can help enterprises achieve seamless integration between internal and external systems.
-  - [x] [Node-RED](https://github.com/node-red/node-red) Integration [Docs](./plugins/node-red)
-  - [ ] [ToolJet](https://github.com/ToolJet/ToolJet/) Integration
-  - [ ] [n8n](https://github.com/n8n-io/n8n) Integration
-- **High Code**: Metadata can be synchronized as code, version controlled, and automated. For complex business logic, front-end and back-end code can be written to implement it。
+
+
+## Extend Steedos with Code
+
+Metadata can be synchronized as code, version controlled, and automated. For complex business logic, front-end and back-end code can be written to implement it。
+
   - [x] create-steedos-app [Docs](./developer/create-steedos-app)
   - [x] Steedos Packages [Docs](./developer/package)
   - [x] Metadata Sync with Source Code [Docs](./developer/sync-metadata)
@@ -63,5 +63,14 @@ Steedos Low-code PaaS platform is an open-source alternative to Salesforce Platf
   - [x] Object Triggers [Docs](./developer/action-trigger)
   - [x] Custom API [Docs](./developer/action-api)
 
+## Integrations
+
+Steedos can working collaboratively with third-party low-code platforms, help enterprises achieve seamless integration between internal and external systems.
+
+  - [x] [Node-RED](https://github.com/node-red/node-red)  [Docs](./plugins/node-red)
+  - [ ] [Metabase](https://github.com/metabase/metabase) Business Intelligence, Dashboards, and Data Visualization
+  - [ ] [ToolJet](https://github.com/ToolJet/ToolJet/) 
+  - [ ] [n8n](https://github.com/n8n-io/n8n) 
+    
 
 Steedos Low-code PaaS platform is a powerful and flexible solution for building enterprise applications quickly and easily. With its low-code development approach, open-source nature, and scalable architecture, it is an ideal choice for businesses looking to streamline their application development process.
