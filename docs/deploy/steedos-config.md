@@ -129,3 +129,11 @@ STEEDOS_CRON_INSTANCERECORDQUEUE_INTERVAL=10000
 STEEDOS_CRON_SMSQUEUE_INTERVAL=1000
 STEEDOS_CRON_OBJECTWEBHOOKSQUEUE_INTERVAL=10000
 ```
+
+## Graphql
+
+```bash
+STEEDOS_GRAPHQL_ENABLE_CONSOLE=true
+```
+
+* STEEDOS_GRAPHQL_ENABLE_CONSOLE: Controls whether the Graphql editor is displayed, default true, configurable false suppression, editor access address '{ROOT_URL}/graphql'.
