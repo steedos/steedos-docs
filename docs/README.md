@@ -24,7 +24,7 @@ Steedos Low-code PaaS platform is an open-source alternative to Salesforce Platf
 - Scalable: Steedos is built on a scalable architecture, which means it can grow with your business and handle large volumes of data and users.
 - Secure: Steedos provides enterprise-level security features to ensure your data is protected at all times.
 
-## Low-code Development
+## Click, Not Code
 
 - **Design Your Data**: Steedos provides powerful data management functions, including data modeling, data storage, and data analysis.
   - [x] Objects [Docs](./no-code/customize/object) 
@@ -36,7 +36,19 @@ Steedos Low-code PaaS platform is an open-source alternative to Salesforce Platf
   - [x] Micro Pages [Docs](./no-code/amis/) 
   - [x] List View [Docs](./no-code/customize/listview/)
   - [x] Page Layout [Docs](./no-code/customize/page-layout)
-- **Secure Your Data**: Steedos provides enterprise-level security features to ensure your data is protected at all times.
+- **Automate Your Business Processes**: Steedos provides flexible workflow management capabilities that help businesses customize their workflows and improve work efficiency.
+  - [x] Automated Actions [Docs](./automation/automated-actions)
+  - [x] Workflow Rules [Docs](./automation/workflow-rules)
+  - [x] Process Approval [Docs](./automation/approval-process)
+  - [x] Approval King [Docs](./automation/approval-king/)
+
+
+## Secure Your Data
+
+Steedos provides enterprise-level security features to ensure your data is protected at all times.
+
+![Steedos Permissions](/diagrams/Steedos-Permissions.drawio.svg)
+
   - [x] Object Permissions [Docs](./admin/permissions/object-permissions)
   - [x] Field Permissions [Docs](./admin/permissions/field-permissions)
   - [x] App Permissions [Docs](./admin/permissions/app-permissions)
@@ -45,16 +57,13 @@ Steedos Low-code PaaS platform is an open-source alternative to Salesforce Platf
   - [x] Restriction Rules [Docs](./admin/permissions/restriction-rules)
   - [x] Profiles [Docs](./admin/permissions/profile)
   - [x] Permission Sets [Docs](./admin/permissions/permission-set)
-- **Automate Your Business Processes**: Steedos provides flexible workflow management capabilities that help businesses customize their workflows and improve work efficiency.
-  - [x] Automated Actions [Docs](./automation/automated-actions)
-  - [x] Workflow Rules [Docs](./automation/workflow-rules)
-  - [x] Process Approval [Docs](./automation/approval-process)
-  - [x] Approval King [Docs](./automation/approval-king/)
 
 
 ## Extend Steedos with Code
 
 Metadata can be synchronized as code, version controlled, and automated. For complex business logic, front-end and back-end code can be written to implement it。
+
+![Steedos Overview](/img/platform/steedos-dx.png)
 
   - [x] create-steedos-app [Docs](./developer/create-steedos-app)
   - [x] Steedos Packages [Docs](./developer/package)

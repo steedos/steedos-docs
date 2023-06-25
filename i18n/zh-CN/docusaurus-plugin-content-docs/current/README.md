@@ -26,7 +26,21 @@ sidebar_position: 0
   - [x] 微页面 [文档](./no-code/amis/) 
   - [x] 列表视图 [文档](./no-code/customize/listview/)
   - [x] 页面布局 [文档](./no-code/customize/page-layout)
-- **安全和权限控制**：平台提供了完善的安全和权限控制机制，可以确保企业数据的安全性和隐私性。
+- **流程自动化**：内置可视化的流程开发引擎，可以帮助用户快速实现业务流程自动化。
+  - [x] 自动化操作 [文档](./automation/automated-actions)
+  - [x] 工作流规则 [文档](./automation/workflow-rules)
+  - [x] 批准过程 [文档](./automation/approval-process)
+  - [x] 审批王 [文档](./automation/approval-king/)
+
+
+## 管理数据访问权限
+
+华炎魔方提供灵活的多维度数据权限架构，这允许管理员控制用户对数据的访问权限。
+
+![Steedos Permissions](/diagrams/Steedos-Permissions.drawio.svg)
+
+通过仅显示与用户相关的数据，管理数据访问权限会增强安全性。使用权限集、权限集组和简档，控制用户可以访问的对象和字段。使用组织范围的共享设置、用户角色和共享规则，以指定用户可以查看并编辑的单个记录。
+
   - [x] 对象权限 [文档](./admin/permissions/object-permissions)
   - [x] 字段权限 [文档](./admin/permissions/field-permissions)
   - [x] 应用权限 [文档](./admin/permissions/app-permissions)
@@ -35,17 +49,14 @@ sidebar_position: 0
   - [x] 限制规则 [文档](./admin/permissions/restriction-rules)
   - [x] 简档 [文档](./admin/permissions/profile)
   - [x] 权限集 [文档](./admin/permissions/permission-set)
-- **流程自动化**：内置可视化的流程开发引擎，可以帮助用户快速实现业务流程自动化。
-  - [x] 自动化操作 [文档](./automation/automated-actions)
-  - [x] 工作流规则 [文档](./automation/workflow-rules)
-  - [x] 批准过程 [文档](./automation/approval-process)
-  - [x] 审批王 [文档](./automation/approval-king/)
 
 ## 使用代码扩展Steedos
 
-元数据可以同步为代码，进行版本管理并实现自动化；对于复杂的业务逻辑，可以编写前后端代码实现。
-  
-![Steedos Overview](http://www.steedos.org/assets/platform/platform-overview.png)
+使用 Steedos DX，您可以将元数据导入到 Steedos 中，在可视化界面中进行修改，并将其同步回项目源代码。Steedos DX 引入了一种新的方式来组织您的元数据和分发您的应用程序。
+
+![Steedos Overview](/img/platform/steedos-dx.png)
+
+您可以用Git工具管理您的所有内容 - 您的代码、配置和元数据，并从人工智能技术（如 Github Copilot）中受益。
 
   - [x] create-steedos-app [文档](./developer/create-steedos-app)
   - [x] 软件包 [文档](./developer/package)
