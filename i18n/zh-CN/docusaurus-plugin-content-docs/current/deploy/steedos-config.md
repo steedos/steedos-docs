@@ -157,6 +157,16 @@ STEEDOS_CRON_OBJECTWEBHOOKSQUEUE_INTERVAL=10000
 * STEEDOS_CRON_SMSQUEUE_INTERVAL: 短信发送队列的轮询间隔(单位毫秒)
 * STEEDOS_CRON_OBJECTWEBHOOKSQUEUE_INTERVAL: 对象触发器队列的轮询间隔(单位毫秒)
 
+## Graphql配置
+
+配置Graphql的属性。
+
+```bash
+STEEDOS_GRAPHQL_ENABLE_CONSOLE=true
+```
+
+* STEEDOS_GRAPHQL_ENABLE_CONSOLE: 控制Graphql编辑器是否显示，默认true，可配置false禁止显示，编辑器访问地址`{ROOT_URL}/graphql`。
+
 <!-- 
 ## 账户相关
 
