@@ -63,3 +63,32 @@ sidebar_position: 2
 
 
 适当地为对象上的字段创建索引是非常必要的，它可以极大的提升相关记录的查询速度，在公式字段、累计汇总、数据导入等功能中也能明显受益。
+
+## Amis 属性
+
+当华炎魔方字段类型及配置属性无法满足业务字段要求时，可以通过字段的Amis属性来实现这些需求。具体场景及配置如下：
+
+### 通过接口抓取数据
+用户在填写表单字段时，字段的选项需要从第三方接口进行抓取后，页面进行选择。这种情况，完全通过Amis字段进行前台渲染展示：
+
+```js
+{
+  "name": "select",
+  "type": "select",
+  "label": "动态选项",
+  "source": {
+    "method": "get",
+    "url": "https://huayan.steedos.cn/service/api/amis-metadata-objects/objects/generate_tabs_options",
+    "headers": {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+      "Access-Control-Expose-Headers": "Content-Disposition"
+    }
+  },
+  "description": "通过接口一口气拉取选项",
+  "clearable": true,
+  "searchable": true
+}
+```
+
+
