@@ -212,3 +212,32 @@ public:
 - public.password.policies: Array<{policy: '正则表达式', policyError: '不符合表达式时的提示消息'}>
 
 配置了多个密码规则时会同时生效，上述示例中配置的规则是会同时生效的。 -->
+
+
+## amis sdk
+
+可以配置华炎魔方引用的amis sdk版本或者amis sdk源码编译后skd.js文件所在路径。
+
+```bash
+# Amis
+STEEDOS_AMIS_VERSION=2.9.0
+STEEDOS_AMIS_URL=https://8888-steedos-steedosamis-t274254lixx.ws-us101.gitpod.io/packages/amis
+```
+
+- STEEDOS_AMIS_VERSION：华炎魔方每个版本都会默认引用当前版本最适用的sdk版本，通常情况下不需要配置amis sdk版本。
+- STEEDOS_AMIS_URL：当需要调式amis源码时，可以配置此变量引用指定路径下的sdk.js文件，不需要精确到sdk.js文件，只要配置为amis所在路径即可，系统会自动补全文件路径。
+
+## 前端资产包
+
+可以配置华炎魔方引用的前端组件库资产包地址。
+
+```bash
+# 资产包
+STEEDOS_UNPKG_URL=https://unpkg.steedos.cn
+STEEDOS_PUBLIC_PAGE_ASSETURLS=http://127.0.0.1:8080/@steedos-widgets/amis-object/dist/assets-dev.json
+```
+
+- STEEDOS_UNPKG_URL：配置所有前端资产包的域名地址，包括第三方npm包。
+- STEEDOS_PUBLIC_PAGE_ASSETURLS：配置前端组件库资产包地址，多个资产包地址用逗号分隔。
+
+
