@@ -21,6 +21,9 @@ description: 华炎魔方微页面引擎，内置对象列表组件 ObjectTable�
         "fields": [
           "name"
         ],
+        "crud": {
+            "id": "table_first" //自定义对象表格组件底层crud的ID属性
+        }
     },
   }
 ```
@@ -32,6 +35,8 @@ description: 华炎魔方微页面引擎，内置对象列表组件 ObjectTable�
 objectApiName属性可以被配置为像`space_users`或`accounts`这种固定值，也可以配置为变量，而变量`objectName`在“记录页面”、“列表页面”以及“表单”类型的微页面中存储了当前对象Api名称。
 
 fields属性需要配置数组格式，描述需要显示哪些字段。
+
+crud属性需要配置对象格式，输入重写对象表格底层crud的各个属性。
 
 ## 属性表
 
@@ -49,6 +54,7 @@ fields属性需要配置数组格式，描述需要显示哪些字段。
 | fieldsExtend | string | 无 | 重写字段配置 |
 | requestAdaptor | string | 无 | 数据接口的发送适配器 |
 | adaptor | string | 无 | 数据接口的接收适配器 |
+| crud | object | 无 | 重写amis底层crud的各个属性 |
 
 <!--
 | actions | [string] | 无 | 操作 |
