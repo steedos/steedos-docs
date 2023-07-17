@@ -40,6 +40,9 @@ recordId属性类似的可以配置为某个具体的记录id值，但是一般�
 
 可以通过修改其mode属性为“eidt”来把对象表单组件显示为可编辑状态。
 
+表单处于编辑状态时，表单默认ID为 'form_'+对象名 。 例如： “form_tasks” 表示任务对象表单ID。组件form属性中配置id可以覆盖表单默认ID。
+表单处于只读状态时，表单默认ID为 “service_detail_page” 。
+
 ## 底部按钮栏
 
 当对象表单 ObjectForm 组件被配置为可编辑时，默认是不带提交按钮的。
@@ -52,7 +55,6 @@ recordId属性类似的可以配置为某个具体的记录id值，但是一般�
     "title": "Welcome to Steedos",
     "body": [
         {
-            "id": "test",
             "type": "steedos-object-form",
             "objectApiName": "organizations",
             "recordId": "gKfnkfbLWdqCxo8dg",
@@ -86,7 +88,9 @@ recordId属性类似的可以配置为某个具体的记录id值，但是一般�
     "title": "Welcome to Steedos",
     "body": [
         {
-            "id": "test",
+            "form":{
+                "id": "test",
+            },
             "type": "steedos-object-form",
             "objectApiName": "organizations",
             "recordId": "gKfnkfbLWdqCxo8dg",
@@ -158,6 +162,7 @@ recordId属性类似的可以配置为某个具体的记录id值，但是一般�
 | fields | array | 无 | 显示的字段 |
 | excludedFields | array | 无 | 排除的字段 |
 | fieldsExtend | string | 无 | 重写字段配置 |
+| form | object | 无 | 重写amis底层form属性 |
 
 ## 事件表
 
