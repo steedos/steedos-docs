@@ -18,7 +18,10 @@ description: 华炎魔方微页面引擎，内置列表视图组件 ObjectListVi
     body: {
         "type": "steedos-object-listview",
         "objectApiName": "${objectName}",
-        "listName": "all"
+        "listName": "all",
+        "crud": {
+            "id": "listview_first" //自定义对象列表组件底层crud的ID属性
+        }
     },
   }
 ```
@@ -29,6 +32,8 @@ description: 华炎魔方微页面引擎，内置列表视图组件 ObjectListVi
 objectApiName属性可以被配置为像`space_users`或`accounts`这种固定值，也可以配置为变量，而变量`objectName`在“记录页面”、“列表页面”以及“表单”类型的微页面中存储了当前对象Api名称。
 
 listName属性类似的可以配置为某个固定的列表视图值，也可以配置为某个变量值。
+
+crud属性需要配置对象格式，输入重写列表视图底层crud的各个属性。
 
 ## 选中行
 
