@@ -50,7 +50,7 @@ ROUND((amount*0.02), 2)
 
 要引用关联字段指向的记录id只要用点符号来连接`_id`即可，比如`reference_to_field_name._id`，`$user._id`。
 
-除了可以用 `$user` 开头的表达式来引用当前登录用户信息，还可以用 `$userSession` 开头的表达式来引用当前登录用户的 UserSession，详情请参阅 [如何创建公式字段 - $userSession](#$userSession)。
+除了可以用 `$user` 开头的表达式来引用当前登录用户信息，还可以用 `$userSession` 开头的表达式来引用当前登录用户的 UserSession，详情请参阅 [如何创建公式字段 - $userSession](https://docs.steedos.com/zh-CN/no-code/customize/fields/formula/formula-field?_highlight=%E5%A6%82%E4%BD%95&_highlight=%E5%88%9B%E5%BB%BA&_highlight=%E5%85%AC%E5%BC%8F&_highlight=%E5%AD%97&_highlight=%E6%AE%B5&_highlight=%E5%85%AC%E5%BC%8F)。
 
 ### 公式中的运算符和函数
 
