@@ -101,7 +101,7 @@ CASE(Days_Open__c, 1,  true,false)
 
 ### $user 
 
-可以在公式中输入`$user` 变量来引用当前登录用户的相关信息，作为跨对象公式的一种，你也应该在其后用点符号来扩展引用链，`$user`指向的是`space_users`表而不是`users`表，所以只能从 space_users 表中外键字段开始扩展其引用链，比如`$user.organization.owner.name`，更多可扩展属性请参考 [space_users对象源码](https://github.com/steedos/steedos-platform/blob/master/packages/standard-objects/space_users.object.yml)。
+可以在公式中输入`$user` 变量来引用当前登录用户的相关信息，作为跨对象公式的一种，你也应该在其后用点符号来扩展引用链，`$user`指向的是`space_users`表而不是`users`表，所以只能从 space_users 表中外键字段开始扩展其引用链，比如`$user.organization.owner.name`，更多可扩展属性请参考 [space_users对象源码](https://github.com/steedos/steedos-platform/blob/master/services/standard-space/main/default/objects/space_users/space_users.object.yml)。
 
 ### $userSession
 
