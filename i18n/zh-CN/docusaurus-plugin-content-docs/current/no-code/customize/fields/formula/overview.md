@@ -54,7 +54,7 @@ ROUND((amount*0.02), 2)
 
 ### 公式中的运算符和函数
 
-在构建公式时可以使用很多运算符和函数，请参考：[公式中的运算符和函数](functions)。
+在构建公式时可以使用很多运算符和函数，请参考：[公式中的运算符和函数](https://docs.steedos.com/zh-CN/no-code/customize/fields/formula/functions)。
 
 
 ### 在哪些地方可以使用公式?
