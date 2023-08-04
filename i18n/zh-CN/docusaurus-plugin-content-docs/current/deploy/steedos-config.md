@@ -241,3 +241,10 @@ STEEDOS_PUBLIC_PAGE_ASSETURLS=http://127.0.0.1:8080/@steedos-widgets/amis-object
 - STEEDOS_PUBLIC_PAGE_ASSETURLS：配置前端组件库资产包地址，多个资产包地址用逗号分隔。
 
 
+## 流程触发器
+
+```
+STEEDOS_ENABLE_PROCESS_TRIGGER=true
+```
+
+- STEEDOS_ENABLE_PROCESS_TRIGGER: 控制流程触发器是否执行

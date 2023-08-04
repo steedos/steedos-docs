@@ -137,3 +137,11 @@ STEEDOS_GRAPHQL_ENABLE_CONSOLE=true
 ```
 
 * STEEDOS_GRAPHQL_ENABLE_CONSOLE: Controls whether the Graphql editor is displayed, default true, configurable false suppression, editor access address '{ROOT_URL}/graphql'.
+
+## ProcessTrigger
+
+```
+STEEDOS_ENABLE_PROCESS_TRIGGER=true
+```
+
+- STEEDOS_ENABLE_PROCESS_TRIGGER: Controls whether process triggers execute
