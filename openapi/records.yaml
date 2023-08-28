@@ -12,12 +12,6 @@ info:
     name: API Support
     email: support@steedos.com
     url: https://www.steedos.com/
-  x-logo:
-    url: "/img/logo_platform.png"
-    altText: Steedos platform logo
-  x-dark-logo:
-    url: "/img/logo_platform.png"
-    altText: Steedos platform logo
   license:
     name: MIT
     url: "https://www.steedos.com/"
@@ -25,24 +19,24 @@ info:
 #   description: Find out how to create Github repo for your OpenAPI spec.
 #   url: "https://github.com/Rebilly/generator-openapi-repo"
 tags:
-  - name: service_rest
+  - name: service_records
     description: 记录的增删改查接口
-    x-displayName: REST API
+    x-displayName: Records API
 # x-tagGroups:
 #   - name: REST API
 #     tags:
-#       - service_rest
+#       - service_records
 paths:
   "/api/v1/{objectName}":
     get:
       summary: 获取记录列表
-      x-apifox-folder: service_rest
+      x-apifox-folder: service_records
       x-apifox-status: developing
       deprecated: false
       description: ""
       operationId: getList
       tags:
-        - service_rest
+        - service_records
       parameters:
         - name: objectName
           in: path
@@ -161,13 +155,13 @@ paths:
       x-run-in-apifox: https://apifox.com/web/project/1580216/apis/api-88207663-run
     post:
       summary: 新增一条记录
-      x-apifox-folder: service_rest
+      x-apifox-folder: service_records
       x-apifox-status: developing
       deprecated: false
       description: ""
       operationId: createRecord
       tags:
-        - service_rest
+        - service_records
       parameters:
         - name: objectName
           in: path
@@ -339,13 +333,13 @@ paths:
   "/api/v1/{objectName}/search":
     post:
       summary: 查询记录列表
-      x-apifox-folder: service_rest
+      x-apifox-folder: service_records
       x-apifox-status: developing
       deprecated: false
       description: ""
       operationId: searchRecords
       tags:
-        - service_rest
+        - service_records
       parameters:
         - name: objectName
           in: path
@@ -489,13 +483,13 @@ paths:
   "/api/v1/{objectName}/{id}":
     get:
       summary: 获取单条记录
-      x-apifox-folder: service_rest
+      x-apifox-folder: service_records
       x-apifox-status: developing
       deprecated: false
       description: ""
       operationId: getRecord
       tags:
-        - service_rest
+        - service_records
       parameters:
         - name: objectName
           in: path
@@ -582,13 +576,13 @@ paths:
       x-run-in-apifox: https://apifox.com/web/project/1580216/apis/api-88800233-run
     put:
       summary: 更新一条记录
-      x-apifox-folder: service_rest
+      x-apifox-folder: service_records
       x-apifox-status: developing
       deprecated: false
       description: ""
       operationId: updateRecord
       tags:
-        - service_rest
+        - service_records
       parameters:
         - name: objectName
           in: path
@@ -964,13 +958,13 @@ paths:
       x-run-in-apifox: https://apifox.com/web/project/1580216/apis/api-88867878-run
     delete:
       summary: 删除一条记录
-      x-apifox-folder: service_rest
+      x-apifox-folder: service_records
       x-apifox-status: developing
       deprecated: false
       description: ""
       operationId: deleteRecord
       tags:
-        - service_rest
+        - service_records
       parameters:
         - name: objectName
           in: path
