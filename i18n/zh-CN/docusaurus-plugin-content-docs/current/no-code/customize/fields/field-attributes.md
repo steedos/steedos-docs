@@ -37,7 +37,7 @@ sidebar_position: 2
 
 ### 字段显示公式
 
-可以在高级-字段显示公式为该字段增加显示条件，比如输入{{formData.type === 'leader' ? true: false}}，表示当字段type等于leader值时，才显示当前字段，否则隐藏该字段。
+可以在高级-字段显示公式为该字段增加显示条件，条件使用 [Amis表达式](https://aisuda.bce.baidu.com/amis/zh-CN/docs/concepts/expression) 定义，只有满足条件时才显示当前字段，否则隐藏该字段。
 
 ### 与关联表建立联系
 
