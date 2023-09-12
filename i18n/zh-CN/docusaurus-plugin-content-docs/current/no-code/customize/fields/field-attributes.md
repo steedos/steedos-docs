@@ -66,28 +66,15 @@ sidebar_position: 2
 
 ## Amis 属性
 
-当华炎魔方字段类型及配置属性无法满足业务字段要求时，可以通过字段的Amis属性来实现这些需求。具体场景及配置如下：
+当华炎魔方字段类型及配置属性无法满足业务字段要求时，可以通过字段的Amis属性来实现这些需求。
 
-### 通过接口抓取数据
-用户在填写表单字段时，字段的选项需要从第三方接口进行抓取后，页面进行选择。这种情况，完全通过Amis字段进行前台渲染展示：
+### 使用 amis 控件替换标准控件
 
-```js
+创建一个文本字段，并配置 amis 属性如下，数据控件会替换为 amis 颜色选择器。
+
+```json
 {
-  "name": "select",
-  "type": "select",
-  "label": "动态选项",
-  "source": {
-    "method": "get",
-    "url": "https://huayan.steedos.cn/service/api/amis-metadata-objects/objects/generate_tabs_options",
-    "headers": {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
-      "Access-Control-Expose-Headers": "Content-Disposition"
-    }
-  },
-  "description": "通过接口一口气拉取选项",
-  "clearable": true,
-  "searchable": true
+  "type": "input-color"
 }
 ```
 
