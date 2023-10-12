@@ -20,7 +20,7 @@
     "description": "The label for category Manage Data Access in sidebar platform"
   },
   "sidebar.platform.category.Extend with Clicks": {
-    "message": "无代码开发",
+    "message": "可视化开发",
     "description": "The label for category Extend with Clicks in sidebar platform"
   },
   "sidebar.platform.category.Customize Your Org": {
@@ -28,7 +28,7 @@
     "description": "The label for category Customize Your Org in sidebar platform"
   },
   "sidebar.platform.category.Set Up Your Data": {
-    "message": "设定你的数据",
+    "message": "自定义业务数据",
     "description": "The label for category Set Up Your Data in sidebar platform"
   },
   "sidebar.platform.category.Customize Fields": {
@@ -40,7 +40,7 @@
     "description": "The label for category Formula Overview in sidebar platform"
   },
   "sidebar.platform.category.Micro Page Builder": {
-    "message": "微页面设计器",
+    "message": "自定义页面",
     "description": "The label for category Micro Page Builder in sidebar platform"
   },
   "sidebar.platform.category.Amis Components": {
@@ -80,7 +80,7 @@
     "description": "The label for category Developer Guide in sidebar platform"
   },
   "sidebar.platform.category.Set Up Your APP": {
-    "message": "创建企业应用",
+    "message": "自定义应用",
     "description": "The label for category Set Up Your APP in sidebar platform"
   },
   "sidebar.platform.category.管理数据访问权限": {
