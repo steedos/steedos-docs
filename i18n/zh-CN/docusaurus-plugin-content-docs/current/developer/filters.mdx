@@ -1,9 +1,9 @@
 ---
-title: 筛选条件
-description: 筛选条件，用于向数据库查询数据。
+title: 过滤条件
+description: 过滤条件，用于向数据库查询数据。
 ---
 
-Steedos 使用数组的格式定义一个或多个筛选条件。例如以下过滤器用于查询本月创建的，责任人是本人的数据。
+Steedos 使用数组的格式定义一个或多个过滤条件。例如以下过滤器用于查询本月创建的，责任人是本人的数据。
 
 ```javascript
 filters: [["priority", "=", "high"],["owner","=","{userId}"],["created", "=", this_month]]
