@@ -92,12 +92,30 @@ const config = {
         isCloseable: true,
       },
       navbar: {
-        title: 'Steedos',
+        title: '',
         logo: {
           alt: 'Steedos',
           src: 'img/logo.png',
         },
         items: [
+          {
+            type: 'doc',
+            position: 'left',
+            docId: 'README',
+            label: 'Platform',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'apps',
+            label: 'Apps',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'developer',
+            label: 'Developer',
+          },
           {
             type: 'search',
             position: 'right',
