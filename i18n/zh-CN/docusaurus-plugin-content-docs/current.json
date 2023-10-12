@@ -3,16 +3,16 @@
         "message": "2.5",
         "description": "The label for version current"
     },
-    "sidebar.platform.category.Setup": {
-        "message": "安装部署",
+    "sidebar.platform.category.Self Hosting": {
+        "message": "私有部署",
         "description": "The label for category Setup in sidebar platform"
     },
     "sidebar.platform.category.Getting Started": {
-        "message": "用户向导",
+        "message": "快速向导",
         "description": "The label for category Getting Started in sidebar platform"
     },
     "sidebar.platform.category.Setup Your Organization": {
-        "message": "组织设置",
+        "message": "设置您的组织",
         "description": "The label for category Setup Your Organization in sidebar platform"
     },
     "sidebar.platform.category.Manage Data Access": {

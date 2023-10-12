@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: What is Steedos 
 sidebar_position: 0
 ---
 

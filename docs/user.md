@@ -1,5 +1,5 @@
 ---
-title: Navigate Steedos
+title: User Guide
 sidebar_position: 1
 ---
 

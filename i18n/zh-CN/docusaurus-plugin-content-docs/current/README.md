@@ -1,5 +1,5 @@
 ---
-title: 快速向导
+title: 什么是华炎魔方？
 sidebar_position: 0
 ---
 
