@@ -40,12 +40,12 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: "/",
-          lastVersion: 'current',
-          versions: {
-            current: {
-              label: '2.5',
-            },
-          },
+          // lastVersion: 'current',
+          // versions: {
+          //   current: {
+          //     label: '2.5',
+          //   },
+          // },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -78,6 +78,11 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
       announcementBar: {
         id: 'support_us',
         content:
@@ -97,10 +102,10 @@ const config = {
             type: 'search',
             position: 'right',
           },
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-          },
+          // {
+          //   type: 'docsVersionDropdown',
+          //   position: 'right',
+          // },
           {
             type: 'localeDropdown',
             position: 'right',
@@ -116,68 +121,60 @@ const config = {
       docs: {
         sidebar: {
           hideable: true,
-          autoCollapseCategories: true
         }
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Getting Started',
-            items: [
-              {
-                label: 'Deploy',
-                to: 'deploy',
-              },
-              {
-                label: 'User Guide',
-                to: 'user',
-              },
-              {
-                label: 'Admin Guide',
-                to: 'admin',
-              },
-            ],
-          },
-          {
-            title: 'Customize Your Org',
-            items: [
-              {
-                label: 'Extend with Click',
-                to: 'no-code',
-              },
-              {
-                label: 'Automation You Process',
-                to: 'automation',
-              },
-              {
-                label: 'Extend with Code',
-                to: 'developer',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Github',
-                href: 'https://github.com/steedos/steedos-platform',
-              },
-              {
-                label: 'Steedos Enterprise',
-                href: 'https://www.steedos.com/pricing/platform',
-              }
-            ],
-          },
-        ],
+        // links: [
+        //   {
+        //     title: 'Getting Started',
+        //     items: [
+        //       {
+        //         label: 'Deploy',
+        //         to: 'deploy',
+        //       },
+        //       {
+        //         label: 'User Guide',
+        //         to: 'user',
+        //       },
+        //       {
+        //         label: 'Admin Guide',
+        //         to: 'admin',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: 'Customize Your Org',
+        //     items: [
+        //       {
+        //         label: 'Extend with Click',
+        //         to: 'no-code',
+        //       },
+        //       {
+        //         label: 'Automation You Process',
+        //         to: 'automation',
+        //       },
+        //       {
+        //         label: 'Extend with Code',
+        //         to: 'developer',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: 'More',
+        //     items: [
+        //       {
+        //         label: 'Github',
+        //         href: 'https://github.com/steedos/steedos-platform',
+        //       },
+        //       {
+        //         label: 'Steedos Enterprise',
+        //         href: 'https://www.steedos.com/pricing/platform',
+        //       }
+        //     ],
+        //   },
+        // ],
         copyright: `Copyright © ${new Date().getFullYear()} Steedos Inc.`,
-      },
-      algolia2: {
-        appId: 'TL0K9Y2YIH',
-        apiKey: process.env.ALGOLIA_API_KEY || 'development', // Public API key: it is safe to commit it
-        indexName: 'steedos',
-        contextualSearch: true,
-        externalUrlRegex: 'external\\.com|domain\\.com',
       },
       prism: {
         theme: lightCodeTheme,

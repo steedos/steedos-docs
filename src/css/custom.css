@@ -261,3 +261,69 @@ strong {
     /* Fixes #3856 */
   }
 }
+
+
+
+/* sidebar theme from appsmith */
+.theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible>.menu__link--sublist {
+  margin-bottom: 6px;
+  font-size: 0.938rem;
+  font-weight: 600;
+  line-height: 100%;
+  color: #000;
+  min-height: 40px;
+}
+
+.theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible>button {
+  display: none;
+}
+
+[data-theme="dark"] .theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible>.menu__link--sublist {
+  color: #fff;
+}
+
+.menu__list li:last-of-type {
+  -webkit-padding-after: 1.5rem;
+  padding-block-end: 0.5rem;
+}
+
+.menu__link {
+  align-items: center;
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 16px;
+  transition: opacity 0.2s ease-out;
+}
+
+.theme-doc-sidebar-menu .menu__list-item .menu__caret:before,
+.theme-doc-sidebar-menu .menu__list-item .menu__link--sublist:after {
+  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEyIDEwIDggNmwtNCA0IiBzdHJva2U9IiMxQjI3MzgiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=) 50% no-repeat;
+  height: 1.5rem;
+  min-height: 29.5px;
+  min-width: 1.5rem;
+  width: 1.5rem;
+}
+
+.theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible>.menu__link--sublist.theme-doc-sidebar-menu .menu__list-item .menu__caret:before,
+.theme-doc-sidebar-menu .menu__list-item .menu__link--sublist:after {
+  background: none;
+  height: 1.5rem;
+  min-height: 29.5px;
+  min-width: 1.5rem;
+  width: 1.5rem;
+}
+
+
+.menu__caret {
+  padding: 0em 0.375em 0em 0.75em !important;
+}
+
+
+.menu__list {
+  display: block !important;
+  margin: 0;
+  transition: height 0.35s cubic-bezier(0.36, 0.66, 0.04, 1) 25ms !important;
+  will-change: auto !important;
+}
