@@ -118,5 +118,13 @@
   "sidebar.developer.category.Developer Guide": {
     "message": "开发人员向导",
     "description": "The label for category Developer Guide in sidebar developer"
+  },
+  "sidebar.platform.category.审批王": {
+    "message": "审批王",
+    "description": "The label for category 审批王 in sidebar platform"
+  },
+  "sidebar.platform.category.Integrations": {
+    "message": "应用集成",
+    "description": "The label for category Integrations in sidebar platform"
   }
 }

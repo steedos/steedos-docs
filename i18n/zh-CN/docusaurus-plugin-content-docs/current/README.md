@@ -69,7 +69,7 @@ sidebar_position: 0
 
 作为低代码生态的一员，华炎魔方通过插件的方式，实现与多个行业领先的第三方低代码工具无缝集成，扩展华炎魔方的产品能力。
 
-  - [x] [Node-RED](https://github.com/node-red/node-red) 集成 [文档](./plugins/node-red)
+  - [x] [Node-RED](https://github.com/node-red/node-red) 集成 [文档](./integration/node-red)
   - [ ] [metabase](https://github.com/metabase/metabase) 数据分析引擎
   - [ ] [ToolJet](https://github.com/ToolJet/ToolJet/) 集成
   - [ ] [n8n](https://github.com/n8n-io/n8n) 集成

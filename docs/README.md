@@ -76,7 +76,7 @@ Metadata can be synchronized as code, version controlled, and automated. For com
 
 Steedos can working collaboratively with third-party low-code platforms, help enterprises achieve seamless integration between internal and external systems.
 
-  - [x] [Node-RED](https://github.com/node-red/node-red)  [Docs](./plugins/node-red)
+  - [x] [Node-RED](https://github.com/node-red/node-red)  [Docs](./integration/node-red)
   - [ ] [Metabase](https://github.com/metabase/metabase) Business Intelligence, Dashboards, and Data Visualization
   - [ ] [ToolJet](https://github.com/ToolJet/ToolJet/) 
   - [ ] [n8n](https://github.com/n8n-io/n8n) 
