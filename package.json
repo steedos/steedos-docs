@@ -5,14 +5,16 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "start:cn": "docusaurus start --locale zh-CN",
     "build": "docusaurus build",
     "build:openapi": "redocly build-docs openapi/records.yaml -o static/openapi/records/index.html",
-    "build:openapi-cn": "redocly build-docs openapi/zh-CN/records.yaml -o static/zh-CN/openapi/records/index.html",
+    "build:openapi:cn": "redocly build-docs openapi/zh-CN/records.yaml -o static/zh-CN/openapi/records/index.html",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
+    "write-translations:cn": "docusaurus write-translations --locale zh-CN",
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {

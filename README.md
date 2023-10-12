@@ -17,13 +17,13 @@ yarn start
 调试中文版 
 
 ```shell
-yarn start -- --locale zh-CN
+yarn start:cn
 ```
 
 更新中文翻译资源
 
 ```shell
-yarn write-translations -- --locale zh-CN
+yarn write-translations:cn
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
