@@ -101,7 +101,7 @@ const config = {
           {
             type: 'doc',
             position: 'left',
-            docId: 'README',
+            docId: 'overview',
             label: 'Platform',
           },
           {

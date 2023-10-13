@@ -21,7 +21,7 @@ const sidebars = {
       label: 'Getting Started',
       collapsed: false,
       items: [
-        'README',
+        'overview',
         'user',
         {
           type: 'category',
