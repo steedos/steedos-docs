@@ -65,7 +65,7 @@ Metadata can be synchronized as code, version controlled, and automated. For com
 
 ![Steedos Overview](/img/platform/steedos-dx.png)
 
-  - [x] create-steedos-app [Docs](./developer/create-steedos-app)
+  - [x] create-steedos-app [Docs](./developer/setup/create-steedos-app)
   - [x] Steedos Packages [Docs](./developer/package)
   - [x] Metadata Sync with Source Code [Docs](./developer/sync-metadata)
   - [x] API [Docs](./api/rest-api/)
