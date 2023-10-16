@@ -19,3 +19,16 @@ The independence of plugins makes maintenance simpler. You can update or modify 
 
 ### Community and Marketplace Support
 Due to the open nature of Steedos, many developers and partners develop and share their plugins. You can benefit from a rich plugin ecosystem, quickly finding solutions that fit your current needs.
+
+## How to Install Steedos Packages?
+
+Installing Steedos packages is typically a quick and straightforward process. The steps are as follows:
+
+- Navigate to the Steedos admin interface.
+- Click "Install" and follow the on-screen instructions to complete the process.
+
+Once installed, the plugin immediately becomes a part of your Steedos platform, and you can start configuring and using the new functionalities based on the plugin's guidance.
+
+## Developing Your Own Steedos Packages
+
+For developers looking to create custom features, Steedos provides the necessary development kit and documentation. You can follow the guidelines in the documentation to create, test, and publish your packages, bringing value to your business or the Steedos community.
