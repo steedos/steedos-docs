@@ -1,4 +1,9 @@
-# Sample Repository on GitHub
+---
+title: Project Template
+sidebar_position: 3
+---
+
+# Project Template on GitHub
 
 To get started quickly, see the [steedos-project-template](https://github.com/steedos/steedos-project-template) GitHub repo. This standalone application contains an example DX project with multiple custom objects, sample data.
 
