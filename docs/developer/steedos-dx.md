@@ -1,5 +1,5 @@
 ---
-title: Steedos Developer Experience
+title: Steedos DX
 sidebar_position: 0.1
 ---
 

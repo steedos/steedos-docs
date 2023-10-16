@@ -1,11 +1,19 @@
 ---
-title: Steedos Packages
+title: Steedos Package
 sidebar_position: 2
 ---
 
-Steedos is based on the standard npm specification to define packages.
+By creating software packages, you can synchronize the metadata developed on the server-side with the code, enabling version management of metadata.
 
-The directory structure of the package files is:
+In addition, you can also write triggers, APIs, and microservices to expand the capabilities of Steedos.
+
+![软件包&元数据 示意图](https://console.steedos.cn/api/files/images/duh3tECd387Sz5i8J "软件包&元数据 示意图")
+
+## Define Package
+
+Steedos defines packages based on standard npm specifications.
+
+The directory structure of the package files is as follows:
 
 ```bash
 package1
@@ -14,8 +22,8 @@ package1
 │   └── package.service.js
 ```
 
-Each package should contain at least the following contents:
+Each package contains at least the following content:
 
-* `package.json`：According to the standard npmjs specification, this file defines the package information, including the package name, version, and dependencies. For more information, please refer to <https://docs.npmjs.com/cli/v7/configuring-npm/package-json>
-* `package.service.js`：his is the microservice for the package, which is a microservice definition file that follows the Moleculer specification. You can write code to control the operations executed when the package is loaded, started, or stopped. For more information, please refer to: <https://moleculer.services/docs/0.14/services.html>
-* `main/default`folder：This folder stores metadata synchronized from the server, such as objects, fields, list views, permissions, etc.
+* `package.json`：Based on npmjs standard specifications, it defines the information of the package, used to describe the package name, version, and information of the dependencies. See [NPM Package](https://docs.npmjs.com/cli/v7/configuring-npm/package-json) for details.
+* `package.service.js`：The package microservice, which is a microservice definition file following the Moleculer specifications. You can write code to control the operations executed when the package is loaded, started, or stopped. For more information, refer to [Moleculer Services](https://moleculer.services/docs/0.14/services.html).
+* `main/default`: Stores metadata synchronized from the server, such as objects, fields, list views, permissions, etc.
