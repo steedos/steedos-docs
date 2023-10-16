@@ -5,7 +5,7 @@ sidebar_position: 1
 
 Steedos Platform, renowned as the preferred open-source low-code platform solution, is not only famous for its excellent ready-to-use product features but also favored by enterprises for its robust custom development capabilities. Through custom development, businesses can adapt and extend the Steedos platform according to their unique business needs, thereby optimizing and automating business processes.
 
-## Core Customization Capabilities
+By leveraging Steedos's custom development capabilities, businesses can expand the functionalities of the Steedos solution, serve customers better, optimize operations, and innovate business processes, thereby achieving success in the fierce market competition. Regardless of how unique or complex your needs are, the Steedos platform offers flexibility and scalability, becoming a powerful tool to support your business growth.
 
 ### Custom Objects and Fields
 Steedos allows you to create custom objects and fields to store data that is unique to your business. These custom configurations seamlessly integrate with standard Steedos functions, ensuring that your business system is fully aligned with your business requirements.
@@ -21,5 +21,3 @@ Amis components are UI components based on the Amis framework, allowing develope
 
 ### API Integration
 Steedos provides a rich set of APIs, allowing for integration with external systems and third-party applications. This ensures that your Steedos instance can seamlessly connect with your entire enterprise technology stack.
-
-By leveraging Steedos's custom development capabilities, businesses can expand the functionalities of the Steedos solution, serve customers better, optimize operations, and innovate business processes, thereby achieving success in the fierce market competition. Regardless of how unique or complex your needs are, the Steedos platform offers flexibility and scalability, becoming a powerful tool to support your business growth.
