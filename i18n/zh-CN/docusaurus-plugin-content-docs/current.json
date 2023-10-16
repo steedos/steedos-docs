@@ -126,5 +126,37 @@
   "sidebar.platform.category.Integrations": {
     "message": "应用集成",
     "description": "The label for category Integrations in sidebar platform"
+  },
+  "sidebar.platform.category.Amis 微页面": {
+    "message": "Amis 微页面",
+    "description": "The label for category Amis 微页面 in sidebar platform"
+  },
+  "sidebar.platform.category.Components Reference": {
+    "message": "控件指南",
+    "description": "The label for category Components Reference in sidebar platform"
+  },
+  "sidebar.platform.category.Steedos Packages": {
+    "message": "软件包",
+    "description": "The label for category Steedos Packages in sidebar platform"
+  },
+  "sidebar.developer.category.Project Setup": {
+    "message": "创建项目",
+    "description": "The label for category Project Setup in sidebar developer"
+  },
+  "sidebar.developer.category.API Reference": {
+    "message": "API Reference",
+    "description": "The label for category API Reference in sidebar developer"
+  },
+  "sidebar.developer.category.Product": {
+    "message": "产品",
+    "description": "The label for category Product in sidebar developer"
+  },
+  "sidebar.developer.link.Release Notes": {
+    "message": "Release Notes",
+    "description": "The label for link Release Notes in sidebar developer, linking to https://github.com/orgs/steedos/projects/9"
+  },
+  "sidebar.developer.link.Contribute": {
+    "message": "Contribute",
+    "description": "The label for link Contribute in sidebar developer, linking to https://github.com/steedos/steedos-platform/blob/master/CONTRIBUTING.md"
   }
 }
