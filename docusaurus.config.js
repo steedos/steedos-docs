@@ -104,12 +104,12 @@ const config = {
             docId: 'overview',
             label: 'Platform',
           },
-          {
-            type: 'docSidebar',
-            position: 'left',
-            sidebarId: 'apps',
-            label: 'Apps',
-          },
+          // {
+          //   type: 'docSidebar',
+          //   position: 'left',
+          //   sidebarId: 'apps',
+          //   label: 'Apps',
+          // },
           {
             type: 'docSidebar',
             position: 'left',
