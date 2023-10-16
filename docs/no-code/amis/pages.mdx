@@ -1,10 +1,60 @@
 ---
 title: Page Builder
-description: Configure and realize custom user interfaces on the visual interface. The steps below describe the operation process.
+description: Configure and realize custom user interfaces on the visual interface. 
 sidebar_position: 2
 ---
 
-The following steps describe how to use the micro page engine AMIS to customize user interfaces in Steedos.
+Steedos is designed based on a micro-page architecture and provides visual design tools. You can customize every interface of the system, including object list pages, record detail pages, form pages, and standalone application pages (such as dashboards).
+
+## Micro Page Engine
+
+Steedos's micro-page engine supports the design of different types of pages within the system. The types of pages that can be designed include:
+
+* Application pages: Completely new pages that can be used to design enterprise business data dashboards, cockpit data pages, etc.
+* Record pages: Detail pages of data records.
+* List pages: Object data list pages.
+* Form pages: Data creation and editing pages.
+
+In addition to designing pages, it also supports designing business operation buttons through the designer to achieve complex business interface interactive operations.
+
+### Application Pages
+
+If you need to customize a brand new application page, you can use this type of micro-page. It allows you to add a new custom page designed with Amis to the system. By binding it to a tab, users can access this page through the tab.
+
+For example, we may need to configure a homepage for the project application, displaying various project receipts, payment statistics curves or histograms, and related list data.
+
+  ![Application Page](/img/amis/amis-page-app.png)
+
+### Record Pages
+
+Sometimes what we need is not to customize a brand new application page, but to customize a certain business object, such as the record page of a contract object, to replace the system's built-in record page to achieve personalized record detail page display effects.
+
+  ![Record Page](/img/amis/amis-page-detail.png)
+
+### List Pages
+
+Similar to the record page, the "List Page" type of micro-page is used to customize a certain business object, such as the list page of a contract object, to replace the system's built-in list page to achieve personalized list page display effects.
+
+  ![List Page](/img/amis/amis-page-listview.png)
+
+### Forms
+
+Similar to record pages, the "Form" type of micro-page is for customizing a certain business object, like the form of a contract object, to replace the built-in form effects that pop up when creating or editing records.
+
+Unlike record pages, the "Form" type of micro-page only replaces the popped-up form interface and does not affect the read-only interface effects of the record details page. In contrast, the "Record Page" type of micro-page replaces the entire read-only effect of the record details page but does not affect the popped-up form interface.
+
+  ![Form](/img/amis/amis-page-button.png)
+
+## Micro Page Designer
+
+We have integrated the Amis visual designer in Steedos's micro-pages, allowing the design of highly customized interface effects.
+
+![Amis Designer](/img/amis/amis-designer.png)
+
+In the integrated designer in Steedos, there are different types of components available for users to use:
+* Native components: Steedos adapts native Baidu Amis standard components for design use by users.
+* Cube components: Components corresponding to the standardization of Steedos system pages, such as list views, object tables, related tables, etc. Compared to native components, cube components only need simple configuration to use.
+* Custom components: Steedos platform supports the custom component function. Once the component is published, the designer can use it.
 
 ## Creating a Custom Page
 
@@ -76,7 +126,7 @@ Each time you click the publish button, the latest page version will be marked a
 
 The page content we design in the designer is ultimately saved to each page version in [AMIS Schema](https://aisuda.bce.baidu.com/amis/zh-CN/docs/types/schemanode) form. If you are familiar with AMIS Schema syntax, you can also directly modify it in the page version.
 
-## Creating Tabs
+## Creating URL Tabs
 
 By creating tabs, you can display micro pages in custom applications. If you need to implement a micro page with parameters, you can create an "External Link" type tab and configure its link address as the micro page access address.
 
@@ -91,3 +141,14 @@ For example, configuring the external link as `/app/oa/page/oa_home?company_id=6
 With the formula script feature, we only need to configure the external link address of the tab above as ``{{`/app/oa/page/oa_home?company_id=${global.user.company_id}`}}``, and we can dynamically pass the "division" value of the current logged-in user to the "affiliated company" parameter of the micro page.
 
 The method mentioned above is only suitable for micro pages of the "application page" type. Other types of
+
+
+## About Amis Framework
+
+Amis is a low-code front-end framework open-sourced by Baidu. It uses JSON configuration to generate pages, reducing the workload of page development and greatly enhancing efficiency. [Visit the official Amis website](https://aisuda.bce.baidu.com/amis/zh-CN/docs/index)
+
+* **Provides a complete interface solution**: Other UI frameworks require JavaScript for assembling business logic, while Amis can complete full functionality development with just JSON configuration, including data fetching, form submission, and validation, etc. The pages produced are ready to go online without secondary development.
+* **Numerous built-in components (120+), one-stop solution**: Most other UI frameworks only have the most common components, and you have to find third-party ones for less common components, which often differ in presentation and interaction, leading to poor integration. Amis, however, has a wide variety of built-in components, including rich text editors, code editors, diffs, conditional combinations, real-time logs, and other business components, covering most needs in back-end page development with just Amis knowledge.
+* **Supports extension**: In addition to the low-code mode, you can also expand components through [custom components](https://aisuda.bce.baidu.com/amis/zh-CN/docs/extend/internal), treating Amis as a regular UI library, achieving a hybrid mode of 90% low-code and 10% traditional code development, enhancing efficiency without losing flexibility.
+* **Container supports unlimited nesting**: You can meet various layout and presentation needs through nesting.
+* **Endured the test of long-term practical application**: Amis is widely used within Baidu, **creating 50,000 pages over more than 6 years**, from content auditing to machine management, from data analysis to model training, Amis meets a wide range of page needs, with the most complex pages having over 10,000 lines of JSON configuration.
