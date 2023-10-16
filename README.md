@@ -1,6 +1,6 @@
 # Website
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This is the source of documentation for [Steedos Platform](https://steedos.com), hosted at [docs.steedos.com](https://docs.steedos.com), powered by Docusaurus v2.
 
 ### Installation
 
@@ -14,13 +14,13 @@ yarn
 yarn start
 ```
 
-调试中文版 
+Run zh-CN version
 
 ```shell
 yarn start:cn
 ```
 
-更新中文翻译资源
+Write translations for z-CN
 
 ```shell
 yarn write-translations:cn

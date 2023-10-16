@@ -1,5 +1,6 @@
 ---
-title: What is Steedos 
+title: What is Steedos?
+sidebar_label: Introduction
 sidebar_position: 0
 ---
 
