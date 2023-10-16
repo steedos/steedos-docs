@@ -11,6 +11,10 @@
     "message": "华炎魔方",
     "description": "Navbar item with label Platform"
   },
+  "item.label.Steedos": {
+    "message": "华炎魔方",
+    "description": "Navbar item with label Platform"
+  },
   "item.label.Apps": {
     "message": "应用",
     "description": "Navbar item with label Apps"
