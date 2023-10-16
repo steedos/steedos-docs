@@ -2,7 +2,7 @@
 sidebar_position: 1.5
 ---
 
-# formula field type
+# Formula Field Types
 
 The data type of a formula determines the type of data you expect returned from your formula.
 

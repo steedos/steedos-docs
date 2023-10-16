@@ -1,8 +1,93 @@
 ---
-title: Amis Builder
-description: Through the use of the Amis Builder, it is possible to configure and implement a customized user interface within a visual interface.
+title: Page Builder
+description: Configure and realize custom user interfaces on the visual interface. The steps below describe the operation process.
 sidebar_position: 2
 ---
 
-Through the use of the Amis Builder, it is possible to configure and implement a customized user interface within a visual interface.
+The following steps describe how to use the micro page engine AMIS to customize user interfaces in Steedos.
 
+## Creating a Custom Page
+
+First, enter the "Settings" application, click the "User Interface->Micro Page" menu on the left, and then click the "New" button in the upper right corner to start creating a micro page.
+
+- Api name: Please enter an Api name that does not duplicate with other micro pages.
+- Name: Please enter the display name for the micro page.
+- Renderer: Please select Amis.
+- Status: Used to control whether the micro page is available.
+- Object: When the type is “record page”, “list page”, or “form”, you need to select the object to be bound.
+
+When creating a "form, list page, record page," a well-designed default [Page Version](#page-version) is automatically generated for user secondary development.
+
+### Designing the Page
+
+After the micro page is created, we can click the "Designer" button at the top right to open the micro page designer and design the page.
+
+### Configuring Permissions
+
+After publishing the designed micro page, we need to configure access permissions for each micro page to make it visible to the end-user. We set permissions through "Page Allocation."
+
+We can distribute the designed pages according to different business scenarios, meaning we can let users see different page effects when accessing different applications or under different profiles.
+
+In the micro page record detail interface, you can see a subtable list called "Page Allocation." We can click the "New" button in the upper right corner of this list to create a new page allocation record.
+
+- Authorization Type: Please select the authorization type to configure. There are three options: organization default settings, application default settings, application, and profile.
+- Page: The current micro page will be automatically selected, no need to change.
+- Application: When the authorization type is "application default settings" or "application and profile," you need to choose under which application the micro page is effective.
+- Profile: When the authorization type is "application and profile," in addition to selecting the application, you also need to select under which profile the micro page is effective.
+- Desktop: Checking this means that the micro page will be displayed on the desktop.
+- Mobile: Checking this means that the micro page will be displayed on mobile devices.
+
+We can create multiple page allocation records for the same micro page, and they will all take effect.
+
+The table below describes the differences in the scope of micro page authorization for the three types of authorization supported in page allocation:
+
+| Authorization Type | Authorized Application | Authorized Profile |
+|----|----|----|
+| Organization Default Settings | All Applications | All Profiles |
+| Application Default Settings | Specified Application Only | All Profiles |
+| Application and Profile | Specified Application Only | Specified Profile Only |
+
+Users within the micro page authorization range can see the page effects customized with AMIS, while users outside the authorization range will see the system's default page effects.
+
+For example, suppose we designed a micro page using the AMIS engine for the contract object, and we authorized it only for the "contract administrator" profile during page allocation. In that case, the contract administrator will see our customized micro page when viewing contract record details, while other users will see the default contract record details page effects.
+
+### Display in Applications
+
+Assuming we have already designed and published a page, the following steps describe how to bind a micro page of the "application page" type to a tab and make it visible to the end user.
+- Enter the "Settings" application, click the "User Interface->Tabs" menu on the left, and then click the "New" button in the upper right corner to create a tab.
+- When creating a new tab, select "Page" for the "Type" and then choose the micro page we just published in the "Page" attribute.
+- Click the "Applications->Applications" menu on the left of the "Settings" application, create a new application or edit an existing one, and select the newly created tab in the tab attributes of the application.
+- After refreshing the browser, click the grid in the upper left corner, and in the pop-up "Application Launcher," click to enter the newly created application.
+- At this point, you can see the newly created tab in the top navigation bar. Clicking this tab will take you to the customized page we designed with AMIS earlier.
+
+### Publishing
+
+After the page design is complete, we need to click the "Publish" button in the upper right corner of the designer or the micro page record detail interface to publish the page content designed in the designer. Both publish buttons are the same.
+
+It should be noted that each time you modify the design in the designer, you need to click the publish button after publishing to let the end user see the latest designed effects.
+
+The publishing operation actually marks the current latest "Page Version" as the "Published" status, and the page content seen by the end user is also the latest published version of the page.
+
+## Page Version
+
+The first time you save the design content in the designer, a page version will be generated. We can see it in the "Page Versions" subtable in the micro page record detail interface.
+
+Each time you click the publish button, the latest page version will be marked as "Published," and each time you modify and save a previously published micro page in the designer, a new unpublished page version will be generated.
+
+The page content we design in the designer is ultimately saved to each page version in [AMIS Schema](https://aisuda.bce.baidu.com/amis/zh-CN/docs/types/schemanode) form. If you are familiar with AMIS Schema syntax, you can also directly modify it in the page version.
+
+## Creating Tabs
+
+By creating tabs, you can display micro pages in custom applications. If you need to implement a micro page with parameters, you can create an "External Link" type tab and configure its link address as the micro page access address.
+
+The micro page access address format is `/app/${appApiName}/page/${pageApiName}[?dynamic parameters]`, with the following rules:
+
+- appApiName is the API name of the application.
+- pageApiName is the API name of the micro page.
+- The parameters after the '?' are optional, following the regular [URL Query](https://en.wikipedia.org/wiki/Query_string) parameter writing method.
+
+For example, configuring the external link as `/app/oa/page/oa_home?company_id=619383545b2e9a72ec0558b3` means that when you click the tab, it opens the micro page configured under the application with the API name "oa" with the API name "oa_home," while passing in a parameter named "company_id."
+
+With the formula script feature, we only need to configure the external link address of the tab above as ``{{`/app/oa/page/oa_home?company_id=${global.user.company_id}`}}``, and we can dynamically pass the "division" value of the current logged-in user to the "affiliated company" parameter of the micro page.
+
+The method mentioned above is only suitable for micro pages of the "application page" type. Other types of

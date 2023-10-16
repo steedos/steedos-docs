@@ -1,5 +1,5 @@
 ---
-title: tab
+title: Custom Tabs
 sidebar_position: 1
 ---
 
