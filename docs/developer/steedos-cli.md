@@ -44,13 +44,35 @@ npx create-steedos-app my-project
 cd my-project
 ```
 
+### Set Default Package Path
+
+If you are working on a multi-package project, you may also need to configure the default package path.
+
+For example, Set the following environment variables in the .env file:
+
+```
+DEFAULT_PACKAGE_PATH=steedos-packages/<my-package-dir>
+```
+
 ### Source Config
 
-Setting up metadata synchronization requires the METADATA_SERVER and METADATA_APIKEY of the steedos server to which you are connecting.
+Setup environment variables required for metadata synchronization.
 
 ```bash
 steedos source:config
 ```
+
+- Metadata Server: METADATA_SERVER is the ROOT_URL of the Steedos server you wish to connect to, which can be a local development environment or a remote server.
+- Metadata API Key: METADATA_APIKEY is used to authenticate your identity. You can log in to the Steedos server with administrator credentials, go to the settings app, select the API Key menu, and create a new API Key.
+
+This command writes environment variables into the .env.local file, 
+
+```
+METADATA_SERVER=
+METADATA_APIKEY=
+```
+
+You can also set the above environment variables directly without running the command.
 
 ### Source Deploy
 
