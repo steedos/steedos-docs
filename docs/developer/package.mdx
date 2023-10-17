@@ -7,23 +7,26 @@ By creating software packages, you can synchronize the metadata developed on the
 
 In addition, you can also write triggers, APIs, and microservices to expand the capabilities of Steedos.
 
-![软件包&元数据 示意图](https://console.steedos.cn/api/files/images/duh3tECd387Sz5i8J "软件包&元数据 示意图")
+## Package Structure
 
-## Define Package
-
-Steedos defines packages based on standard npm specifications.
-
-The directory structure of the package files is as follows:
+A steedos package stores custom objects and custom object translations in intuitive subdirectories. Source format makes it much easier to find what you want to change or update. And you can say goodbye to messy merges.
 
 ```bash
-package1
-│   ├── main/default
-│   ├── package.json
-│   └── package.service.js
+my-package
+|   ├── main/                                    # Main code directory
+|   |   ├── default/                             # Folder containing default code and content
+|   |   |   ├── applications/                    # Custom applications
+|   |   |   ├── objects/                         # Custom objects directory, containing definitions such as fields
+|   |   |   |   ├── my_object/                   # Files and configurations for an individual custom object
+|   |   |   |   |   ├── fields/                  # Contains fields for the custom object
+|   |   |   |   |   ├── listviews/               # Custom list views for the object
+|   |   |   |   |   ├── permissions/             # Permissions for the custom object
+|   |   |   |   |   └── my_object.object.yml     # YAML configuration file for the custom object
+|   |   |   ├── pages/                           # Custom pages
+|   |   |   ├── tabs/                            # Custom tabs
+|   |   |   ├── triggers/                        # Triggers
+│   ├── package.json                             # Node.js package information and dependencies
+│   └── package.service.js                       # Service configuration for the package
+│   └── README.md                                # README.md file for the package.
 ```
 
-Each package contains at least the following content:
-
-* `package.json`：Based on npmjs standard specifications, it defines the information of the package, used to describe the package name, version, and information of the dependencies. See [NPM Package](https://docs.npmjs.com/cli/v7/configuring-npm/package-json) for details.
-* `package.service.js`：The package microservice, which is a microservice definition file following the Moleculer specifications. You can write code to control the operations executed when the package is loaded, started, or stopped. For more information, refer to [Moleculer Services](https://moleculer.services/docs/0.14/services.html).
-* `main/default`: Stores metadata synchronized from the server, such as objects, fields, list views, permissions, etc.
