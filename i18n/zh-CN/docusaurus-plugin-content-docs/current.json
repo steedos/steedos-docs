@@ -140,7 +140,7 @@
     "description": "The label for category Steedos Packages in sidebar platform"
   },
   "sidebar.developer.category.Project Setup": {
-    "message": "创建项目",
+    "message": "设置项目",
     "description": "The label for category Project Setup in sidebar developer"
   },
   "sidebar.developer.category.API Reference": {
