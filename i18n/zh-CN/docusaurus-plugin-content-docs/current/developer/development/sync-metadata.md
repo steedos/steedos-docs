@@ -1,6 +1,6 @@
 ---
 title: 同步元数据
-sidebar_position: 3
+sidebar_position: 20
 ---
 
 通过 VS Code 插件，可以将可视化开发的元数据同步为项目源码，实现元数据的版本管理，并进一步利用传统开发中的DevOps工具实现团队开发和自动化。

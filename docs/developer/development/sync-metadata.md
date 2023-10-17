@@ -1,7 +1,8 @@
 ---
-title: Synchronizing Metadata
-sidebar_position: 3
+sidebar_position: 20
 ---
+
+# Metadata Synchronizing 
 
 By using the VS Code plugin, you can synchronize the metadata of visual development with the project source code, achieve version management of metadata, and further utilize DevOps tools for team development and automation.
 

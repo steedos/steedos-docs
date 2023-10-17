@@ -15,6 +15,21 @@ Before, all custom objects and object translations were stored in one large meta
 
 We solve this problem by providing a new source shape that breaks down these large source files to make them more digestible and easier to manage with a version control system. It’s called source format.
 
+## Multiple Package Project
+
+When you create your Steedos DX project, we recommend that you organize your metadata into logical groupings by creating multiple package directories locally. You can group similar code and source for an application or customization to better organize your team’s repository. 
+
+```bash
+my-project
+├── steedos-packages
+│   ├── package1
+│   ├── package2
+│   └── package3
+├── docker-compose.yml
+├── package.json
+└── steedos.config.js
+```
+
 ## Package Structure
 
 A steedos package stores custom objects and custom object translations in intuitive subdirectories. Source format makes it much easier to find what you want to change or update. And you can say goodbye to messy merges.
