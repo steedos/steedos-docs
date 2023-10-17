@@ -32,11 +32,21 @@ Below are some of the basic commands you might use in your projects:
 steedos help
 ```
 
-### Create a New Project
+### Clone Sample Repository
 
 ```bash
-npx create-steedos-app my-project
+git clone https://github.com/steedos-labs/contract
 ```
+
+Install dependences and run the project. 
+
+```bash
+yarn
+yarn start
+```
+
+If it's an empty database, the system will prompt you to register an account and create a workspace.
+
 
 ### Navigating to the Project
 
