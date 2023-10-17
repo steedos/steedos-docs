@@ -59,11 +59,11 @@ sidebar_position: 0
 您可以用Git工具管理您的所有内容 - 您的代码、配置和元数据，并从人工智能技术（如 Github Copilot）中受益。
 
   - [x] create-steedos-app [文档](./developer/setup/create-steedos-app)
-  - [x] 软件包 [文档](./developer/package)
-  - [x] 元数据同步为代码 [文档](./developer/sync-metadata)
+  - [x] 软件包 [文档](./developer/development/package)
+  - [x] 元数据同步为代码 [文档](./developer/development/sync-metadata)
   - [x] API [文档](./api/rest-api/)
-  - [x] 触发器 [文档](./developer/action-trigger)
-  - [x] 自定义API [文档](./developer/action-api)
+  - [x] 触发器 [文档](./developer/development/action-trigger)
+  - [x] 自定义API [文档](./developer/development/action-api)
    
 ## 与第三方低代码工具无缝集成
 
