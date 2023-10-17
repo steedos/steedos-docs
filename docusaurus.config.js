@@ -195,7 +195,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Steedos Inc.`,
       },
       prism: {
-        theme: lightCodeTheme,
+        theme: darkCodeTheme,
         darkTheme: darkCodeTheme,
       },
     }),
