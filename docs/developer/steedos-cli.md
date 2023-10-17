@@ -46,6 +46,8 @@ cd my-project
 
 ### Source Config
 
+Setting up metadata synchronization requires the ROOT_URL and API_KEY of the server to which you are connecting.
+
 ```bash
 steedos source:config
 ```
