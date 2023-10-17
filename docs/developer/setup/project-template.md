@@ -1,6 +1,5 @@
 ---
-title: Project Template
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Project Template on GitHub

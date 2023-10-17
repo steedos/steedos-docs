@@ -1,5 +1,5 @@
 ---
-title: Steedos DX
+title: What is Steedos DX?
 sidebar_position: 0.1
 ---
 
