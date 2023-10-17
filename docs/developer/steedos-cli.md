@@ -46,12 +46,31 @@ cd my-project
 
 ### Source Config
 
-Setting up metadata synchronization requires the ROOT_URL and API_KEY of the server to which you are connecting.
+Setting up metadata synchronization requires the METADATA_SERVER and METADATA_APIKEY of the steedos server to which you are connecting.
 
 ```bash
 steedos source:config
 ```
 
+### Source Deploy
+
+Deploy metadata from package source code to steedos server.
+
+```bash
+steedos source:deploy -p steedos-packages/contract
+```
+
+- `-p` path of the steedos package you wish to deploy
+
+### Source Retrieve
+
+Retrieve metadata from steedos server to package source code
+
+```bash
+steedos source:retrieve -p steedos-packages/contract
+```
+
+- `-p` path of the steedos package you wish to retrieve to.
 
 ## Troubleshooting
 
