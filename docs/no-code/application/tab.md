@@ -1,6 +1,6 @@
 ---
 title: Custom Tabs
-sidebar_position: 1
+sidebar_position: 30
 ---
 
 Custom tabs let you display custom object data or other web content in Steedos. When you add a custom tab to an app in Steedos, it appears as an item in the app’s navigation bar and in the App Launcher.

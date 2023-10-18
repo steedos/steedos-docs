@@ -1,7 +1,9 @@
 ---
-title: Build Your Own Steedos Application
-sidebar_position: 2
+title: Custom App
+sidebar_position: 10
 ---
+
+# Build Your Own Steedos Application
 
 An app is a collection of items that work together to serve a particular function. 
 

@@ -1,6 +1,6 @@
 ---
-title: 创建应用
-sidebar_position: 2
+title: 自定义应用
+sidebar_position: 10
 ---
 
 应用程序包含您对自定义应用程序预期的一切内容，例如自定义和标准对象，以及自定义选项卡。

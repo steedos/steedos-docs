@@ -1,6 +1,6 @@
 ---
 title: 选项卡
-sidebar_position: 1
+sidebar_position: 30
 ---
 
 华炎魔方选项卡功能，会将设置好的选项卡会显示在页面顶部的Tab导航上，
