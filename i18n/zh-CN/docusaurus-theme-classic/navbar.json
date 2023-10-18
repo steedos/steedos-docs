@@ -8,7 +8,7 @@
     "description": "The alt text of navbar logo"
   },
   "item.label.Platform": {
-    "message": "华炎魔方",
+    "message": "平台",
     "description": "Navbar item with label Platform"
   },
   "item.label.Steedos": {
