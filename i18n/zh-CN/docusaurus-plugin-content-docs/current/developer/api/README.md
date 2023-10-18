@@ -1,5 +1,5 @@
 ---
-title: REST API
+title: API Reference
 ---
 
 华炎魔方中创建的自定义对象，会自动生成标准的 REST API 接口。

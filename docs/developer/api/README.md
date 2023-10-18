@@ -1,5 +1,5 @@
 ---
-title: REST API
+title: API
 ---
 
 Custom objects created in the Steedos system will automatically generate standard REST API interfaces.
