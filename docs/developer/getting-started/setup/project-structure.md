@@ -22,29 +22,6 @@ my-project
 └── steedos.config.js
 ```
 
-## Package Structure
-
-A steedos package stores custom objects and custom object translations in intuitive subdirectories. Source format makes it much easier to find what you want to change or update. And you can say goodbye to messy merges.
-
-```bash
-my-package
-|   ├── main/                                    # Main code directory
-|   |   ├── default/                             # Folder containing default code and content
-|   |   |   ├── applications/                    # Custom applications
-|   |   |   ├── objects/                         # Custom objects directory, containing definitions such as fields
-|   |   |   |   ├── my_object/                   # Files and configurations for an individual custom object
-|   |   |   |   |   ├── fields/                  # Contains fields for the custom object
-|   |   |   |   |   ├── listviews/               # Custom list views for the object
-|   |   |   |   |   ├── permissions/             # Permissions for the custom object
-|   |   |   |   |   └── my_object.object.yml     # YAML configuration file for the custom object
-|   |   |   ├── pages/                           # Custom pages
-|   |   |   ├── tabs/                            # Custom tabs
-|   |   |   ├── triggers/                        # Triggers
-│   ├── package.json                             # Node.js package information and dependencies
-│   └── package.service.js                       # Service configuration for the package
-│   └── README.md                                # README.md file for the package.
-```
-
 ## package.json
 
 The `package.json` file is a fundamental element in virtually all projects that involve Node.js. It serves as a base source for defining various modules required in the project, among other configuration details. 
