@@ -34,7 +34,7 @@ Steedos Low-code PaaS platform is an open-source alternative to Salesforce Platf
 - **Building Apps**: Drag-and-drop interface for building applications.
   - [x] Apps [Docs](./no-code/application/app)
   - [x] Tabs [Docs](./no-code/application/tab)
-  - [x] Micro Pages [Docs](./no-code/amis/) 
+  - [x] Micro Pages [Docs](./no-code/application/pages) 
   - [x] List View [Docs](./no-code/customize/listview/)
   - [x] Page Layout [Docs](./no-code/customize/page-layout)
 - **Automate Your Business Processes**: Steedos provides flexible workflow management capabilities that help businesses customize their workflows and improve work efficiency.
@@ -67,11 +67,11 @@ Metadata can be synchronized as code, version controlled, and automated. For com
 ![Steedos Overview](/img/platform/steedos-dx.png)
 
   - [x] create-steedos-app [Docs](./developer/setup/create-steedos-app)
-  - [x] Steedos Packages [Docs](./developer/development/package)
-  - [x] Metadata Sync with Source Code [Docs](./developer/development/sync-metadata)
-  - [x] API [Docs](./api/rest-api/)
-  - [x] Object Triggers [Docs](./developer/development/action-trigger)
-  - [x] Custom API [Docs](./developer/development/action-api)
+  - [x] Steedos Packages [Docs](./developer/package/overview)
+  - [x] Metadata Sync with Source Code [Docs](./developer/package/sync-metadata)
+  - [x] API [Docs](./api/)
+  - [x] Object Triggers [Docs](./developer/service/action-trigger)
+  - [x] Custom API [Docs](./developer/service/action-api)
 
 ## Integrations
 

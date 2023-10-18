@@ -23,7 +23,7 @@ sidebar_position: 0
 - **可视化构建应用**：使用简单易懂的拖放式界面，用户可以快速创建自定义的企业级应用程序。
   - [x] 应用 [文档](./no-code/application/app)
   - [x] 选项卡 [文档](./no-code/application/tab)
-  - [x] 微页面 [文档](./no-code/amis/) 
+  - [x] 微页面 [文档](./no-code/application/pages) 
   - [x] 列表视图 [文档](./no-code/customize/listview/)
   - [x] 页面布局 [文档](./no-code/customize/page-layout)
 - **流程自动化**：内置可视化的流程开发引擎，可以帮助用户快速实现业务流程自动化。
@@ -59,11 +59,11 @@ sidebar_position: 0
 您可以用Git工具管理您的所有内容 - 您的代码、配置和元数据，并从人工智能技术（如 Github Copilot）中受益。
 
   - [x] create-steedos-app [文档](./developer/setup/create-steedos-app)
-  - [x] 软件包 [文档](./developer/development/package)
-  - [x] 元数据同步为代码 [文档](./developer/development/sync-metadata)
-  - [x] API [文档](./api/rest-api/)
-  - [x] 触发器 [文档](./developer/development/action-trigger)
-  - [x] 自定义API [文档](./developer/development/action-api)
+  - [x] 软件包 [文档](./developer/package/overview)
+  - [x] 元数据同步为代码 [文档](./developer/package/sync-metadata)
+  - [x] API [文档](./developer/api/)
+  - [x] 触发器 [文档](./developer/service/action-trigger)
+  - [x] 自定义API [文档](./developer/service/action-api)
    
 ## 与第三方低代码工具无缝集成
 

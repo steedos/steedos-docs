@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Sample Repository on GitHub
+# Sample Project on GitHub
 
 To get started quickly, see the [https://github.com/steedos-labs/contract](https://github.com/steedos-labs/contract) GitHub repo. This standalone application contains an example Steedos DX project with multiple custom objects, sample data.
 

@@ -1,6 +1,6 @@
 ---
 title: Install Steedos Cli
-sidebar_position: 0.2
+sidebar_position: 20
 ---
 
 ## Introduction

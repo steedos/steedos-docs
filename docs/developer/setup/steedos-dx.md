@@ -1,6 +1,6 @@
 ---
 title: What is Steedos DX?
-sidebar_position: 10
+sidebar_position: 0.1
 ---
 
 # How Steedos Developer Experience Changes the Way You Work

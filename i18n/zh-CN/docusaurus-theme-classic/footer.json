@@ -35,10 +35,6 @@
     "message": "管理员向导",
     "description": "The label of footer link with label=Admin Guide linking to /admin"
   },
-  "link.item.label.Extend with Click": {
-    "message": "无代码开发",
-    "description": "The label of footer link with label=Extend with Click linking to /no-code"
-  },
   "link.item.label.Automation You Process": {
     "message": "自动化工作流",
     "description": "The label of footer link with label=Automation You Process linking to /automation"
