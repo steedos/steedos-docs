@@ -1,5 +1,5 @@
 ---
-title: 权限管理
+title: 权限管理概览
 sidebar_position: 1
 ---
 

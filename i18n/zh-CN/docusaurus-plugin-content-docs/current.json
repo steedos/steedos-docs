@@ -164,7 +164,7 @@
     "description": "The label for category Custom Objects in sidebar platform"
   },
   "sidebar.platform.category.Custom Apps": {
-    "message": "自定义应用程序",
+    "message": "自定义用户界面",
     "description": "The label for category Custom Apps in sidebar platform"
   },
   "sidebar.developer.category.Getting Started": {
@@ -172,7 +172,7 @@
     "description": "The label for category Getting Started in sidebar developer"
   },
   "sidebar.developer.category.Steedos Package": {
-    "message": "Steedos 软件包",
+    "message": "软件包",
     "description": "The label for category Steedos Package in sidebar developer"
   },
   "sidebar.developer.category.Service Development": {
