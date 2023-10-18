@@ -1,0 +1,118 @@
+---
+title: Extend Standard Objects
+---
+
+> You can add new fields or hide system fields for built-in standard objects in steedos. There are various requirements for adjusting object fields in practical use, and here are the suggested approaches:
+
+| Requirements | Allowed/Recommended | Implementation/Alternative Methods |
+|----|----|----|
+|Add new fields|	Allowed	|Customize objects with steedos, or use third-party tools such as steedos Object Manager|
+|Hide system fields|	Allowed but not recommended|	Modify field permissions for certain roles in steedos system settings, or use custom tables instead of standard objects to store related data|
+|Rename fields|	Not allowed	|Create custom fields with desired names and use them instead|
+|Change field type|	Not allowed|	Create new fields with desired types and map them to corresponding existing fields|
+|Restrict field values	|Allowed	|Define options for picklist fields or set validation rules for input fields|
+|Adjust field layout	|Allowed|	Customize screens and forms with K3 Designer or use KDS Wizard to adjust built-in layouts|
+
+Example：
+
+ ![](https://console.steedos.cn/api/files/images/sXvXXFCk2RTnxTbnw)
+
+
+
+Expanding standard objects can be achieved by creating relevant folders within the default "steedos-app" and "steedos-packages" directories.
+
+```yaml
+├── steedos-app
+    ├── main
+        ├── default
+          ├── layouts
+          ├── objects
+              ├── 对象名
+                  ├── buttons
+                  ├── fields
+                  ├── listviews
+                  ├── permissions
+                  ├── 对象名.object.yml
+          ├── objectTranslations
+              ├── 对象名.en
+                  ├──对象名.en.objectTranslation.yml
+              ├── 对象名.zh-CN
+                  ├──对象名.zh-CN.objectTranslation.yml
+├── steedos-packages
+    ├── my-package
+        ├── main
+            ├── default
+```
+
+## Extending objects 
+
+Example:`steedos-app/main/default/objects/space_users/space_users.object.yml`
+
+```yaml
+name: space_users
+extend: space_users
+```
+
+Add `extend: space_users`  property means that this object inherits from the space_users standard object. This step is crucial and cannot be skipped!
+
+## Extending Fields
+
+### Adding Fields
+
+To add a new field, first create a fields folder in the object metadata folder and then create a field_name.field.yml file, filling in the necessary properties.
+
+The following example describes adding a married field to the standard object "Person".
+
+文件相对路径：`steedos-app/main/default/objects/space_users/fields/married.field.yml`
+
+```yaml
+name: married
+label: 已婚
+required: true
+sort_no: 15
+type: boolean
+```
+
+### Modifying Fields
+
+To modify an existing field, create a field_name.field.yml file in the fields folder and update the necessary properties.
+
+The following example describes modifying the email field of the standard "Person" object by changing its display name and sort number.
+
+File path: steedos-app/main/default/objects/space_users/fields/email.field.yml
+
+```yaml
+name: email
+label: 邮箱
+required: false
+sort_no: 10
+type: text
+hidden: false
+```
+
+\
+
+:::info
+You cannot modify the type property of a field.
+
+:::
+
+## Modifying Global Variable Translation Content
+
+To modify the translation content for global variables, go to the /node_modules/@steedos/i18n/translations folder in your project and search for the global variable's translation content.
+
+Create the following files in the steedos-app/main/default/translations folder: en.translation.yml and zh-CN.translation.yml. The former is for English translation, while the latter is for Chinese translation.
+
+```yaml
+├── translations
+    ├── en.translation.yml
+    ├── zh-CN.translation.yml
+```
+
+To change the title of the dialog box for the application launcher that pops up after clicking on a grid in the following specific example from "应用程序启动器" to "应用程序启动页面", make the following modifications to your code:
+
+```yaml
+CustomLabels:
+  # creator_app_launcher: 应用程序启动器
+  creator_app_launcher: 应用程序启动页面
+```
