@@ -131,18 +131,21 @@ module.exports = {
 
 When data in a business object changes, Steedos automatically emits an event. You can subscribe to these events in your code to handle relevant business logic.
 
-1. `@<Object API Name>.inserted`
+1. `@objectApiName.inserted`
 
 When data inserted in object.
 
-2. `@<Object API Name>.updated`
+2. `@objectApiName.updated`
 
 When data updated in object.
 
-3. `@<Object API Name>.deleted`
+3. `@objectApiName.deleted`
 
 When data deleted in object.
 
+:::tip
+Don't forget to add an `@` symbol before the Object Api Name. For example, when the object api name is `space_users`, you should write `@space_users.`
+:::
 
 **Payload**
 

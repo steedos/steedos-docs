@@ -41,8 +41,6 @@ The listenTo parameter is used to specify the objects to which the trigger shoul
 
 A trigger before the event can be used to validate whether the data input by the user is correct. If there is an issue, an error message will be thrown and fed back to the front-end operation page. Additionally, it can also be used in conjunction with permission control to verify the current operation.
 
-All functions triggered before an event begin with the prefix "before".
-
 * beforeInsert
 * beforeUpdate
 * beforeDelete
@@ -51,8 +49,6 @@ All functions triggered before an event begin with the prefix "before".
 ### Trigger After Event
 
 A trigger after the event can be used to execute associated events, such as sending notifications to specified personnel after a task has been created.
-
-All functions triggered after an event begin with the prefix "after".
 
 * afterFind
 * afterInsert
