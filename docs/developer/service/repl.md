@@ -96,9 +96,11 @@ mol $ actions
 ```
 
 **Output**
+
 ![image](./assets/repl/actions.png)
 
 **Detailed output**
+
 ![image](./assets/repl/actions-detailed.png)
 
 ### List events
@@ -116,9 +118,11 @@ mol $ events
 ```
 
 **Output**
+
 ![image](./assets/repl/events.png)
 
 **Detailed output**
+
 ![image](./assets/repl/events-detailed.png)
 
 
@@ -128,6 +132,7 @@ mol $ info
 ```
 
 **Output**
+
 ![image](https://cloud.githubusercontent.com/assets/306521/26260974/aaea9b02-3ccf-11e7-9e1c-ec9150518791.png)
 
 ### List environment variables
@@ -141,6 +146,7 @@ mol $ call "test.hello"
 ```
 
 **Output**
+
 ![image](./assets/repl/call1.png)
 
 **Options**
@@ -244,6 +250,7 @@ mol $ bench --time 30 math.add
 ```
 
 **Output**
+
 ![image](./assets/repl/bench.gif)
 
 
@@ -274,6 +281,7 @@ mol $ metrics
 ```
 
 **Output**
+
 ![image](./assets/repl/metrics.png#zoomable)
 
 ### Cache Keys

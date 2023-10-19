@@ -116,7 +116,7 @@ The actions are the callable/public methods of the service. The action calling r
 
 ```js
   actions: {
-    mult: {
+    multi: {
       cache: false,
       params: {
         a: "number",
@@ -178,5 +178,61 @@ For more information check the [Trigger](./action-trigger) documentation.
 
 ## Events
 
-You can subscribe to events under the events key. For more information check the [Events](https://moleculer.services/docs/0.14/events) documentation.
+You can subscribe to events under the events key. For more information check the [Events](./events) documentation.
 
+### Subscribe to events
+
+Context-based event handler & emit a nested event
+
+```js
+module.exports = {
+  name: "@steedos-labs/accounts",
+  events: {
+    "space_users.created"(ctx) {
+      console.log("Payload:", ctx.params);
+      console.log("Sender:", ctx.nodeID);
+      console.log("Metadata:", ctx.meta);
+      console.log("The called event name:", ctx.eventName);
+
+      ctx.emit("accounts.created", { user: ctx.params.user });
+    },
+
+    "space_users.deleted": {
+      // Force to use context based signature
+      context: true,
+      handler(other) {
+          console.log(`${this.broker.nodeID}:${this.fullName}: Event '${other.eventName}' received. Payload:`, other.params, other.meta);
+      }
+    }
+  }
+};
+```
+
+### Balanced events
+
+The event listeners are arranged to logical groups. It means that only one listener is triggered in every group.
+
+**Send balanced events**
+
+Send balanced events with broker.emit function. 
+
+```js
+  this.broker.emit("users.created", user);
+```
+
+
+### Broadcast events
+
+The broadcast event is sent to all available local & remote services. It is not balanced, all service instances will receive it.
+
+**Send broadcast events**
+
+Send broadcast events with broker.broadcast method.
+
+```js
+  this.broker.broadcast("config.changed", config);
+```
+
+### Object events
+
+When data in a business object changes, Steedos automatically emits an event. You can subscribe to these events in your code to handle relevant business logic.

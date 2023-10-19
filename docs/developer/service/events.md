@@ -152,7 +152,7 @@ module.exports = {
 ```
 >The validation errors are not sent back to the caller, they are logged or you can catch them with global error handler.
 
-## Internal events
+## System events
 The broker broadcasts some internal events. These events always starts with `$` prefix.
 
 ### `$services.changed`
@@ -164,31 +164,13 @@ The broker sends this event if the local node or a remote node loads or destroys
 | ---- | ---- | ----------- |
 | `localService ` | `Boolean` | True if a local service changed. |
 
-### `$node.connected`
-The broker sends this event when a node connected or reconnected.
-
-**Payload**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `node` | `Node` | Node info object |
-| `reconnected` | `Boolean` | Is reconnected? |
-
-### `$node.updated`
-The broker sends this event when it has received an INFO message from a node, (i.e. a service is loaded or destroyed).
-
-**Payload**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `node` | `Node` | Node info object |
-
-### `$node.disconnected`
-The broker sends this event when a node disconnected (gracefully or unexpectedly).
-
 **Payload**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `node` | `Node` | Node info object |
 | `unexpected` | `Boolean` | `true` - Not received heartbeat, `false` - Received `DISCONNECT` message from node. |
+
+## Object events
+
+When data in a business object changes, Steedos automatically emits an event. You can subscribe to these events in your code to handle relevant business logic.
