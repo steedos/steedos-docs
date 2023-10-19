@@ -13,7 +13,7 @@ In order to communicate with other nodes (Steedos Platform) you need to configur
 
 ![Networking](https://moleculer.services/docs/0.14/assets/networking.svg)
 
-## Transporters
+### Transporters
 
 Transporters is an important module if you are running services on multiple nodes. Transporter communicates with other nodes. It transfers events, calls requests and processes responses …etc. If multiple instances of a service are running on different nodes then the requests will be load-balanced among them.
 
@@ -105,7 +105,12 @@ module.exports = {
 };
 ```
 
-## Mixins
+### namespace
+
+Namespace of nodes to segment your nodes on the same network.
+Must be set to `steedos`.
+
+### mixins
 
 Mixins are a flexible way to distribute reusable functionalities for Moleculer services. The Service constructor merges these mixins with the current schema. When a service uses mixins, all properties present in the mixin will be “mixed” into the current service.
 
@@ -113,7 +118,7 @@ Mixins are a flexible way to distribute reusable functionalities for Moleculer s
 After mixin `@steedos/service-package-loader`, the package service will automatically scan and load metadata files from subfolders upon startup. 
 :::
 
-## Dependencies
+### dependencies
 
 If your service depends on other services, use the dependencies property in the schema. The service waits for dependent services before calls the started lifecycle event handler.
 
