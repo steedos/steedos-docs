@@ -19,7 +19,7 @@ const res = await broker.call(actionName, params, opts);
 ```
 The `actionName` is a dot-separated string. The first part of it is the service name, while the second part of it represents the action name. So if you have a `posts` service with a `create` action, you can call it as `posts.create`.
 
-The `params` is an object which is passed to the action as a part of the [Context](context.html). The service can access it via `ctx.params`. *It is optional. If you don't define, it will be `{}`*.
+The `params` is an object which is passed to the action as a part of the Context. The service can access it via `ctx.params`. *It is optional. If you don't define, it will be `{}`*.
 
 The `opts` is an object to set/override some request parameters, e.g.: `timeout`, `retryCount`. *It is optional.*
 
@@ -27,9 +27,9 @@ The `opts` is an object to set/override some request parameters, e.g.: `timeout`
 
 | Name | Type | Default | Description |
 | ------- | ----- | ------- | ------- |
-| `timeout` | `Number` | `null` | Timeout of request in milliseconds. If the request is timed out and you don't define `fallbackResponse`, broker will throw a `RequestTimeout` error. To disable set `0`. If it's not defined, the `requestTimeout` value from broker options will be used. [Read more](fault-tolerance.html#Timeout). |
-| `retries` | `Number` | `null` | Count of retry of request. If the request is timed out, broker will try to call again. To disable set `0`. If it's not defined, the `retryPolicy.retries` value from broker options will be used. [Read more](fault-tolerance.html#Retry). |
-| `fallbackResponse` | `Any` | `null` | Returns it, if the request has failed. [Read more](fault-tolerance.html#Fallback). |
+| `timeout` | `Number` | `null` | Timeout of request in milliseconds. If the request is timed out and you don't define `fallbackResponse`, broker will throw a `RequestTimeout` error. To disable set `0`. If it's not defined, the `requestTimeout` value from broker options will be used. |
+| `retries` | `Number` | `null` | Count of retry of request. If the request is timed out, broker will try to call again. To disable set `0`. If it's not defined, the `retryPolicy.retries` value from broker options will be used.|
+| `fallbackResponse` | `Any` | `null` | Returns it, if the request has failed.  |
 | `nodeID` | `String` | `null` | Target nodeID. If set, it will make a direct call to the specified node. |
 | `meta` | `Object` | `{}` | Metadata of request. Access it via `ctx.meta` in actions handlers. It will be transferred & merged at nested calls, as well. |
 | `parentCtx` | `Context` | `null` | Parent `Context` instance. Use it to chain the calls.  |
@@ -106,11 +106,6 @@ const stream = fs.createReadStream(fileName);
 
 broker.call("storage.save", stream, { meta: { filename: "avatar-123.jpg" }});
 ```
-
-{% note info Object Mode Streaming%}
-[Object Mode Streaming](https://nodejs.org/api/stream.html#stream_object_mode) is also supported. In order to enable it set `$streamObjectMode: true` in [`meta`](actions.html#Metadata).
-{% endnote %}
-
 Please note, the `params` should be a stream, you cannot add any additional variables to the `params`. Use the `meta` property to transfer additional data.
 
 **Receiving a stream in a service**

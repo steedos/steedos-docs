@@ -95,30 +95,6 @@
     "message": "扩展华炎魔方功能",
     "description": "The label for category 扩展华炎魔方功能 in sidebar platform"
   },
-  "sidebar.apps.category.审批王": {
-    "message": "审批王",
-    "description": "The label for category 审批王 in sidebar apps"
-  },
-  "sidebar.apps.category.Plugins": {
-    "message": "插件",
-    "description": "The label for category Plugins in sidebar apps"
-  },
-  "sidebar.developer.category.API Guide": {
-    "message": "API 向导",
-    "description": "The label for category API Guide in sidebar developer"
-  },
-  "sidebar.developer.category.REST API": {
-    "message": "REST API",
-    "description": "The label for category REST API in sidebar developer"
-  },
-  "sidebar.developer.category.Moleculer API": {
-    "message": "Moleculer API",
-    "description": "The label for category Moleculer API in sidebar developer"
-  },
-  "sidebar.developer.category.Developer Guide": {
-    "message": "开发人员向导",
-    "description": "The label for category Developer Guide in sidebar developer"
-  },
   "sidebar.platform.category.审批王": {
     "message": "审批王",
     "description": "The label for category 审批王 in sidebar platform"
@@ -139,26 +115,6 @@
     "message": "软件包",
     "description": "The label for category Steedos Packages in sidebar platform"
   },
-  "sidebar.developer.category.Project Setup": {
-    "message": "设置项目",
-    "description": "The label for category Project Setup in sidebar developer"
-  },
-  "sidebar.developer.category.API Reference": {
-    "message": "API 索引",
-    "description": "The label for category API Reference in sidebar developer"
-  },
-  "sidebar.developer.category.Product": {
-    "message": "产品",
-    "description": "The label for category Product in sidebar developer"
-  },
-  "sidebar.developer.link.Release Notes": {
-    "message": "Release Notes",
-    "description": "The label for link Release Notes in sidebar developer, linking to https://github.com/orgs/steedos/projects/9"
-  },
-  "sidebar.developer.link.Contribute": {
-    "message": "Contribute",
-    "description": "The label for link Contribute in sidebar developer, linking to https://github.com/steedos/steedos-platform/blob/master/CONTRIBUTING.md"
-  },
   "sidebar.platform.category.Custom Objects": {
     "message": "自定义业务数据",
     "description": "The label for category Custom Objects in sidebar platform"
@@ -167,24 +123,4 @@
     "message": "自定义用户界面",
     "description": "The label for category Custom Apps in sidebar platform"
   },
-  "sidebar.developer.category.Getting Started": {
-    "message": "快速向导",
-    "description": "The label for category Getting Started in sidebar developer"
-  },
-  "sidebar.developer.category.Steedos Package": {
-    "message": "软件包",
-    "description": "The label for category Steedos Package in sidebar developer"
-  },
-  "sidebar.developer.category.Service Development": {
-    "message": "服务开发",
-    "description": "The label for category Service Development in sidebar developer"
-  },
-  "sidebar.developer.category.Frontend Development": {
-    "message": "前端开发",
-    "description": "The label for category Frontend Development in sidebar developer"
-  },
-  "sidebar.developer.category.Components Reference": {
-    "message": "控件索引",
-    "description": "The label for category Components Reference in sidebar developer"
-  }
 }
