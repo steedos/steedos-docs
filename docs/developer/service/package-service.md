@@ -7,27 +7,6 @@ title: Package Service
 
 The Steedos Platform is based on the Moleculer microservices architecture, where each package is a [Moleculer Service](https://moleculer.services/docs/0.14/services). You can define actions, methods, and subscribe to events in the service. 
 
-## Networking
-
-In order to communicate with other nodes (Steedos Platform) you need to configure a transporter. Most of the supported transporters connect to a central message broker that provide a reliable way of exchanging messages among remote nodes. These message brokers mainly support publish/subscribe messaging pattern.
-
-![Networking](https://moleculer.services/docs/0.14/assets/networking.svg)
-
-### Transporters
-
-Transporters is an important module if you are running services on multiple nodes. Transporter communicates with other nodes. It transfers events, calls requests and processes responses …etc. If multiple instances of a service are running on different nodes then the requests will be load-balanced among them.
-
-```bash
-TRANSPORTER=redis://127.0.0.1:6379
-```
-:::tip
-Please make sure the TRANSPORTER you configured matches the Steedos server you wish to connect to and that the network is interconnected. 
-:::
-
-:::danger
-For running in a production environment, be sure to configure the Redis password.
-:::
-
 
 ## package.service.js
 

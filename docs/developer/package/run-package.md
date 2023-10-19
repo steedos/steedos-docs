@@ -84,7 +84,13 @@ yarn
 You can use the [moleculer-runner](https://moleculer.services/docs/0.14/runner) command to launch the steedos packages.
 
 ```bash
-yarn moleculer-runner steedos-packages/*/package.service.js --hot --repl
+npx moleculer-runner steedos-packages/*/package.service.js --hot --repl
+```
+
+you can also use the `start` script on `package.json` to run this command
+
+```bash
+yarn start
 ```
 
 :::tip
