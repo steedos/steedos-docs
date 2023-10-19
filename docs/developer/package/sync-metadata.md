@@ -2,11 +2,11 @@
 sidebar_position: 50
 ---
 
-# Metadata Synchronizing 
+# Synchronize Metadata
 
 By using the VS Code plugin, you can synchronize the metadata of visual development with the project source code, achieve version management of metadata, and further utilize DevOps tools for team development and automation.
 
-## Configuring Metadata Sync
+## Prepare Metadata Synchronize
 
 The following are the necessary configuration operations that need to be performed in the local development environment to use the metadata sync function. These configuration steps can be skipped in our recommended remote development environment because we have already preprocessed these configurations in Gitpod's remote development environment.
 
@@ -18,7 +18,7 @@ Install or update the Steedos CLI command tool. This is required to synchronize 
 npm i steedos-cli --global
 ```
 
-### Installing VS Code and its Plugins
+### Installing VS Code and Plugins
 
 
 [Refer to the official documentation to download and install VS Code.](https://code.visualstudio.com/)
@@ -27,25 +27,29 @@ Open VS Code, search for "Steedos" in the extension marketplace, select "Steedos
 
  ![](https://console.steedos.cn/api/files/images/QEtoyPozXdRDbWocP)
 
-### Configuring Environment Variables
+### Setup Metadata Server
 
-It is recommended to configure local environment variables in the .env.local file. This file is not committed to the git repository by default and may contain sensitive information such as API_KEY.
-
-Create or modify the .env.local file and set the environment variables.
+Setup environment variables required for metadata synchronization.
 
 ```bash
-METADATA_SERVER=#华炎魔方服务器URL
-METADATA_APIKEY=#华炎魔方 API Key
+steedos source:config
 ```
 
-Parameter explanation is as follows:
+- Metadata Server: METADATA_SERVER is the ROOT_URL of the Steedos server you wish to connect to.
+- Metadata API Key: METADATA_APIKEY is used to authenticate your identity. 
 
-* `METADATA_SERVER`: The URL of the metadata server. If it is a local development environment, it can be configured as http://IP address:port. If using Steedos cloud service, it needs to be configured with the https protocol, for example, https://zhuangjianguo.steedos.cn/.
-* `METADATA_APIKEY`: If using cloud service, you can directly copy it from the cloud service record. If it is a local development environment, you need to copy the API Key created in the "Advanced Settings -> API Key" menu of the "Settings" application.
+This command writes environment variables into the .env.local file, 
+
+```bash
+METADATA_SERVER=
+METADATA_APIKEY=
+```
+
+You can also set the above environment variables directly without running the command.
 
 ## Synchronize Metadata
 
-### Browse and Download Metadata
+### Browse and Rectrive Metadata
 
 After completing the previous configuration, the icon shown in the following figure will appear in the left toolbar of VS Code. Clicking the icon will automatically display a list of downloadable metadata. You only need to click the download icon on the right of the desired file to download it to the local file.
 
@@ -55,7 +59,7 @@ Note that if the file already exists locally, it will be overwritten directly. T
  
 If the environment variables related to metadata synchronization are not configured, clicking on buttons such as refresh and download in the upper right corner will result in the error: "Please run command steedos source:config." To resolve this, you can follow the instructions in the "Configuring Environment Variables" section above to configure the corresponding environment variables, or run the command "steedos source:config" in the project command line to configure the relevant environment variables in the wizard.
 
-### Uploading Metadata
+### Deploy Metadata
 
 If metadata has been updated by others from the git repository, or if metadata configuration files have been modified directly, the metadata can be uploaded to the Steedos server using the upload command. 
 
@@ -65,13 +69,13 @@ To do so, select the metadata to be uploaded in the project folder, right-click,
  
  The Steedos VS Code code synchronization plug-in not only allows you to publish local code to the database through "Deploy Source," but also allows you to synchronize metadata developed through visual development on the interface to code by using the "Retrieve Source" operation to download it locally. For metadata that can be maintained through visual development on the interface, we recommend that developers do not develop locally in VS Code, in order to ensure that the metadata configuration in the system always comes from a single source, which can avoid problems such as duplicate metadata.
 
-### To synchronize specific files or folders
+### Synchronize specific files or folders
 
 Once the metadata has been synchronized to the local machine, you can navigate to the project folder, select the corresponding metadata file or folder, and upload or download the corresponding metadata.
 
  ![](https://console.steedos.cn/api/files/images/t8sHRTEsPFr2PL8JZ)
 
-### To set the metadata synchronization path
+### Set the default synchronization path
 
 It is important to note that by default, the above-mentioned steps will synchronize the code to the default software package directory, "steedos-app". If you want to sync the configured metadata in the UI to a software package directory located in the "steedos-packages" folder, you need to first configure the following environment variables to change the default software package location. Alternatively, you could use the "setDefaultPackagePath" command in the "View" → "Command Palette" menu of the VSCode editor, which automatically creates the relevant environment variables, as mentioned in the "Switching Default Software Packages" section above.
 
