@@ -23,7 +23,7 @@ module.exports = {
     automatically scan and load metadata files from subfolders upon startup. 
   */
   mixins: [require('@steedos/service-package-loader')],
-  
+
   metadata: {
     $package: {
       name: packageJSON.name,
@@ -170,4 +170,7 @@ For more information check the [Trigger](./action-trigger) documentation.
   }
 ```
 
+## Events
+
+You can subscribe to events under the events key. For more information check the [Events](https://moleculer.services/docs/0.14/events) documentation.
 
