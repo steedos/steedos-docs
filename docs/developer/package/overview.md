@@ -42,6 +42,13 @@ my-package
 ```
 
 
+## Run Package
+
+You can use the following methods to run steedos package:
+
+1. Production environment: Your package is developed and published to npm, and you directly install the package in the Steedos Platform. 
+2. Development environment: Launch the package using the microservice method and connect to the Steedos Platform through Transporter.
+
 ## Package Types: Managed vs. Unlocked
 
 Steedos offers different packaging mechanisms that cater to various deployment strategies and business models. Two prominent types are Managed Packages and Unlocked Packages. Each serves unique purposes, especially concerning application lifecycle management, proprietary software distribution, and customization flexibility.

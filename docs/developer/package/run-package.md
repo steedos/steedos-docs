@@ -7,7 +7,7 @@ sidebar_position: 30
 
 The package of the Steedos Platform consists of metadata and microservices and needs to be loaded into the Steedos Platform to run. 
 
-You can use the following two methods to run the package:
+You can use the following methods to run steedos package:
 
 1. Production environment: Your package is developed and published to npm, and you directly install the package in the Steedos Platform. 
 2. Development environment: Launch the package using the microservice method and connect to the Steedos Platform through Transporter.
