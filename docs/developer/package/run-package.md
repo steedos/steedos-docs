@@ -36,7 +36,9 @@ You can log in to the Steedos server with administrator credentials, go to the s
 
 ### Setup TRANSPORTER
 
-The Steedos package operates using the [Moleculer](https://moleculer.services/docs) microservices framework, connecting microservices through the configuration of a unified [Moleculer Transporter](https://moleculer.services/docs/0.14/networking).
+The Steedos package operates using the [Moleculer](https://moleculer.services/docs) microservices framework, connecting microservices through the configuration of a unified Transporter.
+
+[Moleculer Transporter](https://moleculer.services/docs/0.14/networking) is an important module if you are running services on multiple nodes. Transporter communicates with other nodes. It transfers events, calls requests and processes responses …etc. If multiple instances of a service are running on different nodes then the requests will be load-balanced among them.
 
 ```bash
 TRANSPORTER=redis://127.0.0.1:6379

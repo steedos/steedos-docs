@@ -1,17 +1,15 @@
 ---
 sidebar_position: 10
+title: Package Service
 ---
 
-# Package Service
+# What is Package Service?
+
+The Steedos Platform is based on the Moleculer microservices architecture, where each package is a [Moleculer Service](https://moleculer.services/docs/0.14/services). You can define actions, methods, and subscribe to events. 
 
 ## package.service.js
 
-The Steedos Platform is based on the [Moleculer](https://moleculer.services/) microservices architecture, where each steedos package is a microservice. The `package.service.js` in the root directory of the steedos package is the loading entry for the steedos package microservice.
-
-The [Service](https://moleculer.services/docs/0.14/services) represents a microservice in the Moleculer framework. You can define actions, methods, and subscribe to events. 
-
-
-After mixin `@steedos/service-package-loader`, the package service will automatically scan and load metadata files from subfolders upon startup. 
+The `package.service.js` in the root directory of the steedos package is the loading entry for the package microservice.
 
 ```js
 const packageJSON = require('./package.json');
@@ -87,3 +85,28 @@ module.exports = {
 	}
 };
 ```
+
+## Mixins
+
+Mixins are a flexible way to distribute reusable functionalities for Moleculer services. The Service constructor merges these mixins with the current schema. When a service uses mixins, all properties present in the mixin will be “mixed” into the current service.
+
+:::tip
+After mixin `@steedos/service-package-loader`, the package service will automatically scan and load metadata files from subfolders upon startup. 
+:::
+
+## Dependencies
+
+If your service depends on other services, use the dependencies property in the schema. The service waits for dependent services before calls the started lifecycle event handler.
+
+If the package you are developing depends on metadata from another package, you can use `dependencies` to control the loading order of the packages. For example, if the contract management package relies on metadata from the master data package, you can define it as follows:
+
+```js
+module.exports = {
+	name: "@steedos-labs/contract",
+	dependencies: ["@steedos-labs/master"],
+}
+```
+
+
+
+
