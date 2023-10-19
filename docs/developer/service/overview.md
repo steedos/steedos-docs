@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Service Overview
+title: Service Architecture
 ---
 
 # Service Architecture Overview

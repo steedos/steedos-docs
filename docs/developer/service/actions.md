@@ -6,7 +6,7 @@ sidebar_position: 20
 
 The actions are the callable/public methods of the service. The action calling represents a remote-procedure-call (RPC). It has request parameters & returns response, like a HTTP request.
 
-If you have multiple instances of services, the broker will load balance the request among instances. [Read more about balancing](balancing.html).
+If you have multiple instances of services, the broker will load balance the request among instances.
 
 ![action-balancing](./assets/action-balancing.gif)
 
@@ -69,169 +69,31 @@ const res = await broker.call("$node.health", null, { nodeID: "node-21" })
 ```
 
 ### Metadata
+
 Send meta information to services with `meta` property. Access it via `ctx.meta` in action handlers. Please note that in nested calls the `meta` is merged.
-```js
-broker.createService({
-    name: "test",
-    actions: {
-        first(ctx) {
-            return ctx.call("test.second", null, { meta: {
-                b: 5
-            }});
-        },
-        second(ctx) {
-            console.log(ctx.meta);
-            // Prints: { a: "John", b: 5 }
-        }
-    }
-});
 
-broker.call("test.first", null, { meta: {
-    a: "John"
-}});
-```
-
-The `meta` is sent back to the caller service. Use it to send extra meta information back to the caller. E.g.: send response headers back to API gateway or set resolved logged in user to metadata.
+:::tip
+When writing REST APIs, you can obtain the current user session from `ctx.meta.user`. If you want to access `ctx.meta.user` within the action being called, you need to manually pass it in.
+:::
 
 ```js
-broker.createService({
-    name: "test",
-    actions: {
-        async first(ctx) {
-            await ctx.call("test.second", null, { meta: {
-                a: "John"
-            }});
-
-            console.log(ctx.meta);
-            // Prints: { a: "John", b: 5 }
-        },
-        second(ctx) {
-            // Modify meta
-            ctx.meta.b = 5;
-        }
-    }
-});
-```
-
-When making internal calls to actions (`this.actions.xy()`) you should set `parentCtx` to pass `meta` data.
-
-**Internal calls**
-```js
-broker.createService({
-  name: "mod",
-  actions: {
-    hello(ctx) {
-      console.log(ctx.meta);
-      // Prints: { user: 'John' }
-      ctx.meta.age = 123
-      return this.actions.subHello(ctx.params, { parentCtx: ctx });
+const res = await this.broker.call('objectql.find', 
+  {
+    objectName: 'accounts',
+    query: {
+      fields: ['name', 'owner'],                      
+      filters: ['owner', '=', ctx.meta.user.userId],  
+      sort: 'name desc'                               
     },
-
-    subHello(ctx) {
-      console.log("meta from subHello:", ctx.meta);
-      // Prints: { user: 'John', age: 123 }
-      return "hi!";
+  },
+  {
+    meta:{
+        user: ctx.meta.user
     }
   }
-});
-
-broker.call("mod.hello", { param: 1 }, { meta: { user: "John" } });
-```
-
-### Timeout
-
-Timeout can be set in action definition, as well. It overwrites the global broker [`requestTimeout` option](fault-tolerance.html#Timeout), but not the `timeout` in calling options.
-
-**Example**
- ```js
-// moleculer.config.js
-module.exports = {
-    nodeID: "node-1",
-    requestTimeout: 3000
-};
-
- // greeter.service.js
-module.exports = {
-    name: "greeter",
-    actions: {
-        normal: {
-            handler(ctx) {
-                return "Normal";
-            }
-        },
-         slow: {
-            timeout: 5000, // 5 secs
-            handler(ctx) {
-                return "Slow";
-            }
-        }
-    },
-```
-**Calling examples**
-```js
-// It uses the global 3000 timeout
-await broker.call("greeter.normal");
- // It uses the 5000 timeout from action definition
-await broker.call("greeter.slow");
- // It uses 1000 timeout from calling option
-await broker.call("greeter.slow", null, { timeout: 1000 });
-```
-### Multiple calls
-
-Calling multiple actions at the same time is also possible. To do it use `broker.mcall` or `ctx.mcall`.
-
-**`mcall` with Array \<Object\>**
-
-```js
-await broker.mcall(
-    [
-        { action: 'posts.find', params: { author: 1 }, options: { /* Calling options for this call. */} },
-        { action: 'users.find', params: { name: 'John' } }
-    ],
-    {
-        // Common calling options for all calls.
-        meta: { token: '63f20c2d-8902-4d86-ad87-b58c9e2333c2' }
-    }
 );
 ```
 
-**`mcall` with Object and options.meta**
-```js
-await broker.mcall(
-    {
-        posts: { action: 'posts.find', params: { author: 1 }, options: { /* Calling options for this call. */} },
-        users: { action: 'users.find', params: { name: 'John' } }
-    }, 
-    {
-        // Common calling options for all calls.
-        meta: { token: '63f20c2d-8902-4d86-ad87-b58c9e2333c2' }
-    }
-);
-```
-
-**`settled` option in `broker.mcall`**
-
-The `mcall` method has a new `settled` option to receive all Promise results. If `settled: true`, the `mcall` returns a resolved Promise in any case and the response contains the statuses and responses of all calls. Note that, without this option you won't know how many (and which) calls were rejected.
-
-Example
-```js
-const res = await broker.mcall([
-    { action: "posts.find", params: { limit: 2, offset: 0 },
-    { action: "users.find", params: { limit: 2, sort: "username" } },
-    { action: "service.notfound", params: { notfound: 1 } }
-], { settled: true });
-console.log(res);
-```
-
-The `res` will be something similar to
-
-```js
-[
-    { status: "fulfilled", value: [/*... response of `posts.find`...*/] },
-    { status: "fulfilled", value: [/*... response of `users.find`...*/] },
-    { status: "rejected", reason: {/*... Rejected response/Error`...*/} }
-]
-```
 
 ## Streaming
 Moleculer supports Node.js streams as request `params` and as response. Use it to transfer an incoming file from a gateway, encode/decode or compress/decompress streams.

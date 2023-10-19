@@ -9,20 +9,17 @@ Please note that built-in events are fire-and-forget meaning that if the service
 ### Balanced events
 The event listeners are arranged to logical groups. It means that only one listener is triggered in every group.
 
-> **Example:** you have 2 main services: `users` & `payments`. Both subscribe to the `user.created` event. You start 3 instances of `users` service and 2 instances of `payments` service. When you emit the `user.created` event, only one `users` and one `payments` service instance will receive the event.
+> **Example:** you have 2 main services: `@steedos-labs/finance` & `@steedos-labs/project`. Both subscribe to the `@space_users.inserted` event. You start 3 instances of `@steedos-labs/finance` service and 2 instances of `@steedos-labs/project` service. When you emit the `@space_users.inserted` event, only one `@steedos-labs/finance` and one `@steedos-labs/project` service instance will receive the event.
 
 ![balanced-events](./assets/balanced-events.gif)
 
-The group name comes from the service name, but it can be overwritten in event definition in services.
 
 **Example**
 ```js
 module.exports = {
-    name: "payment",
+    name: "@steedos-labs/project",
     events: {
-        "order.created": {
-            // Register handler to the "other" group instead of "payment" group.
-            group: "other",
+        "@space_users.inserted": {
             handler(ctx) {
                 console.log("Payload:", ctx.params);
                 console.log("Sender:", ctx.nodeID);
@@ -35,18 +32,13 @@ module.exports = {
 ```
 
 ### Emit balanced events
+
 Send balanced events with `broker.emit` function. The first parameter is the name of the event, the second parameter is the payload. 
 _To send multiple values, wrap them into an `Object`._
 
 ```js
 // The `user` will be serialized to transportation.
-broker.emit("user.created", user);
-```
-
-Specify which groups/services shall receive the event:
-```js
-// Only the `mail` & `payments` services receives it
-broker.emit("user.created", user, ["mail", "payments"]);
+broker.emit("config.changed", config);
 ```
 
 ## Broadcast event
@@ -59,43 +51,26 @@ Send broadcast events with `broker.broadcast` method.
 broker.broadcast("config.changed", config);
 ```
 
-Specify which groups/services shall receive the event:
-```js
-// Send to all "mail" service instances
-broker.broadcast("user.created", { user }, "mail");
-
-// Send to all "user" & "purchase" service instances.
-broker.broadcast("user.created", { user }, ["user", "purchase"]);
-```
-
-### Local broadcast event
-Send broadcast events only to all local services with `broker.broadcastLocal` method.
-```js
-broker.broadcastLocal("config.changed", config);
-```
-
 ## Subscribe to events
 
 Event context is useful if you are using event-driven architecture and want to trace your events. The Event Context is very similar to Action Context, except for a few new event related properties. 
 
 ```js
 module.exports = {
-    name: "accounts",
+    name: "@steedos-labs/project",
     events: {
-        "user.created"(ctx) {
+        "@space_users.inserted"(ctx) {
             console.log("Payload:", ctx.params);
             console.log("Sender:", ctx.nodeID);
             console.log("Metadata:", ctx.meta);
             console.log("The called event name:", ctx.eventName);
 
-            ctx.emit("accounts.created", { user: ctx.params.user });
+            ctx.emit("users.changed", { data: ctx.params.doc });
         },
 
-        "user.removed": {
-            // Force to use context based signature
-            context: true,
-            handler(other) {
-                console.log(`${this.broker.nodeID}:${this.fullName}: Event '${other.eventName}' received. Payload:`, other.params, other.meta);
+        "@space_users.deleted": {
+            handler(ctx) {
+                console.log(`${this.broker.nodeID}:${this.fullName}: Event '${ctx.eventName}' received. Payload:`, ctx.params, ctx.meta);
             }
         }
     }
@@ -109,12 +84,12 @@ Subscribe to events in 'events' property of services. Use of wildcards (`?`, `*`
 module.exports = {
     events: {
         // Subscribe to `user.created` event
-        "user.created"(ctx) {
+        "@space_users.inserted"(ctx) {
             console.log("User created:", ctx.params);
         },
 
         // Subscribe to all `user` events, e.g. "user.created", or "user.removed"
-        "user.*"(ctx) {
+        "@space_users.*"(ctx) {
             console.log("User event:", ctx.params);
         }
         // Subscribe to every events
@@ -134,7 +109,7 @@ Like in action definition, you should define `params` in event definition and th
 ```js
 // mailer.service.js
 module.exports = {
-    name: "mailer",
+    name: "@steedos-labs/mail",
     events: {
         "send.mail": {
             // Validation schema
@@ -151,6 +126,40 @@ module.exports = {
 };
 ```
 >The validation errors are not sent back to the caller, they are logged or you can catch them with global error handler.
+
+## Steedos Object events
+
+When data in a business object changes, Steedos automatically emits an event. You can subscribe to these events in your code to handle relevant business logic.
+
+1. `@<Object API Name>.inserted`
+
+When data inserted in object.
+
+2. `@<Object API Name>.updated`
+
+When data updated in object.
+
+3. `@<Object API Name>.deleted`
+
+When data deleted in object.
+
+
+**Payload**
+
+Variable | Usage
+-- | --
+isInsert | Returns true if this trigger is triggered by an insert operation.
+isUpdate | Returns true if this trigger is triggered by an update operation.
+isDelete | Returns true if this trigger is triggered by a delete operation.
+isFind | Returns true if this trigger is triggered by a query operation.
+isBefore | Returns true if this trigger is triggered before any record operation.
+isAfter | Returns true if this trigger is triggered after all record operations.
+id | The unique identifier of the record [string].
+doc | The record content that needs to be inserted/updated [json].
+previousDoc | The record before updated/deleted [json].
+userId | The unique identifier of the current user [string].
+spaceId | The current workspace [string].
+objectName | The current object name [string].
 
 ## System events
 The broker broadcasts some internal events. These events always starts with `$` prefix.
@@ -170,7 +179,3 @@ The broker sends this event if the local node or a remote node loads or destroys
 | ---- | ---- | ----------- |
 | `node` | `Node` | Node info object |
 | `unexpected` | `Boolean` | `true` - Not received heartbeat, `false` - Received `DISCONNECT` message from node. |
-
-## Object events
-
-When data in a business object changes, Steedos automatically emits an event. You can subscribe to these events in your code to handle relevant business logic.

@@ -130,8 +130,15 @@ The actions are the callable/public methods of the service. The action calling r
   }
 ```
 
+## Call services
+To call a service use the `broker.call` method. The broker looks for the service (and a node) which has the given action and call it. The function returns a `Promise`.
 
-### REST API
+### Syntax
+```js
+const res = await broker.call(actionName, params, opts);
+```
+
+## REST API
 
 Steedos comes with a built-in [API Gateway](https://moleculer.services/docs/0.14/moleculer-web), it can publish your services as RESTful APIs. 
 
@@ -154,7 +161,7 @@ For more information check the [REST API](./action-api) documentation.
   }
 ```
 
-### Triggers
+## Triggers
 
 By writing triggers, you can automatically trigger a piece of server-side code before and after record creation, deletion, and changes, achieving personalized data validation and processing.
 
@@ -207,32 +214,3 @@ module.exports = {
   }
 };
 ```
-
-### Balanced events
-
-The event listeners are arranged to logical groups. It means that only one listener is triggered in every group.
-
-**Send balanced events**
-
-Send balanced events with broker.emit function. 
-
-```js
-  this.broker.emit("users.created", user);
-```
-
-
-### Broadcast events
-
-The broadcast event is sent to all available local & remote services. It is not balanced, all service instances will receive it.
-
-**Send broadcast events**
-
-Send broadcast events with broker.broadcast method.
-
-```js
-  this.broker.broadcast("config.changed", config);
-```
-
-### Object events
-
-When data in a business object changes, Steedos automatically emits an event. You can subscribe to these events in your code to handle relevant business logic.
