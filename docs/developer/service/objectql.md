@@ -5,14 +5,12 @@ title: ObjectQL
 # ObjectQL
 
 
-"ObjectQL" is a query language designed for interacting with data objects within the Steedos Platform. Similar in concept to SQL used in relational databases, ObjectQL allows users to perform CRUD operations (Create, Read, Update, Delete) on structured data stored as objects.
+`ObjectQL` is a query language designed for interacting with data objects within the Steedos Platform. Similar in concept to SQL used in relational databases, ObjectQL allows users to perform CRUD operations (Create, Read, Update, Delete) on structured data stored as objects.
 
 
 The core capability of ObjectQL is its cross-database functionality. Using ObjectQL syntax, you can simultaneously accommodate both MongoDB and traditional SQL databases. This versatility allows for seamless integration and interaction with different database technologies, enabling developers to execute queries across various systems without changing the query language or worrying about the underlying database's specific nuances.
 
-By abstracting the database layer, ObjectQL presents a unified query language that maintains consistent syntax and functionality, irrespective of whether the backend is a NoSQL system like MongoDB or a relational database management system (RDBMS) like MySQL, PostgreSQL, or others. This approach significantly simplifies data management tasks, making it easier for developers to work with data across multiple database systems and focus more on business logic rather than the intricacies of individual databases. It also aids in ensuring smoother scalability and adaptability of applications, as switching or integrating different database technologies can be achieved with minimal adjustments to the query code.
-
-## this.getObject
+## Get Object
 
 You can use `this.getObject` to retrieve objects and perform ObjectQL queries.
 
@@ -20,121 +18,84 @@ You can use `this.getObject` to retrieve objects and perform ObjectQL queries.
 To use `this.getObject`, set `mixins: [require('@steedos/service-package-loader')]` in `package.service.js`.
 :::
 
-## CRUD
+## Check User Permission
+
+You can call objectQL methods with an optional `userSession` parameter.
+
+When a `userSession` is passed in, ObjectQL simultaneously verifies the current user's permissions, assesses whether the user is authorized to perform the corresponding operations, and returns the data the user is authorized to access.
+
+## Core Methods
 
 The ObjectQL microservice supports the following microservice actions that implement data manipulation (create, read, update, delete) and fire the corresponding triggers.
 
-### find
+### .find
 
 Finds multiple records. This action triggers the configured trigger functions: beforeFind and afterFind.
 
-- **Usage**： `broker.call('objectql.find', params, opt?)`
+- **Usage**： `.find(query, userSession?)`
 - **Arguments**：
-  - actionName: String - The name of the action to be executed, in this case, the action is to find multiple records, thus the value should be 'objectql.find'.
-  - params: 
-    - objectName: String - The object name.
-    - query: JSON - The query parameters [JSON], optional.
-      - fields: Array - The selected fields to be returned, for example: ['field1', 'field2'].
-      - filters: SteedosQueryFilters - An array of query filters.
-      - sort: String - The sorting rule, for example: 'name desc'.
-      - top: Number - The number of records to be returned.
-      - skip: Number - The number of records to skip, typically used for pagination display.
-  - opt: Optional.
-    - meta:
-       - user: SteedosUser - Current user information, which can be used to query the current user's permissions.
+  - query: JSON - The query parameters [JSON], optional.
+    - fields: Array - The selected fields to be returned, for example: ['field1', 'field2'].
+    - filters: Query Filters - An array of query filters.
+    - sort: String - The sorting rule, for example: 'name desc'.
+    - top: Number - The number of records to be returned.
+    - skip: Number - The number of records to skip, typically used for pagination display.
+  - userSession: optional param, force check user permissions.
 - **Returns**： An array of records. Returns an empty array [] if none are found.
 
 ```js
-const res = await this.broker.call(
-'objectql.find', 
-{
-  objectName: 'accounts',
-  query: {
+const res = this.getObject('accounts').find(
+  {
     fields: ['name', 'owner'],                      
     filters: ['owner', '=', ctx.meta.user.userId],  
     sort: 'name desc'                               
   },
-},
-{
-  meta:{
-    user: ctx.meta.user
-  }
-}
+  ctx.meta.user
 );
-
 ```
 
 
-### findOne
+### .findOne
 
 The findOne function retrieves a single record. It triggers the configured trigger functions beforeFind and afterFindOne.
 
-- **Usage**： `broker.call('objectql.findOne', params, opt?)`
+- **Usage**： `.findOne(id, query, userSession?)`
 - **Arguments**：
-  - actionName: String - The name of the action to be executed, in this case, the action is to find a single record, thus the value should be 'objectql.findOne'.
-  - params: 
-    - objectName: String - The name of the object.
-    - id: Number | String - The ID of the data you wish to query.
-    - query: JSON - The query parameters [JSON]. Optional.
-      - fields: Array - An array of field names. Optional. For example: ['field1', 'field2'].
-  - opt: 
-    - meta:
-       - user: SteedosUser - Current user information, which can be used to query the current user's permissions.
+  - id: Number | String - The ID of the data you wish to query.
+  - query: JSON - The query parameters [JSON]. Optional.
+    - fields: Array - An array of field names. Optional. For example: ['field1', 'field2'].
+  - userSession: optional param, force check user permissions.
 - **Returns**： A single record [JSON].
 
 
 ```js
-const res = await this.broker.call(
-'objectql.findOne', 
-{
-  objectName: 'accounts',
-  id: 'CChCmkiHrNeTM9jgA',     
-  query: {
+const res = this.getObject('accounts').findOne(
+  'CChCmkiHrNeTM9jgA',     
+  {
     fields: ['name', 'owner'],  
-  }    
-},
-{
-  meta:{
-    user: ctx.meta.user
-  }
-}
+  },
+  ctx.meta.user
 );
 ```
 
 
-### insert
+### .insert
 
 This function inserts a single record. It triggers the configured trigger functions beforeInsert and afterInsert. After inserting special records like "tasks", notifications will be sent to designated personnel.
 
-- **Usage：** `broker.call('objectql.insert', params, opt?)`
+- **Usage：** `.insert(doc, userSession?)`
 - **Arguments：**
-  - actionName: String. The name of the action being executed, in this case it is 'objectql.insert'.
-  - params: 
-    - objectName: String. The name of the object.
-    - doc: `Dictionary<any>` The data you wish to insert. It must include all required fields for the object.
-
-  - opt: 
-    - meta:
-      - user: SteedosUser. Information about the current user, which can be used to check the user's permissions. Optional.
+  - doc: `Dictionary<any>` The data you wish to insert. It must include all required fields for the object.
+  - userSession: optional param, force check user permissions.
 - **Returns：** The data that was successfully inserted.
 
 ```js
-
-const res = await this.broker.call(
-'objectql.insert', 
-{
-  objectName: 'accounts', 
-  doc: {
+const res = this.getObject('accounts').insert(
+  {
     name: 'Here is the name of the inserted data.'
-  }
-},
-{
-  meta:{
-    user: ctx.me ta.user
-  }
-}
+  },
+  ctx.meta.user
 );
-
 ```
 
 The name field is a required field for the accounts object, and there may be differences between objects. Below is a table containing individual fields for this object (including required fields and system fields).
@@ -151,121 +112,82 @@ The name field is a required field for the accounts object, and there may be dif
 | modified	  | &#x2716;    | 	Automatically maintained by the system. |
 
 
-### delete
+### .update
+
+This function is used to update a single record. The beforeUpdate and afterUpdate trigger functions configured for this operation will be triggered. After updating specific records, such as "tasks", notifications will be sent to designated personnel.
+
+- **Usage**： `.update(id, doc, userSession)`
+- **Arguments**：
+  - id: number | string The ID of the data you want to change.
+  - doc:`Dictionary<any>` The data you want to update.
+  - userSession: optional param, force check user permissions.
+- **Returns**： The data after a successful update.
+
+```js
+const res = this.getObject('accounts').update(
+  "Xgf3NxXJWAXJff9FQ",
+  {
+    name: 'Here is the name of the inserted data.'
+  },
+  ctx.meta.user
+);
+
+```
+
+
+### .delete
 
 This function is used to delete a single record. The beforeDelete and afterDelete trigger functions configured for this operation will be triggered.
 
-- **Usage**： `broker.call('objectql.delete', params, opt?)`
+- **Usage**： `.delete(id, userSession?)`
 - **Arguments**：
-  - actionName: String The name of the action. In this case, the action is to delete a record, so the value should be 'objectql.delete'.
-  - params: 
-    - id: number | string The ID of the data you want to change.
-    - objectName: String The name of the object.
-  - opt: 
-    - meta:
-       - user: SteedosUser Information about the current user, which can be used to check the user's permissions. Optional.
+  - id: number | string The ID of the data you want to change.
+  - userSession: optional param, force check user permissions.
 - **Returns**：
   - Success: 1.
   - Failure: An error message is thrown.
 
 ```js
-const res = await this.broker.call(
-'objectql.delete', 
-{
-  objectName: 'accounts',
-  id: "Xgf3NxXJWAXJff9FQ" 
-},
-{
-  meta:{
-    user: ctx.meta.user
-  }
-}
+const res = this.getObject('accounts').delete(
+  "Xgf3NxXJWAXJff9FQ",
+  ctx.meta.user
 );
 ```
 
 
-### update
-
-This function is used to update a single record. The beforeUpdate and afterUpdate trigger functions configured for this operation will be triggered. After updating specific records, such as "tasks", notifications will be sent to designated personnel.
-
-- **Usage**： `broker.call('objectql.update', params, opt?)`
-- **Arguments**：
-  - actionName: String The name of the action. In this case, the action is to update a record, so the value should be 'objectql.update'.
-  - params: 
-    - id: number | string The ID of the data you want to change.
-    - objectName: String The name of the object.
-    - doc:`Dictionary<any>` The data you want to update.
-  - opt: 
-    - meta:
-       - user: SteedosUser Information about the current user, which can be used to check the user's permissions. Optional.
-- **Returns**： The data after a successful update.
-
-```js
-const res = await this.broker.call(
-'objectql.update', 
-{
-  objectName: 'accounts',
-  doc: {
-    name: 'The name of the data after it has been updated.'
-  },
-  id: "CChCmkiHrNeTM9jgA"
-},
-{
-  meta:{
-    user: ctx.meta.user
-  }
-}
-);
-
-```
-
-
-### aggregate
+### .aggregate
 
 Find aggregated records. This action triggers the configured trigger functions: beforeAggregate and afterAggregate.
 
 Aggregation: Aggregation operations process data records and return calculated results. Aggregation operations combine values from multiple documents, and various operations can be performed on grouped data to return single results.
 
-- **Usage**： `broker.call('objectql.aggregate', params, opt?)`
+- **Usage**： `.aggregate(query, externalPipeline, userSession?)`
 - **Arguments**：
-  - actionName: String The name of the action, which is used to perform the aggregation operation. Its value is 'objectql.aggregate'.
-  - params: 
-    - objectName: String The object name.
-    - query: The parameters related to querying the data in JSON format.
-      - filters: Array An optional array of query conditions.
-    - externalPipeline: An array of MongoDB aggregation pipelines.See [MongoDB Aggregation Documentation](https://www.mongodb.com/docs/manual/reference/aggregation/)。
-  - opt: 
-    - meta:
-       - user: SteedosUser The current user information, which can be used to check the permission of the current user. Optional.
+  - query: The parameters related to querying the data in JSON format.
+    - filters: Array An optional array of query conditions.
+  - externalPipeline: An array of MongoDB aggregation pipelines.See [MongoDB Aggregation Documentation](https://www.mongodb.com/docs/manual/reference/aggregation/)。
+  - userSession: optional param, force check user permissions.
 - **Returns**: An array of aggregated records.
 
 
 ```js
-const res = await this.broker.call(
-'objectql.aggregate', 
-{
-  objectName: 'accounts',
-  query: {
+const res = this.getObject('accounts').aggregate(
+  {
+    fields: ['name', 'owner'],                      
     filters: ['owner', '=', ctx.meta.user.userId],  
+    sort: 'name desc'                               
   },
-  externalPipeline: [{ $count: 'users_count'}]      
-},
-{
-  meta:{
-    user: ctx.meta.user
-  }
-}
+  externalPipeline: [{ $count: 'users_count'}],
+  ctx.meta.user
 );
 ```
-
-
 
 
 ## Direct CRUD
 
 ObjectQL microservices support microservice actions with the direct prefix, which implements CRUD operations on data. These actions will not trigger corresponding triggers.
 
-## Filter Criteria
+## Query Filters
 
 
 Steedos uses an array format to define one or more filter criteria. For example, the following filter is used to query data that was created this month and assigned to the current user.
@@ -301,7 +223,7 @@ If no "and" or "or" operation is specified, the system will default to executing
 * \[ \[ "value", ">", 3 \], "and", \[ "value", "<", 7 \] \]
 * \[ \[ "value", ">", 3 \], \[ "value", "<", 7 \] \]
 
-### Array Value Support
+### Array Value
 
 When the operator is "=", the condition will automatically be split into multiple filtering conditions using the "or" operator, similar to implementing the "in" operation function. Therefore, the following two writing formats will yield the same result.
 
@@ -319,9 +241,7 @@ When the operator is "between", the condition will automatically be transformed 
 * \[\["age", "between", \[null,30\]\]\] equivalent to \[ \[ "age", "<=", 30 \] \]
 * \[\["age", "between", \[20,null\]\]\] equivalent to \[ \[ "age", ">=", 20 \] \]
 
-
-
-### Query Datetime Fields
+### Datetime Value
 
 For fields of date and time types, the database saves them in UTC time. For date type fields, the time saved is 00:00:00.
 
