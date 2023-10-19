@@ -18,19 +18,20 @@ module.exports = {
   name: packageJSON.name,
   namespace: "steedos",
 
-    /*
-        After mixin @steedos/service-package-loader, the package service will 
-        automatically scan and load metadata files from subfolders upon startup. 
-    */
+  /*
+    After mixin @steedos/service-package-loader, the package service will 
+    automatically scan and load metadata files from subfolders upon startup. 
+  */
   mixins: [require('@steedos/service-package-loader')],
-    metadata: {
-      $package: {
-        name: packageJSON.name,
-        version: packageJSON.version,
-        path: __dirname,
-        isPackage: true
-      }
-    },
+  
+  metadata: {
+    $package: {
+      name: packageJSON.name,
+      version: packageJSON.version,
+      path: __dirname,
+      isPackage: true
+    }
+  },
 
   /**
    * Settings

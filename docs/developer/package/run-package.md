@@ -13,7 +13,7 @@ You can use the following two methods to run the package:
 2. Development environment: Launch the package using the microservice method and connect to the Steedos Platform through Transporter.
 
 
-## Run Platform
+## Run Steedos Platform
 
 First, you must run Steedos Platform. You can follow the [Self Hosting Tutorial](/deploy/deploy-docker) to deploy Steedos on a server, or launch a local Steedos Platform.
 
@@ -71,7 +71,7 @@ METADATA_APIKEY=
 
 You can also set the above environment variables directly without running the command.
 
-## Run Packages
+## Run Steedos Packages
 
 ### Install Dependences
 
@@ -79,7 +79,7 @@ You can also set the above environment variables directly without running the co
 yarn
 ```
 
-### Run Services
+### Run Packages
 
 You can use the [moleculer-runner](https://moleculer.services/docs/0.14/runner) command to launch the steedos packages.
 
@@ -88,5 +88,5 @@ yarn moleculer-runner steedos-packages/*/package.service.js --hot --repl
 ```
 
 :::tip
-Please note that the Steedos DX project supports multi-package development, and the above command simultaneously launches all software packages under the steedos-packages folder.
+Please note that the Steedos DX project supports multi-package development, and the above command simultaneously launches all packages under the steedos-packages folder.
 :::
