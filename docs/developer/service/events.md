@@ -6,10 +6,10 @@ Steedos has a built-in event bus to support [Event-driven architecture](http://m
 Please note that built-in events are fire-and-forget meaning that if the service is offline, the event will be lost.
 :::
 
-### Balanced events
+## Balanced events
 The event listeners are arranged to logical groups. It means that only one listener is triggered in every group.
 
-> **Example:** you have 2 main services: `@steedos-labs/finance` & `@steedos-labs/project`. Both subscribe to the `@space_users.inserted` event. You start 3 instances of `@steedos-labs/finance` service and 2 instances of `@steedos-labs/project` service. When you emit the `@space_users.inserted` event, only one `@steedos-labs/finance` and one `@steedos-labs/project` service instance will receive the event.
+> **Example:** you have 2 main services: `billing` & `payment`. Both subscribe to the `user.purchased` event. You start 2 instances of `billing` service and 2 instances of `payment` service. When you emit the `user.purchased` event, only one `billing` and one `payment` service instance will receive the event.
 
 ![balanced-events](./assets/balanced-events.gif)
 
@@ -19,7 +19,7 @@ The event listeners are arranged to logical groups. It means that only one liste
 module.exports = {
     name: "@steedos-labs/project",
     events: {
-        "@space_users.inserted": {
+        "user.purchased": {
             handler(ctx) {
                 console.log("Payload:", ctx.params);
                 console.log("Sender:", ctx.nodeID);
@@ -38,7 +38,7 @@ _To send multiple values, wrap them into an `Object`._
 
 ```js
 // The `user` will be serialized to transportation.
-broker.emit("config.changed", config);
+broker.emit("user.purchased", config);
 ```
 
 ## Broadcast event
@@ -48,7 +48,7 @@ The broadcast event is sent to all available local & remote services. It is not 
 
 Send broadcast events with `broker.broadcast` method.
 ```js
-broker.broadcast("config.changed", config);
+broker.broadcast("user.updated", config);
 ```
 
 ## Subscribe to events
@@ -127,9 +127,11 @@ module.exports = {
 ```
 >The validation errors are not sent back to the caller, they are logged or you can catch them with global error handler.
 
-## Steedos Object events
+## Steedos events
 
-When data in a business object changes, Steedos automatically emits an event. You can subscribe to these events in your code to handle relevant business logic.
+### Record CRUD events
+
+When records in a business object changes, Steedos automatically emits an event. You can subscribe to these events in your code to handle relevant business logic.
 
 1. `@objectApiName.inserted`
 
