@@ -189,28 +189,26 @@ You can subscribe to events under the events key. For more information check the
 
 ### Subscribe to events
 
-Context-based event handler & emit a nested event
+Context-based event handler & emit a nested event.
 
 ```js
 module.exports = {
-  name: "@steedos-labs/accounts",
-  events: {
-    "space_users.created"(ctx) {
-      console.log("Payload:", ctx.params);
-      console.log("Sender:", ctx.nodeID);
-      console.log("Metadata:", ctx.meta);
-      console.log("The called event name:", ctx.eventName);
+    name: "@steedos-labs/project",
+    events: {
+        "@space_users.inserted"(ctx) {
+            console.log("Payload:", ctx.params);
+            console.log("Sender:", ctx.nodeID);
+            console.log("Metadata:", ctx.meta);
+            console.log("The called event name:", ctx.eventName);
 
-      ctx.emit("accounts.created", { user: ctx.params.user });
-    },
+            ctx.emit("users.changed", { data: ctx.params.doc });
+        },
 
-    "space_users.deleted": {
-      // Force to use context based signature
-      context: true,
-      handler(other) {
-          console.log(`${this.broker.nodeID}:${this.fullName}: Event '${other.eventName}' received. Payload:`, other.params, other.meta);
-      }
+        "@space_users.deleted": {
+            handler(ctx) {
+                console.log(`${this.broker.nodeID}:${this.fullName}: Event '${ctx.eventName}' received. Payload:`, ctx.params, ctx.meta);
+            }
+        }
     }
-  }
 };
 ```
