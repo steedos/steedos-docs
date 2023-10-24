@@ -9,89 +9,17 @@ title: ObjectQL
 
 The core capability of ObjectQL is its cross-database functionality. Using ObjectQL syntax, you can simultaneously accommodate both MongoDB and traditional SQL databases. This versatility allows for seamless integration and interaction with different database technologies, enabling developers to execute queries across various systems without changing the query language or worrying about the underlying database's specific nuances.
 
-## Get Object
+## Object Instance
 
-Before calling ObjectQL functions, you must first obtain the object. 
+Before calling ObjectQL functions, you must first obtain the object instance. 
 
-- In microservices, you can use the `this.getObject()` function to retrieve the object. 
+- In microservices, you can use the `this.getObject(<objectApiName>)` function to retrieve the object. 
 - When using visual interface in Steedos Admin to define triggers, you can acquire the object using `object.${objectApiName}`.
 
 :::tip
 To use `this.getObject`, set `mixins: [require('@steedos/service-package-loader')]` in `package.service.js`.
 :::
 
-
-## Check Current User Permission
-
-You can call objectQL methods with an optional `userSession` parameter.
-
-When a `userSession` is passed in, ObjectQL simultaneously verifies the current user's permissions, assesses whether the user is authorized to perform the corresponding operations, and returns the data the user is authorized to access.
-
-## Query Filters
-
-
-Steedos uses an array format to define one or more filter criteria. For example, the following filter is used to query data that was created this month and assigned to the current user.
-
-```javascript
-filters: [["priority", "=", "high"],["owner","=","{userId}"],["created", "=", this_month]]
-filters: [["status", "=", ["closed","open"]]]
-filters: [["age", "between", [20,30]]]
-```
-
-### Operations
-
-* "=": equals
-* "!=":  not equals
-* ">": greater than
-* ">=": greater than or equal to
-* "<": less than
-* "<=": less than or equal to
-* "startswith": starts with...
-* "contains": contains...
-* "notcontains": does not contain...
-* "between": within a range, only supports numerical and datetime types
-
-### Combined Filters
-
-Multiple filters can be combined using "and" and "or" operations. For example:
-
-* \[ \[ "value", ">", 3 \], "and", \[ "value", "<", 7 \] \]
-* \[ \[ "value", ">", 7 \], "or", \[ "value", "<", 3 \] \]
-
-If no "and" or "or" operation is specified, the system will default to executing filters using the "and" operation. Therefore, the following two writing formats will yield the same result.
-
-* \[ \[ "value", ">", 3 \], "and", \[ "value", "<", 7 \] \]
-* \[ \[ "value", ">", 3 \], \[ "value", "<", 7 \] \]
-
-### Query Array Value
-
-When the operator is "=", the condition will automatically be split into multiple filtering conditions using the "or" operator, similar to implementing the "in" operation function. Therefore, the following two writing formats will yield the same result.
-
-* \[\["status", "in", \["closed","open"\]\]\]
-* \[ \[ "status", "=", "closed" \], "or", \[ "status", "=", "open" \] \]
-
-When the operator is "!=", the condition will automatically be split into multiple filtering conditions using the "and" operator, so the following two writing formats will yield the same results:
-
-* \[\["status", "not in", \["closed","open"\]\]\]
-* \[ \[ "status", "!=", "closed" \], "and", \[ "status", "!=", "open" \] \]
-
-When the operator is "between", the condition will automatically be transformed into filtering conditions corresponding to the ">=" and "<=" operators. Therefore, the following sets of conditions will yield the same results:
-
-* \[\["age", "between", \[20,30\]\]\] equivalent to \[ \[ "age", ">=", 20 \], "and", \[ "age", "<=", 30 \] \]
-* \[\["age", "between", \[null,30\]\]\] equivalent to \[ \[ "age", "<=", 30 \] \]
-* \[\["age", "between", \[20,null\]\]\] equivalent to \[ \[ "age", ">=", 20 \] \]
-
-### Query Datetime Value
-
-For fields of date and time types, the database saves them in UTC time. For date type fields, the time saved is 00:00:00.
-
-When querying date and time type fields, you need to convert the time to UTC format before executing the query.
-
-For example, if you want to search for documents with a creation date before 1:00 PM Beijing time, you need to convert Beijing time to GMT time before executing the query.
-
-```javascript
-[["created","<=","2019-08-06T07:00:00Z"]]
-```
 
 ## Core Methods
 
@@ -154,7 +82,7 @@ This function inserts a single record. It triggers the configured trigger functi
 
 - **Usage：** `.insert(doc, userSession?)`
 - **Arguments：**
-  - doc: `Dictionary<any>` The data you wish to insert. It must include all required fields for the object.
+  - doc: `Dictionary` The data you wish to insert. It must include all required fields for the object.
   - userSession: optional param, force check user permissions.
 - **Returns：** The data that was successfully inserted.
 
@@ -188,7 +116,7 @@ This function is used to update a single record. The beforeUpdate and afterUpdat
 - **Usage**： `.update(id, doc, userSession)`
 - **Arguments**：
   - id: number | string The ID of the data you want to change.
-  - doc:`Dictionary<any>` The data you want to update.
+  - doc:`Dictionary```any>` The data you want to update.
   - userSession: optional param, force check user permissions.
 - **Returns**： The data after a successful update.
 
@@ -251,25 +179,97 @@ const res = this.getObject('accounts').aggregate(
 );
 ```
 
-## Triggers
+## With Permission
+
+You can call objectQL methods with an optional `userSession` parameter.
+
+When a `userSession` is passed in, ObjectQL simultaneously verifies the current user's permissions, assesses whether the user is authorized to perform the corresponding operations, and returns the data the user is authorized to access.
+
+## With Triggers
 
 Unlike direct database operations, ObjectQL syntax manipulates the database in a way that executes [triggers](./action-trigger) both before and after the invocation.
 
-* beforeInsert
-* beforeUpdate
-* beforeDelete
-* beforeFind
-* afterFind
-* afterInsert
-* afterUpdate
-* afterDelete
+* `beforeInsert`
+* `beforeUpdate`
+* `beforeDelete`
+* `beforeFind`
+* `afterFind`
+* `afterInsert`
+* `afterUpdate`
+* `afterDelete`
 
-## Direct CRUD
+## Ignore Triggers
 
 The ObjectQL syntax executes all triggers and validates user permissions, which certainly isn't as performance-efficient as direct database access. If you need to modify data in bulk or wish to bypass object trigger execution, you can use direct CRUD-related functions with the parameters remaining unchanged.
 
-- directFind
-- directInsert
-- directUpdate
-- directDelete
-- directAggregate
+- `directFind`
+- `directInsert`
+- `directUpdate`
+- `directDelete`
+- `directAggregate`
+
+## Query Filter Syntax
+
+
+Steedos uses an array format to define one or more filter criteria. For example, the following filter is used to query data that was created this month and assigned to the current user.
+
+```javascript
+filters: [["priority", "=", "high"],["owner","=","{userId}"],["created", "=", this_month]]
+filters: [["status", "=", ["closed","open"]]]
+filters: [["age", "between", [20,30]]]
+```
+
+### Operations
+
+* "=": equals
+* "!=":  not equals
+* ">": greater than
+* ">=": greater than or equal to
+* "```": less than
+* "```=": less than or equal to
+* "startswith": starts with...
+* "contains": contains...
+* "notcontains": does not contain...
+* "between": within a range, only supports numerical and datetime types
+
+### Combined Filters
+
+Multiple filters can be combined using "and" and "or" operations. For example:
+
+* `[ [ "value", ">", 3 ], "and", [ "value", "```", 7 ] ]`
+* `[ [ "value", ">", 7 ], "or", [ "value", "```", 3 ] ]`
+
+If no "and" or "or" operation is specified, the system will default to executing filters using the "and" operation. Therefore, the following two writing formats will yield the same result.
+
+* `[ [ "value", ">", 3 ], "and", [ "value", "```", 7 ] ]`
+* `[ [ "value", ">", 3 ], [ "value", "```", 7 ] ]`
+
+### Query Array Value
+
+When the operator is "=", the condition will automatically be split into multiple filtering conditions using the "or" operator, similar to implementing the "in" operation function. Therefore, the following two writing formats will yield the same result.
+
+* `[ [ "status", "in", ["closed","open"] ] ]`
+* `[ [ "status", "=", "closed" ], "or", [ "status", "=", "open" ] ]`
+
+When the operator is "!=", the condition will automatically be split into multiple filtering conditions using the "and" operator, so the following two writing formats will yield the same results:
+
+* `[ [ "status", "not in", ["closed","open"]] ]`
+* `[ [ "status", "!=", "closed" ], "and", [ "status", "!=", "open" ] ]`
+
+When the operator is "between", the condition will automatically be transformed into filtering conditions corresponding to the ">=" and "```=" operators. Therefore, the following sets of conditions will yield the same results:
+
+* `[ [ "age", "between", [20,30] ] ]` equivalent to `[ [ "age", ">=", 20 ], "and", [ "age", "```=", 30 ] ]`
+* `[ [ "age", "between", [null,30] ] ]` equivalent to `[ [ "age", "```=", 30 ] ]`
+* `[ [ "age", "between", [20,null] ] ]` equivalent to `[ [ "age", ">=", 20 ] ]`
+
+### Query Datetime Value
+
+For fields of date and time types, the database saves them in UTC time. For date type fields, the time saved is 00:00:00.
+
+When querying date and time type fields, you need to convert the time to UTC format before executing the query.
+
+For example, if you want to search for documents with a creation date before 1:00 PM Beijing time, you need to convert Beijing time to GMT time before executing the query.
+
+```javascript
+[["created","```=","2019-08-06T07:00:00Z"]]
+```

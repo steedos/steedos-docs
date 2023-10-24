@@ -2,9 +2,9 @@
 sidebar_position: 10
 ---
 
-# 软件包服务
+# 软件包微服务
 
-Steedos 平台基于 Moleculer 微服务架构，每个软件包都是一个 [Moleculer 服务](https://moleculer.services/docs/0.14/services)。您可以在服务中定义操作、方法并订阅事件。
+Steedos 平台基于 Moleculer 微服务架构，每个软件包都是一个 [Moleculer 微服务](https://moleculer.services/docs/0.14/services)。您可以在服务中定义操作、方法并订阅事件。
 
 
 ## package.service.js

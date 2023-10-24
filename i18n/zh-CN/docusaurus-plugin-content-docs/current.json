@@ -132,7 +132,7 @@
     "description": "The label for category Steedos Package in sidebar developer"
   },
   "sidebar.developer.category.Service Development": {
-    "message": "服务开发",
+    "message": "微服务开发",
     "description": "The label for category Service Development in sidebar developer"
   },
   "sidebar.developer.category.System Services": {
@@ -140,11 +140,11 @@
     "description": "The label for category Internal Service in sidebar developer"
   },
   "sidebar.developer.category.Micro Pages": {
-    "message": "微页面",
+    "message": "微页面开发",
     "description": "The label for category Micro Pages in sidebar developer"
   },
   "sidebar.developer.category.Components Reference": {
-    "message": "控件 指南",
+    "message": "系统控件",
     "description": "The label for category Components Reference in sidebar developer"
   },
   "sidebar.developer.category.API Reference": {
