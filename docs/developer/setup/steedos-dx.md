@@ -24,7 +24,7 @@ Steedos Developer Experience (DX) is a new way to manage and develop apps on the
 - Promotes a robust development cycle with continuous feedback and iterative improvements.
 
 ### 4. Environment Management
-- Run you package on different Steedos environments (Scratch Orgs) for various purposes (development, testing, staging).
+- Run you package on different Steedos environments for various purposes (development, testing, staging).
 - Ensures separation between production and non-production environments.
 
 ### 5. Package and Dependency Management
