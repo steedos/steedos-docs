@@ -162,5 +162,25 @@
   "sidebar.developer.link.Contribute": {
     "message": "贡献代码",
     "description": "The label for link Contribute in sidebar developer, linking to https://github.com/steedos/steedos-platform/blob/master/CONTRIBUTING.md"
+  },
+  "sidebar.developer.category.Steedos DX Project": {
+    "message": "Steedos DX 项目",
+    "description": "The label for category Steedos DX Project in sidebar developer"
+  },
+  "sidebar.developer.category.Steedos Package Service": {
+    "message": "Steedos 软件包微服务",
+    "description": "The label for category Steedos Package Service in sidebar developer"
+  },
+  "sidebar.developer.category.系统微服务": {
+    "message": "系统微服务",
+    "description": "The label for category 系统微服务 in sidebar developer"
+  },
+  "sidebar.developer.category.Micro Page Builder": {
+    "message": "Steedos 微页面构建器",
+    "description": "The label for category Micro Page Builder in sidebar developer"
+  },
+  "sidebar.developer.category.Steedos API": {
+    "message": "Steedos API",
+    "description": "The label for category Steedos API in sidebar developer"
   }
 }

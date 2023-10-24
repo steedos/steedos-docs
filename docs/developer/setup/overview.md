@@ -1,5 +1,5 @@
 ---
-title: What is Steedos DX?
+title: Overview
 sidebar_position: 0.1
 ---
 

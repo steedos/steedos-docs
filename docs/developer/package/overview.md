@@ -1,5 +1,6 @@
 ---
 sidebar_position: 10
+title: Overview
 ---
 
 # What is Steedos Package?

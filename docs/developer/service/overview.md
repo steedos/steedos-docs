@@ -1,10 +1,11 @@
 ---
 sidebar_position: 5
+title: Overview
 ---
 
-# What is Steedos Service?
+# What is Steedos Package Service?
 
-The Steedos Platform is based on the Moleculer microservices architecture. Moleculer is a fast, modern and powerful microservices framework for Node.js. It helps you to build efficient, reliable & scalable services. 
+The Steedos Platform is based on the Moleculer microservices architecture, where each package is a [Moleculer Service](https://moleculer.services/docs/0.14/services). You can define REST APIs, triggers, actions, methods, and subscribe to events in the service. 
 
 ![](/img/service/architectures/mixed.svg)
 

@@ -61,7 +61,7 @@ sidebar_position: 0
   - [x] create-steedos-app [文档](./developer/setup/create-steedos-app)
   - [x] 软件包 [文档](./developer/package/overview)
   - [x] 元数据同步为代码 [文档](./developer/package/sync-metadata)
-  - [x] API [文档](./developer/api/)
+  - [x] API [文档](./developer/api/overview)
   - [x] 触发器 [文档](./developer/service/action-trigger)
   - [x] 自定义API [文档](./developer/service/action-api)
    
@@ -70,6 +70,6 @@ sidebar_position: 0
 作为低代码生态的一员，华炎魔方通过插件的方式，实现与多个行业领先的第三方低代码工具无缝集成，扩展华炎魔方的产品能力。
 
   - [x] [Node-RED](https://github.com/node-red/node-red) 集成 [文档](./integration/node-red)
-  - [ ] [metabase](https://github.com/metabase/metabase) 数据分析引擎
-  - [ ] [ToolJet](https://github.com/ToolJet/ToolJet/) 集成
+  - [x] [metabase](https://github.com/metabase/metabase) 数据分析引擎
+  - [x] [ToolJet](https://github.com/ToolJet/ToolJet/) 集成
   - [ ] [n8n](https://github.com/n8n-io/n8n) 集成
