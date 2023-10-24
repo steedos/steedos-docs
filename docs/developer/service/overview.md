@@ -7,7 +7,7 @@ title: Service Architecture
 
 The Steedos Platform is based on the Moleculer microservices architecture. Moleculer is a fast, modern and powerful microservices framework for Node.js. It helps you to build efficient, reliable & scalable services. 
 
-![](./assets/architectures/mixed.svg)
+![](/img/service/architectures/mixed.svg)
 
 ### Node
 
@@ -22,7 +22,7 @@ A service is a simple nodejs module containing some part of a complex applicatio
 
 In order to communicate with other nodes (Steedos Platform) you need to configure a transporter. Most of the supported transporters connect to a central message broker that provide a reliable way of exchanging messages among remote nodes. These message brokers mainly support publish/subscribe messaging pattern.
 
-![Networking](./assets/networking.svg)
+![Networking](/img/service/networking.svg)
 
 ## Transporter
 
