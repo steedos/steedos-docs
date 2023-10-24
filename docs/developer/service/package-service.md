@@ -12,7 +12,7 @@ The Steedos Platform is based on the Moleculer microservices architecture, where
 
 The `package.service.js` in the root directory of the steedos package is the loading entry for the package microservice.
 
-```js
+^^^js
 const packageJSON = require('./package.json');
 
 module.exports = {
@@ -82,7 +82,7 @@ module.exports = {
   async stopped() {
   }
 };
-```
+^^^
 
 ### namespace
 
@@ -103,18 +103,18 @@ If your service depends on other services, use the dependencies property in the 
 
 If the package you are developing depends on metadata from another package, you can use `dependencies` to control the loading order of the packages. For example, if the contract management package relies on metadata from the master data package, you can define it as follows:
 
-```js
+^^^js
 module.exports = {
   name: "@steedos-labs/contract",
   dependencies: ["@steedos-labs/master"],
 }
-```
+^^^
 
 ## Actions
 
 The actions are the callable/public methods of the service. The action calling represents a remote-procedure-call (RPC). It has request parameters & returns response, like a HTTP request. For more information check the [Moleculer Actions](https://moleculer.services/docs/0.14/actions) documentation.
 
-```js
+^^^js
   actions: {
     multi: {
       cache: false,
@@ -128,15 +128,15 @@ The actions are the callable/public methods of the service. The action calling r
       }
     }
   }
-```
+^^^
 
 ## Call services
 To call a service use the `broker.call` method. The broker looks for the service (and a node) which has the given action and call it. The function returns a `Promise`.
 
 ### Syntax
-```js
+^^^js
 const res = await broker.call(actionName, params, opts);
-```
+^^^
 
 ## REST API
 
@@ -148,7 +148,7 @@ You can publish an action as a RESTful API by specifying the `rest` parameter.
 
 For more information check the [REST API](./action-api) documentation.
 
-```js
+^^^js
   actions: {
     hello: {
       rest: { method: 'GET', path: '/hello/:name' },
@@ -159,7 +159,7 @@ For more information check the [REST API](./action-api) documentation.
       }
     },
   }
-```
+^^^
 
 ## Triggers
 
@@ -169,7 +169,7 @@ You can define an action and add a `trigger` parameter to it.
 
 For more information check the [Trigger](./action-trigger) documentation.
 
-```js
+^^^js
   actions: {
     spaceUsersBeforeUpdate: {
       trigger: { 
@@ -181,7 +181,7 @@ For more information check the [Trigger](./action-trigger) documentation.
       }   
     }
   }
-```
+^^^
 
 ## Events
 
@@ -191,7 +191,7 @@ You can subscribe to events under the events key. For more information check the
 
 Context-based event handler & emit a nested event.
 
-```js
+^^^js
 module.exports = {
     name: "@steedos-labs/project",
     events: {
@@ -211,4 +211,4 @@ module.exports = {
         }
     }
 };
-```
+^^^

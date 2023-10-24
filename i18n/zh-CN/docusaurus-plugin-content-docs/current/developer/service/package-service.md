@@ -1,16 +1,15 @@
 ---
 sidebar_position: 10
-title: Package Service
 ---
 
-# What is Package Service?
+# 软件包服务
 
-The Steedos Platform is based on the Moleculer microservices architecture, where each package is a [Moleculer Service](https://moleculer.services/docs/0.14/services). You can define actions, methods, and subscribe to events in the service. 
+Steedos 平台基于 Moleculer 微服务架构，每个软件包都是一个 [Moleculer 服务](https://moleculer.services/docs/0.14/services)。您可以在服务中定义操作、方法并订阅事件。
 
 
 ## package.service.js
 
-The `package.service.js` in the root directory of the steedos package is the loading entry for the package microservice.
+steedos 软件包的根目录中的 `package.service.js` 是软件包微服务的加载入口。
 
 ```js
 const packageJSON = require('./package.json');
@@ -84,24 +83,24 @@ module.exports = {
 };
 ```
 
-### namespace
+### 命名空间
 
-Namespace of nodes to segment your nodes on the same network.
-Must be set to `steedos`.
+节点的命名空间用于在同一网络上分割您的节点。
+必须设置为 `steedos`。
 
-### mixins
+### 混入 (mixins)
 
-Mixins are a flexible way to distribute reusable functionalities for Moleculer services. The Service constructor merges these mixins with the current schema. When a service uses mixins, all properties present in the mixin will be “mixed” into the current service.
+混入是一种灵活的方式，用于为 Moleculer 服务分发可重用的功能。服务构造函数将这些混入与当前模式合并。当服务使用混入时，混入中存在的所有属性都会“混合”到当前服务中。
 
 :::tip
-After mixin `@steedos/service-package-loader`, the package service will automatically scan and load metadata files from subfolders upon startup. 
+混入 `@steedos/service-package-loader` 之后，软件包服务将在启动时自动扫描子文件夹并加载元数据文件。
 :::
 
-### dependencies
+### 依赖项
 
-If your service depends on other services, use the dependencies property in the schema. The service waits for dependent services before calls the started lifecycle event handler.
+如果您的服务依赖于其他服务，请在模式中使用 dependencies 属性。服务在调用已启动的生命周期事件处理程序之前，等待依赖的服务。
 
-If the package you are developing depends on metadata from another package, you can use `dependencies` to control the loading order of the packages. For example, if the contract management package relies on metadata from the master data package, you can define it as follows:
+如果您正在开发的软件包依赖于另一个软件包的元数据，您可以使用 `dependencies` 来控制软件包的加载顺序。例如，如果合同管理软件包依赖于主数据软件包的元数据，您可以如下定义：
 
 ```js
 module.exports = {
@@ -110,9 +109,9 @@ module.exports = {
 }
 ```
 
-## Actions
+## 操作
 
-The actions are the callable/public methods of the service. The action calling represents a remote-procedure-call (RPC). It has request parameters & returns response, like a HTTP request. For more information check the [Moleculer Actions](https://moleculer.services/docs/0.14/actions) documentation.
+操作是服务的可调用/公共方法。操作调用代表远程过程调用（RPC）。它具有请求参数并返回响应，就像 HTTP 请求一样。有关更多信息，请查看 [Moleculer 操作](https://moleculer.services/docs/0.14/actions)文档。
 
 ```js
   actions: {
@@ -130,23 +129,23 @@ The actions are the callable/public methods of the service. The action calling r
   }
 ```
 
-## Call services
-To call a service use the `broker.call` method. The broker looks for the service (and a node) which has the given action and call it. The function returns a `Promise`.
+## 调用服务
+要调用服务，请使用 `broker.call` 方法。代理查找具有给定操作的服务（和节点）并调用它。该函数返回一个 `Promise`。
 
-### Syntax
+### 语法
 ```js
 const res = await broker.call(actionName, params, opts);
 ```
 
 ## REST API
 
-Steedos comes with a built-in [API Gateway](https://moleculer.services/docs/0.14/moleculer-web), it can publish your services as RESTful APIs. 
+Steedos 附带了一个内置的 [API 网关](https://moleculer.services/docs/0.14/moleculer-web)，它可以将您的服务发布为 RESTful API。
 
-This way, your action function can be accessed directly using an HTTP request, without the need to connect to the microservices network.
+这样，您的操作功能可以直接通过 HTTP 请求访问，无需连接到微服务网络。
 
-You can publish an action as a RESTful API by specifying the `rest` parameter.  
+您可以通过指定 `rest` 参数将操作发布为 RESTful API。
 
-For more information check the [REST API](./action-api) documentation.
+有关更多信息，请查看 [REST API](./action-api) 文档。
 
 ```js
   actions: {
@@ -161,13 +160,13 @@ For more information check the [REST API](./action-api) documentation.
   }
 ```
 
-## Triggers
+## 触发器
 
-By writing triggers, you can automatically trigger a piece of server-side code before and after record creation, deletion, and changes, achieving personalized data validation and processing.
+通过编写触发器，您可以在记录创建、删除和更改之前和之后自动触发一段服务器端代码，实现个性化的数据验证和处理。
 
-You can define an action and add a `trigger` parameter to it.
+您可以定义一个操作并为其添加 `trigger` 参数。
 
-For more information check the [Trigger](./action-trigger) documentation.
+有关更多信息，请查看 [触发器](./action-trigger) 文档。
 
 ```js
   actions: {
@@ -183,13 +182,13 @@ For more information check the [Trigger](./action-trigger) documentation.
   }
 ```
 
-## Events
+## 事件
 
-You can subscribe to events under the events key. For more information check the [Events](./events) documentation.
+您可以在 events 键下订阅事件。有关更多信息，请查看 [事件](./events) 文档。
 
-### Subscribe to events
+### 订阅事件
 
-Context-based event handler & emit a nested event.
+基于上下文的事件处理程序和发出嵌套事件。
 
 ```js
 module.exports = {

@@ -2,52 +2,51 @@
 sidebar_position: 20
 ---
 
-# Actions
+# 动作
 
-The actions are the callable/public methods of the service. The action calling represents a remote-procedure-call (RPC). It has request parameters & returns response, like a HTTP request.
+动作是服务的可调用/公共方法。动作调用代表远程过程调用（RPC）。它具有请求参数并返回响应，就像HTTP请求一样。
 
-If you have multiple instances of services, the broker will load balance the request among instances.
+如果您有多个服务实例，代理将在实例之间对请求进行负载平衡。
 
 ![action-balancing](/img/service/action-balancing.gif)
 
-## Call services
-To call a service use the `broker.call` method. The broker looks for the service (and a node) which has the given action and call it. The function returns a `Promise`.
+## 调用服务
+要调用服务，请使用 `broker.call` 方法。代理寻找具有给定动作的服务（和节点）并调用它。该函数返回一个 `Promise`。
 
-### Syntax
+### 语法
 ```js
 const res = await broker.call(actionName, params, opts);
 ```
-The `actionName` is a dot-separated string. The first part of it is the service name, while the second part of it represents the action name. So if you have a `posts` service with a `create` action, you can call it as `posts.create`.
+`actionName` 是一个点分隔的字符串。它的第一部分是服务名称，而第二部分代表动作名称。因此，如果您有一个带有 `create` 动作的 `posts` 服务，您可以调用它作为 `posts.create`。
 
-The `params` is an object which is passed to the action as a part of the Context. The service can access it via `ctx.params`. *It is optional. If you don't define, it will be `{}`*.
+`params` 是一个对象，作为上下文的一部分传递给动作。服务可以通过 `ctx.params` 访问它。*这是可选的。如果您不定义，它将是 `{}`*。
 
-The `opts` is an object to set/override some request parameters, e.g.: `timeout`, `retryCount`. *It is optional.*
+`opts` 是一个对象，用于设置/覆盖某些请求参数，例如：`timeout`、`retryCount`。*这也是可选的。*
 
-**Available calling options:**
+**可用的调用选项：**
 
-| Name | Type | Default | Description |
-| ------- | ----- | ------- | ------- |
-| `timeout` | `Number` | `null` | Timeout of request in milliseconds. If the request is timed out and you don't define `fallbackResponse`, broker will throw a `RequestTimeout` error. To disable set `0`. If it's not defined, the `requestTimeout` value from broker options will be used. |
-| `retries` | `Number` | `null` | Count of retry of request. If the request is timed out, broker will try to call again. To disable set `0`. If it's not defined, the `retryPolicy.retries` value from broker options will be used.|
-| `fallbackResponse` | `Any` | `null` | Returns it, if the request has failed.  |
-| `nodeID` | `String` | `null` | Target nodeID. If set, it will make a direct call to the specified node. |
-| `meta` | `Object` | `{}` | Metadata of request. Access it via `ctx.meta` in actions handlers. It will be transferred & merged at nested calls, as well. |
-| `parentCtx` | `Context` | `null` | Parent `Context` instance. Use it to chain the calls.  |
-| `requestID` | `String` | `null` | Request ID or Correlation ID. Use it for tracing. |
+| 名称 | 类型 | 默认值 | 描述 |
+| ------- | ----- | ------- | ----------- |
+| `timeout` | `Number` | `null` | 请求的超时时间（以毫秒为单位）。如果请求超时并且您没有定义 `fallbackResponse`，代理将抛出一个 `RequestTimeout` 错误。设置为 `0` 以禁用。如果未定义，将使用代理选项中的 `requestTimeout` 值。 |
+| `retries` | `Number` | `null` | 请求的重试次数。如果请求超时，代理将尝试再次调用。设置为 `0` 以禁用。如果未定义，将使用代理选项中的 `retryPolicy.retries` 值。|
+| `fallbackResponse` | `Any` | `null` | 如果请求失败，则返回。  |
+| `nodeID` | `String` | `null` | 目标 nodeID。如果设置，它将直接呼叫指定的节点。 |
+| `meta` | `Object` | `{}` | 请求的元数据。在动作处理程序中通过 `ctx.meta` 访问。它也会在嵌套调用中被转移和合并。 |
+| `parentCtx` | `Context` | `null` | 父 `Context` 实例。用它来链接调用。  |
+| `requestID` | `String` | `null` | 请求ID或关联ID。用于追踪。 |
 
-
-### Usages
-**Call without params**
+### 用法
+**不带参数的调用**
 ```js
 const res = await broker.call("user.list");
 ```
 
-**Call with params**
+**带参数调用**
 ```js
 const res = await broker.call("user.get", { id: 3 });
 ```
 
-**Call with calling options**
+**带调用选项的调用**
 ```js
 const res = await broker.call("user.recommendation", { limit: 5 }, {
     timeout: 500,
@@ -56,24 +55,24 @@ const res = await broker.call("user.recommendation", { limit: 5 }, {
 });
 ```
 
-**Call with promise error handling**
+**带有承诺错误处理的调用**
 ```js
 broker.call("posts.update", { id: 2, title: "Modified post title" })
     .then(res => console.log("Post updated!"))
     .catch(err => console.error("Unable to update Post!", err));    
 ```
 
-**Direct call: get health info from the "node-21" node**
+**直接调用：从“node-21”节点获取健康信息**
 ```js
 const res = await broker.call("$node.health", null, { nodeID: "node-21" })
 ```
 
-### Metadata
+### 元数据
 
-Send meta information to services with `meta` property. Access it via `ctx.meta` in action handlers. Please note that in nested calls the `meta` is merged.
+使用 `meta` 属性向服务发送元信息。在动作处理程序中通过 `ctx.meta` 访问。请注意，在嵌套调用中 `meta` 会合并。
 
 :::tip
-When writing REST APIs, you can obtain the current user session from `ctx.meta.user`. If you want to access `ctx.meta.user` within the action being called, you need to manually pass it in.
+编写 REST API 时，您可以从 `ctx.meta.user` 获取当前用户会话。如果您想在被调用的动作中访问 `ctx.meta.user`，则需要手动传递它。
 :::
 
 ```js
@@ -94,27 +93,26 @@ const res = await this.broker.call('objectql.find',
 );
 ```
 
+## 流
+Moleculer 支持 Node.js 流作为请求 `params` 和响应。使用它来传输从网关收到的文件，编码/解码或压缩/解压缩流。
 
-## Streaming
-Moleculer supports Node.js streams as request `params` and as response. Use it to transfer an incoming file from a gateway, encode/decode or compress/decompress streams.
+### 示例
 
-### Examples
-
-**Send a file to a service as a stream**
+**将文件作为流发送到服务**
 ```js
 const stream = fs.createReadStream(fileName);
 
 broker.call("storage.save", stream, { meta: { filename: "avatar-123.jpg" }});
 ```
-Please note, the `params` should be a stream, you cannot add any additional variables to the `params`. Use the `meta` property to transfer additional data.
+请注意，`params` 应该是一个流，您不能向 `params` 添加任何额外的变量。使用 `meta` 属性传输附加数据。
 
-**Receiving a stream in a service**
+**在服务中接收流**
 ```js
 module.exports = {
     name: "storage",
     actions: {
         save(ctx) {
-            // Save the received stream to a file
+            // 将接收到的流保存到文件
             const s = fs.createWriteStream(`/tmp/${ctx.meta.filename}`);
             ctx.params.pipe(s);
         }
@@ -122,7 +120,7 @@ module.exports = {
 };
 ```
 
-**Return a stream as response in a service**
+**在服务中返回流作为响应**
 ```js
 module.exports = {
     name: "storage",
@@ -139,7 +137,7 @@ module.exports = {
 };
 ```
 
-**Process received stream on the caller side**
+**在调用方处理接收到的流**
 ```js
 const filename = "avatar-123.jpg";
 broker.call("storage.get", { filename })
@@ -150,7 +148,7 @@ broker.call("storage.get", { filename })
     })
 ```
 
-**AES encode/decode example service**
+**AES 编码/解码示例服务**
 ```js
 const crypto = require("crypto");
 const password = "moleculer";

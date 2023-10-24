@@ -1,20 +1,20 @@
-# Events
+# 事件
 
-Steedos has a built-in event bus to support [Event-driven architecture](http://microservices.io/patterns/data/event-driven-architecture.html) and to send events to local and remote services. 
+Steedos内置了事件总线，支持[事件驱动架构](http://microservices.io/patterns/data/event-driven-architecture.html)，并向本地和远程服务发送事件。
 
 :::tip
-Please note that built-in events are fire-and-forget meaning that if the service is offline, the event will be lost.
+请注意，内置事件是即发即弃的，这意味着如果服务离线，事件将会丢失。
 :::
 
-## Balanced events
-The event listeners are arranged to logical groups. It means that only one listener is triggered in every group.
+## 均衡事件
+事件监听器被安排到逻辑组中。这意味着每个组中只有一个监听器被触发。
 
-> **Example:** you have 2 main services: `billing` & `payment`. Both subscribe to the `user.purchased` event. You start 2 instances of `billing` service and 2 instances of `payment` service. When you emit the `user.purchased` event, only one `billing` and one `payment` service instance will receive the event.
+> **例子：** 你有2个主要服务：`billing`（计费） 和 `payment`（支付）。两者都订阅了 `user.purchased` 事件。你启动了2个 `billing` 服务实例和2个 `payment` 服务实例。当你发出 `user.purchased` 事件时，只有一个 `billing` 和一个 `payment` 服务实例会收到事件。
 
 ![balanced-events](/img/service/balanced-events.gif)
 
 
-**Example**
+**例子**
 ```js
 module.exports = {
     name: "@steedos-labs/project",
@@ -31,29 +31,29 @@ module.exports = {
 }
 ```
 
-### Emit balanced events
+### 发送均衡事件
 
-Send balanced events with `broker.emit` function. The first parameter is the name of the event, the second parameter is the payload. 
-_To send multiple values, wrap them into an `Object`._
+使用 `broker.emit` 函数发送均衡事件。第一个参数是事件的名称，第二个参数是有效载荷（payload）。
+_要发送多个值，请将它们封装到一个 `Object` 中。_
 
 ```js
-// The `user` will be serialized to transportation.
+// “user”将被序列化以进行传输。
 broker.emit("user.purchased", config);
 ```
 
-## Broadcast event
-The broadcast event is sent to all available local & remote services. It is not balanced, all service instances will receive it.
+## 广播事件
+广播事件被发送到所有可用的本地和远程服务。它不是均衡的，所有服务实例都会接收到。
 
 ![broadcast-events](/img/service/broadcast-events.gif)
 
-Send broadcast events with `broker.broadcast` method.
+使用 `broker.broadcast` 方法发送广播事件。
 ```js
 broker.broadcast("user.updated", config);
 ```
 
-## Subscribe to events
+## 订阅事件
 
-Event context is useful if you are using event-driven architecture and want to trace your events. The Event Context is very similar to Action Context, except for a few new event related properties. 
+如果您使用事件驱动架构并希望追踪您的事件，那么事件上下文非常有用。事件上下文与操作上下文非常相似，除了一些新的与事件相关的属性。
 
 ```js
 module.exports = {
@@ -77,34 +77,33 @@ module.exports = {
 };
 ```
 
-
-Subscribe to events in 'events' property of services. Use of wildcards (`?`, `*`, `**`) is available in event names.
+在服务的 'events' 属性中订阅事件。事件名称中可以使用通配符（`?`，`*`，`**`）。
 
 ```js
 module.exports = {
     events: {
-        // Subscribe to `user.created` event
+        // 订阅 `user.created` 事件
         "@space_users.inserted"(ctx) {
-            console.log("User created:", ctx.params);
+            console.log("创建了用户:", ctx.params);
         },
 
-        // Subscribe to all `user` events, e.g. "user.created", or "user.removed"
+        // 订阅所有 `user` 事件，例如 "user.created" 或 "user.removed"
         "@space_users.*"(ctx) {
-            console.log("User event:", ctx.params);
+            console.log("用户事件:", ctx.params);
         }
-        // Subscribe to every events
-        // Legacy event handler signature with context
+        // 订阅所有事件
+        // 带上下文的传统事件处理器签名
         "**"(payload, sender, event, ctx) {
-            console.log(`Event '${event}' received from ${sender} node:`, payload);
+            console.log(`从 ${sender} 节点收到的事件 '${event}'：`, payload);
         }
     }
 }
 ```
 
-### Event parameter validation
+### 事件参数验证
 
-Similar to action parameter validation, the event parameter validation is supported.
-Like in action definition, you should define `params` in event definition and the built-in `Validator` validates the parameters in events.
+与动作参数验证类似，也支持事件参数验证。
+就像在动作定义中一样，你应该在事件定义中定义 `params`，内置的 `Validator` 会在事件中验证参数。
 
 ```js
 // mailer.service.js
@@ -112,75 +111,75 @@ module.exports = {
     name: "@steedos-labs/mail",
     events: {
         "send.mail": {
-            // Validation schema
+            // 验证模式
             params: {
                 from: "string|optional",
                 to: "email",
                 subject: "string"
             },
             handler(ctx) {
-                this.logger.info("Event received, parameters OK!", ctx.params);
+                this.logger.info("收到事件，参数OK！", ctx.params);
             }
         }
     }
 };
 ```
->The validation errors are not sent back to the caller, they are logged or you can catch them with global error handler.
+> 验证错误不会发送回调用方，它们会被记录，或者你可以使用全局错误处理器捕获它们。
 
-## Steedos events
+## Steedos 事件
 
-### Record CRUD events
+### 记录 CRUD 事件
 
-When records in a business object changes, Steedos automatically emits an event. You can subscribe to these events in your code to handle relevant business logic.
+当业务对象中的记录发生变化时，Steedos会自动发出一个事件。您可以在代码中订阅这些事件来处理相关的业务逻辑。
 
 1. `@objectApiName.inserted`
 
-When data inserted in object.
+当对象中插入数据时。
 
 2. `@objectApiName.updated`
 
-When data updated in object.
+当对象中的数据更新时。
 
 3. `@objectApiName.deleted`
 
-When data deleted in object.
+当对象中的数据被删除时。
 
 :::tip
-Don't forget to add an `@` symbol before the Object Api Name. For example, when the object api name is `space_users`, you should write `@space_users.`
+不要忘记在对象Api名称前添加 `@` 符号。例如，当对象api名称是 `space_users` 时，你应该写 `@space_users.`。
 :::
 
-**Payload**
+**有效载荷**
 
-Variable | Usage
+变量 | 用法
 -- | --
-isInsert | Returns true if this trigger is triggered by an insert operation.
-isUpdate | Returns true if this trigger is triggered by an update operation.
-isDelete | Returns true if this trigger is triggered by a delete operation.
-isFind | Returns true if this trigger is triggered by a query operation.
-isBefore | Returns true if this trigger is triggered before any record operation.
-isAfter | Returns true if this trigger is triggered after all record operations.
-id | The unique identifier of the record [string].
-doc | The record content that needs to be inserted/updated [json].
-previousDoc | The record before updated/deleted [json].
-userId | The unique identifier of the current user [string].
-spaceId | The current workspace [string].
-objectName | The current object name [string].
+isInsert | 如果此触发器由插入操作触发，则返回true。
+isUpdate | 如果此触发器由更新操作触发，则返回true。
+isDelete | 如果此触发器由删除操作触发，则返回true。
+isFind | 如果此触发器由查询操作触发，则返回true。
+isBefore | 如果此触发器在任何记录操作之前触发，则返回true。
+isAfter | 如果此触发器在所有记录操作之后触发，则返回true。
+id | 记录的唯一标识符 [字符串]。
+doc | 需要插入/更新的记录内容 [json]。
+previousDoc | 更新/删除之前的记录 [json]。
+userId | 当前用户的唯一标识符 [字符串]。
+spaceId | 当前工作区 [字符串]。
+objectName | 当前对象名称 [字符串]。
 
-## System events
-The broker broadcasts some internal events. These events always starts with `$` prefix.
+## 系统事件
+经纪人广播一些内部事件。这些事件始终以 `$` 前缀开头。
 
 ### `$services.changed`
-The broker sends this event if the local node or a remote node loads or destroys services.
+如果本地节点或远程节点加载或销毁服务，经纪人会发送此事件。
 
-**Payload**
+**有效载荷**
 
-| Name | Type | Description |
+| 名称 | 类型 | 描述 |
 | ---- | ---- | ----------- |
-| `localService ` | `Boolean` | True if a local service changed. |
+| `localService` | `Boolean` | 如果本地服务改变，则为True。 |
 
-**Payload**
+**有效载荷**
 
-| Name | Type | Description |
+| 名称 | 类型 | 描述 |
 | ---- | ---- | ----------- |
-| `node` | `Node` | Node info object |
-| `unexpected` | `Boolean` | `true` - Not received heartbeat, `false` - Received `DISCONNECT` message from node. |
+| `node` | `Node` | 节点信息对象 |
+| `unexpected` | `Boolean` | `true` - 未收到心跳，`false` - 从节点收到 `DISCONNECT` 消息。 |
