@@ -1,0 +1,71 @@
+---
+title: Docker
+description: 按照以下步骤在 Docker 上部署 Steedos。
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+按照以下步骤在 Docker 上部署 Steedos。
+
+## 先决条件
+
+1. [Docker](https://docs.docker.com/get-docker/) (版本 20.10.7 或更高版本)
+2. [Docker-Compose](https://docs.docker.com/compose/install/) (版本 1.29.2 或更高版本)
+
+
+## 安装 Steedos
+
+在您的计算机上创建一个名为 `steedos` 的文件夹，用于部署和数据存储。然后，使用 `cd` 命令导航到此文件夹，并按照以下步骤操作：
+
+<Tabs queryString="current-edition">
+<TabItem label="社区版" value="community_edition">
+
+1. 要下载 `docker-compose.yml` 文件，请运行以下 cURL 命令：
+   ```bash
+   curl -L https://raw.githubusercontent.com/steedos/steedos-platform/master/deploy/docker/docker-compose.yml -o $PWD/docker-compose.yml
+   ```
+   此命令会将文件保存在当前目录中。
+
+2. 使用以下命令启动 Docker 容器。如果您没有运行 `docker-compose` 的权限，您可能需要使用 `sudo`。
+
+   ```bash
+   docker-compose up -d
+   ```
+   如果本地没有镜像，此命令会下载必要的 Docker 镜像并启动容器。
+
+3. 打开 [http://localhost](http://localhost) 并等待服务器启动。这可能需要长达 5 分钟。一旦服务器启动并运行，您就可以在 [http://localhost](http://localhost) 访问 Steedos。
+
+</TabItem>
+<TabItem label="企业版" value="enterprise_edition">
+
+1. 联系我们以申请试用许可证密钥。
+
+2. 要下载 `docker-compose.yml` 文件，请运行以下 cURL 命令：
+
+   ```bash
+   curl -L https://raw.githubusercontent.com/steedos/steedos-platform/master/deploy/enterprise/docker-compose.yml -o $PWD/docker-compose.yml
+   ```
+   此命令会将文件保存在当前目录中。
+
+3. 使用以下命令启动 Docker 容器。如果您没有运行 `docker-compose` 的权限，您可能需要使用 `sudo`。
+
+   ```bash
+   docker-compose up -d
+   ```
+
+   如果本地没有镜像，此命令会下载必要的 Docker 镜像并启动容器。
+
+4. 打开 [http://localhost](http://localhost) 并等待服务器启动。这可能需要长达 5 分钟。一旦服务器启动并运行，您就可以在 [http://localhost](http://localhost) 访问 Steedos。
+
+5. 登录您的 Steedos 帐户，并输入您的许可证密钥以激活实例。
+
+</TabItem>
+</Tabs>
+
+如果您继续遇到问题，请联系 [support@steedos.com](mailto:support@steedos.com)。
+
+## 进一步阅读
+
+* [配置 Steedos 实例](/deploy/steedos-config)

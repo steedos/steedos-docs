@@ -187,48 +187,46 @@ STEEDOS_PUBLIC_PAGE_ASSETURLS=http://127.0.0.1:8080/@steedos-widgets/amis-object
 STEEDOS_ENABLE_PROCESS_TRIGGER=true
 ```
 
-<!-- 
-## 账户相关
+## Account-related
 
-配置账户相关参数。
+Configure parameters related to accounts.
 
 ```yaml
 accounts:
   mobile_phone_locales: ['zh-CN']
   mobile_regexp: '^[0-9]{11}$'
-    is_username_skip_minrequiredlength: true
-    UTF8_Names_Validation: '[A-Za-z0-9-_.\u00C0-\u017F\u4e00-\u9fa5]'
+  is_username_skip_minrequiredlength: true
+  UTF8_Names_Validation: '[A-Za-z0-9-_.\u00C0-\u017F\u4e00-\u9fa5]'
 ```
 
-* mobile_phone_locales: 此参数优先。手机号本地化，配置为`zh-CN`表示使用中国的11位手机号，要支持其他国家手机号请参考 [validator](https://www.npmjs.com/package/validator)。
-* mobile_regexp: 手机号格式正则表达式，使用一个正则表达式来描述正确的手机号格式。
-* is_username_skip_minrequiredlength：是否跳过用户名最小位数限制，默认最小为6位。
-* UTF8_Names_Validation: 用户名规则正则表达式。
+* mobile_phone_locales: This parameter takes precedence. Mobile phone localization, setting it to `zh-CN` means using the 11-digit mobile number in China. To support mobile numbers from other countries, please refer to [validator](https://www.npmjs.com/package/validator).
+* mobile_regexp: Regular expression for mobile phone format, using a regular expression to describe the correct mobile phone format.
+* is_username_skip_minrequiredlength: Whether to skip the minimum character requirement for usernames, which is typically 6 characters by default.
+* UTF8_Names_Validation: Regular expression for username rules.
 
+## Password Policy Configuration
 
-## 密码规则配置
-
-密码的复杂度是通过password.policy 属性来控制的，值为正则表达式。
+The complexity of passwords is controlled through the password.policy attribute, which takes a regular expression as its value.
 
 ```yaml
 public:
   password:
     policy: ^[A-Za-z0-9]{8,}$
-    policyError: "密码不能少于8位"
+    policyError: "Password cannot be less than 8 characters"
     policies:
       - policy: 123
-        policyError: "密码必须包含123"
+        policyError: "Password must include 123"
       - policy: 456
-        policyError: "密码必须包含456"
+        policyError: "Password must include 456"
     policyFunction: !
       function(password){
         if(password === '12345678'){
-          throw new Error('密码不能是12345678');
+          throw new Error('Password cannot be 12345678');
         }
       }
 ```
 
-- public.password.policyFunction: string Function. 自定义验证函数(1个参数: 用户输入的password), 可通过import等手段引入验证库. 或者直接编写验证规则. 不符合规则时, 直接throw error即可.
-- public.password.policies: Array<{policy: '正则表达式', policyError: '不符合表达式时的提示消息'}>
+- public.password.policyFunction: string Function. Custom validation function (1 parameter: the user-entered password), you can import validation libraries or directly write validation rules. If the password does not meet the rules, throw an error directly.
+- public.password.policies: Array<{policy: 'regular expression', policyError: 'error message when the expression is not met'}>
 
-配置了多个密码规则时会同时生效，上述示例中配置的规则是会同时生效的。 -->
+When multiple password rules are configured, they will take effect simultaneously. The rules in the example above are effective at the same time.
