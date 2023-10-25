@@ -86,7 +86,7 @@ const config = {
       announcementBar: {
         id: 'support_us',
         content:
-          '⭐️ If you like Steedos, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/steedos/steedos-platform">GitHub</a> .',
+          '⭐️ If you like Steedos, give a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/steedos/steedos-platform">GitHub</a>.',
         backgroundColor: '#4D72DA',
         textColor: '#ffffff',
         isCloseable: true,
