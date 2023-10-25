@@ -36,16 +36,33 @@ Steedos Developer Experience (DX) is a new way to manage and develop apps on the
 - Enhances agility and response to business needs.
 
 
+## Steedos DX Project
+
+Steedos DX Project is a workflow methodology for managing and developing Steedos applications, emphasizing a source-driven approach for more efficient version control and team collaboration. The Steedos DX project folder typically contains the following elements:
+
+1. **Metadata**: These encompass all non-coded configurations, such as object definitions, fields, layouts, processes, validation rules, etc.
+
+2. **Source Code**: This houses all source code for the application, including microservices, triggers, REST apis, visual components, micro pages, etc., organized within a structured directory for cleanliness and manageability.
+
+3. **Resource Files**: These might include static resources like images, style sheets, JavaScript files, etc., enhancing the user interface.
+
+
+
 ## Steedos DX Development Process
 
-The Steedos DX development process is a comprehensive workflow designed for efficient, iterative, and quality-controlled software development. It begins with setting up the necessary environment and initializing project specifics, followed by a rigorous cycle of development, local testing, and validations in the testing environment.
+This entire process underscores agile development, continuous integration, and continuous delivery, allowing teams to quickly respond to changes and improve delivery quality.
 
-New functionalities encompass various aspects like custom objects, microservices, triggers, APIs, etc. Post-development, the code undergoes thorough checks, including peer reviews and quality assessments. If not deemed ready for a new version, the cycle of development and testing continues.
+1. **Environment Setup**: Developers need to set up their development environment, involving the installation of the Steedos CLI, Visual Studio Code, and other necessary plugins.
 
-Upon readiness, a beta version of the software package is released and tested under real-world conditions (beta environment) to identify any lingering issues, which are then rectified. This step ensures only the most stable, functional, and clean code is forwarded for the final release.
+2. **Pulling Source Code**: Utilizing the Steedos CLI, developers pull the latest source code from the source repository.
 
-After successful verification in the beta stages, the software package is formally released. Post-release, the focus shifts to ongoing maintenance and customer support, ensuring end-users encounter minimal issues and that the product adapts to evolving requirements or potential improvements. This streamlined process underscores the importance of each phase in ensuring the release of a reliable, high-quality software package, reaffirming Steedos DX's commitment to excellence.
+3. **Local Development and Debugging**: Developers write and debug code in their local environments, using tools like the Nodejs Debugger for precision and robustness.
 
+4. **Source Control**: Changes should be regularly committed to a version control system (like Git), enabling the sharing of alterations and acquisition of code from team members.
+
+5. **Deployment and Testing**: With the Steedos CLI, developers can deploy local changes to a test environment for further testing and validation.
+
+6. **Code Review and Merging**: Code reviews should be conducted before code is deployed to production. Once the code passes reviews and tests, it can be merged into the main branch and deployed to the production environment.
 
 ```
  Start
