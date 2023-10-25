@@ -128,7 +128,7 @@
     "description": "The label for category Getting Started in sidebar developer"
   },
   "sidebar.developer.category.Steedos Package": {
-    "message": "Steedos 软件包",
+    "message": "软件包开发",
     "description": "The label for category Steedos Package in sidebar developer"
   },
   "sidebar.developer.category.Service Development": {
@@ -164,11 +164,11 @@
     "description": "The label for link Contribute in sidebar developer, linking to https://github.com/steedos/steedos-platform/blob/master/CONTRIBUTING.md"
   },
   "sidebar.developer.category.Steedos DX Project": {
-    "message": "Steedos DX 项目",
+    "message": "Steedos DX",
     "description": "The label for category Steedos DX Project in sidebar developer"
   },
   "sidebar.developer.category.Steedos Package Service": {
-    "message": "Steedos 软件包微服务",
+    "message": "微服务开发",
     "description": "The label for category Steedos Package Service in sidebar developer"
   },
   "sidebar.developer.category.系统微服务": {
@@ -176,11 +176,23 @@
     "description": "The label for category 系统微服务 in sidebar developer"
   },
   "sidebar.developer.category.Micro Page Builder": {
-    "message": "Steedos 微页面构建器",
+    "message": "微页面构建器",
     "description": "The label for category Micro Page Builder in sidebar developer"
   },
   "sidebar.developer.category.Steedos API": {
-    "message": "Steedos API",
+    "message": "API",
     "description": "The label for category Steedos API in sidebar developer"
+  },
+  "sidebar.developer.category.Setup Project": {
+    "message": "设置项目",
+    "description": "The label for category Setup Project in sidebar developer"
+  },
+  "sidebar.developer.category.Package Development": {
+    "message": "软件包开发",
+    "description": "The label for category Package Development in sidebar developer"
+  },
+  "sidebar.developer.category.Package Advanced Development": {
+    "message": "软件包高级开发",
+    "description": "The label for category Package Advanced Development in sidebar developer"
   }
 }
