@@ -1,40 +1,8 @@
 
 :root {
-  --ifm-color-primary: #4d72fa;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
-  --ifm-code-font-size: 95%;
-  --ifm-menu-color-active: #4d72fa;
-  --ifm-font-family-base: 'IBM Plex Sans';
-  --tblr-blue: #206bc4;
-  --tblr-azure: #4299e1;
-  --tblr-indigo: #4263eb;
-  --tblr-purple: #ae3ec9;
-  --tblr-pink: #d6336c;
-  --tblr-red: #d63939;
-  --tblr-orange: #f76707;
-  --tblr-yellow: #f59f00;
-  --tblr-lime: #74b816;
-  --tblr-green: #2fb344;
-  --tblr-teal: #0ca678;
-  --tblr-cyan: #17a2b8;
-  --tblr-primary: #206bc4;
-  --tblr-secondary: #656d77;
-  --tblr-success: #2fb344;
-  --tblr-info: #4299e1;
-  --tblr-warning: #f76707;
-  --tblr-danger: #d63939;
-  --tblr-light: #f4f6fa;
-  --tblr-dark: #232e3c;
-  --tblr-font-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-  --tblr-font-monospace: null, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
+/* 
 .admonition {
   font-family: var(--tblr-font-sans-serif);
   font-weight: 400;
@@ -60,7 +28,6 @@
   box-shadow: rgba(35, 46, 60, .04) 0 2px 4px 0;
   border-left: .25rem solid var(--tblr-alert-color);
 }
-
 .admonition-heading {
   display: none;
 }
@@ -75,14 +42,14 @@
 
 .screenshot-full {
   border: 1px solid #dadde1;
-}
+} */
 
-.docusaurus-highlight-code-line {
+/* .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
-}
+} */
 
 /*
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -91,7 +58,7 @@ body {
   font-family: 'Roboto', sans-serif;
 } */
 
-@media screen and (max-width: 996px) {
+/* @media screen and (max-width: 996px) {
   :root {
     --ifm-font-size-base: 18px;
   }
@@ -125,9 +92,9 @@ body {
   article h3 {
     font-size: 1.25rem;
   }
-}
+} */
 
-.menu__list {
+/* .menu__list {
   font-size: 0.9rem;
 }
 
@@ -155,8 +122,8 @@ body {
 
 .menu:hover {
   overflow-y: auto;
-}
-
+} */
+/* 
 .navbar-social-link:hover {
   opacity: 0.6;
 }
@@ -197,55 +164,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%231DA1F2' viewBox='0 -3 28 28' aria-hidden='true'%3E%3Cpath d='M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z' %3E%3C/path%3E%3C/svg%3E");
 }
 
-[data-theme='light'] .DocSearch {
-  /* --docsearch-primary-color: var(--ifm-color-primary); */
-  /* --docsearch-text-color: var(--ifm-font-color-base); */
-  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-  --docsearch-container-background: rgba(94, 100, 112, 0.7);
-  /* Modal */
-  --docsearch-modal-background: var(--ifm-color-secondary-lighter);
-  /* Search box */
-  --docsearch-searchbox-background: var(--ifm-color-secondary);
-  --docsearch-searchbox-focus-background: var(--ifm-color-white);
-  /* Hit */
-  --docsearch-hit-color: var(--ifm-font-color-base);
-  --docsearch-hit-active-color: var(--ifm-color-white);
-  --docsearch-hit-background: var(--ifm-color-white);
-  /* Footer */
-  --docsearch-footer-background: var(--ifm-color-white);
-}
-
-[data-theme='dark'] .DocSearch {
-  --docsearch-text-color: var(--ifm-font-color-base);
-  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-  --docsearch-container-background: rgba(47, 55, 69, 0.7);
-  /* Modal */
-  --docsearch-modal-background: var(--ifm-background-color);
-  /* Search box */
-  --docsearch-searchbox-background: var(--ifm-background-color);
-  --docsearch-searchbox-focus-background: var(--ifm-color-black);
-  /* Hit */
-  --docsearch-hit-color: var(--ifm-font-color-base);
-  --docsearch-hit-active-color: var(--ifm-color-white);
-  --docsearch-hit-background: var(--ifm-color-emphasis-100);
-  /* Footer */
-  --docsearch-footer-background: var(--ifm-background-surface-color);
-  --docsearch-key-gradient: linear-gradient(-26.5deg,
-      var(--ifm-color-emphasis-200) 0%,
-      var(--ifm-color-emphasis-100) 100%);
-}
-
-.DocSearch-Button {
-  border-radius: 5px !important;
-}
-
-@media screen and (min-width: 768px) {
-  .DocSearch-Button-Container {
-    min-width: 200px;
-    /* Fixes #3856 */
-  }
-}
-
+ */
 
 
 /* sidebar theme from appsmith */
