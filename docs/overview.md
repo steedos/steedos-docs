@@ -65,6 +65,8 @@ Steedos adheres to industry security standards, ensuring the safety and confiden
 
 The platform supports integration with a variety of third-party applications and services, offering APIs and developer toolkits to help businesses build a highly interconnected IT ecosystem.
 
+  - [x] [Steedos API](./developer/api)
+
 **Integrating Third-Party Low-Code Tools**
 
   - [x] [Node-RED](https://github.com/node-red/node-red) Integration [Documentation](./integration/node-red)
@@ -82,11 +84,9 @@ Steedos DX is a command-line tool for developers, covering multiple aspects of t
 
 ![Steedos Overview](/img/platform/steedos-dx.png)
 
-  - [x] create-steedos-app [Documentation](./developer/setup/create-steedos-app)
-  - [x] Packages [Documentation](./developer/package/overview)
-  - [x] Sync Metadata to Code [Documentation](./developer/package/sync-metadata)
-  - [x] API [Documentation](./developer/api/overview)
-  - [x] Triggers [Documentation](./developer/service/action-trigger)
-  - [x] Custom APIs [Documentation](./developer/service/action-api)
-
+  - [x] [What is Steedos DX](./developer/)
+  - [x] [Project Setup](./developer/setup)
+  - [x] [Package Development](./developer/package/)
+  - [x] [Service Development](./developer/service)
+  - [x] [Micro Page Builder](./developer/amis)
 With Steedos, businesses can flexibly respond to market changes, continually innovate business models, and enhance customer satisfaction. We invite you to join the Steedos community to jointly advance the digital journey of businesses.

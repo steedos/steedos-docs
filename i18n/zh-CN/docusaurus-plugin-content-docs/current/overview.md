@@ -67,6 +67,8 @@ sidebar_position: 0
 
 平台支持与各种第三方应用和服务的集成，提供APIs和开发者工具包，助力企业构建一个高度互联的IT生态系统。
 
+  - [x] [Steedos API](./developer/api)
+
 **集成第三方低代码工具**
 
   - [x] [Node-RED](https://github.com/node-red/node-red) 集成 [文档](./integration/node-red)
@@ -84,11 +86,10 @@ sidebar_position: 0
 
 ![Steedos Overview](/img/platform/steedos-dx.png)
 
-  - [x] create-steedos-app [文档](./developer/setup/create-steedos-app)
-  - [x] 软件包 [文档](./developer/package/overview)
-  - [x] 元数据同步为代码 [文档](./developer/package/sync-metadata)
-  - [x] API [文档](./developer/api/overview)
-  - [x] 触发器 [文档](./developer/service/action-trigger)
-  - [x] 自定义API [文档](./developer/service/action-api)
-   
+  - [x] [什么是 Steedos DX](./developer/)
+  - [x] [项目初始化](./developer/setup)
+  - [x] [软件包开发](./developer/package/)
+  - [x] [微服务开发](./developer/service)
+  - [x] [微页面构建器](./developer/amis)
+
 借助华炎魔方，企业能够灵活应对市场变化，不断创新业务模式，同时提升客户满意度。我们诚邀您加入华炎魔方社区，共同推进企业的数字化之旅。

@@ -5,7 +5,7 @@ sidebar_position: 0.1
 
 # Introduction to Steedos API
 
-Steedos, recognized as a trailblazer in low-code development platform, also provides a comprehensive suite of robust APIs, allowing a plethora of opportunities for enterprise integration, development, and functionality enhancement.
+Steedos provides a comprehensive suite of robust APIs, allowing a plethora of opportunities for enterprise integration, development, and functionality enhancement.
 
 ## Overview
 
