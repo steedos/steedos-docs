@@ -1,20 +1,17 @@
 ---
-title: 运行软件包
+title: 运行项目
 sidebar_position: 30
 ---
 
-# 如何运行 Steedos 软件包？
+# 如何运行 Steedos DX 项目
 
-Steedos 平台的软件包包含元数据和微服务，需要加载到 Steedos 平台中才能运行。
+Steedos 项目中包含元数据和微服务，需要加载到 Steedos 平台中才能运行。
 
-您可以使用以下方法来运行 Steedos 软件包：
+Steedos DX 开发环境使用微服务方式启动软件包，并通过 Transporter 连接到 Steedos 平台。
 
-1. 生产环境：您的软件包已开发并发布到 npm，您可以直接在 Steedos 平台上安装软件包。
-2. 开发环境：使用微服务方法启动软件包，并通过 Transporter 连接到 Steedos 平台。
+## 部署并运行 Steedos 平台
 
-## 运行 Steedos 平台
-
-首先，您必须运行 Steedos 平台。您可以遵循[自托管教程](/deploy/deploy-docker)在服务器上部署 Steedos，或启动本地 Steedos 平台。
+首先，您必须部署并运行 Steedos 平台。您可以遵循[自托管教程](/deploy/deploy-docker)在服务器上部署 Steedos，或启动本地 Steedos 平台。
 
 ```bash
 cd steedos-platform

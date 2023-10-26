@@ -1,21 +1,17 @@
 ---
-title: Run Package
-sidebar_position: 30
+title: Run Project 
+sidebar_position: 100
 ---
 
-# How to run Steedos Packages?
+# How to run Steedos DX Project?
 
 The package of the Steedos Platform consists of metadata and microservices and needs to be loaded into the Steedos Platform to run. 
 
-You can use the following methods to run steedos package:
+The Steedos DX development environment launches packages using a microservices approach and connects to the Steedos platform via Transporter.
 
-1. Production environment: Your package is developed and published to npm, and you directly install the package in the Steedos Platform. 
-2. Development environment: Launch the package using the microservice method and connect to the Steedos Platform through Transporter.
+## Deploy & Run Steedos Platform
 
-
-## Run Steedos Platform
-
-First, you must run Steedos Platform. You can follow the [Self Hosting Tutorial](/deploy/deploy-docker) to deploy Steedos on a server, or launch a local Steedos Platform.
+First, you must deploy and run Steedos Platform. You can follow the [Self Hosting Tutorial](/deploy/deploy-docker) to deploy Steedos on a server, or launch a local Steedos Platform.
 
 ```bash
 cd steedos-platform
