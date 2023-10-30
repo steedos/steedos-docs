@@ -1,79 +1,87 @@
 ---
-title: 内网环境部署
-description: 按照以下步骤在内网环境中部署 Steedos。
+title: Intranet Deployment
 sidebar_position: 4
 ---
 
-按照以下步骤在Ubuntu 20.04内网环境中部署 Steedos。
+Follow the steps below to deploy Steedos in an Ubuntu 20.04 intranet environment.
 
-## 先决条件
+## Prerequisites
 
-1. [Ubuntu](https://releases.ubuntu.com/20.04/) (版本 20.04) 内网服务器
-2. 预装了docker服务的linux服务器，需访问外网
+1. [Ubuntu](https://releases.ubuntu.com/20.04/) (Version 20.04) intranet server.
+2. A Linux server with a pre-installed Docker service, which requires access to the external network.
 
-## 安装docker
-请在联网的Linux服务器上进行下载操作：
-1. 访问链接 https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/
-2. 根据适用的架构（amd64、armhf、arm64或s390x）下载内网环境下所需要的deb文件，并上传到内网服务器tmp路径中
-    ```shell
-    # Docker Engine
-    docker-ce_24.0.7-1~ubuntu.20.04~focal_amd64.deb
+## Installing Docker
+Please download on a connected Linux server:
+1. Visit the link: https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/
+2. Based on the applicable architecture (amd64, armhf, arm64, or s390x), download the required deb files for the intranet environment and upload them to the tmp directory of the intranet server.
 
-    # Docker CLI
-    docker-ce-cli_24.0.7-1~ubuntu.20.04~focal_amd64.deb
+```shell
+# Docker Engine
+docker-ce_24.0.7-1~ubuntu.20.04~focal_amd64.deb
 
-    # Docker Container
-    containerd.io_1.6.9-1_amd64.deb
+# Docker CLI
+docker-ce-cli_24.0.7-1~ubuntu.20.04~focal_amd64.deb
 
-    # Docker Compose
-    docker-compose-plugin_2.6.0~ubuntu-focal_amd64.deb
-    ```
+# Docker Container
+containerd.io_1.6.9-1_amd64.deb
 
-3. 进入内网服务器tmp目录，安装.deb包
-    ```shell
-    sudo dpkg -i ./containerd.io_1.6.9-1_amd64.deb \
-        ./docker-ce_24.0.7-1~ubuntu.20.04~focal_amd64.deb \
-        ./docker-ce-cli_24.0.7-1~ubuntu.20.04~focal_amd64.deb \
-        ./docker-compose-plugin_2.6.0~ubuntu-focal_amd64.deb
-    ```
+# Docker Compose
+docker-compose-plugin_2.6.0~ubuntu-focal_amd64.deb
+```
 
-4. 安装完成后，查看docker版本
-    ```shell
-    docker -v
-    Docker version 24.0.7, build afdd53b
-    ```
+3. Navigate to the tmp directory on the intranet server and install the .deb packages.
 
-## 安装 Steedos
+```shell
+sudo dpkg -i ./containerd.io_1.6.9-1_amd64.deb \
+    ./docker-ce_24.0.7-1~ubuntu.20.04~focal_amd64.deb \
+    ./docker-ce-cli_24.0.7-1~ubuntu.20.04~focal_amd64.deb \
+    ./docker-compose-plugin_2.6.0~ubuntu-focal_amd64.deb
+```
 
-在您的内网服务器上创建一个名为 `steedos` 的文件夹，用于部署和数据存储。在联网的Linux服务器上进行下载操作：
-1. 运行以下 cURL 命令下载 `docker-compose.yml` 文件：
-   ```shell
-   curl -L https://raw.githubusercontent.com/steedos/steedos-platform/master/deploy/docker/docker-compose.yml -o $PWD/docker-compose.yml
-   ```
-   将下载好的`docker-compose.yml` 文件上传到内网服务器 `steedos` 文件夹内。
+4. After installation, check the Docker version.
 
-2. 查看`docker-compose.yml` 文件并下载相关image
+```shell
+docker -v
+Docker version 24.0.7, build afdd53b
+```
 
-    ```shell
-    docker pull steedos/steedos-community:2.5
-    docker pull redis:6.2.10
-    docker pull mongo:4.4
-    ```
-3. 将下载好的镜像另存为rar格式文件并上传到内网服务器tmp路径中
-    ```shell
-    docker save -o steedos-community.rar steedos/steedos-community:2.5
-    docker save -o redis.rar redis:6.2.10
-    docker save -o mongo.rar mongo:4.4
-    ```
+## Installing Steedos
 
-4. 进入内网服务器tmp路径中依次加载镜像
-    ```shell
-    docker load < steedos-community.rar
-    docker load < redis.rar
-    docker load < mongo.rar
-    ```
-5. 进入内网服务器`steedos` 文件夹中，使用以下命令启动 Docker 容器。如果您没有运行 `docker compose` 的权限，您可能需要使用 `sudo`。
+On your intranet server, create a folder named `steedos` for deployment and data storage. Download on the connected Linux server:
+1. Run the following cURL command to download the `docker-compose.yml` file:
 
-   ```shell
-   docker compose up -d
-   ```
+```shell
+curl -L https://raw.githubusercontent.com/steedos/steedos-platform/master/deploy/docker/docker-compose.yml -o $PWD/docker-compose.yml
+```
+
+Upload the downloaded `docker-compose.yml` file to the `steedos` folder on the intranet server.
+
+2. View the `docker-compose.yml` file and download the relevant images.
+
+```shell
+docker pull steedos/steedos-enterprise:2.5
+docker pull redis:6.2.10
+docker pull mongo:4.4
+```
+
+3. Save the downloaded images as rar format files and upload them to the tmp directory of the intranet server.
+
+```shell
+docker save -o steedos-enterprise.rar steedos/steedos-enterprise:2.5
+docker save -o redis.rar redis:6.2.10
+docker save -o mongo.rar mongo:4.4
+```
+
+4. Navigate to the tmp directory on the intranet server and sequentially load the images.
+
+```shell
+docker load < steedos-enterprise.rar
+docker load < redis.rar
+docker load < mongo.rar
+```
+
+5. Navigate to the `steedos` directory on the intranet server and use the following command to start the Docker containers. If you don't have permission to run `docker compose`, you might need to use `sudo`.
+
+```shell
+docker compose up -d
+```
