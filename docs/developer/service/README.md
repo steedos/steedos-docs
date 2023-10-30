@@ -1,4 +1,4 @@
-# Package Advanced Development
+# Service Development
 
 The Steedos Platform is based on the Moleculer microservices architecture, where each package is a Moleculer Service. You can define actions, methods, and subscribe to events in the service.
 

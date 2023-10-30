@@ -194,5 +194,17 @@
   "sidebar.developer.category.Package Advanced Development": {
     "message": "软件包高级开发",
     "description": "The label for category Package Advanced Development in sidebar developer"
+  },
+  "sidebar.developer.category.元数据": {
+    "message": "元数据",
+    "description": "The label for category 元数据 in sidebar developer"
+  },
+  "sidebar.apps.category.快速向导": {
+    "message": "快速向导",
+    "description": "The label for category 快速向导 in sidebar apps"
+  },
+  "sidebar.apps.category.财务管理": {
+    "message": "财务管理",
+    "description": "The label for category 财务管理 in sidebar apps"
   }
 }
