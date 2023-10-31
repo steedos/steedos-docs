@@ -206,5 +206,13 @@
   "sidebar.apps.category.财务管理": {
     "message": "财务管理",
     "description": "The label for category 财务管理 in sidebar apps"
+  },
+  "sidebar.apps.category.Getting Started": {
+    "message": "快速向导",
+    "description": "The label for category Getting Started in sidebar apps"
+  },
+  "sidebar.apps.category.人力资源": {
+    "message": "人力资源",
+    "description": "The label for category 人力资源 in sidebar apps"
   }
 }
