@@ -1,5 +1,5 @@
 ---
-title: 自托管
+title: 私有部署
 ---
 
 遵循以下步骤在Docker上部署Steedos应用。
