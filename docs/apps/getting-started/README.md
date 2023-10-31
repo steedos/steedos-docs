@@ -3,6 +3,13 @@ title: Getting Started
 sidebar_position: 10
 ---
 
-# **Steedos App Exchange**: Your Gateway to Business Innovation
+# Steedos Apps Enterprise Management Suite
 
-Steedos App Exchange is the leading marketplace for ready-to-install business applications, modules, and templates. Built on the robust Steedos platform, the App Exchange provides businesses of all sizes with a plethora of tools and solutions tailored to enhance productivity, streamline operations, and drive digital transformation.
+Welcome to Steedos Apps, the comprehensive management solution for the modern enterprise! Steedos Apps is more than just a tool; it's the ultimate business companion, integrating essential functions such as OA, project management, contract workflows, financial management, HR management, attendance tracking, and performance evaluations. In today's digital age, efficient workflows and precise data management are paramount to success, regardless of your company's size. Steedos Apps is designed to simplify, optimize, and ensure this process.
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList/>
+```
