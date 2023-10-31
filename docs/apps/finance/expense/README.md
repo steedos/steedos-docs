@@ -1,5 +1,5 @@
 ---
-title: Expense
+title: Expense Management
 ---
 
 # Steedos Expense: Smart, Efficient, One-stop Reimbursement Experience
