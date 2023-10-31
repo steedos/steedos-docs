@@ -59,67 +59,30 @@ This entire process underscores agile development, continuous integration, and c
 
 6. **Code Review and Merging**: Code reviews should be conducted before code is deployed to production. Once the code passes reviews and tests, it can be merged into the main branch and deployed to the production environment.
 
-```
- Start
-    |
-    V
-  Set up Steedos DX environment
-    |
-    V
-  Initialize project and version control
-    |
-    V
-  Run local development environment
-    |
-    V
-  Develop new features (custom objects, microservices, triggers, APIs, micro pages, components, etc.)
-    |
-    V
-  Local testing and debugging
-    |
-    V
-  Push code to the testing environment for validation
-    |
-    V
-  Execute all tests in the testing environment
-    |
-    V
-  Code review and quality checks
-    |
-    V
-  Ready to create a new version?
-    |---- Yes ----|
-    |             |
-    |---- No -----|
-    |             V
-    |          Continue development and testing
-    |             |
-    |-------------|
-    V
-  Create and release package beta version (npm)
-    |
-    V
-  Test new package version in the beta environment
-    |
-    V
-  Fix issues identified during beta testing
-    |
-    V
-  Ready for release?
-    |---- Yes ----|
-    |             |
-    |---- No -----|
-    |             V
-    |          Repeat fix and testing steps
-    |             |
-    |-------------|
-    V
-  Release package (npm)
-    |
-    V
-  Package maintenance and customer support
-    |
-    V
-  End
-```
 
+```mermaid
+graph TD
+  start["Start"] --> setup["Set up Steedos DX environment"]
+  setup --> init["Initialize project and version control"]
+  init --> run["Run local development environment"]
+  run --> develop["Develop new features"]
+  develop --> testLocal["Local testing and debugging"]
+  testLocal --> pushTest["Push code to the testing environment"]
+  pushTest --> executeTest["Execute all tests in the testing environment"]
+  executeTest --> review["Code review and quality checks"]
+  review --> ready{"Ready to create a new version?"}
+  ready --> yes{Yes}
+  ready --> no{No}
+  no --> continue["Continue development and testing"]
+  continue --> ready
+  yes --> beta["Create and release package beta version (npm)"]
+  beta --> testBeta["Test new package version in the beta environment"]
+  testBeta --> fix["Fix issues identified during beta testing"]
+  fix --> releaseReady{"Ready for release?"}
+  releaseReady --> releaseYes{Yes}
+  releaseReady --> releaseNo{No}
+  releaseNo --> fix
+  releaseYes --> release["Release package (npm)"]
+  release --> support["Package maintenance and customer support"]
+  support --> endNode["End"]
+```

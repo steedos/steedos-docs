@@ -58,66 +58,30 @@ my-project
 
 6. **代码审查和合并**：在代码部署到生产环境之前应进行代码审查。一旦代码通过审查和测试，它可以被合并到主分支并部署到生产环境。
 
-```
-  开始
-    |
-    V
-  设置Steedos DX环境
-    |
-    V
-  初始化项目和版本控制
-    |
-    V
-  运行本地开发环境
-    |
-    V
-  开发新功能 (自定义对象、微服务、触发器、API、微页面、组件等)
-    |
-    V
-  本地测试和调试
-    |
-    V
-  将代码推送到 测试环境 进行验证
-    |
-    V
-  在 测试环境 中执行所有测试
-    |
-    V
-  代码审查和质量检查
-    |
-    V
-  是否准备创建新版本？
-    |---- 是 ----|
-    |            |
-    |---- 否 ----|
-    |            V
-    |         继续开发和测试
-    |            |
-    |------------|
-    V
-  创建和发布软件包 beta 版本(npm)
-    |
-    V
-  在 beta环境 中测试新软件包版本
-    |
-    V
-  修复在 beta环境 测试中发现的问题
-    |
-    V
-  准备发布？
-    |---- 是 ----|
-    |            |
-    |---- 否 ----|
-    |            V
-    |         重复修复和测试步骤
-    |            |
-    |------------|
-    V
-  发布软件包（npm）
-    |
-    V
-  软件包维护和客户支持
-    |
-    V
-  结束
+
+```mermaid
+graph TD
+  start["开始"] --> setup["设置 Steedos DX 环境"]
+  setup --> init["初始化项目和版本控制"]
+  init --> run["运行本地开发环境"]
+  run --> develop["开发新功能"]
+  develop --> testLocal["本地测试和调试"]
+  testLocal --> pushTest["将代码推送到测试环境"]
+  pushTest --> executeTest["在测试环境中执行所有测试"]
+  executeTest --> review["代码审查和质量检查"]
+  review --> ready{"准备创建新版本吗?"}
+  ready --> yes{是}
+  ready --> no{否}
+  no --> continue["继续开发和测试"]
+  continue --> ready
+  yes --> beta["创建并发布包的 beta 版本 (npm)"]
+  beta --> testBeta["在 beta 环境中测试新包版本"]
+  testBeta --> fix["修复在 beta 测试中识别的问题"]
+  fix --> releaseReady{"准备发布吗?"}
+  releaseReady --> releaseYes{是}
+  releaseReady --> releaseNo{否}
+  releaseNo --> fix
+  releaseYes --> release["发布包 (npm)"]
+  release --> support["包维护和客户支持"]
+  support --> endNode["结束"]
 ```

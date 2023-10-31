@@ -71,6 +71,7 @@ const config = {
         docsRouteBasePath: "/"
       }),
     ],
+    '@docusaurus/theme-mermaid'
   ],
   
   themeConfig:
@@ -199,6 +200,9 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+    markdown: {
+      mermaid: true,
+    },
 };
 
 module.exports = config;
