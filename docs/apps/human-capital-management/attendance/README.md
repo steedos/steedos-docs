@@ -1,3 +1,7 @@
+---
+title: Attendance
+---
+
 # Attendance Management
 
 Steedos Attendance Management System is an efficient and modern attendance management software, designed specifically to meet the attendance management needs of various enterprises. Developed on the Steedos low-code platform, the system not only inherits the platform's flexibility and high customizability but also supports private deployment, ensuring absolute security and privacy of enterprise data.
