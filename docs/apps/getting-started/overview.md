@@ -1,20 +1,18 @@
 ---
-title: Overview
+title: What is Steedos App?
 sidebar_position: 10
 ---
 
-# Steedos Apps Enterprise Management Suite
+# Steedos App: The Future of Enterprise Management Solutions
 
-Welcome to Steedos Apps, the comprehensive management solution for the modern enterprise! Steedos Apps is more than just a tool; it's the ultimate business companion, integrating essential functions such as OA, project management, contract workflows, financial management, HR management, attendance tracking, and performance evaluations. In today's digital age, efficient workflows and precise data management are paramount to success, regardless of your company's size. Steedos Apps is designed to simplify, optimize, and ensure this process.
+In traditional enterprise application development, every feature and module required coding from scratch. This not only consumed a significant amount of time but also incurred high development costs. Moreover, when business requirements changed, modifying and optimizing the application became complex and challenging.
 
-Built on the Steedos low-code platform, Steedos Apps offers unparalleled flexibility and customization. Break free from the constraints of traditional software frameworks and functionalities. With Steedos Apps, you can adapt and tailor each application module to fit your business needs and culture swiftly. Furthermore, the low-code nature of the platform means that in-depth programming knowledge isn't necessary. You can easily make these customizations, speeding up both deployment and adjustments.
+The advent of Steedos App has completely transformed this scenario. Developed based on the Steedos low-code platform and metadata, it means businesses can easily customize and extend the application to meet their unique business needs. Compared to traditional application development, Steedos App offers greater flexibility and scalability.
 
-Let Steedos Apps be the catalyst for your enterprise's growth, drive true digital transformation, and usher in a more efficient and prosperous future!
+The core advantage of Steedos App lies in its exceptional customizability, enabling every enterprise to build a solution that perfectly matches their unique requirements without the need for complex coding.
 
-
-### Highlights
-
-- **Built on Steedos Low-code Platform:** Customize each application to fit your business needs without in-depth programming knowledge.
-- **Flexible Customization:** Easily adjust and tailor functionalities, ensuring a perfect fit for your business processes.
-- **Swift Deployment:** Due to the platform's low-code nature, deployment and adjustments are faster than traditional software.
-- **Modern UI/UX:** A user-friendly interface ensures that employees can easily navigate and use the suite, maximizing productivity.
+- **Personalized Object Model**: You can create or modify any data object based on business requirements, ensuring the data structure aligns perfectly with your business model.
+- **Granular Permission Management**: Allows you to assign specific permissions to different users or user groups, ensuring data security and compliance while meeting the different roles and responsibilities within the organization.
+- **Customizable Interface Design**: With visual interface design tools, you can flexibly adjust every system interface, ensuring the best user experience.
+- **Customizable Automated Processes**: From simple task automation to complex business processes, you can easily design and implement, ensuring efficient workflow.
+- **In-depth Report Analysis**: Offering various report templates, it helps you deeply analyze business data, ensuring you're always updated with the latest business insights.
