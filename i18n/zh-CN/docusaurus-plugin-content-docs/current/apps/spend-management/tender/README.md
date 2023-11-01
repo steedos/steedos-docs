@@ -1,5 +1,5 @@
 ---
-sidebar_label: 招标
+sidebar_label: 招标管理
 ---
 
 # Steedos 招标管理系统

@@ -1,5 +1,5 @@
 ---
-sidebar_label: 合同
+sidebar_label: 合同管理
 ---
 
 # Steedos 合同生命周期管理系统

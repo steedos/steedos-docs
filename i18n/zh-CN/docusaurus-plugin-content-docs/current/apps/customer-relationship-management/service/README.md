@@ -1,5 +1,5 @@
 ---
-sidebar_label: 服务
+sidebar_label: 服务管理
 ---
 
 # Steedos 服务管理系统

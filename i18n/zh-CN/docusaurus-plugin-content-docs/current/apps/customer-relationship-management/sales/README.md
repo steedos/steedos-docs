@@ -1,5 +1,5 @@
 ---
-sidebar_label: 销售
+sidebar_label: 销售管理
 ---
 
 # Steedos 销售管理系统
