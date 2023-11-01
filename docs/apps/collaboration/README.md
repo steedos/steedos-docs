@@ -1,8 +1,8 @@
 ---
-sidebar_label: Collaboration
+sidebar_label: Collaboration Tools
 ---
 
-# Enterprise Collaboration System (ECS)
+# Collaboration Tools
 
 Enterprise Collaboration System (ECS) are comprehensive information systems designed to support communication, collaboration, and information sharing among employees within an organization. These systems typically offer a range of tools and features to support team collaboration, project management, document sharing, instant messaging, and other work-related activities.
 
@@ -19,3 +19,11 @@ The main features of enterprise collaboration systems typically include:
 7. **Video Conferencing**: Supports face-to-face communication among remote team members through video conferencing.
 8. **Workflow Automation**: Automates common business processes such as approval workflows, expense reporting, etc.
 9. **Integration and Extensibility**: Integrates with other enterprise applications (such as CRM, ERP, etc.) and allows for extension through plugins or APIs.
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList/>
+```
