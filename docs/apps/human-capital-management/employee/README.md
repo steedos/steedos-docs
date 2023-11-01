@@ -1,5 +1,6 @@
 ---
 sidebar_label: Employee Management
+sidebar_position: 10
 ---
 
 # Employee Lifecycle Management System

@@ -1,5 +1,6 @@
 ---
 sidebar_label: 员工管理
+sidebar_position: 10
 ---
 
 # Steedos 员工生命周期管理系统

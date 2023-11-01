@@ -1,5 +1,5 @@
 ---
-sidebar_label: 项目任务
+sidebar_label: 里程碑
 ---
 
 # Steedos 项目任务管理系统
