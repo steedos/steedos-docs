@@ -1,5 +1,5 @@
 ---
-title: Supplier
+sidebar_label: Supplier
 ---
 
 # Steedos Supplier Management System

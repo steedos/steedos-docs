@@ -1,5 +1,5 @@
 ---
-title: 考勤
+sidebar_label: 考勤
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-title: 报销
+sidebar_label: 报销
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-title: Performance Evaluation
+sidebar_label: Performance Evaluation
 ---
 
 # Steedos Performance Evaluation System

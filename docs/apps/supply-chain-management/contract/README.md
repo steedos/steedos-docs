@@ -1,5 +1,5 @@
 ---
-title: Contract
+sidebar_label: Contract
 ---
 
 # Steedos Contract Lifecycle Management System

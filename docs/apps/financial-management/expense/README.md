@@ -1,5 +1,5 @@
 ---
-title: Expense
+sidebar_label: Expense
 ---
 
 # Steedos Expense: Smart, Efficient, One-stop Reimbursement Experience

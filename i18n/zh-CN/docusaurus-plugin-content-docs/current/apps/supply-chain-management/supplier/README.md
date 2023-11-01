@@ -1,5 +1,5 @@
 ---
-title: 供应商
+sidebar_label: 供应商
 ---
 
 # Steedos 供应商管理系统

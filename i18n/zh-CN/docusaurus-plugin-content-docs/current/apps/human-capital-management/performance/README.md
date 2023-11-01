@@ -1,5 +1,5 @@
 ---
-title: 绩效评估
+sidebar_label: 绩效评估
 ---
 
 # Steedos 绩效评估系统

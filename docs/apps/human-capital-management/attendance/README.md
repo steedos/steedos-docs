@@ -1,5 +1,5 @@
 ---
-title: Attendance
+sidebar_label: Attendance
 ---
 
 # Attendance Management
