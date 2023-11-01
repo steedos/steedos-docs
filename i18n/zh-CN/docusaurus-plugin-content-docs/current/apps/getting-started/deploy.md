@@ -8,13 +8,13 @@ title: 私有部署
 
 1. [Docker](https://docs.docker.com/get-docker/) (版本 20.10.7 或更高)
 2. [Docker-Compose](https://docs.docker.com/compose/install/) (版本 1.29.2 或更高)
-3. Steedos企业许可
+3. Steedos 企业版许可证
 
 ## 安装 Steedos 应用
 
 在您的机器上创建一个名为`steedos-apps`的文件夹用于部署和数据存储。然后，使用`cd`命令导航到此文件夹，并按照以下步骤操作：
 
-1. 联系我们请求试用许可密钥。
+1. 联系我们获取 企业版许可证。
 
 2. 创建一个新的文件`docker-compose.yml`
 
