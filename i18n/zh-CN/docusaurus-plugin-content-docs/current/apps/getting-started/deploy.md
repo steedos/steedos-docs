@@ -23,18 +23,37 @@ version: "3.9"
 
 services:
 
-  steedos-apps:
-    image: steedos/steedos-apps
+  steedos-enterprise:
+    image: steedos/steedos-enterprise:latest
+    container_name: steedos-enterprise
     ports:
       - "80:80"    
-      - "443:443"  
-      - "9001:9001"  
+      - "443:443" 
+      - "9001:9001"
     environment:
       - ROOT_URL=http://127.0.0.1
+      - TRANSPORTER=redis://redis:6379
+      - CACHER=redis://redis:6379/1
       - STEEDOS_LICENSE=trial
+      - STEEDOS_LOG_LEVEL=info
     tty: true
     volumes:
       - "./storage:/steedos-storage"
+    depends_on:
+      redis:
+        condition: service_started
+  steedos-apps:
+    image: steedos/steedos-apps:latest
+    container_name: steedos-apps
+    environment:
+      - TRANSPORTER=redis://redis:6379
+      - CACHER=redis://redis:6379/1
+    depends_on:
+      redis:
+        condition: service_started
+  redis:
+    image: ecr.aws.steedos.cn/dockerhub/redis:6.2
+    command: "redis-server --save \"\" --appendonly no --loglevel warning"
 ```
 
 这将在当前目录保存文件。
