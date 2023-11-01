@@ -1,5 +1,5 @@
 ---
-sidebar_label: 协作
+sidebar_label: 协同工作
 ---
 
 # 企业协作系统 (Enterprise Collaboration System, ECS)
