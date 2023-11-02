@@ -9,8 +9,6 @@ Steedos Platform is designed to empower users with a suite of tools that streaml
 
 ## Overview
 
-Steedos Platform is a comprehensive low-code development platform that allows users to build custom applications tailored to their unique business needs. It provides a flexible and intuitive environment for users to design, develop, and deploy applications with minimal coding required. Whether you're looking to manage customer relationships, streamline internal processes, or analyze data, Steedos Platform offers the versatility and scalability to meet your objectives.
-
 We are thrilled to have you on board and are committed to providing you with the tools and support you need to succeed. This user manual will guide you through the basics of the Steedos Platform, helping you get started with confidence and ease.
 
 Let's embark on this journey together and unlock the full potential of low-code development with Steedos Platform!
