@@ -93,7 +93,7 @@ Steedos provides robust tools for managing tasks and activities, helping you kee
 - Set up automated follow-up tasks when a deal is closed or a case is resolved.
 
 #### Task Notifications
-- Configure task notifications to alert you via email, mobile, or Chatter when a task is assigned, updated, or due.
+- Configure task notifications to alert you via email, mobile when a task is assigned, updated, or due.
 
 ### Best Practices for Task Management
 
