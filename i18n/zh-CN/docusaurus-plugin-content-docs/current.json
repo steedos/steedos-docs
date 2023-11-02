@@ -214,5 +214,25 @@
   "sidebar.apps.category.人力资源": {
     "message": "人力资源",
     "description": "The label for category 人力资源 in sidebar apps"
+  },
+  "sidebar.platform.category.User Guide": {
+    "message": "用户向导",
+    "description": "The label for category User Guide in sidebar platform"
+  },
+  "sidebar.apps.category.支出管理": {
+    "message": "支出管理",
+    "description": "The label for category 支出管理 in sidebar apps"
+  },
+  "sidebar.apps.category.人力资本管理": {
+    "message": "人力资本管理",
+    "description": "The label for category 人力资本管理 in sidebar apps"
+  },
+  "sidebar.apps.category.客户关系管理": {
+    "message": "客户关系管理",
+    "description": "The label for category 客户关系管理 in sidebar apps"
+  },
+  "sidebar.apps.category.协作工具": {
+    "message": "协作工具",
+    "description": "The label for category 协作工具 in sidebar apps"
   }
 }

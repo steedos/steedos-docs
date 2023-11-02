@@ -1,7 +1,9 @@
 ---
-title: 用户向导
+sidebar_label: 概览
 sidebar_position: 10
 ---
+
+# Steedos 用户向导
 
 华炎魔方页面功能介绍。
 
