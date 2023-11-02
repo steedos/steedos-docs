@@ -1,5 +1,5 @@
 ---
-title: Intranet Deployment
+title: Intranet
 sidebar_position: 4
 ---
 

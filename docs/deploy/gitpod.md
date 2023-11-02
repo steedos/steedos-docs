@@ -2,7 +2,7 @@
 sidebar_position: 99
 ---
 
-# Run with Gitpod
+# Try with Gitpod
 
 Gitpod is an online Integrated Development Environment (IDE) which is used for software development. It's a cloud-based service that allows developers to work on their projects directly from their web browser. This service provides a complete dev environment for every Git project, including pull requests and branches.
 

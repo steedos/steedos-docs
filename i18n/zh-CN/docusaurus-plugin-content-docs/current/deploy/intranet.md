@@ -1,5 +1,5 @@
 ---
-title: 内网部署
+title: 纯内网部署
 sidebar_position: 4
 ---
 
