@@ -185,7 +185,7 @@ For more information check the [Trigger](./action-trigger) documentation.
 
 ## Events
 
-You can subscribe to events under the events key. For more information check the [Events](./events) documentation.
+You can subscribe to events under the events key. For more information check the [Events](./moleculer/events) documentation.
 
 ### Subscribe to events
 
