@@ -1,42 +1,24 @@
 ---
-sidebar_position: 5
-title: Overview
+sidebar_label: Overview
+sidebar_position: 10
 ---
 
-# What is Steedos Package Service?
+# Overview of Steedos Microservices Architecture
 
-The Steedos Platform is based on the Moleculer microservices architecture, where each package is a [Moleculer Service](https://moleculer.services/docs/0.14/services). You can define REST APIs, triggers, actions, methods, and subscribe to events in the service. 
+In traditional monolithic applications, all functionalities and components are bundled into one large application. Over time, such an application can become extremely large and intricate, making maintenance, scaling, and deployment challenging. Microservices architecture tackles these challenges by breaking down large applications into small, independent, and interoperable services.
 
-![](/img/service/architectures/mixed.svg)
+Steedos embraces the philosophy of microservices and builds its platform upon this foundation. This means that each function or module of Steedos, such as authentication, database access, UI rendering, etc., is implemented as a separate microservice.
 
-### Node
+### Packages as Microservices
 
-A node is a simple OS process running on a local or external network. A single instance of a node can host one or many services.
+Within the Steedos platform, each package operates as a microservice. This design comes with several advantages:
 
-### Service
+1. **Modularity & Reusability**: As each package functions as an independent microservice, it can be developed, tested, deployed, and updated separately. This also implies that if you need the same functionality in different Steedos projects, you can easily reuse this microservice.
 
-A service is a simple nodejs module containing some part of a complex application. It is isolated and self-contained, meaning that even if it goes offline or crashes the remaining services would be unaffected.
+2. **Scalability**: Since every package is an individual microservice, if a particular service needs to be scaled to meet higher performance demands, you can expand just that specific service, instead of the entire application.
 
+3. **Fault Tolerance**: The microservices structure ensures that a failure in one service doesn't impact the entire system. If one service fails, other services can still operate normally.
 
-## Networking
+4. **Rapid Iteration & Deployment**: Each microservice can be deployed independently of others. This means teams can quickly iterate on a single service without waiting for the entire application's deployment.
 
-In order to communicate with other nodes (Steedos Platform) you need to configure a transporter. Most of the supported transporters connect to a central message broker that provide a reliable way of exchanging messages among remote nodes. These message brokers mainly support publish/subscribe messaging pattern.
-
-![Networking](/img/service/networking.svg)
-
-## Transporter
-
-Transporters is an important module if you are running services on multiple nodes. Transporter communicates with other nodes. It transfers events, calls requests and processes responses …etc. If multiple instances of a service are running on different nodes then the requests will be load-balanced among them.
-
-Steedos uses redis as the default Transporter.
-
-```bash
-TRANSPORTER=redis://127.0.0.1:6379
-```
-:::tip
-Please make sure the TRANSPORTER you configured matches the Steedos server you wish to connect to and that the network is interconnected. 
-:::
-
-:::danger
-For running in a production environment, be sure to configure the Redis password.
-:::
+Leveraging the strengths of the Moleculer microservices framework, the Steedos platform provides developers and businesses with a flexible, scalable, and efficient development environment. With each package serving as a microservice, the system ensures modularity, maintainability, and high availability.
