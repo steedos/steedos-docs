@@ -184,7 +184,7 @@ Steedos 附带了一个内置的 [API 网关](https://moleculer.services/docs/0.
 
 ## 事件
 
-您可以在 events 键下订阅事件。有关更多信息，请查看 [事件](./events) 文档。
+您可以在 events 键下订阅事件。有关更多信息，请查看 [事件](./moleculer/events) 文档。
 
 ### 订阅事件
 
