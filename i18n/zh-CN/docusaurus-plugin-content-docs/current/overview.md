@@ -90,6 +90,6 @@ sidebar_position: 0
   - [x] [项目初始化](./developer/setup)
   - [x] [软件包开发](./developer/package/)
   - [x] [微服务开发](./developer/service)
-  - [x] [微页面构建器](./developer/amis)
+  - [x] [微页面构建器](./developer/micro-page)
 
 借助华炎魔方，企业能够灵活应对市场变化，不断创新业务模式，同时提升客户满意度。我们诚邀您加入华炎魔方社区，共同推进企业的数字化之旅。

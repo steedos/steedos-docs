@@ -74,7 +74,7 @@ Steedos 软件包在直观的子目录中存储自定义对象和自定义对象
 
 Steedos 平台基于 Moleculer 微服务架构，每个软件包都是一个 [Moleculer 服务](https://moleculer.services/docs/0.14/services)。您可以在服务中定义 REST API、触发器、操作、方法，并订阅事件。
 
-### [微页面构建器](/developer/amis/)
+### [微页面构建器](/developer/micro-page/)
 
 我们向您介绍 **Steedos 微页面构建器**，这是一款强大的微页面开发工具包，植根于百度 AMIS 技术。与著名的 Salesforce Lightning 页面构建器相媲美，该平台促进了自定义页面和组件的创建，并通过其视觉设计工具变得更加容易。
 

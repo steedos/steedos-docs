@@ -73,7 +73,7 @@ Steedos packages store custom objects and custom object translations in intuitiv
 
 The Steedos platform is based on the Moleculer microservices architecture, where each package is a [Moleculer Service](https://moleculer.services/docs/0.14/services). You can define REST APIs, triggers, actions, methods, and subscribe to events in the service.
 
-### [Micro Page Builder](/developer/amis/)
+### [Micro Page Builder](/developer/micro-page/)
 
 Introducing **Steedos Micro Page Builder**, a powerful micro page development toolkit rooted in Baidu's AMIS technology. Comparable with the renowned Salesforce Lightning Page Builder, this platform facilitates the creation of custom pages and components and makes it easier with its visual design tool.
 
