@@ -30,7 +30,6 @@ Application pages are a new type of page that allows developers to design from s
 To display the page in the system, the following steps are required:
 1. Create a tab on the tab page
 2. Configure the tab on the application page
-For details, see: [Publishing Micro Pages](publish_page)
 
 <br/>
 
