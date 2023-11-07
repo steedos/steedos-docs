@@ -1,8 +1,9 @@
 ---
 sidebar_position: 0.6
+sidebar_label: amis 前端低代码框架
 ---
 
-# AMIS 系统
+# AMIS 快速向导
 
 了解 AMIS 的知识架构，是构建良好页面的基础
 

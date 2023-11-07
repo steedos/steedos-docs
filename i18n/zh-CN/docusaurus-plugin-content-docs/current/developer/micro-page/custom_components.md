@@ -22,7 +22,3 @@ STEEDOS_PUBLIC_PAGE_ASSETURLS=https://unpkg.com/@steedos-widgets/example@0.0.6/d
 资产包的地址只要可以访问即可，它可以是发布到npm的包(unpkg.com)地址，也可以是其他任何可以被当前服务访问的地址，比如在远程开发环境中公开的资产包地址。
 :::
 
-
-## 如何开发
-
-TODO ： 殷老师有空教一下
