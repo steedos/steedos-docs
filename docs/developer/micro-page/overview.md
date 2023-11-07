@@ -1,42 +1,55 @@
 ---
 title: Overview
-sidebar_position: 0.1
+sidebar_position: 10
 ---
 
-# Steedos Micro Page Builder: Revolutionizing Web Development
+# Steedos Micro Page Builder: Reshaping Web Development Experience
 
-Introducing **Steedos Micro Page Builder**, a powerful micro-page development toolkit rooted in Baidu AMIS technology. Drawing parallels with the renowned Salesforce Lightning Page Builder, this platform facilitates the creation of custom pages and components, made even more accessible with its visual design utilities.
+We are proud to introduce the **Steedos Micro Page Builder**, a powerful toolkit for micro page development based on Baidu AMIS technology. Similar to the renowned Salesforce Lightning Page Builder, this platform supports the creation of custom pages and components, equipped with intuitive visual design tools.
 
-## Unparalleled Customization and Ease
+- **High Customization**: Users can create pages according to business needs without compromise, directly transforming business strategies into applications.
+- **Component Support**: Users can develop custom components to extend the functionality of applications, meeting unique requirements.
+- **User-friendly Design Tools**: Equipped with intuitive visual design tools, including drag-and-drop features, suitable for users of all skill levels.
+- **Strong Foundation**: Based on the powerful framework of Baidu AMIS, it offers a rich UI component library and efficient data management.
+- **Seamless Integration**: Compatible with various databases and services, ensuring new applications can seamlessly integrate into the existing technology ecosystem.
+- **Collaborative Development**: Supports team collaboration, accelerating the development process and improving project quality.
+- **Comprehensive Support**: Provides detailed documentation and an active community to help users fully utilize the platform's resources.
 
-### Custom Page Development
-Create pages that resonate with your operational needs, without compromising on specificity. Steedos Micro Page Builder places no bounds on customization, allowing for a direct translation of business strategies into functional applications.
+The Steedos Micro Page Builder offers enterprises a powerful tool for web application development, combining user-friendly design and advanced customization, opening the door to endless possibilities, all backed by the technical strength of Baidu AMIS.
 
-### Custom Component Support
-Expand the functionality of your applications by developing and integrating bespoke components. Whether it's adding a unique feature or enhancing existing workflows, the platform accommodates an expansive scope of customization.
+## Supported Custom Micro Page Types
 
-## Intuitive Design for Everyone
+The Steedos Micro Page Builder supports various types of pages to meet different business needs and scenarios. Here are the available micro page types:
 
-### Visual Design Tools
-Steedos Micro Page Builder is equipped with visual design tools, democratizing the development process. With an intuitive interface, including drag-and-drop functionality, individuals regardless of their coding proficiency can contribute meaningfully to the development process.
+### Application Pages
 
-## Foundation in Baidu AMIS
+Application pages are a new type of page that allows developers to design from scratch.
 
-Harnessing the robust framework of Baidu AMIS, Steedos Micro Page Builder benefits from an extensive library of UI components and efficient data management tools. This integration not only enhances reliability and performance but also streamlines the development, allowing you to focus on innovation rather than troubleshooting.
+![image.png](/img/amis/amis-total-blank.png)
 
-## Seamless Integration Capabilities
+To display the page in the system, the following steps are required:
+1. Create a tab on the tab page
+2. Configure the tab on the application page
+For details, see: [Publishing Micro Pages](publish_page)
 
-Mirroring comprehensive solutions like Salesforce Lightning, Steedos is engineered for cohesiveness. Its compatibility with various databases and services assures a seamless synthesis between new applications and existing technological ecosystems.
+<br/>
 
-## Collaborative Development Environment
+### Record Pages
 
-Promote a culture of collaboration with development features that cater to team-based projects. Steedos Micro Page Builder’s collaborative tools mean that more minds contribute to each project, enriching the quality and accelerating the pace of development.
+Record detail pages focus on presenting exhaustive information about a single record. You can customize these pages to display detailed data fields, related table information, statistics, and provide editing, deletion, or other specific record operations.
 
-## Comprehensive Documentation and Community Support
+![Record Page](/img/amis/amis-page-detail.png)
 
-Navigate the nuances of custom development with an extensive support network. From in-depth documentation to a vibrant community ready to share insights, users are well-equipped to maximize the platform’s offerings.
+### List Pages
 
-## Conclusion: Your Gateway to Customized Web Development
+List pages are important for data presentation, suitable for displaying collections of records, such as customer lists or order lists. You can customize columns, filters, and search functions to enhance the user's data browsing and manipulation experience.
 
-**Steedos Micro Page Builder** is changing the game in web application development. By combining user-friendly design tools with high-level customization, it opens up a realm of possibilities for businesses of all scales. Rely on Steedos for a dependable, stable, and innovative development journey, backed by the technological prowess of Baidu AMIS.
-``
+![List Page](/img/amis/amis-page-listview.png)
+
+### Form Pages
+
+Form pages are used to collect user input, ideal for creating new records or updating existing data. You can customize form fields, layouts, and validation rules to meet specific data collection needs.
+
+Unlike record pages, the "Form" type of micro page only replaces the pop-up form interface and does not affect the read-only interface effect of the record detail page. Conversely, the "Record Page" type of micro page replaces the entire read-only effect of the record detail page but does not affect the pop-up form interface.
+
+![Form](/img/amis/amis-page-button.png)

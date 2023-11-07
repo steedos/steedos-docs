@@ -144,7 +144,7 @@
     "description": "The label for category Micro Pages in sidebar developer"
   },
   "sidebar.developer.category.Components Reference": {
-    "message": "平台组件指南",
+    "message": "平台组件",
     "description": "The label for category Components Reference in sidebar developer"
   },
   "sidebar.developer.category.API Reference": {

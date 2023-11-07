@@ -1,12 +1,11 @@
-# 数据映射
+# Data Mapping
 
-数据映射是一种强大的功能，它允许用户通过使用模板字符串，如 ${xxx} 或 $xxx，来获取当前数据链中的变量值。这种方法主要用于模板字符串、自定义 API 请求数据体格式等场景。
+Data mapping is a powerful feature that allows users to fetch variable values from the current data chain by using template strings, such as ${xxx} or $xxx. This method is primarily used in scenarios like template strings, custom API request body formats, etc.
 
+### Customizing API Request Body Data Format
+When submitting a form interface, if the default request body data format of AMIS does not meet your expectations, you can use data mapping to customize the required data format. For example, if your backend interface only supports a specific input data structure, you can customize the data format by configuring the **data** attribute of the API.
+For instance:
 
-### 自定义 API 请求体数据格式
-在表单提交接口时，如果 AMIS 默认的请求体数据格式不符合你的预期，你可以使用数据映射来定制所需的数据格式。例如，如果你的后端接口仅支持特定的输入数据
-结构，你可以通过配置 API 的 **data** 属性来实现数据格式的自定义。
-例如：
 ```json
 {
   "type": "page",
@@ -24,21 +23,21 @@
       {
         "type": "input-text",
         "name": "name",
-        "label": "姓名："
+        "label": "Name:"
       },
       {
         "name": "email",
         "type": "input-text",
-        "label": "邮箱："
+        "label": "Email:"
       }
     ]
   }
 }
 ```
 
-### 复杂配置
-AMIS 允许使用 & 作为数据映射的键，以展开所配置的变量。这意味着你可以将一个对象中的所有属性展开并拼接在 data 中。
-例如：
+### Complex Configuration
+AMIS allows the use of & as a key for data mapping to expand the configured variables. This means you can expand all the properties of an object and concatenate them in data.
+For example:
 
 ```json
 {
@@ -69,19 +68,20 @@ AMIS 允许使用 & 作为数据映射的键，以展开所配置的变量。这
       {
         "type": "input-text",
         "name": "name",
-        "label": "姓名："
+        "label": "Name:"
       },
       {
         "name": "email",
         "type": "input-text",
-        "label": "邮箱："
+        "label": "Email:"
       }
     ]
   }
 }
 ```
-### 从数组提取值
-你可以配置 API 的 data 属性来仅提取数组中的特定变量，并组成新的数组。
+
+### Extracting Values from Arrays
+You can configure the data attribute of the API to extract only specific variables from an array and form a new array.
 
 ```json
 {
@@ -104,7 +104,7 @@ AMIS 允许使用 & 作为数据映射的键，以展开所配置的变量。这
       {
         "type": "input-table",
         "name": "table",
-        "label": "table",
+        "label": "Table",
         "columns": [
           {
             "label": "A",
@@ -132,18 +132,20 @@ AMIS 允许使用 & 作为数据映射的键，以展开所配置的变量。这
   }
 }
 ```
+
 ### Namespace
-AMIS 支持从不同的命名空间中获取数据，如全局变量、localStorage、sessionStorage 和 cookies。
+AMIS supports fetching data from different namespaces, such as global variables, localStorage, sessionStorage, and cookies.
 
-- window 即全局变量
-- ls 即 localStorage， 如果值是 json 对象，可以直接当对象用比如：${ls:xxxxxlocalStrorageKey.xxxx}
-- ss 即 sessionStorage，同上。
-- cookie 即 cookies，同上
+- window refers to global variables.
+- ls refers to localStorage. If the value is a JSON object, it can be used directly as an object, for example: ${ls:xxxxxlocalStrorageKey.xxxx}
+- ss refers to sessionStorage, similar to above.
+- cookie refers to cookies, similar to above.
 
-比如：
+For example:
+
 ```json
 {
   "type": "page",
-  "body": "当前页面标题为：<span class='label label-info'>${window:document[title]}</span>"
+  "body": "The current page title is: <span class='label label-info'>${window:document[title]}</span>"
 }
 ```
