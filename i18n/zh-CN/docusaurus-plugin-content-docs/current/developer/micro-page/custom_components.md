@@ -1,8 +1,8 @@
 ---
-sidebar_position: 0.9
+sidebar_position: 50
 ---
 
-# 自定义AMIS组件
+# 自定义组件
 
 ## 介绍
 

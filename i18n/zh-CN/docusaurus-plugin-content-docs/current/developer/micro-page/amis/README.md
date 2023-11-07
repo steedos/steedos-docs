@@ -1,5 +1,5 @@
 ---
-sidebar_position: 0.6
+sidebar_position: 35
 sidebar_label: amis 前端低代码框架
 ---
 
