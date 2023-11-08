@@ -36,6 +36,9 @@ services:
       - CACHER=redis://redis:6379/1
       - STEEDOS_LICENSE=trial
       - STEEDOS_LOG_LEVEL=info
+      - NPM_CACHE_ENABLED=true
+      - NPM_CACHE_PACKAGE_CONTENT=true
+      - NPM_REGISTRY_URL=https://registry.npmmirror.com
     tty: true
     volumes:
       - "./storage:/steedos-storage"
