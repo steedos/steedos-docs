@@ -1,5 +1,5 @@
 ---
-sidebar_label: Docker
+sidebar_label: Docker 部署
 sidebar_position: 1
 ---
 
