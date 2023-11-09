@@ -120,7 +120,7 @@
     "description": "The label for category Custom Objects in sidebar platform"
   },
   "sidebar.platform.category.Custom Apps": {
-    "message": "自定义用户界面",
+    "message": "构建应用",
     "description": "The label for category Custom Apps in sidebar platform"
   },
   "sidebar.developer.category.Getting Started": {

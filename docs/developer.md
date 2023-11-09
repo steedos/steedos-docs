@@ -45,7 +45,7 @@ Steedos is a powerful low-code development platform, offering extensive no-code 
 - Users can define their own fields for these objects, accommodating various data types (such as text, numbers, dates, etc.), ensuring structured and organized data.
 - By establishing relationships between objects, one can simulate real-world business relationships, enhancing data coherence and usability.
 
-### [Custom User Interface](/no-code/application/)
+### [Custom User Interface](/no-code/application/app)
 
 - Steedos offers various tools and components, allowing users to customize the user interface of applications. For example, users can use "Page Layouts" and "Page Builders" to control how information is presented and the layout of interfaces.
 - The "Page Builder" also allows users to create attractive and responsive page designs by dragging and dropping interface components, without needing professional front-end development skills.
