@@ -7,7 +7,7 @@ sidebar_position: 0
 
 Steedos, an open-source low-code development platform, redefines the way enterprise applications are built. It enables users without a programming background to quickly launch and deploy applications, greatly simplifying the traditional development process. For experienced developers, Steedos offers a powerful set of tools and frameworks to support in-depth customization and complex system integrations. This unique combination makes Steedos a truly adaptable platform for various business needs, whether it's rapid development of simple applications or advanced enterprise system integrations, all can be efficiently and flexibly realized on this platform.
 
-Steedos provides capabilities beyond traditional no-code platforms, allowing users without programming backgrounds to quickly create applications, while also offering experienced developers powerful tools and frameworks for more complex customizations and integrations.
+Steedos can support a variety of enterprise application scenarios, including but not limited to CRM (Customer Relationship Management), HCM (Human Capital Management), ERP (Enterprise Resource Planning), BPM (Business Process Management), BI (Business Intelligence), and IoT (Internet of Things).
 
 ## Rapid Development with No-Code
 
