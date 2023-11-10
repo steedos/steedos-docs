@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 ---
-# Object Relationships
+# Object Relationship Fields
 
 Create relationships to link objects with each other, so that when your users view records, they can also see related data. For example, link a custom object called Bugs to cases to track product defects that are associated with customer cases.
 

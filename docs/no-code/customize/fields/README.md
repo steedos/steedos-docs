@@ -1,5 +1,5 @@
 ---
-title: Customize Fields
+title: Field Types
 sidebar_position: 2
 ---
 
