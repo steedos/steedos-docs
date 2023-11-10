@@ -4,7 +4,7 @@ sidebar_label: Service
 
 # Steedos Service Management System
 
-In today's rapidly changing business environment, delivering exceptional customer service is key to success. Inspired by the robust functionality of Salesforce, the Steedos Service Management System is designed to provide businesses with a comprehensive service management solution. Built on the Steedos low-code platform, this system offers a highly customizable and user-friendly experience.
+In today's rapidly changing business environment, delivering exceptional customer service is key to success. Steedos Service Management System is designed to provide businesses with a comprehensive service management solution. Built on the Steedos low-code platform, this system offers a highly customizable and user-friendly experience.
 
 ## Key Features:
 

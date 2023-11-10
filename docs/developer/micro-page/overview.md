@@ -5,7 +5,7 @@ sidebar_position: 10
 
 # Steedos Micro Page Builder: Reshaping Web Development Experience
 
-We are proud to introduce the **Steedos Micro Page Builder**, a powerful toolkit for micro page development based on Baidu AMIS technology. Similar to the renowned Salesforce Lightning Page Builder, this platform supports the creation of custom pages and components, equipped with intuitive visual design tools.
+We are proud to introduce the **Steedos Micro Page Builder**, a powerful toolkit for micro page development based on Baidu AMIS technology. Steedos supports the creation of custom pages and components, equipped with intuitive visual design tools.
 
 - **High Customization**: Users can create pages according to business needs without compromise, directly transforming business strategies into applications.
 - **Component Support**: Users can develop custom components to extend the functionality of applications, meeting unique requirements.

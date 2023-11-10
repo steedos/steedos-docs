@@ -13,7 +13,7 @@ Object-level security—or object permissions—provide the bluntest way to cont
 
 You can specify object permissions in permission sets and profiles. Permission sets and profiles are collections of settings and permissions that determine what a user can do in the application. The settings are similar to a group in a Windows network, where the members of the group have the same folder permissions and access to the same software.
 
-Typically, profiles are defined by a user’s job function, such as Salesforce admin or sales representative. You can assign one profile to many users, but you can assign only one profile per user. You can use permission sets to grant more permissions and access settings to users. Now it’s easier to manage users’ permissions and access because you can assign multiple permission sets to a single user.
+Typically, profiles are defined by a user’s job function, such as Steedos admin or sales representative. You can assign one profile to many users, but you can assign only one profile per user. You can use permission sets to grant more permissions and access settings to users. Now it’s easier to manage users’ permissions and access because you can assign multiple permission sets to a single user.
 
 ### Field-Level Security (Permission Sets and Profiles)
 

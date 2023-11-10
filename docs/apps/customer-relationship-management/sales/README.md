@@ -4,7 +4,7 @@ sidebar_label: Sales
 
 # Steedos Sales Management System
 
-In the competitive landscape of sales, efficiency and customer relationship are key. The Steedos Sales Management System, inspired by the robust functionality of Salesforce, is designed to empower sales teams with the tools they need for success. Built on the Steedos low-code platform, this system offers a highly customizable and user-friendly experience.
+In the competitive landscape of sales, efficiency and customer relationship are key. The Steedos Sales Management System, is designed to empower sales teams with the tools they need for success. Built on the Steedos low-code platform, this system offers a highly customizable and user-friendly experience.
 
 ## Key Features
 

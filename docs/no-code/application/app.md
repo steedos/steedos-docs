@@ -7,7 +7,7 @@ sidebar_position: 10
 
 An app is a collection of items that work together to serve a particular function. 
 
-The platform includes innovative point-and-click app-building tools that give you the power to customize Salesforce to meet the needs of your business. You can also build your own apps to share and store information that is important to you. You don’t need any programming knowledge to use these tools.
+The platform includes innovative point-and-click app-building tools that give you the power to customize Steedos to meet the needs of your business. You can also build your own apps to share and store information that is important to you. You don’t need any programming knowledge to use these tools.
 
 Steedos apps are a collection of standard and custom tabs, including:
 

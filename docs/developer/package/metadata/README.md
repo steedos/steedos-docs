@@ -7,7 +7,7 @@ sidebar_position: 30
 
 ## Introduction
 
-When developing on the Steedos platform, understanding the role of metadata is crucial. Similar to Salesforce, Steedos operates with metadata at its core, facilitating the model of "low-code" and ensuring system adaptability and scalability. This guide will introduce Steedos DX metadata, its importance, and how developers can effectively engage with it.
+When developing on the Steedos platform, understanding the role of metadata is crucial. Steedos operates with metadata at its core, facilitating the model of "low-code" and ensuring system adaptability and scalability. This guide will introduce Steedos DX metadata, its importance, and how developers can effectively engage with it.
 
 ## Understanding Metadata in Steedos
 

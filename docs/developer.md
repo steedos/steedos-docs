@@ -75,7 +75,7 @@ The Steedos platform is based on the Moleculer microservices architecture, where
 
 ### [Micro Page Builder](/developer/micro-page/)
 
-Introducing **Steedos Micro Page Builder**, a powerful micro page development toolkit rooted in Baidu's AMIS technology. Comparable with the renowned Salesforce Lightning Page Builder, this platform facilitates the creation of custom pages and components and makes it easier with its visual design tool.
+Introducing **Steedos Micro Page Builder**, a powerful micro page development toolkit rooted in Baidu's AMIS technology. this platform facilitates the creation of custom pages and components and makes it easier with its visual design tool.
 
 ### [API Integration](/developer/api/)
 
