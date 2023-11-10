@@ -2,7 +2,9 @@
 sidebar_position: 0.5
 ---
 
-# Common Field Attributes
+# Field Attributes
+
+Each field has a set of properties that define the behavior and appearance of the field:
 
 FIELD | DESCRIPTION
 -- | --
