@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 0.5
 ---
 
-# Field Attributes
+# Common Field Attributes
 
 FIELD | DESCRIPTION
 -- | --

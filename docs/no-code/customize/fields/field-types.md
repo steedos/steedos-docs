@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Field Types
+# Basic Field Types
 
 Steedos supports many different field types. Pick the right type, or convert an existing one.
 
