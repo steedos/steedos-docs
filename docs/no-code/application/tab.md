@@ -1,55 +1,43 @@
 ---
-title: Custom Tabs
+title: Tabs
 sidebar_position: 30
 ---
 
-Custom tabs let you display custom object data or other web content in Steedos. When you add a custom tab to an app in Steedos, it appears as an item in the app’s navigation bar and in the App Launcher.
+Tabs in Steedos applications serve as navigation elements, providing an intuitive way to access different objects, views, dashboards, or custom web pages. Here are the steps to create and manage tabs:
 
-Custom tabs show custom object data or other web content embedded in the app. You can create any of these types of custom tabs.
+## Creating New Tabs
 
-- Custom Object Tabs: Custom object tabs show the data of your custom object. Custom object tabs look and function just like standard tabs.
-- Web Tabs: Custom web tabs show any external web-based application or web page. You can design web tabs to include the sidebar or span the page without the sidebar.
-- Micro page Tabs: Micro page tabs let you add micro pages to the Steedos mobile app and Steedos navigation bars.
+1. **Open Tab Settings**: In the "Settings" of the Steedos interface, search for and select "Tabs".
 
-<!-- 
-## 创建选项卡
+2. **Create New Tab**: Click the "New" button to create a new tab.
 
-需要在“设置”应用中进入“用户界面→选项卡”来配置选项卡。
+3. **Select Tab Type**: Choose the type of tab you want to create, such as an object tab, external link, or micro page.
 
-* 显示名称：选项卡的显示名称。
-* API名称：选项卡的api名称。
-* 图标：选项卡要额外显示的图标。
-* 类型：选项卡类型，目前支持“对象”、“外部链接”和“页面”。
-* 对象：从下拉菜单中选择该选项卡要关联到哪个对象上。
-* 外部链接：该选项卡要关联到的URL地址，可以输入相对地址也可以输入绝对地址。
-* 页面：从下拉菜单中选择该选项卡关联的页面。
-* 显示在手机菜单中：是否显示在手机菜单中。
-* 显示在桌面菜单中：是否显示在桌面菜单中。
-* 描述：可以在这里输入选项卡备注。
+4. **Configure Tab Properties**: Specify the label, color, and icon for the tab, as well as the associated object (if applicable).
 
-## 选项卡类型
+5. **Set Tab Visibility**: Set the visibility of the tab based on user roles and permissions.
 
-### 对象选项卡
+6. **Save and Test**: After configuring, save your settings and test the new tab's functionality within the application.
 
-当选项卡类型为“对象”时，需要配置其要关联的对象，当用户在顶部导航点击该选项卡时会显示对象主页。
+## Types of Tabs
 
-### 外部链接选项卡
+### Object Tabs
 
-当选项卡类型为“外部链接”时，需要配置其要跳转到的链接地址，这里可以输入系统内的相关地址，也可以输入外部的绝对地址。
+For "Object" type tabs, you need to configure the associated object. When users click this tab in the top navigation, the object's homepage will be displayed.
 
-## 选项卡权限
+### External Link Tabs
 
-选项卡权限指定选项卡在权限集关联的应用程序中是否可见。
+For "External Link" type tabs, you need to configure the URL to which it will redirect. Here you can enter a relevant address within the system or an absolute external address.
 
-### 选项卡权限对象字段
+### Micro Page Tabs
 
-  - 所属简档/权限集
-  - 选项卡
-  - 权限 选择框类型 默认打开、默认关闭；默认值是默认打开
+When you want to display a developed page within the application, you need to configure this type of tab. However, this type of tab can only configure micro pages without parameters. If parameters are needed, you must use the external link tabs mentioned above.
 
-### 规则描述
+## Tab Permissions
 
-- 选项卡新建后默认对所有简档/权限集可见
-- 管理员可在简档/权限集详情页中点击 `设置选项卡权限`按钮统一设置选项卡权限
-- 默认打开表示可见、默认关闭表示不可见
-- 选项卡权限使用权限叠加规则，同一个选项卡在不同权限集中的权限叠加，如有一个是默认打开的则选项卡可见 -->
+Tab permissions specify whether a tab is visible in the applications associated with the permission set.
+
+- After a tab is created, by default, it is visible to all profiles/permission sets.
+- Administrators can click the `Set Tab Permissions` button on the profile/permission set detail page to set tab permissions universally.
+- Default on indicates visibility, default off indicates invisibility.
+- Tab permissions use a cumulative permission rule; the permissions of the same tab in different permission sets accumulate. If one is set to default on, then the tab is visible.

@@ -1,23 +1,50 @@
 ---
-title: Custom App
+title: Creating Your First Application
 sidebar_position: 10
 ---
 
-# Build Your Own Steedos Application
+The Steedos platform comes with built-in visual application building tools that empower you to customize Steedos to meet your business needs. You can also build your own applications to share and store information that's important to you, all without needing any programming knowledge.
 
-An app is a collection of items that work together to serve a particular function. 
+As a new user, building your first application on the Steedos platform is a straightforward and intuitive process. We'll guide you through the steps to create a custom application.
 
-The platform includes innovative point-and-click app-building tools that give you the power to customize Steedos to meet the needs of your business. You can also build your own apps to share and store information that is important to you. You don’t need any programming knowledge to use these tools.
+### Step 1: Plan Your Application
 
-Steedos apps are a collection of standard and custom tabs, including:
+Before you begin, think about your business needs. Determine what functions you want your application to perform, what objects you need, and how the user interface should be laid out.
 
-- Most standard objects, including Home, the main Tasks, Calendar, and People
-- Your org’s custom objects
-- Micro page tabs
-- Web tabs
+### Step 2: Access the App Manager
 
-Steedos provides standard apps such as Sales and Projects.
+Log in to your Steedos account, click the "Settings" icon, then type "Applications" in the quick find box, and select the option that appears to open the App Manager.
 
-When you choose an app, your screen changes to reflect the contents of that app. For example, if you switch from an app that contains Projects to another app that doesn’t, the Projects item disappears. In addition, the app might display a different default landing tab when selected.
+### Step 3: Create a New Application
 
-Apps are associated with profiles. Profiles control which tabs you can see or hide, as well as which apps are available to you.
+In the App Manager, click the "New Application" button, select "Custom Application," and click "Next."
+
+### Step 4: Define Application Properties
+
+- **Application Name**: Name your application.
+- **Application Icon**: Choose an icon to represent your application.
+- **Description**: Describe the functions of your application and the value it provides to users.
+
+### Step 5: Choose Application Tabs
+
+The navigation menu of the application is composed of tabs. You must create tabs first and then add them to the application.
+
+Select the standard or custom object tabs that your application will include. These tabs will serve as the main components of your application.
+
+### Step 6: Assign User Permissions
+
+Determine which users will have access to this application. You can set different access permissions for different users or user groups.
+
+### Step 7: Save and Test
+
+Save your application and test it in the development environment. Ensure all features are working as expected.
+
+### Step 9: Deploy to Production Environment
+
+Once you are satisfied with the application's functionality and have completed testing, you can deploy it to the production environment for all users to access.
+
+### Step 10: Gather Feedback
+
+After deploying the application, collect feedback from users and make improvements based on it. The success of the application depends on the active participation and feedback of users.
+
+By following these steps, you'll be able to create your first custom application on the Steedos platform, tailored to your unique business needs.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 35
-sidebar_label: AMIS Frontend Low-Code Framework
+sidebar_label: AMIS Low-Code Framework
 ---
 
 # AMIS Frontend Low-Code Framework

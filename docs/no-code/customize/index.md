@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+sidebar_label: Data Model and Management
 ---
 
 # Set Up Your Data Your Way
