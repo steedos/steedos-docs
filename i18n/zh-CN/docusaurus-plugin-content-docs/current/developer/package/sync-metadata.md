@@ -32,14 +32,14 @@ npm i steedos-cli --global
 创建或修改 `.env.local` 文件，设置环境变量。
 
 ```bash
-METADATA_SERVER=#华炎魔方服务器URL
-METADATA_APIKEY=#华炎魔方 API Key
+METADATA_SERVER=#Steedos服务器URL
+METADATA_APIKEY=#Steedos API Key
 ```
 
 
 参数说明如下：
 
-* `METADATA_SERVER`: 元数据服务器的网址，如果是本地开发环境，可以配置为 http://IP地址:端口号 ；如果使用华炎魔方云服务，需配置 https 协议，例如 https://zhuangjianguo.steedos.cn/
+* `METADATA_SERVER`: 元数据服务器的网址，如果是本地开发环境，可以配置为 http://IP地址:端口号 ；如果使用Steedos云服务，需配置 https 协议，例如 https://zhuangjianguo.steedos.cn/
 * `METADATA_APIKEY`: 如果是云服务，可以直接在云服务记录中复制；如果是本地开发环境，需要复制在“设置”应用的“高级设置->API Key”菜单下创建的API Key。
 
 ## 同步元数据
@@ -54,11 +54,11 @@ METADATA_APIKEY=#华炎魔方 API Key
 
 ### 上传元数据
 
-如果从 git 仓库更新到其他人修改的元数据，或是直接修改了元数据的配置文件，可以通过上传命令将元数据上传到华炎魔方服务器中。
+如果从 git 仓库更新到其他人修改的元数据，或是直接修改了元数据的配置文件，可以通过上传命令将元数据上传到Steedos服务器中。
 
 在项目文件夹中选择需要上传的元数据，点击右键，并选择`Steedos: Deploy Source` 菜单。
 
- ![](https://console.steedos.cn/api/files/images/ju5NqucSwB3H6EtKu)使用华炎魔方VS Code代码同步插件不但可以通过“Deploy Source”来把本地的代码发布到数据库中，也可以通过“Retrieve Source”操作来把在界面上可视化开发的元数据同步成代码下载到本地，对于可以通过在界面上进行可视化开发来维护的元数据，我们推荐开发人员不要在本地VS Code中开发，以尽量保证系统中的元数据配置始终来源于同一个方向，这样可以避免元数据重复等问题的发生。
+ ![](https://console.steedos.cn/api/files/images/ju5NqucSwB3H6EtKu)使用SteedosVS Code代码同步插件不但可以通过“Deploy Source”来把本地的代码发布到数据库中，也可以通过“Retrieve Source”操作来把在界面上可视化开发的元数据同步成代码下载到本地，对于可以通过在界面上进行可视化开发来维护的元数据，我们推荐开发人员不要在本地VS Code中开发，以尽量保证系统中的元数据配置始终来源于同一个方向，这样可以避免元数据重复等问题的发生。
 
 ### 同步指定文件或文件夹
 

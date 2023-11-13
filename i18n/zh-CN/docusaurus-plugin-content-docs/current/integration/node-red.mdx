@@ -12,11 +12,11 @@ Node-RED是一个基于流程的编程工具，可以让您轻松地将物联网
 
 ## 整合Node-Red项目
 
-想要在华炎魔方项目中使用Node-Red来实现具体业务，首先需要把它集成到华炎魔方项目中。
+想要在Steedos项目中使用Node-Red来实现具体业务，首先需要把它集成到Steedos项目中。
 
 ### 创建应用
 
-具体创建应用详情可以参考华炎魔方template项目：[https://gitlab.steedos.cn/steedos/steedos-project-template.git](https://gitlab.steedos.cn/steedos/steedos-project-template.git)
+具体创建应用详情可以参考Steedostemplate项目：[https://gitlab.steedos.cn/steedos/steedos-project-template.git](https://gitlab.steedos.cn/steedos/steedos-project-template.git)
 
 ### 运行
 
@@ -52,13 +52,13 @@ Node-Red服务跑起来后，我们可以在浏览器中输入控制台中提示
 
 ![](/../static/img/zh-CN/node_red_ini.png)
 
-## 华炎魔方节点
+## Steedos节点
 
-我们可以使用上面提到的流程设计器来配置整合现有业务系统，如果需要让华炎魔方连接SAP、用友、金蝶等主流业务系统，以整合集成相关业务到华炎魔方，请使用我们特意开发的各种Node节点，可以很方便的实现各种集成业务需求。
+我们可以使用上面提到的流程设计器来配置整合现有业务系统，如果需要让Steedos连接SAP、用友、金蝶等主流业务系统，以整合集成相关业务到Steedos，请使用我们特意开发的各种Node节点，可以很方便的实现各种集成业务需求。
 
 ### steedos-event节点
 
-Steedos Event 是指在华炎魔方平台中，使用 Steedos Event 服务来进行事件订阅和发布的功能。通过 Steedos Event，我们可以订阅特定的事件，例如记录创建、记录更新或记录删除等事件，以便在事件发生时执行自定义操作。在 Steedos Event 中，我们需要指定以下参数：
+Steedos Event 是指在Steedos平台中，使用 Steedos Event 服务来进行事件订阅和发布的功能。通过 Steedos Event，我们可以订阅特定的事件，例如记录创建、记录更新或记录删除等事件，以便在事件发生时执行自定义操作。在 Steedos Event 中，我们需要指定以下参数：
 
 - `Broker` 是在 `Node-RED` 中用来指定使用的消息代理的参数。在 `Node-RED` 中，我们可以通过配置 `Broker` 来连接 `Steedos` 项目。通常情况下，我们使用 `NATS` 作为消息代理。为了配置 `Broker`，我们需要在 `Node-RED-app` 文件夹下的 `.env` 文件中进行相应的配置，并在 `Node-RED` 中进行引用。更多关于 `NATS` 作为消息代理的详细内容，可以参考以下链接：[https://moleculer.services/zh/docs/0.14/networking.html#NATS-Transporter。](https://moleculer.services/zh/docs/0.14/networking.html#NATS-Transporter%E3%80%82)
 - Service：指定使用的服务名称。
@@ -66,7 +66,7 @@ Steedos Event 是指在华炎魔方平台中，使用 Steedos Event 服务来进
 - Topic：指定订阅的主题或事件名称，例如创建记录事件或更新记录事件。
 - Group：指定订阅事件的组，可以是一个或多个组，以逗号分隔。
 
-通过配置这些参数，我们可以在华炎魔方平台中使用 Steedos Event 来实现事件订阅和发布的功能，以便在事件发生时执行自定义操作。例如，我们可以订阅创建记录事件，并在事件发生时向 Slack 或微信发送通知，或者在事件发生时执行自定义的 JavaScript 代码来实现更复杂的操作。
+通过配置这些参数，我们可以在Steedos平台中使用 Steedos Event 来实现事件订阅和发布的功能，以便在事件发生时执行自定义操作。例如，我们可以订阅创建记录事件，并在事件发生时向 Slack 或微信发送通知，或者在事件发生时执行自定义的 JavaScript 代码来实现更复杂的操作。
 
 ![](/../static/img/zh-CN/node_red_event.png)
 
@@ -97,7 +97,7 @@ Steedos Request 是一个 Node-RED 中的节点，用于发送 HTTP 请求到 St
 - Name: 这是节点的名称，用于在 Node-RED 中标识该节点。
 - Action: 这是要执行的操作的名称，例如查询、创建、更新或删除对象。如果消息中包含 `msg.action` 属性，则会覆盖该参数。
 - REST：可以根据该属性，自定义api。其内容为json值。“method”为请求方式，"path"为路由url地址。
-- Trigger：可以根据该属性，自定义触发器。其内容为json值。“listenTo”为监听对象 ，“when”为触发时机。其具体的值可以参考华炎魔方官网文档-触发器部分：[https://beta.steedos.cn/docs/developer/action-trigger](https://beta.steedos.cn/docs/developer/action-trigger)
+- Trigger：可以根据该属性，自定义触发器。其内容为json值。“listenTo”为监听对象 ，“when”为触发时机。其具体的值可以参考Steedos官网文档-触发器部分：[https://beta.steedos.cn/docs/developer/action-trigger](https://beta.steedos.cn/docs/developer/action-trigger)
 
 当节点接收到输入消息时，它会将消息中的数据作为请求的参数发送到 Steedos 平台，并将响应数据作为输出消息发送到下一个节点。具体详情可参考steedos- template模版项目。
 

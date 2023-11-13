@@ -8,8 +8,8 @@ sidebar_position: 20
 > 在这个示例中，不用写后端代码，就可以搭建一个自定义页面
 
 > 前提条件
-> - 华炎魔方平台
-> - 了解华炎魔方 GraphQL 的使用： [华炎魔方 GraphQL 介绍](https://docs.steedos.cn/zh-CN/developer/api/graphql-api)
+> - Steedos平台
+> - 了解Steedos GraphQL 的使用： [Steedos GraphQL 介绍](https://docs.steedos.cn/zh-CN/developer/api/graphql-api)
 
 其中将使用 GraphQL 接口来获取数据，并通过控件将数据内容显示到页面上。
 
@@ -31,7 +31,7 @@ sidebar_position: 20
 ### 1、配置发送 HTTP 请求
 
 - 从左侧选择拖入 Service 到页面设计器中
-> 使用 Service 组件的目的是为了发送 /graphql 的查询 HTTP 请求到华炎魔方后台服务，然后其请求的结果数据可以被子组件使用
+> 使用 Service 组件的目的是为了发送 /graphql 的查询 HTTP 请求到Steedos后台服务，然后其请求的结果数据可以被子组件使用
 
 - 选中 Service 组件（注意选择时选外层的 Service，不要选择Service内层的“内容”组件）
 - 配置发送的 HTTP 请求内容

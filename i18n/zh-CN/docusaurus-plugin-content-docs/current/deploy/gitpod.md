@@ -13,13 +13,13 @@ sidebar_position: 3
 
 ## 登录DevOps Gitlab环境
 
-访问[华炎魔方DevOps平台](https://gitlab.steedos.cn/) 时，可以直接使用注册好的Steedos ID账号进行登录，若浏览器记住steedos id账号信息时，点击“Steedos ID登录”直接跳转进DevOps Gitlab环境，若没有注册Steedos ID，参考注册流程按照步骤注册即可。
+访问[SteedosDevOps平台](https://gitlab.steedos.cn/) 时，可以直接使用注册好的Steedos ID账号进行登录，若浏览器记住steedos id账号信息时，点击“Steedos ID登录”直接跳转进DevOps Gitlab环境，若没有注册Steedos ID，参考注册流程按照步骤注册即可。
 
  ![](https://console.steedos.cn/api/files/images/63298b17718ce4003ea78f0d)
 
 ## 启动Gitpod远程开发环境
 
-访问 [华炎魔方模板项目](https://gitlab.steedos.cn/steedos/steedos-project-template) ，也可以在登录DevOps Gitlab环境后，找到公开的“steedos-project-template”点击右上角派生(Fork)按钮，可以把项目复制到自己的账户下。
+访问 [Steedos模板项目](https://gitlab.steedos.cn/steedos/steedos-project-template) ，也可以在登录DevOps Gitlab环境后，找到公开的“steedos-project-template”点击右上角派生(Fork)按钮，可以把项目复制到自己的账户下。
 
 项目**派生(Fork)**成功后，点击”Gitpod”按钮即可一键启动远程开发环境。
 
@@ -28,14 +28,14 @@ sidebar_position: 3
 启动远程开发环境后会自动执行以下操作，它可以节省开发人员大量时间：
 
 * 自动分配远程服务器资源。
-* 自动从网络下载并加载华炎魔方Docker镜像。
+* 自动从网络下载并加载SteedosDocker镜像。
 * 自动安装和配置MongoDB数据库，并以集群模式启动数据库。
 * 自动安装、配置和启动Redis数据库。
 * 自动安装必要的VS Code插件，包括元数据同步、简体中文语言包等。
 * 自动安装项目依赖的NPM包。
 * 自动执行 `yarn start` 启动项目。
 
-## 访问华炎魔方
+## 访问Steedos
 
 远程开发环境启动完成，会自动弹出浏览器，如果未弹出，可能被拦截。
 

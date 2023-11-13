@@ -5,11 +5,11 @@ sidebar_position: 40
 
 ## Amis原生组件
 
-几乎所有的amis原生组件都适用于华炎魔方微页面，请参阅 [Amis 组件](https://aisuda.bce.baidu.com/amis/zh-CN/components)。
+几乎所有的amis原生组件都适用于Steedos微页面，请参阅 [Amis 组件](https://aisuda.bce.baidu.com/amis/zh-CN/components)。
 
-## 华炎魔方组件
+## Steedos组件
 
-我们为 amis 扩展了以下组件用于快速实现华炎魔方各种界面能力。
+我们为 amis 扩展了以下组件用于快速实现Steedos各种界面能力。
 
 - [对象表单 ObjectForm](./object_form)
 - [列表视图 ObjectListView](./object_listview)
@@ -22,7 +22,7 @@ sidebar_position: 40
 
 在amis广播事件可以自定义派发的事件名称`eventName`，其他渲染器可以监听自定义事件并配置响应动作。[了解更多广播事件](https://aisuda.bce.baidu.com/amis/zh-CN/docs/concepts/event-action)。
 
-华炎魔方基于amis广播事件，实现了基于对象的`@data.change`事件，只需要在组件中按规范监听相关对象的`@data.change`事件，可以很方便的实现刷新**列表视图**和**表单数据**功能。 
+Steedos基于amis广播事件，实现了基于对象的`@data.change`事件，只需要在组件中按规范监听相关对象的`@data.change`事件，可以很方便的实现刷新**列表视图**和**表单数据**功能。 
 
 
 ### 名称规范
@@ -82,7 +82,7 @@ sidebar_position: 40
 
 ### 应用
 
-华炎魔方很多内置组件都监听了对象的`@data.change`事件，基于amis的广播事件特性可以很方便的调用这些组件的功能和行为，比如列表视图组件的刷新功能。 
+Steedos很多内置组件都监听了对象的`@data.change`事件，基于amis的广播事件特性可以很方便的调用这些组件的功能和行为，比如列表视图组件的刷新功能。 
 
 
 以下组件通过监听对象的`@data.change`事件实现了组件的各种动作能力：

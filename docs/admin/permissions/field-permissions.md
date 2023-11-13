@@ -25,7 +25,7 @@ Page layouts and field-level security settings determine which fields a user see
 
 <!-- ## 字段权限
 
-之前我们提到华炎魔方权限引擎是基于权限集来计算用户对每一个对象的相关权限的，华炎魔方权限引擎还进一步实现了不同权限集下的用户对每一个对象下的不同字段的权限计算，现在我们来看看如何为合同对象配置字段级的权限控制。
+之前我们提到Steedos权限引擎是基于权限集来计算用户对每一个对象的相关权限的，Steedos权限引擎还进一步实现了不同权限集下的用户对每一个对象下的不同字段的权限计算，现在我们来看看如何为合同对象配置字段级的权限控制。
 
 假设我们需要禁止公司的业务人员查看合同记录中与财务相关的字段，我们可以先新建一个名为”业务员“的简档，然后为该简档配置合同对象下的字段级权限。
 
@@ -39,4 +39,4 @@ Page layouts and field-level security settings determine which fields a user see
 
 我们只要把与财务相关的字段的”允许编辑“和”允许查看“勾选框去除即可实现业务人员查看合同记录时隐藏财务相关的字段。
 
-在华炎魔方中查询数据时，这里配置的字段权限也会被华炎魔方权限引擎识别并叠加到最终查询条件中，整个查询计算过程请参考该文档顶部提到的 [权限计算 - 查询 示意图](https://console.steedos.cn/api/files/images/2T54fG8LvDhdkwazR)。 -->
+在Steedos中查询数据时，这里配置的字段权限也会被Steedos权限引擎识别并叠加到最终查询条件中，整个查询计算过程请参考该文档顶部提到的 [权限计算 - 查询 示意图](https://console.steedos.cn/api/files/images/2T54fG8LvDhdkwazR)。 -->

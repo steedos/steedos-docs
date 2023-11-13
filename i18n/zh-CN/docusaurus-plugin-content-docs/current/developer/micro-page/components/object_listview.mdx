@@ -1,9 +1,9 @@
 ---
 title: 列表视图
-description: 华炎魔方微页面引擎，内置列表视图组件 ObjectListView，借助amis渲染器，可以帮助开发人员快速生成一个功能完善的列表视图组件。
+description: Steedos微页面引擎，内置列表视图组件 ObjectListView，借助amis渲染器，可以帮助开发人员快速生成一个功能完善的列表视图组件。
 ---
 
-这是一个基于华炎魔方对象的列表视图组件，它把对象记录显示为表格，同时包含了对象记录的增删改查以及其他操作按钮功能。
+这是一个基于Steedos对象的列表视图组件，它把对象记录显示为表格，同时包含了对象记录的增删改查以及其他操作按钮功能。
 
 ## 基本用法
 
@@ -122,7 +122,7 @@ console.log('选中行：', result);
 - objectName: `String`。要触发广播事件对象的对象Api名称，即列表视图绑定的对象api名称。
 - recordId: `String`。此处请保持非空，并不需要真实的记录ID，表示非新建记录，否则将跳转对象表单。
 
-在华炎魔方列表视图页面中**编辑**记录后，会刷新列表视图组件，就是因为在弹出的编辑表单组件中监听了提交成功事件并触发了页面中列表视图组件的`@data.change`事件，在`@data.change`事件中会执行刷新动作。
+在Steedos列表视图页面中**编辑**记录后，会刷新列表视图组件，就是因为在弹出的编辑表单组件中监听了提交成功事件并触发了页面中列表视图组件的`@data.change`事件，在`@data.change`事件中会执行刷新动作。
 详情请参考 [对象表单组件源码](https://github.com/steedos/steedos-widgets/blob/1.2/packages/%40steedos-widgets/amis-lib/src/lib/converter/amis/index.js#L350)。
 
 <alert type="info">
@@ -133,7 +133,7 @@ console.log('选中行：', result);
 
 ### 跳转到记录详细页
 
-在华炎魔方列表视图页面中**新建**记录后，会跳转到记录详细页，就是因为在弹出的编辑表单组件中监听了提交成功事件并触发了页面中对象表单组件的`@data.change`事件，在`@data.change`事件中会执行跳转动作。
+在Steedos列表视图页面中**新建**记录后，会跳转到记录详细页，就是因为在弹出的编辑表单组件中监听了提交成功事件并触发了页面中对象表单组件的`@data.change`事件，在`@data.change`事件中会执行跳转动作。
 详情请参考 [对象表单组件源码](https://github.com/steedos/steedos-widgets/blob/1.2/packages/%40steedos-widgets/amis-lib/src/lib/converter/amis/index.js#L350)。  
 
 <alert type="info">

@@ -12,7 +12,7 @@ sidebar_position: 50
 
 ## 配置自定义资产包
 
-只要把自定义资产包地址配置到环境变量 `STEEDOS_PUBLIC_PAGE_ASSETURLS` 中，华炎魔方会根据资产包中配置的资源包地址自动把相关自定义组件加载并集成到amis引擎中，非常方便。
+只要把自定义资产包地址配置到环境变量 `STEEDOS_PUBLIC_PAGE_ASSETURLS` 中，Steedos会根据资产包中配置的资源包地址自动把相关自定义组件加载并集成到amis引擎中，非常方便。
 
 ```bash
 STEEDOS_PUBLIC_PAGE_ASSETURLS=https://unpkg.com/@steedos-widgets/example@0.0.6/dist/assets.json

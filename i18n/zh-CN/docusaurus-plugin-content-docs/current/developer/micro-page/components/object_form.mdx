@@ -1,6 +1,6 @@
 ---
 title: 对象表单
-description: 华炎魔方微页面引擎，内置对象表单组件 ObjectForm，借助amis渲染器，可以帮助开发人员快速生成一个功能完善的对象表单组件。
+description: Steedos微页面引擎，内置对象表单组件 ObjectForm，借助amis渲染器，可以帮助开发人员快速生成一个功能完善的对象表单组件。
 ---
 
 这是一个用于显示、新建或编辑对象记录的表单组件。
@@ -115,7 +115,7 @@ recordId属性类似的可以配置为某个具体的记录id值，但是一般�
 
 ## 弹出表单
 
-在微页面设计器中拖动一个普通的“按钮”组件到画布，然后在设计器中为其添加一个“打开弹窗”的动作，在“弹框内容”画布中拖动一个华炎魔方“对象表单”，配置好相关属性后就可以轻松实现弹出对象表单功能。
+在微页面设计器中拖动一个普通的“按钮”组件到画布，然后在设计器中为其添加一个“打开弹窗”的动作，在“弹框内容”画布中拖动一个Steedos“对象表单”，配置好相关属性后就可以轻松实现弹出对象表单功能。
 
 最后设计器会生成类似如下内容的 amis Schema 配置。
 
@@ -211,12 +211,12 @@ recordId属性类似的可以配置为某个具体的记录id值，但是一般�
 要刷新对象表单组件，需在`data`中配置以下参数：
 - objectName: `String`。要触发广播事件对象的对象Api名称，即列表视图绑定的对象api名称。
 
-在华炎魔方记录详情页中编辑记录后，会刷新只读页面中的对象表单组件，就是因为在弹出的编辑表单组件中监听了提交成功事件并触发了页面中只读的对象表单组件的`@data.change`事件，在`@data.change`事件中会执行刷新动作。
+在Steedos记录详情页中编辑记录后，会刷新只读页面中的对象表单组件，就是因为在弹出的编辑表单组件中监听了提交成功事件并触发了页面中只读的对象表单组件的`@data.change`事件，在`@data.change`事件中会执行刷新动作。
 [对象表单组件源码](https://github.com/steedos/steedos-widgets/blob/1.2/packages/%40steedos-widgets/amis-lib/src/lib/converter/amis/index.js#L350)。
 
 ### 跳转到列表页面
 
-在华炎魔方记录详情页中删除记录后，会跳转列表页面页面，就是因为触发了点击事件并触发了页面中只读的对象表单组件的`@data.change`事件，在`@data.change`事件中会执行跳转动作。
+在Steedos记录详情页中删除记录后，会跳转列表页面页面，就是因为触发了点击事件并触发了页面中只读的对象表单组件的`@data.change`事件，在`@data.change`事件中会执行跳转动作。
 
 详情请参考 [删除按钮源码](https://github.com/steedos/steedos-widgets/blob/1.2/packages/%40steedos-widgets/amis-lib/src/schema/standard_delete.amis.js#L44)。
 

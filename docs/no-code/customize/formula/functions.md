@@ -831,7 +831,7 @@ IF(Rating="Hot", TEXT(TIMENOW()), TEXT(TIMEVALUE(CreatedDate)))
 
 ■ 显示的值为GMT时区值。
 
-■ 因华炎魔方还未支持time类型字段，所以暂时只能用TEXT函数输出文本值。
+■ 因Steedos还未支持time类型字段，所以暂时只能用TEXT函数输出文本值。
 
 </alert>
 
@@ -857,7 +857,7 @@ TEXT(TIMEVALUE("17:30:45.125"))
 <alert type="info">
 ■ 请勿对日期时间字段使用 TIMEVALUE。
 
-■ 因华炎魔方还未支持time类型字段，所以暂时只能用TEXT函数输出文本值。
+■ 因Steedos还未支持time类型字段，所以暂时只能用TEXT函数输出文本值。
 
 </alert>
 
@@ -1833,7 +1833,7 @@ HYPERLINK("http://servername/call?id=" & Id & "&phone=" & Phone, Phone)
 
 ■ 在输入起始字符数参数时，请记住，一些字段（如网址字段）是唯一的，因为系统会自动在您输入的文本开头附加“http://”。
 
-■ 华炎魔方在界面上暂时不支持把该函数返回值显示为链接。
+■ Steedos在界面上暂时不支持把该函数返回值显示为链接。
 
 </alert>
 

@@ -91,9 +91,9 @@
     "message": "字段",
     "description": "The label for category 字段 in sidebar platform"
   },
-  "sidebar.platform.category.扩展华炎魔方功能": {
-    "message": "扩展华炎魔方功能",
-    "description": "The label for category 扩展华炎魔方功能 in sidebar platform"
+  "sidebar.platform.category.扩展Steedos功能": {
+    "message": "扩展Steedos功能",
+    "description": "The label for category 扩展Steedos功能 in sidebar platform"
   },
   "sidebar.platform.category.审批王": {
     "message": "审批王",

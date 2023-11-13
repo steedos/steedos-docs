@@ -64,7 +64,7 @@
 
 ### 调整手机端显示的列
 
-如果不特别设置手机端显示的列，则在华炎魔方的手机端，会默认显示“显示的列”中最前面的4个字段。也可以自主设置，来调整在手机端上需要显示的字段。
+如果不特别设置手机端显示的列，则在Steedos的手机端，会默认显示“显示的列”中最前面的4个字段。也可以自主设置，来调整在手机端上需要显示的字段。
 
 ### 如何添加过滤条件
 
@@ -232,7 +232,7 @@ filters:
 
 日历视图还支持按分组来显示日历事件，可以参阅其官网 [Group Appointments by Resources](https://js.devexpress.com/Documentation/Guide/UI_Components/Scheduler/Resources/Group_Appointments_by_Resources/) 查看详细功能说明。
 
-以下列表视图元数据配置内容演示了如何在华炎魔方中实现按“会议室”来分组显示日历面板。
+以下列表视图元数据配置内容演示了如何在Steedos中实现按“会议室”来分组显示日历面板。
 
 ```yaml
 name: calendar_view
@@ -288,5 +288,5 @@ options:
 以下几个属性配置是分组相关配置的重点
 
 - 在 `options.views` 属性中明确标记“日”视图按名为 `_room` 的数据源来分组。
-- 在 `options.resources` 属性中定义一个名为 `_room` 的数据源，并且该数据源从华炎魔方标准的 OData API 接口中获取数据。
+- 在 `options.resources` 属性中定义一个名为 `_room` 的数据源，并且该数据源从Steedos标准的 OData API 接口中获取数据。
 - 在 `options.title` 属性中额外把当前对象的分组关联字段 ”所属会议室 meeting_room__c“ 显示在标题上。

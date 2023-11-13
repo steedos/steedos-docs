@@ -13,7 +13,7 @@ Error Condition Formula | The expression used to validate the field. See Build
 Error Message | The message that displays to the user when a field fails the validation rule.
 
 
-<!-- 在华炎魔方中，用户可以为每一个对象创建验证规则。验证规则主要用于验证该对象的数据是否符合特定的规则。当用户对于对象的某个字段的更改不符合用户创建的验证规则时，华炎魔方会拒绝保存用户的输入。
+<!-- 在Steedos中，用户可以为每一个对象创建验证规则。验证规则主要用于验证该对象的数据是否符合特定的规则。当用户对于对象的某个字段的更改不符合用户创建的验证规则时，Steedos会拒绝保存用户的输入。
 
  ![](https://console.steedos.cn/api/files/images/vtxej7xKQtdABNNLr)
 
@@ -82,7 +82,7 @@ Error Message | The message that displays to the user when a field fails the val
 
 在实施验证规则前，请先了解以下注意事项。
 
-* 当一条验证规则失败时，华炎魔方不会继续对该字段或页面中的其他字段检查其他验证规则。
+* 当一条验证规则失败时，Steedos不会继续对该字段或页面中的其他字段检查其他验证规则。
 * 如果工作流规则、批准过程等配置了字段更新，且要更新的字段上正好配置了验证规则的话，当触发字段更新时，不会触发相关字段的验证规则。
 * 由于公式字段中的公式是在记录被保存(afterInsert/afterUpdate)后才触发的，所以如果验证规则中引用了公式字段，有可能与设计验证规则的初衷不同，因为触发验证规则时其中引用的公式字段值可能是之前已经在数据库中保存过的老值，而且在公式字段本身值变更时不会再次触发执行验证规则。
 * 与公式字段一样，如果验证规则中引用了累计汇总字段，当汇总字段值在变更时也不会触发执行验证规则，比如主记录有一个验证规则，要求累计汇总字段值必须小于100。如果用户对相关子记录的更改将输入超过 100 的值，希望用户无法保存该子表记录，实际上子记录变更时主记录的验证规则是不会被触发的，要实现这个需求，通常的做法是把验证规则配置在子表而不是主表中，类似：`lookup_mater_object_field.summary_value + current_value >= 100`。
@@ -109,7 +109,7 @@ AND(
 * **错误位置**：客户编号
 
 
-> 华炎魔方公式引擎暂时不支持ISNUMBER函数，可以用正则代替，请参考 REGEX 函数,该示例可替换为：
+> Steedos公式引擎暂时不支持ISNUMBER函数，可以用正则代替，请参考 REGEX 函数,该示例可替换为：
 
 
 ```javascript
