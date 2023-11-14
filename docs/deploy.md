@@ -1,5 +1,5 @@
 ---
-title: 私有部署
+title: Self Hosting
 ---
 
 
