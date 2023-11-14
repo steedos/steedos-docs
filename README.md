@@ -36,3 +36,14 @@ yarn build:openapi
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+
+### Generate PDF
+
+use [docs-to-pdf](https://github.com/jean-humann/docs-to-pdf)
+
+**Developer Documentation**
+
+```shell
+npx docs-to-pdf --initialDocURLs="https://docs.steedos.com/zh-CN/developer/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --outputPDFFilename	'build/steedos-developer.pdf'
+```
