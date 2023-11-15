@@ -45,12 +45,12 @@ use [docs-to-pdf](https://github.com/jean-humann/docs-to-pdf)
 **Developer Documentation**
 
 ```shell
-npx docs-to-pdf --initialDocURLs="https://docs.steedos.com/zh-CN/developer/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --outputPDFFilename	'build/steedos-developer-zh-CN.pdf'
+npx docs-to-pdf --initialDocURLs="https://docs.steedos.com/zh-CN/developer/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --outputPDFFilename="build/steedos-developer-zh-CN.pdf" --excludeSelectors=".breadcrumbs"	 --pdfMargin="30,20,30,20" --coverTitle="Steedos Developer Documentaion"  --baseUrl="https://docs.steedos.com/zh-CN/developer/" 
 ```
 
 
 **Platform Documentation**
 
 ```shell
-npx docs-to-pdf --initialDocURLs="http://localhost:3000/zh-CN/overview"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --baseUrl="http://localhost:3000/zh-CN/" --outputPDFFilename	'build/steedos-platform-zh-CN.pdf'
+npx docs-to-pdf --initialDocURLs="https://docs.steedos.com/zh-CN/overview"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --baseUrl="https://docs.steedos.com/zh-CN/" --outputPDFFilename	'build/steedos-platform-zh-CN.pdf'
 ```
