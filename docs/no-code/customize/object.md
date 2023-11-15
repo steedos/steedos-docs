@@ -5,6 +5,16 @@ sidebar_position: 1
 
 Building applications on the Steedos platform often requires the creation of one or more custom objects to store all necessary business data. Custom objects can be considered as tables in a database, containing a series of fields where you can store data.
 
+## Objects, Fields, and Records
+
+In Steedos, the organization of data and functionality is based on three core concepts: objects, fields, and records.
+
+- **Objects** are similar to tables in a database and serve as containers for storing specific types of data. In Steedos, there are two types of objects: standard objects and custom objects. Standard objects are provided by default in Steedos, such as "Organization," "Person," and "Task." Custom objects allow you to store specific information based on business needs.
+
+- **Fields** within an object are similar to columns in a database table. They define the type of data stored in the object. For example, a contact object might include fields such as name, email, and phone number. Steedos offers a variety of field types, including text, number, date, and picklist, to accommodate different data storage requirements.
+
+- **Records** are individual instances of data within an object, similar to rows in a database table. For example, a record of a contact object might represent one of your customers. Records contain information defined by the fields, such as the customer's name and contact details.
+
 ## Creating Custom Objects
 
 Creating custom objects is the first step in defining the data model for your application. Below are the steps to create a custom object:
