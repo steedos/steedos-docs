@@ -3,7 +3,7 @@ title: What is Steedos App?
 sidebar_position: 10
 ---
 
-# Steedos App: Low-code driven, easily customizable, ensuring every business can have a unique application experience.
+# Steedos App: Low-code driven, easily customizable.
 
 In traditional enterprise application development, every feature and module required coding from scratch. This not only consumed a significant amount of time but also incurred high development costs. Moreover, when business requirements changed, modifying and optimizing the application became complex and challenging.
 
