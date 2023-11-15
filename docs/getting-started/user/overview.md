@@ -1,5 +1,5 @@
 ---
-sidebar_label: User Interface
+sidebar_label: Steedos Interface
 sidebar_position: 10
 ---
 

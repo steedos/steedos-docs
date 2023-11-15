@@ -100,9 +100,9 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
+            type: 'docSidebar',
             position: 'left',
-            docId: 'overview',
+            sidebarId: 'platform',
             label: 'Platform',
           },
           {
@@ -139,7 +139,7 @@ const config = {
       },
       docs: {
         sidebar: {
-          hideable: true,
+          hideable: false,
         }
       },
       footer: {
