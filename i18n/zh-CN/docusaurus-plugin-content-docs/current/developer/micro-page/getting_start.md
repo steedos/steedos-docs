@@ -7,10 +7,6 @@ sidebar_position: 20
 在本节中，我们将通过示例来介绍如何搭建一个简单的微页面（以应用程序微页面为例），还说明了如何查看组件当前数据。
 > 在这个示例中，不用写后端代码，就可以搭建一个自定义页面
 
-> 前提条件
-> - Steedos平台
-> - 了解Steedos GraphQL 的使用： [Steedos GraphQL 介绍](https://docs.steedos.cn/zh-CN/developer/api/graphql-api)
-
 其中将使用 GraphQL 接口来获取数据，并通过控件将数据内容显示到页面上。
 
 ### 创建微页面

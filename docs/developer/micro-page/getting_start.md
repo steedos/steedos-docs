@@ -7,10 +7,6 @@ sidebar_position: 20
 In this section, we will introduce how to build a simple micro page (taking an application micro page as an example) and explain how to view the current data of components.
 > In this example, you can build a custom page without writing any backend code
 
-> Prerequisites
-> - Steedos Platform
-> - Understanding of Steedos GraphQL: [Steedos GraphQL Introduction](https://docs.steedos.cn/en-US/developer/api/graphql-api)
-
 It will use the GraphQL interface to fetch data and display the content on the page through widgets.
 
 ### Create a Micro Page

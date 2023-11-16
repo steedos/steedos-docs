@@ -45,7 +45,7 @@ use [docs-to-pdf](https://github.com/jean-humann/docs-to-pdf)
 **Developer Documentation**
 
 ```shell
-npx docs-to-pdf --initialDocURLs="https://docs.steedos.com/zh-CN/developer/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --outputPDFFilename="build/steedos-developer-zh-CN.pdf" --excludeSelectors=".breadcrumbs"	 --pdfMargin="30,20,30,20" --coverTitle="Steedos Developer Documentaion"  --baseUrl="https://docs.steedos.com/zh-CN/developer/" 
+npx docs-to-pdf --initialDocURLs="http://localhost:3000/zh-CN/developer/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --outputPDFFilename="build/steedos-developer-zh-CN.pdf" --excludeSelectors=".breadcrumbs,section.row" --pdfMargin="80,60,80,60" --coverTitle="Steedos Developer Documentaion"  --baseUrl="http://localhost:3000/zh-CN/developer/"  --excludePaths="/zh-CN/developer/api/openapi"
 ```
 
 
