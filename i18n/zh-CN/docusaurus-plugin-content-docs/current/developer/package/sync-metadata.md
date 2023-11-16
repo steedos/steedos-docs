@@ -39,7 +39,7 @@ METADATA_APIKEY=#Steedos API Key
 
 参数说明如下：
 
-* `METADATA_SERVER`: 元数据服务器的网址，如果是本地开发环境，可以配置为 http://IP地址:端口号 ；如果使用Steedos云服务，需配置 https 协议，例如 https://zhuangjianguo.steedos.cn/
+* `METADATA_SERVER`: 元数据服务器的网址，如果是本地开发环境，可以配置为 http://IP地址:端口号 ；如果使用Steedos云服务，需配置 https 协议.
 * `METADATA_APIKEY`: 如果是云服务，可以直接在云服务记录中复制；如果是本地开发环境，需要复制在“设置”应用的“高级设置->API Key”菜单下创建的API Key。
 
 ## 同步元数据
