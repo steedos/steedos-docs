@@ -11,7 +11,7 @@ const config = {
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
-  url: 'https://docs.steedos.com/',
+  url: process.env.SITE_URL || 'https://docs.steedos.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -48,8 +48,8 @@ const config = {
           // },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/steedos/steedos-docs/tree/master/',
+          editUrl: process.env.SITE_URL?
+            'https://github.com/steedos/steedos-docs/tree/beta/' : false,
           editLocalizedFiles: true
         },
         theme: {
