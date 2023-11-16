@@ -8,7 +8,7 @@ Steedos的强大数据模型允许您通过定义对象之间的关系来构建�
 
 ## 支持的对象关系
 
-对象关系定义了不同对象（或数据表）之间的连接方式。在Steedos中，您可以设置三种主要类型的关系：查找关系(Lookup Relationships)、主表子表关系(Master-Detail Relationships)和多对多关系(Many-to-Many Relationships)通过联接对象(Junction Objects)。
+对象关系定义了不同对象（或数据表）之间的连接方式。在Steedos中，您可以设置三种主要类型的关系：查找关系(Lookup Relationships)、主表子表关系(Master-Detail Relationships)和多对多关系(Many-to-Many Relationships)。
 
 ##### 查找关系(Lookup Relationships)
 
@@ -22,8 +22,8 @@ Steedos的强大数据模型允许您通过定义对象之间的关系来构建�
 
 ##### 多对多关系(Many-to-Many Relationships)
 
-- **描述**: 当您需要将两种类型的对象以多对多的方式关联时，可以通过创建第三个对象，即联接对象，来实现。
-- **用途**: 联接对象有两个主表子表关系，分别连接到要关联的两个对象。例如，一个学生可以注册多门课程，一门课程也可以有多个学生。
+- **描述**: 当您需要将两种类型的对象以多对多的方式关联时，可以将关系字段定义为数组类型字段。
+- **用途**: 数组类型字段可以同时绑定多条记录，例如给任务创建一个 assignees 的字段，配置为多选，一个任务可以管理到多个处理人，每个处理人也会有各自的任务清单。
 
 ### 配置对象关系
 

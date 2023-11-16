@@ -22,8 +22,9 @@ Object relationships define how different objects (or data tables) are connected
 
 ##### Many-to-Many Relationships
 
-- **Description**: To associate two types of objects in a many-to-many manner, you can create a third object, known as a junction object.
-- **Usage**: The junction object has two master-detail relationships, each linking to one of the objects to be associated. For example, a student can enroll in multiple courses, and a course can have multiple students.
+- **Description**: By defining relationship fields as array-type fields, a many-to-many relationship can be established between two objects.
+- **Usage**: Array-type fields can bind multiple records simultaneously. For example, create a "assignees" field for a task, configure it as multi-select, so that one task can be assigned to multiple assignees. Each assignee will also have their own task list.
+
 
 ### Configuring Object Relationships
 
