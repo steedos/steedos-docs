@@ -1,9 +1,9 @@
 ---
-sidebar_label: Tutorials
+sidebar_label: 教程
 sidebar_position: 10
 ---
 
-# Steedos Tutorials
+# Steedos 教程
 
 
 ```mdx-code-block

@@ -1,10 +1,15 @@
 ---
-sidebar_label: 入门教程
+sidebar_label: The Basics
 sidebar_position: 10
 ---
 
-# 入门教程
+# The Basics
 
-在本教程中，我们将通过 Steedos 创建一个简单的 Todos 应用。这个应用将允许用户添加、查看和管理待办事项。我们将涵盖创建自定义对象和字段、构建应用和选项卡、创建列表视图以及配置对象权限。
+In this tutorial, we will create a simple Todos application using Steedos. This application will allow users to add, view, and manage their to-do tasks. We will cover creating custom objects and fields, building applications and tabs, creating list views, and configuring object permissions.
 
-1. [ 创建 Todos 应用](./object)
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList/>
+```
