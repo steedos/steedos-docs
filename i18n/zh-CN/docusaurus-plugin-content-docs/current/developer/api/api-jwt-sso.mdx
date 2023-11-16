@@ -1,13 +1,13 @@
 ---
 title: 单点登录 API
-description: 通过jwt实现外接应用与魔方平台双向单点登录。
+description: 通过jwt实现外接应用与steedos平台双向单点登录。
 ---
 
-## 外接应用登录到魔方
+## 外接应用登录到steedos
 
 ### 准备事项
 
-1、 魔方平台需要配置环境变量开启单点登录功能，在 .env.local中添加:
+1、 steedos平台需要配置环境变量开启单点登录功能，在 .env.local中添加:
 
 ```env
 # JWT SSO
@@ -18,11 +18,11 @@ STEEDOS_IDENTITY_JWT_ENABLED=true
 
 1、外接应用在自定义服务端接口中生成jwt
 
-2、外接应用在浏览器端跳转至魔方接口 GET {root_url}/accounts/jwt/login?t={jwt}&redirect={redirectURL} 实现单点登录；
+2、外接应用在浏览器端跳转至steedos接口 GET {root_url}/accounts/jwt/login?t={jwt}&redirect={redirectURL} 实现单点登录；
 
 ### 示例
 
-1、魔方里新建应用 指定好 API名称（如：finance）、API密钥（如：app_api_secret）；
+1、steedos里新建应用 指定好 API名称（如：finance）、API密钥（如：app_api_secret）；
 
 2、外接应用前端按钮调用自定义接口（如：GET /api/get/token），在自定义接口中生成jwt；
 
@@ -39,8 +39,8 @@ module.exports = {
         });
 
         const token = result.token;
-        const PLATFORM_ROOT_URL = 'https://5000-steedos-steedosprojectt-5apf195eq37.ws-us77.gitpod.io' // 魔方访问地址，由魔方提供
-        // 跳转到魔方
+        const PLATFORM_ROOT_URL = 'https://5000-steedos-steedosprojectt-5apf195eq37.ws-us77.gitpod.io' // steedos访问地址，由steedos提供
+        // 跳转到steedos
         window.open(`${PLATFORM_ROOT_URL}/accounts/jwt/login?t=${token}&redirect=${PLATFORM_ROOT_URL}`, '_blank') // 浏览器打开新窗口
 
     },
@@ -65,13 +65,13 @@ const jwt = require('jsonwebtoken');
 router.get('/api/get/token', core.requireAuthentication, async function (req, res) {
     const userSession = req.user;
 
-    var secret = 'app_api_secret' // 应用的API 密钥，由魔方提供
+    var secret = 'app_api_secret' // 应用的API 密钥，由steedos提供
     var options = { expiresIn: 30 } // 30秒有效
     var token = jwt.sign({
         profile: {
             email: userSession.email // 当前用户邮件
         },
-        app_code: 'finance' // 应用的API 名称，由魔方提供
+        app_code: 'finance' // 应用的API 名称，由steedos提供
     }, secret, options);
 
     res.status(200).send({
@@ -81,11 +81,11 @@ router.get('/api/get/token', core.requireAuthentication, async function (req, re
 exports.default = router;
 ```
 
-## 魔方登录到外接应用
+## steedos登录到外接应用
 
 ### 过程描述
 
-1、魔方里新建应用，指定好 外部链接、API密钥；
+1、steedos里新建应用，指定好 外部链接、API密钥；
 
 2、应用程序启动器中点击外接应用跳转到外部链接并在url上带上 t 参数
 
@@ -93,7 +93,7 @@ exports.default = router;
 
 ### 示例
 
-1、魔方里新建应用，指定外部链接（如：GET https://5000-steedos-steedosprojectt-5apf195eq37.ws-us77.gitpod.io/api/sso ）、API密钥（如：app_api_secret）
+1、steedos里新建应用，指定外部链接（如：GET https://5000-steedos-steedosprojectt-5apf195eq37.ws-us77.gitpod.io/api/sso ）、API密钥（如：app_api_secret）
 
 2、应用程序启动器中点击外接应用跳转到外部链接
 
