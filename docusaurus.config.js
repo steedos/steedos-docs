@@ -48,8 +48,7 @@ const config = {
           // },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: process.env.SITE_URL?
-            'https://github.com/steedos/steedos-docs/tree/master/' : false,
+          editUrl: 'https://github.com/steedos/steedos-docs/tree/master/',
           editLocalizedFiles: true
         },
         theme: {
