@@ -6,7 +6,6 @@ sidebar_position: 7
 
 在软件包管理页面，你可以查看系统运行的软件包，及进行软件包安装、停用、重新加载、升级和卸载等操作。
 
-![软件包](/../static/img/zh-CN/steedos-packages.png)
 
 ### 软件包
 
