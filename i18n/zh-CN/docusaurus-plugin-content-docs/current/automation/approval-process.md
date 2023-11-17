@@ -10,8 +10,6 @@ sidebar_position: 3
 
 批准过程的处理逻辑如下图所示：
 
- ![批准过程](https://console.steedos.cn/api/files/images/fgRxtFHifbmSKRwA4)
-
 以付款为例，处理过程可能包括：
 
 * 付款记录提交批准时，记录将被锁定，这时用户无法修改它。同时，应将该付款记录的状态修改为“已提交”。
@@ -108,8 +106,6 @@ sidebar_position: 3
 
 如果批准是适合您业务流程的自动化工具，请遵循以下步骤为您的组织创建新的批准。
 
- ![设置批准过程](https://console.steedos.cn/api/files/images/ABF7quYjqn5wNiwta)
-
 * 在“设置”-“流程自动化”中选择“批准过程”，点击新建。
 * 为批准过程输入API名称和显示名称。
 * 选择要应用该批准过程的对象。
@@ -144,13 +140,10 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 
 记录提交等待批准时，它将被锁定，以防止用户在批准过程中编辑该记录。只有管理员可以编辑在该批准过程中被锁定的记录。
 
- ![锁定记录](https://console.steedos.cn/api/files/images/Divj39TEFgJyhbsw6)
-
 ### 批准过程的自动操作
 
 当发生操作时，每个批准过程都会组织到操作组中，例如初始提交。若要将自动操作添加到批准过程，确定要将其添加到哪个操作组中。
 
- ![自动操作](https://console.steedos.cn/api/files/images/6FmjDAyJvchooP949)
 
 1. **初始提交** 用户第一次提交记录以待批准。默认操作：记录锁(锁定)
 2. **批准步骤批准** 已针对记录提供该步骤的所有必要批准。默认操作：无
@@ -169,11 +162,7 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 
 如果所有记录都通过该批准步骤，选择 所有记录均应进入此步骤。
 
- ![所有记录进入此步骤](https://console.steedos.cn/api/files/images/atrhkTqfw6KF2jfEF)
-
 如果仅特定类型的记录应进入此过程，请选择如果满足以下条件，则进入此步骤...，然后输入需满足的条件。
-
- ![满足条件进入此步骤](https://console.steedos.cn/api/files/images/bBa4tLHNrCpBueHny)
 
 如果不满足条件，则：
 
@@ -201,8 +190,6 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 
 指定将批准分配给谁。
 
- ![手动选择批准人](https://console.steedos.cn/api/files/images/yhJRjSCfjsGdjLG4r)
-
 * 允许提交人手动选择批准人（默认值)：提示用户选择下一个批准人。
 * 自动分配至批准人： 分配批准请求到指定用户、指定审批角色、指定审批岗位、指定相关用户字段处理。
 
@@ -214,13 +201,9 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 
 批准请求的第一个响应决定批准记录还是拒绝记录。
 
- ![基于首次回复](https://console.steedos.cn/api/files/images/2dNX5SCoXWZpw7PRu)
-
 * 要求所有选定批准人的一致批准：
 
 只有在每个人都选择批准时记录才被批准。如果任何批准人拒绝请求，批准请求都会被拒绝。
-
- ![一致批准](https://console.steedos.cn/api/files/images/H7qeZPYujoZyuwxNz)
 
 * 重新分配的批准人也可批准该请求：
 
@@ -233,11 +216,7 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 
 * 执行所有拒绝操作：即使已经批准之前的步骤，仍然能拒绝请求。执行此步骤中指定的所有拒绝操作以及所有最终拒绝操作。
 
- ![最终拒绝](https://console.steedos.cn/api/files/images/PmwvEM9J9Szgsvt3o)
-
 * 仅执行此步骤的拒绝操作：拒绝请求，将批准请求返回前一个批准人。执行为此步骤指定的所有拒绝操作。
-
- ![返回一步](https://console.steedos.cn/api/files/images/tJd3TaG3hXdxvwJoN)
 
 
 ###*选择自动批准人
@@ -248,8 +227,6 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 
 自动分配至批准人：
 
- ![指定批准人](https://console.steedos.cn/api/files/images/fPPZo4KygcYt87nBo)
-
 * 指定用户处理
 * 指定审批角色
 * 指定审批岗位
@@ -259,7 +236,6 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 
 在为批准过程创建至少一个步骤后，启用该过程。
 
- ![启用](https://console.steedos.cn/api/files/images/ZjpmhDf7Y7CmpGJsY)
 
 1. 进入批准流程，选择需启用的批准过程。
 2. 确保配置正确。
@@ -273,8 +249,6 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 
 ### 提交记录以待批准
 
- ![提请批准](https://console.steedos.cn/api/files/images/cNrz3YkahYHpNXKPc)
-
 对记录具有读取权限，您可以直接从记录中提交记录以待批准。
 
 * **转至您希望提交以待批准的记录。**
@@ -284,8 +258,6 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 
 ### 撤销批准请求
 
- ![调回批准](https://console.steedos.cn/api/files/images/6zcCZ2uKyAs28qyxu)
-
 如果您提交了记录以待批准，但是突然需要更新记录中的信息，可以调回批准请求。然而，您能否调回批准请求取决于您的管理员如何配置批准过程来处理提交的记录。 撤销批准请求所需用户权限需对记录具有读取权限。
 
 * 转至与批准请求有关的记录的详细页面。
@@ -294,13 +266,9 @@ ISPICKVAL(instance_state, 'draft') || ISPICKVAL(instance_state, 'rejected')�
 
 ### 回应批准请求
 
- ![回应批准](https://console.steedos.cn/api/files/images/adEo3YS7ALe8FL373)
-
 您收到批准请求时，通过批准、拒绝或重新分配进行回应。
 
 ## 批准历史
-
- ![](https://console.steedos.cn/api/files/images/nr9mWrXH5sGzYR3ei)
 
 若要跟踪批准流程中的记录，查看其批准历史相关列表。
 
