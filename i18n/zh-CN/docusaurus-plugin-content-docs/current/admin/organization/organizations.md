@@ -7,7 +7,6 @@ sidebar_position: 3
 
 每个员工可以属于多个部门，其中选中的第一个部门为主部门，这里首先介绍设置部门。Steedos允许设置无限层级的部门体系。
 
- ![部门](/../static/img/zh-CN/organizations.png)
 
 ### 新增部门
 
