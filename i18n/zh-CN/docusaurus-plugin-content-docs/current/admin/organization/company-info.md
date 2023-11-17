@@ -9,4 +9,4 @@ sidebar_position: 1
 
 针对企业版用户，还可进行企业微信、钉钉集成设置；登陆背景图及系统Logo修改。
 
- ![](/../static/img/zh-CN/company-info.png)
+
