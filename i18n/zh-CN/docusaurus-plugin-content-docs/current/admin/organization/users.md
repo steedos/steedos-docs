@@ -5,7 +5,6 @@ sidebar_position: 2
 
 管理员可以添加、编辑和删除用户。
 
- ![](/../static/img/zh-CN/users.png)
 
 ### 添加用户
 
