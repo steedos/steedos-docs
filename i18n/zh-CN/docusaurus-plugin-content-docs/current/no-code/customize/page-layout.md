@@ -21,8 +21,6 @@ title: 页面布局
 
 在对象设置详情页中找到“页面布局”子表，新建页面布局。
 
- ![](https://console.steedos.cn/api/files/images/KoLia3v33FxMPaD96)              ![](https://console.steedos.cn/api/files/images/ru3Boe5u7saDG9XYi)
-
 其中，简档可选择“用户”
 
 > 每个页面布局都需对应一个简档，关于内置/自定义简档的详情，会在后续课程中展开。这里，先理解为：每个用户都属于一个简档；除管理员外，其他用户都默认属于用户这个简档。
@@ -30,20 +28,13 @@ title: 页面布局
 ## 配置操作按钮
 默认显示全部操作按钮。如果不想显示某些操作按钮，直接从列表中移除即可；如果想在特定情况下显示某些操作按钮，就在操作按钮的“显示条件”属性中输入对应的显示公式。
 
- ![](https://console.steedos.cn/api/files/images/GNcw9zGmjjWXNQutX)
-
- ![](https://console.steedos.cn/api/files/images/nyvgQvXWkBzo59EPS)
 ## 配置显示字段
 
 默认显示全部字段。如果不想显示某些字段，直接从列表中移除即可；如果想在特定情况下显示某些字段，就在字段的“显示条件”属性中输入对应的显示公式。
 
- ![](https://console.steedos.cn/api/files/images/ardLNmdHx3kL2BGf4)
-
 ### 调整字段的显示顺序
 
 点击字段最左侧的图标，并上下拖动，就能调整字段的显示顺序。
-
- ![](https://console.steedos.cn/api/files/images/uz8KQRKj69Lghw7oc)
 
 ### 调整字段的属性
 
@@ -52,13 +43,11 @@ title: 页面布局
 ## 配置相关子表
 
 默认显示全部子表。如果不想显示某些子表，直接从列表中移除即可；如果想在特定情况下显示某些子表，就在子表的“显示条件”属性中输入对应的显示公式。
- ![](https://console.steedos.cn/api/files/images/5qxpbqMg4Y8gmpPJ2)
 
 ### 调整子表的显示顺序
 
 点击相关子表最左侧的图标，并上下拖动，就能调整相关子表在详情页的显示顺序。
 
- ![](https://console.steedos.cn/api/files/images/gNGqZgbBhhPtz7gzt)
 
 ### 调整子表的属性
 
@@ -70,5 +59,3 @@ title: 页面布局
 * 过滤规则
 * 显示条件
 * 每页显示数量
-
-![](https://console.steedos.cn/api/files/images/gR3dc23TJESy88bSK)
