@@ -7,6 +7,6 @@
 :::
 
 
-## 应用Logo
 
-![Customize Logo](https://console.steedos.cn/api/files/images/BQzBmPyEtRAt3X5um)
+
+
