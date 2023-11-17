@@ -19,8 +19,6 @@ sidebar_position: 2
 
 在记录满足工作流规则的所有条件时，则将会执行规则的操作，请参考[执行自动操作](automated-actions)来了解Steedos目前支持的操作。
 
- ![工作流规则](https://console.steedos.cn/api/files/images/T98bRy3iK756ZpPSc)
-
 ### 注意事项
 
 * 每个工作流规则适用于单个对象。
@@ -44,13 +42,9 @@ sidebar_position: 2
 - **出站消息** 出站消息会将信息发送到指定端点，例如外部服务。
 
 
-
-
 ## 创建工作流规则
 
 通过创建工作流规则可使贵组织的标准过程实现自动化，可选择规则涉及的对象并配置其条件来开始创建一个新的工作流规则。
-
- ![创建工作流规则](https://console.steedos.cn/api/files/images/3rPBkNvhXZqy8RPna)
 
 * 在“设置”-“流程自动化”中选择“工作流规则”，点击新建。
 * 选择要应用该工作流规则的对象。
