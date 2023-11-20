@@ -29,7 +29,7 @@ These features together constitute Steedos's powerful visual development platfor
 
 ## Low-Code Deep Customization
 
-Steedos allows enterprises to customize applications with code. Through its highly programmable environment, businesses can address complex business needs, achieve comprehensive digital transformation and automation, and truly drive business growth and innovation. Steedos can support a variety of enterprise application scenarios, including but not limited to OA, CRM, HR, ERP, BI, IoT, Big Data, and more.
+Steedos allows enterprises to customize applications with code. Through its highly programmable environment, businesses can address complex business needs, achieve comprehensive digital transformation and automation, and truly drive business growth and innovation.
 
 ![Steedos Overview](/img/platform/steedos-dx.png)
 

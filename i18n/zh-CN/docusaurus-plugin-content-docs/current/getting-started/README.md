@@ -27,7 +27,7 @@ Steedos 的直观拖放界面、预制模板和自动化工具使应用开发更
 
 ## 低代码深度定制
 
-Steedos 允许企业通过代码深度定制应用，解决复杂业务需求，实现全面数字化转型。Steedos 适用于多种应用场景，如 OA、CRM、HR、ERP、BI、IoT、大数据等。
+Steedos 允许企业通过代码深度定制应用，解决复杂业务需求，实现全面数字化转型。
 
 ![Steedos Overview](/img/platform/steedos-dx.png)
 
