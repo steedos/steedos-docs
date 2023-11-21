@@ -9,13 +9,15 @@ sidebar_position: 30
 
 您可以通过指定“REST”参数，在微服务中将一个 API 定义为“动作”。这将当前动作声明为一个 API，使您能够实现符合业务需求的自定义功能。
 
+生成的API格式为: `/service/api/{serviceName}/{path}`
+
 ```js
 module.exports = {
-  name: "example-service",
+  name: "example-service", // serviceName
 
   actions: {
     hello: {
-      rest: { method: 'GET', path: '/hello/:name' },
+      rest: { method: 'GET', path: '/hello/:name' }, // /service/api/example-service/hello/:name
       handler(ctx) {
         return {
           data: 'Welcome ' + ctx.params.name
@@ -23,7 +25,7 @@ module.exports = {
       }
     },
     me: {
-      rest: { method: 'GET', path: '/me' },
+      rest: { method: 'GET', path: '/me' }, // /service/api/example-service/me
       async handler(ctx) {
         return ctx.meta.user
       }
