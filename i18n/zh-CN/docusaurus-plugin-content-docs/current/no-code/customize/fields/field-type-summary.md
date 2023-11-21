@@ -8,7 +8,6 @@ sidebar_position: 4
 
 可以使用累计汇总字段执行不同类型的汇总计算。比如可以计算与主记录相关的子记录的数量，也可以计算子记录中字段的总和、最小值或最大值。
 
- ![](https://console.steedos.cn/api/files/images/wFpwd8HRYZKQBugrQ)
 
 ## 创建累计汇总字段
 
@@ -18,7 +17,6 @@ sidebar_position: 4
 
 在您希望显示累计汇总字段值的对象上新建字段。 汇总字段汇总了相关对象上的记录中的值，因此该对象（您在上面创建了该字段）应位于主表/子表关系的主侧。
 
- ![](https://console.steedos.cn/api/files/images/ocCQZG5J7Ev68wRtj)
 
 * **所属对象**：即主表/子表关系中的主对象。
 * **显示名称**：希望该汇总字段显示的名称。
@@ -43,7 +41,6 @@ sidebar_position: 4
 
 如果要在汇总计算时，只包含特定的记录组，可以在过滤条件中输入对应的筛选条件。
 
- ![](https://console.steedos.cn/api/files/images/ZyC33ihKCtojL3S8y)
 
 * 这些过滤条件过滤的是子表记录而不是主表记录。
 * 字段输入框中列出的是子表对象中可用于过滤的字段名称供选择。
