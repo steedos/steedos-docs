@@ -9,7 +9,6 @@ sidebar_position: 5
 
 当我们需要描述两个对象之间的关联关系时，可以在其中一个对象中创建一个“相关表”字段来关联两个对象。比如每个“报价”记录都应该有对应的“所属客户”与之关联，此时我们可以在“报价”对象上创建一个“报价客户”字段跟“客户”对象关联起来。
 
- ![](https://console.steedos.cn/api/files/images/vzFBER4y7caPQGfy7)
 
 ### 引用对象
 
@@ -59,9 +58,6 @@ function(values){
 
 相关表字段展示选择项时有两种模式：一种是普通下拉选择框模式；另一种是弹出窗口查找模式，该模式需要在对象设置界面将该对象的“启用弹出窗口查找模式”功能开启。以下是两种模式的示例图：
 
- ![下拉选择框](https://console.steedos.cn/api/files/images/C2Zkb6F5dF7GcaFWG)
-
- ![弹出窗口查找](https://console.steedos.cn/api/files/images/Yx4AccjxkYsaR37Fa)
 
 <alert type="info">
 该字段类型的字段也被称为外键字段，其值保存的是关联对象记录的主键字段值而不是名称字段值。
@@ -73,11 +69,7 @@ function(values){
 
 **区别**：设置为主表/子表类型的字段可以在主表的“相关子表”里设置关联子表显示的列。
 
- ![](https://console.steedos.cn/api/files/images/oE5HkKqvj4DkTejzh)
-
 设置该对象相关子表：
-
- ![](https://console.steedos.cn/api/files/images/797diCyoLRFTF5oqq)
 
 ### 引用对象
 
