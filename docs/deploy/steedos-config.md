@@ -155,8 +155,8 @@ Configure the properties for scheduled tasks.
 # Time to execute database indexing, like “0 0 * * * *” above means indexing operation is performed once every hour. Existing indexes are not recreated.
 STEEDOS_CRON_BUILD_INDEX="0 0 * * * *"
 
-# Execution time for workflow rule queue, time-based workflow actions depend on this configuration, like “*/10 * * * * *” above means it's executed every 10 seconds.
-STEEDOS_CRON_WORKFLOW_RULE='*/10 * * * * *'
+# Execution time for workflow rule queue, time-based workflow actions depend on this configuration, like “*/10 * * * * *” above means it's executed every 1 minutes.
+STEEDOS_CRON_WORKFLOW_RULE='*/1 * * * *'
 
 # Polling interval for the mail queue, in milliseconds.
 STEEDOS_CRON_MAILQUEUE_INTERVAL=10000

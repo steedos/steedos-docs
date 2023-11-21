@@ -155,8 +155,8 @@ STEEDOS_IDENTITY_OIDC_REQUIRE_LOCAL_ACCOUNT=false
 # 执行数据库索引的时间，如“0 0 * * * *”上述意味着每小时执行一次索引操作。现有索引不会重新创建。
 STEEDOS_CRON_BUILD_INDEX="0 0 * * * *"
 
-# 工作流规则队列的执行时间，基于时间的工作流操作依赖于此配置，如“*/10 * * * * *”上述意味着每10秒执行一次。
-STEEDOS_CRON_WORKFLOW_RULE='*/10 * * * * *'
+# 工作流规则队列的执行时间，基于时间的工作流操作依赖于此配置，如“*/11 * * * *”上述意味着每分钟行一次。
+STEEDOS_CRON_WORKFLOW_RULE='*/1 * * * *'
 
 # 邮件队列的轮询间隔，以毫秒为单位。
 STEEDOS_CRON_MAILQUEUE_INTERVAL=10000
