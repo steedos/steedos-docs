@@ -17,15 +17,15 @@ Calculates the sum of two values.
 
 **Return Value:** Numerical
 
-^^^javascript
+```javascript
 Amount + Maint_Amount__c + Services_Amount__c
-^^^
+```
 
 This formula calculates the total of the product Amount, Maintenance Amount, and Service Fees. Note that Maint amount and Service Fees are custom currency fields.
 
-^^^javascript
+```javascript
 Monday_Hours__c + Tuesday_Hours__c + Wednesday_Hours__c + Thursday_Hours__c + Friday_Hours__c > 40
-^^^
+```
 
 Use this formula in a validation rule to display the error message "Total working hours cannot exceed 40 hours" when the sum of hours entered for each workday exceeds 40. This example requires five custom fields for each workday on a custom object.
 
@@ -37,9 +37,9 @@ Calculates the difference between two values.
 
 **Return Value:** Numerical
 
-^^^javascript
+```javascript
 Amount - Discount_Amount__c
-^^^
+```
 
 This formula calculates the difference between the product Amount and the Discount Amount. Note that Discount Amount is a custom currency field.
 
@@ -51,9 +51,9 @@ Multiplies its values.
 
 **Return Value:** Numerical
 
-^^^javascript
+```javascript
 Consulting_Days__c * 1200
-^^^
+```
 
 This formula calculates the numerical value of consulting days multiplied by 1200, assuming this formula field is of currency data type and consulting is charged at a rate of $1200 per day. Note that Consulting Days is a custom field.
 
@@ -65,15 +65,15 @@ Divides by its value.
 
 **Return Value:** Numerical
 
-^^^javascript
+```javascript
 AnnualRevenue/ NumberOfEmployees
-^^^
+```
 
 This formula uses the Amount field to calculate the revenue per employee.
 
-^^^javascript
+```javascript
 IF(NumberOfOpportunities > 0,  NumberOfWonOpportunities / NumberOfOpportunities, null)
-^^^
+```
 
 This formula calculates the win rate of opportunities in a marketing campaign.
 
@@ -85,9 +85,9 @@ Raises a number to the power of a specified number.
 
 **Return Value:** Numerical
 
-^^^javascript
+```javascript
 NumberOfEmployees^4
-^^^
+```
 
 Calculates the fourth power of the number of employees.
 
@@ -99,9 +99,9 @@ Specifies to first calculate the expressions within the left and right brackets.
 
 **Usage:** `(Expression 1) Expression 2...`, replacing each expression with merge fields, expressions, or other numerical values.
 
-^^^javascript
+```javascript
 (Unit_Value__c - Old_Value__c) / New_Value__c
-^^^
+```
 
 Calculates the difference between the old and new values, divided by the new value.
 
@@ -115,15 +115,15 @@ Calculates whether two values are equal. The = and == operators are interchangea
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 ExpiringDate = CreatedDate + 5
-^^^
+```
 
 Returns true if the expiration date equals the sum of the record's creation date and five days.
 
-^^^javascript
+```javascript
 IF(Probability = 1, ROUND(Amount*0.02, 2), 0)
-^^^
+```
 
 This formula calculates the commission amount. Opportunities with a 100% probability are calculated at 2% commission. All other opportunities have a commission value of zero.
 
@@ -141,9 +141,9 @@ Calculates whether two values are not equal.
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 IF(Maint_Amount__c + Services_Amount__c != Amount, "DISCOUNTED", "FULL PRICE")
-^^^
+```
 
 If the sum of the product's maintenance and service amounts is not equal to the product amount, this formula will display "DISCOUNTED" on the product. Otherwise, it shows "FULL PRICE". Note that this example uses two custom currency fields for Maint Amount and Services Amount.
 
@@ -157,9 +157,9 @@ Calculates whether a value is less than the value following this symbol.
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 IF(AnnualRevenue < 1000000, 1, 2)
-^^^
+```
 
 Assigns the value "1" to revenue less than a million, and the value "2" to revenue greater than a million.
 
@@ -171,9 +171,9 @@ Calculates whether a value is greater than the value following this symbol.
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 IF(commission__c > 1000000, "High Net Worth", "General")
-^^^
+```
 
 Assigns the "High Net Worth" value to commissions greater than a million. Note that this is a text formula field using the commission custom field.
 
@@ -185,9 +185,9 @@ Calculates whether a value is less than or equal to the value following this sym
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 IF(AnnualRevenue <= 1000000, 1, 2)
-^^^
+```
 
 Assigns the value "1" to revenue less than or equal to a million, and the value "2" to revenue greater than a million.
 
@@ -199,9 +199,9 @@ Calculates whether a value is greater than or equal to the value following this 
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 IF(Commission__c >= 1000000, "YES", "NO")
-^^^
+```
 
 Assigns the value "YES" to commissions greater than or equal to a million. Note that this is a text formula field using the custom currency field Commission.
 
@@ -213,9 +213,9 @@ Evaluates whether both of two values or expressions are true. Use this operator 
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 IF((Price<100 && Quantity<5), "Small", null)
-^^^
+```
 
 If the price is less than 100 and the quantity is less than five, this formula displays "Small". Otherwise, this field is empty.
 
@@ -227,15 +227,15 @@ Evaluates whether at least one of multiple values or expressions is true. Use th
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 IF(Priority = "High" || Status = "New", ROUND(NOW()-CreatedDate, 0), null)
-^^^
+```
 
 If the case Status is "New" or Priority is "High", this formula returns the number of days the case has been unprocessed. If the case was opened today, the field shows zero.
 
-^^^javascript
+```javascript
 Discount_Rate__c < 0 || Discount_Rate__c > 0.40
-^^^
+```
 
 When the custom field Discount Rate's value is not between 0 and 40%, this validation rule formula displays the error message: "Discount Rate cannot exceed 40%."
 
@@ -252,9 +252,9 @@ Connects two or more strings.
 
 **Return Value:** Text
 
-^^^javascript
+```javascript
 "Expense-" & Trip_Name__c & "-" & ExpenseNum__c
-^^^
+```
 
 This formula displays the text “Expense-” before the trip name and expense number. It is a text formula field using the custom field Expense Number.
 
@@ -274,9 +274,9 @@ Returns the date before or after a specified number of months from the given dat
 
 **Return Value:** Date
 
-^^^javascript
+```javascript
 ADDMONTHS(StartDate, 5)
-^^^
+```
 
 Adds 5 months to the start date. For example, if the start date is September 20, 2017, the result date is February 20, 2018; if the start date is September 30, 2017, the result date is February 28, 2018.
 
@@ -298,9 +298,9 @@ Returns a date value from the year, month, and day values you enter. If the DATE
 
 **Return Value:** Date
 
-^^^javascript
+```javascript
 DATE(2005, 1, 2)
-^^^
+```
 
 Creates a date field for January 2, 2005.
 
@@ -322,15 +322,15 @@ Returns a date value for date, datetime, or text expressions.
 
 **Return Value:** Date
 
-^^^javascript
+```javascript
 DATEVALUE(ClosedDate)
-^^^
+```
 
 Displays a date value based on the ClosedDate datetime field value. The parameter ClosedDate can be a date, datetime type, or a string type in date/datetime format.
 
-^^^javascript
+```javascript
 DATEVALUE("2005-1-15 12:30")
-^^^
+```
 
 Returns the date value "2005-01-15".
 
@@ -351,21 +351,21 @@ Returns the year, month, day, and GMT time value.
 
 **Return Value:** Datetime
 
-^^^javascript
+```javascript
 DATETIMEVALUE(TEXT(ClosedDate))
-^^^
+```
 
 Displays a datetime value based on the ClosedDate field value, where the parameter ClosedDate must be a date type and not a datetime type, as TEXT(ClosedDate) returns a string like "2020-11-04 03:45:00Z" with a 'Z' character for datetime types.
 
-^^^javascript
+```javascript
 DATETIMEVALUE(SUBSTITUTE(TEXT(ClosedDate), "Z", ""))
-^^^
+```
 
 Displays a datetime value based on the ClosedDate field value, where the parameter ClosedDate can be a date or time type, as this example removes the final 'Z' character.
 
-^^^javascript
+```javascript
 DATETIMEVALUE("2005-11-15 17:00:00")
-^^^
+```
 
 Returns the date and time value "2005-11-15T17:00:00.000Z" (i.e., UTC time 17:00:00 on November 15, 2005).
 
@@ -379,9 +379,9 @@ Returns a number between 1 and 31 representing the day of the month.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 DAY(Code_Freeze__c)
-^^^
+```
 
 Returns the day from your custom Code Freeze date. Note that this does not apply to "datetime" fields.
 
@@ -399,15 +399,15 @@ Returns the hour value in 24-hour format (0~23) for the GMT time zone.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 HOUR(ClosedDate)
-^^^
+```
 
 Displays only the hour from the datetime ClosedDate field.
 
-^^^javascript
+```javascript
 HOUR(DATETIMEVALUE('2018-12-12 18:06:08'))
-^^^
+```
 
 Returns 18, not 10.
 
@@ -421,15 +421,15 @@ Returns a number between 0 and 999 representing the millisecond value.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 MILLISECOND(DATETIMEVALUE(SUBSTITUTE(TEXT(ClosedDate), "Z", "")))
-^^^
+```
 
 Displays only the millisecond value from the datetime field of ClosedDate.
 
-^^^javascript
+```javascript
 MILLISECOND(NOW())
-^^^
+```
 
 Returns the current time's millisecond value, such as 125.
 
@@ -443,15 +443,15 @@ Returns a number between 0 and 60 representing the minute value.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 MINUTE(DATETIMEVALUE(SUBSTITUTE(TEXT(ClosedDate), "Z", "")))
-^^^
+```
 
 Displays only the minute value from the datetime field of ClosedDate.
 
-^^^javascript
+```javascript
 MINUTE(NOW())
-^^^
+```
 
 Returns the current time's minute value, such as 12.
 
@@ -469,15 +469,15 @@ Returns the month as a number from a given date, between 1 (January) and 12 (Dec
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 MONTH(SLAExpirationDate__c)
-^^^
+```
 
 Returns the month of your Service Level Agreement expiration. This example uses a custom date field named SLA Expiration Date.
 
-^^^javascript
+```javascript
 MONTH(TODAY())
-^^^
+```
 
 Returns the current month in numeric format. For instance, for the month "February," it returns the value "2".
 
@@ -493,9 +493,9 @@ Returns the current date and time.
 
 **Return Value:** Datetime
 
-^^^javascript
+```javascript
 IF(Status = "Open", ROUND(NOW()-CreatedDate, 0), null)
-^^^
+```
 
 This formula checks whether a lead is unprocessed; if so, it calculates the number of days unprocessed by subtracting the creation date and time from the current date and time. The result is the number of unprocessed days rounded to zero decimal places. If the lead is processed, this field is empty.
 
@@ -519,15 +519,15 @@ Returns the second value in a range from 0 to 60.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 SECOND(ClosedDate)
-^^^
+```
 
 Displays only the second value from the datetime field of ClosedDate.
 
-^^^javascript
+```javascript
 SECOND(DATETIMEVALUE('2018-12-12 18:06:08'))
-^^^
+```
 
 Returns 8.
 
@@ -539,9 +539,9 @@ Returns the current time value (GMT). If you only want to track time and not the
 
 **Return Value:** Time
 
-^^^javascript
+```javascript
 IF(Rating="Hot", TEXT(TIMENOW()), TEXT(TIMEVALUE(CreatedDate)))
-^^^
+```
 
 This formula checks and understands if a lead is rated as "Hot"; if so, it returns the correct time. Otherwise, it returns the time since someone created the lead.
 
@@ -563,9 +563,9 @@ Returns a local time value without a date, such as working hours.
 
 **Return Value:** Time
 
-^^^javascript
+```javascript
 TEXT(TIMEVALUE("17:30:45.125"))
-^^^
+```
 
 Returns "17:30:45.125".
 
@@ -582,15 +582,15 @@ Returns the current date as a date data type.
 
 **Return Value:** Date
 
-^^^javascript
+```javascript
 TODAY()-Sample_date_c
-^^^
+```
 
 Calculates how many more days are left in the sample.
 
-^^^javascript
+```javascript
 SampleDate < TODAY()
-^^^
+```
 
 This example ensures users cannot change the Sample Date to a past date.
 
@@ -614,9 +614,9 @@ Returns the day of the week for a specified date, with 1 representing Sunday, 2 
 
 **Return Value:** Numeric
 
-^^^yaml
+```yaml
 WEEKDAY(customdate1__c)
-^^^
+```
 
 Returns the day of the week for a specified date using customdate1__c.
 
@@ -635,9 +635,9 @@ Returns the year in numeric format as a four-digit number for a given date.
 
 **Return Value:** Numeric
 
-^^^yaml
+```yaml
 YEAR(TODAY()) - YEAR(Initial_Meeting__c)
-^^^
+```
 
 Returns the number of years since your initial meeting with a client. This example uses a custom date field named Initial Meeting.
 
@@ -663,9 +663,9 @@ Returns TRUE if all values are true, and FALSE if one or more values are false. 
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 IF(AND(Price<1,Quantity<1),"Small", null)
-^^^
+```
 
 This formula displays "Small" if both price and quantity are less than 1. If either the price or quantity of an asset is greater than 1, this field is empty.
 
@@ -682,15 +682,15 @@ Determines if an expression has a value and returns a substitute expression if i
 
 **Return Value:** The same data type as the passed parameters
 
-^^^yaml
+```yaml
 BLANKVALUE(Department, "Undesignated")
-^^^
+```
 
 If the department field contains a value, this formula returns the value of the department field. If the department field is empty, this formula returns "Undesignated."
 
-^^^yaml
+```yaml
 BLANKVALUE(Payment_Due_Date__c, StartDate + 5)
-^^^
+```
 
 This formula returns the date five days after the start date of the contract when Payment Due Date is empty. Payment Due Date is a custom date field.
 
@@ -741,9 +741,9 @@ Checks a given expression against a series of values. If the expression equals o
 
 This is an example of a custom formula field, Days Open, that displays different text based on the number of days a case has been unhandled:
 
-^^^javascript
+```javascript
 CASE(Days_Open__c, 3, "Reassign", 2, "Assign Task", "Maintain")
-^^^
+```
 
 Displays the following text:
 
@@ -755,7 +755,7 @@ Displays the following text:
 
 This formula field displays the month of the last activity or "None" if there is no activity:
 
-^^^yaml
+```yaml
 CASE(MONTH(LastActivityDate),
 1, "January",
 2, "February",
@@ -770,7 +770,7 @@ CASE(MONTH(LastActivityDate),
 11, "November",
 12, "December",
 "None")
-^^^
+```
 
 ***Default Value Examples:***
 
@@ -778,9 +778,9 @@ CASE(MONTH(LastActivityDate),
 
 Use the following default value formula to insert a different discount rate in an opportunity based on the department of the person who created the opportunity:
 
-^^^yaml
+```yaml
 CASE(User.Department, "IT", 0.25, "Field", 0.15, 0)
-^^^
+```
 
 In this example, the formula inserts a 25% discount rate for all opportunities created by users in the "IT" department, or a 15% discount rate for all opportunities created by personnel in the "Field" department. If the creator does not belong to either of these departments, the discount rate is zero. This is a custom percentage field in the opportunity using the standard user field Department.
 
@@ -788,9 +788,9 @@ In this example, the formula inserts a 25% discount rate for all opportunities c
 
 You might want to associate products with their language so users know what type of documentation or adapters to include. Use the following default value formula to automatically set the language of a product based on the country of the user who created it. In this example, if the user's country is "Japan," the default value is "Japanese"; if the user's country is "US," the default value is "English." If neither, the default value "unknown" is inserted into the product language field.
 
-^^^yaml
+```yaml
 CASE($User.Country, "Japan", "Japanese", "US", "English", "unknown")
-^^^
+```
 
 <alert type="info">
 ■ Ensure your `value1`, `value2`, etc., expressions are of the same data type and must match the data type of the first parameter value.
@@ -837,9 +837,9 @@ Determines if an expression is true or false. If true, it returns a given value;
 
 ***1. Payment Overdue***
 
-^^^javascript
+```javascript
 IF(AND(Payment_Due_Date__c < TODAY(), Payment_Status__c = "UNPAID"), "PAYMENT OVERDUE", null)
-^^^
+```
 
 This formula determines whether the payment due date has passed and whether the payment status is "UNPAID." If so, it returns the text "PAYMENT OVERDUE"; otherwise, it keeps the field empty. This example uses a custom date field named Payment Due Date and a custom text field named Payment Status.
 
@@ -847,9 +847,9 @@ This formula determines whether the payment due date has passed and whether the 
 
 Use this default value formula to set the tax rate of an asset based on the city of the user. Create a custom percentage field using the following default value:
 
-^^^yaml
+```yaml
 IF($user.city = "Napa", 0.0750, IF($user.city = "Paso Robles", 0.0725, IF($user.city = "Sutter Creek", 0.0725, IF($user.city = "Los Olivos", 0.0750, IF($user.city = "Livermore", 0.0875, null )))))
-^^^
+```
 
 <alert type="info">
 * Ensure that your value_if_true and value_if_false expressions are of the same data type and are not Boolean values.
@@ -867,9 +867,9 @@ Determines whether an expression has a value, returning TRUE if it does not. If 
 
 **Return Value:** Boolean
 
-^^^yaml
+```yaml
 ((IF(ISBLANK(Maint_Amount__c), 0, 1) + IF(ISBLANK(Services_Amount__c), 0, 1) + IF(ISBLANK(Discount_Percent__c), 0, 1) + IF(ISBLANK(Amount), 0, 1) + IF(ISBLANK(Timeline__c), 0, 1)) / 5
-^^^
+```
 
 This formula extracts a set of fields and calculates the percentage used by the personnel. It checks five fields to see if they are empty. If empty, that field counts as 0. For any field containing a value, it counts "1," and the total is divided by five (the number of fields calculated). This formula requires selecting the "treat blank fields as blank" option under "blank field handling," otherwise ISBLANK will always return FALSE.
 
@@ -910,9 +910,9 @@ Returns FALSE for TRUE, and TRUE for FALSE.
 
 **Parameters:** `boolean` The expression you want to evaluate.
 
-^^^javascript
+```javascript
 IF(NOT(Status = "Closed"), ROUND(NOW()-CreatedDate, 0), null)
-^^^
+```
 
 Checks if the variable is unhandled; if so, it calculates the number of days it has been unhandled by subtracting the creation date and time from the current date and time. The result is the number of unhandled days rounded to zero decimal places. If the variable is handled, this field is empty.
 
@@ -930,9 +930,9 @@ Returns TRUE if any expression is true. If all expressions are false, it returns
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 IF(OR(Priority="High", Status="New"), ROUND(NOW()-CreatedDate, 0), null)
-^^^
+```
 
 If the case's Status is "New" or the Priority is "High," this formula returns the number of days the case has been unhandled. If the case was opened today, the field shows zero.
 
@@ -949,9 +949,9 @@ Calculates the absolute value of a number. The absolute value of a number is the
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 ABS(ExpectedRevenue)
-^^^
+```
 
 Calculates the positive value of the Expected Revenue amount, regardless of whether it is positive or negative.
 
@@ -965,15 +965,15 @@ Rounds a number up to the nearest integer; for negative numbers, it first rounds
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 CEILING(2.3)
-^^^
+```
 
 Returns 3, as 2.3 is rounded up to the nearest integer.
 
-^^^javascript
+```javascript
 CEILING(-2.3)
-^^^
+```
 
 Returns -3, as -2.3 is rounded up to the nearest positive integer below zero and then given a negative sign.
 
@@ -987,15 +987,15 @@ Returns a value equal to the power of e raised to the specified number.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 EXP(3)
-^^^
+```
 
 This formula returns a value equal to e raised to the power of three.
 
-^^^javascript
+```javascript
 Principal__c  EXP(Rate__c  Years__c)
-^^^
+```
 
 This formula calculates compound interest based on a custom currency field for principal, a custom percentage field for rate, and a custom numeric field for years.
 
@@ -1009,15 +1009,15 @@ Returns a number rounded down to the nearest integer; for negative numbers, it r
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 FLOOR(2.5)
-^^^
+```
 
 Returns 2, as 2.5 is rounded down to the nearest integer.
 
-^^^javascript
+```javascript
 FLOOR(-2.5)
-^^^
+```
 
 Returns -2, as -2.5 is rounded down to the nearest negative number above zero.
 
@@ -1031,15 +1031,15 @@ Returns the natural logarithm of a specified value. The natural logarithm is bas
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 LN(10)
-^^^
+```
 
 Returns the natural logarithm of 10, which is approximately 2.30.
 
-^^^javascript
+```javascript
 LN(Value__c)
-^^^
+```
 
 Returns the natural logarithm of a custom numeric field named Value.
 
@@ -1053,9 +1053,9 @@ Returns the base 10 logarithm of a number.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 LOG(Salary__c)
-^^^
+```
 
 Calculates the logarithm of someone's salary.
 
@@ -1079,25 +1079,25 @@ Returns the largest number in a series of numbers.
 
 ***1. Service Fee***
 
-^^^javascript
+```javascript
 MAX(0.06 * Total_Cost__c , Min_Service_Charge__c)
-^^^
+```
 
 ***2. Book Royalties***
 
 This example of a formula field calculates a service fee, taking the greater of 6% of the total cost or a minimum service charge. Note that the minimum service charge is a custom currency field with a default value of $15. However, if the minimum service charge is not always the same amount, you could make that field a formula field.
 
-^^^javascript
+```javascript
 MAX(0.10 * Pages__c, (Retail_Price__c * 0.07) * Total_Sold__c)
-^^^
+```
 
 ***3. Commission***
 
 This formula determines the royalties to be paid on a book. It shows the larger of two amounts: $0.07 per book sold or $0.10 per page. It assumes you have custom numeric fields named Pages and Total Sold and a custom currency field named Retail Price.
 
-^^^javascript
+```javascript
 MAX($user.Commission_Percent__c * Price, Price * Account_Discount__c, 100)
-^^^
+```
 
 This example determines the commission for an asset record based on the larger of the user's price commission percentage, the price times the discount percentage stored as an amount, or $100. This example assumes you have two custom percentage fields for the user and the asset.
 
@@ -1111,15 +1111,15 @@ Rounds a number up to the nearest integer; for negative numbers, it rounds up to
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 MCEILING(2.3)
-^^^
+```
 
 Returns 3, as 2.3 is rounded up to the nearest integer.
 
-^^^javascript
+```javascript
 MCEILING(-2.3)
-^^^
+```
 
 Returns -3, as for negative numbers, -2.3 is rounded down to the nearest negative integer.
 
@@ -1135,15 +1135,15 @@ Rounds a number down to the nearest integer; for negative numbers, it rounds dow
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 MFLOOR(2.3)
-^^^
+```
 
 Returns 2, as 2.3 is rounded down to the nearest integer.
 
-^^^javascript
+```javascript
 MFLOOR(-2.3)
-^^^
+```
 
 Returns -3, as for negative numbers, -2.3 is rounded down to the nearest negative integer.
 
@@ -1163,15 +1163,15 @@ Returns the smallest number in a series of numbers.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 MIN(250, Contribution__c /2)
-^^^
+```
 
 In this example, the formula determines the amount to contribute in an employee 401K match based on half of the employee's contribution or $250, whichever is less. It assumes you have a custom currency field named Contribution.
 
-^^^javascript
+```javascript
 MIN(Gross__c * Bonus_Percent__c, ​ Performance__c / Number_of_Employees__c)
-^^^
+```
 
 This example determines the employee bonus amount based on the lesser of two amounts: the employee's total times the bonus percentage or the company's performance bonus amount divided among all employees. It also assumes you have a custom numeric field named Number of Employees, a custom percentage field named Bonus Percent, and custom currency fields for the employee's Gross and the company's Performance.
 
@@ -1188,20 +1188,20 @@ Returns the remainder of a number divided by a specified divisor.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 MOD(3, 3)MOD(4, 3)MOD(123, 100)
-^^^
+```
 
 Returns 0; returns 1; returns 23.
 
 You might want to prevent users from scheduling meetings on Saturdays or Sundays. Apply this validation rule example to a custom date field named My Date.
 
-^^^yaml
+```yaml
 CASE(MOD(My_Date__c - DATE(1900, 1, 7), 7),
 0, 0,
 6, 0,
 1) = 0
-^^^
+```
 
 When the value of My Date is not within the range of Monday to Friday, this example returns the error message: "My Date is not a weekday."
 
@@ -1220,14 +1220,14 @@ Returns a number closest to the specified number, constrained by the specified n
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 ROUND (1.5, 0) = 2ROUND (1.2345, 0) = 1ROUND (-1.5, 0) = -2ROUND (225.49823, 2) = 225.50
-^^^
+```
 
 
-^^^javascript
+```javascript
 ROUND( Amount-Amount* Discount_Percent__c,2)
-^^^
+```
 
 This formula can be used to calculate the discounted amount of a business opportunity, rounded to two decimal places. This example is a numeric formula field for a business opportunity, using a custom percentage field named Discount Percent.
 
@@ -1251,15 +1251,15 @@ Returns the positive square root of a given number.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 SQRT(25)
-^^^
+```
 
 Returns the square root of 25 (which is 5).
 
-^^^javascript
+```javascript
 SQRT(Amplitude__c)
-^^^
+```
 
 Returns the square root of a custom numeric field representing the amplitude of an earthquake.
 
@@ -1283,9 +1283,9 @@ Determines if text begins with specific characters, returning TRUE if it does. O
 
 **Return Value:** Boolean
 
-^^^yaml
+```yaml
 IF(BEGINS(Product_type__c, "ICU"), "Medical", "Technical")
-^^^
+```
 
 If the custom text field Product_type begins with "ICU", this example returns "Medical". For all other products, it returns "Technical".
 
@@ -1306,9 +1306,9 @@ Inserts a line break in a text string.
 
 **Return Value:** Text
 
-^^^yaml
+```yaml
 CASE(ShippingCountry, "USA", ShippingStreet & BR() & ShippingCity & ", " & ShippingState & " " & ShippingPostalCode & BR() & ShippingCountry, "France", ShippingStreet & BR() & ShippingPostalCode & " " & ShippingCity & BR() & ShippingCountry, "etc")
-^^^
+```
 
 This formula field displays a formatted mailing address for contacts, potentially including spaces and line breaks at appropriate places, depending on the country/region.
 
@@ -1333,9 +1333,9 @@ Converts a 15-character ID to a case-sensitive 18-character ID.
 
 **Return Value:** Text
 
-^^^javascript
+```javascript
 CASESAFEID(Id)
-^^^
+```
 
 This formula replaces a 15-character ID with an 18-character, case-sensitive ID. Assuming the Id value is abcdefghijklmno, the formula returns "abcdefghijklmnoAAA".
 
@@ -1352,9 +1352,9 @@ Compares two text parameters, returning TRUE if the first contains the second. O
 
 **Return Value:** Boolean
 
-^^^javascript
+```javascript
 IF(CONTAINS(Product_Type__c, "part"), "Parts", "Service")
-^^^
+```
 
 This formula checks the contents of the custom text field Product_Type and returns "Parts" for any product containing the word "part". Otherwise, it returns "Service". Note that if the Product_Type field contains "Part" or "PART", this formula will return "Services".
 
@@ -1383,15 +1383,15 @@ Returns the position of a specified string within a text string, represented as 
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 FIND(" ", Street)
-^^^
+```
 
 Returns the position of the first space in the Street field. This number can be used to determine the length of a street address, so that you can separate the street address from the street name in an address field.
 
-^^^javascript
+```javascript
 SUBSTITUTE(Email, LEFT(Email, FIND("@", Email)), "www.")
-^^^
+```
 
 Finds the position of the @ symbol in a personal email address to determine the length of text to replace with “www.”, thereby deriving its web address.
 
@@ -1432,15 +1432,15 @@ Creates a link from specified text to a specified URL that is clickable.
 * *friendly_name:* `text` The link text.
 * *target:* `text` The window or frame in which to display the content.
 
-^^^javascript
+```javascript
 HYPERLINK("/00U/e?retURL=%2F006x0000001T8Om&what_id=" & Id, "Create Event")
-^^^
+```
 
 Adds a link named "Create Event", which, when clicked, creates a new event associated with the current target.
 
-^^^javascript
+```javascript
 HYPERLINK("http://servername/call?id=" & Id & "&phone=" & Phone, Phone)
-^^^
+```
 
 Creates a clickable phone number field that, when clicked, automatically dials the number. In this example, replace "servername" and "call" with your dialing tool name and its dialing command. Insert the identifier of the contact, opportunity, or customer record in the merge field Id. The first Phone merge field informs the dialing tool of the number to dial, and the last Phone merge field uses the value of the Phone field as the clickable text for dialing.
 
@@ -1482,9 +1482,9 @@ Determines if any values selected in a multi-select picklist field are equal to 
 
 ***Example:***
 
-^^^javascript
+```javascript
 INCLUDES(Hobbies__c, "Golf")
-^^^
+```
 
 If one of the values selected in the Hobbies custom multi-select picklist field is "Golf", INCLUDES(Hobbies__c, "Golf") returns TRUE.
 
@@ -1515,17 +1515,17 @@ Determines if a picklist field's value is equal to the specified text literal.
 
 ***1. Contract Activation***
 
-^^^javascript
+```javascript
 IF(ISPICKVAL(Status, "Activated"), NOW()-ActivatedDate, null)
-^^^
+```
 
 Calculates the number of days since a contract was activated. If the contract status is not "Activated", this field is empty.
 
 ***2. Commission Amount***
 
-^^^javascript
+```javascript
 IF(ISPICKVAL(StageName, "Closed Won"), ROUND(Amount * 0.02, 2), 0)
-^^^
+```
 
 This example calculates the commission amount for any opportunity at the "Closed Won" stage. The value of this field will be 0.02 times the amount of any won opportunities. For opportunities that are either open or lost, the commission value is zero.
 
@@ -1545,9 +1545,9 @@ Determines whether text begins with specific characters, returning TRUE if it do
 
 **Return Value:** Boolean
 
-^^^yaml
+```yaml
 IF(BEGINS(Product_type__c, "ICU"), "Medical", "Technical")
-^^^
+```
 
 If the custom text field Product_type begins with "ICU", this example returns "Medical". For all other products, it returns "Technical".
 
@@ -1573,9 +1573,9 @@ Returns a specified number of characters from the beginning of a text string.
 
 **Return Value:** Text
 
-^^^javascript
+```javascript
 TRIM(LEFT(LastName, 5)) & "-" & TRIM(RIGHT(SSN__c, 4))
-^^^
+```
 
 This formula displays the first five characters of the name and the last four characters of the social security number (separated by a hyphen). Note that this example uses a custom text field named SSN.
 
@@ -1596,9 +1596,9 @@ Returns the number of characters in a specified text string.
 
 **Return Value:** Numeric
 
-^^^javascript
+```javascript
 LEN(PartNumber__c)
-^^^
+```
 
 This formula returns the number of characters in the Product Code field.
 
@@ -1612,15 +1612,15 @@ Converts all letters in a specified text string to lowercase. Any character that
 
 **Return Value:** Text
 
-^^^javascript
+```javascript
 LOWER("MYCOMPANY.COM")
-^^^
+```
 
 Returns "mycompany.com."
 
-^^^javascript
+```javascript
 LOWER(TickerSymbol)
-^^^
+```
 
 Returns the text in Ticker Symbol in lowercase characters.
 
@@ -1644,25 +1644,25 @@ Inserts specified characters on the left side of a text string.
 
 If the length of the value in the text exceeds the pad string, then the text is truncated to the size of the pad length.
 
-^^^javascript
+```javascript
 LPAD(Name, 20, "")
-^^^
+```
 
 Truncates the Name field after 20 characters. For instance, if the initial value is "mycompany.com", the returned value is "mycompany.com"; if the initial value is "mycompany_is_good_in_china.com", the returned value is "mycompany_is_good_in".
 
 ***2. My_Company: No Change***
 
-^^^javascript
+```javascript
 LPAD('my_company.com', 14, 'z')
-^^^
+```
 
 Returns "my_company.com" without any change, as it contains 14 characters.
 
 ***3. Field Name with Z Padding***
 
-^^^javascript
+```javascript
 LPAD("my_company.com", 15, "z")
-^^^
+```
 
 Returns the name "zmy_company.com".
 
@@ -1687,21 +1687,21 @@ Returns a specified number of characters from the middle of a text string, start
 
 **Return Value:** Text
 
-^^^javascript
+```javascript
 MID(Division, 3, 4)
-^^^
+```
 
 Returns four characters starting from the third character on the left in the Division name. For user records, this represents a department code.
 
-^^^javascript
+```javascript
 MID("ABCDEFGH", 3, 4)
-^^^
+```
 
 Returns "CDEF".
 
-^^^javascript
+```javascript
 MID("ABCDEFGH", 0, 10)
-^^^
+```
 
 Returns "H", indicating the start position is from 0 instead of 1. Passing a value of 0 as the starting position will not return values as expected.
 
@@ -1725,9 +1725,9 @@ Returns a specified number of characters from the right side of a text string.
 
 **Return Value:** Text
 
-^^^javascript
+```javascript
 TRIM(LEFT(LastName, 5)) & "-" & TRIM(RIGHT(SSN__c, 4))
-^^^
+```
 
 Displays the first five characters of the last name and the last four characters of the social security number (separated by a hyphen). Note that this example assumes you have a text custom field named SSN.
 
@@ -1756,25 +1756,25 @@ Inserts specified characters on the right side of a text string.
 
 ***1. Field Name: Truncated***
 
-^^^javascript
+```javascript
 RPAD(Name, 20, "")
-^^^
+```
 
 Truncates the Name field after 20 characters. For instance, if the initial value is "mycompany.com", the returned value is "mycompany.com"; if the initial value is "mycompany_is_good_in_china.com", the returned value is "mycompany_is_good_in".
 
 ***2. My_Company: No Change***
 
-^^^javascript
+```javascript
 RPAD('my_company.com', 14, 'z')
-^^^
+```
 
 Returns “my_company.com” without any change, as it contains 14 characters.
 
 ***3. Field Name with Z Padding***
 
-^^^javascript
+```javascript
 RPAD("my_company.com", 15, "z")
-^^^
+```
 
 Returns the name "my_company.comz".
 
@@ -1801,15 +1801,15 @@ Replaces old text with new text in a text string.
 
 **Return Value:** Text
 
-^^^javascript
+```javascript
 SUBSTITUTE(Name, "Coupon", "Discount")
-^^^
+```
 
 Returns the name of an opportunity containing the term "Coupon", replacing "Coupon" in the name with "Discount".
 
-^^^javascript
+```javascript
 SUBSTITUTE(Email, LEFT(Email, FIND("@", Email)), "www.")
-^^^
+```
 
 Finds the position of the @ symbol in a personal email address to determine the length of text to replace with “www.”, thereby deriving its web address. For example, if the Email value is "abc@steedos.cn", running the formula will return "www.steedos.cn".
 
@@ -1832,9 +1832,9 @@ Converts percentage, number, date, datetime, or currency type fields to text any
 
 **Return Value:** Text
 
-^^^javascript
+```javascript
 TEXT(ExpectedRevenue)
-^^^
+```
 ## Advanced Functions
 
 ### REGEX
@@ -1854,9 +1854,9 @@ Compares a text field against a regular expression, returning TRUE if it matches
 
 This example ensures that a field named ID matches a regular expression representing an ***ID card number*** in the format 310000YYYYMMDD0000.
 
-^^^javascript
+```javascript
 NOT(REGEX(ID, "[1-9][0-9]{5}(19|20)[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}([0-9]|x|X)"))
-^^^
+```
 
 
 
@@ -1885,9 +1885,9 @@ Removes spaces and tabs from the beginning and end of a text string.
 
 **Return Value:** Text
 
-^^^javascript
+```javascript
 TRIM(LEFT(LastName,5)) & "-" & RIGHT(FirstName, 1)
-^^^
+```
 
 Provides users with a network ID, which separates the first five characters of their surname and the first character of their first name with a hyphen.
 
@@ -1901,15 +1901,15 @@ Converts all letters in a specified text string to uppercase. Any character that
 
 **Return Value:** Text
 
-^^^javascript
+```javascript
 UPPER("mycompany.com")
-^^^
+```
 
 Returns "MYCOMPANY.COM."
 
-^^^javascript
+```javascript
 UPPER("Mycompany.com 123")
-^^^
+```
 
 Returns "MYCOMPANY.COM 123."
 
@@ -1927,17 +1927,17 @@ Converts a text string to a number.
 
 ***1. Lead Number***
 
-^^^javascript
+```javascript
 VALUE(Lead_Number__c)
-^^^
+```
 
 Returns the number corresponding to the text value in the auto-number field Lead Number. This can be useful if you want to use the Lead Number field in calculations. Note that the auto-number field is actually a text field and must be converted to a number field for numerical calculations.
 
 ***2. Lead Round-Robin Assignment***
 
-^^^javascript
+```javascript
 MOD(VALUE(Lead_Number__c), 3)
-^^^
+```
 
 This formula applies to a custom formula field named Round_Robin_ID, assigning 0, 1, or 2 to each lead. The formula uses a custom auto-number field named Lead Number, which assigns a unique number starting at 1 to each lead. The MOD function divides the number of leads by the number of available lead queues (3 in this example) and then returns the remainder value 0, 1, or 2. Use the value of this formula field in your lead assignment rules to distribute lead records to different queues. For example:
 
