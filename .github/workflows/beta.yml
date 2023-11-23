@@ -1,4 +1,4 @@
-name: Deploy Docusaurus to AWS S3
+name: Deploy Beta Site
 
 on:
   push:

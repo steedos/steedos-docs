@@ -52,5 +52,5 @@ npx docs-to-pdf --initialDocURLs="https://docs.steedos.cn/zh-CN/developer/"  --c
 **Platform Documentation**
 
 ```shell
-npx docs-to-pdf --initialDocURLs="https://docs.steedos.cn/zh-CN/overview"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --baseUrl="https://docs.steedos.cn/zh-CN/" --outputPDFFilename	'build/steedos-platform-zh-CN.pdf'
+npx docs-to-pdf --initialDocURLs="https://docs.steedos.cn/zh-CN/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --baseUrl="https://docs.steedos.cn/zh-CN/" --outputPDFFilename	'build/steedos-platform-zh-CN.pdf'  --excludeSelectors=".breadcrumbs,section.row,.theme-doc-footer" --pdfMargin="80,60,80,60" --coverTitle="Steedos Platform Documentaion"   --excludePaths="/zh-CN/getting-started,/zh-CN/user,/zh-CN/deploy"
 ```
