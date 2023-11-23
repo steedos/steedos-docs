@@ -23,7 +23,7 @@ jobs:
         run: npm run build
 
       - name: Run Docusaurus site
-        run: npm run serve
+        run: npm run docusaurus serve -- --no-open &
 
       - name: Build Developer PDF
         run: npx docs-to-pdf --initialDocURLs="http://localhost:3000/zh-CN/developer/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --outputPDFFilename="build/steedos-developer-zh-CN.pdf" --excludeSelectors=".breadcrumbs,section.row,.theme-doc-footer" --pdfMargin="80,60,80,60" --coverTitle="Steedos Developer Documentaion"  --baseUrl="http://localhost:3000/zh-CN/developer/"  --excludePaths="/zh-CN/developer/api/openapi"
@@ -47,6 +47,9 @@ jobs:
           AWS_S3_REGION: cn-northwest-1
           SOURCE_DIR: ./build/
 
-      - name: Invalidate CloudFront distribution
-        run: |
-          aws cloudfront create-invalidation --distribution-id E3PZXWVY8YMW6P --paths "/*"
+      # - name: Invalidate CloudFront distribution
+      #   run: |
+      #     aws cloudfront create-invalidation --distribution-id E3PZXWVY8YMW6P --paths "/*"
+
+       - name: Cleanup
+        run: pkill node
