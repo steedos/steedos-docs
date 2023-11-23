@@ -1,1079 +1,761 @@
 ---
 sidebar_position: 2
-title: Formula Operators and Functions
+title: Formula Functions
 ---
 
 Use operators and functions when building formulas. All functions are available everywhere that you can include a formula such as formula fields, validation rules, approval processes, and workflow rules, unless otherwise specified.
 
-Steedos Formula Engine is compatible with Salesforce, allowing you to directly use Salesforce's function syntax to write formulas.
+Translate mathematical and logical operators and functions for use in formulas. Unless otherwise specified, all functions are applicable in any context where formulas are used, such as formula fields, validation rules, approval processes, and workflow rules.
 
-[Salesforce Formula Operators and Functions by Context
-](https://help.salesforce.com/s/articleView?language=en_US&id=sf.customize_functions.htm&type=5)
+## Mathematical Operators
 
-- [+ (Add)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_add.htm&language=en_US&type=5)
-- Calculates the sum of two values.
-- [- (Subtract)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_subtract.htm&language=en_US&type=5)
-- Calculates the difference of two values.
-- [* (Multiply)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_multiply.htm&language=en_US&type=5)
-- Multiplies its values.
-- [/ (Divide)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_divide.htm&language=en_US&type=5)
-- Divides its values.
-- [^ (Exponentiation)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_exponentiation.htm&language=en_US&type=5)
-- Raises a number to a power of a specified number.
-- [() (Open Parenthesis and Close Parenthesis)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_open_parenthesis_and_close_parenthesis.htm&language=en_US&type=5)
-- Specifies that the expressions within the open parenthesis and close parenthesis are evaluated first. All other expressions are evaluated using standard operator precedence.
-- [= and == (Equal)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_and_equal.htm&language=en_US&type=5)
-- Evaluates if two values are equivalent. The = and == operators are interchangeable.
-- [\<\> and != (Not Equal)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_not_equal.htm&language=en_US&type=5)
-- Evaluates if two values aren’t equivalent.
-- [< (Less Than)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_less_than.htm&language=en_US&type=5)
-- Evaluates if a value is less than the value that follows this symbol.
-- [> (Greater Than)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_greater_than.htm&language=en_US&type=5)
-- Evaluates if a value is greater than the value that follows this symbol.
-- [<= (Less Than or Equal)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_less_than_or_equal.htm&language=en_US&type=5)
-- Evaluates if a value is less than or equal to the value that follows this symbol.
-- [>= (Greater Than or Equal)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_greater_than_or_equal.htm&language=en_US&type=5)
-- Evaluates if a value is greater than or equal to the value that follows this symbol.
-- [&& (AND)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_and.htm&language=en_US&type=5)
-- Evaluates if two values or expressions are both true. Use this operator as an alternative to the logical function AND.
-- [|| (OR)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_or.htm&language=en_US&type=5)
-- Evaluates if at least one of multiple values or expressions is true. Use this operator as an alternative to the logical function OR.
-- [& and + (Concatenate)](https://help.salesforce.com/s/articleView?id=sf.customize_functions_and_concatenate.htm&language=en_US&type=5)
-- Connects two or more strings.
-- [ABS](https://help.salesforce.com/s/articleView?id=sf.customize_functions_abs.htm&language=en_US&type=5)
-- Calculates the absolute value of a number. The absolute value of a number is the number without its positive or negative sign.
-- [ADDMONTHS](https://help.salesforce.com/s/articleView?id=sf.customize_functions_addmonths.htm&language=en_US&type=5)
-- Returns the date that is the indicated number of months before or after a specified date. If the specified date is the last day of the month, the resulting date is the last day of the resulting month. Otherwise, the result has the same date component as the specified date.
-- [AND](https://help.salesforce.com/s/articleView?id=sf.customize_functions_and1.htm&language=en_US&type=5)
-- Returns a TRUE response if all values are true; returns a FALSE response if one or more values are false.
-- [BEGINS](https://help.salesforce.com/s/articleView?id=sf.customize_functions_begins.htm&language=en_US&type=5)
-- Determines if text begins with specific characters and returns TRUE if it does. Returns FALSE if it doesn't.
-- [BLANKVALUE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_blankvalue.htm&language=en_US&type=5)
-- Determines if an expression has a value and returns a substitute expression if it doesn’t. If the expression has a value, returns the value of the expression.
-- [BR](https://help.salesforce.com/s/articleView?id=sf.customize_functions_br.htm&language=en_US&type=5)
-- Inserts a line break in a string of text.
-- [CASE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_case.htm&language=en_US&type=5)
-- Checks a given expression against a series of values. If the expression is equal to a value, returns the corresponding result. If it isn't equal to any values, it returns the else_result.
-- [CASESAFEID](https://help.salesforce.com/s/articleView?id=sf.customize_functions_casesafeid.htm&language=en_US&type=5)
-- Converts a 15-character ID to a case-insensitive 18-character ID. If you pass in an invalid ID, the function returns the ID passed in.
-- [CEILING](https://help.salesforce.com/s/articleView?id=sf.customize_functions_ceiling.htm&language=en_US&type=5)
-- Rounds a number up to the nearest integer, away from zero if negative.
-- [CONTAINS](https://help.salesforce.com/s/articleView?id=sf.customize_functions_contains.htm&language=en_US&type=5)
-- Compares two arguments of text and returns TRUE if the first argument contains the second argument. If not, returns FALSE.
-- [CURRENCYRATE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_currencyrate.htm&language=en_US&type=5)
-- Returns the conversion rate to the corporate currency for the given currency ISO code. If the currency is invalid, returns 1.0.
-- [DATE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_date.htm&language=en_US&type=5)
-- Returns a date value from year, month, and day values you enter. Salesforce displays an error on the detail page if the value of the DATE function in a formula field is an invalid date, such as February 29 in a non-leap year.
-- [DATEVALUE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_datevalue.htm&language=en_US&type=5)
-- Returns a date value for a date/time or text expression.
-- [DATETIMEVALUE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_datetimevalue.htm&language=en_US&type=5)
-- Returns a year, month, day, and GMT time value.
-- [DAY](https://help.salesforce.com/s/articleView?id=sf.customize_functions_day.htm&language=en_US&type=5)
-- Returns a day of the month in the form of a number between 1 and 31.
-- [DISTANCE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_distance.htm&language=en_US&type=5)
-- Calculates the distance between two locations in miles or kilometers.
-- [EXP](https://help.salesforce.com/s/articleView?id=sf.customize_functions_exp.htm&language=en_US&type=5)
-- Returns a value for e raised to the power of a number you specify.
-- [FIND](https://help.salesforce.com/s/articleView?id=customize_functions_find.htm&language=en_US&type=5)
-- Returns the position of a string within a string of text represented as a number.
-- [FLOOR](https://help.salesforce.com/s/articleView?id=sf.customize_functions_floor.htm&language=en_US&type=5)
-- Returns a number rounded down to the nearest integer, towards zero if negative.
-- [GEOLOCATION](https://help.salesforce.com/s/articleView?id=sf.customize_functions_geolocation.htm&language=en_US&type=5)
-- Returns a geolocation based on the provided latitude and longitude. Must be used with the DISTANCE function.
-- [GETRECORDIDS](https://help.salesforce.com/s/articleView?id=sf.customize_functions_getrecordsids.htm&language=en_US&type=5)
-- Returns an array of strings in the form of record IDs for the selected records in a list, such as a list view or related list.
-- [GETSESSIONID](https://help.salesforce.com/s/articleView?id=sf.customize_functions_getsessionid.htm&language=en_US&type=5)
-- Returns the user’s session ID.
-- [HOUR](https://help.salesforce.com/s/articleView?id=sf.customize_functions_hour.htm&language=en_US&type=5)
-- Returns the local time hour value without the date in the form of a number from 1 through 24.
-- [HTMLENCODE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_htmlencode.htm&language=en_US&type=5)
-- Encodes text and merge field values for use in HTML by replacing characters that are reserved in HTML, such as the greater-than sign (>), with HTML entity equivalents, such as &gt;.
-- [HYPERLINK](https://help.salesforce.com/s/articleView?id=sf.customize_functions_hyperlink.htm&language=en_US&type=5)
-- Creates a link to a URL specified that is linkable from the text specified.
-- [IF](https://help.salesforce.com/s/articleView?id=sf.customize_functions_if.htm&language=en_US&type=5)
-- Determines if expressions are true or false. Returns a given value if true and another value if false.
-- [IMAGE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_image.htm&language=en_US&type=5)
-- Inserts an image with alternate text and height and width specifications.
-- [IMAGEPROXYURL](https://help.salesforce.com/s/articleView?id=sf.customize_functions_imageproxyurl.htm&language=en_US&type=5)
-- Securely retrieves external images and prevents unauthorized requests for user credentials.
-- [INCLUDE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_include.htm&language=en_US&type=5)
-- Returns content from an s-control snippet. Use this function to reuse common code in many s-controls.
-- [INCLUDES](https://help.salesforce.com/s/articleView?id=sf.customize_functions_includes.htm&language=en_US&type=5)
-- Determines if any value selected in a multi-select picklist field equals a text literal you specify.
-- [ISBLANK](https://help.salesforce.com/s/articleView?id=sf.customize_functions_isblank.htm&language=en_US&type=5)
-- Determines if an expression has a value and returns TRUE if it does not. If it contains a value, this function returns FALSE.
-- [ISCHANGED](https://help.salesforce.com/s/articleView?id=sf.customize_functions_ischanged.htm&language=en_US&type=5)
-- Compares the value of a field to the previous value and returns TRUE if the values are different. If the values are the same, this function returns FALSE.
-- [ISCLONE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_isclone.htm&language=en_US&type=5)
-- Checks if the record is a clone of another record and returns TRUE if one item is a clone. Otherwise, returns FALSE.
-- [ISNEW](https://help.salesforce.com/s/articleView?id=sf.customize_functions_isnew.htm&language=en_US&type=5)
-- Checks if the formula is running during the creation of a new record and returns TRUE if it is. If an existing record is being updated, this function returns FALSE.
-- [ISNULL](https://help.salesforce.com/s/articleView?id=sf.customize_functions_isnull.htm&language=en_US&type=5)
-- Determines if an expression is null (blank) and returns TRUE if it is. If it contains a value, this function returns FALSE.
-- [ISNUMBER](https://help.salesforce.com/s/articleView?id=sf.customize_functions_isnumber.htm&language=en_US&type=5)
-- Determines if a text value is a number and returns TRUE if it is. Otherwise, it returns FALSE.
-- [ISPICKVAL](https://help.salesforce.com/s/articleView?id=sf.customize_functions_ispickval.htm&language=en_US&type=5)
-- Determines if the value of a picklist field is equal to a text literal you specify.
-- [JSENCODE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_jsencode.htm&language=en_US&type=5)
-- Encodes text and merge field values for use in JavaScript by inserting escape characters, such as a backslash (\), before unsafe JavaScript characters, such as the apostrophe (').
-- [JSINHTMLENCODE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_jsinhtmlencode.htm&language=en_US&type=5)
-- Encodes text and merge field values for use in JavaScript inside HTML tags by replacing characters that are reserved in HTML with HTML entity equivalents and inserting escape characters before unsafe JavaScript characters.
-- [JUNCTIONIDLIST](https://help.salesforce.com/s/articleView?id=sf.customize_functions_junctionidlist.htm&language=en_US&type=5)
-- Returns a JunctionIDList based on the provided IDs.
-- [LEFT](https://help.salesforce.com/s/articleView?id=sf.customize_functions_left.htm&language=en_US&type=5)
-- Returns the specified number of characters from the beginning of a text string.
-- [LEN](https://help.salesforce.com/s/articleView?id=sf.customize_functions_len.htm&language=en_US&type=5)
-- Returns the number of characters in a specified text string.
-- [LINKTO](https://help.salesforce.com/s/articleView?id=sf.customize_functions_linkto.htm&language=en_US&type=5)
-- Returns a relative URL in the form of a link (href and anchor tags) for a custom s-control or Salesforce page.
-- [LN](https://help.salesforce.com/s/articleView?id=sf.customize_functions_ln.htm&language=en_US&type=5)
-- Returns the natural logarithm of a specified number. Natural logarithms are based on the constant e value of 2.71828182845904.
-- [LOG](https://help.salesforce.com/s/articleView?id=sf.customize_functions_log.htm&language=en_US&type=5)
-- Returns the base 10 logarithm of a number.
-- [LOWER](https://help.salesforce.com/s/articleView?id=sf.customize_functions_lower.htm&language=en_US&type=5)
-- Converts all letters in the specified text string to lowercase. Any characters that are not letters are unaffected by this function. Locale rules are applied if a locale is provided.
-- [LPAD](https://help.salesforce.com/s/articleView?id=sf.customize_functions_lpad.htm&language=en_US&type=5)
-- Inserts characters you specify to the left-side of a text string.
-- [MAX](https://help.salesforce.com/s/articleView?id=sf.customize_functions_max.htm&language=en_US&type=5)
-- Returns the highest number from a list of numbers.
-- [MCEILING](https://help.salesforce.com/s/articleView?id=sf.customize_functions_mceiling.htm&language=en_US&type=5)
-- Rounds a number up to the nearest integer, towards zero if negative.
-- [MFLOOR](https://help.salesforce.com/s/articleView?id=sf.customize_functions_mfloor.htm&language=en_US&type=5)
-- Rounds a number down to the nearest integer, away from zero if negative.
-- [MID](https://help.salesforce.com/s/articleView?id=sf.customize_functions_mid.htm&language=en_US&type=5)
-- Returns the specified number of characters from the middle of a text string given the starting position.
-- [MILLISECOND](https://help.salesforce.com/s/articleView?id=sf.customize_functions_millisecond.htm&language=en_US&type=5)
-- Returns a milliseconds value in the form of a number from 0 through 999.
-- [MIN](https://help.salesforce.com/s/articleView?id=sf.customize_functions_min.htm&language=en_US&type=5)
-- Returns the lowest number from a list of numbers.
-- [MINUTE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_minute.htm&language=en_US&type=5)
-- Returns a minute value in the form of a number from 0 through 60.
-- [MOD](https://help.salesforce.com/s/articleView?id=sf.customize_functions_mod.htm&language=en_US&type=5)
-- Returns a remainder after a number is divided by a specified divisor.
-- [MONTH](https://help.salesforce.com/s/articleView?id=sf.customize_functions_month.htm&language=en_US&type=5)
-- Returns the month, a number between 1 (January) and 12 (December) in number format of a given date.
-- [NOT](https://help.salesforce.com/s/articleView?id=sf.customize_functions_not.htm&language=en_US&type=5)
-- Returns FALSE for TRUE and TRUE for FALSE.
-- [NOW](https://help.salesforce.com/s/articleView?id=sf.customize_functions_now.htm&language=en_US&type=5)
-- Returns a date/time representing the current moment.
-- [NULLVALUE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_nullvalue.htm&language=en_US&type=5)
-- Determines if an expression is null (blank) and returns a substitute expression if it is. If the expression is not blank, returns the value of the expression.
-- [OR](https://help.salesforce.com/s/articleView?id=sf.customize_functions_or_0.htm&language=en_US&type=5)
-- Determines if expressions are true or false. Returns TRUE if any expression is true. Returns FALSE if all expressions are false.
-- [PARENTGROUPVAL](https://help.salesforce.com/s/articleView?id=sf.customize_functions_parentgroupval.htm&language=en_US&type=5)
-- This function returns the value of a specified parent grouping. A “parent” grouping is any level above the one containing the formula.
-- [PREDICT](https://help.salesforce.com/s/articleView?id=sf.customize_functions_predict.htm&language=en_US&type=5)
-- Returns an Einstein Discovery prediction for a record based on the specified record ID or for a list of fields and their values.
-- [PREVGROUPVAL](https://help.salesforce.com/s/articleView?id=sf.customize_functions_prevgroupval.htm&language=en_US&type=5)
-- This function returns the value of a specified previous grouping. A “previous” grouping is one that comes before the current grouping in the report.
-- [PRIORVALUE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_priorvalue.htm&language=en_US&type=5)
-- Returns the previous value of a field.
-- [REGEX](https://help.salesforce.com/s/articleView?id=sf.customize_functions_regex.htm&language=en_US&type=5)
-- Compares a text field to a regular expression and returns TRUE if there is a match. Otherwise, it returns FALSE.
-- [REQUIRESCRIPT](https://help.salesforce.com/s/articleView?id=sf.customize_functions_requirescript.htm&language=en_US&type=5)
-- Returns a script tag with source for a URL you specify. Use this function when referencing the Lightning Platform AJAX Toolkit or other JavaScript toolkits.
-- [REVERSE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_reverse.htm&language=en_US&type=5)
-- Returns the characters of a source text string in reverse order.
-- [RIGHT](https://help.salesforce.com/s/articleView?id=sf.customize_functions_right.htm&language=en_US&type=5)
-- Returns the specified number of characters from the end of a text string.
-- [ROUND](https://help.salesforce.com/s/articleView?id=sf.customize_functions_round.htm&language=en_US&type=5)
-- Returns the nearest number to a number you specify, constraining the new number by a specified number of digits.
-- [RPAD](https://help.salesforce.com/s/articleView?id=sf.customize_functions_rpad.htm&language=en_US&type=5)
-- Inserts characters that you specify to the right-side of a text string.
-- [SECOND](https://help.salesforce.com/s/articleView?id=sf.customize_functions_second.htm&language=en_US&type=5)
-- Returns a seconds value in the form of a number from 0 through 60.
-- [SQRT](https://help.salesforce.com/s/articleView?id=sf.customize_functions_sqrt.htm&language=en_US&type=5)
-- Returns the positive square root of a given number.
-- [SUBSTITUTE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_substitute.htm&language=en_US&type=5)
-- Substitutes new text for old text in a text string.
-- [TEXT](https://help.salesforce.com/s/articleView?id=sf.customize_functions_text.htm&language=en_US&type=5)
-- Converts a percent, number, date, date/time, or currency type field into text anywhere formulas are used. Also, converts picklist values to text in approval rules, approval step rules, workflow rules, escalation rules, assignment rules, auto-response rules, validation rules, formula fields, field updates, and custom buttons and links.
-- [TIMENOW](https://help.salesforce.com/s/articleView?id=sf.customize_functions_timenow.htm&language=en_US&type=5)
-- Returns a time value in GMT representing the current moment. Use this function instead of the NOW function if you only want to track time, without a date.
-- [TIMEVALUE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_timevalue.htm&language=en_US&type=5)
-- Returns the local time value without the date, such as business hours.
-- [TODAY](https://help.salesforce.com/s/articleView?id=sf.customize_functions_today.htm&language=en_US&type=5)
-- Returns the current date as a date data type.
-- [TRIM](https://help.salesforce.com/s/articleView?id=sf.customize_functions_trim.htm&language=en_US&type=5)
-- Removes the spaces and tabs from the beginning and end of a text string.
-- [UPPER](https://help.salesforce.com/s/articleView?id=sf.customize_functions_upper.htm&language=en_US&type=5)
-- Converts all letters in the specified text string to uppercase.
-- [URLENCODE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_urlencode.htm&language=en_US&type=5)
-- Encodes text and merge field values for use in URLs by replacing characters that are illegal in URLs, such as blank spaces, with the code that represent those characters as defined in RFC 3986, Uniform Resource Identifier (URI): Generic Syntax.
-- [URLFOR](https://help.salesforce.com/s/articleView?id=sf.customize_functions_urlfor.htm&language=en_US&type=5)
-- Returns a relative URL for an action, s-control, Visualforce page, or a file in a static resource archive in a Visualforce page.
-- [VALUE](https://help.salesforce.com/s/articleView?id=sf.customize_functions_value.htm&language=en_US&type=5)
-- Converts a text string to a number.
-- [VLOOKUP](https://help.salesforce.com/s/articleView?id=sf.customize_functions_vlookup.htm&language=en_US&type=5)
-- Returns a value by looking up a related value on a custom object similar to the VLOOKUP() Excel function. This function is only available in validation rules.
-- [WEEKDAY](https://help.salesforce.com/s/articleView?id=sf.customize_functions_weekday.htm&language=en_US&type=5)
-- Returns the day of the week for the given date, using 1 for Sunday, 2 for Monday, through 7 for Saturday.
-- [YEAR](https://help.salesforce.com/s/articleView?id=sf.customize_functions_year.htm&language=en_US&type=5)
-- Returns the four-digit year in number format of a given date.
+### + Addition
 
-<!-- 
-在构建公式时使用这些运算符和函数。除非另行指定，否则所有的函数都可用在任何能够包含公式（例如，公式字段、验证规则、批准过程和工作流规则）的位置。
+Calculates the sum of two values.
 
-## 数学运算符
+**Usage:** `Value 1 + Value 2`, replacing each value with merge fields, expressions, or other numerical values.
 
-### + 加
+**Return Value:** Numerical
 
-计算两个值的和。
-
-**使用：** `值 1 + 值 2`，并用合并字段、表达式或其他数值替换每个值。
-
-**返回值：** 数值
-
-```javascript
+^^^javascript
 Amount + Maint_Amount__c + Services_Amount__c
-```
+^^^
 
-此公式计算产品 Amount（金额）、维护金额与服务费的总和。请注意，Maint amount（维护金额）和 Service Fees（服务费）是自定义金额字段。
+This formula calculates the total of the product Amount, Maintenance Amount, and Service Fees. Note that Maint amount and Service Fees are custom currency fields.
 
-```javascript
+^^^javascript
 Monday_Hours__c + Tuesday_Hours__c + Wednesday_Hours__c + Thursday_Hours__c + Friday_Hours__c > 40
-```
+^^^
 
-使用如上验证规则中的公式，可以在为各个工作日输入的工作时间总和大于 40 时显示下面的错误消息：“总工作时间不能超过 40 个小时”。本示例要求自定义对象上有五个自定义字段，每个工作日一个。
+Use this formula in a validation rule to display the error message "Total working hours cannot exceed 40 hours" when the sum of hours entered for each workday exceeds 40. This example requires five custom fields for each workday on a custom object.
 
-### - 减
+### - Subtraction
 
-计算两个值的差。
+Calculates the difference between two values.
 
-**使用：** `值 1 - 值 2`，并合并字段、表达式或其他数值替换每个值。
+**Usage:** `Value 1 - Value 2`, combining fields, expressions, or other numerical values to replace each value.
 
-**返回值：** 数值
+**Return Value:** Numerical
 
-```javascript
+^^^javascript
 Amount - Discount_Amount__c
-```
+^^^
 
+This formula calculates the difference between the product Amount and the Discount Amount. Note that Discount Amount is a custom currency field.
 
-此公式计算产品 Amount（金额）减去 Discount Amount（折扣金额）的差。请注意，Discount Amount（折扣金额）是一个自定义金额字段。
+### * Multiplication
 
-### \* 乘
+Multiplies its values.
 
-乘以其值。
+**Usage:** `Value 1 * Value 2`, replacing each value with merge fields, expressions, or other numerical values.
 
-**使用：** `值1 * 值2`，用合并字段、表达式或其他数值替换每个值。
+**Return Value:** Numerical
 
-**返回值：** 数值
-
-```javascript
+^^^javascript
 Consulting_Days__c * 1200
-```
+^^^
 
+This formula calculates the numerical value of consulting days multiplied by 1200, assuming this formula field is of currency data type and consulting is charged at a rate of $1200 per day. Note that Consulting Days is a custom field.
 
-此公式计算咨询天数乘以 1200 的数值，假定此公式字段是货币数据类型且咨询按每天 1200 美元的价格收费。请注意，Consulting Days（咨询天数）是一个自定义字段。
+### / Division
 
-### / 除
+Divides by its value.
 
-除以其值。
+**Usage:** `Value 1 / Value 2`, replacing each value with merge fields, expressions, or other numerical values.
 
-**使用：** `值1 / 值2`，用合并字段、表达式或其他数值替换每个值。
+**Return Value:** Numerical
 
-**返回值：** 数值
-
-```javascript
+^^^javascript
 AnnualRevenue/ NumberOfEmployees
-```
+^^^
 
+This formula uses the Amount field to calculate the revenue per employee.
 
-此公式使用金额字段计算每个员工的收入金额。
+^^^javascript
+IF(NumberOfOpportunities > 0,  NumberOfWonOpportunities / NumberOfOpportunities, null)
+^^^
 
-```javascript
-IF(NumberOfOpportunities > 0,  NumberOfWonOpportunities / NumberOfOpportunities, null)
-```
+This formula calculates the win rate of opportunities in a marketing campaign.
 
+### ^ Power
 
-此公式计算市场活动中业务机会的客户赢得率。
+Raises a number to the power of a specified number.
 
-### ^ 幂
+**Usage:** `Number^Integer`, replacing the number with merge fields, expressions, or other numerical values, and the integer with merge fields, expressions, or any integer.
 
-使一个数字变成指定数字的幂。
+**Return Value:** Numerical
 
-**使用：** `数字^整数`，用合并字段、表达式或其他数值替换数字，用包含整数的合并字段、表达式或任何整数替换整数。
-
-**返回值：** 数值
-
-```javascript
+^^^javascript
 NumberOfEmployees^4
-```
+^^^
 
+Calculates the fourth power of the number of employees.
 
-计算员工数的四次幂。
+> Avoid using negative integers
 
+### () Brackets
 
-> 避免使用负整数
+Specifies to first calculate the expressions within the left and right brackets. All other expressions are evaluated using standard operator precedence.
 
-### () 括号
+**Usage:** `(Expression 1) Expression 2...`, replacing each expression with merge fields, expressions, or other numerical values.
 
-指定先计算左括号和右括号内的表达式。所有其他表达式均使用标准运算符优先权进行评估。
-
-**使用：** `(表达式1) 表达式2...`，用合并字段、表达式或其他数值替换每个表达式。
-
-```javascript
+^^^javascript
 (Unit_Value__c - Old_Value__c) / New_Value__c
-```
+^^^
 
+Calculates the difference between the old and new values, divided by the new value.
 
-计算旧值与新值的差值，并除以新值。
+## Logical Operators
 
-## 逻辑运算符
+### = and == (Equal To)
 
-### = 与 ==（等于）
+Calculates whether two values are equal. The = and == operators are interchangeable.
 
-计算两个值是否相等。= 和 == 运算符可以互换。
+**Usage:** `Expression 1 = Expression 2 or Expression 1 == Expression 2`, replacing each expression with merge fields, expressions, or other numerical values.
 
-**使用：** `表达式1=表达式2 或表达式1 == 表达式2`，用合并字段、表达式或其他数值替换每个表达式。
+**Return Value:** Boolean
 
-**返回值：** 布尔
-
-```javascript
+^^^javascript
 ExpiringDate = CreatedDate + 5
-```
+^^^
 
+Returns true if the expiration date equals the sum of the record's creation date and five days.
 
-如果到期日等于记录的创建日期与五天之和返回 true。
-
-```javascript
+^^^javascript
 IF(Probability = 1, ROUND(Amount*0.02, 2), 0)
-```
+^^^
 
+This formula calculates the commission amount. Opportunities with a 100% probability are calculated at 2% commission. All other opportunities have a commission value of zero.
 
-此公式计算佣金金额，具有 100% 可能性的业务机会按 2% 计算佣金。所有其他业务机会的佣金值为零。
+Opportunities with a 90% Probability will not receive a commission.
 
-具有 90% Probability（可能性）的业务机将无法获得佣金。
+Opportunities with a 100% Probability and an Amount of $100,000 will receive a $2,000 commission.
 
-具有 100% Probability（可能性）和 100,000 美元 Amount（金额）的业务机会将获得 2,000 美元的佣金。
+> Do not use this function for null comparisons, such as MyDateTime__c == null. Instead, use ISBLANK.
 
+### != (Not Equal To)
 
-> 不要使用此函数进行空比较，如 MyDateTime__c == null。而应使用 ISBLANK。
+Calculates whether two values are not equal.
 
-### `!=`（不等于）
+**Usage:** `Expression 1 <> Expression 2` or `Expression 1 != Expression 2`, replacing each expression with merge fields, expressions, or other numerical values.
 
-计算两个值是否不相等。
+**Return Value:** Boolean
 
-**使用：** `表达式1 <> 表达式2` 或 `表达式1 != 表达式2`，用合并字段、表达式或其他数值替换每个表达式。
+^^^javascript
+IF(Maint_Amount__c + Services_Amount__c != Amount, "DISCOUNTED", "FULL PRICE")
+^^^
 
-**返回值：** 布尔
+If the sum of the product's maintenance and service amounts is not equal to the product amount, this formula will display "DISCOUNTED" on the product. Otherwise, it shows "FULL PRICE". Note that this example uses two custom currency fields for Maint Amount and Services Amount.
 
-```javascript
-IF(Maint_Amount__c + Services_Amount__c `<>` Amount, "DISCOUNTED", "FULL PRICE")
-```
+> Do not use this function for null comparisons, such as MyDateTime__c != null. Instead, use ISBLANK.
 
+### < (Less Than)
 
-如果产品的维护金额和服务金额之和不等于产品金额，此公式将在产品上显示“DISCOUNTED”（已折扣金额）。否则，显示“FULL PRICE”（全价）。请注意，本示例对 Maint Amount（维护金额）和 Services Amount（服务金额）使用两个自定义金额字段。
+Calculates whether a value is less than the value following this symbol.
 
+**Usage:** `Value 1 < Value 2`, replacing each value with merge fields, expressions, or other numerical values.
 
-> 不要使用此函数进行空比较，如 MyDateTime__c != null。而应使用 ISBLANK。
+**Return Value:** Boolean
 
-### （小于）
-
-计算一个值是否小于此符号后面的值。
-
-**使用：** `值1 < 值2`，用合并字段、表达式或其他数值替换每个值。
-
-**返回值：** 布尔
-
-```javascript
+^^^javascript
 IF(AnnualRevenue < 1000000, 1, 2)
-```
+^^^
 
+Assigns the value "1" to revenue less than a million, and the value "2" to revenue greater than a million.
 
-将值“1”赋予小于一百万的收入，将值“2”赋予大于一百万的收入。
+### > (Greater Than)
 
-### >（大于）
+Calculates whether a value is greater than the value following this symbol.
 
-计算一个值是否大于此符号后面的值。
+**Usage:** `Value 1 > Value 2`, replacing each value with merge fields, expressions, or other numerical values.
 
-**使用：** `值1 > 值2`，用合并字段、表达式或其他数值替换每个值。
+**Return Value:** Boolean
 
-**返回值：** 布尔
-
-```javascript
+^^^javascript
 IF(commission__c > 1000000, "High Net Worth", "General")
-```
+^^^
 
+Assigns the "High Net Worth" value to commissions greater than a million. Note that this is a text formula field using the commission custom field.
 
-将“High Net Worth”（高资产净值）值赋予大于一百万的佣金。请注意，这是使用佣金自定义字段的文本公式字段。
+### <= (Less Than or Equal To)
 
-### （小于或等于）
+Calculates whether a value is less than or equal to the value following this symbol.
 
-计算一个值是否小于或等于此符号后面的值。
+**Usage:** `Value 1 <= Value 2`, replacing each value with merge fields, expressions, or other numerical values.
 
-**使用：** `值1 <= 值2`，用合并字段、表达式或其他数值替换每个值。
+**Return Value:** Boolean
 
-**返回值：** 布尔
-
-```javascript
+^^^javascript
 IF(AnnualRevenue <= 1000000, 1, 2)
-```
+^^^
 
+Assigns the value "1" to revenue less than or equal to a million, and the value "2" to revenue greater than a million.
 
-将值“1”赋予小于等于一百万的收入，将值“2”赋予大于一百万的收入。
+### >= (Greater Than or Equal To)
 
-### >=（大于或等于）
+Calculates whether a value is greater than or equal to the value following this symbol.
 
-计算一个值是否大于或等于此符号后面的值。
+**Usage:** `Value 1 >= Value 2`, replacing each value with merge fields, expressions, or other numerical values.
 
-**使用：** `值1 >= 值2`，用合并字段、表达式或其他数值替换每个值。
+**Return Value:** Boolean
 
-**返回值：** 布尔
-
-```javascript
+^^^javascript
 IF(Commission__c >= 1000000, "YES", "NO")
-```
+^^^
 
+Assigns the value "YES" to commissions greater than or equal to a million. Note that this is a text formula field using the custom currency field Commission.
 
-将值“YES”（是）赋予大于或等于一百万的佣金。请注意，这是使用自定义货币字段 Commission（佣金）的文本公式字段。
+### && (AND)
 
-### &&（与）
+Evaluates whether both of two values or expressions are true. Use this operator as an alternative to the logical function AND.
 
-评估两个值或表达式是否都为真。使用此运算符作为逻辑函数 AND 的备选。
+**Usage:** `Logic 1 && Logic 2`, replacing Logic 1 and Logic 2 with the values or expressions you wish to evaluate.
 
-**使用：** `逻辑1 && 逻辑2`，以及用您希望评估的值或表达式替换逻辑1 和逻辑2。
+**Return Value:** Boolean
 
-**返回值：** 布尔
+^^^javascript
+IF((Price<100 && Quantity<5), "Small", null)
+^^^
 
-```javascript
-IF((Price<100 && Quantity<5),“Small”, null)
-```
+If the price is less than 100 and the quantity is less than five, this formula displays "Small". Otherwise, this field is empty.
 
+### || (OR)
 
-如果价格小于 100 并且数量小于五，此公式显示 “Small”。否则此字段为空。
+Evaluates whether at least one of multiple values or expressions is true. Use this operator as an alternative to the logical function OR.
 
-### ||（或）
+**Usage:** `Logic 1 || Logic 2`, replacing any number of logic references with the values or expressions you wish to evaluate.
 
-评估多个值或表达式中是否至少有一个为真。使用此运算符作为逻辑函数 OR 的备选。
+**Return Value:** Boolean
 
-**使用：** `逻辑1 || 逻辑2`，用您希望评估的值或表达式替换任意数量的逻辑引用。
-
-**返回值：** 布尔
-
-```javascript
+^^^javascript
 IF(Priority = "High" || Status = "New", ROUND(NOW()-CreatedDate, 0), null)
-```
+^^^
 
+If the case Status is "New" or Priority is "High", this formula returns the number of days the case has been unprocessed. If the case was opened today, the field shows zero.
 
-如果个案 Status（状态）为“New”（新建）或 Priority（优先级）为“High”（高），则此公式返回个案未被处理的天数。如果个案是今天打开的，则该字段显示零。
-
-```javascript
+^^^javascript
 Discount_Rate__c < 0 || Discount_Rate__c > 0.40
-```
+^^^
+
+When the custom field Discount Rate's value is not between 0 and 40%, this validation rule formula displays the error message: "Discount Rate cannot exceed 40%."
 
 
-当自定义字段 Discount Rate（折扣率）的值不在 0 和 40% 之间时，此验证规则公式显示下面的错误消息：“Discount Rate cannot exceed 40%.”（折扣率不能超过 40%。)
 
-## 文本运算符
 
-### &（串联）
+## Text Operators
 
-连接两个或两个以上字符串。
+### & (Concatenation)
 
-**使用：** `字符串1&字符串2`，用合并字段、表达式或其他值替换每个字符串。
+Connects two or more strings.
 
-**返回值：** 文本
+**Usage:** `String 1 & String 2`, replacing each string with merge fields, expressions, or other values.
 
-```javascript
+**Return Value:** Text
+
+^^^javascript
 "Expense-" & Trip_Name__c & "-" & ExpenseNum__c
-```
+^^^
+
+This formula displays the text “Expense-” before the trip name and expense number. It is a text formula field using the custom field Expense Number.
 
 
-此公式在行程名称和支出编号前显示文本“Expense-”。这是使用支出编号自定义字段的文本公式字段。
-
-## 日期和时间函数
+## Date and Time Functions
 
 ### ADDMONTHS
 
-返回的日期是，指定日期之前或之后的指定月数。如果剩余月的天数比起始月少，函数会返回剩余月的最后一天。否则，结果包含与指定日期相同的日组件。
+Returns the date before or after a specified number of months from the given date. If the remaining month has fewer days than the start month, the function returns the last day of the remaining month. Otherwise, the result includes the same day component as the specified date.
 
-**使用：** `ADDMONTHS (date/datetime,number)` ,使用起始日期与添加的月数替换`date/datetime`和`number`。
+**Usage:** `ADDMONTHS(date/datetime, number)`, replace `date/datetime` and `number` with the start date and the number of months to be added.
 
-**参数：**
+**Parameters:**
 
-* *日期、日期时间:* `date/datetime` 日期或日期时间，表示起始日期。
-* *数字:* `number` 数值，表示要增加的月数。
+- *Date, Datetime:* `date/datetime` Date or datetime representing the start date.
+- *Number:* `number` Numeric value representing the number of months to add.
 
-**返回值：** 日期
+**Return Value:** Date
 
-```javascript
-ADDMONTHS (StartDate, 5)
-```
+^^^javascript
+ADDMONTHS(StartDate, 5)
+^^^
 
-
-为开始日期添加 5 个月。例如，如果开始日期是 2017 年 9 月 20 日，结果日期是 2018 年 2 月 20 日；如果开始日期是 2017 年 9 月 30 日，结果日期是 2018 年 2 月 28 日。
-
-
+Adds 5 months to the start date. For example, if the start date is September 20, 2017, the result date is February 20, 2018; if the start date is September 30, 2017, the result date is February 28, 2018.
 
 <alert type="info">
-支持传入日期或日期时间类型的参数，但是返回值始终是日期类型，而不可能是日期时间类型。
-
+Supports passing date or datetime type parameters, but the return value is always a date type, not a datetime type.
 </alert>
 
 ### DATE
 
-从您输入的年、月和日值返回一个日期值。如果公式字段中的 DATE 函数值是无效日期，会返回错误信息。
+Returns a date value from the year, month, and day values you enter. If the DATE function value in a formula field is an invalid date, it returns an error message.
 
-**使用：** `DATE(年,月,日)` ,用一个四位数字年份替换年，用一个两位数字月份替换月，用一个两位数字日期替换日。
+**Usage:** `DATE(year, month, day)`, replace year with a four-digit year, month with a two-digit month, and day with a two-digit day.
 
-**参数：**
+**Parameters:**
 
-* *年:* `number` 四位数字表示的年份。
-* *月:* `number` 表示月份值的数值。
-* *日:* `number` 表示日部分的数值。
+- *Year:* `number` Four-digit year.
+- *Month:* `number` Numeric value representing the month.
+- *Day:* `number` Numeric value representing the day.
 
-**返回值：** 日期
+**Return Value:** Date
 
-```javascript
+^^^javascript
 DATE(2005, 1, 2)
-```
+^^^
 
-
-创建一个 2005 年 1 月 2 日的日期字段。
-
-
+Creates a date field for January 2, 2005.
 
 <alert type="info">
-参数个数只能是三个，也不支持传入`2005-01-01`这种字符串。
-
+The number of parameters must be three, and formats like `2005-01-01` are not supported.
 </alert>
 
-
 <alert type="info">
-当传入的函数参数格式正确但是数值不符合规范时，并不会报错，而是会返回一个可能错误的值，比如如非闰年的DATE(2021,2,29)将返回2021-03-01，DATE(2021,121,29)将返回2031-01-29。
-
+If the function parameters are formatted correctly but the values are not standard, it will not return an error but a possibly incorrect value, like DATE(2021, 2, 29) will return 2021-03-01, and DATE(2021, 121, 29) will return 2031-01-29.
 </alert>
 
 ### DATEVALUE
 
-为日期、日期时间或文本表达式返回日期值。
+Returns a date value for date, datetime, or text expressions.
 
-**使用：** DATEVALUE(表达式)
+**Usage:** DATEVALUE(expression)
 
-**参数：** `date/datetime/text` 日期、日期时间或日期、日期时间格式的文本值的合并字段或表达式
+**Parameters:** `date/datetime/text` Merge field or expression of date, datetime, or text in date/datetime format
 
-**返回值：** 日期
+**Return Value:** Date
 
-```javascript
+^^^javascript
 DATEVALUE(ClosedDate)
-```
+^^^
 
+Displays a date value based on the ClosedDate datetime field value. The parameter ClosedDate can be a date, datetime type, or a string type in date/datetime format.
 
-基于结束日期时间字段值显示日期值，参数ClosedDate可以是日期、日期时间类型，也可以是日期、日期时间格式的字符串类型。
-
-```javascript
+^^^javascript
 DATEVALUE("2005-1-15 12:30")
-```
+^^^
 
-
-以日期值形式返回“2005-01-15”。
-
-
+Returns the date value "2005-01-15".
 
 <alert type="info">
-■ 如果该函数中所引用的字段不是有效的文本或日期时间字段，则该公式中的字段可能显示为异常字符串或错误信息，比如DATEVALUE("2005-111-15") 将返回NaN-NaN-NaN。
-
-■ 当输入日期时，请将日期放在引号内，并使用如下格式：YYYY-MM-DD，即，四位数字年份、两位数字月份和两位数字日期。
-
-■ 如果表达式不在有效的日期范围内（例如，MM 不在 01 和 12 之间），则该公式中的字段将显示“NaN-NaN-NaN”。
-
-■ 该公式始终会返回utc（协调世界时间）0点值，且除非传入的参数明确带了时区信息，否则将始终使用用户的时区计算，比如DATEVALUE('2018-12-12 06:06:06')返回的是2018-12-11，而DATEVALUE('2018-12-12T06:06:06Z')返回的是2018-12-12。
-
+■ If the field referenced in this function is not a valid text or datetime field, the field in this formula might display as an abnormal string or error message, like DATEVALUE("2005-111-15") will return NaN-NaN-NaN.
+■ When entering dates, please put the date in quotes and use the following format: YYYY-MM-DD, i.e., four-digit year, two-digit month, and two-digit day.
+■ If the expression is not within a valid date range (for example, MM is not between 01 and 12), the field in this formula will display "NaN-NaN-NaN".
+■ This formula always returns a value at 0 hours UTC time, and unless the entered parameter explicitly includes time zone information, it will always use the user's time zone to calculate, like DATEVALUE('2018-12-12 06:06:06') returns 2018-12-11, and DATEVALUE('2018-12-12T06:06:06Z') returns 2018-12-12.
 </alert>
 
 ### DATETIMEVALUE
 
-返回年份、月份、日和 GMT 时间值。
+Returns the year, month, day, and GMT time value.
 
-**使用：** DATETIMEVALUE（表达式）
+**Usage:** DATETIMEVALUE(expression)
 
-**参数：** `text` 不带TZ字符的日期/日期时间格式的文本值、合并字段或表达式
+**Parameters:** `text` Text value in date/datetime format without TZ character, merge field, or expression
 
-**返回值：** 日期时间
+**Return Value:** Datetime
 
-```javascript
+^^^javascript
 DATETIMEVALUE(TEXT(ClosedDate))
-```
+^^^
 
+Displays a datetime value based on the ClosedDate field value, where the parameter ClosedDate must be a date type and not a datetime type, as TEXT(ClosedDate) returns a string like "2020-11-04 03:45:00Z" with a 'Z' character for datetime types.
 
-基于结束日期字段值显示日期时间值，参数ClosedDate必须是日期类型，而不可以是日期时间类型， 因为如果ClosedDate是日期时间类型，TEXT(ClosedDate)返回的会是"2020-11-04 03:45:00Z"这种带Z的字符串。
-
-```javascript
+^^^javascript
 DATETIMEVALUE(SUBSTITUTE(TEXT(ClosedDate), "Z", ""))
-```
+^^^
 
+Displays a datetime value based on the ClosedDate field value, where the parameter ClosedDate can be a date or time type, as this example removes the final 'Z' character.
 
-基于结束日期字段值显示日期时间值，参数ClosedDate可以是日期类型，也可以是时间类型，因为此示例中把最后的Z字符清除掉了。
-
-```javascript
+^^^javascript
 DATETIMEVALUE("2005-11-15 17:00:00")
-```
+^^^
 
-
-以日期和时间值形式返回“2005-11-15T17:00:00.000Z”（即utc时间2005 年 11 月 15 日17点整）。
+Returns the date and time value "2005-11-15T17:00:00.000Z" (i.e., UTC time 17:00:00 on November 15, 2005).
 
 ### DAY
 
-以 1 与 31 之间的一个数字形式返回一个月中的某一天。
+Returns a number between 1 and 31 representing the day of the month.
 
-**使用：** DAY(日期)
+**Usage:** DAY(date)
 
-**参数：** date 日期字段或值（如 TODAY()）
+**Parameters:** date Date field or value (such as TODAY())
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 DAY(Code_Freeze__c)
-```
+^^^
 
-
-返回您的自定义代码冻结日期中的日。请注意，这不适用于“日期时间”字段。
-
-
+Returns the day from your custom Code Freeze date. Note that this does not apply to "datetime" fields.
 
 <alert type="info">
-只支持传入日期类型值，不支持“日期时间”类型值，也不支持字符串类型值。
-
+Only supports date type values, does not support "datetime" type values, nor string type values.
 </alert>
 
 ### HOUR
 
-以 24数字格式（0\~23）返回GMT时区小时值。
+Returns the hour value in 24-hour format (0~23) for the GMT time zone.
 
-**使用：** `HOUR(datetime)` ,使用日期时间值或 DATETIMEVALUE() 等值替换 datetime，不支持传入字符串参数。
+**Usage:** `HOUR(datetime)`, replace datetime with a datetime value or values like DATETIMEVALUE(), does not support string parameters.
 
-**参数：** datetime 日期时间字段或值（如 NOW()）
+**Parameters:** datetime Datetime field or value (such as NOW())
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 HOUR(ClosedDate)
-```
+^^^
 
+Displays only the hour from the datetime ClosedDate field.
 
-仅根据日期时间完结字段值显示其中的小时。
-
-```javascript
+^^^javascript
 HOUR(DATETIMEVALUE('2018-12-12 18:06:08'))
-```
+^^^
 
-
-返回18，而不是10。
+Returns 18, not 10.
 
 ### MILLISECOND
 
-以 0 与 999 之间的数字形式，返回毫秒值。
+Returns a number between 0 and 999 representing the millisecond value.
 
-**使用：** `MILLISECOND(datetime)` ,使用日期时间值替换 datetime，例如 NOW()，不支持传入日期类型或字符串参数。
+**Usage:** `MILLISECOND(datetime)`, replace datetime with a datetime value, such as NOW(), does not support date type or string parameters.
 
-**参数：** datetime 日期时间字段或值（如 NOW()）
+**Parameters:** datetime Datetime field or value (such as NOW())
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 MILLISECOND(DATETIMEVALUE(SUBSTITUTE(TEXT(ClosedDate), "Z", "")))
-```
+^^^
 
+Displays only the millisecond value from the datetime field of ClosedDate.
 
-仅根据完结时间字段的值显示时间字段中的毫秒值。
-
-```javascript
+^^^javascript
 MILLISECOND(NOW())
-```
+^^^
 
-
-返回当前时间的毫秒值，比如125。
+Returns the current time's millisecond value, such as 125.
 
 ### MINUTE
 
-以 0 与 60 之间的数字形式，返回分钟值。
+Returns a number between 0 and 60 representing the minute value.
 
-**使用：** `MINUTE(datetime)` ,使用日期时间值替换 datetime，例如 NOW()，不支持传入日期类型或字符串参数。
+**Usage:** `MINUTE(datetime)`, replace datetime with a datetime value, such as NOW(), does not support date type or string parameters.
 
-**参数：** datetime 日期时间字段或值（如 NOW()）
+**Parameters:** datetime Datetime field or value (such as NOW())
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 MINUTE(DATETIMEVALUE(SUBSTITUTE(TEXT(ClosedDate), "Z", "")))
-```
+^^^
 
+Displays only the minute value from the datetime field of ClosedDate.
 
-仅根据完结时间字段的值显示时间字段中的分钟值。
-
-```javascript
+^^^javascript
 MINUTE(NOW())
-```
+^^^
 
-
-返回当前时间的分钟值，比如12。
-
-
+Returns the current time's minute value, such as 12.
 
 <alert type="info">
-MINUTE函数只授受datetime类型作为参数，不支持time,date,text类型作为参数，可以先用DATETIMEVALUE函数进行类型转换后再调用该函数。
-
+The MINUTE function only accepts datetime types as parameters, does not support time, date, or text types. Use the DATETIMEVALUE function for type conversion before calling this function.
 </alert>
 
 ### MONTH
 
-以给定日期的数字格式返回月份，即 1（一月）与 12（十二月）之间的一个数字。
+Returns the month as a number from a given date, between 1 (January) and 12 (December).
 
-**使用：** `MONTH(日期)` ,用包含您希望返回其月份的日期的字段或表达式替换日期。
+**Usage:** `MONTH(date)`, replace date with the field or expression containing the month you wish to return.
 
-**参数：** date 日期字段或值（如 TODAY()）
+**Parameters:** date Date field or value (such as TODAY())
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 MONTH(SLAExpirationDate__c)
-```
+^^^
 
+Returns the month of your Service Level Agreement expiration. This example uses a custom date field named SLA Expiration Date.
 
-返回您的服务级协议到期的月份。本示例使用名为 SLA Expiration Date（SLA 到期日期）的自定义日期字段。
-
-```javascript
+^^^javascript
 MONTH(TODAY())
-```
+^^^
 
-
-以数字格式返回当前月份。例如，对于月份“February”将返回值“2”。
-
-
+Returns the current month in numeric format. For instance, for the month "February," it returns the value "2".
 
 <alert type="info">
-MONTH函数只授受date类型作为参数，不支持time,datetime,text类型作为参数，可以先用DATEVALUE函数进行类型转换后再调用该函数。
-
+The MONTH function only accepts date types as parameters, does not support time, datetime, or text types. Use the DATEVALUE function for type conversion before calling this function.
 </alert>
 
 ### NOW
 
-返回表示当前时刻的日期时间。
+Returns the current date and time.
 
-**使用：** `NOW()`
+**Usage:** `NOW()`
 
-**返回值：** 日期时间
+**Return Value:** Datetime
 
-```javascript
+^^^javascript
 IF(Status = "Open", ROUND(NOW()-CreatedDate, 0), null)
-```
+^^^
 
-
-此公式检查潜在客户是否未处理；如果是，则通过从当前日期和时间减去创建日期和时间来计算它未被处理的天数。结果是舍入为零小数位的未处理天数。如果潜在客户已处理，则此字段为空。
-
-
+This formula checks whether a lead is unprocessed; if so, it calculates the number of days unprocessed by subtracting the creation date and time from the current date and time. The result is the number of unprocessed days rounded to zero decimal places. If the lead is processed, this field is empty.
 
 <alert type="info">
-■ 请勿删除括号。
-
-■ 保留括号为空。括号中不能包含值。
-
-■ 在 NOW 函数返回“日期时间”字段而不是“日期”字段。Created Date（创建日期）和 Last Modified Date（上次修改日期）为“日期/间”字段，而 Last Activity Date（上次活动日期）为“日期”字段。
-
-■ 如果您希望使用“日期”字段，请使用 TODAY 函数。
-
-■ 始终使用用户的时区计算日期和时间，该函数本身返回的是utc时间值，比如当前是北京时间2020-11-07 15:28，NOW()返回值为"2020-11-07T07:28:00Z"。
-
-■ 与函数 NOW 和其他“日期时间”字段一起使用加和减运算符，以返回一个代表天数的数字。例如，NOW() - CreatedDate 计算自一个记录创建日期以来的天数。在本示例中，公式字段数据类型为数字。
-
-■ 与 NOW 函数和数字一起使用加和减运算符，以返回一个日期和时间。例如，NOW() +5 计算当前时间之前五天的日期和时间。在本示例中，公式字段数据类型为“日期时间”。
-
+■ Do not remove the parentheses.
+■ Keep the parentheses empty. They should not contain values.
+■ The NOW function returns a “datetime” field, not a “date” field. The Created Date and Last Modified Date are “date/time” fields, while the Last Activity Date is a “date” field.
+■ If you want to use a “date” field, use the TODAY function.
+■ The date and time are always calculated based on the user's timezone, and the function itself returns UTC time values, such as "2020-11-07T07:28:00Z" for Beijing time 2020-11-07 15:28.
+■ Use the NOW function with other “datetime” fields and addition/subtraction operators to return a number representing days. For example, NOW() - CreatedDate calculates the number of days since a record’s creation date. In this example, the formula field data type is numeric.
+■ Use the NOW function with a number to return a date and time. For example, NOW() + 5 calculates the date and time five days prior to the current time. In this example, the formula field data type is “datetime”.
 </alert>
 
 ### SECOND
 
-以 0 与 60 之间的数字形式，返回秒值。
+Returns the second value in a range from 0 to 60.
 
-**使用：** `SECOND(datetime)`,使用日期时间值或 DATETIMEVALUE() 等值替换 datetime，不支持传入日期类型值或字符串参数。
+**Usage:** `SECOND(datetime)`, replace datetime with a datetime value or values like DATETIMEVALUE(), does not support date type or string parameters.
 
-**参数：** datetime 日期时间字段或值（如 NOW()）
+**Parameters:** datetime Datetime field or value (such as NOW())
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 SECOND(ClosedDate)
-```
+^^^
 
+Displays only the second value from the datetime field of ClosedDate.
 
-仅根据完结时间字段的值显示其中的秒值。
-
-```javascript
+^^^javascript
 SECOND(DATETIMEVALUE('2018-12-12 18:06:08'))
-```
+^^^
 
-
-返回 8。
+Returns 8.
 
 ### TIMENOW
 
-返回表示当前时刻的时间值 (GMT)。如果您仅想要跟踪时间，而非日期，使用此函数，而不是 NOW 函数。
+Returns the current time value (GMT). If you only want to track time and not the date, use this function instead of NOW.
 
-**使用：** `TIMENOW()`
+**Usage:** `TIMENOW()`
 
-**返回值：** 时间
+**Return Value:** Time
 
-```javascript
+^^^javascript
 IF(Rating="Hot", TEXT(TIMENOW()), TEXT(TIMEVALUE(CreatedDate)))
-```
+^^^
 
-
-此公式会检查并了解潜在客户是否评级为“热门”；如果是，返回正确时间。否则，返回自某人创建潜在客户之后的时间。
-
-
+This formula checks and understands if a lead is rated as "Hot"; if so, it returns the correct time. Otherwise, it returns the time since someone created the lead.
 
 <alert type="info">
-■ 请勿删除括号。
-
-■ 保留括号为空。括号中不能包含值。
-
-■ 如果您希望使用“日期”字段，请使用 TODAY 函数。
-
-■ 显示的值为GMT时区值。
-
-■ 因Steedos还未支持time类型字段，所以暂时只能用TEXT函数输出文本值。
-
+■ Do not remove the parentheses.
+■ Keep the parentheses empty. They should not contain values.
+■ If you want to use a “date” field, use the TODAY function.
+■ The displayed value is in the GMT time zone.
+■ Since Steedos does not yet support time type fields, only text values can be output with the TEXT function.
 </alert>
 
 ### TIMEVALUE
 
-返回没有日期的当地时间值，例如工作时间。
+Returns a local time value without a date, such as working hours.
 
-**使用：** `TIMEVALUE(value)`,并使用时间格式的文本值、合并字段或表达式替换 value。
+**Usage:** `TIMEVALUE(value)`, replace value with a text value, merge field, or expression in time format.
 
-**参数：** text 时间格式的字符串，如17:30:45.125
+**Parameters:** text String in time format, such as 17:30:45.125
 
-**返回值：** 时间
+**Return Value:** Time
 
-```javascript
+^^^javascript
 TEXT(TIMEVALUE("17:30:45.125"))
-```
+^^^
 
-
-返回 "17:30:45.125"。
-
-
+Returns "17:30:45.125".
 
 <alert type="info">
-■ 请勿对日期时间字段使用 TIMEVALUE。
-
-■ 因Steedos还未支持time类型字段，所以暂时只能用TEXT函数输出文本值。
-
+■ Do not use TIMEVALUE with datetime fields.
+■ Since Steedos does not yet support time type fields, only text values can be output with the TEXT function.
 </alert>
 
 ### TODAY
 
-将当前日期返回为日期数据类型。
+Returns the current date as a date data type.
 
-**使用：** `TODAY()`
+**Usage:** `TODAY()`
 
-**返回值：** 日期
+**Return Value:** Date
 
-```javascript
+^^^javascript
 TODAY()-Sample_date_c
-```
+^^^
 
+Calculates how many more days are left in the sample.
 
-计算样本中还剩多少天。
-
-```javascript
+^^^javascript
 SampleDate < TODAY()
-```
+^^^
 
-
-本示例可确保用户无法将 Sample Date（采样日期）更改为过去的日期。
-
-
+This example ensures users cannot change the Sample Date to a past date.
 
 <alert type="info">
-■ 请勿删除括号。
-
-■ 保留括号为空。括号中不能包含值。
-
-■ 使用含 TODAY 函数的“日期”字段而不是“日期时间”字段。Last Activity Date（上次活动日期）是“日期”字段；而 Created Date（创建日期）和 Last Modified Date（上次修改日期）为“日期时间”字段
-
-■ 如果您希望使用日期时间字段，请参阅 NOW 函数。
-
-■ 始终使用用户的时区计算日期和时间，TODAY()返回的是当天GMT时区0点值。
-
-■ 与 TODAY 函数和其他“日期”字段一起使用加和减运算符，以返回一个代表天数的数字。例如，TODAY()-LastActivityDate 计算自上次活动日期后的天数。在本示例中，公式字段数据类型为数字。
-
-■ 与 TODAY 函数和数字一起使用加和减运算符，以返回一个日期。例如，TODAY() +5 计算今天之前五天的日期。在本示例中，公式字段数据类型为日期。
-
+■ Do not remove the parentheses.
+■ Keep the parentheses empty. They should not contain values.
+■ Use the TODAY function in “date” fields, not “datetime” fields. Last Activity Date is a “date” field; Created Date and Last Modified Date are “datetime” fields.
+■ If you want to use a datetime field, refer to the NOW function.
+■ The date is always calculated based on the user's timezone, and TODAY() returns the value of 0 hours GMT for that day.
+■ Use the TODAY function with other “date” fields and addition/subtraction operators to return a number representing days. For example, TODAY()-LastActivityDate calculates the number of days since the last activity date. In this example, the formula field data type is numeric.
+■ Use the TODAY function with a number to return a date. For example, TODAY() +5 calculates the date five days before today. In this example, the formula field data type is a date.
 </alert>
 
 ### WEEKDAY
 
-返返回指定日期是周几，用 1 表示周日，2 表示周一，以此类推，7 表示周六。
+Returns the day of the week for a specified date, with 1 representing Sunday, 2 representing Monday, and so on up to 7 for Saturday.
 
-**使用：** `WEEKDAY(date)`
+**Usage:** `WEEKDAY(date)`
 
-**参数：** date 日期字段或值（如 TODAY()）
+**Parameters:** date Date field or value (such as TODAY())
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```yaml
+^^^yaml
 WEEKDAY(customdate1__c)
-```
+^^^
 
-
-使用 customdate1__c 返回指定日期的周数。
-
-
+Returns the day of the week for a specified date using customdate1__c.
 
 <alert type="info">
-■ 该函数只支持日期类型值，不支持日期时间或字符串类型值作为参数。
-
-■ 该函数与javascript编程语言的Date.getDay函数有差异，后者用0表示周日，1表示周一，以些类推，6表示周六。
-
+■ This function only supports date type values, not datetime or string type values as parameters.
+■ This function differs from the JavaScript programming language's Date.getDay function, which uses 0 for Sunday, 1 for Monday, and so on up to 6 for Saturday.
 </alert>
 
 ### YEAR
 
-以给定日期的数字格式返回四位数字表示的年份。
+Returns the year in numeric format as a four-digit number for a given date.
 
-**使用：** `YEAR(日期)`，用包含您希望返回的年份的字段或表达式替换日期。
+**Usage:** `YEAR(date)`, replace date with the field or expression containing the year you wish to return.
 
-**参数：** date 日期字段或值（如 TODAY()）
+**Parameters:** date Date field or value (such as TODAY())
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```yaml
-YEAR(TODAY() )- YEAR(Initial_Meeting__c )
-```
+^^^yaml
+YEAR(TODAY()) - YEAR(Initial_Meeting__c)
+^^^
 
-
-返回自您与客户初次会面后的年数。本示例使用名为 Initial Meeting（初次会面）的自定义日期字段。
-
-
+Returns the number of years since your initial meeting with a client. This example uses a custom date field named Initial Meeting.
 
 <alert type="info">
-■ 该函数只支持日期类型值，不支持日期时间或字符串类型值作为参数。
-
-■ 该函数与javascript编程语言的Date.getYear函数表现一致。
-
+■ This function only supports date type values, not datetime or string type values as parameters.
+■ This function is consistent with the JavaScript programming language's Date.getYear function.
 </alert>
 
-## 逻辑函数
+
+## Logical Functions
 
 ### AND
 
-如果所有的值均为真，则返回 TRUE（真）响应；如果一个或多个值为假，则返回 FALSE（假）响应。使用此函数作为运算符 && (AND) 的备选。
+Returns TRUE if all values are true, and FALSE if one or more values are false. This function is an alternative to the && (AND) operator.
 
-**使用：** AND(逻辑1,逻辑2...)
+**Usage:** AND(logical1, logical2...)
 
-**参数：**
+**Parameters:**
 
-* *逻辑表达式1:* `boolean` 您希望计算的返回布尔类型值的公式表达式1。
-* *逻辑表达式2:* `boolean` 您希望计算的返回布尔类型值的公式表达式2。
-* ... 更多返回布尔类型值的其他表达式。
+* *Logical Expression 1:* `boolean` The first formula expression you want to evaluate that returns a Boolean value.
+* *Logical Expression 2:* `boolean` The second formula expression you want to evaluate that returns a Boolean value.
+* ... Additional expressions that return Boolean values.
 
-**返回值：** 布尔
+**Return Value:** Boolean
 
-```javascript
+^^^javascript
 IF(AND(Price<1,Quantity<1),"Small", null)
-```
+^^^
 
-
-如果价格和数量小于 1，此公式将显示“Small”。如果资产有大于 1 的价格或数量，则此字段为空。
+This formula displays "Small" if both price and quantity are less than 1. If either the price or quantity of an asset is greater than 1, this field is empty.
 
 ### BLANKVALUE
 
-判断表达式是否具有值，如果没有值则返回一个置换表达式。如果表达式具有值，则返回表达式的值。
+Determines if an expression has a value and returns a substitute expression if it does not. If the expression has a value, it returns the value of the expression.
 
-**使用：** BLANKVALUE(表达式, 置换表达式)
+**Usage:** BLANKVALUE(expression, substitute expression)
 
-**参数：**
+**Parameters:**
 
-* *表达式:* `text/number/date/datetime` 您希望计算的表达式，支持除布尔类型外的常用字段类型值。
-* *置换表达式:* `text/number/date/datetime` 您希望替换任何空白值的值，数据类型应该跟第一个参数一致，当不一致时将返回错误信息。
+* *Expression:* `text/number/date/datetime` The expression you want to evaluate, supports common field types except Boolean.
+* *Substitute Expression:* `text/number/date/datetime` The value you wish to replace any blank values with, should be the same data type as the first parameter, otherwise, it returns an error.
 
-**返回值：** 与传入的参数一样的数据类型
+**Return Value:** The same data type as the passed parameters
 
-```yaml
+^^^yaml
 BLANKVALUE(Department, "Undesignated")
-```
+^^^
 
+If the department field contains a value, this formula returns the value of the department field. If the department field is empty, this formula returns "Undesignated."
 
-如果部门字段包含值则此公式返回部门字段的值。如果部门字段为空，则此公式返回词语未指定。
-
-```yaml
+^^^yaml
 BLANKVALUE(Payment_Due_Date__c, StartDate + 5)
-```
+^^^
 
+This formula returns the date five days after the start date of the contract when Payment Due Date is empty. Payment Due Date is a custom date field.
 
-此公式返回当 Payment Due Date（付款到期日期）为空时，合同开始日期之后第五天的日期。Payment Due Date（付款到期日期）是自定义日期字段。
-
-> * 如果字段包含字符、空白或零，则字段不为空。例如，如果字段包含使用空格键插入的空格，则该字段不为空。
-> * 如果字段没有值，则使用 BLANKVALUE 函数返回指定置换表达式对应的值；如果您只想检查字段是否有值，则使用 ISBLANK函数。
-> * 传入的两个参数值类型应该一样，否则公式将直接报错。
-> * 传入的参数不支持布尔类型值。
-> * 传入的参数不支持select字段类型值。
-> * 如果您对数值字段判断空值，比如`BLANKVALUE(Amount, 100)`，则字段没有值且配置将空白字段处理为空白时，该公式才返回第二个参数中的指定的置换表达式值，如果字段没有值且配置将空白字段处理为0时，则按0值返回而不是返回第二个参数中的指定表达式值。
-> * 因为我们的空白字段处理方式默认值是“将空白字段视为零”，所以低代码中要小心，不配置这个属性时，默认为按0值处理。零代码配置时问题不大，因为空白字段处理属性是必填的，不存在默认值问题。
-
-
+> * If a field contains characters, white space, or zero, then the field is not empty. For example, if a field contains a space inserted with the space bar, then the field is not empty.
+> * If a field has no value, the BLANKVALUE function returns the value of the specified substitute expression; if you just want to check if a field has a value, use the ISBLANK function.
+> * The two parameters passed must be of the same data type, otherwise, the formula will return an error directly.
+> * The parameters do not support Boolean values.
+> * The parameters do not support select field types.
+> * If you judge a numeric field for a blank value, such as `BLANKVALUE(Amount, 100)`, the formula only returns the value of the specified substitute expression if the field has no value and is configured to treat blank fields as blank. If the field has no value and is configured to treat blank fields as 0, it returns 0 instead of the specified substitute expression value.
+> * Since our default blank field handling method is "treat blank fields as zero," be careful in low-code, if you do not configure this attribute, the default is to treat it as 0 value. In zero-code configuration, there is no problem because the blank field handling attribute is mandatory and there is no default value problem.
 
 <alert type="info">
-■ 该函数与 ISBLANK很像，但是该函数会进一步返回字段值为空时的置换表达式对应的值，一般来说，如果您只是想判断字段值是否为空，应该使用后者而不是该函数。
+■ This function is similar to ISBLANK, but it further returns the value of the substitute expression when the field value is empty. Generally, if you just want to determine if the field value is empty, you should use the latter instead of this function.
 
-■ 该函数不支持传入select字段类型参数，但是如果字段是单选的，可以先用TEXT函数选把select类型转换为text类型，比如`BLANKVALUE(TEXT(Leave__c), "error")`，多选的select字段类型无法使用BLANKVALUE函数。
-
+■ This function does not support select field type parameters, but if the field is single-select, you can first convert the select type to text type with the TEXT function, such as `BLANKVALUE(TEXT(Leave__c), "error")`. The multi-select select field type cannot use the BLANKVALUE function.
 </alert>
 
-
 <alert type="info">
-* 字段类型为 `text` 时：`BLANKVALUE(FieldName, "替换值")`
-* 字段类型为 `select` 时：`IF(ISBLANK(FieldName), 替换值, FieldName)`
-* 字段类型为 `number/currency` 时： `BLANKVALUE(FieldName, "替换值")`
-* 字段类型为 `date/datetime` 时： `BLANKVALUE(FieldName, "替换值")`
-* 字段类型为 `lookup/master_detail` 时： `BLANKVALUE(FieldName._id, "替换ID值")`
-* 字段类型为 `boolean` 时：`IF(FieldName, ValueA, ValueB)`
-
+* Field type `text`: `BLANKVALUE(FieldName, "Replacement Value")`
+* Field type `select`: `IF(ISBLANK(FieldName), Replacement Value, FieldName)`
+* Field type `number/currency`: `BLANKVALUE(FieldName, "Replacement Value")`
+* Field type `date/datetime`: `BLANKVALUE(FieldName, "Replacement Value")`
+* Field type `lookup/master_detail`: `BLANKVALUE(FieldName._id, "Replacement ID Value")`
+* Field type `boolean`: `IF(FieldName, ValueA, ValueB)`
 </alert>
 
 ### CASE
 
-根据一系列值检查一个给定表达式。如果表达式等于其中一个值，则返回相应结果。如果它不等于任何值，则返回其他结果。
+Checks a given expression against a series of values. If the expression equals one of the values, it returns the corresponding result. If it does not equal any of the values, it returns an alternate result.
 
-**使用：** CASE(表达式,​值1, 结果1, 值2,​ 结果2,...,其他结果)，用要与所指定的每个值进行比较的字段或值替换表达式。必须用相等的值替换每个值和结果以返回结果项。当表达式不等于任何值时，用您希望返回的值替换其他结果。
+**Usage:** CASE(expression, value1, result1, value2, result2, ..., other result), replace the expression with the field or value you want to compare to each specified value. Each value and result must be replaced with equal values to return a result item. Replace other result with the value you wish to return when the expression does not equal any of the values.
 
-**参数：**
+**Parameters:**
 
-* *表达式:* `text/number/currency/percent/date/datetime/select` 要与所指定的每个值进行比较的字段或值。
-* *值1:* `text/number/currency/percent/date/datetime` 第一个要与第一个参数值进行比较的值。
-* *结果1:* `text/number/currency/percent/date/datetime` 当第一个参数值等于参数“值1”时，函数返回该结果值。
-* *值2:* `text/number/currency/percent/date/datetime` 第二个要与第一个参数值进行比较的值。
-* *结果2:* `text/number/currency/percent/date/datetime` 当第二个参数值等于参数“值2”时，函数返回该结果值。
+* *Expression:* `text/number/currency/percent/date/datetime/select` The field or value to compare against each specified value.
+* *Value1:* `text/number/currency/percent/date/datetime` The first value to compare against the first parameter value.
+* *Result1:* `text/number/currency/percent/date/datetime` The result value returned when the first parameter value equals the "Value1" parameter.
+* *Value2:* `text/number/currency/percent/date/datetime` The second value to compare against the first parameter value.
+* *Result2:* `text/number/currency/percent/date/datetime` The result value returned when the second parameter value equals the "Value2" parameter.
 * ...
-* *其他结果:* `text/number/currency/percent/date/datetime` 当表达式不等于之前参数中的任何值时，函数返回该结果值。
+* *Other Result:* `text/number/currency/percent/date/datetime` The result value returned when the expression does not equal any of the previous parameter values.
 
-**返回值：** 与传入的最后一个参数一样的数据类型
+**Return Value:** The same data type as the last parameter
 
+***Formula Field Examples:***
 
-***公式字段示例：***
+***1. Days Case Unhandled***
 
-***1.个案未处理的天数***
+This is an example of a custom formula field, Days Open, that displays different text based on the number of days a case has been unhandled:
 
-这是一个自定义公式字段 Days Open 的示例，使用该示例可根据个案未处理的天数显示不同的文本：
+^^^javascript
+CASE(Days_Open__c, 3, "Reassign", 2, "Assign Task", "Maintain")
+^^^
 
-```javascript
-CASE(Days_Open__c, 3,  "Reassign", 2, "Assign Task", "Maintain")
-```
+Displays the following text:
 
+* "Reassign" for any case unhandled for three days.
+* "Assign Task" for any case unhandled for two days.
+* "Maintain" for all other cases.
 
-显示下面的文本：
+***2. Month of Last Activity***
 
-* 为任何三天未处理的个案显示“Reassign”（重新指定）。
-* 为任何有两天未处理的个案显示“Assign Task”（分配任务）。
-* 为所有其他个案显示“Maintain”（维护）。
+This formula field displays the month of the last activity or "None" if there is no activity:
 
-
-***2.上次活动的月份***
-
-此公式字段显示上次活动的月份，如果没有活动，则显示“None”（无）。
-
-```yaml
+^^^yaml
 CASE(MONTH(LastActivityDate),
 1, "January",
 2, "February",
@@ -1088,1279 +770,1192 @@ CASE(MONTH(LastActivityDate),
 11, "November",
 12, "December",
 "None")
-```
+^^^
 
+***Default Value Examples:***
 
-***默认值示例：***
+***1. Discount Rate***
 
-***1.折扣率***
+Use the following default value formula to insert a different discount rate in an opportunity based on the department of the person who created the opportunity:
 
-使用下面的默认值公式，可以根据业务机会创建人所在的部门在业务机会中插入另一个折扣率：
+^^^yaml
+CASE(User.Department, "IT", 0.25, "Field", 0.15, 0)
+^^^
 
-```yaml
-CASE(User.Department,​​ "IT", 0.25, "Field", 0.15, 0)
-```
+In this example, the formula inserts a 25% discount rate for all opportunities created by users in the "IT" department, or a 15% discount rate for all opportunities created by personnel in the "Field" department. If the creator does not belong to either of these departments, the discount rate is zero. This is a custom percentage field in the opportunity using the standard user field Department.
 
+***2. Product Language***
 
-在本示例中，该公式在“IT”部门的用户所创建的所有业务机会上插入了 25% 的折扣率，或在“Field”部门的人员所创建的所有业务机会上插入了 15% 的折扣率。如果创建者不属于其中任何一个部门，则折扣率为零。这是业务机会中使用标准用户字段 Department（部门）的自定义百分比字段。
+You might want to associate products with their language so users know what type of documentation or adapters to include. Use the following default value formula to automatically set the language of a product based on the country of the user who created it. In this example, if the user's country is "Japan," the default value is "Japanese"; if the user's country is "US," the default value is "English." If neither, the default value "unknown" is inserted into the product language field.
 
- \n ***2.产品语言***
-
-您可能希望将产品与其语言关联起来，以便用户了解要包含的文档或适配器的类型。使用下面的默认值公式可根据创建某产品的用户所属的国家自动设置该产品的语言。在本示例中，如果用户所属国家是“Japan”（日本），则默认值为“Japanese”（日语），如果用户所属国家是“US”（美国），则默认值为“English”（英语）。如果两者都不是，则会将默认值“unknown”（未知）插入产品语言字段。
-
-```yaml
-CASE($User.Country ,​​ "Japan", "Japanese", "US", "English","unknown")
-```
-
-
+^^^yaml
+CASE($User.Country, "Japan", "Japanese", "US", "English", "unknown")
+^^^
 
 <alert type="info">
-■ 请确保您的`值1`、`值2`等表达式属于相同的数据类型，且必须与第一个参数值数据类型一致。
+■ Ensure your `value1`, `value2`, etc., expressions are of the same data type and must match the data type of the first parameter value.
 
-■ 请确保您的`结果1`、`结果2`等表达式以及最后的`其他结果`表达式属于相同的数据类型，但是不必与第一个参数值数据类型一致，且它们往往不一致。
+■ Ensure your `result1`, `result2`, etc., expressions, and the final `other result` expression are of the same data type, but they do not need to match the data type of the first parameter value, and they often do not.
 
-■ CASE 函数中不能包含返回布尔类型，即真或假的参数值，而应当确保真或假表达式返回被支持的数据类型，例如：
+■ The CASE function cannot include parameters that return a Boolean type, i.e., true or false. Instead, ensure true or false expressions return a supported data type, for example:
 
-`CASE(1, IF(ISPICKVAL(Term__c,"12"),​ 1, 0), 12 * Monthly_Commit__c,​​ IF(ISPICKVAL(Term__c,"24"), 1, 0),​​ 24 * Monthly_Commit__c, 0)`
+`CASE(1, IF(ISPICKVAL(Term__c,"12"), 1, 0), 12 * Monthly_Commit__c, IF(ISPICKVAL(Term__c,"24"), 1, 0), 24 * Monthly_Commit__c, 0)`
 
-在该公式中，Term（期限）是一个选项列表字段，当它包含表示真的值 1 时，将与“每月提交量”相乘。
+In this formula, Term is a picklist field, and when it contains the value 1, representing true, it multiplies with "Monthly Commit."
 
-■ 需包含其他结果值。
+■ Include an other result value.
 
-■ 如果任何表达式返回一个错误，那么，即使其他表达式返回的值正确，`CASE`函数也将返回一个错误。例如，在`CASE(Field__c,"Partner", "P",​ "Customer", "C", LEFT(Field__c, -5))` 公式中，即使其中字段的值是“Partner”（合作伙伴）或“Customer”（客户），该公式也会由于上一条语句不合逻辑而返回一个错误。
+■ If any expression returns an error, the `CASE` function will also return an error, even if other expressions return correct values. For example, in `CASE(Field__c, "Partner", "P", "Customer", "C", LEFT(Field__c, -5))`, even if the field's value is "Partner" or "Customer," the formula will return an error due to the illogical last statement.
 
-■ 如果 CASE 函数中的字段为空，它将返回其他结果值。例如，如果 Days Open（未处理天数）字段为空、0 或者 2 和 3 以外的任何值，`CASE(Days_Open__c, 3, "Reassign", 2,​ "Assign Task", "Maintain")`公式将显示“Maintain”（维护）。
+■ If the field in the CASE function is empty, it returns the other result value. For example, if the Days Open field is empty, 0, or any value other than 2 and 3, `CASE(Days_Open__c, 3, "Reassign", 2, "Assign Task", "Maintain")` will display "Maintain."
 
-■ 使用 CASE 函数可以确定选项列表值是否等于特定的值。例如，当 Term（期限）为 12 时，`CASE(Term__c, "12", 12*Monthly_Commit__c, "24",​ 24 * Monthly_Commit__c, 0)` 公式将 Monthly Commit（每月提交量）乘以 12；当 Term（期限）为 24 时，该公式将 Monthly Commit（每月提交量）乘以 24。否则，结果为零。
+■ Use the CASE function to determine if a picklist value equals a specific value. For example, when Term is 12, `CASE(Term__c, "12", 12 * Monthly_Commit__c, "24", 24 * Monthly_Commit__c, 0)` multiplies Monthly Commit by 12; when Term is 24, it multiplies by 24. Otherwise, the result is zero.
 
 </alert>
 
-
 <alert type="info">
-* CASE函数中的任何参数都不支持布尔类型值，这不只表示第一个参数及后续用于比较值的其他参数不能是布尔类型值，最后一个参数也一样不支持布尔类型值，也就是说整个函数的返回值不可能是布尔类型值。
-* 表达式参数，即传入的第一个参数支持select字段，但是只支持单选的，如果传入多选的select将直接报错。
+* No parameter in the CASE function supports Boolean values. This means not only the first parameter and subsequent comparison values cannot be Boolean, but also the last parameter cannot be Boolean, meaning the entire function's return value cannot be a Boolean.
+* The expression parameter, i.e., the first parameter, supports select fields, but only single-select. Passing a multi-select select will result in an error.
 
 </alert>
 
 ### IF
 
-确定表达式为真或为假。如果为真则返回一个给定值，如果为假则返回另一个值。
+Determines if an expression is true or false. If true, it returns a given value; if false, it returns another value.
 
-**使用：** IF(逻辑测试, value_if_true, value_if_false)
+**Usage:** IF(logical test, value_if_true, value_if_false)
 
-**参数：**
+**Parameters:**
 
-* *逻辑表达式:* `boolean` 最终返回布尔类型值的逻辑表达式。
-* *value_if_true:* `text/number/currency/percent/date/datetime` 您希望当表达式为真时所返回的值，支持除布尔类型外的常用字段类型值。
-* *value_if_false:* `text/number/currency/percent/date/datetime` 您希望表达式为假时所返回的值，支持除布尔类型外的常用字段类型值。
+* *Logical Expression:* `boolean` A logical expression that ultimately returns a Boolean value.
+* *Value_if_true:* `text/number/currency/percent/date/datetime` The value you wish to return when the expression is true, supports common field types except Boolean.
+* *Value_if_false:* `text/number/currency/percent/date/datetime` The value you wish to return when the expression is false, supports common field types except Boolean.
 
-**返回值：** 第一个及第二参数中相同的数据类型
+**Return Value:** The same data type as the first and second parameters
 
-***公式字段示例：***
+***Formula Field Examples:***
 
-***1.付款逾期***
+***1. Payment Overdue***
 
-```javascript
-IF(AND(Payment_Due_Date__c < TODAY(),​​Payment_Status__c = "UNPAID") , "PAYMENT OVERDUE", ​null)
-```
+^^^javascript
+IF(AND(Payment_Due_Date__c < TODAY(), Payment_Status__c = "UNPAID"), "PAYMENT OVERDUE", null)
+^^^
 
+This formula determines whether the payment due date has passed and whether the payment status is "UNPAID." If so, it returns the text "PAYMENT OVERDUE"; otherwise, it keeps the field empty. This example uses a custom date field named Payment Due Date and a custom text field named Payment Status.
 
-此公式确定付款到期日期是否已过，以及付款状态是否为“UNPAID”（未付）。如果是，则返回文本“PAYMENT OVERDUE”（付款逾期）；如果不是，则保持该字段为空。本示例使用名为 Payment Due Date（付款到期日期）的自定义日期字段和一个名为 Payment Status（付款状态）的自定义文本字段。
+***2. Inserting Tax Rate***
 
+Use this default value formula to set the tax rate of an asset based on the city of the user. Create a custom percentage field using the following default value:
 
-***2.插入税率***
-
-使用该默认值公式可根据用户所在城市设置资产的税率。使用以下默认值创建自定义百分比字段：
-
-```yaml
-IF($user.city = "Napa", 0.0750, IF($user.city = "Paso Robles", 0.0725,  IF($user.city = "Sutter Creek", 0.0725,   IF($user.city = "Los Olivos", 0.0750,    IF($user.city = "Livermore", 0.0875, null    )   )  ) ))
-```
-
-
+^^^yaml
+IF($user.city = "Napa", 0.0750, IF($user.city = "Paso Robles", 0.0725, IF($user.city = "Sutter Creek", 0.0725, IF($user.city = "Los Olivos", 0.0750, IF($user.city = "Livermore", 0.0875, null )))))
+^^^
 
 <alert type="info">
-* 请确保您的 value_if_true 和 value_if_false 表达式属于相同的数据类型，且不为布尔类型值。
-* IF函数不支持返回值为布尔类型的情况，即第二个及第三个参数不能是布尔类型。
+* Ensure that your value_if_true and value_if_false expressions are of the same data type and are not Boolean values.
+* The IF function does not support Boolean values as return values, i.e., the second and third parameters cannot be Boolean.
 
 </alert>
 
 ### ISBLANK
 
-判断表达式是否具有值，如果没有值则返回 TRUE（真）。如果它包含一个值，则该函数返回 FALSE（假）。
+Determines whether an expression has a value, returning TRUE if it does not. If it contains a value, the function returns FALSE.
 
-**使用：** ISBLANK(表达式)
+**Usage:** ISBLANK(expression)
 
-**参数：** `text/number/date/datetime/select` 您希望计算的表达式。
+**Parameters:** `text/number/date/datetime/select` The expression you want to evaluate.
 
-**返回值：** 布尔
+**Return Value:** Boolean
 
-```yaml
-(IF(ISBLANK(Maint_Amount__c), 0, 1) + ​ IF(ISBLANK(Services_Amount__c), 0,1) + ​  IF(ISBLANK(Discount_Percent__c), 0, 1) + ​   IF(ISBLANK(Amount), 0, 1) +​    IF(ISBLANK(Timeline__c), 0, 1)) / 5
-```
+^^^yaml
+((IF(ISBLANK(Maint_Amount__c), 0, 1) + IF(ISBLANK(Services_Amount__c), 0, 1) + IF(ISBLANK(Discount_Percent__c), 0, 1) + IF(ISBLANK(Amount), 0, 1) + IF(ISBLANK(Timeline__c), 0, 1)) / 5
+^^^
 
-
-此公式可提取一组字段，并计算人员所用的百分比。此公式字段检查五个字段以查看它们是否为空。如果为空，则该字段计数为 0。对于任何包含一个值的字段计数“1”，且该总和除以五（计算的字段数）。此公式需要您选中“空白字段处理”下面的将空白字段视为空白选项，否则公式中的ISBLANK会始终返回FALSE。
-
-
+This formula extracts a set of fields and calculates the percentage used by the personnel. It checks five fields to see if they are empty. If empty, that field counts as 0. For any field containing a value, it counts "1," and the total is divided by five (the number of fields calculated). This formula requires selecting the "treat blank fields as blank" option under "blank field handling," otherwise ISBLANK will always return FALSE.
 
 <alert type="info">
-■ 请不要用`MyDateTime__c == null`这种表达式判断空值，而应该使用`ISBLANK(MyDateTime__c)`。
+■ Do not use expressions like `MyDateTime__c == null` to determine blank values; use `ISBLANK(MyDateTime__c)` instead.
 
-■ 如果字段包含字符、空白或零，则字段不为空。例如，如果字段包含使用空格键插入的空格，则该字段不为空。
+■ If a field contains characters, white space, or zero, it is not empty. For example, if a field contains a space inserted with the space bar, then the field is not empty.
 
-■ 如果字段没有值，则使用 BLANKVALUE 函数返回指定表达式；如果您只想检查字段是否有值，则使用 ISBLANK 函数。
+■ If a field has no value, use the BLANKVALUE function to return the specified expression; if you just want to check if a field has a value, use the ISBLANK function.
 
-■ 如果您对数值字段使用该函数,比如`ISBLANK(Amount)`，则字段没有值且配置将空白字段处理为空白时，该函数才返回 TRUE。
+■ If you use this function on a numeric field, like `ISBLANK(Amount)`, the function returns TRUE only if the field has no value and is configured to treat blank fields as blank.
 
-■ 因为我们的空白字段处理方式默认值是“将空白字段视为零”，所以低代码中要小心，不配置这个属性时，默认为按0值处理。零代码配置时问题不大，因为空白字段处理属性是必填的，不存在默认值问题。
+■ Since our default blank field handling method is "treat blank fields as zero," be careful in low-code, as by default, it is treated as 0 value. In zero-code configuration, there is no problem as the blank field handling attribute is mandatory and has no default value.
 
-■ 对于select字段类型，单选多选语法是一样的，直接传入参数值即可。
+■ For select field types, the syntax for single and multi-select is the same, just pass the parameter value directly.
 
 </alert>
 
-
 <alert type="info">
-ISBLANK函数返回值为布尔类型，但是不支持参数值本身为布尔类型的情况。
+ISBLANK function returns a Boolean value but does not support parameters that are themselves Boolean values.
 
 </alert>
 
-
 <alert type="info">
-* 字段类型为 `text/select` 时：`ISBLANK(FieldName)`。
-* 字段类型为 `number/currency` 时： `ISBLANK(FieldName)`，但是只有配置将空白字段处理为空白时才有效，否则永远返回false。
-* 字段类型为 `date/datetime` 时： `ISBLANK(FieldName)`。
-* 字段类型为 `lookup/master_detail` 时： `ISBLANK(FieldName._id)`。
-* 字段类型为 `boolean` 时：`FieldName`。
+* Field type `text/select`: `ISBLANK(FieldName)`.
+* Field type `number/currency`: `ISBLANK(FieldName)`, but only effective when configured to treat blank fields as blank, otherwise always returns false.
+* Field type `date/datetime`: `ISBLANK(FieldName)`.
+* Field type `lookup/master_detail`: `ISBLANK(FieldName._id)`.
+* Field type `boolean`: `FieldName`.
 
 </alert>
 
 ### NOT
 
-对于 TRUE（真）返回 FALSE（假），对于 FALSE（假）返回 TRUE（真）。
+Returns FALSE for TRUE, and TRUE for FALSE.
 
-**使用：** NOT(逻辑表达式)
+**Usage:** NOT(logical expression)
 
-**参数：** `boolean` 您希望计算的表达式。
+**Parameters:** `boolean` The expression you want to evaluate.
 
-```javascript
+^^^javascript
 IF(NOT(Status = "Closed"), ROUND(NOW()-CreatedDate, 0), null)
-```
+^^^
 
-
-检查变量是否未处理；如果是，则通过从当前日期和时间减去创建日期和时间来计算它未被处理的天数。结果是舍入为零小数位的未处理天数。如果变量已处理，则此字段为空。
+Checks if the variable is unhandled; if so, it calculates the number of days it has been unhandled by subtracting the creation date and time from the current date and time. The result is the number of unhandled days rounded to zero decimal places. If the variable is handled, this field is empty.
 
 ### OR
 
-如果任何表达式为真，则返回 TRUE（真）。如果所有表达式均为假，则返回 FALSE（假）。使用此函数作为运算符 || (OR) 的备选。
+Returns TRUE if any expression is true. If all expressions are false, it returns FALSE. This function is an alternative to the || (OR) operator.
 
-**使用：** OR(逻辑1,逻辑2...)
+**Usage:** OR(logical1, logical2...)
 
-**参数：**
+**Parameters:**
 
-* *逻辑表达式1:* `boolean` 您希望计算的返回布尔类型值的公式表达式1。
-* *逻辑表达式2:* `boolean` 您希望计算的返回布尔类型值的公式表达式2。
-* ... 更多返回布尔类型值的其他表达式。
+* *Logical Expression 1:* `boolean` The first formula expression you want to evaluate that returns a Boolean value.
+* *Logical Expression 2:* `boolean` The second formula expression you want to evaluate that returns a Boolean value.
+* ... Additional expressions that return Boolean values.
 
-**返回值：** 布尔
+**Return Value:** Boolean
 
-```javascript
-IF(OR(Priority="High",Status="New"), ROUND(NOW()-CreatedDate, 0), null)
-```
+^^^javascript
+IF(OR(Priority="High", Status="New"), ROUND(NOW()-CreatedDate, 0), null)
+^^^
+
+If the case's Status is "New" or the Priority is "High," this formula returns the number of days the case has been unhandled. If the case was opened today, the field shows zero.
 
 
-如果个案 Status（状态）为“New”（新建）或 Priority（优先级）为“High”（高），则此公式返回个案未被处理的天数。如果个案是今天打开的，则该字段显示零。
-
-## 数学函数
+## Mathematical Functions
 
 ### ABS
 
-计算一个数字的绝对值。数字的绝对值是不含正、负号的数字。
+Calculates the absolute value of a number. The absolute value of a number is the number without its sign.
 
-**使用：** ABS(数字)
+**Usage:** ABS(number)
 
-**参数：** `number` 带有您希望删除的符号的合并字段、表达式或其他数值。
+**Parameter:** `number` A merge field, expression, or other value from which you wish to remove the sign.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 ABS(ExpectedRevenue)
-```
+^^^
 
-
-计算 Expected Revenue（预期收入）金额的正值，而无论其为正还是为负。
+Calculates the positive value of the Expected Revenue amount, regardless of whether it is positive or negative.
 
 ### CEILING
 
-将数字向上四舍五入为最接近的整数；如果是负数，先把正数部分舍入为最接近的整数然后加上负号前缀。
+Rounds a number up to the nearest integer; for negative numbers, it first rounds the positive part to the nearest integer and then adds the negative sign prefix.
 
-**使用：** CEILING(数字)
+**Usage:** CEILING(number)
 
-**参数：** `number` 您希望舍入的字段或表达式。
+**Parameter:** `number` The field or expression you wish to round.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 CEILING(2.3)
-```
+^^^
 
+Returns 3, as 2.3 is rounded up to the nearest integer.
 
-返回 3，即 2.3 向上舍入为最接近的整数。
-
-```javascript
+^^^javascript
 CEILING(-2.3)
-```
+^^^
 
-会返回 -3，即 -2.3 舍入为 0 以下的最接近的正整数后加上负号前缀。
+Returns -3, as -2.3 is rounded up to the nearest positive integer below zero and then given a negative sign.
 
 ### EXP
 
-返回一个值，该值等于所指定数字的 e 幂。
+Returns a value equal to the power of e raised to the specified number.
 
-**使用：** EXP(数字)
+**Usage:** EXP(number)
 
-**参数：** `number` 一个数字字段或值（如 5）。
+**Parameter:** `number` A numeric field or value (like 5).
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 EXP(3)
-```
+^^^
 
+This formula returns a value equal to e raised to the power of three.
 
-此公式返回一个值，该值等于 e 的三次幂。
-
-```javascript
+^^^javascript
 Principal__c  EXP(Rate__c  Years__c)
-```
+^^^
 
-
-此公式基于本金的自定义货币字段、利率的自定义百分比字段和年份的自定义数字字段计算复利。
+This formula calculates compound interest based on a custom currency field for principal, a custom percentage field for rate, and a custom numeric field for years.
 
 ### FLOOR
 
-返回向下舍入为最接近整数的数字；如果是负数，按整数部分舍入后加负号。
+Returns a number rounded down to the nearest integer; for negative numbers, it rounds the integer part down and then adds the negative sign.
 
-**使用：** FLOOR(数字)
+**Usage:** FLOOR(number)
 
-**参数：** `number` 一个数字字段或值（如 5.245）。
+**Parameter:** `number` A numeric field or value (like 5.245).
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 FLOOR(2.5)
-```
+^^^
 
+Returns 2, as 2.5 is rounded down to the nearest integer.
 
-返回 2，即 2.5 向下舍入为最接近的整数。
-
-```javascript
+^^^javascript
 FLOOR(-2.5)
-```
+^^^
 
-
-会返回 -2，即 -2.5 舍入为 0 以上的负数。
+Returns -2, as -2.5 is rounded down to the nearest negative number above zero.
 
 ### LN
 
-返回一个指定数值的自然对数。自然对数以常数 e（值为 2.71828182845904）为底。
+Returns the natural logarithm of a specified value. The natural logarithm is based on the constant e (value 2.71828182845904).
 
-**使用：** LN(数字)
+**Usage:** LN(number)
 
-**参数：** `number` 您希望获得其自然对数的字段或表达式。注意：LN 函数是 EXP 函数的反函数。
+**Parameter:** `number` The field or expression whose natural logarithm you wish to obtain. Note: The LN function is the inverse of the EXP function.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 LN(10)
-```
+^^^
 
+Returns the natural logarithm of 10, which is approximately 2.30.
 
-返回 10 的自然对数，即 2.30。
-
-```javascript
+^^^javascript
 LN(Value__c)
-```
+^^^
 
-
-返回名为 Value（值）的自定义数字字段的自然对数。
+Returns the natural logarithm of a custom numeric field named Value.
 
 ### LOG
 
-返回数字以 10 为底的对数。
+Returns the base 10 logarithm of a number.
 
-**使用：** LOG(数字)
+**Usage:** LOG(number)
 
-**参数：** `number` 您希望从中计算以 10 为底的对数的字段或表达式。
+**Parameter:** `number` The field or expression from which you want to calculate the base 10 logarithm.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 LOG(Salary__c)
-```
+^^^
 
+Calculates the logarithm of someone's salary.
 
-计算某人的工资的对数。
-
-在本示例中，Salary（工资）是自定义金额字段。
+In this example, Salary is a custom currency field.
 
 ### MAX
 
-返回一系列数字中的最大数字。
+Returns the largest number in a series of numbers.
 
-**使用：** MAX(数字, 数字,...)
+**Usage:** MAX(number, number, ...)
 
-**参数：**
+**Parameters:**
 
-* *数字:* `number` 您希望从中检索最大数字的字段或表达式之一。
-* *数字:* `number` 您希望从中检索最大数字的字段或表达式之一。
-* ... 更多您希望从中检索最大数字的字段或表达式。
+* *Number:* `number` One of the fields or expressions from which you wish to retrieve the largest number.
+* *Number:* `number` Another field or expression from which you wish to retrieve the largest number.
+* ... More fields or expressions from which you wish to retrieve the largest number.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-***示例：***
+***Examples:***
 
-***1.服务费***
+***1. Service Fee***
 
-```javascript
+^^^javascript
 MAX(0.06 * Total_Cost__c , Min_Service_Charge__c)
-```
+^^^
 
+***2. Book Royalties***
 
-***2.书籍版税***
+This example of a formula field calculates a service fee, taking the greater of 6% of the total cost or a minimum service charge. Note that the minimum service charge is a custom currency field with a default value of $15. However, if the minimum service charge is not always the same amount, you could make that field a formula field.
 
-本示例中的公式字段计算服务费，取总成本的 6% 与最低服务费之间的较大者。请注意，最低服务费是默认值为 $15 的自定义货币字段。但是，如果最低服务费并不总是为同一金额，则可以使该字段为公式字段。
+^^^javascript
+MAX(0.10 * Pages__c, (Retail_Price__c * 0.07) * Total_Sold__c)
+^^^
 
-```javascript
-MAX(0.10 * Pages__c, (Retail_Price__c * 0.07) * Total_Sold__c)
-```
+***3. Commission***
 
+This formula determines the royalties to be paid on a book. It shows the larger of two amounts: $0.07 per book sold or $0.10 per page. It assumes you have custom numeric fields named Pages and Total Sold and a custom currency field named Retail Price.
 
-***3.佣金***
-
-此公式确定要支付的书籍版税。它显示两个金额中的较大的一项：每卖一本书 0.07 美元或每页 0.10 美元。它假设您有名为 Pages（页数）和 Total Sold（销售总额）的自定义数字字段，以及名为 Retail Price（零售价格）的自定义货币字段。
-
-```javascript
+^^^javascript
 MAX($user.Commission_Percent__c * Price, Price * Account_Discount__c, 100)
-```
+^^^
 
-
-该示例确定要根据以下较大值为资产记录的佣金：用户的价格佣金百分比、价格乘以为金额存储的折扣百分比或 100 美元。本示例假设您有两个针对用户和资产的自定义百分比字段。
+This example determines the commission for an asset record based on the larger of the user's price commission percentage, the price times the discount percentage stored as an amount, or $100. This example assumes you have two custom percentage fields for the user and the asset.
 
 ### MCEILING
 
-将数字向上四舍五入为最接近的整数；如果是负数，一样按值大小向上舍入为最接近的负整数。
+Rounds a number up to the nearest integer; for negative numbers, it rounds up to the nearest negative integer based on value size.
 
-**使用：** MCEILING(number)
+**Usage:** MCEILING(number)
 
-**参数：** `number` 您希望计算的字段或表达式。
+**Parameter:** `number` The field or expression you wish to calculate.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 MCEILING(2.3)
-```
+^^^
 
+Returns 3, as 2.3 is rounded up to the nearest integer.
 
-返回 3，即 2.3 向上舍入为最接近的整数。
-
-```javascript
+^^^javascript
 MCEILING(-2.3)
-```
+^^^
 
+Returns -3, as for negative numbers, -2.3 is rounded down to the nearest negative integer.
 
-返回 -3，即对于负数，-2.3 向下舍入为最接近的负整数。
-
-
-> MCEILING函数与CEILING在传入的参数是正数时用法一样，区别是参数为负数时后者是先按正数值向上舍入后再加上负号前缀。
+> The MCEILING function is similar to CEILING when the input parameter is a positive number, but differs for negative numbers as the latter first rounds up the positive value before adding the negative sign prefix.
 
 ### MFLOOR
 
-将数字向下四舍五入为最接近的整数；如果是负数，一样按值大小向下舍入为最接近的负整数。
+Rounds a number down to the nearest integer; for negative numbers, it rounds down to the nearest negative integer based on value size.
 
-**使用：** MFLOOR(number)
+**Usage:** MFLOOR(number)
 
-**参数：** `number` 您希望计算的字段或表达式。
+**Parameter:** `number` The field or expression you wish to calculate.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 MFLOOR(2.3)
-```
+^^^
 
+Returns 2, as 2.3 is rounded down to the nearest integer.
 
-返回 2，即 2.3 向下舍入为最接近的整数。
-
-```javascript
+^^^javascript
 MFLOOR(-2.3)
-```
+^^^
 
+Returns -3, as for negative numbers, -2.3 is rounded down to the nearest negative integer.
 
-返回 -3，即对于负数，-2.3 向下舍入为最接近的负整数。
-
-
-> MFLOOR函数与FLOOR在传入的参数是正数时用法一样，区别是参数为负数时后者是先按正数值向下舍入后再加上负号前缀。
+> The MFLOOR function is similar to FLOOR when the input parameter is a positive number, but differs for negative numbers as the latter first rounds down the positive value before adding the negative sign prefix.
 
 ### MIN
 
-返回一系列数字中的最小数字。
+Returns the smallest number in a series of numbers.
 
-**使用：** MIN(数字, 数字,...)
+**Usage:** MIN(number, number, ...)
 
-**参数：**
+**Parameters:**
 
-* *数字:* `number` 您希望从中检索最小数字的字段或表达式之一。
-* *数字:* `number` 您希望从中检索最小数字的字段或表达式之一。
-* ... 更多您希望从中检索最小数字的字段或表达式。
+* *Number:* `number` One of the fields or expressions from which you wish to retrieve the smallest number.
+* *Number:* `number` Another field or expression from which you wish to retrieve the smallest number.
+* ... More fields or expressions from which you wish to retrieve the smallest number.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 MIN(250, Contribution__c /2)
-```
+^^^
 
+In this example, the formula determines the amount to contribute in an employee 401K match based on half of the employee's contribution or $250, whichever is less. It assumes you have a custom currency field named Contribution.
 
-本示例中的公式根据一半员工的捐献或 250 美元（较小者为准）的匹配计划来确定在员工 401K 匹配中提供多少金额。它假设您有一个名为 Contribution（贡献）的自定义货币字段。
+^^^javascript
+MIN(Gross__c * Bonus_Percent__c, ​ Performance__c / Number_of_Employees__c)
+^^^
 
-```javascript
-MIN(Gross__c * Bonus_Percent__c, ​  Performance__c / Number_of_Employees__c)
-```
-
-
-该示例确定了基于两个金额最小值的员工奖金金额：员工的总时间奖金百分比或在所有员工中平分公司的绩效奖金金额。它还假设您有一个名为 Number of Employees（职员数）的自定义数字字段，一个名为 Bonus Percent（奖金百分比）的自定义百分比字段，以及针对员工 Gross（毛利）和公司的 Performance（绩效）的自定义货币字段。
+This example determines the employee bonus amount based on the lesser of two amounts: the employee's total times the bonus percentage or the company's performance bonus amount divided among all employees. It also assumes you have a custom numeric field named Number of Employees, a custom percentage field named Bonus Percent, and custom currency fields for the employee's Gross and the company's Performance.
 
 ### MOD
 
-返回一个数字除以指定除数后的余数。
+Returns the remainder of a number divided by a specified divisor.
 
-**使用：** MOD(数字, 除数)
+**Usage:** MOD(number, divisor)
 
-**参数：**
+**Parameters:**
 
-* *数字:* `number` 您希望被除的字段或表达式。
-* *除数:* `number` 要用作除数的数字。
+* *Number:* `number` The field or expression you wish to divide.
+* *Divisor:* `number` The number to be used as a divisor.
 
+**Return Value:** Numeric
 
-**返回值：** 数值
-
-```javascript
+^^^javascript
 MOD(3, 3)MOD(4, 3)MOD(123, 100)
-```
+^^^
 
+Returns 0; returns 1; returns 23.
 
-返回 0； 返回 1； 返回 23。
+You might want to prevent users from scheduling meetings on Saturdays or Sundays. Apply this validation rule example to a custom date field named My Date.
 
-您可能希望禁止用户将会议安排在星期六或星期日。使用下面的示例可以对名为 My Date（我的日期）的自定义日期字段应用验证规则。
-
-```yaml
+^^^yaml
 CASE(MOD(My_Date__c - DATE(1900, 1, 7), 7),
 0, 0,
 6, 0,
 1) = 0
-```
+^^^
 
- \n 当 My Date（我的日期）的值不在星期一至星期五范围内时，本示例返回下面的错误消息：“My Date is not a weekday.”（我的日期不是工作日）。
+When the value of My Date is not within the range of Monday to Friday, this example returns the error message: "My Date is not a weekday."
 
-
-> 请不要使用0值作为除数传入。
-
+> Do not use a value of 0 as a divisor.
 
 ### ROUND
 
-返回与所指定的数字最接近的一个数字，并通过指定的位数来约束新数字。
+Returns a number closest to the specified number, constrained by the specified number of digits.
 
-**使用：** ROUND(数字, 数字位数)
+**Usage:** ROUND(number, decimal places)
 
-**参数：**
+**Parameters:**
 
-* *数字:* `number` 您希望舍入的字段或表达式。
-* *数字位数:* `number` 您希望在舍入时考虑的小数位数。
+* *Number:* `number` The field or expression you wish to round.
+* *Decimal Places:* `number` The number of decimal places you wish to consider when rounding.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 ROUND (1.5, 0) = 2ROUND (1.2345, 0) = 1ROUND (-1.5, 0) = -2ROUND (225.49823, 2) = 225.50
-```
+^^^
 
 
-```javascript
+^^^javascript
 ROUND( Amount-Amount* Discount_Percent__c,2)
-```
+^^^
 
+This formula can be used to calculate the discounted amount of a business opportunity, rounded to two decimal places. This example is a numeric formula field for a business opportunity, using a custom percentage field named Discount Percent.
 
-使用此公式可以计算舍入到两位数的业务机会折扣金额。本示例是业务机会的数字公式字段，使用名为 Discount Percent（折扣百分比）的自定义百分比字段。
-
-
-> ■ 为数字位数输入零以将数值舍入为最接近的整数。
+> ■ Enter zero for the number of digits to round the value to the nearest integer.
 >
-> ■ 该函数会根据您指定的小数位数自动舍入数字。例如，当您输入 1.49999 时，设置为两位小数的自定义数字字段存储为 1.50。
+> ■ The function automatically rounds the number according to the decimal places you specify. For example, when you enter 1.49999, a custom numeric field set for two decimal places stores it as 1.50.
 >
-> ■ 该函数使用四舍五入算法。半数值始终要前一位加一。例如，1.45 四舍五入为 1.5。–1.45 四舍五入为 –1.5。
+> ■ The function uses a rounding algorithm where half values always round up to the next digit. For example, 1.45 rounds up to 1.5. –1.45 rounds up to –1.5.
 >
-> ■ 界面上显示的数字取决于在字段在定义时您所选的小数位数。这里数字位数表示公式运算舍入时考虑的数字位数。
+> ■ The displayed number on the interface depends on the decimal places selected when defining the field. Here, the number of digits refers to the number of decimal places considered during formula calculation rounding.
 >
-> ■ 第一个参数值为负数时，将按正数部分四舍五入后再加上负号前缀作为最终返回值，而不是像javascript编程语言Math.round函数一样按值进行四舍五入。
-
+> ■ If the first parameter value is negative, it will round the positive part and then add the negative sign prefix as the final return value, rather than rounding the value as the JavaScript programming language's Math.round function does.
 
 ### SQRT
 
-返回给定数字的正平方根。
+Returns the positive square root of a given number.
 
-**使用：** SQRT(数字)
+**Usage:** SQRT(number)
 
-**参数：** `number` 您希望计算其平方根的字段或表达式。
+**Parameter:** `number` The field or expression whose square root you wish to calculate.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 SQRT(25)
-```
+^^^
 
+Returns the square root of 25 (which is 5).
 
-返回 25 的平方根（即 5）。
-
-```javascript
+^^^javascript
 SQRT(Amplitude__c)
-```
+^^^
 
+Returns the square root of a custom numeric field representing the amplitude of an earthquake.
 
-返回代表地震振幅的自定义数字字段的平方根。
-
-
-> ■ 计算一个负数的平方根是不支持的，会返回错误信息。
+> ■ Calculating the square root of a negative number is not supported and will return an error message.
 >
-> ■ 可通过包含 IF 函数来避免出现零除数，例如：IF( Amplitude__c >= 0, SQRT( Amplitude__c ), null)。
+> ■ You can avoid division by zero by including the IF function, for example: IF( Amplitude__c >= 0, SQRT( Amplitude__c ), null).
 
-## 文本函数
+
+## Text Functions
 
 ### BEGINS
 
-确定文本是否以特定字符开头，如果是则返回 TRUE（真）。如果不是，则返回 FALSE（假）。
+Determines if text begins with specific characters, returning TRUE if it does. Otherwise, it returns FALSE.
 
-**使用：** BEGINS(文本, 比较文本)
+**Usage:** BEGINS(text, compare_text)
 
-**参数：**
+**Parameters:**
 
-* *文本:* `text` 您希望进行比较的字符全文或字段。
-* *比较文本:* `text` 用于比较的文本片断。
+* *text:* `text` The full text or field you want to compare.
+* *compare_text:* `text` The text fragment for comparison.
 
-**返回值：** 布尔
+**Return Value:** Boolean
 
-```yaml
-IF(BEGINS (Product_type__c , “ICU”), “Medical”, “Technical”)
-```
+^^^yaml
+IF(BEGINS(Product_type__c, "ICU"), "Medical", "Technical")
+^^^
 
-
-如果产品类型自定义文本字段中的文本以“ICU”开头，则此示例返回文本“Medical”（医疗）。对于所有其他产品显示“Technical”（技术）。
+If the custom text field Product_type begins with "ICU", this example returns "Medical". For all other products, it returns "Technical".
 
 
 
 <alert type="info">
-■ 此函数区分大小写，因此，请确保比较文本值的大小写正确无误。
+■ This function is case-sensitive, so ensure the compare_text value's casing is correct.
 
-■ 在验证规则或工作流规则中使用此函数时，留空的字段被视为有效。例如，如果您的验证规则要测试资产序列号是否以“3”开始，则序列号为空的所有资产都将视为有效。
+■ When used in validation or workflow rules, empty fields are considered valid. For instance, if your validation rule tests if an asset's serial number begins with "3", all assets with an empty serial number are considered valid.
 
 </alert>
 
 ### BR
 
-在文本字符串中插入一个换行符。
+Inserts a line break in a text string.
 
-**使用：** BR()
+**Usage:** BR()
 
-**返回值：** 文本
+**Return Value:** Text
 
-```yaml
-CASE(ShippingCountry,"USA",  ShippingStreet & BR() &  ShippingCity & ",  " & ShippingState & " " &  ShippingPostalCode & BR()  & ShippingCountry,"France",  ShippingStreet & BR() &  ShippingPostalCode & " " &  ShippingCity & BR() &  ShippingCountry, "etc")
-```
+^^^yaml
+CASE(ShippingCountry, "USA", ShippingStreet & BR() & ShippingCity & ", " & ShippingState & " " & ShippingPostalCode & BR() & ShippingCountry, "France", ShippingStreet & BR() & ShippingPostalCode & " " & ShippingCity & BR() & ShippingCountry, "etc")
+^^^
 
-
-此公式字段以标准格式显示联系人的带格式邮寄地址，根据所在的国家/地区，可能会在该地址的适当位置中包含空格和换行符。
+This formula field displays a formatted mailing address for contacts, potentially including spaces and line breaks at appropriate places, depending on the country/region.
 
 
 
 <alert type="info">
-■ 请勿删除函数名称后面的括号。
+■ Do not remove the parentheses following the function name.
 
-■ 保留括号为空。括号中不必包含值。
+■ Keep the parentheses empty. They should not contain any values.
 
-■ 请勿忘记在 BR() 两侧加上串联运算符：&。
+■ Do not forget to add concatenation operators: & on either side of BR().
 
 </alert>
 
 ### CASESAFEID
 
-将 15 个字符的 ID 转换成区分大小写的 18 个字符 ID。
+Converts a 15-character ID to a case-sensitive 18-character ID.
 
-**使用：** CASESAFEID(id)
+**Usage:** CASESAFEID(id)
 
-**参数：** `text` 对象 ID。
+**Parameter:** `text` The object ID.
 
-**返回值：** 文本
+**Return Value:** Text
 
-```javascript
-CASESAFEID (Id)
-```
+^^^javascript
+CASESAFEID(Id)
+^^^
 
-
-此公式将 15 个字符的 ID 替换为 18 个字符、区分大小写的 ID。 假设Id值为abcdefghijklmno，该公式将返回"abcdefghijklmnoAAA"。
+This formula replaces a 15-character ID with an 18-character, case-sensitive ID. Assuming the Id value is abcdefghijklmno, the formula returns "abcdefghijklmnoAAA".
 
 ### CONTAINS
 
-比较两个文本参数，如果第一个参数包含第二个参数，则返回 TRUE（真）。如果不包含，则返回 FALSE（假）。
+Compares two text parameters, returning TRUE if the first contains the second. Otherwise, it returns FALSE.
 
-**使用：** CONTAINS(文本, 比较文本)
+**Usage:** CONTAINS(text, compare_text)
 
-**参数：**
+**Parameters:**
 
-* *文本:* `text` 原始文本全文。
-* *比较文本:* `text` 用于比较的文本片断。
+* *text:* `text` The original full text.
+* *compare_text:* `text` The text fragment for comparison.
 
-**返回值：** 布尔
+**Return Value:** Boolean
 
-```javascript
+^^^javascript
 IF(CONTAINS(Product_Type__c, "part"), "Parts", "Service")
-```
+^^^
 
-
-此公式检查自定义文本字段 Product_Type（产品类型）的内容，并针对任何包含单词“part”的产品返回“Parts”。否则，将返回“Service”。请注意，如果 Product_Type（产品类型）字段包含“Part”或“PART”文本，此公式将返回“Services”。
+This formula checks the contents of the custom text field Product_Type and returns "Parts" for any product containing the word "part". Otherwise, it returns "Service". Note that if the Product_Type field contains "Part" or "PART", this formula will return "Services".
 
 
 
 <alert type="info">
-■ 此函数区分大小写，因此，请确保比较文本值的大小写正确无误。
+■ This function is case-sensitive, so ensure the compare_text value's casing is correct.
 
-■ 在验证规则或工作流规则中使用此函数时，留空的字段被视为有效。例如，如果您的验证规则用来测试资产序列号是否包含“A”，那么，所有具有空序列号的资产将被视为有效。
+■ When used in validation or workflow rules, empty fields are considered valid. For instance, if your validation rule tests if an asset's serial number contains "A", all assets with an empty serial number are considered valid.
 
-■ CONTAINS 函数不支持多选选项列表。
+■ The CONTAINS function does not support multi-select picklists.
 
 </alert>
 
 ### FIND
 
-返回某个字符串在文本字符串内的位置（以数字形式表示）。
+Returns the position of a specified string within a text string, represented as a number.
 
-**使用：** FIND(搜索文本, 文本\[, 起始字符数\])
+**Usage:** FIND(search_text, text[, start_num])
 
-**参数：**
+**Parameters:**
 
-* *搜索文本:* `text` 要查找的字符串。
-* *文本:* `text` 要搜索的字段或表达式。
-* *起始字符数:* `number` 要从左边算起的作为搜索起始位置的字符数。
+* *search_text:* `text` The string to find.
+* *text:* `text` The field or expression to search.
+* *start_num:* `number` The character number from the left to start the search.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 FIND(" ", Street)
-```
+^^^
 
+Returns the position of the first space in the Street field. This number can be used to determine the length of a street address, so that you can separate the street address from the street name in an address field.
 
-返回 Street 字段中的第一个空格所在的字符位置。可以使用此数字来确定街道地址的长度，以便将地址字段中的街道地址与街道名称分开。
-
-```javascript
+^^^javascript
 SUBSTITUTE(Email, LEFT(Email, FIND("@", Email)), "www.")
-```
+^^^
 
-
-查找 @ 符号在个人电子邮件地址中的位置，以确定要用`“www.”`替换的文本长度，从而派生其网址。
+Finds the position of the @ symbol in a personal email address to determine the length of text to replace with “www.”, thereby deriving its web address.
 
 
 
 <alert type="info">
-■ 请确保在验证公式之前去掉其中的中括号、\[ 和 \]。
+■ Ensure to remove the brackets, [ and ], before the validation formula.
 
-■ 如果文本参数中引用的字段为空，则该公式字段显示“0”。
+■ If the text parameter references an empty field, the formula field displays “0”.
 
-■ 您的 search_text 参数区分大小写，且不能包括任何通配符。
+■ Your search_text parameter is case-sensitive and cannot include any wildcards.
 
-■ 如果在执行搜索后未返回任何结果，则字段中将显示“0”。
+■ If no result is returned after the search, the field will display “0”.
 
-■ 起始字符数参数是可选的。如果未输入起始字符数 值，则该公式将使用值 1 或者字符串中的第一个字符。
+■ The start_num parameter is optional. If no start_num value is entered, the formula uses the value 1 or the first character in the string.
 
-■ 如果起始字符数不大于零，则该字段中将显示“0”。
+■ If the start_num is not greater than zero, the field will display “0”.
 
-■ 如果起始字符数大于文本的长度，则该字段中将显示“0”。
+■ If the start_num is greater than the length of the text, the field will display “0”.
 
-■ 在输入起始字符数参数时，请记住，一些字段（如网址字段）是唯一的，因为系统会自动在您输入的文本开头附加“http://”。
+■ Remember that some fields, like URL fields, are unique because the system automatically appends “http://” to the beginning of your entered text.
 
-■ 请注意，字符串中的第一个字符指定为 1（而非 0）。
+■ Note that the first character in the string is specified as 1 (not 0).
 
 </alert>
 
 ### HYPERLINK
 
-从指定文本创建一个到可链接的指定 URL 的链接。
+Creates a link from specified text to a specified URL that is clickable.
 
-**使用：** HYPERLINK(url, friendly_name \[,target\])
+**Usage:** HYPERLINK(url, friendly_name [,target])
 
-**参数：**
+**Parameters:**
 
-**返回值：** 文本
+**Return Value:** Text
 
-* *url:* `text` 网址。
-* *friendly_name:* `text` 链接文本。
-* *target:* `text` 要在其中显示内容的窗口或帧。
+* *url:* `text` The URL.
+* *friendly_name:* `text` The link text.
+* *target:* `text` The window or frame in which to display the content.
 
-```javascript
-HYPERLINK("/00U/e?retURL=%2F006x0000001T8Om&what_id="& Id,"Create Event")
-```
+^^^javascript
+HYPERLINK("/00U/e?retURL=%2F006x0000001T8Om&what_id=" & Id, "Create Event")
+^^^
 
+Adds a link named "Create Event", which, when clicked, creates a new event associated with the current target.
 
-添加一个名为“Create Event”（创建事件）的链接，当用户单击该链接时，系统会创建一个与当前的目标相关联的新事件。
-
-```javascript
+^^^javascript
 HYPERLINK("http://servername/call?id=" & Id & "&phone=" & Phone, Phone)
-```
+^^^
 
-
-创建一个可链接的电话号码字段，当用户单击该字段时，系统会自动拨打其中的电话号码。在本示例中，用您的拨号工具名称及其用来拨号的命令替换“servername”（服务器名）和“call”（呼叫）。并在合并字段 Id 中插入联系人、业务机会或客户记录的标识符。第一个 Phone（电话）合并字段通知拨号工具要拨打的号码，最后一个 Phone（电话）合并字段使用 Phone（电话）字段的值作为用户单击时拨号的可链接文本。
+Creates a clickable phone number field that, when clicked, automatically dials the number. In this example, replace "servername" and "call" with your dialing tool name and its dialing command. Insert the identifier of the contact, opportunity, or customer record in the merge field Id. The first Phone merge field informs the dialing tool of the number to dial, and the last Phone merge field uses the value of the Phone field as the clickable text for dialing.
 
 
 
 <alert type="info">
-■ 超链接公式字段属于文本类型。
+■ Hyperlink formula fields are of the text type.
 
-■ 包含如 `HYPERLINK("http://www.cnet.com", "cnet")` 中引号内的协议和 URL。
+■ Include protocols and URLs in quotation marks, like in `HYPERLINK("http://www.cnet.com", "cnet")`.
 
-■ 避免在 HYPERLINK 函数结果中使用文本函数，如 LEN、LEFT 或 RIGHT。
+■ Avoid using text functions like LEN, LEFT, or RIGHT in the results of the HYPERLINK function.
 
-■ URL 不得包含 JavaScript。这会提高贵组织的安全性。
+■ URLs should not contain JavaScript for increased security of your organization.
 
-■ 使用相对链接，以链接到站内页面。如果您的完整链接是 `https://yourInstance.steedos.com/a/b`，相对链接是“/a/b”。通过相对链接，超链接可在所有站内页面上正常工作。请确保使用斜杠“/”在相对 URL 前增加。
+■ Use relative links to link to in-site pages. If your full link is `https://yourInstance.steedos.com/a/b`, the relative link is "/a/b". Relative links ensure that hyperlinks work on all in-site pages. Be sure to add a forward slash "/" before the relative URL.
 
-■ 如果起始字符数不大于零，则该字段中将显示“0”。
+■ If the start_num is not greater than zero, the field will display “0”.
 
-■ 如果起始字符数大于文本的长度，则该字段中将显示“0”。
+■ If the start_num is greater than the length of the text, the field will display “0”.
 
-■ 在输入起始字符数参数时，请记住，一些字段（如网址字段）是唯一的，因为系统会自动在您输入的文本开头附加“http://”。
+■ Remember that some fields, like URL fields, are unique because the system automatically appends “http://” to the beginning of your entered text.
 
-■ Steedos在界面上暂时不支持把该函数返回值显示为链接。
+■ Steedos currently does not support displaying the return value of this function as a link on the interface.
 
 </alert>
 
 ### INCLUDES
 
-决定多选选项列表字段中选择的任何值是否等于您所指定的文本文字。
+Determines if any values selected in a multi-select picklist field are equal to the specified text literal.
 
-**使用：** INCLUDES(multiselect_picklist_field, text_literal)
+**Usage:** INCLUDES(multiselect_picklist_field, text_literal)
 
-**参数：**
+**Parameters:**
 
-* *multiselect_picklist_field:* `select` 选项列表字段名。
-* *text_literal:* `text` 要用作比较的文本。
+* *multiselect_picklist_field:* `select` The name of the picklist field.
+* *text_literal:* `text` The text to use for comparison.
 
-**返回值：** 布尔
+**Return Value:** Boolean
 
-***示例：***
+***Example:***
 
-```javascript
+^^^javascript
 INCLUDES(Hobbies__c, "Golf")
-```
+^^^
 
-
-如果爱好自定义多选选项列表字段中选择的某个值是“高尔夫”，则 INCLUDES(Hobbies__c, "Golf") 将返回 TRUE（真）。
+If one of the values selected in the Hobbies custom multi-select picklist field is "Golf", INCLUDES(Hobbies__c, "Golf") returns TRUE.
 
 
 
 <alert type="info">
-■ 该函数只支持多选的选项列表字段，要使用单选选项列表字段请使用 ISPICKVAL 。
+■ This function only supports multi-select picklist fields. To use a single-select picklist field, use ISPICKVAL.
 
-■ 可以使用  ISBLANK 决定选项列表字段是否为空。
+■ ISBLANK can be used to determine if a picklist field is empty.
 
 
 </alert>
 
 ### ISPICKVAL
 
-确定选项列表字段的值是否等于所指定的文本文字。
+Determines if a picklist field's value is equal to the specified text literal.
 
-**使用：** ISPICKVAL(picklist_field, text_literal)
+**Usage:** ISPICKVAL(picklist_field, text_literal)
 
-**参数：**
+**Parameters:**
 
-* *picklist_field:* `select` 选项列表字段名。
-* *text_literal:* `text` 要用作比较的文本。
+* *picklist_field:* `select` The name of the picklist field.
+* *text_literal:* `text` The text to use for comparison.
 
-**返回值：** 布尔
+**Return Value:** Boolean
 
-***示例：***
+***Examples:***
 
-***1.合同启用***
+***1. Contract Activation***
 
-```javascript
-IF(ISPICKVAL( Status , "Activated"), NOW()-ActivatedDate, null)
-```
+^^^javascript
+IF(ISPICKVAL(Status, "Activated"), NOW()-ActivatedDate, null)
+^^^
+
+Calculates the number of days since a contract was activated. If the contract status is not "Activated", this field is empty.
+
+***2. Commission Amount***
+
+^^^javascript
+IF(ISPICKVAL(StageName, "Closed Won"), ROUND(Amount * 0.02, 2), 0)
+^^^
+
+This example calculates the commission amount for any opportunity at the "Closed Won" stage. The value of this field will be 0.02 times the amount of any won opportunities. For opportunities that are either open or lost, the commission value is zero.
 
 
-计算自合同被启用以来的天数。如果合同状态不是“Activated”，则此字段为空。
+## Text Functions
 
-***2.佣金金额***
+### BEGINS
 
-```javascript
-IF(ISPICKVAL(StageName, "Closed Won"),   ROUND(Amount *0.02, 2), 0)
-```
+Determines whether text begins with specific characters, returning TRUE if it does. Otherwise, returns FALSE.
 
+**Usage:** BEGINS(text, compare_text)
 
-本示例计算处于“Closed Won”（已结束并赢得客户）阶段的任何业务机会的佣金金额。该字段的值将是任何已结束／赢得客户的业务机会的金额乘以 0.02。对于未处理或已丢失的业务机会，佣金值为零。
+**Parameters:**
+
+* *text:* `text` The full text or field you want to compare.
+* *compare_text:* `text` The text fragment for comparison.
+
+**Return Value:** Boolean
+
+^^^yaml
+IF(BEGINS(Product_type__c, "ICU"), "Medical", "Technical")
+^^^
+
+If the custom text field Product_type begins with "ICU", this example returns "Medical". For all other products, it returns "Technical".
 
 
 
 <alert type="info">
-■ 该函数只支持单选的选项列表字段，要使用多选选项列表字段请使用 INCLUDES 。
+■ This function is case-sensitive, so ensure the compare_text value's casing is correct.
 
-■ 可以使用  ISBLANK 决定选项列表字段是否为空。
-
+■ When used in validation or workflow rules, empty fields are considered valid. For instance, if your validation rule tests if an asset's serial number begins with "3", all assets with an empty serial number are considered valid.
 
 </alert>
 
 ### LEFT
 
-返回从文本字符串开头算起的指定数量的字符。
+Returns a specified number of characters from the beginning of a text string.
 
-**使用：** LEFT(文本, 字符数)
+**Usage:** LEFT(text, num_chars)
 
-**参数：**
+**Parameters:**
 
-* *文本:* `text` 您希望返回的字段或表达式。
-* *字符数:* `number` 您希望返回的从左边算起的字符数。
+* *text:* `text` The field or expression you want to return.
+* *num_chars:* `number` The number of characters you want to return from the left side.
 
-**返回值：** 文本
+**Return Value:** Text
 
-```javascript
-TRIM(LEFT(LastName, 5)) & “-” & TRIM(RIGHT(SSN__c, 4))
-```
+^^^javascript
+TRIM(LEFT(LastName, 5)) & "-" & TRIM(RIGHT(SSN__c, 4))
+^^^
 
-
-此公式显示名称的前五个字符和社会保险编号的后四个字符（由连字符分隔）。请注意，本示例使用了名为 SSN 的自定义文本字段。
+This formula displays the first five characters of the name and the last four characters of the social security number (separated by a hyphen). Note that this example uses a custom text field named SSN.
 
 
 
 <alert type="info">
-如果字符数值小于零，公式会用零替换该值。
+If the num_chars value is less than zero, the formula will replace it with zero.
 
 </alert>
 
 ### LEN
 
-返回指定的文本字符串中所含的字符数。
+Returns the number of characters in a specified text string.
 
-**使用：** LEN(文本)
+**Usage:** LEN(text)
 
-**参数：** `text` 您希望返回其长度的字段或表达式。
+**Parameters:** `text` The field or expression whose length you want to return.
 
-**返回值：** 数值
+**Return Value:** Numeric
 
-```javascript
+^^^javascript
 LEN(PartNumber__c)
-```
+^^^
 
-
-此公式返回 Product Code（产品代码）字段中所含的字符数。
+This formula returns the number of characters in the Product Code field.
 
 ### LOWER
 
-将指定文本字符串中的所有字母转换为小写。不是字母的任何字符不受此函数的影响。如果提供区域则应用区域规则。
+Converts all letters in a specified text string to lowercase. Any character that is not a letter is not affected. Regional rules are applied if provided.
 
-**使用：** LOWER(text)
+**Usage:** LOWER(text)
 
-**参数：** `text` 您要转换为小写的字段或文本。
+**Parameters:** `text` The field or text you want to convert to lowercase.
 
-**返回值：** 文本
+**Return Value:** Text
 
-```javascript
+^^^javascript
 LOWER("MYCOMPANY.COM")
-```
+^^^
 
+Returns "mycompany.com."
 
-返回“mycompany.com.”。
+^^^javascript
+LOWER(TickerSymbol)
+^^^
 
-```javascript
-LOWER( TickerSymbol )
-```
-
-
-以小写字符返回 Ticker Symbol 中的文本。
+Returns the text in Ticker Symbol in lowercase characters.
 
 ### LPAD
 
-将指定的字符插入文本字符串的左侧。
+Inserts specified characters on the left side of a text string.
 
-**使用：** LPAD(文本, 填充长度, 填充字符串)
+**Usage:** LPAD(text, padded_length, pad_string)
 
-**参数：**
+**Parameters:**
 
-* *文本:* `text` 文本是要在其左侧插入字符的字段或表达式。
-* *填充长度:* `number` 填充长度是文本中将返回的总字符数。
-* *填充字符串:* `text` 填充字符串是应插入的字符。填充字符串是必须的，可以传入空字符串表示不填充。
+* *text:* `text` The text is the field or expression into which you want to insert characters on the left.
+* *padded_length:* `number` Padded length is the total number of characters to return in the text.
+* *pad_string:* `text` Pad string is the character(s) to be inserted. Pad string is required; you can pass an empty string to indicate no padding.
 
-**返回值：** 文本
+**Return Value:** Text
 
-***示例：***
+***Examples:***
 
-***1.字段名：截断***
+***1. Field Name: Truncated***
 
-如果文本中值的长度超过了填充字符串，则将文本截断为填充长度的大小。
+If the length of the value in the text exceeds the pad string, then the text is truncated to the size of the pad length.
 
-```javascript
+^^^javascript
 LPAD(Name, 20, "")
-```
+^^^
 
+Truncates the Name field after 20 characters. For instance, if the initial value is "mycompany.com", the returned value is "mycompany.com"; if the initial value is "mycompany_is_good_in_china.com", the returned value is "mycompany_is_good_in".
 
-在 20 个字符后截断名称字段。例如，如果初始值为"mycompany.com"，则返回值为"mycompany.com"，如果初始值为"mycompany_is_good_in_china.com"，则返回值为"mycompany_is_good_in"。
+***2. My_Company: No Change***
 
-***2.My_Company: 无更改***
+^^^javascript
+LPAD('my_company.com', 14, 'z')
+^^^
 
-```javascript
-LPAD( 'my_company.com' , 14, 'z')
-```
+Returns "my_company.com" without any change, as it contains 14 characters.
 
+***3. Field Name with Z Padding***
 
-返回“my_company.com”而没有更改，因为它包含 14 个字符。
-
-***3.使用 Z 填充的字段名***
-
-```javascript
+^^^javascript
 LPAD("my_company.com", 15, "z")
-```
+^^^
 
-
-返回名称"zmy_company.com"。
+Returns the name "zmy_company.com".
 
 
 
 <alert type="info">
-不会忽略前置空格。
+Leading spaces are not ignored.
 
 </alert>
 
 ### MID
 
-从文本字符串中间返回从给定的起始位置算起的指定数量的字符。
+Returns a specified number of characters from the middle of a text string, starting at the position you specify.
 
-**使用：** MID(文本, 起始字符数, 字符数)
+**Usage:** MID(text, start_num, num_chars)
 
-**参数：**
+**Parameters:**
 
-* *文本:* `text` 返回字符时要使用的字段或表达式。
-* *起始字符数:* `number` 从左边算起的作为起始位置的字符数（作为起始位置的字符数）。
-* *字符数:* `number` 要返回的总字符数。
+* *text:* `text` The field or expression to use when returning characters.
+* *start_num:* `number` The number of characters from the left to start the return (as the starting position of characters).
+* *num_chars:* `number` The total number of characters to return.
 
-**返回值：** 文本
+**Return Value:** Text
 
-```javascript
-MID( Division , 3, 4)
-```
+^^^javascript
+MID(Division, 3, 4)
+^^^
 
+Returns four characters starting from the third character on the left in the Division name. For user records, this represents a department code.
 
-返回 Division（分部）名称中从左数第三个字符开始的四个字符。对于用户记录，这代表部门代码。
+^^^javascript
+MID("ABCDEFGH", 3, 4)
+^^^
 
-```javascript
-MID("ABCDEFGH" , 3, 4)
-```
+Returns "CDEF".
 
-
-返回"CDEF"。
-
-```javascript
+^^^javascript
 MID("ABCDEFGH", 0, 10)
-```
+^^^
 
-
-返回"H"，即起始位置是从0开始而非1，传入0值作为起始位置时公式将不能按预期返回值。
+Returns "H", indicating the start position is from 0 instead of 1. Passing a value of 0 as the starting position will not return values as expected.
 
 
 
 <alert type="info">
-请注意，文本中的第一个字符指定为 1（而非 0）。
+Note that the first character in the text is specified as 1 (not 0).
 
 </alert>
 
 ### RIGHT
 
-返回从文本字符串右边算起的指定数量的字符。
+Returns a specified number of characters from the right side of a text string.
 
-**使用：** RIGHT(文本, 字符数)
+**Usage:** RIGHT(text, num_chars)
 
-**参数：**
+**Parameters:**
 
-* *文本:* `text` 您希望返回的字段或表达式。
-* *字符数:* `number` 您希望返回的从右边算起的字符数。
+* *text:* `text` The field or expression you want to return.
+* *num_chars:* `number` The number of characters you want to return from the right side.
 
-**返回值：** 文本
+**Return Value:** Text
 
-```javascript
-TRIM(LEFT(LastName, 5))&"-"&TRIM(RIGHT(SSN__c, 4))
-```
+^^^javascript
+TRIM(LEFT(LastName, 5)) & "-" & TRIM(RIGHT(SSN__c, 4))
+^^^
 
-
-显示名字的前五个字符和社会保险编号的后四个字符（由连字符分隔）。请注意，本示例假定您拥有名为 SSN 的文本自定义字段。
+Displays the first five characters of the last name and the last four characters of the social security number (separated by a hyphen). Note that this example assumes you have a text custom field named SSN.
 
 
 
 <alert type="info">
-如果字符数值小于零，则公式会用零替换该值。
+If the num_chars value is less than zero, the formula will replace it with zero.
 
 </alert>
 
 ### RPAD
 
-将指定的字符插入文本字符串的右侧。
+Inserts specified characters on the right side of a text string.
 
-**使用：** RPAD(文本, 填充长度, 填充字符串)
+**Usage:** RPAD(text, padded_length, pad_string)
 
-**参数：**
+**Parameters:**
 
-* *文本:* `text` 文本是要在其后插入字符的字段或表达式。
-* *填充长度:* `number` 填充长度是文本中将返回的总字符数。
-* *填充字符串:* `number` 填充字符串是应插入的字符。填充字符串是必须的，可以传入空字符串表示不填充。 如果文本中值的长度超过了填充字符串，则将文本截断为填充长度的大小。
+* *text:* `text` The text is the field or expression into which you want to insert characters on the right.
+* *padded_length:* `number` Padded length is the total number of characters to return in the text.
+* *pad_string:* `number` Pad string is the character(s) to be inserted. Pad string is required; you can pass an empty string to indicate no padding. If the length of the value in the text exceeds the pad string, then the text is truncated to the size of the pad length.
 
-**返回值：** 文本
+**Return Value:** Text
 
-***示例：***
+***Examples:***
 
-***1.字段名：截断***
+***1. Field Name: Truncated***
 
-```javascript
+^^^javascript
 RPAD(Name, 20, "")
-```
+^^^
 
+Truncates the Name field after 20 characters. For instance, if the initial value is "mycompany.com", the returned value is "mycompany.com"; if the initial value is "mycompany_is_good_in_china.com", the returned value is "mycompany_is_good_in".
 
-在 20 个字符后截断名称字段。例如，如果初始值为"mycompany.com"，则返回值为"mycompany.com"，如果初始值为"mycompany_is_good_in_china.com"，则返回值为"mycompany_is_good_in"。
+***2. My_Company: No Change***
 
-***2.My_Company: 无更改***
+^^^javascript
+RPAD('my_company.com', 14, 'z')
+^^^
 
-```javascript
-RPAD( 'my_company.com' , 14, 'z')
-```
+Returns “my_company.com” without any change, as it contains 14 characters.
 
+***3. Field Name with Z Padding***
 
-返回“my_company.com”而没有更改，因为它包含 14 个字符。
-
-***3.使用 Z 填充的字段名***
-
-```javascript
+^^^javascript
 RPAD("my_company.com", 15, "z")
-```
+^^^
 
-
-返回名称"my_company.comz"。
+Returns the name "my_company.comz".
 
 
 
 <alert type="info">
-■ 不会忽略结尾空格。
+■ Trailing spaces are not ignored.
 
-■ 在截断字符时与函数LPAD一样从右侧开始截断保留左侧部分，而不是相反。
+■ Truncation of characters occurs from the right side, preserving the left portion, similar to the LPAD function.
 
 </alert>
 
 ### SUBSTITUTE
 
-用新文本替换文本字符串中的旧文本。
+Replaces old text with new text in a text string.
 
-**使用：** SUBSTITUTE(文本, 旧文本, 新文本)
+**Usage:** SUBSTITUTE(text, old_text, new_text)
 
-**参数：**
+**Parameters:**
 
-* *文本:* `text` 要进行值替换的字段或值。
-* *旧文本:* `text` 要被替换的文本。
-* *新文本:* `text` 要用来替换旧文本的文本。
+* *text:* `text` The field or value in which you want to replace values.
+* *old_text:* `text` The text to be replaced.
+* *new_text:* `text` The text to replace the old text with.
 
-**返回值：** 文本
+**Return Value:** Text
 
-```javascript
+^^^javascript
 SUBSTITUTE(Name, "Coupon", "Discount")
-```
+^^^
 
+Returns the name of an opportunity containing the term "Coupon", replacing "Coupon" in the name with "Discount".
 
-返回包含术语“Coupon”（赠券）的业务机会的名称，返回名称时，将名称中的“Coupon”替换为“Discount”。
-
-```javascript
+^^^javascript
 SUBSTITUTE(Email, LEFT(Email, FIND("@", Email)), "www.")
-```
+^^^
 
-
-查找 @ 符号在个人电子邮件地址中的位置，以确定要用 `“www.”` 替换的文本长度，从而派生其网址，比如Email值为"`abc@steedos.cn`"的话运行公式将返回"[www.steedos.cn"。](https://www.steedos.cn)
+Finds the position of the @ symbol in a personal email address to determine the length of text to replace with “www.”, thereby deriving its web address. For example, if the Email value is "abc@steedos.cn", running the formula will return "www.steedos.cn".
 
 
 
 <alert type="info">
-■ 引号中的每个术语都区分大小写。
+■ Each term within quotes is case-sensitive.
 
-■ 如果旧文本出现多次，则所出现的每个“旧文本”都将用所提供的新文本值替换，即使这会导致重复项也是如此。
+■ If the old text appears multiple times, each occurrence of the old text will be replaced with the provided new text value, even if this results in duplicates.
 
 </alert>
 
 ### TEXT
 
-在使用公式的任何地方将百分比、数字、日期、日期时间或货币类型字段转换为文本。
+Converts percentage, number, date, datetime, or currency type fields to text anywhere in a formula.
 
-**使用：** TEXT(值)
+**Usage:** TEXT(value)
 
-**参数：** `number/date/datetime/select` 您希望转换为文本格式的字段或表达式。
+**Parameters:** `number/date/datetime/select` The field or expression you want to convert to text format.
 
-**返回值：** 文本
+**Return Value:** Text
 
-```javascript
+^^^javascript
 TEXT(ExpectedRevenue)
-```
-
-
-以文本格式返回业务机会的预期收入金额。例如，如果市场活动的 Expected Revenue（预期收入）是200000，此公式的字段中将显示“200000”。
-
-```javascript
-SerialNumber &"-"& TEXT(Quantity)
-```
-
-
-返回一个资产 ID 号，ID 号以序列号开头，以数量结尾，二者之间用连字符分隔。Serial Number（序列号）字段是文本字段，但 Quantity（数量）字段为数字字段，其前面需要使用 TEXT 函数。
-
-
-
-<alert type="info">
-■ `TEXT(null)`返回值为"NULL"而不是空字符串。
-
-■ `TEXT(FieldName)`参数为字段名的话，当字段值为空时，返回的是空字符串而不是"NULL"。
-
-■ 不支持传入文本类型值，否则将直接报错。
-
-■ 返回的文本未使用任何货币、百分比符号或逗号进行自动格式处理。
-
-■ 百分数以小数形式返回。
-
-■ 日期以 YYYY-MM-DD 格式（即四位数字年份、两位数字月份和两位数字日期）返回。
-
-■ 日期时间值以 YYYY-MM-DD HH:MM:SSZ 格式返回，其中 YYYY 是四位数字年份，MM 是两位数字月份，DD 是两位数字日期，HH 是两位数字小时，MM 是两位数字分钟，SS 是两位数字秒钟，Z 代表本初子午线，指示时间以 UTC 时区返回。
-
-■ 只支持传入单选的select字段，不支持多选。
-
-</alert>
-
-### TRIM
-
-删除文本字符串开头和末尾处的空格和制表符。
-
-**使用：** TRIM(文本)
-
-**参数：** `text` 用您希望修整的字段或表达式替换文本。
-
-**返回值：** 文本
-
-```javascript
-TRIM(LEFT(LastName,5))& "-" & RIGHT(FirstName, 1)
-```
-
-
-为用户返回一个网络 ID，该 ID 用连字符分隔其姓氏的前五个字符和其名字的第一个字符。
-
-### UPPER
-
-将指定文本字符串中的所有字母转换为大写。不是字母的任何字符不受此函数的影响。如果提供区域则应用区域规则。
-
-**使用：** UPPER(text)
-
-**参数：** `text` 将 text 用您要转换为大写的字段或表达式替换。
-
-**返回值：** 文本
-
-```javascript
-UPPER("mycompany.com")
-```
-
-
-返回“MYCOMPANY.COM.”。
-
-```javascript
-UPPER("Mycompany.com 123")
-```
-
-
-返回“MYCOMPANY.COM 123.”。
-
-### VALUE
-
-将文本字符串转换为数字。
-
-**使用：** VALUE(文本)
-
-**参数：** `text` 您希望转换为数字的字段或表达式。
-
-**返回值：** 数值
-
-***示例：***
-
-***1.潜在客户编号***
-
-```javascript
-VALUE( Lead_Number__c )
-```
-
-
-返回自动编号字段 Lead Number（潜在客户编号）中的文本值所对应的数字。如果您希望在计算中使用 Lead Number（潜在客户编号）字段，则这可能非常有用。请注意，自动编号字段实际上是文本字段，必须转换为数字字段才能进行数值计算。
-
-***2.潜在客户循环分配***
-
-```javascript
-MOD(VALUE(Lead_Number__c), 3)
-```
-
-
-该公式适用于名称为 Round_Robin_ID 的自定义公式字段，它为每个潜在客户分配 0、1 或 2。该公式使用名称为 Lead Number 的自定义自动数字字段，它为每个潜在客户分配从 1 开始的唯一号码。MOD 函数使用潜在客户数量除以可用潜在客户队列的数量（在本示例中为 3），然后返回剩余值 0、1 或 2。在您的潜在客户分配规则中使用该公式字段的值向不同的队列分配潜在客户记录。例如：
-
-* Round_Robin_ID = 0 分配到队列 A
-* Round_Robin_ID = 1 分配到队列 B
-* Round_Robin_ID = 2 分配到队列 C
-
-
-
-<alert type="info">
-请确保 VALUE 函数中的文本不包含除小数点（句点）或负号（连字符）以外的任何特殊字符。例如，公式 VALUE(Text_field__c) 产生以下结果：
-
-■ 如果文本字段为123，则结果为 123。
-
-■ 如果文本字段为0，则返回错误信息。
-
-■ 如果文本字段为空白，则返回错误信息。
-
-■ 如果文本字段为$123，则返回错误信息。
-
-</alert>
-
-## 高级函数
+^^^
+## Advanced Functions
 
 ### REGEX
 
-将文本字段与正则表达式进行比较，如果匹配则返回 TRUE（真）。反之，返回 FALSE（假）。正则表达式是一个字符串，它根据一定语法规则描述字符串的格式。
+Compares a text field against a regular expression, returning TRUE if it matches. Otherwise, it returns FALSE. A regular expression is a string that describes the format of a string according to certain syntax rules.
 
-**使用：** REGEX(文本, regex_text)
+**Usage:** REGEX(text, regex_text)
 
-**参数：**
+**Parameters:**
 
-* *文本:* `text` 您希望进行比较的字符全文或字段。
-* *比较文本:* `text` 您要匹配的正则表达式。
+* *text:* `text` The full text or field you want to compare.
+* *regex_text:* `text` The regular expression you want to match.
 
-**返回值：** 布尔
+**Return Value:** Boolean
 
-***验证规则示例：***
+***Validation Rule Example:***
 
-本示例确保名为 ID 的字段与表示***身份证号***的正则表达式匹配，即具备 310000YYYYMMDD0000 数字格式。
+This example ensures that a field named ID matches a regular expression representing an ***ID card number*** in the format 310000YYYYMMDD0000.
 
-```javascript
+^^^javascript
 NOT(REGEX(ID, "[1-9][0-9]{5}(19|20)[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}([0-9]|x|X)"))
-```
+^^^
 
 
 
 <alert type="info">
-■ 正则表达式的语法基于Java Platform SE 6 语法。但是，转义字符 () 未被支持，更改为两个反斜杠 (\\)一样不支持，需要匹配特殊符号请用中括号包裹，比如要匹配符号点`.`可以写为`[.]`。
+■ The syntax for regular expressions is based on Java Platform SE 6 syntax. However, the escape character () is not supported, and double backslashes (\\) are also not supported. To match special symbols, use square brackets, e.g., to match a period '.', write '[.]'.
 
-■ 公式中正则表达式引擎匹配整个字符串，而不是在字符串内查找匹配。例如，如果您在搜索姓名 Marc Benioff，那么使用正则表达式.\*Marc Benioff.\*在如下字符串中找到匹配： `According to Marc Benioff, the social enterprise increases customer success.` 如果使用正则表达式 `Marc Benioff`，则它只会匹配到以下字符串： `Marc Benioff`
+■ The regex engine in formulas matches the entire string, not just searching for a match within the string. For example, if you are searching for the name Marc Benioff, then the regular expression .*Marc Benioff.* will find a match in: `According to Marc Benioff, the social enterprise increases customer success.` Using the regular expression `Marc Benioff` will only match the following string: `Marc Benioff`
 
-■ 公式中正则表达式引擎匹配的是整个字符串，这表示正则表达起始^结尾$占位符默认是已经加在表达式的起止位置的，您不需要再加上这些占位符。
+■ The regex engine in formulas matches the entire string, meaning the start (^) and end ($) placeholders are implicitly placed at the start and end of the expression. You don't need to add these placeholders.
 
-■ 捕获分组和替换都将被忽略。
+■ Capture groups and replacements will be ignored.
 
-■ 不支持\\w、\\d等表达试语法\[a-zA-Z0-9_\]、\[0-9\]代替。
+■ \\w, \\d, and other such expressions are not supported; use [a-zA-Z0-9_], [0-9] instead.
 
 </alert>
 
- -->
+## Text Functions
+
+### TRIM
+
+Removes spaces and tabs from the beginning and end of a text string.
+
+**Usage:** TRIM(text)
+
+**Parameter:** `text` Replace text with the field or expression you want to trim.
+
+**Return Value:** Text
+
+^^^javascript
+TRIM(LEFT(LastName,5)) & "-" & RIGHT(FirstName, 1)
+^^^
+
+Provides users with a network ID, which separates the first five characters of their surname and the first character of their first name with a hyphen.
+
+### UPPER
+
+Converts all letters in a specified text string to uppercase. Any character that is not a letter is not affected. Regional rules are applied if provided.
+
+**Usage:** UPPER(text)
+
+**Parameter:** `text` Replace text with the field or expression you want to convert to uppercase.
+
+**Return Value:** Text
+
+^^^javascript
+UPPER("mycompany.com")
+^^^
+
+Returns "MYCOMPANY.COM."
+
+^^^javascript
+UPPER("Mycompany.com 123")
+^^^
+
+Returns "MYCOMPANY.COM 123."
+
+### VALUE
+
+Converts a text string to a number.
+
+**Usage:** VALUE(text)
+
+**Parameter:** `text` The field or expression you want to convert to a number.
+
+**Return Value:** Numeric
+
+***Examples:***
+
+***1. Lead Number***
+
+^^^javascript
+VALUE(Lead_Number__c)
+^^^
+
+Returns the number corresponding to the text value in the auto-number field Lead Number. This can be useful if you want to use the Lead Number field in calculations. Note that the auto-number field is actually a text field and must be converted to a number field for numerical calculations.
+
+***2. Lead Round-Robin Assignment***
+
+^^^javascript
+MOD(VALUE(Lead_Number__c), 3)
+^^^
+
+This formula applies to a custom formula field named Round_Robin_ID, assigning 0, 1, or 2 to each lead. The formula uses a custom auto-number field named Lead Number, which assigns a unique number starting at 1 to each lead. The MOD function divides the number of leads by the number of available lead queues (3 in this example) and then returns the remainder value 0, 1, or 2. Use the value of this formula field in your lead assignment rules to distribute lead records to different queues. For example:
+
+* Round_Robin_ID = 0 is assigned to Queue A
+* Round_Robin_ID = 1 is assigned to Queue B
+* Round_Robin_ID = 2 is assigned to Queue C
+
+
+
+<alert type="info">
+Ensure that the text in the VALUE function does not contain any special characters other than a decimal point (dot) or negative sign (hyphen). For example, the formula VALUE(Text_field__c) produces the following results:
+
+■ If the text field is 123, the result is 123.
+
+■ If the text field is 0, it returns an error message.
+
+■ If the text field is blank, it returns an error message.
+
+■ If the text field is $123, it returns an error message.
+
+</alert>
