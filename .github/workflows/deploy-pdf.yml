@@ -5,6 +5,9 @@ on:
     workflows: [Deploy Site]
     types:
       - completed
+  push:
+    branches: 
+      - 'beta'
 
 jobs:
   deploy:
@@ -13,11 +16,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Docusaurus site
+        run: npm run build
+
+      - name: Run Docusaurus site
+        run: npm run serve
+
       - name: Build Developer PDF
-        run: npx docs-to-pdf --initialDocURLs="https://docs.steedos.cn/zh-CN/developer/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --outputPDFFilename="build/steedos-developer-zh-CN.pdf" --excludeSelectors=".breadcrumbs,section.row,.theme-doc-footer" --pdfMargin="80,60,80,60" --coverTitle="Steedos Developer Documentaion"  --baseUrl="https://docs.steedos.cn/zh-CN/developer/"  --excludePaths="/zh-CN/developer/api/openapi"
+        run: npx docs-to-pdf --initialDocURLs="http://localhost:3000/zh-CN/developer/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --outputPDFFilename="build/steedos-developer-zh-CN.pdf" --excludeSelectors=".breadcrumbs,section.row,.theme-doc-footer" --pdfMargin="80,60,80,60" --coverTitle="Steedos Developer Documentaion"  --baseUrl="http://localhost:3000/zh-CN/developer/"  --excludePaths="/zh-CN/developer/api/openapi"
 
       - name: Build Platform PDF
-        run: npx docs-to-pdf --initialDocURLs="https://docs.steedos.cn/zh-CN/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --baseUrl="https://docs.steedos.cn/zh-CN/" --outputPDFFilename	'build/steedos-platform-zh-CN.pdf'  --excludeSelectors=".breadcrumbs,section.row,.theme-doc-footer" --pdfMargin="80,60,80,60" --coverTitle="Steedos Platform Documentaion"   --excludePaths="/zh-CN/getting-started,/zh-CN/user,/zh-CN/deploy"
+        run: npx docs-to-pdf --initialDocURLs="http://localhost:3000/zh-CN/"  --contentSelector="article"  --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --baseUrl="http://localhost:3000/zh-CN/" --outputPDFFilename	'build/steedos-platform-zh-CN.pdf'  --excludeSelectors=".breadcrumbs,section.row,.theme-doc-footer" --pdfMargin="80,60,80,60" --coverTitle="Steedos Platform Documentaion"   --excludePaths="/zh-CN/getting-started,/zh-CN/user,/zh-CN/deploy"
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
