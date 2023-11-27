@@ -39,3 +39,11 @@ jobs:
           aws cloudfront create-invalidation --distribution-id E3PZXWVY8YMW6P --paths "/*"
 
       
+      - name: Deploy to steedos.github.io
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.GIT_DEPLOY_KEY }}
+          external_repository: steedos/steedos.github.io
+          publish_branch: gh-pages  # default: gh-pages
+          publish_dir: ./build
+        
