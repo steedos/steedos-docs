@@ -41,7 +41,7 @@ This command generates static content into the `build` directory and can be serv
 
 ```
 export GIT_USER=hotlong
-export GIT_PASS=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
+export GIT_PASS=
 export DEPLOYMENT_BRANCH=master
 yarn deploy
 ```
