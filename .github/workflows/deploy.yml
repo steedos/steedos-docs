@@ -37,3 +37,13 @@ jobs:
       - name: Invalidate CloudFront distribution
         run: |
           aws cloudfront create-invalidation --distribution-id E3PZXWVY8YMW6P --paths "/*"
+
+      - name: Deploy to GitHub Pages
+        env:
+          USE_SSH: true
+          GIT_USER: ${{ secrets.GIT_USER }}
+          GIT_PASS: ${{ secrets.GIT_PASS }}
+        run: |
+          git config --global user.email "actions@steedos.com"
+          git config --global user.name "steedos-actions"
+          yarn deploy
