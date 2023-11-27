@@ -7,10 +7,10 @@ function Home() {
 
     // 检查语言是否是中文
     if (language.includes('zh-CN') || language.includes('zh')) {
-      window.location.href = '/zh-CN/getting-started/';
+      window.location.href = '/zh-CN/getting-started';
     } else {
       // 为其他语言添加更多条件或保留为默认语言
-      window.location.href = '/getting-started/';  // 示例
+      window.location.href = '/getting-started';  // 示例
     }
   }, []);
 
