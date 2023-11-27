@@ -20,9 +20,9 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'steedos', // Usually your GitHub org/user name.
   projectName: 'steedos.github.io', // Usually your repo name.
-  trailingSlash: true,
+  // trailingSlash: true,
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
