@@ -47,6 +47,6 @@ Steedos allows enterprises to customize applications with code. Through its high
 
 You can use Steedos in the following ways:
 
-- [Private Deployment](/deploy/deploy-docker): Deploy the Steedos no-code development environment.
+- [Self Hosting](/deploy/deploy-docker): Deploy the Steedos no-code development environment.
 - [Remote Development Environment](/deploy/gitpod): Quickly start a remote development environment with Gitpod.
 - [Local Development Environment](/developer/setup/): Create projects and set up a local development environment.
