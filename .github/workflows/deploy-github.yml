@@ -19,6 +19,7 @@ jobs:
         run: yarn build
         env:
           SITE_URL: https://www.steedos.org
+          SITE_TITLE: Steedos
 
       - name: Deploy to steedos.github.io
         uses: peaceiris/actions-gh-pages@v3
