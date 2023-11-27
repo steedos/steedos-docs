@@ -2,12 +2,9 @@ name: Deploy PDF
 
 on:
   workflow_run:
-    workflows: [Deploy Site]
+    workflows: [Deploy Site Disabled]
     types:
       - completed
-  push:
-    branches: 
-      - 'beta'
 
 jobs:
   deploy:
