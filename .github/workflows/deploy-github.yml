@@ -1,0 +1,33 @@
+name: Deploy Github
+
+on:
+  push:
+    tags: # Deploy tag (e.g. v1.0) to production
+      - 'v**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Docusaurus site
+        run: npm run build
+
+      - uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
+
+      - name: Deploy to steedos.github.io
+        env:
+          USE_SSH: true
+          DEPLOYMENT_BRANCH: master
+          GIT_USER: ${{ secrets.GIT_USER }}
+        run: |
+          git config --global user.email "actions@steedos.com"
+          git config --global user.name "steedos-actions"
+          yarn deploy
