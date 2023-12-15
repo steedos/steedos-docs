@@ -33,6 +33,10 @@ const config = {
     locales: ['en', 'zh-CN'],
   },
 
+  scripts: [
+    // String format.
+    '/js/salesiq.js',
+  ],
   presets: [
     [
       'classic',
