@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Windows 开发环境部署指南
 
-本教程以 my-app 为例，指导你如何在 Windows 系统中本地部署和运行基于华炎魔方2.5开发的项目，部署完成后就可以开发华炎魔方项目了。
+本教程以 my-app 为例，指导你如何在 Windows 系统中本地部署和运行基于Steedos2.5开发的项目，部署完成后就可以开发Steedos项目了。
 
 ## 前提条件
 
@@ -91,7 +91,7 @@ Visual Studio Code（简称"VS Code"）是Microsoft发布一个运行于 Mac OS 
 从官网下载[安装包](https://vscode.download.prss.microsoft.com/dbazure/download/stable/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/VSCodeUserSetup-x64-1.85.1.exe)，安装运行VS Code。
 
 
-### 5. 安装华炎魔方
+### 5. 安装Steedos
 
 #### 创建项目
 
