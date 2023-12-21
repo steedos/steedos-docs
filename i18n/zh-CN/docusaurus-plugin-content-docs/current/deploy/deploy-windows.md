@@ -101,31 +101,80 @@ Visual Studio Code（简称"VS Code"）是Microsoft发布一个运行于 Mac OS 
 npx create-steedos-app my-app
 ```
 
-执行上述命令后会在当前文档夹下创建一个名为"my-app"的文件夹
-
-#### 安装依赖包
-使用VS Code 打开my-app文件夹，点击“终端”，打开命令窗口安装项目依赖的包
+执行上述命令后会在当前文档夹下创建一个名为"my-app"的文件夹，其目录主要结构为：
 
 ```bash
+my-app
+├── .vscode
+├── steedos-packages
+├── steedos-platform
+├── .env
+├── .gitpod.yml
+├── moleculer.config.js
+├── package.json
+└── README.md
+```
+
+其中
+
+* `steedos-packages`: 当你的项目需要分包管理时，可以使用此文件夹。你也可以把第三方软件包复制到此文件夹中，华炎魔方启动时会自动加载其中的元数据。
+* `steedos-platform`: 华炎魔方内核服务，起软件包服务时需要先启用内核服务。如果需要升级 steedos 内核版本，也是修改此文件夹中的package.json文件。
+* `moleculer.config.js`: 使用moleculer运行服务时的配置文件。
+* `.env`: 环境变量配置文件，可以配置端口、URL 等环境变量。
+* `package.json`: 用于配置本项目依赖的 npm 包。
+
+#### 启用platform内核服务
+使用VS Code 打开my-app文件夹，点击“终端”，打开命令窗口进入steedos-platform安装项目依赖的包
+
+```bash
+cd steedos-platform
 yarn
 ```
 
-#### 配置环境变量
-需要拷贝.env 到 .env.local，用于配置运行的服务的环境变量，指定MongoDB地址、Redis服务地址和ROOT_URL(默认为127.0.0.1，可以修改为服务器本机ip):
+拷贝.env 到 .env.local，用于配置运行的服务的环境变量，指定MongoDB地址、Redis服务地址和ROOT_URL(默认为127.0.0.1，可以修改为服务器本机ip):
 
 ```bash
+# https://docs.steedos.com/deploy/steedos-config
+
 PORT=5000
-ROOT_URL=http://127.0.0.1:5000
-MONGO_URL=mongodb://127.0.0.1:27017/steedos
-MONGO_OPLOG_URL=mongodb://127.0.0.1:27017/local
+ROOT_URL=http://127.0.0.1
 TRANSPORTER=redis://127.0.0.1:6379
 CACHER=redis://127.0.0.1:6379/1
+MONGO_URL=mongodb://127.0.0.1:27017/steedos
+MONGO_OPLOG_URL=mongodb://127.0.0.1:27017/local
+
+STEEDOS_STORAGE_DIR=./steedos-storage
 ```
 
-#### 启动服务
-
-在终端中执行yarn start启动服务
-
+执行yarn start启用服务：
 ```bash
 yarn start
 ```
+
+#### 启动软件包服务
+
+在终端进入项目根路径安装依赖包，例如进入my-app：
+
+```bash
+yarn 
+```
+
+拷贝.env 到 .env.local，用于配置运行的服务的环境变量，需配置TRANSPORTER与内核服务steedos-platform中TRANSPORTER值一致：
+
+```bash
+TRANSPORTER=redis://127.0.0.1:6379
+
+# VSCode 代码同步
+METADATA_SERVER=http://127.0.0.1:5000
+METADATA_APIKEY=
+DEFAULT_PACKAGE_PATH=steedos-packages/contract
+```
+
+执行yarn start启用服务：
+```bash
+yarn start
+```
+
+服务启用成功后，使用配置的ip地址+端口访问服务，例如：http://127.0.0.1:5000
+
+
