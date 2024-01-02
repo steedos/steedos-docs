@@ -175,6 +175,9 @@ STEEDOS_CRON_SMSQUEUE_INTERVAL=1000
 
 # Polling interval for the object webhooks queue, in milliseconds.
 STEEDOS_CRON_OBJECTWEBHOOKSQUEUE_INTERVAL=10000
+
+# Polling interval of the object & workflow synchronization queue, in milliseconds.
+STEEDOS_CRON_INSTANCERECORDQUEUE_INTERVAL=10000
 ```
 
 ## Developer Options 
