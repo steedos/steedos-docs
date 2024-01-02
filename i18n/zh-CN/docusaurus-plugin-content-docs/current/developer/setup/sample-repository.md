@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # GitHub 上的示例项目
 
-要快速入门，请查看 [https://github.com/steedos-labs/feikongwang](https://github.com/steedos-labs/feikongwang) GitHub 仓库。这个独立的应用程序包含了一个示例 Steedos DX 项目，其中有多个自定义对象和示例数据。
+要快速入门，请查看 [https://github.com/steedos-labs/feikongwang](https://github.com/steedos-labs/feikongwang) GitHub 仓库。这个独立的应用程序包含了一个示例 Steedos DX 项目[费控王](https://feikongwang.com)，其中有多个自定义对象和示例数据。
 
 ## 克隆仓库
 
