@@ -9,7 +9,6 @@ sidebar_position: 4
 
 1. [Ubuntu](https://releases.ubuntu.com/20.04/) (版本 20.04) 内网服务器
 2. 预装了docker服务的linux服务器，需访问外网
-3. Steedos企业版许可证
 
 ## 安装docker
 请在联网的Linux服务器上进行下载操作：
@@ -48,34 +47,56 @@ Docker version 24.0.7, build afdd53b
 
 ## 安装 Steedos
 
-在您的内网服务器上创建一个名为 `steedos` 的文件夹，用于部署和数据存储。在联网的Linux服务器上创建一个名为 `steedos` 的文件夹进行下载操作：
-1. 进入 `steedos`文件夹，运行以下 cURL 命令下载 `docker-compose.yml` 文件：
+在您的内网服务器上创建一个名为 `steedos` 的文件夹，用于部署和数据存储。
 
-```shell
-curl -L https://raw.githubusercontent.com/steedos/steedos-platform/master/deploy/enterprise/docker-compose.yml -o $PWD/docker-compose.yml
+1. 进入 `steedos`文件夹，创建 `docker-compose.yml` 文件：
+
+```yml
+version: "3.9"
+
+services:
+
+  steedos:
+    image: steedos/steedos-community:2.6
+    ports:
+      - "5000:5000"    # Steedos
+      - "27017:27017"  # MongoDB
+      - "9001:9001"    # Supervisor
+      - "6379:6379"    # Redis
+    env_file:
+      - .env
+    volumes:
+      - "./steedos-storage:/steedos-storage"
 ```
 
-将下载好的`docker-compose.yml` 文件上传到内网服务器 `steedos` 文件夹内。
+2. Create `.env` file:
+
+```shell
+PORT=80
+ROOT_URL=http://serverip
+```
+
+将`docker-compose.yml` 文件上传到内网服务器 `steedos` 文件夹内。
 
 2. 查看`docker-compose.yml` 文件并下载相关image
 
 ```shell
-docker pull steedos/steedos-enterprise:2.5
+docker pull steedos/steedos-community:2.5
 ```
 
 3. 将下载好的镜像另存为rar格式文件并上传到内网服务器tmp路径中
 
 ```shell
-docker save -o steedos-enterprise.rar steedos/steedos-enterprise:2.5
+docker save -o steedos-community.rar steedos/steedos-community:2.5
 ```
 
 4. 进入内网服务器tmp路径中依次加载镜像
 
 ```shell
-docker load < steedos-enterprise.rar
+docker load < steedos-community.rar
 ```
 
-5. 进入内网服务器`steedos` 文件夹中，修改 `docker-compose.yml` 文件，将环境变量`STEEDOS_LICENSE`的值替换为申请的企业版许可证，使用以下命令启动 Docker 容器。如果您没有运行 `docker compose` 的权限，您可能需要使用 `sudo`。
+5. 使用以下命令启动 Docker 容器。
 
 ```shell
 docker compose up -d
@@ -87,8 +108,6 @@ docker compose up -d
 1. 进入steedos文件夹，修改 `docker-compose.yml` 文件，添加环境变量缓存unpkg到本地：
 ```yaml
     environment:
-      - ROOT_URL=http://127.0.0.1
-      - STEEDOS_LICENSE=trial
       - NPM_CACHE_ENABLED=true
       - NPM_CACHE_PACKAGE_INFO=true
       - NPM_CACHE_PACKAGE_CONTENT=true

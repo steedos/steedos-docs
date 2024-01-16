@@ -34,60 +34,17 @@ version: "3.9"
 services:
 
   steedos:
-    image: steedos/steedos-community:2.5
+    image: steedos/steedos-community:latest
     ports:
-      - "80:80"
+      - "80:80"        # Steedos
+      - "27017:27017"  # MongoDB
+      - "9001:9001"    # Supervisor
+      - "6379:6379"    # Redis
     environment:
       - ROOT_URL=http://127.0.0.1
-      - PORT=80
-      - MONGO_URL=mongodb://mongodb:27017/steedos
-      - MONGO_OPLOG_URL=mongodb://mongodb:27017/local
-      - TRANSPORTER=redis://redis:6379
-      - CACHER=redis://redis:6379/1
-      - STEEDOS_STORAGE_DIR=/steedos-storage
+      - NPM_REGISTRY_URL=https://registry.npmmirror.com
     volumes:
-      - "steedos-storage:/steedos-storage"
-    depends_on:
-      redis:
-        condition: service_started
-      mongodb:
-        condition: service_healthy
-  
-  redis:
-    image: redis:6.2.10
-    command: "redis-server --save \"\" --appendonly no --loglevel warning"
-    ports:
-      - "6379:6379"
-  
-  mongodb:
-    image: mongo:4.4
-    ports:
-      - 27017:27017
-    command: "--bind_ip_all --replSet steedos --logpath /var/log/mongodb/mongod.log"
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo --quiet | grep 1
-      interval: 10s
-      timeout: 10s
-      retries: 5
-    volumes:
-      - 'steedos-mongo-data:/data/db'
-
-  mongodb-init:
-    image: mongo:4.4
-    restart: "no"
-    depends_on:
-      mongodb:
-        condition: service_healthy
-    command: >
-      mongo --host mongodb:27017 --eval "rs.initiate({ _id: 'steedos', members: [{_id: 0, host: 'mongodb:27017'}]})"
-
-volumes:
-  steedos-mongo-data:
-    driver: local
-  steedos-installed-packages:
-    driver: local
-  steedos-storage:
-    driver: local
+      - "./steedos-storage:/steedos-storage"
 ```
 
 </TabItem>
@@ -103,18 +60,19 @@ services:
     image: steedos/steedos-enterprise:latest
     container_name: steedos-enterprise
     ports:
-      - "80:80"    
-      - "443:443"  
-      - "9001:9001"  
+      - "80:80"        # Steedos
+      - "27017:27017"  # MongoDB
+      - "9001:9001"    # Supervisor
+      - "6379:6379"    # Redis
     environment:
       - ROOT_URL=http://127.0.0.1
-      - STEEDOS_LICENSE=trial
+      - STEEDOS_LICENSE= # 请将此处替换为您的 Steedos 企业版许可证
       - NPM_CACHE_ENABLED=true
       - NPM_CACHE_PACKAGE_CONTENT=true
       - NPM_REGISTRY_URL=https://registry.npmmirror.com
     tty: true
     volumes:
-      - "./storage:/steedos-storage"
+      - "./steedos-storage:/steedos-storage"
 ```
 
 </TabItem>
@@ -157,6 +115,8 @@ docker-compose up -d
 ```bash
 docker-compose down
 ```
+
+> 如果需要同时清理volume数据，可以使用 `docker-compose down -v` 命令。
 
 2. 拉取最新的 Steedos 镜像：
 

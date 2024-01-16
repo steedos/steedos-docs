@@ -47,40 +47,60 @@ Docker version 24.0.7, build afdd53b
 
 ## Installing Steedos
 
-On your intranet server, create a folder named `steedos` for deployment and data storage. Download on the connected Linux server:
-1. Run the following cURL command to download the `docker-compose.yml` file:
+On your intranet server, create a folder named `steedos` for deployment and data storage.
 
-```shell
-curl -L https://raw.githubusercontent.com/steedos/steedos-platform/master/deploy/docker/docker-compose.yml -o $PWD/docker-compose.yml
+1. Create `docker-compose.yml` file:
+
+```yml
+version: "3.9"
+
+services:
+
+  steedos:
+    image: steedos/steedos-community:2.6
+    ports:
+      - "5000:5000"    # Steedos
+      - "27017:27017"  # MongoDB
+      - "9001:9001"    # Supervisor
+      - "6379:6379"    # Redis
+    env_file:
+      - .env
+    volumes:
+      - "./steedos-storage:/steedos-storage"
 ```
 
-Upload the downloaded `docker-compose.yml` file to the `steedos` folder on the intranet server.
-
-2. View the `docker-compose.yml` file and download the relevant images.
+2. Create `.env` file:
 
 ```shell
-docker pull steedos/steedos-enterprise:2.5
+PORT=80
+ROOT_URL=http://serverip
+```
+
+3. View the `docker-compose.yml` file and download the relevant images.
+
+```shell
+docker pull steedos/steedos-community:2.6
 docker pull redis:6.2.10
 docker pull mongo:4.4
 ```
 
-3. Save the downloaded images as rar format files and upload them to the tmp directory of the intranet server.
+4. Save the downloaded images as rar format files and upload them to the tmp directory of the intranet server.
 
 ```shell
-docker save -o steedos-enterprise.rar steedos/steedos-enterprise:2.5
+docker save -o steedos-community.rar steedos/steedos-community:2.6
 docker save -o redis.rar redis:6.2.10
 docker save -o mongo.rar mongo:4.4
 ```
 
-4. Navigate to the tmp directory on the intranet server and sequentially load the images.
+5. Navigate to the tmp directory on the intranet server and sequentially load the images.
 
 ```shell
-docker load < steedos-enterprise.rar
+docker load < steedos-community.rar
 docker load < redis.rar
 docker load < mongo.rar
 ```
 
-5. Navigate to the `steedos` directory on the intranet server and use the following command to start the Docker containers. If you don't have permission to run `docker compose`, you might need to use `sudo`.
+6. Navigate to the `steedos` directory on the intranet server and use the following command to start the Docker containers. If you don't have permission to run `docker compose`, you might need to use `sudo`.
 
 ```shell
 docker compose up -d
