@@ -6,6 +6,10 @@ sidebar_position: 1
 
 To get started quickly, see the [https://github.com/steedos-labs/feikongwang](https://github.com/steedos-labs/feikongwang) GitHub repo. This standalone application contains an example Steedos DX project with multiple custom objects, sample data.
 
+- [Template Project](https://github.com/steedos/steedos-project-template)
+- [Contact Management](https://github.com/steedos-labs/contract)
+- [Expese Management](https://github.com/steedos-labs/feikongwang)
+
 ## Clone Repository
 
 Cloning this repo creates the directory feikongwang. See the repo’s Readme for more information.

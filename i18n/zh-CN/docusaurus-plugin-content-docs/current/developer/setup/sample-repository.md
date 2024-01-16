@@ -6,6 +6,10 @@ sidebar_position: 1
 
 要快速入门，请查看 [https://github.com/steedos-labs/feikongwang](https://github.com/steedos-labs/feikongwang) GitHub 仓库。这个独立的应用程序包含了一个示例 Steedos DX 项目[费控王](https://feikongwang.com)，其中有多个自定义对象和示例数据。
 
+- [模版项目](https://github.com/steedos/steedos-project-template)
+- [合同管理](https://github.com/steedos-labs/contract)
+- [费控王](https://github.com/steedos-labs/feikongwang)
+
 ## 克隆仓库
 
 克隆这个仓库会创建一个名为 feikongwang 的目录。更多信息请查看仓库的 Readme 文件。
