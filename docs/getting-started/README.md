@@ -42,11 +42,3 @@ Steedos allows enterprises to customize applications with code. Through its high
 - **Custom Backend Business Logic**:
   For backend business logic, Steedos supports deep customization using Node.js. You can write triggers and APIs to implement highly complex business processes and data operations.
 
-
-## Getting Started
-
-You can use Steedos in the following ways:
-
-- [Self Hosting](/deploy/deploy-docker): Deploy the Steedos no-code development environment.
-- [Remote Development Environment](/deploy/gitpod): Quickly start a remote development environment with Gitpod.
-- [Local Development Environment](/developer/setup/): Create projects and set up a local development environment.
