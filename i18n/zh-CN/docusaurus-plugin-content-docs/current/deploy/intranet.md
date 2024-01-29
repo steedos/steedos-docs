@@ -70,6 +70,7 @@ services:
     environment:
       - STEEDOS_UNPKG_URL=/unpkg/
       - STEEDOS_SENTRY_ENABLED=false
+      - STEEDOS_PUBLIC_ANALYTICS_ENABLED=false
 ```
 
 2. Create `.env` file:
