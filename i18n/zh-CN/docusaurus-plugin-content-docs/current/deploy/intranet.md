@@ -67,6 +67,9 @@ services:
       - .env
     volumes:
       - "./steedos-storage:/steedos-storage"
+    environment:
+      - STEEDOS_UNPKG_URL=/unpkg/
+      - STEEDOS_SENTRY_ENABLED=false
 ```
 
 2. Create `.env` file:
@@ -81,13 +84,13 @@ ROOT_URL=http://serverip
 2. 查看`docker-compose.yml` 文件并下载相关image
 
 ```shell
-docker pull steedos/steedos-community:2.5
+docker pull steedos/steedos-community:2.6
 ```
 
 3. 将下载好的镜像另存为rar格式文件并上传到内网服务器tmp路径中
 
 ```shell
-docker save -o steedos-community.rar steedos/steedos-community:2.5
+docker save -o steedos-community.rar steedos/steedos-community:2.6
 ```
 
 4. 进入内网服务器tmp路径中依次加载镜像
