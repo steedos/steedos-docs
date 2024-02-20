@@ -59,7 +59,7 @@ services:
   steedos:
     image: steedos/steedos-community:2.6
     ports:
-      - "5000:5000"    # Steedos
+      - "80:80"    # Steedos
       - "27017:27017"  # MongoDB
       - "9001:9001"    # Supervisor
       - "6379:6379"    # Redis
@@ -80,27 +80,25 @@ PORT=80
 ROOT_URL=http://serverip
 ```
 
-将`docker-compose.yml` 文件上传到内网服务器 `steedos` 文件夹内。
-
-2. 查看`docker-compose.yml` 文件并下载相关image
+3. 在外网服务器上创建`docker-compose.yml`，文件内容与内网上的docker-compose.yml一致，查看`docker-compose.yml` 文件并下载相关image
 
 ```shell
 docker pull steedos/steedos-community:2.6
 ```
 
-3. 将下载好的镜像另存为rar格式文件并上传到内网服务器tmp路径中
+4. 将下载好的镜像另存为rar格式文件并上传到内网服务器tmp路径中
 
 ```shell
 docker save -o steedos-community.rar steedos/steedos-community:2.6
 ```
 
-4. 进入内网服务器tmp路径中依次加载镜像
+5. 进入内网服务器tmp路径中依次加载镜像
 
 ```shell
 docker load < steedos-community.rar
 ```
 
-5. 使用以下命令启动 Docker 容器。
+6. 使用以下命令启动 Docker 容器。
 
 ```shell
 docker compose up -d
