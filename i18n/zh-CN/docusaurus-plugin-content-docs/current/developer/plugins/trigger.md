@@ -54,7 +54,7 @@ module.exports = {
 * `spaceId`: 当前工作区\[string\],
 * `doc`: 需要新增/修改的记录内容\[json\],
 * `previousDoc`: 修改/删除前的记录\[json\], //仅afterUpdate, afterDelete时存在此属性
-* `object_name`: 当前对象名称\[string\],
+* `objectName`: 当前对象名称\[string\],
 * `datasource_name`: 数据源名称\[string\],
 * `getObject`: function(object_name: string)
 * `query`: 查询数据相关参数\[json\], //仅beforeFind时存在此属性
