@@ -1,0 +1,31 @@
+name: Deploy Github
+
+on:
+  push:
+    tags: # Deploy tag (e.g. v1.0) to production
+      - 'v**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build Docusaurus site
+        run: yarn build
+        env:
+          SITE_URL: https://www.steedos.org
+          SITE_TITLE: Steedos
+
+      - name: Deploy to steedos.github.io
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.GIT_DEPLOY_KEY }}
+          external_repository: steedos/steedos.github.io
+          publish_branch: gh-pages  # default: gh-pages
+          publish_dir: ./build
+        

@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Steedos Docs',
+  title: process.env.SITE_TITLE || 'Steedos Docs',
   tagline: 'Open source alterative to Salesforce Platform.',
   favicon: 'img/favicon.png',
 
@@ -19,9 +19,10 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'steedos', // Usually your GitHub org/user name.
-  projectName: 'steedos-docs', // Usually your repo name.
+  projectName: 'steedos.github.io', // Usually your repo name.
+  // trailingSlash: true,
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -32,6 +33,10 @@ const config = {
     locales: ['en', 'zh-CN'],
   },
 
+  scripts: [
+    // String format.
+    '/js/salesiq.js',
+  ],
   presets: [
     [
       'classic',
@@ -53,6 +58,10 @@ const config = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        gtag: {
+          trackingID: 'G-XVSWFLK780',
+          anonymizeIP: true,
         },
       }),
     ],

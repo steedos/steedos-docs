@@ -206,42 +206,43 @@ paths:
                 - doc
               x-apifox-ignore-properties: []
             example:
-              is_bidding: 已询价比价
-              amount: 500000
-              amount_type: immobilization
-              collection: true
-              company_id: ziAGMt53otTKj4iRt
-              contract_fulfillment_state: toperformthe
-              contract_object: |
-                超能城市广场灯光工程设计、调试、安装等。
-              currency_type: 63884b0e7afcfb99c989be03_6261092232cc250032e1a973
-              end_date: 2022-08-16T00:00:00.000Z
-              name: test
-              othercompany:
-                - 63884b0e7afcfb99c989be03_o2sunJ3vuz3uSKN4z
-              payment: false
-              receive_payment_type: single_use
-              signed_date: 2022-07-18T00:00:00.000Z
-              start_date: 2022-03-18T00:00:00.000Z
-              subject: 就超能城市广场灯光工程设计、指定设备、型号及数量相关事宜签订的合同约定。
-              space: 63884b0e7afcfb99c989be03
-              created: 2022-12-01T06:34:56.658Z
-              modified: 2022-12-01T06:34:56.658Z
-              created_by: 63884b0e7afcfb99c989be04
-              modified_by: 63884b0e7afcfb99c989be04
-              no: HT-2021-0005
-              contract_type: 63884b0e7afcfb99c989be03_62623e9d87e5c50032d9bdbb
-              contract_action_type: 新增
-              applicant_organization: 63884b0e7afcfb99c989be03_6jJafbSSHxnCuvhEM
-              cash_flow_type: receive
-              approving_invoice_amount: 0
-              approving_paid_amount: 0
-              project: 62620e5787e5c50032d9bd39
-              locked: true
-              amount_capital: 伍拾万元整
-              amount_description: ""
-              remark: ""
-              is_valid: valid
+              doc:
+                is_bidding: 已询价比价
+                amount: 500000
+                amount_type: immobilization
+                collection: true
+                company_id: ziAGMt53otTKj4iRt
+                contract_fulfillment_state: toperformthe
+                contract_object: |
+                  超能城市广场灯光工程设计、调试、安装等。
+                currency_type: 63884b0e7afcfb99c989be03_6261092232cc250032e1a973
+                end_date: 2022-08-16T00:00:00.000Z
+                name: test
+                othercompany:
+                  - 63884b0e7afcfb99c989be03_o2sunJ3vuz3uSKN4z
+                payment: false
+                receive_payment_type: single_use
+                signed_date: 2022-07-18T00:00:00.000Z
+                start_date: 2022-03-18T00:00:00.000Z
+                subject: 就超能城市广场灯光工程设计、指定设备、型号及数量相关事宜签订的合同约定。
+                space: 63884b0e7afcfb99c989be03
+                created: 2022-12-01T06:34:56.658Z
+                modified: 2022-12-01T06:34:56.658Z
+                created_by: 63884b0e7afcfb99c989be04
+                modified_by: 63884b0e7afcfb99c989be04
+                no: HT-2021-0005
+                contract_type: 63884b0e7afcfb99c989be03_62623e9d87e5c50032d9bdbb
+                contract_action_type: 新增
+                applicant_organization: 63884b0e7afcfb99c989be03_6jJafbSSHxnCuvhEM
+                cash_flow_type: receive
+                approving_invoice_amount: 0
+                approving_paid_amount: 0
+                project: 62620e5787e5c50032d9bd39
+                locked: true
+                amount_capital: 伍拾万元整
+                amount_description: ""
+                remark: ""
+                is_valid: valid
       responses:
         "200":
           description: 成功

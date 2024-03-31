@@ -128,11 +128,11 @@
     "description": "The label for category Getting Started in sidebar developer"
   },
   "sidebar.developer.category.Steedos Package": {
-    "message": "软件包开发",
+    "message": "软件包",
     "description": "The label for category Steedos Package in sidebar developer"
   },
   "sidebar.developer.category.Service Development": {
-    "message": "微服务开发",
+    "message": "微服务软件包",
     "description": "The label for category Service Development in sidebar developer"
   },
   "sidebar.developer.category.System Services": {
@@ -168,7 +168,7 @@
     "description": "The label for category Steedos DX Project in sidebar developer"
   },
   "sidebar.developer.category.Steedos Package Service": {
-    "message": "微服务开发",
+    "message": "微服务软件包",
     "description": "The label for category Steedos Package Service in sidebar developer"
   },
   "sidebar.developer.category.系统微服务": {
@@ -188,7 +188,7 @@
     "description": "The label for category Setup Project in sidebar developer"
   },
   "sidebar.developer.category.Package Development": {
-    "message": "软件包开发",
+    "message": "软件包",
     "description": "The label for category Package Development in sidebar developer"
   },
   "sidebar.developer.category.Package Advanced Development": {

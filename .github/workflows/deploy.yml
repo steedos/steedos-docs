@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install
 
       - name: Build Docusaurus site
-        run: npm run build
+        run: yarn build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -37,3 +37,5 @@ jobs:
       - name: Invalidate CloudFront distribution
         run: |
           aws cloudfront create-invalidation --distribution-id E3PZXWVY8YMW6P --paths "/*"
+
+      

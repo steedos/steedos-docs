@@ -40,6 +40,7 @@ recordId属性类似的可以配置为某个具体的记录id值，但是一般�
 | objectApiName | string | 无 | 父级对象api名称 |
 | recordId | string | 无 | 父级记录ID值 |
 | relatedObjectApiName | string | 无 | 相关表对象api名称 |
+| relatedKey | string | 无 | 相关表对象关联字段api名称 |
 | columns | [object] | 无 | 要显示的对象字段 |
 | filters | [string] | 无 | 过滤条件 |
 | sortField | string | 无 | 排序字段 |
@@ -51,6 +52,8 @@ recordId属性类似的可以配置为某个具体的记录id值，但是一般�
 | actions | [string] | 无 | 操作 |
 | enableActions | boolean | false | 显示列表视图操作栏 |
 -->
+
+relatedKey非必填，当子表对象上只有相关表字段关联到主表对象时，该字段值可以被组件自动计算出来，但是如果子表对象上有两个或以上相关表字段关联到主表对象时，就需要手动配置该字段值描述该相关表组件要显示的是哪个关联字段下的子表记录。
 
 #### columns属性表
 

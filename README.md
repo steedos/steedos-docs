@@ -37,6 +37,14 @@ yarn build:openapi
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+### Deploy to Github
+
+```
+export GIT_USER=hotlong
+export GIT_PASS=
+export DEPLOYMENT_BRANCH=master
+yarn deploy
+```
 
 ### Generate PDF
 
