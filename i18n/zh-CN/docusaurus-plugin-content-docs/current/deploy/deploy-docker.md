@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 在开始之前，请确保您的系统满足以下要求：
 
-1. 系统版本为Ubuntu22.04并且可以访问外网
+1. 系统版本为 Ubuntu22.04 并且可以访问外网
 2. [Docker](https://docs.docker.com/get-docker/) (版本 20.10.7 或更高版本)
 3. [Docker-Compose](https://docs.docker.com/compose/install/) (版本 1.29.2 或更高版本)
 4. 确保服务器端口（如 80, 443）已开放，以便外部访问
@@ -37,9 +37,9 @@ services:
   steedos:
     image: steedos/steedos-community:latest
     ports:
-      - "80:80"        # Steedos
-      - "27017:27017"  # MongoDB
-      - "9001:9001"    # Supervisor
+      - "80:80"        # Steedos 主服务
+      - "27017:27017"  # MongoDB 数据库
+      - "9001:9001"    # Supervisor docker应用管理界面
       - "6379:6379"    # Redis
     environment:
       - ROOT_URL=http://127.0.0.1 # 请将此处替换为您的服务器ip
@@ -60,10 +60,10 @@ services:
   steedos-enterprise:
     image: steedos/steedos-enterprise:latest
     ports:
-      - "80:80"        # Steedos
-      - "27017:27017"  # MongoDB
-      - "9001:9001"    # Supervisor
-      - "6379:6379"    # Redis
+      - "80:80"        # Steedos 主服务
+      - "27017:27017"  # MongoDB 数据库
+      - "9001:9001"    # Supervisor docker应用管理界面
+      - "6379:6379"    # Redis 
     environment:
       - ROOT_URL=http://127.0.0.1 # 请将此处替换为您的服务器ip
       - STEEDOS_LICENSE= # 请将此处替换为您的 Steedos 企业版许可证
@@ -74,6 +74,11 @@ services:
 
 </TabItem>
 </Tabs>
+
+* image: 服务使用的镜像名称和版本，可参考文档 [更新和维护](#更新和维护) 进行版本更新升级。
+* ports: docker应用宿主机与容器之间的端口映射，可参考文档 [调整服务端口](#调整服务端口) 修改端口映射。
+* environment: 环境变量，可参考文档 [配置环境变量](#配置环境变量)。
+* volumes: 文件存储映射，可参考文档 [数据持久化](#数据持久化) 调整文件映射路径。
 
 请根据您的实际情况调整环境变量和端口。
 
@@ -91,9 +96,27 @@ docker-compose up -d
 
 ## 配置和优化
 
+当服务启动后，会在本地自动创建文件夹steedos-storage存储系统配置信息、数据库文件和附件（默认存本地）
+
+```yaml
+steedos-storage
+  configuration 
+  data 
+  files 
+  logs 
+  ssl 
+  unpkg 
+```
+* configuration: 系统配置参数，包含MongoDB数据库连接用户、密码，Supervisor登录账户和密码
+* data: 数据库文件存储路径、备份数据库存储路径
+* files: 本地附件存储路径
+* logs: 本地日志存储路径，包含nginx、mongodb、steedos等服务日志
+* ssl: ssl证书存储路径
+* unpkg: 资产包缓存路径
+
 ### 调整服务端口
 
-当部署的服务与本地已有服务存在端口冲突问题时，可以通过配置 docker-compose.yml 文件中的ports属性来修改需要访问的端口，一般修改服务器的映射端口，而不是修改服务的启动端口，例如：
+可通过配置 docker-compose.yml 文件中的ports属性来修改已被占用的端口，一般修改服务器的映射端口，而不是服务的启动端口，例如修改服务访问端口为8080：
 
 ```yaml
 version: "3.9"
@@ -121,100 +144,41 @@ docker-compose restart
 
 ### 配置环境变量
 
-通过修改 docker-compose.yml 文件中environment属性来增加或修改环境变量，例如：
-```yaml
-# 配置连接外部数据库
-...
-    environment:
-      - ROOT_URL=http://127.0.0.1
-      - NPM_REGISTRY_URL=https://registry.npmmirror.com
-      # 连接ip为192.168.0.11的Mongodb数据库，数据库为steedos_data
-      - MONGO_URL=mongodb://192.168.0.11:27017/steedos_data 
-      # oplog配置连接外部Monodb数据库
-      - MONGO_OPLOG_URL=mongodb://192.168.0.11:27017/local 
+可以通过编辑 docker.env 或者 docker-compose.yml 文件添加和修改环境变量
 
+1. 修改steedos-storage/configuration/docker.env文件，例如配置连接IP为192.168.0.11的外部MongoDB数据库：
+
+```env
+MONGO_URL=mongodb://192.168.0.11:27017/steedos
+MONGO_OPLOG_URL=mongodb://192.168.0.11:27017/local
 ```
 
-```yaml
-# 配置登录界面相关参数
-...
-    environment:
-      # 允许账户创建，默认在数据库为空时为 true
-      - STEEDOS_TENANT_ENABLE_REGISTER=true  
-      # 允许密码恢复，设置为 true 将显示链接以检索密码，默认为 false。
-      - STEEDOS_TENANT_ENABLE_FORGET_PASSWORD=true  
-      # 允许创建公司，默认仅在数据库为空时允许
-      - STEEDOS_TENANT_ENABLE_CREATE_TENANT=false 
-      # 允许密码登录，默认对于注册和登录都是启用的，默认为 true
-      - STEEDOS_TENANT_ENABLE_PASSWORD_LOGIN=true 
-      # 强制绑定电子邮件，登录后需要输入并验证电子邮件，默认为 false
-      - STEEDOS_TENANT_ENABLE_BIND_EMAIL=false 
-      # 强制绑定手机号码，登录后需要输入并验证手机号码，默认为 false
-      - STEEDOS_TENANT_ENABLE_BIND_MOBILE=false 
-      # 允许使用电子邮件验证码登录，需要配置邮件发送参数。
-      - STEEDOS_TENANT_ENABLE_EMAIL_CODE_LOGIN=false 
-      # 允许使用手机验证码登录，需要配置短信发送参数。
-      - STEEDOS_TENANT_ENABLE_MOBILE_CODE_LOGIN=false 
+2. 通过修改 docker-compose.yml 文件中environment属性来增加或修改环境变量，例如配置连接IP为192.168.0.11的外部MongoDB数据库：
+```
+  environment:
+    - ROOT_URL=http://127.0.0.1
+    - NPM_REGISTRY_URL=https://registry.npmmirror.com
+    - MONGO_URL=mongodb://192.168.0.11:27017/steedos
+    - MONGO_OPLOG_URL=mongodb://192.168.0.11:27017/local
 
 ```
-
-```yaml
-# 配置附件存储S3，以国内aws宁夏服务器为例
-...
-    environment:
-      - STEEDOS_CFS_STORE=S3
-      - STEEDOS_CFS_AWS_S3_ENDPOINT=https://s3.cn-northwest-1.amazonaws.com.cn
-      - STEEDOS_CFS_AWS_S3_REGION=cn-northwest-1
-      - STEEDOS_CFS_AWS_S3_SIGNATURE_VERSION=v4
-      - STEEDOS_CFS_AWS_S3_BUCKET=steedos   # bucket名称
-      - STEEDOS_CFS_AWS_S3_ACCESS_KEY_ID=xxxxxxxxx
-      - STEEDOS_CFS_AWS_S3_SECRET_ACCESS_KEY=xxxxxxxxx
-
-```
-
-```yaml
-# 配置短信发送参数，登录时可以通过手机验证码登录，以腾讯短信为例
-...
-    environment:
-      - STEEDOS_SMS_QCLOUD_SDKAPPID=xxxxxx
-      - STEEDOS_SMS_QCLOUD_APPKEY=xxxxxx
-      - STEEDOS_SMS_QCLOUD_SIGNNAME=【华炎魔方】 # 此配置为腾讯短信服务中的签名模板名称
-      - STEEDOS_CRON_SMSQUEUE_INTERVAL=3000 # 短信定时器，单位：毫秒
-
-```
-
-```yaml
-# 配置邮件发送参数，登录时可以通过邮箱验证码登录
-...
-    environment:
-      - STEEDOS_EMAIL_FROM=华炎魔方 <noreply@xxx.com>
-      - STEEDOS_EMAIL_URL=smtps://xxxxxxx:xxxxxxxxx@email.xxxx.amazonaws.com:465/
-      - STEEDOS_EMAIL_HOST=email.xxxx.amazonaws.com
-      - STEEDOS_EMAIL_PORT=465
-      - STEEDOS_EMAIL_USERNAME=xxxxx
-      - STEEDOS_EMAIL_PASSWORD=xxxxx
-      - STEEDOS_CRON_MAILQUEUE_INTERVAL=3000 # 邮件定时器，单位：毫秒
-
-```
+注意：当两个文件配置同一个环境变量时，服务会读取 docker-compose.yml 文件中配置的值。
 
 更多环境变量配置参考文档：[配置 Steedos 实例](/deploy/steedos-config)
 
+### 数据持久化
 
+数据持久化的作用是将宿主机上的数据与容器内的数据形成映射，实现数据的共享或者数据的保存。当删除容器的时候，在宿主机上仍然能够保留文件目录。
+
+例如调整文件映射路径为steedos-data：
+
+```
+  volumes:
+    - "/path/to/steedos-data:/steedos-storage"
+```
 ## 更新和维护
 
 ### 服务控制台
-
-当服务启动后，会在本地自动创建文件夹steedos-storage存储系统配置信息、数据库文件和附件（默认存本地）
-
-```yaml
-steedos-storage
-  configuration # 系统配置参数，包含MongoDB数据库连接用户、密码，Supervisor登录账户和密码
-  data          # 数据库文件存储路径、备份数据库存储路径
-  files         # 本地附件存储路径
-  logs          # 本地日志存储路径，包含nginx、mongodb、steedos等服务日志
-  ssl           # ssl证书存储路径
-  unpkg         # 资产包缓存路径
-```
 
 可以通过 http://127.0.0.1:9001 访问 Supervisor 控制台，登录账号密码可以在 steedos-storage/configuration/docker.env 中查看：
 
@@ -256,7 +220,7 @@ docker-compose up -d
 
 确保在更新前备份您的数据。
 
-### 连接服务数据库
+### 连接数据库
 
 通过 steedos-storage/configuration/docker.env 文件查看获取数据库连接用户名和密码
 
