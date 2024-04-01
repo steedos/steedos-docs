@@ -16,7 +16,7 @@ ROOT_URL=http://localhost
 MONGO_URL=mongodb://127.0.0.1:27017/steedos
 MONGO_OPLOG_URL=mongodb://127.0.0.1:27017/local
 
-# 微服务通信 [https://moleculer.services/docs/0.14/networking.html](https://moleculer.services/zh/docs/0.14/networking.html)
+# 微服务通信 (https://moleculer.services/zh/docs/0.14/networking.html)
 TRANSPORTER=redis://127.0.0.1:6379
 
 # 缓存 https://moleculer.services/zh/docs/0.14/caching.html
@@ -77,11 +77,12 @@ STEEDOS_STORAGE_DIR=/steedos-storage
 
 ```bash
 STEEDOS_CFS_STORE=S3
-STEEDOS_CFS_AWS_S3_ENDPOINT=http://minio:9000
-STEEDOS_CFS_AWS_S3_FORCE_PATH_STYLE=true
-STEEDOS_CFS_AWS_S3_BUCKET=steedos-prod
-STEEDOS_CFS_AWS_S3_ACCESS_KEY_ID=${MINIO_ROOT_USER:-steedos} 
-STEEDOS_CFS_AWS_S3_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD:-steedos123}
+STEEDOS_CFS_AWS_S3_ENDPOINT=https://s3.cn-northwest-1.amazonaws.com.cn
+STEEDOS_CFS_AWS_S3_REGION=cn-northwest-1
+STEEDOS_CFS_AWS_S3_SIGNATURE_VERSION=v4
+STEEDOS_CFS_AWS_S3_BUCKET=steedos
+STEEDOS_CFS_AWS_S3_ACCESS_KEY_ID=xxxxxxxx
+STEEDOS_CFS_AWS_S3_SECRET_ACCESS_KEY=xxxxxxxx
 ```
 
 ### 附件匿名下载
@@ -103,16 +104,16 @@ STEEDOS_CFS_DOWNLOAD_PUBLIC=avatars,images
 # iOS
 STEEDOS_PUSH_APN_DATA=
 
-# 安卓
-STEEDOS_GCM_APIKEY=
-STEEDOS_GCM_PROJECT_NUMBER=
-
 # 华为
+STEEDOS_GCM_APIKEY=xxx
+STEEDOS_GCM_PROJECT_NUMBER=xxx
 STEEDOS_PUSH_HUAWEI_APPID=
 STEEDOS_PUSH_HUAWEI_APPPKGNAME=
 STEEDOS_PUSH_HUAWEI_APPSECRET=
 
 # 小米
+STEEDOS_GCM_APIKEY=xxx
+STEEDOS_GCM_PROJECT_NUMBER=xxx
 STEEDOS_PUSH_MI_APPSECRET=
 STEEDOS_PUSH_MI_PRODUCTION=
 ```
@@ -122,14 +123,24 @@ STEEDOS_PUSH_MI_PRODUCTION=
 为系统推送电子邮件配置 SMTP 服务参数。
 
 ```bash
-STEEDOS_EMAIL_FROM=
-STEEDOS_EMAIL_URL=
-STEEDOS_EMAIL_HOST=
-STEEDOS_EMAIL_PORT=
-STEEDOS_EMAIL_USERNAME=
-STEEDOS_EMAIL_PASSWORD=
-STEEDOS_EMAIL_SECURE=
-STEEDOS_EMAIL_SIGNNAME=
+STEEDOS_EMAIL_FROM=华炎魔方 <noreply@xxx.com>
+STEEDOS_EMAIL_URL=smtps://xxxxxxx:xxxxxxxxx@email.xxxx.amazonaws.com:465/
+STEEDOS_EMAIL_HOST=email.xxxx.amazonaws.com
+STEEDOS_EMAIL_PORT=465
+STEEDOS_EMAIL_USERNAME=xxxxx
+STEEDOS_EMAIL_PASSWORD=xxxxx
+STEEDOS_CRON_MAILQUEUE_INTERVAL=3000 # 邮件定时器，单位：毫秒
+```
+
+## 短信配置
+
+为系统配置短信发送，目前支持配置腾讯云短信发送服务。
+
+```bash
+STEEDOS_SMS_QCLOUD_SDKAPPID=xxxxxx
+STEEDOS_SMS_QCLOUD_APPKEY=xxxxxx
+STEEDOS_SMS_QCLOUD_SIGNNAME=【华炎魔方】 # 此配置为腾讯短信服务中的签名模板名称
+STEEDOS_CRON_SMSQUEUE_INTERVAL=3000 # 短信定时器，单位：毫秒
 ```
 
 ## OIDC 身份验证
