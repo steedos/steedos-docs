@@ -287,27 +287,7 @@ sudo ./backup.sh
 # 执行成功后会在本地生成一个以日期时间命名的tag.gz文件，例如：31-07.tar.gz
 ```
 
-6. 还原数据库
-
-```bash
-# 通过docker ps 查看steedos服务运行id，例如为ddassnnssa
-docker exec -it ddassnnssa bash
-
-# 进入备份的数据库路径
-cd /steedos-storage/data/backup
-
-# 解压备份的压缩文件并进入解压后的文件夹中
-tar -xzvf 31-07.tar.gz
-cd mongodb-31-07
-
-# 执行mongorestore还原数据库steedos，替换STEEDOS_MONGODB_USER和STEEDOS_MONGODB_PASSWORD为docker.env中的值
-mongorestore -d steedos -u STEEDOS_MONGODB_USER -p STEEDOS_MONGODB_PASSWORD --authenticationDatabase=admin --drop steedos
-
-# -d 后面的steedos为还原的目标数据库，也可以自定义值，例如修改steedos_data，就可以将数据库还原到新库steedos_data
-mongorestore -d steedos_data -u STEEDOS_MONGODB_USER -p STEEDOS_MONGODB_PASSWORD --authenticationDatabase=admin --drop steedos
-```
-
-7. 配置系统定时任务自动备份数据库
+6. 配置系统定时任务自动备份数据库
 
 通过backup.sh脚本备份的数据库是以日期-时间命名的，因此可以通过ubuntu自带的cron定时任务，周期性的备份数据库，以符合生产环境的需求；
 
@@ -328,6 +308,41 @@ crontab -e
 # 保存后退出，并重启cron服务：
 sudo service cron restart
 ```
+
+### 还原数据库
+
+1. 通过docker ps 查看steedos服务运行id，例如为ddassnnssa
+
+```bash
+docker exec -it ddassnnssa bash
+```
+
+2. 进入备份的数据库路径
+
+```bash
+cd /steedos-storage/data/backup
+```
+
+3. 解压备份的压缩文件并进入解压后的文件夹中
+
+```bash
+tar -xzvf 31-07.tar.gz
+cd mongodb-31-07
+```
+
+4. 执行mongorestore还原数据库steedos，替换STEEDOS_MONGODB_USER和STEEDOS_MONGODB_PASSWORD为docker.env中的值
+
+```bash
+mongorestore -d steedos -u STEEDOS_MONGODB_USER -p STEEDOS_MONGODB_PASSWORD --authenticationDatabase=admin --drop steedos
+```
+
+注意： -d 后面的steedos为还原的目标数据库，也可以自定义值，例如修改为steedos_data，就可以将数据库还原到新库steedos_data
+
+```bash
+mongorestore -d steedos_data -u STEEDOS_MONGODB_USER -p STEEDOS_MONGODB_PASSWORD --authenticationDatabase=admin --drop steedos
+```
+
+更多数据库还原配置参考官方文档：[database-tools: mongorestore](https://www.mongodb.com/docs/database-tools/mongorestore/)
 
 ## 故障排除
 
