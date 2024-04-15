@@ -312,15 +312,15 @@ steedos-storage
 
 ```bash
 # 查看pod id，例如：steedos-community-fpllw
-kubectl get pod
+kubectl get pod -n community
 
-kubectl describe pod steedos-community-fpllw
+kubectl describe pod steedos-community-fpllw -n community
 ```
 
 2. 停止当前运行的容器：
 
 ```bash
-kubectl delete pod steedos-community-fpllw
+kubectl delete pod steedos-community-fpllw -n community
 ```
 
 > 如果需要同时清理volume数据，可以使用 `kubectl delete -f deployment.yaml` 命令。
@@ -339,10 +339,10 @@ kubectl apply -f deployment.yaml
 
 ```bash
 # 查看pod id，例如：steedos-community-fpllw
-kubectl get pod
+kubectl get pod -n community
 
 # 连接到服务内部
-kubectl exec -it steedos-community-fpllw bash
+kubectl exec -it steedos-community-fpllw bash -n community
 
 # 查看配置文件
 cat /steedos-storage/configuration/docker.env
@@ -354,10 +354,10 @@ k8s内部启用的mongo服务默认不允许外部连接，只能通过连接到
 
 ```bash
 # 查看pod id，例如：steedos-community-fpllw
-kubectl get pod
+kubectl get pod -n community
 
 # 连接到服务内部
-kubectl exec -it steedos-community-fpllw bash
+kubectl exec -it steedos-community-fpllw bash -n community
 
 # 执行mongo
 mongo
@@ -381,10 +381,10 @@ use steedos
 1. 连接到服务内部
 ```bash
 # 查看pod id，例如：steedos-community-fpllw
-kubectl get pod
+kubectl get pod -n community
 
 # 连接到服务内部
-kubectl exec -it steedos-community-fpllw bash
+kubectl exec -it steedos-community-fpllw bash -n community
 ```
 
 2. 执行备份脚本
@@ -401,7 +401,7 @@ mongodump -d steedos -u STEEDOS_MONGODB_USER -p STEEDOS_MONGODB_PASSWORD --authe
 tar -czf dump.tar.gz dump
 
 # 本地执行kubectl将pod中的备份文件拷贝到本地
-kubectl cp steedos-community-fpllw:/steedos-storage/data/backup/dump.tar.gz .
+kubectl cp steedos-community-fpllw:/steedos-storage/data/backup/dump.tar.gz . -n community
 ```
 
 更多数据库备份配置参考官方文档：[database-tools: mongodump](https://www.mongodb.com/docs/database-tools/mongodump/)
@@ -411,13 +411,13 @@ kubectl cp steedos-community-fpllw:/steedos-storage/data/backup/dump.tar.gz .
 1. 将备份的数据库拷贝到pod中/steedos-storage/data/backup路径下
 
 ```bash
-kubectl cp dump.tar.gz steedos-community-fpllw:/steedos-storage/data/backup/
+kubectl cp dump.tar.gz steedos-community-fpllw:/steedos-storage/data/backup/ -n community
 ```
 
 2. 进入备份的数据库路径
 
 ```bash
-kubectl exec -it steedos-community-fpllw bash
+kubectl exec -it steedos-community-fpllw bash -n community
 
 cd /steedos-storage/data/backup
 ```
