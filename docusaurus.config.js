@@ -113,12 +113,12 @@ const config = {
             sidebarId: 'platform',
             label: 'Platform',
           },
-          {
-            type: 'docSidebar',
-            position: 'left',
-            sidebarId: 'apps',
-            label: 'Apps',
-          },
+          // {
+          //   type: 'docSidebar',
+          //   position: 'left',
+          //   sidebarId: 'apps',
+          //   label: 'Apps',
+          // },
           {
             type: 'docSidebar',
             position: 'left',
