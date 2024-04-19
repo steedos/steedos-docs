@@ -101,7 +101,7 @@ const config = {
         isCloseable: true,
       },
       navbar: {
-        title: '',
+        title: 'Steedos',
         logo: {
           alt: 'Steedos',
           src: 'img/logo.png',
@@ -118,6 +118,12 @@ const config = {
             position: 'left',
             sidebarId: 'apps',
             label: 'Apps',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'docs',
+            label: 'Docs',
           },
           {
             type: 'docSidebar',
