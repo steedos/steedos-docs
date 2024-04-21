@@ -107,12 +107,12 @@ const config = {
           src: 'img/logo.png',
         },
         items: [
-          {
-            type: 'docSidebar',
-            position: 'left',
-            sidebarId: 'steedos-platform',
-            label: 'Platform',
-          },
+          // {
+          //   type: 'docSidebar',
+          //   position: 'left',
+          //   sidebarId: 'steedos-platform',
+          //   label: 'Platform',
+          // },
           // {
           //   type: 'docSidebar',
           //   position: 'left',

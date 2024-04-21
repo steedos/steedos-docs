@@ -2,6 +2,8 @@
 
 This is the source of documentation for [Steedos Platform](https://steedos.com), hosted at [docs.steedos.com](https://docs.steedos.com), powered by Docusaurus v2.
 
+## Development
+
 ### Installation
 
 ```shell
@@ -37,14 +39,15 @@ yarn build:openapi
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deploy to Github
+## Release
 
-```
-export GIT_USER=hotlong
-export GIT_PASS=
-export DEPLOYMENT_BRANCH=master
-yarn deploy
-```
+### 发布正式版
+
+在main分支创建tag，发布正式版到 https://docs.steedos.com
+
+### 发布测试版
+
+更新beta分支，发布测试版到 https://docs-beta.steedos.com
 
 ### Generate PDF
 

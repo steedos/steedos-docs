@@ -1,6 +1,6 @@
 {
   "title": {
-    "message": "",
+    "message": "华炎魔方",
     "description": "The title in the navbar"
   },
   "logo.alt": {
@@ -22,5 +22,9 @@
   "item.label.Developer": {
     "message": "开发人员",
     "description": "Navbar item with label Developer"
+  },
+  "item.label.Docs": {
+    "message": "文档",
+    "description": "Navbar item with label Docs"
   }
 }
