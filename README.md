@@ -20,7 +20,7 @@ Run zh-CN version
 yarn start:cn
 ```
 
-Write translations for z-CN
+Write translations for zh-CN
 
 ```shell
 yarn write-translations:cn

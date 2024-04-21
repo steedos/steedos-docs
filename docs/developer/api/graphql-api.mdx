@@ -5,7 +5,7 @@ sidebar_position: 20
 
 ## GraphQL Console
 
-The GraphQL console can be accessed on the browser to query and manipulate data in the system. The website address is: ${server_address}/graphql.
+The GraphQL console can be accessed on the browser to query and manipulate data in the system. The website address is: `${server_address}/graphql`.
 
 GraphQL interface has built-in access control. Before executing a query, you must first log in to the system. The query's access permission is based on the current logged-in account.
 
@@ -110,7 +110,7 @@ query{
 
 ### Expanding Related Tables in Query
 
-For lookup and master/detail type fields, you can use the ${field_api_name}__expand syntax to expand the query to include data from related tables. If the related table field is a multi-select type, the returned data will also be an array.
+For lookup and master/detail type fields, you can use the `${field_api_name}__expand` syntax to expand the query to include data from related tables. If the related table field is a multi-select type, the returned data will also be an array.
 
 ```javascript
 {
@@ -151,7 +151,7 @@ and return
 
 ### Returning formatted data
 
-For boolean, select, date, datetime, and lookup type fields, you can use the _display{field_api_name} syntax to format the queried data.
+For boolean, select, date, datetime, and lookup type fields, you can use the `_display{field_api_name}` syntax to format the queried data.
 
 In the formatted result, the values of 0, null, and false will be replaced with an empty string.
 
@@ -329,7 +329,7 @@ When calling the GraphQL API to create new data, the system first verifies wheth
 
 #### Creating a Single Record
 
-To create a single record, use the syntax mutation.{object_api_name}__insert and provide the value for the doc parameter.
+To create a single record, use the syntax mutation. `{object_api_name}__insert` and provide the value for the doc parameter.
 
 ```javascript
 mutation {
@@ -340,7 +340,7 @@ mutation {
 }
 ```
 
-In this case, tasks represents the object name of the record you want to insert, and {name:"Task One", assignees: []} represents the JSON data to be inserted.
+In this case, tasks represents the object name of the record you want to insert, and `{name:"Task One", assignees: []}` represents the JSON data to be inserted.
 
 The keyword __insert indicates that a record will be added to the system via the GraphQL API.
 
@@ -363,7 +363,7 @@ When calling the GraphQL API to modify data, the system first verifies whether t
 
 #### Modifying a single record
 
-To modify a single record, use the syntax mutation.{object_api_name}__update and provide the values for the id and doc parameters.
+To modify a single record, use the syntax mutation. `{object_api_name}__update` and provide the values for the id and doc parameters.
 
 ```javascript
 mutation {
@@ -374,7 +374,7 @@ mutation {
 }
 ```
 
-In this case, tasks represents the object name of the record you want to modify, the value 5cb98489d09a343e14daae95 for id represents the _id of the record you want to modify, and {name:"Task Important"} represents the JSON data to be updated.
+In this case, tasks represents the object name of the record you want to modify, the value 5cb98489d09a343e14daae95 for id represents the _id of the record you want to modify, and `{name:"Task Important"}` represents the JSON data to be updated.
 
 The keyword __update indicates that a record will be updated in the system via the GraphQL API.
 
@@ -397,7 +397,7 @@ When calling the GraphQL API to delete data, the system will first verify if the
 
 #### Deleting a single record
 
-To delete a single piece of data, use the mutation.{object_api_name}__delete syntax and provide the id parameter value.
+To delete a single piece of data, use the mutation. `{object_api_name}__delete` syntax and provide the id parameter value.
 
 ```javascript
 mutation {

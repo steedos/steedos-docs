@@ -35,7 +35,7 @@ For example, if the value of the `name` variable is `Rick`, and the template is 
 }
 ```
 
-* Supports chained value access: AMIS supports using **.** for chained value access, meaning you can access properties within nested objects. For example:
+* Supports chained value access: AMIS supports using `.` for chained value access, meaning you can access properties within nested objects. For example:
 
 ```json
 {
@@ -55,7 +55,7 @@ For example, if the value of the `name` variable is `Rick`, and the template is 
 ```
 
 ### Rendering HTML with Template Strings
-To render HTML, use the same data mapping syntax: **${xxx}**. If the variable itself contains HTML, apply the **raw** filter for correct rendering.
+To render HTML, use the same data mapping syntax: `${xxx}`. If the variable itself contains HTML, apply the `raw` filter for correct rendering.
 
 ```json
 {
@@ -80,9 +80,9 @@ Supports simple expressions and formula calls. For example:
 See the expressions chapter for details.
 
 ### JavaScript Template Engine
-AMIS also supports the JavaScript template engine, internally using lodash template. Note the difference in accessing data scope variables: use **data.xxx** instead of **${xxx}**. This engine treats the data scope as the current code execution context, requiring **data.xxx** to retrieve values.
+AMIS also supports the JavaScript template engine, internally using lodash template. Note the difference in accessing data scope variables: use `data.xxx` instead of `${xxx}`. This engine treats the data scope as the current code execution context, requiring `data.xxx` to retrieve values.
 
-The syntax is similar to EJS, **<% ... %>** indicates JavaScript statements. Familiarity with JavaScript makes page rendering a breeze. Additionally, several JavaScript methods are available, such as **formatDate**, **formatTimeStamp**, **formatNumber**, and **countDown**.
+The syntax is similar to EJS, `<% ... %>` indicates JavaScript statements. Familiarity with JavaScript makes page rendering a breeze. Additionally, several JavaScript methods are available, such as `formatDate`, `formatTimeStamp`, `formatNumber`, and `countDown`.
 
 :::tip
 Template strings and the JavaScript template engine cannot be used interchangeably. For example:
@@ -103,9 +103,9 @@ Template strings and the JavaScript template engine cannot be used interchangeab
 
 Data filters are an extension of the data mapping feature, allowing for additional processing of retrieved data.
 
-* **Basic Usage**: `${xxx |filter1 }`, for example `{name|trim}`
-* **Filter Chaining**: Multiple filters can be chained, such as `${xxx | filter1 | filter2 | ...}`, to implement complex data processing flows.
-* **Function Call Syntax**: It is recommended to use function call syntax for data filtering, for example, replacing `${xxx | html}` with `${html(xxx)}`. Of course, nested calls like `${trim(html(xxx))}` are possible.
+* `Basic Usage`: `${xxx |filter1 }`, for example `{name|trim}`
+* `Filter Chaining`: Multiple filters can be chained, such as `${xxx | filter1 | filter2 | ...}`, to implement complex data processing flows.
+* `Function Call Syntax`: It is recommended to use function call syntax for data filtering, for example, replacing `${xxx | html}` with `${html(xxx)}`. Of course, nested calls like `${trim(html(xxx))}` are possible.
 
 ### Filter Parameters
 Filters can have parameters written into them:

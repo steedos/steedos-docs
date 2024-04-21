@@ -2,20 +2,20 @@
 
 In AMIS, events and actions are key to implementing complex UI interactions. They allow developers to listen for component events and respond with corresponding actions without worrying about component hierarchy. The capabilities of events and actions include, but are not limited to:
 
-- **HTTP Requests**: Sending HTTP requests.
-- **Popup Notifications**: Executing popups, drawer openings, and Toast notifications.
-- **Page Navigation**: Implementing page link navigation.
-- **Browser Operations**: Includes back, forward, refresh, etc.
-- **Component Refresh**: Linkage refresh of form data, i.e., data reloaded.
-- **Component State Control**: Controlling the display/hide, enable/disable, and view/edit states of a specified component.
-- **Component-Specific Actions**: Executing proprietary actions of a specified component, such as submitting a form.
-- **Component Data Update**: Updating the data domain of a specified component.
-- **Broadcast**: Multiple components listen to the same event and respond differently.
-- **JS Scripts**: Implementing required logic by writing JS code snippets, also supports executing actions within JS code.
-- **Logic Orchestration**: Logical operations such as conditions, loops, exclusivity, parallelism, etc.
+- `HTTP Requests`: Sending HTTP requests.
+- `Popup Notifications`: Executing popups, drawer openings, and Toast notifications.
+- `Page Navigation`: Implementing page link navigation.
+- `Browser Operations`: Includes back, forward, refresh, etc.
+- `Component Refresh`: Linkage refresh of form data, i.e., data reloaded.
+- `Component State Control`: Controlling the display/hide, enable/disable, and view/edit states of a specified component.
+- `Component-Specific Actions`: Executing proprietary actions of a specified component, such as submitting a form.
+- `Component Data Update`: Updating the data domain of a specified component.
+- `Broadcast`: Multiple components listen to the same event and respond differently.
+- `JS Scripts`: Implementing required logic by writing JS code snippets, also supports executing actions within JS code.
+- `Logic Orchestration`: Logical operations such as conditions, loops, exclusivity, parallelism, etc.
 
 ### Basic Usage
-The **onEvent** property can be used to bind renderer events to response actions. Within **onEvent**, configure the event and action mapping relationship, where **actions** is a collection of response actions corresponding to the event.
+The `onEvent` property can be used to bind renderer events to response actions. Within `onEvent`, configure the event and action mapping relationship, where `actions` is a collection of response actions corresponding to the event.
 The event system is the cornerstone of implementing interactive logic in AMIS. It allows developers to listen to and respond to user actions or system-triggered events. This section will delve into AMIS's event system, including types of events, listening, and handling.
 
 For example: Listen to the click event of a button and execute a toast action. The code is as follows:
@@ -49,22 +49,22 @@ For example: Listen to the click event of a button and execute a toast action. T
 ```
 
 ### Context
-When executing actions, you can obtain the event object's data through **${event.data}** and the component's current data domain through **${__rendererData}**.
+When executing actions, you can obtain the event object's data through `${event.data}` and the component's current data domain through `${__rendererData}`.
 
 ### Runtime Log
 View the runtime log in the browser console to see the process and result of the action execution.
 
 ### Classification of Events and Actions
-Events include renderer events and broadcast events. Actions include general actions, component actions, broadcast actions, and custom actions, which can be specified by configuring **actionType**.
+Events include renderer events and broadcast events. Actions include general actions, component actions, broadcast actions, and custom actions, which can be specified by configuring `actionType`.
 
 ### Triggering General Actions
 General actions include sending HTTP requests, jumping links, browser operations, popup notifications, copying, sending emails, refreshing, controlling display and hide, controlling enable and disable states, updating data, etc.
 
 ### Triggering Component's Actions
-Trigger specific component's actions by configuring **componentId** or **componentName**.
+Trigger specific component's actions by configuring `componentId` or `componentName`.
 
 ### Triggering Broadcast Actions
-Implement triggering a broadcast by configuring **actionType: 'broadcast'**.
+Implement triggering a broadcast by configuring `actionType: 'broadcast'`.
 
 ### Orchestration of Actions
 Implement action orchestration by configuring different logical actions, supporting nesting.

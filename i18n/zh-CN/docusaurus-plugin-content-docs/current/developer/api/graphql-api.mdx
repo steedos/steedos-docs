@@ -5,7 +5,7 @@ description: 基于Steedos创建的自定义对象，会自动生成 GraphQL API
 
 ## GraphQL 控制台
 
-可以在浏览器端访问 GraphQL 控制台，查询和操作系统中的数据。访问网址为:  ${服务器地址}/graphql
+可以在浏览器端访问 GraphQL 控制台，查询和操作系统中的数据。访问网址为:  `${服务器地址}/graphql`
 
 GraphQL接口内置权限控制，执行查询前必须先登录系统，当前查询的访问权限为当前登录的账户。
 
@@ -108,7 +108,7 @@ query{
 
 ### 扩展查询相关表
 
-对于 lookup 和 master/detail 类型字段，使用 ${field_api_name}__expand 语法，可以扩展查询相关表中的数据。如果相关表字段是多选类型，返回的也是数组数据。
+对于 lookup 和 master/detail 类型字段，使用 `${field_api_name}__expand` 语法，可以扩展查询相关表中的数据。如果相关表字段是多选类型，返回的也是数组数据。
 
 ```javascript
 {
@@ -149,7 +149,7 @@ query{
 
 ### 返回格式化数据
 
-对于 boolean , select , date , datetime , lookup类型字段，使用 _display{ field_api_name } 语法，可以格式化查询到的数据。
+对于 boolean , select , date , datetime , lookup类型字段，使用 `_display{ field_api_name }` 语法，可以格式化查询到的数据。
 
 其中 0 、null 、false  值格式化后为空字符串。
 
@@ -355,37 +355,6 @@ mutation {
 }
 ```
 
-<!--
-#### 新增多条数据
-
-使用 `mutation.{object_api_name}__insert_many` 语法，传入 `docs` 参数值。
-
-```javascript
-mutation {
-  tasks__insert_many(docs:[{name:"Task One", assignees: []}]) {
-    name
-    _id
-  }
-}
-```
-
-其中， `tasks` 代表要插入记录的对象名称，`[{name:"Task One", assignees: []}]` 代表要插入的JSON数据。
-
-关键字 `__insert_many` 表示通过 GraphQL API 在系统中插入多条记录。
-
-结果如下：
-
-```javascript
-{
-  "data": {
-    "tasks__insert_many": [{
-      "name": "Task One",
-      "_id": "5cb98489d09a343e14daae95"
-    }]
-  }
-}
-```
--->
 
 ### 修改数据
 
@@ -421,39 +390,6 @@ mutation {
 }
 ```
 
-<!--
-#### 修改多条数据
-
-使用 `mutation.{object_api_name}__update_many` 语法，传入 `filters` 和 `doc` 参数值。
-
-```javascript
-mutation {
-  tasks__update_many(filters: ["name","contains","Important"], doc:{important: true}) {
-    name
-    _id
-    important
-  }
-}
-```
-
-其中，`tasks` 代表要修改记录的对象名称，`filters` 的值代表要修改的数据范围的过滤条件，`{important: true}` 代表要更新的JSON数据。
-
-关键字 `__update_many` 表示通过 GraphQL API 在系统中修改多条记录。
-
-结果如下：
-
-```javascript
-{
-  "data": {
-    "tasks__update_many": [{
-      "name": "Task Important",
-      "_id": "5cb98489d09a343e14daae95",
-      "important": true
-    }]
-  }
-}
-```
--->
 ### 删除数据
 
 当调用 GraphQL API 删除数据时，系统会首先验证当前用户是否有对应的删除权限。
@@ -481,33 +417,5 @@ mutation {
   }
 }
 ```
-
-<!--
-#### 删除多条数据
-
-使用 `mutation.{object_api_name}__delete_many` 语法，传入 `filters` 参数值。
-
-```javascript
-mutation {
-  tasks__delete_many(filters: ["name","contains","Important"]) 
-}
-```
-
-其中，`tasks`代表要删除记录的对象名称，`filters` 的值代表要删除的数据范围的过滤条件。
-
-关键字 `__delete_many` 表示通过 GraphQL API 在系统中删除多条记录。
-
-结果如下：
-
-```javascript
-{
-  "data": {
-    "tasks__delete_many": 1
-  }
-}
-```
-
-> 返回值 `1` 表示成功删除的数据条数。
--->
 
 参考：[GraphQL](https://graphql.org/)

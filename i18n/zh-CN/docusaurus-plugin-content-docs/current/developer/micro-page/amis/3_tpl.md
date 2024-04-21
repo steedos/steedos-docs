@@ -29,7 +29,7 @@ Hello World!
   "body": "my name is ${name}"
 }
 ```
-* 支持链式取值：AMIS 支持使用 **.** 进行链式取值，这意味着你可以访问嵌套对象中的属性。比如：
+* 支持链式取值：AMIS 支持使用 `.` 进行链式取值，这意味着你可以访问嵌套对象中的属性。比如：
 ```json
 {
   "type": "page",
@@ -48,7 +48,7 @@ Hello World!
 ```
 
 ### 使用模板字符串渲染HTML
-要渲染HTML，请使用相同的数据映射语法：**${xxx}**。如果变量本身包含HTML，请应用**raw**过滤器以正确渲染。
+要渲染HTML，请使用相同的数据映射语法：`${xxx}`。如果变量本身包含HTML，请应用`raw`过滤器以正确渲染。
 
 ```json
 {
@@ -71,9 +71,9 @@ Hello World!
 ```
 详见表达式章节
 ### JavaScript模板引擎
-AMIS还支持JavaScript模板引擎，内部使用lodash template实现。注意访问数据域变量的区别：使用**data.xxx**而不是**${xxx}**。这个引擎将数据域视为当前代码的执行上下文，需要使用**data.xxx**进行值检索。
+AMIS还支持JavaScript模板引擎，内部使用lodash template实现。注意访问数据域变量的区别：使用`data.xxx`而不是`${xxx}`。这个引擎将数据域视为当前代码的执行上下文，需要使用`data.xxx`进行值检索。
 
-语法类似于EJS，**<% ... %>**表示JavaScript语句。熟悉JavaScript使页面渲染变得轻而易举。此外，还有几个JavaScript方法可用，如 **formatDate**、**formatTimeStamp**、**formatNumber**和**countDown**。
+语法类似于EJS，`<% ... %>`表示JavaScript语句。熟悉JavaScript使页面渲染变得轻而易举。此外，还有几个JavaScript方法可用，如 `formatDate`、`formatTimeStamp`、`formatNumber`和`countDown`。
 
 :::tip
 模板字符串和JavaScript模板引擎不能交替使用。例如：
@@ -94,9 +94,9 @@ AMIS还支持JavaScript模板引擎，内部使用lodash template实现。注意
 
 数据过滤器是数据映射功能的一种扩展，允许对获取的数据进行额外处理。
 
-* **基本用法**： `${xxx |filter1 }`，  比如 {name|trim}
-* **过滤器串联**：可以将多个过滤器串联使用，如 `${xxx | filter1 | filter2 | ...}`，以实现复杂的数据处理流程。
-* **函数调用语法**：建议使用函数调用语法进行数据过滤，例如将 `${xxx | html}` 替换为 `${html(xxx)}`。当然可以嵌套调用 `${trim(html(xxx))}`
+* `基本用法`： `${xxx |filter1 }`，  比如 `{name|trim}`
+* `过滤器串联`：可以将多个过滤器串联使用，如 `${xxx | filter1 | filter2 | ...}`，以实现复杂的数据处理流程。
+* `函数调用语法`：建议使用函数调用语法进行数据过滤，例如将 `${xxx | html}` 替换为 `${html(xxx)}`。当然可以嵌套调用 `${trim(html(xxx))}`
 
 ### 过滤器参数
 过滤器中有参数可以写入 ：
