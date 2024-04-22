@@ -1,12 +1,13 @@
 ---
-title: Pricing
+title: 报价
+sidebar_position: 100
 ---
 
-# 华炎魔方平台报价
+# 华炎魔方报价
 
 |  | 社区办 | 商业版 | 企业版 |
 |----|----|----|----|
-| Pricing | Free | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) |
+| 报价 | 免费 | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) |
 
 ## 版本对比表
 
@@ -101,7 +102,7 @@ title: Pricing
 |条件触发自动化规则 | Y | Y | Y |
 |定时触发自动化规则 | Y | Y | Y |
 
-### 流程审批（审批王）
+### 流程审批
 
 | 功能 | 社区版 | 商业版 | 企业版 |
 |----|----|----|----|

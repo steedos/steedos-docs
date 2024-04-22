@@ -4,14 +4,14 @@ title: Pricing
 
 # Steedos Pricing
 
-|  | Community Edition | Commerial Edition | Enterprise Edition |
+|  | Community Edition | Commercial Edition | Enterprise Edition |
 |----|----|----|----|
 | Pricing | Free | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) |
 
 
 ### Platform Features
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | Notification Center | Y | Y | Y |
 | CRUD Business Data | Y | Y | Y |
@@ -27,7 +27,7 @@ title: Pricing
 
 ### Admin Console
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | Organization Management | Y | Y | Y |
 | User Management | Y | Y | Y |
@@ -40,7 +40,7 @@ title: Pricing
 
 ### Business Modeling
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | Custom Business Objects | Y | Y | Y |
 | Custom Fields | Y | Y | Y |
@@ -52,7 +52,7 @@ title: Pricing
 
 ### Data Permissions
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | Organization User Management | Y | Y | Y |
 | Role-based Permissions | Y | Y | Y |
@@ -66,7 +66,7 @@ title: Pricing
 
 ### Page Design
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | Visual Page Designer | Y | Y | Y |
 | 100+ Built-in Design Components | Y | Y | Y |
@@ -82,7 +82,7 @@ title: Pricing
 
 ### Data Analysis
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | Visual Query Designer |   | Y | Y |
 | Custom Reports |   | Y | Y |
@@ -92,7 +92,7 @@ title: Pricing
 
 ### Automation
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | Business Field Updates | Y | Y | Y |
 | Message Push Notifications | Y | Y | Y |
@@ -100,9 +100,9 @@ title: Pricing
 | Condition-triggered Automation Rules | Y | Y | Y |
 | Time-triggered Automation Rules | Y | Y | Y |
 
-### Workflow Approvals (Approval King)
+### Workflow Approvals
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | Visual Approval Form Design | Y | Y | Y |
 | Visual Workflow Node Design | Y | Y | Y |
@@ -122,7 +122,7 @@ title: Pricing
 
 ### Code Development
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | VSCode Metadata Sync Plugin | Y | Y | Y |
 | Page Configuration to Metadata Sync | Y | Y | Y |
@@ -135,7 +135,7 @@ title: Pricing
 
 ### Solution Template Library
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | Contract Management | Y | Y | Y |
 | Project Management |   | Y | Y |
@@ -151,7 +151,7 @@ title: Pricing
 
 ### Group-level Permissions
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | Branch Settings |   | Y | Y |
 | Branch-level Authorization |   | Y | Y |
@@ -160,7 +160,7 @@ title: Pricing
 
 ### Extension Plugins
 
-| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+| Feature | Community Edition | Commercial Edition | Enterprise Edition |
 |---------|------------------|----------------------|-------------------|
 | WeChat Work Integration |   | Y | Y |
 | DingTalk Integration |   | Y | Y |
@@ -174,7 +174,7 @@ title: Pricing
 
 ### SaaS Mode
 
-| Service Item | Community Edition | Commerial Edition | Enterprise Edition |
+| Service Item | Community Edition | Commercial Edition | Enterprise Edition |
 |--------------|------------------|----------------------|-------------------|
 | Multi-tenant Software Package |   |   | Y |
 | Self-service Tenant Registration |   |   | Y |
@@ -182,7 +182,7 @@ title: Pricing
 
 ### Cloud Development Services
 
-| Service Item | Community Edition | Commerial Edition | Enterprise Edition |
+| Service Item | Community Edition | Commercial Edition | Enterprise Edition |
 |--------------|------------------|----------------------|-------------------|
 | Unified Identity Authentication (Steedos ID) |   |   | Y |
 | Code Repository |   |   | Y |
@@ -190,7 +190,7 @@ title: Pricing
 
 ### Technical Support Services
 
-| Service Item | Community Edition | Commerial Edition | Enterprise Edition |
+| Service Item | Community Edition | Commercial Edition | Enterprise Edition |
 |--------------|------------------|----------------------|-------------------|
 | Community Support | Y | Y | Y |
 | Standard Support (5*8) |   | Y | Y |

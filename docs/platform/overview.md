@@ -13,6 +13,8 @@ Steedos can support a variety of enterprise application scenarios, including but
 
 With an intuitive drag-and-drop interface, pre-built templates, and various automation tools, users can accelerate the application development process, increase work efficiency, and thus more quickly drive business innovation and transformation. Additionally, Steedos's visual interface significantly lowers the barrier to application development, enabling both IT professionals and business personnel to participate in building applications.
 
+![Steedos Overview](/img/platform/page-builder.png)
+
 - **Data Modeling**:
   Users can directly define and manage data models through a visual interface, without writing complex database scripts.
 

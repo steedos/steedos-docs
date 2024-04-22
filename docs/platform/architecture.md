@@ -1,135 +1,25 @@
 ---
-title: 技术架构
-description: 华炎魔方使用元数据定义对象，字段，配置，代码，逻辑和页面布局，并基于这些元数据自动生成系统的数据结构以及Steedos应用程序的用户界面和自动化逻辑。
-sidebar_class_name: hidden
+title: Architecture
 ---
 
-华炎魔方是Salesforce低代码开发平台的开源替代方案，你只需点击鼠标，就能轻松便捷地创建智能化、移动化的企业应用程序。
+# Technical Architecture
 
-## 微服务架构
+Steedos Platform is an open-source alternative to the Salesforce low-code platform, designed to provide similar capabilities with a flexible and scalable architecture. The backend is built on Node.js, the frontend uses Amis and React, and the database is powered by MongoDB. Here's an overview of Steedos Platform's technical architecture:
 
-华炎魔方基于最先进的云原生技术搭建，整合了Kubernetes、微服务、Serverless、NoSQL 等最先进的技术架构，并提供了完善的自动化开发测试工具与运维管理工具。
+- **Backend with Node.js**: The backend of Steedos Platform is developed using Node.js, a widely adopted technology for server-side development. This choice allows Steedos to leverage Node.js's asynchronous, event-driven architecture, providing scalability and performance. Node.js is known for its extensive library support and robust community, ensuring that Steedos remains up-to-date with the latest features and best practices.
 
- ![](https://console.steedos.cn/api/files/images/admuCLjYNZiNgxfEz)华炎魔方服务端使用nodejs开发，客户端使用 react 开发。您定义的元数据，和系统中录入的业务数据均保存在 mongodb 中。
+- **Frontend with Amis and React**: The frontend of Steedos Platform is built using Amis, a low-code framework, and React, a popular JavaScript library for building user interfaces. Amis allows for rapid development with minimal coding, while React provides the flexibility to create complex and interactive UI components. This combination enables users to build custom interfaces quickly and efficiently.
 
-## Moleculer 微服务框架
+- **Database with MongoDB**: Steedos Platform uses MongoDB as its primary database. MongoDB is a NoSQL database that offers high performance, scalability, and flexibility. Its document-oriented structure aligns well with Steedos's data-centric architecture, allowing for easy storage and retrieval of complex data. MongoDB's support for horizontal scaling ensures that Steedos can handle large datasets and high traffic volumes.
 
-华炎魔方基于 moleculer 微服务架构开发，每个软件包、每个业务对象都是一个微服务，可以独立部署，独立运行。
+- **Low-Code Development**: The platform's low-code approach empowers users to create applications with minimal coding, making it accessible to a broader range of developers. This approach reduces the time required to develop applications and enables rapid iteration and prototyping.
 
-[了解 Moleculer >](https://moleculer.services/zh/)
+- **Workflow and Automation**: Steedos Platform includes robust workflow and automation capabilities, allowing users to create business processes without extensive custom coding. The platform supports both visual workflow design and automation rules, providing flexibility in defining business logic.
 
- ![](https://console.steedos.cn/api/files/images/6grK6bKPqHHjjEJHq)
+- **Integration and APIs**: Steedos Platform offers a comprehensive set of APIs for integration with external systems. These APIs allow for seamless data exchange and interoperability with other software applications. The platform also supports custom API development for more specialized integration needs.
 
-## 支持跨语言开发
+- **Security and Compliance**: Security is a top priority for Steedos Platform. It provides role-based access control, data encryption, and compliance with industry standards to ensure data protection and privacy. The platform also includes audit logs and security features for enhanced accountability.
 
-微服务可以使用不同的语言独立开发、独立部署、独立运行，每个微服务可以将数据保存到本地的独立数据库，通过消息管理器实现通信。
+- **Scalability and Flexibility**: With its cloud-based architecture, Steedos Platform is designed to scale as business needs grow. The platform's modular design and support for both SaaS and on-premises deployments provide flexibility in terms of infrastructure and compliance requirements.
 
-[了解 Moleculer Java >](https://moleculer-java.github.io/site/introduction.html)
-
- ![](https://console.steedos.cn/api/files/images/yTwzxv7nuiTZvCK2A)
-
-## 服务管理器（ServiceBroker）
-
-ServiceBroker 是华炎魔方微服务的核心。 它负责本地和远程服务的管理和通信。
-
- ![](https://console.steedos.cn/api/files/images/JCZwdv5XtSngwmHBt)
-
-## 消息管理器
-
-通过指定的消息传输工具（Transporter），实现服务节点之间的通信。
-
- ![](https://console.steedos.cn/api/files/images/CuvkMuxjb62mkvvNX)
-
-
----
-
-# 源码驱动开发
-
-## 低代码开发平台进化史
-
- ![](https://console.steedos.cn/api/files/images/SSZgJ2dpFpzfffWdR)
-
-## 为开发生命周期提供了完整的配套工具
-
-华炎魔方将低代码技术引入到传统企业管理软件开发过程中，并为开发生命周期提供了完整的配套工具和解决方案。
-
- ![](https://console.steedos.cn/api/files/images/iLM3NYmEGqMpiHbzF)
-
-## 可视化开发
-
-可视化开发是低代码开发的核心价值，华炎魔方支持几十种元数据类型，每种元数据用来定义一种业务功能。 以下是元数据类型的几大类：
-
-* **数据**：构建大多数定制的数据结构的核心组成部分。 例如：自定义对象，字段和自定义应用。
-* **业务逻辑**：在平台中开发的自定义代码。 例如：验证规则、工作流规则，按钮，表单事件，触发器，批准过程。
-* **界面**：定制用户与平台的交互方式。 例如：组件，列表视图和页面布局。
-
-[了解华炎魔方十大引擎 >](https://www.steedos.cn/platform/features)
-
- ![](https://console.steedos.cn/api/files/images/3LNPg25EdguADaxav)
-
-## 元数据双向同步工具
-
-华炎魔方提供了传统的开发入口，开发人员可以使用熟悉的 VS Code，使用传统的开发方式编写前后端代码，再复杂的业务需求也能完美实现。
-
- ![](https://console.steedos.cn/api/files/images/snD3bmj7ZxvJPLfAd)
-
-## Visual Studio Code 插件
-
-在VS Code界面中轻松地运行开发环境，同步元数据，管理源码版本，调试代码，发布软件包。
-
- ![](https://console.steedos.cn/api/files/images/KA6JrBS9A7o9C5uCk)
-
-## 元数据版本管理
-
-您可以从Git等先进协作技术中受益，不仅是代码，元数据也可以使用版本工具管理。
-
- ![](https://console.steedos.cn/api/files/images/hJrKcQm3MQwvQoNJB)
-
-## 项目打包、部署与自动化升级
-
- ![](https://console.steedos.cn/api/files/images/TcDzzFWtckNdNxcZm)
-
-## 受管软件包
-
-基于华炎魔方开发的应用可以发布为受管软件包，企业应用开发商负责维护其中的基础元数据，而客户的系统管理员可以在此基础上进行元数据自定义。客户的自定义开发不影响软件包的版本升级和更新。
-
- ![](https://console.steedos.cn/api/files/images/kYJeDxZruhcLkbLXq)
-
-## 自定义前端
-
-基于华炎魔方标准的 GraphQL API 接口和华炎提供的 react 控件库，可以实现前端界面的 100% 自定义，也可以开发自定义小程序或手机App与华炎魔方交互。
-
-华炎魔方在线商城解决方案就是使用 nextjs 开发，可以用 serverless 方式部署和运行。
-
-[了解更多 >](https://www.steedos.cn/docs/solutions/ecommerce)
-
- ![](https://console.steedos.cn/api/files/images/wzz6MmaB5uRN3pedf)
-
-
----
-
-# 部署运行
-
-## 高可用集群部署
-
-华炎魔方使用容器来运行服务（nginx、nodejs、mongodb、minio），支持编排工具部署与运维。支持 Docker Swarm、Kubernetes 编排工具，实现多实例、自动重启、滚动更新、回滚、资源使用限制等功能。
-
- ![](https://console.steedos.cn/api/files/images/NGJd98jZZiWjkaaJX)
-
-## nodejs 应用服务集群
-
-华炎魔方基于 nodejs 开发，可采用标准nodejs集群模式运行。应用服务均以无状态方式（Stateless）运行，确保可以启动多个实例以提高吞吐量。
-
- ![](https://console.steedos.cn/api/files/images/3fq9v7FGjXzFBcjPn)
-
-## mongodb 数据库集群
-
-MongoDB 是一个基于分布式文件存储的开源数据库。它的数据结构非常灵活，可以存储非常复杂的数据类型。MongoDB 支持分布式部署，数据自动复制到每一个节点上，只要有一个节点在线，你的数据就是安全的。
-
- ![](https://console.steedos.cn/api/files/images/g5KvYnEuCnaG3s95n)
-
-## 对象存储服务集群
-
-华炎魔方中的附件可以以S3协议保存到亚马逊、阿里云、腾讯云的云存储服务器中。私有部署模式也可以使用 MinIO，自建S3 云存储服务集群，用于集中存储华炎魔方中所有的附件、图片等文件。
-
- ![](https://console.steedos.cn/api/files/images/9v2a6dXe6RE6rsvSi)
+Overall, Steedos Platform's technical architecture is designed to provide a robust, scalable, and flexible foundation for building business applications. Its use of Node.js for the backend, Amis and React for the frontend, and MongoDB for the database creates a modern and efficient environment for low-code development. The platform's focus on workflow automation, integration, and security ensures that it can meet the needs of a wide range of business scenarios, from small-scale applications to complex enterprise solutions.

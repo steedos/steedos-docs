@@ -1,26 +1,30 @@
 ---
-title: 流程审批引擎
+title: Approval Workflow
 sidebar_position: 90
 ---
 
-审批王是一个旨在帮助企业简化和自动化业务审批流程的工具。它提供了直观的可视化设计界面，使用户能够创建、管理和自动化各种审批流程，而无需深入的编程知识。
+Steedos Approval Workflow is a key component of the Steedos platform, designed to manage business approval processes and streamline workflow automation. It offers a comprehensive set of features to facilitate approvals, from simple form-based workflows to complex, condition-based approval chains. Here's an overview of its main characteristics and capabilities:
 
-- **可视化审批设计**：用户可以通过拖放方式设计审批单和流程节点，轻松配置业务流程。这种直观的设计方式减少了传统流程设计的复杂性。
+- **Visual Workflow Designer**: Steedos Approval Workflow includes a visual design interface, allowing users to create and customize approval workflows with drag-and-drop functionality. This makes it easy to build complex approval processes without deep technical knowledge.
 
-- **流程权限管理**：审批王提供了强大的权限管理功能，允许用户基于角色、部门、团队等设置不同级别的访问和操作权限，确保业务数据的安全和保密。
+- **Custom Approval Forms**: Users can design custom approval forms to capture the necessary information for each request. These forms can include various field types such as text, numbers, dates, dropdowns, and even file attachments for supporting documents.
 
-- **多种审批模式**：支持多种审批模式，包括顺序审批、并行审批和条件触发审批。用户可以根据具体的业务需求配置流程。
+- **Role-Based Approvals**: The platform supports role-based approval processes. Users can define who needs to approve a request based on specific roles, departments, or organizational hierarchies, ensuring that the correct people are involved in the approval chain.
 
-- **移动审批**：审批王支持移动客户端，让用户随时随地进行审批操作。这有助于加快审批流程，提高工作效率。
+- **Automated Workflow Execution**: Once a workflow is designed, Steedos Approval Workflow can automatically manage the execution. This includes routing approval requests, sending notifications, and applying predefined conditions to determine the workflow's path.
 
-- **流程效率统计**：提供流程统计功能，帮助企业跟踪审批流程的效率，识别瓶颈，并优化流程设置。
+- **Conditional Logic and Triggers**: The platform allows users to implement conditional logic in workflows. This means approvals can follow different paths based on specific criteria, such as the value of a field or the status of an earlier approval stage.
 
-- **批量审批**：允许用户批量处理审批请求，提高审批速度，节省时间。
+- **Batch Approvals**: Steedos Approval Workflow supports batch approvals, enabling users to approve multiple requests simultaneously. This feature is particularly useful in high-volume approval environments.
 
-- **流程导入导出**：支持将流程设计导入和导出，方便备份和在不同环境之间迁移。
+- **Mobile Approval Support**: The platform offers mobile-friendly approval processes, allowing users to approve requests on their mobile devices. This flexibility ensures that workflows are not delayed due to physical location or device constraints.
 
-- **审批催办与代理**：提供审批催办功能，提醒相关人员及时处理审批请求。此外，还支持审批代理，允许其他人代替原审批人进行审批。
+- **Workflow Import/Export**: Users can import and export workflows, facilitating sharing and collaboration across teams or departments. This feature is valuable for companies with standardized approval processes.
 
-- **条件节点与流程滑步**：支持根据条件动态调整流程节点的路径，并支持流程滑步，以应对特殊情况或审批人不可用的情形。
+- **Audit and Reporting**: Steedos Approval Workflow provides audit trails and reporting features, allowing users to track approval history and generate reports on workflow efficiency. This helps organizations identify bottlenecks and improve approval processes.
 
-审批王作为企业审批管理的利器，能够帮助企业实现审批流程的标准化、自动化和移动化，从而提高业务效率，减少人为错误，确保合规性。
+- **Notifications and Escalation**: The platform can send automated notifications to users when their approval is required. It also includes escalation features to ensure that overdue requests are escalated to the appropriate authority to prevent workflow stagnation.
+
+- **Integration Capabilities**: Steedos Approval Workflow can be integrated with other Steedos components and external systems, allowing for seamless data exchange and consistent workflow execution across different platforms.
+
+Steedos Approval Workflow is a versatile tool that helps organizations manage and automate approval processes efficiently. With its visual workflow designer, customizable forms, and robust automation features, it provides a flexible solution for handling various approval scenarios, from simple requests to complex business workflows.

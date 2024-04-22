@@ -1,22 +1,30 @@
 ---
-title: 应用集成引擎
+title: Integration Platform
 sidebar_position: 110
 ---
 
-Steedos 应用集成引擎 是 Steedos 平台的集成工具，旨在帮助企业和开发者将 Steedos 应用与外部系统和服务进行集成。通过 Steedos Integration，用户可以实现不同系统之间的数据交换和业务流程的协调，从而提高企业运营的效率。以下是 Steedos Integration 的一些主要特点：
+The Steedos Integration Platform is designed to enable seamless connectivity and communication between Steedos applications and other software systems or services. It provides a comprehensive set of tools and features to facilitate data exchange, interoperability, and automation, catering to various integration scenarios. Here's an overview of the Steedos Integration Platform and its key components:
 
-- **多种集成插件**：Steedos Integration 提供了多种预置的集成插件，如企业微信、钉钉、Node-RED、单点登录 (SSO) 等。这些插件使得与外部服务的集成变得简单而直接。
+- **API Connectivity**: The platform offers standard application programming interfaces (APIs) for connecting with other software systems. These APIs provide a structured way for external applications to interact with Steedos, allowing for data retrieval, data modification, and process execution.
 
-- **标准化 API**：工具提供标准化的 API 接口，使得开发者能够轻松与外部系统交互。API 支持常见的 HTTP 方法（如 GET、POST、PUT、DELETE），以及 JSON 格式的数据交换。
+- **Custom API Development**: In addition to standard APIs, the Steedos Integration Platform allows users to create custom APIs. This feature enables organizations to design unique integration points tailored to their specific business requirements.
 
-- **自定义触发器和脚本**：允许用户创建自定义触发器和脚本，以便在特定条件下自动触发外部系统的操作。通过这些自定义触发器，用户可以实现复杂的业务流程和自动化。
+- **Third-Party Integration**: The platform supports integration with third-party services and applications, such as customer relationship management (CRM) systems, enterprise resource planning (ERP) software, communication tools, and more. This capability ensures that Steedos can work in harmony with other critical business tools.
 
-- **流程集成**：Steedos Integration 支持流程触发器，允许在业务流程的特定节点与外部系统集成。这有助于创建跨系统的业务流程，确保业务操作的连贯性。
+- **Workflow Integration**: Steedos Integration Platform allows integration with workflows, facilitating automated processes that interact with external systems. This feature helps streamline business processes and ensures data consistency across platforms.
 
-- **数据源集成**：工具支持与多种外部数据源集成，如数据库、云服务、文件系统等。用户可以将外部数据源与 Steedos 平台的数据对象关联，实现数据的增删改查。
+- **Data Synchronization**: The platform supports data synchronization between Steedos and other systems, ensuring that data remains consistent and up to date across multiple platforms. This reduces data redundancy and errors, promoting efficiency.
 
-- **单点登录 (SSO)**：支持单点登录功能，使得用户可以通过统一的身份验证方式访问不同的系统。这简化了用户的身份管理，提高了安全性。
+- **Single Sign-On (SSO)**: With support for single sign-on, users can access multiple applications without the need for repeated logins. This enhances user convenience and security, enabling seamless integration with other systems that support SSO.
 
-- **外部消息集成**：支持与外部消息服务的集成，允许 Steedos 应用与其他消息平台（如企业微信、钉钉等）进行通信。这有助于实现业务通知和消息推送。
+- **Enterprise Messaging Integration**: Steedos Integration Platform allows integration with enterprise messaging tools like WeChat Work and DingTalk. This enables users to receive notifications, send messages, and interact with Steedos applications through familiar communication platforms.
 
-Steedos Integration 为企业提供了灵活而强大的集成能力，使得企业可以将 Steedos 应用与各种外部系统和服务相连。通过使用 Steedos Integration，企业可以实现跨系统的数据交换、业务流程协调和自动化，从而提高运营效率和业务灵活性。
+- **Security and Compliance**: The platform includes robust security features, ensuring that integration processes are secure and compliant with industry standards. This includes encryption, role-based access control, and auditing to track integration activities.
+
+- **Custom Triggers and Automation**: Users can create custom triggers and automate processes within the Steedos Integration Platform. This feature provides advanced automation capabilities, allowing users to design complex workflows that interact with other systems.
+
+- **Integration with Data Modeling**: The platform integrates with Steedos Data Modeling, allowing custom data objects and fields to be accessed through APIs and used in integration scenarios. This supports complex data structures and business logic.
+
+- **Scalability and Flexibility**: The Steedos Integration Platform is designed to be scalable and flexible, supporting a wide range of integration scenarios. This makes it suitable for small businesses as well as large enterprises with complex integration needs.
+
+Overall, the Steedos Integration Platform is a comprehensive solution for integrating Steedos applications with external systems and services. It provides a flexible and secure framework for data exchange, automation, and workflow integration, supporting a wide range of business use cases. With its custom API development, security features, and third-party integration support, it is a valuable tool for organizations seeking to build integrated and automated business solutions.
