@@ -13,5 +13,5 @@ Approval King provides a graphical interface for form and process design, helpin
 审批王提供图形化的表单与流程设计界面，帮助用户快速地将公司各类审批业务转换为可严格执行的电子流程。 -->
 
 :::tip
-Available on: Professional Edition
+Available on: Commercial Edition
 :::

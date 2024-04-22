@@ -177,7 +177,7 @@ IF(commission__c > 1000000, "High Net Worth", "General")
 
 Assigns the "High Net Worth" value to commissions greater than a million. Note that this is a text formula field using the commission custom field.
 
-### <= (Less Than or Equal To)
+### `<=` (Less Than or Equal To)
 
 Calculates whether a value is less than or equal to the value following this symbol.
 

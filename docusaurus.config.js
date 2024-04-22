@@ -1,8 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const {themes} = require('prism-react-renderer');
+const lightTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -101,7 +101,7 @@ const config = {
         isCloseable: true,
       },
       navbar: {
-        title: '',
+        title: 'Steedos',
         logo: {
           alt: 'Steedos',
           src: 'img/logo.png',
@@ -110,20 +110,26 @@ const config = {
           {
             type: 'docSidebar',
             position: 'left',
-            sidebarId: 'platform',
+            sidebarId: 'steedos-platform',
             label: 'Platform',
           },
           {
             type: 'docSidebar',
             position: 'left',
-            sidebarId: 'apps',
-            label: 'Apps',
+            sidebarId: 'platform',
+            label: 'Docs',
           },
           {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'developer',
             label: 'Developer',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'apps',
+            label: 'Solutions',
           },
           {
             type: 'search',

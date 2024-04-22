@@ -117,7 +117,7 @@
   },
   "sidebar.platform.category.Data Model and Management": {
     "message": "数据模型和管理",
-    "description": "The label for category Custom Objects in sidebar platform"
+    "description": "The label for category Data Model and Management in sidebar platform"
   },
   "sidebar.platform.category.Building Applications": {
     "message": "构建应用程序",
@@ -234,5 +234,61 @@
   "sidebar.apps.category.协作工具": {
     "message": "协作工具",
     "description": "The label for category 协作工具 in sidebar apps"
+  },
+  "sidebar.platform.category.Tutorials": {
+    "message": "教程",
+    "description": "The label for category Tutorials in sidebar platform"
+  },
+  "sidebar.platform.category.The Basics": {
+    "message": "入门教程",
+    "description": "The label for category The Basics in sidebar platform"
+  },
+  "sidebar.platform.category.Field Types": {
+    "message": "字段类型",
+    "description": "The label for category Field Types in sidebar platform"
+  },
+  "sidebar.platform.category.Calculate Field Values with Formulas": {
+    "message": "使用公式计算字段值",
+    "description": "The label for category Calculate Field Values with Formulas in sidebar platform"
+  },
+  "sidebar.developer.category.Metadata": {
+    "message": "元数据",
+    "description": "The label for category Metadata in sidebar developer"
+  },
+  "sidebar.developer.category.Moleculer Microservices Framework": {
+    "message": "Moleculer 微服务框架",
+    "description": "The label for category Moleculer Microservices Framework in sidebar developer"
+  },
+  "sidebar.developer.category.Platform Service Reference": {
+    "message": "系统微服务",
+    "description": "The label for category Platform Service Reference in sidebar developer"
+  },
+  "sidebar.developer.category.AMIS Low-Code Framework": {
+    "message": "AMIS 低代码框架",
+    "description": "The label for category AMIS Low-Code Framework in sidebar developer"
+  },
+  "sidebar.developer.category.Plugins": {
+    "message": "插件",
+    "description": "The label for category Plugins in sidebar developer"
+  },
+  "sidebar.developer.category.Integration": {
+    "message": "系统集成",
+    "description": "The label for category Integration in sidebar developer"
+  },
+  "sidebar.apps.category.Spend Management": {
+    "message": "支出管理",
+    "description": "The label for category Spend Management in sidebar apps"
+  },
+  "sidebar.apps.category.Human Capital Management": {
+    "message": "人力资本管理",
+    "description": "The label for category Human Capital Management in sidebar apps"
+  },
+  "sidebar.apps.category.Customer Relationship Management": {
+    "message": "CRM 客户管理",
+    "description": "The label for category Customer Relationship Management in sidebar apps"
+  },
+  "sidebar.steedos-platform.category.Features": {
+    "message": "功能",
+    "description": "The label for category Features in sidebar steedos-platform"
   }
 }

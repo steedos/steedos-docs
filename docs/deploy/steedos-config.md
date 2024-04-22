@@ -207,29 +207,4 @@ accounts:
 * is_username_skip_minrequiredlength: Whether to skip the minimum character requirement for usernames, which is typically 6 characters by default.
 * UTF8_Names_Validation: Regular expression for username rules.
 
-## Password Policy Configuration
-
-The complexity of passwords is controlled through the password.policy attribute, which takes a regular expression as its value.
-
-```yaml
-public:
-  password:
-    policy: ^[A-Za-z0-9]{8,}$
-    policyError: "Password cannot be less than 8 characters"
-    policies:
-      - policy: 123
-        policyError: "Password must include 123"
-      - policy: 456
-        policyError: "Password must include 456"
-    policyFunction: !
-      function(password){
-        if(password === '12345678'){
-          throw new Error('Password cannot be 12345678');
-        }
-      }
-```
-
-- public.password.policyFunction: string Function. Custom validation function (1 parameter: the user-entered password), you can import validation libraries or directly write validation rules. If the password does not meet the rules, throw an error directly.
-- public.password.policies: Array<{policy: 'regular expression', policyError: 'error message when the expression is not met'}>
-
 When multiple password rules are configured, they will take effect simultaneously. The rules in the example above are effective at the same time.

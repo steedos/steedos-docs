@@ -1,6 +1,6 @@
 {
   "title": {
-    "message": "",
+    "message": "华炎魔方",
     "description": "The title in the navbar"
   },
   "logo.alt": {
@@ -15,12 +15,16 @@
     "message": "Steedos",
     "description": "Navbar item with label Platform"
   },
-  "item.label.Apps": {
-    "message": "应用",
+  "item.label.Solutions": {
+    "message": "解决方案",
     "description": "Navbar item with label Apps"
   },
   "item.label.Developer": {
     "message": "开发人员",
     "description": "Navbar item with label Developer"
+  },
+  "item.label.Docs": {
+    "message": "文档",
+    "description": "Navbar item with label Docs"
   }
 }

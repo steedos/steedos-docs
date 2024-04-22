@@ -4,41 +4,41 @@ In AMIS, expressions are a powerful tool that allows users to dynamically handle
 
 ## Expression Syntax
 
-Expressions are at the core of dynamic data handling, consisting of three basic parts: the start character **${**, the expression body, and the end character **}**. The expression body follows a set of syntax rules, including:
+Expressions are at the core of dynamic data handling, consisting of three basic parts: the start character `${`, the expression body, and the end character `}`. The expression body follows a set of syntax rules, including:
 
 ### Variables and Property Access
 
-- Single variable: **xxx variable**
-- Object property access: **xxx variable.xxx property** or **xxx variable[xxx property]**
+- Single variable: `xxx variable`
+- Object property access: `xxx variable.xxx property` or `xxx variable[xxx property]`
 
 ### Basic Data Types
 
-- Boolean values: **true** or **false**
-- Null value: **null**
-- Undefined: **undefined**
-- Numbers: integers **123** or floating-point numbers **123.23**
-- Strings: double quotes **"string"** or single quotes **'string'**
-- Template literals: **`my name is ${name}`**
-- Arrays: **[1, 2, 3]**
-- Objects: **{a: 1, b: 2}** or combined usage like **{a: 1, b: [1, 2, 3], [key]: yyy variable}**
+- Boolean values: `true` or `false`
+- Null value: `null`
+- Undefined: `undefined`
+- Numbers: integers `123` or floating-point numbers `123.23`
+- Strings: double quotes `"string"` or single quotes `'string'`
+- Template literals: ``my name is ${name}``
+- Arrays: `[1, 2, 3]`
+- Objects: `{a: 1, b: 2}` or combined usage like `{a: 1, b: [1, 2, 3], [key]: yyy variable}`
 
 ### Expression Operations
 
-- Ternary expressions: **xx variable == 1 ? 2 : 3**
-- Binary expressions: logical operations (**&&**, **||**), comparison operations (**==**, **!=**, **===**, **!==**, **<**, **<=**, **>**, **>=**), arithmetic operations (**+**, **-**, *****, **/**, ******), bit operations (**|**, **^**, **&**, **<<**, **>>**, **>>>**)
-- Unary expressions: logical NOT (**!xx variable**), bitwise NOT (**~xx variable**), unary plus and minus (**+xx variable**, **-xx variable**)
+- Ternary expressions: `xx variable == 1 ? 2 : 3`
+- Binary expressions: logical operations (`&&`, `||`), comparison operations (`==`, `!=`, `===`, `!==`, `<`, `<=`, `>`, `>=`), arithmetic operations (`+`, `-`, ``*, `/`, ```), bit operations (`|`, `^`, `&`, `<<`, `>>`, `>>>`)
+- Unary expressions: logical NOT (`!xx variable`), bitwise NOT (`~xx variable`), unary plus and minus (`+xx variable`, `-xx variable`)
 
 ### Functions and Arrow Functions
 
-- Function calls: **SUM(1, 2, 3)**
-- Arrow functions: **() => abc** (only supports a single expression) Note that this arrow function only supports a single expression and does not support multiple statements. It is mainly configured for use with other functions, such as: ARRAY_MAP(arr, item => item.abc)
+- Function calls: `SUM(1, 2, 3)`
+- Arrow functions: `() => abc` (only supports a single expression) Note that this arrow function only supports a single expression and does not support multiple statements. It is mainly configured for use with other functions, such as: ARRAY_MAP(arr, item => item.abc)
 
 ### Parentheses and Operator Precedence
 
-- Parentheses: **(10 - 2) * 3** are used to modify operator precedence
+- Parentheses: `(10 - 2) * 3` are used to modify operator precedence
 
 ### Special Variable Names
-Default variable names do not support special characters, for example, ${ xxx.yyy } means to take the yyy property of the xxx variable. What if the variable name is xxx.yyy? In this case, you need to use escape syntax, like: ${ xxx\.yyy }
+Default variable names do not support special characters, for example, `${ xxx.yyy }` means to take the yyy property of the xxx variable. What if the variable name is `xxx.yyy?` In this case, you need to use escape syntax, like: `${ xxx\.yyy }`
 
 AMIS also integrates many built-in functions
 

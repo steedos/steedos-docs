@@ -3,7 +3,7 @@
 In AMIS, the linkage mechanism is an important feature for achieving dynamic page interactions. Through linkage, components can be controlled to show, hide, or disable based on certain conditions, or to trigger interface requests. Linkage configurations are usually based on expressions.
 
 ### Basic Linkage
-Basic linkage mainly involves the display, hiding, and disabling states of components. For example, when a specific option is selected in a radio button, a text box is shown or hidden; or when a certain option is selected, another text box becomes disabled. In form item linkage, the value of hidden form items is not removed from the current data domain by default, but can be removed upon submission by adding the **clearValueOnHidden** property.
+Basic linkage mainly involves the display, hiding, and disabling states of components. For example, when a specific option is selected in a radio button, a text box is shown or hidden; or when a certain option is selected, another text box becomes disabled. In form item linkage, the value of hidden form items is not removed from the current data domain by default, but can be removed upon submission by adding the `clearValueOnHidden` property.
 
 Suppose we have a form that includes a radio button (radio) and two text boxes (text1 and text2). We want to achieve the following linkage effects:
 
@@ -54,19 +54,19 @@ To achieve this linkage effect, we can use expressions to configure the linkage 
 
 In this configuration:
 
-- The **visibleOn** property controls the display of the text1 text box. When the value of the radio button is "type1", the text1 text box will be displayed.
-- The **disabledOn** property controls the disabled state of the text2 text box. When the value of the radio button is "type2", the text2 text box will be disabled.
+- The `visibleOn` property controls the display of the text1 text box. When the value of the radio button is "type1", the text1 text box will be displayed.
+- The `disabledOn` property controls the disabled state of the text2 text box. When the value of the radio button is "type2", the text2 text box will be disabled.
 
 With such a configuration, we have achieved a basic linkage effect, allowing the form's behavior to dynamically change based on user selection.
 
 ### Interface Linkage
-Interface linkage is another common scenario, for example, when selecting an option from a dropdown, it triggers a new request for another dropdown's options. This is achieved by using data mapping in the initialization interface link. When the referenced variable value changes, the interface automatically requests again. Interface linkage is often applicable to initialization interfaces, such as the form's **initApi**, the **source** option source interface URL of the select component, etc.
+Interface linkage is another common scenario, for example, when selecting an option from a dropdown, it triggers a new request for another dropdown's options. This is achieved by using data mapping in the initialization interface link. When the referenced variable value changes, the interface automatically requests again. Interface linkage is often applicable to initialization interfaces, such as the form's `initApi`, the `source` option source interface URL of the select component, etc.
 
 Suppose we have a form that includes a dropdown box (select) and a cascading dropdown box (cascader). We want to achieve the following linkage effect:
 
 1. When the user selects an option in the first dropdown box, the cascading dropdown box triggers an interface request based on the selected item, dynamically loading the corresponding options.
 
-To achieve this linkage effect, we can use data mapping in the **source** property of the cascading dropdown box to dynamically construct the interface request. Here is an example of the corresponding JSON configuration:
+To achieve this linkage effect, we can use data mapping in the `source` property of the cascading dropdown box to dynamically construct the interface request. Here is an example of the corresponding JSON configuration:
 
 ```json
 {
@@ -113,7 +113,7 @@ To achieve this linkage effect, we can use data mapping in the **source** proper
 In this configuration:
 
 - The first dropdown box (select) allows the user to choose a category.
-- The **source** property of the second dropdown box (select) uses data mapping **${category}** to dynamically construct the URL for the interface request. When the value of **category** changes (i.e., the user selects an option in the first dropdown box), the second dropdown box triggers an interface request based on the new URL, loading the options for the corresponding category.
+- The `source` property of the second dropdown box (select) uses data mapping `${category}` to dynamically construct the URL for the interface request. When the value of `category` changes (i.e., the user selects an option in the first dropdown box), the second dropdown box triggers an interface request based on the new URL, loading the options for the corresponding category.
 
 With such a configuration, we have achieved an interface linkage effect, allowing the component's data to dynamically update based on user selection.
 

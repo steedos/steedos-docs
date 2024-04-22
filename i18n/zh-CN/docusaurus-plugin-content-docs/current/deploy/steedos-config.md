@@ -226,6 +226,6 @@ public:
 ```
 
 - public.password.policyFunction: string Function. 自定义验证函数(1个参数: 用户输入的password), 可通过import等手段引入验证库. 或者直接编写验证规则. 不符合规则时, 直接throw error即可.
-- public.password.policies: Array<{policy: '正则表达式', policyError: '不符合表达式时的提示消息'}>
+- public.password.policies: `Array<{policy: '正则表达式', policyError: '不符合表达式时的提示消息'}>`
 
 配置了多个密码规则时会同时生效，上述示例中配置的规则是会同时生效的。

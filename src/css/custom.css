@@ -2,6 +2,10 @@
 :root {
 }
 
+.hidden {
+  display: none;
+}
+
 /* 
 .admonition {
   font-family: var(--tblr-font-sans-serif);

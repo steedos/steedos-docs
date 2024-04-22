@@ -441,10 +441,6 @@ const result = await objectql.getObject(objectApiName).toConfig();
 */
 ```
 
-## Query Filters
-
-Please refer to [Filter Criteria Specification](/docs/protocol/api-records-filters).
-
 ## About the userSession Parameter
 
 All the above functions can accept an optional `userSession` parameter, representing the current user's login information. If this parameter is provided, the related operation functions will only perform data operations for which the current logged-in user has permission.

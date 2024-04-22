@@ -1,6 +1,7 @@
 ---
 title: Intranet
 sidebar_position: 4
+sidebar_class_name: hidden
 ---
 
 Follow the steps below to deploy Steedos in an Ubuntu 20.04 intranet environment.
