@@ -15,8 +15,8 @@
     "message": "Steedos",
     "description": "Navbar item with label Platform"
   },
-  "item.label.Apps": {
-    "message": "应用",
+  "item.label.Solutions": {
+    "message": "解决方案",
     "description": "Navbar item with label Apps"
   },
   "item.label.Developer": {

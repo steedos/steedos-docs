@@ -1,6 +1,6 @@
 ---
 sidebar_label: Tutorials
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 # Steedos Tutorials

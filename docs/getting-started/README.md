@@ -1,6 +1,6 @@
 ---
 title: What is Steedos?
-sidebar_position: 0
+sidebar_position: 5
 ---
 
 # Steedos: Redefining Enterprise Application Development

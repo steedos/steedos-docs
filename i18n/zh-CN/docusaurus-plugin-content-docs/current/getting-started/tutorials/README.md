@@ -1,6 +1,6 @@
 ---
 sidebar_label: 教程
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 # Steedos 教程

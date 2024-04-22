@@ -1,6 +1,7 @@
 ---
 title: 纯内网部署
 sidebar_position: 4
+sidebar_class_name: hidden
 ---
 
 按照以下步骤在 Ubuntu 20.04 纯内网环境中部署 Steedos。

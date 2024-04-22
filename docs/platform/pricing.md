@@ -1,192 +1,197 @@
 ---
-title: 华炎魔方版本对比
-description: 华炎魔方社区版完全免费，不限制用户数、不限制时间。商业用户建议选择企业版，提供更多企业级功能插件及商业支持服务。
-sidebar_class_name: hidden # 从侧边栏隐藏该页面
+title: Pricing
 ---
 
-## 华炎魔方版本对比
+# Steedos Pricing
 
-### 平台基础功能
-
-| 功能 | 社区版 | 专业版 | 企业版 |
+|  | Community Edition | Commerial Edition | Enterprise Edition |
 |----|----|----|----|
-| 组织管理 | Y | Y | Y |
-| 用户管理 | Y | Y | Y |
-| 业务数据查询与录入 | Y | Y | Y |
-| 附件上传与下载 | Y | Y | Y |
-| 业务数据导入 | Y | Y | Y |
-| 消息推送与提醒 | Y | Y | Y |
-| 通知中心 | Y | Y | Y |
-| Web客户端 | Y | Y | Y |
-| 桌面客户端 | Y | Y | Y |
-| 手机客户端 | Y | Y | Y |
-| 企业微信集成 |    | Y | Y |
-| 钉钉集成 |    | Y | Y |
-| 附件在线预览 |    | Y | Y |
-| 自定义品牌 |    | Y | Y |
-| 记录修改日志 |    | Y | Y |
-| 用户登录日志 |    | Y | Y |
+| Pricing | Free | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) |
 
-### 自定义业务应用
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| 自定义业务对象 | Y | Y | Y |
-| 自定义字段与关系 | Y | Y | Y |
-| 自定义公式计算 | Y | Y | Y |
-| 自定义列表视图 | Y | Y | Y |
-| 自定义页面布局 | Y | Y | Y |
-| 自定义按钮 | Y | Y | Y |
-| 自定义数据导入规则 | Y | Y | Y |
-| 自定义选项卡 | Y | Y | Y |
-| 自定义应用 | Y | Y | Y |
+### Platform Features
 
-### 管理数据访问权限
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| Notification Center | Y | Y | Y |
+| CRUD Business Data | Y | Y | Y |
+| Auto-fill Fields | Y | Y | Y |
+| Field Interactions | Y | Y | Y |
+| Record Page Highlight Fields Display | Y | Y | Y |
+| Dynamic Field Visibility | Y | Y | Y |
+| Split-screen View | Y | Y | Y |
+| Attachment Upload/Download | Y | Y | Y |
+| Desktop Client | Y | Y | Y |
+| Mobile Client | Y | Y | Y |
+| Mobile Scanning Support |   | Y | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| 组织与用户管理 | Y | Y | Y |
-| 简档与权限集 | Y | Y | Y |
-| 对象权限 | Y | Y | Y |
-| 字段权限 | Y | Y | Y |
-| 应用权限 | Y | Y | Y |
-| 共享规则与限制规则 | Y | Y | Y |
+### Admin Console
 
-### 自动化业务流程
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| Organization Management | Y | Y | Y |
+| User Management | Y | Y | Y |
+| Data Import/Export | Y | Y | Y |
+| Custom Logo |   | Y | Y |
+| Data Modification Logs |   | Y | Y |
+| User Access Logs |   | Y | Y |
+| Security Audit Logs |   | Y | Y |
+| External Data Source Integration |   | Y | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| 数据修改触发js脚本 | Y | Y | Y |
-| 数据修改触发工作流规则 | Y | Y | Y |
-| 自动化操作 - 字段更新 | Y | Y | Y |
-| 自动化操作 - 推送通知 | Y | Y | Y |
-| 批准过程 | Y | Y | Y |
-| 定时触发工作流规则 | Y | Y | Y |
+### Business Modeling
 
-### 微页面设计
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| Custom Business Objects | Y | Y | Y |
+| Custom Fields | Y | Y | Y |
+| Custom List Views | Y | Y | Y |
+| Custom Page Layouts | Y | Y | Y |
+| Custom Buttons | Y | Y | Y |
+| Custom Menus | Y | Y | Y |
+| Custom Applications | Y | Y | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| 可视化页面设计器 | Y | Y | Y |
-| 内置 100+ amis 组件 | Y | Y | Y |
-| 华炎魔方对象组件 | Y | Y | Y |
-| 自定义组件资产包 | Y | Y | Y |
-| 自定义对象列表页 | Y | Y | Y |
-| 自定义对象表单 | Y | Y | Y |
-| 自定义对象记录详情页 | Y | Y | Y |
-| 自定义应用程序页 | Y | Y | Y |
-| 自定义图表 | Y | Y | Y |
-| 自定义报表 | Y | Y | Y |
-| 自定义仪表盘 | Y | Y | Y |
-| 微页面版本管理 | Y | Y | Y |
-| 微页面权限管理 | Y | Y | Y |
+### Data Permissions
 
-### 元数据同步
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| Organization User Management | Y | Y | Y |
+| Role-based Permissions | Y | Y | Y |
+| App-based Permissions | Y | Y | Y |
+| Object-based Permissions | Y | Y | Y |
+| Record-based Permissions | Y | Y | Y |
+| Field-based Permissions | Y | Y | Y |
+| Code-based Permissions | Y | Y | Y |
+| Data Sharing Rules | Y | Y | Y |
+| Data Restriction Rules | Y | Y | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| VSCode 元数据同步插件 | Y | Y | Y |
-| 同步对象元数据 | Y | Y | Y |
-| 同步权限元数据 | Y | Y | Y |
-| 同步应用元数据 | Y | Y | Y |
-| 同步微页面元数据 | Y | Y | Y |
-| 同步触发器元数据 | Y | Y | Y |
-| 同步工作流规则元数据 | Y | Y | Y |
-| 同步自动化操作元数据 | Y | Y | Y |
-| 同步批准过程元数据 | Y | Y | Y |
-| 同步审批王元数据 | Y | Y | Y |
+### Page Design
 
-### Moleculer微服务
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| Visual Page Designer | Y | Y | Y |
+| 100+ Built-in Design Components | Y | Y | Y |
+| Custom Components | Y | Y | Y |
+| Custom Object List Pages | Y | Y | Y |
+| Custom Object Forms | Y | Y | Y |
+| Custom Object Record Detail Pages | Y | Y | Y |
+| Custom Application Pages | Y | Y | Y |
+| Custom Charts | Y | Y | Y |
+| Custom Business Buttons | Y | Y | Y |
+| Micro Page Version Management | Y | Y | Y |
+| Micro Page Permissions Management |   | Y | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| 自定义微服务 | Y | Y | Y |
-| 自定义API | Y | Y | Y |
-| 自定义触发器 | Y | Y | Y |
-| GraphQL API | Y | Y | Y |
-| VSCode 元数据同步插件 | Y | Y | Y |
-| Moleculer Sidecar | Y | Y | Y |
+### Data Analysis
 
-### 审批王
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| Visual Query Designer |   | Y | Y |
+| Custom Reports |   | Y | Y |
+| Custom Dashboards |   | Y | Y |
+| Pivot Tables Support |   | Y | Y |
+| Multi-table Join Support |   | Y | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| 可视化设计审批单 |    | Y | Y |
-| 可视化设计审批流程 |    | Y | Y |
-| 流程效率统计插件 |    | Y | Y |
-| 图片签名 |    | Y | Y |
-| 电子签章 |    | Y | Y |
-| 移动审批 |    | Y | Y |
-| 流程代理 |    | Y | Y |
-| 自定义打印模板 |    | Y | Y |
-| 台账数据同步 |    | Y | Y |
-| 流程导入导出 |    | Y | Y |
+### Automation
 
-### 集团权限管理
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| Business Field Updates | Y | Y | Y |
+| Message Push Notifications | Y | Y | Y |
+| Business Data Approvals | Y | Y | Y |
+| Condition-triggered Automation Rules | Y | Y | Y |
+| Time-triggered Automation Rules | Y | Y | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| 分部设置 |    |    | Y |
-| 分部级授权 |    |    | Y |
-| 二级用户管理员 |    |    | Y |
-| 二级流程管理员 |    |    | Y |
+### Workflow Approvals (Approval King)
 
-### ToolJet 微应用
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| Visual Approval Form Design | Y | Y | Y |
+| Visual Workflow Node Design | Y | Y | Y |
+| Workflow Permissions Management | Y | Y | Y |
+| Bulk Workflow Approval | Y | Y | Y |
+| Mobile Approvals | Y | Y | Y |
+| Workflow Import/Export | Y | Y | Y |
+| Workflow Circulation/Distribution | Y | Y | Y |
+| Conditional Nodes | Y | Y | Y |
+| Document Templates |   | Y | Y |
+| Online Document Editing |   | Y | Y |
+| Workflow Deviation |   | Y | Y |
+| Workflow Reminders |   | Y | Y |
+| Workflow Delegation |   | Y | Y |
+| Image-based Signatures |   | Y | Y |
+| Workflow Efficiency Statistics |   | Y | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| 可视化定义数据源 |    |    | Y |
-| 可视化定义查询 |    |    | Y |
-| 可视化定义微页面 |    |    | Y |
-| 可视化定义微应用 |    |    | Y |
-| ToolJet 中调用 Amis 控件 |    |    | Y |
-| Amis 中执行 ToolJet 查询 |    |    | Y |
-| 多人协作开发 |    |    | Y |
-| 微应用模版库 |    |    | Y |
+### Code Development
 
-### n8n 业务流程编排
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| VSCode Metadata Sync Plugin | Y | Y | Y |
+| Page Configuration to Metadata Sync | Y | Y | Y |
+| Standard API | Y | Y | Y |
+| Business Logic Code Development | Y | Y | Y |
+| Custom API | Y | Y | Y |
+| Custom Triggers | Y | Y | Y |
+| Workflow Triggers | Y | Y | Y |
+| Workflow Scripts | Y | Y | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| 对象记录修改时触发流程 |    |    | Y |
-| 对象记录创建节点 |    |    | Y |
-| 对象记录修改节点 |    |    | Y |
-| 对象记录查询节点 |    |    | Y |
-| 对象记录删除节点 |    |    | Y |
+### Solution Template Library
 
-### Steedos ID 统一身份认证
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| Contract Management | Y | Y | Y |
+| Project Management |   | Y | Y |
+| CRM Management |   |   | Y |
+| Payment Management |   |   | Y |
+| Expense Management |   |   | Y |
+| Procurement Management |   |   | Y |
+| Asset Management |   |   | Y |
+| HR Management |   |   | Y |
+| Performance Appraisal |   |   | Y |
+| Official Document Management |   |   | Y |
+| Seal Management |   |   | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| JWT 单点登录接口 |    |    | Y |
-| OAuth2 单点登录接口 |    |    | Y |
-| SAML 单点登录接口 |    |    | Y |
-| OIDC 单点登录接口 |    |    | Y |
+### Group-level Permissions
 
-### 扩展插件
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| Branch Settings |   | Y | Y |
+| Branch-level Authorization |   | Y | Y |
+| Secondary User Admin |   |   | Y |
+| Secondary Workflow Admin |   |   | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| MongoDB BI Connector插件 |    |    | Y |
-| MongoDB 字段级加密插件 |    |    | Y |
-| Stimulsoft 像素级报表插件 |    |    | Y |
+### Extension Plugins
 
-### 解决方案模版库
+| Feature | Community Edition | Commerial Edition | Enterprise Edition |
+|---------|------------------|----------------------|-------------------|
+| WeChat Work Integration |   | Y | Y |
+| DingTalk Integration |   | Y | Y |
+| Node-RED Plugin |   | Y | Y |
+| Single Sign-On Plugin |   | Y | Y |
+| OEM Plugin |   |   | Y |
+| RFID Plugin |   |   | Y |
+| Keycloak Plugin |   |   | Y |
+| MongoDB Field-level Encryption Plugin |   |   | Y |
+| Virus Scanning Plugin |   |   | Y |
 
-| 功能 | 社区版 | 专业版 | 企业版 |
-|----|----|----|----|
-| 项目任务管理 | Y | Y | Y |
-| CRM |    |    | Y |
-| 合同管理 |    |    | Y |
-| 财务管理 |    |    | Y |
-| 费用管理 |    |    | Y |
-| 采购管理 |    |    | Y |
-| 资产管理 |    |    | Y |
-| 预算管理 |    |    | Y |
-| 会议管理 |    |    | Y |
-| 文档管理 |    |    | Y |
-| 行政管理 |    |    | Y |
-| 人事管理 |    |    | Y |
-| 公文管理 |    |    | Y |
-| OKR |    |    | Y |
+### SaaS Mode
 
+| Service Item | Community Edition | Commerial Edition | Enterprise Edition |
+|--------------|------------------|----------------------|-------------------|
+| Multi-tenant Software Package |   |   | Y |
+| Self-service Tenant Registration |   |   | Y |
+| Tenant Data Isolation |   |   | Y |
+
+### Cloud Development Services
+
+| Service Item | Community Edition | Commerial Edition | Enterprise Edition |
+|--------------|------------------|----------------------|-------------------|
+| Unified Identity Authentication (Steedos ID) |   |   | Y |
+| Code Repository |   |   | Y |
+| Remote Development Environment |   |   | Y |
+
+### Technical Support Services
+
+| Service Item | Community Edition | Commerial Edition | Enterprise Edition |
+|--------------|------------------|----------------------|-------------------|
+| Community Support | Y | Y | Y |
+| Standard Support (5*8) |   | Y | Y |
+| Gold Support (7*24) |   |   | Y |

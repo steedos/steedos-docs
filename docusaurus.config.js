@@ -107,18 +107,12 @@ const config = {
           src: 'img/logo.png',
         },
         items: [
-          // {
-          //   type: 'docSidebar',
-          //   position: 'left',
-          //   sidebarId: 'steedos-platform',
-          //   label: 'Platform',
-          // },
-          // {
-          //   type: 'docSidebar',
-          //   position: 'left',
-          //   sidebarId: 'apps',
-          //   label: 'Apps',
-          // },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'steedos-platform',
+            label: 'Platform',
+          },
           {
             type: 'docSidebar',
             position: 'left',
@@ -130,6 +124,12 @@ const config = {
             position: 'left',
             sidebarId: 'developer',
             label: 'Developer',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'apps',
+            label: 'Solutions',
           },
           {
             type: 'search',
