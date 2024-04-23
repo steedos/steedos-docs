@@ -1,6 +1,6 @@
 ---
-title: 应用构建器
-sidebar_position: 20
+title: 低代码开发
+sidebar_position: 10
 ---
 
 Steedos App Builder 是一款强大的应用程序开发工具，旨在帮助企业和开发者快速创建和定制业务应用程序。它提供了可视化的界面和丰富的功能组件，使用户可以在无需大量编码的情况下构建应用程序。

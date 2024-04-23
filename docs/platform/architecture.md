@@ -1,5 +1,6 @@
 ---
 title: Architecture
+sidebar_position: 40
 ---
 
 # Technical Architecture

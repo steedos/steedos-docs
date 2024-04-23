@@ -1,5 +1,6 @@
 ---
 title: What is Low Code?
+sidebar_class_name: hidden
 ---
 
 Low-code is a software development approach that simplifies the process of creating and deploying applications by reducing the need for extensive coding. It allows developers and business users to quickly build, customize, and deploy applications without the complexity typically associated with traditional high-code development. Low-code platforms combine visual interfaces, pre-built components, and drag-and-drop design, significantly lowering the technical barrier to entry. This article will explain the concept of low-code, its advantages, and how it helps businesses accelerate digital transformation.
