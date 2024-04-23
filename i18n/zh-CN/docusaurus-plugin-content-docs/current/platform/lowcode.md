@@ -1,6 +1,7 @@
 ---
 title: 什么是低代码？
 sidebar_position: 50
+sidebar_class_name: hidden
 description: 低代码开发是一种可视化应用开发方法。通过低代码开发，即使是不懂编程的业务人员页能够通过图形用户界面，使用可视化建模和拖放式组件来创建企业应用。
 ---
 

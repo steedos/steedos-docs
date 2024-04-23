@@ -1,6 +1,6 @@
 ---
 title: Data Modeling
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 Steedos Data Modeling is a fundamental feature within the Steedos platform, designed to help organizations structure, manage, and interact with their data. It offers a comprehensive set of tools and features for creating, customizing, and managing data models, allowing users to design flexible and scalable data structures for their business needs. Here's an overview of the key features and capabilities of Steedos Data Modeling:

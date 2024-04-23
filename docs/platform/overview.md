@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Steedos Overview
 sidebar_position: 10
 ---
 

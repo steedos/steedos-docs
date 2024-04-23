@@ -1,6 +1,6 @@
 ---
 title: App Builder
-sidebar_position: 20
+sidebar_position: 10
 ---
 
 Steedos App Builder is a comprehensive platform designed to help developers and businesses create custom applications without extensive coding knowledge. It offers a wide range of features and tools to design, customize, and deploy applications tailored to specific business needs. Here's an overview of the key features and capabilities of Steedos App Builder:
