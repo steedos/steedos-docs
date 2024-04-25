@@ -128,7 +128,7 @@ const config = {
           {
             type: 'docSidebar',
             position: 'left',
-            sidebarId: 'apps',
+            sidebarId: 'solutions',
             label: 'Solutions',
           },
           {
