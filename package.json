@@ -24,14 +24,17 @@
     "@docusaurus/preset-classic": "^3.2.1",
     "@docusaurus/theme-mermaid": "^3.2.1",
     "@easyops-cn/docusaurus-search-local": "^0.40.1",
+    "@headlessui/react": "^1.7.19",
     "@mdx-js/react": "^3.0.0",
     "@redocly/cli": "^1.0.0-beta.128",
     "autoprefixer": "^10.4.19",
     "clsx": "^1.2.1",
+    "lodash": "^4.17.21",
     "postcss": "^8.4.38",
     "prism-react-renderer": "^2.1.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-player": "^2.16.0",
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
