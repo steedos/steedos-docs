@@ -4,6 +4,7 @@
 @tailwind utilities;
 
 :root {
+  /* --ifm-navbar-background-color: #fff9; */
 }
 
 .hidden {
