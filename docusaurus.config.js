@@ -104,6 +104,7 @@ const config = {
       // },
       navbar: {
         title: 'Steedos',
+        // style: 'dark',
         logo: {
           alt: 'Steedos',
           src: 'img/logo.png',
@@ -151,6 +152,7 @@ const config = {
             className: 'navbar-social-link navbar-github-logo',
             'aria-label': 'GitHub repository',
           },
+          
         ],
       },
       docs: {
