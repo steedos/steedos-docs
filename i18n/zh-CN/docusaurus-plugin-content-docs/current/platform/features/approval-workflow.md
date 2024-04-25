@@ -23,6 +23,6 @@ sidebar_position: 90
 
 - **条件节点与流程滑步**：支持根据条件动态调整流程节点的路径，并支持流程滑步，以应对特殊情况或审批人不可用的情形。
 
-![审批王.jpeg](./snapshot/approval-workflow/审批王.jpeg)
+![审批王.png](./snapshot/approval-workflow/审批王.png)
 
 审批王作为企业审批管理的利器，能够帮助企业实现审批流程的标准化、自动化和移动化，从而提高业务效率，减少人为错误，确保合规性。
