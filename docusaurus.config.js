@@ -94,14 +94,14 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
-      announcementBar: {
-        id: 'support_us',
-        content:
-          '⭐️ If you like Steedos, give a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/steedos/steedos-platform">GitHub</a>.',
-        backgroundColor: '#4D72DA',
-        textColor: '#ffffff',
-        isCloseable: true,
-      },
+      // announcementBar: {
+      //   id: 'support_us',
+      //   content:
+      //     '⭐️ If you like Steedos, give a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/steedos/steedos-platform">GitHub</a>.',
+      //   backgroundColor: '#4D72DA',
+      //   textColor: '#ffffff',
+      //   isCloseable: true,
+      // },
       navbar: {
         title: 'Steedos',
         logo: {
@@ -118,6 +118,12 @@ const config = {
           {
             type: 'docSidebar',
             position: 'left',
+            sidebarId: 'solutions',
+            label: 'Solutions',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
             sidebarId: 'platform',
             label: 'Docs',
           },
@@ -128,12 +134,6 @@ const config = {
             label: 'Developer',
           },
           {
-            type: 'docSidebar',
-            position: 'left',
-            sidebarId: 'solutions',
-            label: 'Solutions',
-          },
-          {
             type: 'search',
             position: 'right',
           },
@@ -141,10 +141,10 @@ const config = {
           //   type: 'docsVersionDropdown',
           //   position: 'right',
           // },
-          {
-            type: 'localeDropdown',
-            position: 'right',
-          },
+          // {
+          //   type: 'localeDropdown',
+          //   position: 'right',
+          // },
           {
             href: 'https://github.com/steedos/steedos-platform',
             position: 'right',

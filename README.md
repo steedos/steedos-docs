@@ -43,9 +43,21 @@ This command generates static content into the `build` directory and can be serv
 
 ## Release
 
-### 发布正式版
+### 发布多语言版
 
 在main分支创建tag，发布正式版到 https://docs.steedos.com
+
+```
+yarn build
+```
+
+### 发布中文版
+
+在main分支创建tag，发布正式版到 https://docs.steedos.cn
+
+```
+yarn build --locale zh-CN
+```
 
 ### 发布测试版
 
