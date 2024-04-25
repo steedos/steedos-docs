@@ -12,7 +12,7 @@
     "description": "The label of footer link with label=Steedos Enterprise linking to https://www.steedos.com/pricing/platform"
   },
   "copyright": {
-    "message": "Copyright © 2023 Steedos Inc.",
+    "message": "Copyright © 2024 Steedos Inc. <br/> (沪ICP备09089283号)",
     "description": "The footer copyright"
   },
   "link.title.Getting Started": {
@@ -25,7 +25,7 @@
   },
   "link.item.label.Deploy": {
     "message": "安装部署",
-    "description": "The label of footer link with label=Deploy linking to /deploy"
+    "description": "The label of footer link with label=Deploy linking to deploy"
   },
   "link.item.label.User Guide": {
     "message": "用户向导",
@@ -42,5 +42,97 @@
   "link.item.label.Extend with Code": {
     "message": "开发人员向导",
     "description": "The label of footer link with label=Extend with Code linking to /developer"
+  },
+  "link.title.Platform": {
+    "message": "平台",
+    "description": "The title of the footer links column with title=Platform in the footer"
+  },
+  "link.title.Solutions": {
+    "message": "解决方案",
+    "description": "The title of the footer links column with title=Solutions in the footer"
+  },
+  "link.title.Customer Success Stories": {
+    "message": "客户案例",
+    "description": "The title of the footer links column with title=Customer Success Stories in the footer"
+  },
+  "link.title.Resources": {
+    "message": "资源",
+    "description": "The title of the footer links column with title=Resources in the footer"
+  },
+  "link.title.Contact Us": {
+    "message": "联系我们",
+    "description": "The title of the footer links column with title=Contact Us in the footer"
+  },
+  "link.item.label.What is Steedos?": {
+    "message": "什么是 Steedos?",
+    "description": "The label of footer link with label=What is Steedos? linking to platform/overview"
+  },
+  "link.item.label.What is Lowcode?": {
+    "message": "什么是低代码?",
+    "description": "The label of footer link with label=What is Lowcode? linking to platform/lowcode"
+  },
+  "link.item.label.Features": {
+    "message": "功能",
+    "description": "The label of footer link with label=Features linking to platform/features"
+  },
+  "link.item.label.Pricing": {
+    "message": "报价",
+    "description": "The label of footer link with label=Pricing linking to platform/pricing"
+  },
+  "link.item.label.Project Management": {
+    "message": "项目管理",
+    "description": "The label of footer link with label=Project Management linking to solutions/project"
+  },
+  "link.item.label.Contract Management": {
+    "message": "合同管理",
+    "description": "The label of footer link with label=Contract Management linking to solutions/contract"
+  },
+  "link.item.label.Expense Management": {
+    "message": "费控管理",
+    "description": "The label of footer link with label=Expense Management linking to solutions/expense"
+  },
+  "link.item.label.Tsinghua University": {
+    "message": "清华大学",
+    "description": "The label of footer link with label=Tsinghua University linking to customer-success-stories/tsinghua"
+  },
+  "link.item.label.CMB China": {
+    "message": "招商银行",
+    "description": "The label of footer link with label=CMB China linking to customer-success-stories/cmbchina-poc"
+  },
+  "link.item.label.China UMS": {
+    "message": "中国银联",
+    "description": "The label of footer link with label=China UMS linking to customer-success-stories/chinaums-oem"
+  },
+  "link.item.label.Shuang Hui": {
+    "message": "双汇集团",
+    "description": "The label of footer link with label=Shuang Hui linking to customer-success-stories/yz"
+  },
+  "link.item.label.Documentation": {
+    "message": "文档",
+    "description": "The label of footer link with label=Documentation linking to getting-started"
+  },
+  "link.item.label.Videos": {
+    "message": "视频",
+    "description": "The label of footer link with label=Videos linking to videos"
+  },
+  "link.item.label.Developer": {
+    "message": "开发人员",
+    "description": "The label of footer link with label=Developer linking to developer"
+  },
+  "link.item.label.About Us": {
+    "message": "关于我们",
+    "description": "The label of footer link with label=About Us linking to company/about-us"
+  },
+  "link.item.label.400-820-1612 (China)": {
+    "message": "400-820-1612 (中国)",
+    "description": "The label of footer link with label=400-820-1612 (China) linking to tel:400-820-1612"
+  },
+  "link.item.label.Contact Us": {
+    "message": "联系我们",
+    "description": "The label of footer link with label=Contact Us linking to https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68"
+  },
+  "link.item.label.Github Discussions": {
+    "message": "Github Discussions",
+    "description": "The label of footer link with label=Github Discussions linking to https://github.com/orgs/steedos/discussions"
   }
 }

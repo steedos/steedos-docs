@@ -1,4 +1,4 @@
-name: Deploy Site
+name: Deploy steedos.com
 
 on:
   push:
