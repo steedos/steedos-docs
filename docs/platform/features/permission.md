@@ -29,4 +29,6 @@ Steedos Permission Engine is a comprehensive permission management system design
 - **Integration and Extensibility**
   The Steedos Permission Engine can integrate with other systems and applications, offering flexible permission management. Through standard APIs and custom triggers, organizations can extend the capabilities of the permission engine according to their business needs.
 
+  ![权限概览.svg](./snapshot/permission/权限概览.svg)
+  
 These features make the Steedos Permission Engine a flexible and powerful permission management system that provides comprehensive security and access control for organizations. With multi-level permission management and robust security features, the Steedos Permission Engine ensures data security and business process compliance.
