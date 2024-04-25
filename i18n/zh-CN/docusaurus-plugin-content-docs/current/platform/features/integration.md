@@ -19,4 +19,6 @@ Steedos 应用集成引擎 是 Steedos 平台的集成工具，旨在帮助企�
 
 - **外部消息集成**：支持与外部消息服务的集成，允许 Steedos 应用与其他消息平台（如企业微信、钉钉等）进行通信。这有助于实现业务通知和消息推送。
 
+![node-red.png](./snapshot/integration/node-red.png)
+
 Steedos Integration 为企业提供了灵活而强大的集成能力，使得企业可以将 Steedos 应用与各种外部系统和服务相连。通过使用 Steedos Integration，企业可以实现跨系统的数据交换、业务流程协调和自动化，从而提高运营效率和业务灵活性。
