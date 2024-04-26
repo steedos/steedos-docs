@@ -94,16 +94,17 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
-      announcementBar: {
-        id: 'support_us',
-        content:
-          '⭐️ If you like Steedos, give a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/steedos/steedos-platform">GitHub</a>.',
-        backgroundColor: '#4D72DA',
-        textColor: '#ffffff',
-        isCloseable: true,
-      },
+      // announcementBar: {
+      //   id: 'support_us',
+      //   content:
+      //     '⭐️ If you like Steedos, give a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/steedos/steedos-platform">GitHub</a>.',
+      //   backgroundColor: '#4D72DA',
+      //   textColor: '#ffffff',
+      //   isCloseable: true,
+      // },
       navbar: {
         title: 'Steedos',
+        // style: 'dark',
         logo: {
           alt: 'Steedos',
           src: 'img/logo.png',
@@ -118,6 +119,12 @@ const config = {
           {
             type: 'docSidebar',
             position: 'left',
+            sidebarId: 'solutions',
+            label: 'Solutions',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
             sidebarId: 'platform',
             label: 'Docs',
           },
@@ -128,12 +135,6 @@ const config = {
             label: 'Developer',
           },
           {
-            type: 'docSidebar',
-            position: 'left',
-            sidebarId: 'solutions',
-            label: 'Solutions',
-          },
-          {
             type: 'search',
             position: 'right',
           },
@@ -141,16 +142,17 @@ const config = {
           //   type: 'docsVersionDropdown',
           //   position: 'right',
           // },
-          {
-            type: 'localeDropdown',
-            position: 'right',
-          },
+          // {
+          //   type: 'localeDropdown',
+          //   position: 'right',
+          // },
           {
             href: 'https://github.com/steedos/steedos-platform',
             position: 'right',
             className: 'navbar-social-link navbar-github-logo',
             'aria-label': 'GitHub repository',
           },
+          
         ],
       },
       docs: {
@@ -159,56 +161,116 @@ const config = {
         }
       },
       footer: {
-        style: 'dark',
-        // links: [
-        //   {
-        //     title: 'Getting Started',
-        //     items: [
-        //       {
-        //         label: 'Deploy',
-        //         to: 'deploy',
-        //       },
-        //       {
-        //         label: 'User Guide',
-        //         to: 'user',
-        //       },
-        //       {
-        //         label: 'Admin Guide',
-        //         to: 'admin',
-        //       },
-        //     ],
-        //   },
-        //   {
-        //     title: 'Customize Your Org',
-        //     items: [
-        //       {
-        //         label: 'Extend with Click',
-        //         to: 'no-code',
-        //       },
-        //       {
-        //         label: 'Automation You Process',
-        //         to: 'automation',
-        //       },
-        //       {
-        //         label: 'Extend with Code',
-        //         to: 'developer',
-        //       },
-        //     ],
-        //   },
-        //   {
-        //     title: 'More',
-        //     items: [
-        //       {
-        //         label: 'Github',
-        //         href: 'https://github.com/steedos/steedos-platform',
-        //       },
-        //       {
-        //         label: 'Steedos Enterprise',
-        //         href: 'https://www.steedos.com/pricing/platform',
-        //       }
-        //     ],
-        //   },
-        // ],
+        links: [
+          {
+            title: 'Platform',
+            items: [
+              {
+                label: 'What is Steedos?',
+                to: 'platform/overview',
+              },
+              {
+                label: 'What is Lowcode?',
+                to: 'platform/lowcode',
+              },
+              {
+                label: 'Features',
+                to: 'platform/features',
+              },
+              {
+                label: 'Pricing',
+                to: 'platform/pricing',
+              },
+            ],
+          },
+          {
+            title: 'Solutions',
+            items: [
+              {
+                label: 'Project Management',
+                to: 'solutions/project',
+              },
+              {
+                label: 'Contract Management',
+                to: 'solutions/contract',
+              },
+              {
+                label: 'Expense Management',
+                to: 'solutions/expense',
+              },
+            ],
+          },
+          {
+            title: 'Customer Success Stories',
+            items: [
+              {
+                label: 'Tsinghua University',
+                to: 'customer-success-stories/tsinghua',
+              },
+              {
+                label: 'CMB China',
+                to: 'customer-success-stories/cmbchina-poc',
+              },
+              {
+                label: 'China UMS',
+                to: 'customer-success-stories/chinaums-oem',
+              },
+              {
+                label: 'Shuang Hui',
+                to: 'customer-success-stories/yz',
+              },
+            ],
+          },
+          {
+            title: 'Resources',
+            items: [
+              {
+                label: 'Documentation',
+                to: 'getting-started',
+              },
+              {
+                label: 'Videos',
+                to: 'videos',
+              },
+              {
+                label: 'Deploy',
+                to: 'deploy',
+              },
+              {
+                label: 'Developer',
+                to: 'developer',
+              },
+            ],
+          },
+          {
+            title: 'Contact Us',
+            items: [
+              {
+                label: 'About Us',
+                to: 'company/about-us',
+              },
+              {
+                label: '400-820-1612 (China)',
+                href: 'tel:400-820-1612',
+              },
+              {
+                label: 'Contact Us',
+                href: 'https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68',
+              },
+              {
+                label: 'Github Discussions',
+                href: 'https://github.com/orgs/steedos/discussions',
+              },
+              {
+                html: `
+                <div>
+                  <img src="https://console.steedos.cn/api/files/images/64631db2c106fe003e69cbac" alt="微信扫码" width="120" height="120" />
+                </div>
+              `,
+              },
+            ],
+          },
+        ],
         copyright: `Copyright © ${new Date().getFullYear()} Steedos Inc.`,
       },
       prism: {

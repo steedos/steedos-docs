@@ -1,0 +1,272 @@
+[
+  {
+    "_id": "6214bfe113d1a0003236ce60",
+    "slug": " steedos-visualize",
+    "name": "华炎魔方可视化开发教程",
+    "sort_no": 10,
+    "description": "内置十大引擎，使用可视化工具快速创建应用程序。",
+    "videos": [
+      {
+        "_id": "61500a3b9e41640031da366c",
+        "slug": "lesson-object",
+        "name": "如何创建自定义应用程序",
+        "sort_no": 200,
+        "thumb_image": "rw5Sqv4pcFsP8gTZB",
+        "summary": "本视频介绍了如何使用华炎魔方创建自定义对象、配置字段、配置列表视图，并创建自定义应用程序引用此对象。",
+        "hls_url": "https://vod.steedos.cn/video/593e2774-1772933e406-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "61500e649e41640031da3670",
+        "slug": "lesson-object-relationship",
+        "name": "如何为自定义对象创建子表？",
+        "sort_no": 210,
+        "thumb_image": "PHvrrL4aJZzbLrhyg",
+        "summary": "为子表创建一个自定义对象；创建关联字段，将子表绑定到主表。",
+        "hls_url": "https://vod.steedos.cn/video/56dbfae5-17729395672-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "615012e79e41640031da3673",
+        "slug": "formula-calculates",
+        "name": "如何使用公式计算字段值？",
+        "sort_no": 220,
+        "thumb_image": "YbwE6wLEnkfXmXYTi",
+        "summary": "本视频演示了如何通过配置公式实现以下功能：引用相关表的数据、执行计算、累计汇总子表中的数据。",
+        "hls_url": "https://vod.steedos.cn/video/29356d8f-1774c375374-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "615281729e41640031da37d5",
+        "slug": "workflow_rules",
+        "name": "如何创建工作流规则？",
+        "sort_no": 230,
+        "thumb_image": "S9swHiqG9xS4PQwam",
+        "summary": "工作流可让您自动化标准内部过程和进程，以在贵组织范围内节省时间。",
+        "hls_url": "https://vod.steedos.cn/video/33431afb-177dbee8bba-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "615282259e41640031da37d6",
+        "slug": "validation_rules",
+        "name": "如何创建验证规则？",
+        "sort_no": 240,
+        "thumb_image": "YpRJEuW8ygN6xEnWg",
+        "summary": "验证规则主要用于验证该对象的数据是否符合特定的规则。当用户对于对象的某个字段的更改不符合用户创建的验证规则时，华炎魔方会拒绝保存用户的输入。",
+        "hls_url": "https://vod.steedos.cn/video/379a1450-177658bf0c0-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "615014c59e41640031da3677",
+        "slug": "authority_management",
+        "name": "控制谁可以看到什么内容",
+        "sort_no": 250,
+        "thumb_image": "uSgKysgnPCDpc4rkD",
+        "summary": "华炎魔方内置了灵活的数据分层设计，本期教程教大家如何实现权限管理。",
+        "hls_url": "https://vod.steedos.cn/video/bffe103-1786d0f3d3c-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "615121b19e41640031da369a",
+        "slug": "report",
+        "name": "如何分析您的数据？",
+        "sort_no": 260,
+        "thumb_image": "zhqgd9EJLY6JLfQow",
+        "summary": "华炎魔方内置功能强大的报表引擎，业务人员可以自主创建自定义报表，实时分析业务数据。",
+        "hls_url": "https://vod.steedos.cn/video/2901b273-178a4d82a74-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "6152805e9e41640031da37d4",
+        "slug": "approval_process",
+        "name": "如何创建批准过程？",
+        "sort_no": 270,
+        "thumb_image": "guddMB7JmHbL2nvDy",
+        "summary": "批准过程在自动化处理方面更进一步，让您可以指定批准记录所必需的步骤序列。",
+        "hls_url": "https://vod.steedos.cn/video/a90bd74-17814b982d2-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "615283479e41640031da37d7",
+        "slug": "admin-contracts",
+        "name": "如何自定义审批流程？",
+        "sort_no": 300,
+        "thumb_image": "639ae8296f5764003e5132ce",
+        "summary": "审批王通过为企业管理员提供可视化的表单与流程设计界面，以及多种表单样式模板，同时支持表单模板样式自定义和再扩展，最大程度满足管理员设计表单的需求，实现公司各类繁杂的审批业务快速转换为便捷的电子流程。",
+        "hls_url": "https://www-steedos-com.oss-accelerate.aliyuncs.com/videos/workflow/admin-contracts.mp4"
+      },
+      {
+        "_id": "615283d99e41640031da37d8",
+        "slug": "user-contracts",
+        "name": "如何填单与审批",
+        "sort_no": 310,
+        "thumb_image": "639ae8386f5764003e5132cf",
+        "summary": "审批王通过为企业业务人员提供高效的审批流程，极大地提升了业务审批效率。业务人员还可以随时把控审批进度，保证在规定时间内完成审批。",
+        "hls_url": "https://www-steedos-com.oss-accelerate.aliyuncs.com/videos/workflow/user-contracts.mp4"
+      }
+    ]
+  },
+  {
+    "_id": "6396bfad6f5764003e512eba",
+    "slug": "course",
+    "name": "低代码训练营课程回顾",
+    "sort_no": 20,
+    "description": null,
+    "videos": [
+      {
+        "_id": "63abbbeb6f5764003e513ee8",
+        "slug": "course-project",
+        "name": "华炎魔方项目解决方案线上分享会",
+        "sort_no": 390,
+        "thumb_image": "63abbba26f5764003e513ee7",
+        "summary": "华炎魔方项目解决方案线上分享会，本次分享内容主要是借助华炎魔方低代码平台以及结合企业相关管理业务快速搭建实现的一整套以项目为中心的融合数字化解决方案。",
+        "hls_url": "https://vod.steedos.cn/video/57f6acba-18556c15930-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "6396c33f6f5764003e512ec9",
+        "slug": "course-object",
+        "name": "低代码训练营第一课：业务建模",
+        "sort_no": 400,
+        "thumb_image": "639add616f5764003e5132b5",
+        "summary": "低代码训练营系列课程之第一课：业务建模，通过可视化业务建模来快速搭建企业业务应用。",
+        "hls_url": "https://vod.steedos.cn/video/3cd39ec1-1860fe07d35-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "6396c60c6f5764003e512eca",
+        "slug": "course-permission",
+        "name": "低代码训练营第二课：权限管理",
+        "sort_no": 410,
+        "thumb_image": "639add6e6f5764003e5132b6",
+        "summary": "低代码训练营系列课程之第二课：权限管理，配置对象、记录、字段级等基础对象权限。",
+        "hls_url": "https://vod.steedos.cn/video/218178a9-1860fe09f8d-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "6397005c6f5764003e512f16",
+        "slug": "course-process",
+        "name": "低代码训练营第三课：流程自动化",
+        "sort_no": 420,
+        "thumb_image": "639add796f5764003e5132b7",
+        "summary": "低代码训练营系列课程之第三课：字段更新、工作流通知、出站消息等业务流程自动化配置说明。",
+        "hls_url": "https://vod.steedos.cn/video/4bf777eb-1860fe0b688-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "639ad3ab6f5764003e5132a0",
+        "slug": "course-workflow",
+        "name": "低代码训练营第四课：审批王",
+        "sort_no": 430,
+        "thumb_image": "639add856f5764003e5132b8",
+        "summary": "低代码训练营系列课程之第四课：流程引擎配置介绍说明。",
+        "hls_url": "https://vod.steedos.cn/video/33f8e6c8-1860fe0cefb-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "63be4f7d671028003e75b018",
+        "slug": "course-metadata",
+        "name": "低代码训练营第五课：元数据与软件包",
+        "sort_no": 440,
+        "thumb_image": "63be4f53671028003e75b017",
+        "summary": "低代码训练营系列课程之第五课：可视化配置代码化预计业务应用软件包管理介绍。",
+        "hls_url": "https://vod.steedos.cn/video/34a55c9b-1860fe0e7d2-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "6411943e671028003e75ecea",
+        "slug": "course-amis1",
+        "name": "低代码训练营第六课：微页面设置入门",
+        "sort_no": 450,
+        "thumb_image": "64119795671028003e75ecee",
+        "summary": "低代码训练营系列课程之第六课：可视化页面设计入门；",
+        "hls_url": "https://vod.steedos.cn/video/567e1d5b-186e4a53523-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "6420f22e671028003e75f89d",
+        "slug": "course-amis2",
+        "name": "低代码训练营第七课：微页面高级设计开发",
+        "sort_no": 460,
+        "thumb_image": "6420f1e8671028003e75f89c",
+        "summary": "低代码训练营系列课程之第七课：可视化页面高级设计开发；",
+        "hls_url": "https://vod.steedos.cn/video/1828977d-18720acabbd-0000-0000-009-c59e0.mp4"
+      }
+    ]
+  },
+  {
+    "_id": "621dd2e5de8f7f003159fade",
+    "slug": " steedos-devops",
+    "name": "华炎魔方低代码DevOps平台",
+    "sort_no": 30,
+    "description": "管理低代码应用开发的整个生命周期，借助DevOps和远程开发工具，实现敏捷开发的新高度。",
+    "videos": [
+      {
+        "_id": "6204a8c920f50e00306f83b6",
+        "slug": "devops",
+        "name": "华炎魔方低代码 DevOps 平台",
+        "sort_no": 100,
+        "thumb_image": "639ae49f6f5764003e5132be",
+        "summary": "使用华炎魔方开发平台，任何人都可以使用可视化界面创建应用程序，每一个岗位都可以参与到开发工作中，从而使您的专业开发人员和 IT 团队能够腾出更多的时间，专注于核心业务逻辑，打造更优质的用户体验。",
+        "hls_url": "https://vod.steedos.cn/video/1032e38b-17ee7b1ff23-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "6214f7f313d1a0003236ce71",
+        "slug": "devops-launch",
+        "name": "启动远程开发环境",
+        "sort_no": 110,
+        "thumb_image": "639ae4a96f5764003e5132bf",
+        "summary": "本视频介绍了使用华炎魔方DevOps工具创建项目启动远程开发环境的操作过程及注意事项。",
+        "hls_url": "https://vod.steedos.cn/video/243606ff-17f21d2ae05-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "615115ad9e41640031da368a",
+        "slug": "lesson-metadata",
+        "name": "什么是元数据？",
+        "sort_no": 130,
+        "thumb_image": "639ae4806f5764003e5132bc",
+        "summary": "元数据是低代码开发平台的核心，低代码开发平台使用元数据定义对象、字段、页面布局等应用开发的核心要素。",
+        "hls_url": "https://vod.steedos.cn/video/40072181-177297095c2-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "6151199b9e41640031da368c",
+        "slug": "lesson-metadata-synchronize",
+        "name": "如何将元数据同步为代码？",
+        "sort_no": 140,
+        "thumb_image": "639ae8e56f5764003e5132d0",
+        "summary": "将元数据同步为代码，可以基于Git技术实现团队开发的分工协作与版本管理，并可以进一步实现自动化测试、自动化部署等高级功能。",
+        "hls_url": "https://vod.steedos.cn/video/56a1c12f-17f3def3487-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "620dbd3520f50e00306f987d",
+        "slug": "live-course-devops",
+        "name": "低代码DevOps平台操作实战",
+        "sort_no": 190,
+        "thumb_image": "DaDC5LTuqoa4Nqv8j",
+        "summary": "华炎魔方低代码学院直播课，低代码DevOps平台操作实战，带大家一起启动远程开发环境，实操演示整个华炎魔方低代码DevOps开发生命周期过程。",
+        "hls_url": "https://vod.steedos.cn/video/2ce5cd49-17f05f0f8db-0000-0000-009-c59e0.mov"
+      }
+    ]
+  },
+  {
+    "_id": "6214bfcc13d1a0003236ce5f",
+    "slug": "steedos",
+    "name": "关于华炎魔方",
+    "sort_no": 40,
+    "description": "华炎魔方将低代码技术与企业业务场景结合， 助力企业在最短时间内开发数字化解决方案。",
+    "videos": [
+      {
+        "_id": "617784bc279e5c00315722dd",
+        "slug": "click-programme",
+        "name": "点击鼠标，就能编程",
+        "sort_no": 10,
+        "thumb_image": "uYfiSbnj7Ms7djamt",
+        "summary": "华炎魔方是一套描述式编程工具，只需点击鼠标就能创建个性化的企业应用程序。华炎魔方把开发难度降低到Excel公式级别，不仅开发快，当业务变化时，也能快速响应。",
+        "hls_url": "https://vod.steedos.cn/video/175146ea-1772962056e-0000-0000-009-c59e0.mp4"
+      },
+      {
+        "_id": "617781ad279e5c00315722d4",
+        "slug": "steedos-platform-features",
+        "name": "华炎魔方十大引擎",
+        "sort_no": 20,
+        "thumb_image": "FeDohztA3sZs8Ndu2",
+        "summary": "华炎魔方内置十大引擎，您可以使用无代码构建工具快速创建应用程序，也可以继续使用专业代码工具打造令人赞叹的面向客户的体验。",
+        "hls_url": "https://www-steedos-com.oss-accelerate.aliyuncs.com/videos/creator/steedos-platform-features.mp4"
+      },
+      {
+        "_id": "615f9b33726ca50030255d17",
+        "slug": "steedos-digital-transformation",
+        "name": "为什么企业要进行数字化转型？",
+        "sort_no": 30,
+        "thumb_image": "m26uoZEELL8t22h4t",
+        "summary": "随着疫情加速了数字化转型进程，众多企业现时也将其放在首位。融合数字化转型及业务规划已成为新常态，而高管又是否准备好应对挑战？他们能如何有效推行数字化转型？",
+        "hls_url": "https://www-steedos-com.oss-accelerate.aliyuncs.com/videos/creator/steedos-guide.mp4"
+      }
+    ]
+  }
+]
