@@ -21,6 +21,13 @@ ul {
   color: silver;
 }
 
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: var(--ifm-container-width-xl);
+  }
+}
+
 aside.theme-doc-sidebar-container {
   @apply border border-r  bg-gray-50
 }
