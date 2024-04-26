@@ -4,6 +4,7 @@ const {themes} = require('prism-react-renderer');
 const lightTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 
+console.log(process.env.NODE_ENV)
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: process.env.SITE_TITLE || 'Steedos Docs',
