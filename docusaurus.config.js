@@ -195,6 +195,10 @@ const config = {
                             label: 'Expense Management',
                             to: 'solutions/expense',
                         },
+                        {
+                            label: 'Steedos AI',
+                            href: 'https://bots6.com',
+                        },
                     ],
                 },
                 {
