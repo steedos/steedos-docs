@@ -55,7 +55,7 @@ services:
       redis:
         condition: service_started
   redis:
-    image: ecr.aws.steedos.cn/dockerhub/redis:6.2
+    image: redis:6.2
     command: "redis-server --save \"\" --appendonly no --loglevel warning"
 ```
 
