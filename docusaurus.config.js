@@ -36,7 +36,7 @@ const config = {
 
     scripts: [
         // String format.
-        '/js/salesiq.js',
+        // '/js/salesiq.js',
     ],
     presets: [
         [
@@ -119,12 +119,6 @@ const config = {
                 {
                     type: 'docSidebar',
                     position: 'left',
-                    sidebarId: 'solutions',
-                    label: 'Solutions',
-                },
-                {
-                    type: 'docSidebar',
-                    position: 'left',
                     sidebarId: 'platform',
                     label: 'Docs',
                 },
@@ -133,6 +127,12 @@ const config = {
                     position: 'left',
                     sidebarId: 'developer',
                     label: 'Developer',
+                },
+                {
+                    type: 'docSidebar',
+                    position: 'left',
+                    sidebarId: 'solutions',
+                    label: 'Solutions',
                 },
                 {
                     type: 'search',
@@ -251,25 +251,12 @@ const config = {
                             label: '400-820-1612 (China)',
                             href: 'tel:400-820-1612',
                         },
-                        {
-                            label: 'Contact Us',
-                            href: 'https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68',
-                        },
-                        {
-                            label: 'Github Discussions',
-                            href: 'https://github.com/orgs/steedos/discussions',
-                        },
-                        {
-                            html: `
-                <div>
-                  <img src="https://console.steedos.cn/api/files/images/64631db2c106fe003e69cbac" alt="微信扫码" width="120" height="120" />
-                </div>
-              `,
-                        },
                     ],
                 },
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} Steedos Inc.`,
+            copyright: `
+            Copyright © ${new Date().getFullYear()} Steedos Inc. <br/><br/> <a href="https://docs.steedos.cn">中文</a> | <a href="https://docs.steedos.com">English</a>
+            `,
         },
         prism: {
             theme: darkCodeTheme,
