@@ -6,7 +6,7 @@ title: Pricing
 
 |  | Community Edition | Commercial Edition | Enterprise Edition |
 |----|----|----|----|
-| Pricing | Free | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) |
+| Pricing | Free | [Contact Us](/company/contact-us/) | [Contact Us](/company/contact-us/) |
 
 
 ### Platform Features
