@@ -138,6 +138,16 @@ const config = {
                     type: 'search',
                     position: 'right',
                 },
+                {
+                    href: 'https://docs.steedos.com',
+                    position: 'right',
+                    html: 'English',
+                },
+                {
+                    href: 'https://docs.steedos.cn',
+                    position: 'right',
+                    html: '中文',
+                },
                 // {
                 //   type: 'docsVersionDropdown',
                 //   position: 'right',
@@ -255,7 +265,7 @@ const config = {
                 },
             ],
             copyright: `
-            Copyright © ${new Date().getFullYear()} Steedos Inc. <br/><br/> <a href="https://docs.steedos.cn">中文</a> | <a href="https://docs.steedos.com">English</a>
+            Copyright © ${new Date().getFullYear()} Steedos Inc.
             `,
         },
         prism: {

@@ -12,7 +12,7 @@
     "description": "The label of footer link with label=Steedos Enterprise linking to https://www.steedos.com/pricing/platform"
   },
   "copyright": {
-    "message": "Copyright © 2024 Steedos Inc. <br/> (沪ICP备09089283号)<br/><br/> <a href='https://docs.steedos.cn'>中文</a> | <a href='https://docs.steedos.com'>English</a>",
+    "message": "Copyright © 2024 Steedos Inc. <br/> (沪ICP备09089283号)",
     "description": "The footer copyright"
   },
   "link.title.Getting Started": {

@@ -18,7 +18,7 @@ export default function FooterWrapper(props) {
       </div>
 
       <Footer {...props} />
-      <div class="footer py-4">        
+      <div class="footer pb-6 pt-0">        
         <img class="mx-auto" src="https://www.steedos.com/img/QR_contact1.png" alt="微信扫码" width="587" height="216" />
       </div>
     </>
