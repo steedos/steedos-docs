@@ -5,9 +5,9 @@ sidebar_position: 100
 
 # 华炎魔方报价
 
-|  | 社区办 | 商业版 | 企业版 |
+|  | 社区版 | 商业版 | 企业版 |
 |----|----|----|----|
-| 报价 | 免费 | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) | [Contact Us](https://sp0dtpsxxk.jiandaoyun.com/f/660a2de0b0a76aafa09bde68) |
+| 报价 | 免费 | [Contact Us](https://docs.steedos.cn/company/contact-us/) | [Contact Us](https://docs.steedos.cn/company/contact-us/) |
 
 ## 版本对比表
 
