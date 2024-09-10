@@ -7,7 +7,7 @@ sidebar_position: 100
 
 |  | 社区版 | 商业版 | 企业版 |
 |----|----|----|----|
-| 报价 | 免费 | [Contact Us](https://docs.steedos.cn/company/contact-us/) | [Contact Us](https://docs.steedos.cn/company/contact-us/) |
+| 报价 | 免费 | [联系我们](/company/contact-us/) | [联系我们](/company/contact-us/) |
 
 ## 版本对比表
 
