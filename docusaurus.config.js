@@ -110,12 +110,13 @@ const config = {
                 alt: 'Steedos',
                 src: 'img/logo.png',
             },
-            items: [{
-                    type: 'docSidebar',
-                    position: 'left',
-                    sidebarId: 'steedos-platform',
-                    label: 'Platform',
-                },
+            items: [
+                // {
+                //     type: 'docSidebar',
+                //     position: 'left',
+                //     sidebarId: 'steedos-platform',
+                //     label: 'Platform',
+                // },
                 {
                     type: 'docSidebar',
                     position: 'left',
@@ -171,99 +172,95 @@ const config = {
             }
         },
         footer: {
-            links: [{
-                    title: 'Platform',
-                    items: [{
-                            label: 'What is Steedos?',
-                            to: 'platform/overview',
-                        },
-                        {
-                            label: 'What is Lowcode?',
-                            to: 'platform/lowcode',
-                        },
-                        {
-                            label: 'Features',
-                            to: 'platform/features',
-                        },
-                        {
-                            label: 'Pricing',
-                            to: 'platform/pricing',
-                        },
-                    ],
-                },
-                {
-                    title: 'Solutions',
-                    items: [{
-                            label: 'Project Management',
-                            to: 'solutions/project',
-                        },
-                        {
-                            label: 'Contract Management',
-                            to: 'solutions/contract',
-                        },
-                        {
-                            label: 'Expense Management',
-                            to: 'solutions/expense',
-                        },
-                        {
-                            label: 'Steedos AI',
-                            href: 'https://bots6.com',
-                        },
-                    ],
-                },
-                {
-                    title: 'Customer Success Stories',
-                    items: [{
-                            label: 'Tsinghua University',
-                            to: 'customer-success-stories/tsinghua',
-                        },
-                        {
-                            label: 'CMB China',
-                            to: 'customer-success-stories/cmbchina-poc',
-                        },
-                        {
-                            label: 'Jianhua BM',
-                            to: 'customer-success-stories/jianhuabm',
-                        },
-                        {
-                            label: 'Shuang Hui',
-                            to: 'customer-success-stories/yz',
-                        },
-                    ],
-                },
-                {
-                    title: 'Resources',
-                    items: [{
-                            label: 'Documentation',
-                            to: 'getting-started',
-                        },
-                        // {
-                        //     label: 'Videos',
-                        //     to: 'videos',
-                        // },
-                        {
-                            label: 'Deploy',
-                            to: 'deploy',
-                        },
-                        {
-                            label: 'Developer',
-                            to: 'developer',
-                        },
-                    ],
-                },
-                {
-                    title: 'Contact Us',
-                    items: [{
-                            label: 'About Us',
-                            to: 'company/about-us',
-                        },
-                        {
-                            label: '400-820-1612 (China)',
-                            href: 'tel:400-820-1612',
-                        },
-                    ],
-                },
-            ],
+            // links: [{
+            //         title: 'Platform',
+            //         items: [{
+            //                 label: 'What is Steedos?',
+            //                 to: 'platform/overview',
+            //             },
+            //             {
+            //                 label: 'What is Lowcode?',
+            //                 to: 'platform/lowcode',
+            //             },
+            //             {
+            //                 label: 'Features',
+            //                 to: 'platform/features',
+            //             },
+            //             {
+            //                 label: 'Pricing',
+            //                 to: 'platform/pricing',
+            //             },
+            //         ],
+            //     },
+            //     {
+            //         title: 'Solutions',
+            //         items: [{
+            //                 label: 'Project Management',
+            //                 to: 'solutions/project',
+            //             },
+            //             {
+            //                 label: 'Contract Management',
+            //                 to: 'solutions/contract',
+            //             },
+            //             {
+            //                 label: 'Expense Management',
+            //                 to: 'solutions/expense',
+            //             },
+            //             {
+            //                 label: 'Steedos AI',
+            //                 href: 'https://bots6.com',
+            //             },
+            //         ],
+            //     },
+            //     {
+            //         title: 'Customer Success Stories',
+            //         items: [{
+            //                 label: 'Tsinghua University',
+            //                 to: 'customer-success-stories/tsinghua',
+            //             },
+            //             {
+            //                 label: 'CMB China',
+            //                 to: 'customer-success-stories/cmbchina-poc',
+            //             },
+            //             {
+            //                 label: 'Jianhua BM',
+            //                 to: 'customer-success-stories/jianhuabm',
+            //             },
+            //             {
+            //                 label: 'Shuang Hui',
+            //                 to: 'customer-success-stories/yz',
+            //             },
+            //         ],
+            //     },
+            //     {
+            //         title: 'Resources',
+            //         items: [{
+            //                 label: 'Documentation',
+            //                 to: 'getting-started',
+            //             },
+            //             {
+            //                 label: 'Deploy',
+            //                 to: 'deploy',
+            //             },
+            //             {
+            //                 label: 'Developer',
+            //                 to: 'developer',
+            //             },
+            //         ],
+            //     },
+            //     {
+            //         title: 'Contact Us',
+            //         items: [{
+            //                 label: 'About Us',
+            //                 to: 'company/about-us',
+            //             },
+            //             {
+            //                 label: '400-820-1612 (China)',
+            //                 href: 'tel:400-820-1612',
+            //             },
+            //         ],
+            //     },
+            // ],
             copyright: `
             Copyright © ${new Date().getFullYear()} Steedos Inc.
             `,

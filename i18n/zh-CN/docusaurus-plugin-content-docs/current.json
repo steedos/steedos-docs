@@ -300,11 +300,15 @@
     "description": "The label for category Steedos Platform in sidebar steedos-platform"
   },
   "sidebar.platform.category.Steedos Docs": {
-    "message": "Steedos 文档",
+    "message": "Steedos 平台",
     "description": "The label for category Steedos Docs in sidebar platform"
   },
   "sidebar.developer.category.Steedos Developer": {
     "message": "Steedos 开发文档",
     "description": "The label for category Steedos Developer in sidebar developer"
+  },
+  "sidebar.platform.category.Features": {
+    "message": "功能",
+    "description": "The label for category Features in sidebar platform"
   }
 }
