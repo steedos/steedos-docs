@@ -1,5 +1,5 @@
 ---
-title: Instance Configuration
+title: Environment Variables
 ---
 
 This page provides instructions on how to configure your self-hosted Steedos instance.
