@@ -10,10 +10,10 @@
   }
   
 } */
-@import url('./preflight.css');
+/* @import url('./preflight.css');
 
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 ul {
   list-style-type: disc;

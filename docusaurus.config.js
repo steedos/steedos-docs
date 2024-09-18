@@ -237,10 +237,10 @@ const config = {
                             label: 'Documentation',
                             to: 'getting-started',
                         },
-                        {
-                            label: 'Videos',
-                            to: 'videos',
-                        },
+                        // {
+                        //     label: 'Videos',
+                        //     to: 'videos',
+                        // },
                         {
                             label: 'Deploy',
                             to: 'deploy',

@@ -1,41 +1,23 @@
 import React, { useEffect } from 'react';
-import Layout from '@theme/Layout';
-
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-
-
-import { Hero } from '@site/src/components/salient/Hero'
-import { PrimaryFeatures } from '@site/src/components/salient/PrimaryFeatures'
-import { SecondaryFeatures } from '@site/src/components/salient/SecondaryFeatures'
-import { CallToAction } from '@site/src/components/salient/CallToAction'
-import { Pricing } from '@site/src/components/salient/Pricing'
+import {Redirect} from '@docusaurus/router';
 
 function Home() {
-  // 页面内容（如果有的话）在重定向发生之前可能会短暂显示
+  // useEffect(() => {
+  //   // 这部分代码将在页面加载完成后执行
+  //   const language = navigator.language || navigator.userLanguage;
 
-  const {i18n} = useDocusaurusContext();
+  //   // 检查语言是否是中文
+  //   if (language.includes('zh-CN') || language.includes('zh')) {
+  //     window.location.href = '/getting-started/';
+  //   } else {
+  //     // 为其他语言添加更多条件或保留为默认语言
+  //     window.location.href = '/getting-started/';  // 示例
+  //   }
+  // }, []);
 
-  if (i18n.currentLocale === "en") {
-    return (
-      <Layout title="Steedos">
-        <Hero/>
-  
-      </Layout>
-    );
-  } else {
-
-    return (
-      <Layout title="Steedos">
-        <Hero/>
-  
-        <PrimaryFeatures />
-        <SecondaryFeatures />
-        <CallToAction />
-  
-        <Pricing />
-      </Layout>
-    );
-  }
+  // // 页面内容（如果有的话）在重定向发生之前可能会短暂显示
+  // return <div></div>;
+  return <Redirect to="/getting-started/" />;
 }
 
 export default Home;
