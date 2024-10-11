@@ -1,5 +1,5 @@
 ---
-title: 远程环境试用
+title: Gitpod 远程环境
 sidebar_position: 3
 ---
 
@@ -11,9 +11,8 @@ sidebar_position: 3
 
 ## 启动Gitpod远程开发环境
 
-访问 [Steedos模板项目](https://github.com/steedos/steedos-project-template) ，也可以在登录Github环境后，找到公开的“steedos-project-template”点击右上角派生(Fork)按钮，可以把项目复制到自己的账户下。
-
-项目**派生(Fork)**成功后，可以通过修改当前项目url使用Gitpod.io启用开发环境。例如修改项目url为：https://gitpod.io#github.com/steedos/steedos-project-template 
+- 访问 [Steedos模板项目](https://github.com/steedos/steedos-project-template) 
+- 项目url加上gitpod前缀，使用 gitpod 打开：https://gitpod.io#github.com/steedos/steedos-project-template 
 
  ![](https://console.steedos.cn/api/files/files/667b9508273904003da17d55)
  
@@ -25,7 +24,7 @@ sidebar_position: 3
 * 自动安装、配置和启动Redis数据库。
 * 自动安装必要的VS Code插件，包括元数据同步、简体中文语言包等。
 * 自动安装项目依赖的NPM包。
-* 自动执行 `yarn start` 启动项目。
+* 自动启动项目。
 
 ## 访问Steedos
 
