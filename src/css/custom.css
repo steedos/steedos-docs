@@ -15,12 +15,12 @@
 @tailwind components;
 @tailwind utilities; */
 
-ul {
+/* ul {
   list-style-type: disc;
-}
-.markdown ::marker {
+} */
+/* .markdown ::marker {
   color: silver;
-}
+} */
 
 
 @media (min-width: 1440px) {
