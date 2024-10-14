@@ -269,7 +269,7 @@ const config = {
         prism: {
             theme: darkCodeTheme,
             darkTheme: darkCodeTheme,
-            additionalLanguages: ['bash', 'json', 'yml'],
+            additionalLanguages: ['bash', 'json', 'yaml'],
         },
     }),
     markdown: {
