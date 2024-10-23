@@ -82,6 +82,10 @@ services:
 
 请根据您的实际情况调整环境变量和端口。
 
+如果碰到网络问题, 可以使用阿里云镜像仓库(registry.cn-shanghai.aliyuncs.com)或使用其他Docker镜像
+* 社区版 image: registry.cn-shanghai.aliyuncs.com/steedos/steedos-community:latest
+* 企业版 image: registry.cn-shanghai.aliyuncs.com/steedos/steedos-enterprise:latest
+
 ### 启动容器
 
 在包含 `docker-compose.yml` 文件的目录中，运行以下命令来启动 Steedos 容器：
