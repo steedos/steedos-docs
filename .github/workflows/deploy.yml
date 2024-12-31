@@ -34,8 +34,8 @@ jobs:
           AWS_S3_REGION: cn-northwest-1
           SOURCE_DIR: ./build/
 
-      # - name: Invalidate CloudFront distribution
-      #   run: |
-      #     aws cloudfront create-invalidation --distribution-id E3PZXWVY8YMW6P --paths "/*"
+      - name: Invalidate CloudFront distribution
+        run: |
+          aws cloudfront create-invalidation --distribution-id E3PZXWVY8YMW6P --paths "/*"
 
       
