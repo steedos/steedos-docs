@@ -43,7 +43,8 @@ services:
     environment:
       - ROOT_URL=http://127.0.0.1 # Replace with your actual domain or IP
     volumes:
-      - "./steedos-storage:/steedos-storage"
+      - "./steedos-storage:/steedos-storage" # Attachments and logs
+      - "./.steedos:/app/.steedos" # Installed packages
 
 ```
 
@@ -68,7 +69,8 @@ services:
       - STEEDOS_LICENSE="your_license_key_here"  # Replace with your actual license key
     tty: true
     volumes:
-      - "./steedos-storage:/steedos-storage"
+      - "./steedos-storage:/steedos-storage" # Attachments and logs
+      - "./.steedos:/app/.steedos" # Installed packages
 ```
 
 </TabItem>
