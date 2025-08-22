@@ -32,7 +32,6 @@ By creating Lookup Relationship fields and Master-Detail Relationship fields, yo
 
 1. **Create Relationship Field**: In the object's field settings, choose to add a new field and select the type of relationship.
 2. **Set Relationship Properties**: Depending on the type of relationship, configure necessary properties, such as related objects, cascade delete rules, etc.
-3. **Update Page Layouts**: Ensure the new relationship field is added to the page layouts of the related objects.
 4. **Set Permissions**: Update user profiles and permission sets as needed to access the new relationship fields.
 
 By correctly configuring object relationships, you can ensure data integrity, optimize user experience, and make reports and dashboards more powerful.

@@ -6,7 +6,7 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Steedos Docker Deployment Guide
+# Deploying Steedos using Docker Compose
 
 This document will guide you on how to deploy the Steedos platform on your server using Docker.
 
@@ -41,8 +41,7 @@ services:
       - "9001:9001"    # Supervisor
       - "6379:6379"    # Redis
     environment:
-      - ROOT_URL=http://127.0.0.1
-      - NPM_REGISTRY_URL=https://registry.npmmirror.com
+      - ROOT_URL=http://127.0.0.1 # Replace with your actual domain or IP
     volumes:
       - "./steedos-storage:/steedos-storage"
 
@@ -57,18 +56,16 @@ version: "3.9"
 
 services:
 
-  steedos-enterprise:
+  steedos:
     image: steedos/steedos-enterprise:latest
-    container_name: steedos-enterprise
     ports:
       - "80:80"        # Steedos
       - "27017:27017"  # MongoDB
       - "9001:9001"    # Supervisor
       - "6379:6379"    # Redis
     environment:
-      - ROOT_URL=http://127.0.0.1
-      - NPM_REGISTRY_URL=https://registry.npmmirror.com
-      - STEEDOS_LICENSE=trial
+      - ROOT_URL=http://127.0.0.1 # Replace with your actual domain or IP
+      - STEEDOS_LICENSE="your_license_key_here"  # Replace with your actual license key
     tty: true
     volumes:
       - "./steedos-storage:/steedos-storage"

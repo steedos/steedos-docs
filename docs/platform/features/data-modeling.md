@@ -13,9 +13,7 @@ Steedos Data Modeling is a fundamental feature within the Steedos platform, desi
 
 - **Custom List Views**: Steedos Data Modeling allows users to create custom list views for data objects. These views define how data is displayed and can include filtering, sorting, and field selection options, providing a tailored view of the data.
 
-- **Custom Page Layouts**: Users can design custom page layouts to define how individual data records are displayed. This includes arranging fields, adding custom sections, and configuring page components to improve user experience and data entry.
-
-- **Custom Buttons and Actions**: The platform enables users to create custom buttons and actions for data objects. These buttons can trigger specific actions, such as executing scripts or redirecting to other pages, providing additional functionality within the data model.
+- **Custom Buttons**: The platform enables users to create custom buttons and actions for data objects. These buttons can trigger specific actions, such as executing scripts or redirecting to other pages, providing additional functionality within the data model.
 
 - **Custom Menus and Navigation**: Steedos Data Modeling allows users to customize application menus and navigation. This feature helps create intuitive user interfaces and seamless user experiences when interacting with data objects.
 

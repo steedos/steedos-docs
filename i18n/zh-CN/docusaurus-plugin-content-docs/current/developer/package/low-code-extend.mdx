@@ -322,31 +322,3 @@ module.exports = {
     ....
 }
 ```
-
-\
-## 拓展页面布局
-
-先在 `steedos-app/main/default` 文件下创建 `layouts` 文件夹，然后创建 `对象名.页面布局名.layout.yml` 文件，最后补充属性内容。
-
-以下示例描述了给标准对象-人员新增一个`admin`页面布局。
-
-yml文件相对路径：`steedos-app/main/default/layouts/space_users.admin.layout.yml`
-
-```yaml
-name: admin
-buttons:
-  - button_name: standard_new
-  - button_name: standard_edit
-  - button_name: standard_delete
-fields:
-  - field_name: name
-    is_required: true
-  - field_name: married
-label: 管理员页面布局
-object_name: space_users
-profiles:
-  - admin
-type: record
-```
-
-

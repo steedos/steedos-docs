@@ -7,7 +7,6 @@ title: 界面元数据
 - 应用
 - 选项卡
 - 列表视图
-- 页面布局
 - 自定义按钮
 
 ## 应用
@@ -196,65 +195,6 @@ sort:
 | mobile_columns.$.field | lookup | 字段 |
 | sort_no | number | 排序号 |
 
-
-## 页面布局
-对象名.页面布局.layout.yml  
-定义对象的记录显示，包括：所属简档、操作按钮、显示的字段、相关子表。
-```
-name: customer
-buttons:
-  - button_name: standard_new
-  - button_name: standard_edit
-  - button_name: standard_delete
-fields:
-  - field_name: name
-    is_required: true
-  - field_name: start
-  - field_name: end
-label: 客户
-object_name: events
-profiles:
-  - customer
-related_lists:
-  - related_field_fullname: tasks.related_to
-    field_names:
-      - name
-      - due_date
-      - state
-      - priority
-      - assignees
-      - related_to
-    sort_order: asc
-    page_size: 5
-type: record
-```
-
-| 属性名 | 属性类型 | 属性含义 |
-|----|----|----|
-| name | text | Api Name |
-| label | text | 页面布局名 |
-| object_name | master_detail | 对象 |
-| type | select |  类型  |
-| profiles | lookup | 简档 |
-| buttons | grid | 操作 |
-| buttons.$.button_name | lookup | 名称 |
-| buttons.$.visible_on | textarea | 显示条件 |
-| fields | grid | 字段 |
-| fields.$ | object | Field |
-| fields.$.field_name | lookup | 字段 |
-| fields.$.is_readonly | boolean | 只读 |
-| fields.$.is_required | boolean | 必填 |
-| fields.$.group | text | 分组 |
-| fields.$.visible_on | textarea | 显示条件 |
-| related_lists | grid | 相关子表 |
-| related_lists.$.related_field_fullname | lookup | 子表名称 |
-| related_lists.$.label | text | 显示标题 |
-| related_lists.$.field_names | lookup | 显示的字段 |
-| related_lists.$.sort_field_name | lookup | 排序字段 |
-| related_lists.$.sort_order | select | 排序方式 |
-| related_lists.$.filters | textarea | 过滤规则 |
-| related_lists.$.visible_on | textarea | 显示条件 |
-| related_lists.$.page_size | number | 每页显示数量 |
 
 ## 自定义按钮
 自定义按钮分为 按钮.button.js 和 按钮.button.yml 两个文件。

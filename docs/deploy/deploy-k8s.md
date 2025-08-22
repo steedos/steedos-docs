@@ -1,5 +1,6 @@
 ---
 sidebar_label: Kubernetes
+sidebar_class_name: hidden
 sidebar_position: 1
 ---
 

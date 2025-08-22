@@ -13,7 +13,7 @@ When developing on the Steedos platform, understanding the role of metadata is c
 
 ### What is Metadata?
 
-Metadata in the Steedos environment refers to the data that describes the structure, data model, business logic, and even the UI of your applications. It encompasses a wide range of configurations, such as object definitions, fields, roles, workflows, and page layouts, amongst others.
+Metadata in the Steedos environment refers to the data that describes the structure, data model, business logic, and even the UI of your applications. It encompasses a wide range of configurations, such as object definitions, fields, roles, workflows, amongst others.
 
 ### Why is Metadata Important?
 

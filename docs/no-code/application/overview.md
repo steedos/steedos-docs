@@ -11,7 +11,6 @@ Steedos applications consist of a set of components that work together, includin
 
 - **Objects**: Custom data models used to store business data.
 - **Tabs**: Provide quick access to objects and features.
-- **Page Layouts**: Define the visual organization of data records.
 - **Reports** and **Dashboards**: Display business analytics and insights.
 - **Processes**: Automated workflows and business logic.
 

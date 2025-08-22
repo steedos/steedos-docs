@@ -9,7 +9,6 @@ Define ui-related metadata
 - Applications
 - Tabs
 - List Views
-- Page Layouts
 - Custom Buttons
 
 ## Applications
@@ -196,46 +195,6 @@ sort:
 | mobile_columns.$ | object | Mobile Displayed Column |
 | mobile_columns.$.field | lookup | Field |
 | sort_no | number | Sort Number |
-
-## Page Layouts
-ObjectName.PageLayout.layout.yml  
-Defines the record display of an object, including: profile, action buttons, displayed fields, related subtables.
-```
-name: customer
-buttons:
-  - button_name: standard_new
-  - button_name: standard_edit
-  - button_name: standard_delete
-sections:
-  - section_name: base_info
-    fields:
-      - field_name: name
-      - field_name: address
-      - field_name: contact
-      - field_name: telephone
-      - field_name: email
-  - section_name: contract_info
-    fields:
-      - field_name: contract_no
-      - field_name: contract_type
-      - field_name: contract_start_date
-      - field_name: contract_end_date
-```
-
-| Property Name | Property Type | Description |
-|----|----|----|
-| label | text | Display Name |
-| name | text | API Name |
-| object_name | master_detail | Object |
-| buttons | lookup | Action Buttons |
-| buttons.$ | object | Button |
-| buttons.$.button_name | lookup | Button |
-| sections | grid | Layout Sections |
-| sections.$ | object | Section |
-| sections.$.section_name | lookup | Section Name |
-| sections.$.fields | grid | Displayed Fields |
-| sections.$.fields.$ | object | Displayed Field |
-| sections.$.fields.$.field_name | lookup | Field |
 
 ## Custom Buttons
 Button.button.yml  

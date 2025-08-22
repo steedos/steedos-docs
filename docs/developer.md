@@ -47,7 +47,7 @@ Steedos is a powerful low-code development platform, offering extensive no-code 
 
 ### [Custom User Interface](/no-code/application/app)
 
-- Steedos offers various tools and components, allowing users to customize the user interface of applications. For example, users can use "Page Layouts" and "Page Builders" to control how information is presented and the layout of interfaces.
+- Steedos offers various tools and components, allowing users to customize the user interface of applications. For example, users can use "Page Builders" to control how information is presented and the layout of interfaces.
 - The "Page Builder" also allows users to create attractive and responsive page designs by dragging and dropping interface components, without needing professional front-end development skills.
 - Additionally, users can create custom navigation menus, buttons, and actions, enhancing application interactivity and user experience.
 

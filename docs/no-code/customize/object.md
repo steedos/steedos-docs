@@ -35,19 +35,15 @@ Creating custom objects is the first step in defining the data model for your ap
    - After saving the object definition, add fields to store the data for records.
    - Create relationship fields as needed to link to records of other objects.
 
-6. **Configure Page Layouts**:
-   - Define the view and edit page layouts for records.
-   - Select the fields and related lists to be included in the page layouts.
-
-7. **Set Security**:
+6. **Set Security**:
    - Determine which user profiles can access the new object.
    - Set field-level security to control access to specific fields.
 
-8. **Save and Test**:
+7. **Save and Test**:
    - Save your custom object.
    - Create, view, and edit records in the application to test the object's configuration.
 
-9. **Review and Adjust**:
+8. **Review and Adjust**:
    - Make necessary adjustments to the object based on test results and user feedback.
    - Ensure the object meets the needs of business processes.
 

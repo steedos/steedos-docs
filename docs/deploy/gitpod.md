@@ -1,5 +1,6 @@
 ---
 sidebar_position: 99
+sidebar_class_name: hidden
 ---
 
 # Try with Gitpod
