@@ -1,0 +1,23 @@
+---
+title: Components Reference
+---
+
+## Amis native components
+
+Amis has a variety of native components [Amis components](https://aisuda.bce.baidu.com/amis/zh-CN/components)。
+
+## steedos components
+
+We have extended  components for Amis to quickly implement various interface capabilities of steedos.
+
+## Custom components
+
+[Amis](https://aisuda.bce.baidu.com/amis/zh-CN/docs) Amis provides a robust set of component functionality that can meet the UI interface needs of most business scenarios. 
+
+However, if there are specific scenarios where custom components are more appropriate, they can be developed and integrated into the Amis designer using customized asset packages. This allows for the creation of any UI effect desired.
+
+To configure the asset package address, simply set the environment variable `STEEDOS_PUBLIC_PAGE_ASSETURLS` to the desired package address. Steedos will automatically load and integrate the relevant custom components into the Amis engine based on the resource package address specified in the asset package. These packages can be hosted anywhere that is accessible, including npm, unpkg.com, or other remote development environments.
+
+```bash
+STEEDOS_PUBLIC_PAGE_ASSETURLS=https://unpkg.com/@steedos-widgets/example@0.0.6/dist/assets.json
+```

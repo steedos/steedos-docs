@@ -16,7 +16,7 @@ jobs:
         run: yarn install
 
       - name: Build Docusaurus site
-        run: yarn build:cn
+        run: yarn build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1

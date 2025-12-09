@@ -1,0 +1,35 @@
+---
+title: REST API
+sidebar_position: 30
+---
+
+如果 Steedos 生成的标准 API 不能满足业务需求，您可以编写自定义 API 来在服务器上处理业务数据。
+
+## API Definition
+
+您可以通过指定“REST”参数，在微服务中将一个 API 定义为“动作”。这将当前动作声明为一个 API，使您能够实现符合业务需求的自定义功能。
+
+生成的API格式为: `/service/api/{serviceName}/{path}`
+
+```js
+module.exports = {
+  name: "example-service", // serviceName
+
+  actions: {
+    hello: {
+      rest: { method: 'GET', path: '/hello/:name' }, // /service/api/example-service/hello/:name
+      handler(ctx) {
+        return {
+          data: 'Welcome ' + ctx.params.name
+        }
+      }
+    },
+    me: {
+      rest: { method: 'GET', path: '/me' }, // /service/api/example-service/me
+      async handler(ctx) {
+        return ctx.meta.user
+      }
+    },
+  }
+}
+```

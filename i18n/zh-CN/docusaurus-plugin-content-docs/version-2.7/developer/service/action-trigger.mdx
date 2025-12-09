@@ -1,0 +1,76 @@
+---
+title: 触发器
+sidebar_position: 40
+---
+
+通过编写触发器，您可以在记录创建、删除和更改之前和之后自动触发服务器端代码，实现个性化的数据验证和处理。
+
+## 定义触发器
+
+在微服务中，您可以定义一个操作，并为其添加触发器参数，这相当于将此操作定义为触发器。
+
+```js
+actions: {
+    spaceUsersBeforeUpdate: {
+        trigger: { 
+            listenTo: 'space_users', 
+            when: ['beforeInsert', 'beforeUpdate']
+        },
+        async handler(ctx) {
+            this.broker.logger.debug('spaceUsersBeforeUpdate', ctx)
+        }   
+    }
+}
+```
+
+## 触发器参数
+
+```js
+    trigger: { 
+        listenTo: 'space_users', 
+        when: ['beforeInsert', 'beforeUpdate']
+    },
+```
+
+### 监听对象
+
+“listenTo”参数用于指定应用触发器的对象。该参数用于定义触发器的监听对象，并表明只有当指定对象受到记录创建、删除或更改的影响时，触发器才会被激活。换句话说，它允许触发器侦听特定对象，并根据对这些对象所做的更改执行相应的数据验证和处理。
+
+### 事件触发前
+
+事件前的触发器可以用来验证用户输入的数据是否正确。如果存在问题，将抛出错误消息并反馈给前端操作页面。它还可以与权限控制结合使用，验证当前操作是否正确。
+
+* beforeInsert
+* beforeUpdate
+* beforeDelete
+* beforeFind
+
+### 事件触发后
+
+事件后的触发器可以用来执行关联事件，例如在任务创建后向指定人员发送通知。
+
+* afterFind
+* afterInsert
+* afterUpdate
+* afterDelete
+
+## 触发器执行
+
+在触发器执行函数中，您可以使用 "ctx.params" 获取以下变量。
+
+变量 | 用途
+-- | --
+isInsert | 如果此触发器由插入操作触发（来自 Steedos 用户界面、服务或 API），则返回 true。
+isUpdate | 如果此触发器由更新操作触发（来自 Steedos 用户界面、服务或 API），则返回 true。
+isDelete | 如果此触发器由删除操作触发（来自 Steedos 用户界面、服务或 API），则返回 true。
+isFind | 如果此触发器由查询操作触发（来自 Steedos 用户界面、服务或 API），则返回 true。
+isBefore | 如果此触发器在任何记录操作之前触发，则返回 true。
+isAfter | 如果此触发器在所有记录操作之后触发，则返回 true。
+id | 记录的唯一标识符 [字符串]。
+doc | 需要添加/修改的记录内容 [json]。
+previousDoc | 修改/删除前的记录 [json]，在 afterUpdate 或 afterDelete 被触发时存在。
+userId | 当前用户的唯一标识符 [字符串]。
+spaceId | 当前工作空间 [字符串]。
+objectName | 当前对象名称 [字符串]。
+query | 查询数据相关参数 [json]，在 beforeFind 被触发时存在。
+data | 查询结果，在 afterFind 被触发时存在。

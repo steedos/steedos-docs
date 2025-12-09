@@ -47,12 +47,12 @@ const config = {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
                     routeBasePath: "/",
-                    // lastVersion: 'current',
-                    // versions: {
-                    //   current: {
-                    //     label: '2.5',
-                    //   },
-                    // },
+                    lastVersion: 'current',
+                    versions: {
+                      current: {
+                        label: '3.0',
+                      },
+                    },
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl: 'https://github.com/steedos/steedos-docs/tree/master/',
@@ -140,24 +140,24 @@ const config = {
                     type: 'search',
                     position: 'right',
                 },
-                {
-                    href: 'https://docs.steedos.com',
-                    position: 'right',
-                    html: 'English',
-                },
-                {
-                    href: 'https://docs.steedos.cn',
-                    position: 'right',
-                    html: '中文',
-                },
                 // {
-                //   type: 'docsVersionDropdown',
-                //   position: 'right',
+                //     href: 'https://docs.steedos.com',
+                //     position: 'right',
+                //     html: 'English',
                 // },
                 // {
-                //   type: 'localeDropdown',
-                //   position: 'right',
+                //     href: 'https://docs.steedos.cn',
+                //     position: 'right',
+                //     html: '中文',
                 // },
+                {
+                  type: 'docsVersionDropdown',
+                  position: 'right',
+                },
+                {
+                  type: 'localeDropdown',
+                  position: 'right',
+                },
                 {
                     href: 'https://github.com/steedos/steedos-platform',
                     position: 'right',
