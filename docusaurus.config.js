@@ -130,12 +130,12 @@ const config = {
                     sidebarId: 'developer',
                     label: 'Developer',
                 },
-                {
-                    type: 'docSidebar',
-                    position: 'left',
-                    sidebarId: 'solutions',
-                    label: 'Solutions',
-                },
+                // {
+                //     type: 'docSidebar',
+                //     position: 'left',
+                //     sidebarId: 'solutions',
+                //     label: 'Solutions',
+                // },
                 {
                     type: 'search',
                     position: 'right',
