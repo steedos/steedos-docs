@@ -47,7 +47,7 @@ yarn install
 yarn start
 ```
 
-### 3. 访问控制台
+### 访问控制台
 
 服务启动后，在浏览器中访问 `http://localhost`。
 

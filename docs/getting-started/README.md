@@ -46,7 +46,7 @@ yarn install
 yarn start
 ```
 
-### 3\. Access the Console
+### Access the Console
 
 Once the service starts, open your browser and visit `http://localhost`.
 
