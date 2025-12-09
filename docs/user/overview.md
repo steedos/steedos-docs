@@ -37,7 +37,7 @@ Users can manage their personal information and settings by clicking on the prof
 
 Upon logging into Steedos Platform, you will be greeted with an intuitive homepage that provides quick access to the most important information, including tasks, recently viewed records, and custom components. The navigation bar is located at the top of the page, offering access to different modules and applications. On the left is the App Launcher, allowing you to easily switch and access different applications. The footer at the bottom of the page provides additional resources and help links.
 
-![Object Page](/../static/img/zh-CN/listviews.png)
+![Object Page](/img/zh-CN/listviews.png)
 
 ## Data Management
 
@@ -51,11 +51,11 @@ Effectively browsing and searching records is a crucial part of daily work in th
 
 2. **Using List Views**: Each object has one or more list views that display collections of records. You can use existing list views like "My Open Opportunities" or create custom views to display records that meet specific criteria.
 
-![Scrolling Pagination](/../static/img/zh-CN/create_listviews.gif)
+![Scrolling Pagination](/img/zh-CN/create_listviews.gif)
 
 3. **Viewing Record Details**: By clicking on the name of a record, you can view its detailed information. On the detail page, you can see all the relevant fields and other records associated with it.
 
-![](/../static/img/zh-CN/record_related.png)
+![](/img/zh-CN/record_related.png)
 
 
 
@@ -67,7 +67,7 @@ Effectively browsing and searching records is a crucial part of daily work in th
 
 With these browsing and searching functionalities, Steedos users can quickly find the information they need, thus improving work efficiency and data management capabilities.
 
-![](/../static/img/zh-CN/search_records.gif)
+![](/img/zh-CN/search_records.gif)
 
 ### Record Creation and Management
 
@@ -100,7 +100,7 @@ Clicking "related" will show the attachment list of the current record.
 
 If the "Track Field History" feature is enabled in the object, the system will automatically record the modification history of data in fields. Once this feature is enabled, when displaying object records, if the current user has the "modifyAllRecords" permission for the current object, the "Related Field History" will also be displayed, allowing you to view the field modification history of this record. Users without the "modifyAllRecords" permission will not see the "Related Field History" records.
 
-![](/../static/img/zh-CN/audit_records.png)
+![](/img/zh-CN/audit_records.png)
 
 For system administrators or other users set with `permission_sets = admin`, in Settings - Advanced - Field History, you can see the field modification history records of all objects that have enabled "Track Field History".
 
