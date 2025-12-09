@@ -9,7 +9,7 @@ sidebar_position: 5
 
 无论是构建 CRM、ERP，还是深度定制的业务系统，Steedos 都提供从数据建模、界面生成到流程自动化的全栈能力。
 
-![Steedos Overview](/img/platform/steedos-dx.png)
+![steedos overview](/diagrams/steedos-overview.svg)
 
 ## 🌟 主要特性
 

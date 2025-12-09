@@ -9,8 +9,7 @@ sidebar_position: 5
 
 Whether you are building a CRM, ERP, or a highly customized business system, Steedos provides full-stack capabilities ranging from data modeling and UI generation to process automation.
 
-![Steedos Overview](/img/platform/steedos-dx.png)
-
+![steedos overview](/diagrams/steedos-overview.svg)
 ## 🌟 Key Features
 
   * **🚀 Rapid Development**: Define data objects using simple JSON/YAML configuration files to automatically generate CRUD APIs and user interfaces.

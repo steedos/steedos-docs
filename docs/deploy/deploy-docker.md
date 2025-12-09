@@ -34,12 +34,11 @@ version: "3.9"
 services:
 
   steedos:
-    image: steedos/steedos-community:latest
+    image: steedos/steedos-community:3.0
     ports:
       - "80:80"        # Steedos
       - "27017:27017"  # MongoDB
       - "9001:9001"    # Supervisor
-      - "6379:6379"    # Redis
     environment:
       - ROOT_URL=http://127.0.0.1 # Replace with your actual domain or IP
     volumes:
@@ -58,12 +57,11 @@ version: "3.9"
 services:
 
   steedos:
-    image: steedos/steedos-enterprise:latest
+    image: steedos/steedos-enterprise:3.0
     ports:
       - "80:80"        # Steedos
       - "27017:27017"  # MongoDB
       - "9001:9001"    # Supervisor
-      - "6379:6379"    # Redis
     environment:
       - ROOT_URL=http://127.0.0.1 # Replace with your actual domain or IP
       - STEEDOS_LICENSE="your_license_key_here"  # Replace with your actual license key
