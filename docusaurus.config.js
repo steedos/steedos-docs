@@ -8,8 +8,8 @@ const darkCodeTheme = themes.dracula;
 console.log(process.env.NODE_ENV)
     /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: process.env.SITE_TITLE || 'Steedos Docs',
-    tagline: 'Open source alterative to Salesforce Platform.',
+    title: process.env.SITE_TITLE || 'Steedos Platform',
+    tagline: 'The Open Source Low-Code Platform for Enterprise.',
     favicon: 'img/favicon.png',
 
     // Set the production url of your site here
