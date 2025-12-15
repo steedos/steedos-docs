@@ -1,82 +1,74 @@
----
-title: What is Steedos DX?
-sidebar_position: 1
----
+# 开发者指南
 
-# How Steedos Developer Experience Changes Your Way of Working
+:::info 核心理念
+**低代码 (Low-Code) + 专业代码 (Pro-Code) = 无限可能**
 
-Steedos Developer Experience (DX) is a new way of managing and developing applications on the Steedos low-code platform throughout their entire lifecycle. It combines the best features of a low-code platform, achieving source-driven development, team collaboration with governance, and a new level of custom app development on Steedos.
+  * 使用 **无代码** 能力解决 80% 的通用需求（CRUD、简单流程、报表），实现“快”。
+  * 使用 **专业代码** 能力解决 20% 的核心差异化需求（复杂算法、系统集成、定制 UI），实现“深”。
+:::
 
-![Steedos DX](/img/platform/steedos-dx.png)
+欢迎来到 Steedos 的代码世界。
 
-## Highlights of Steedos DX
+如果你是一名程序员，你可能对“低代码平台”心存疑虑：*“它会不会限制我的发挥？”*、*“我是不是要学习一堆私有的、古怪的语法？”*
 
-### 1. Source-driven development
-- Track changes and history with version control systems like Git.
-- Provide a single source of truth for your organization's metadata, ensuring consistency across environments.
+请放心。Steedos 3.0 是建立在标准技术栈 (**Node.js, MongoDB, React**) 之上的。在这里，你依然是你熟悉的那个全栈工程师，只是你的工具箱里多了一套强大的加速引擎。
 
-### 2. Team Collaboration
-- Supports concurrent development, promoting teamwork and parallel workflows.
-- Reduces conflicts through isolated development environments and clear insight into changes.
+-----
 
-### 3. Continuous Integration and Deployment (CI/CD)
-- Integrates with popular CI/CD tools for automated testing and deployment.
-- Encourages a robust development cycle through continuous feedback and iterative improvements.
+## 你能在这里做什么？
 
-### 4. Environment Management
-- Run your packages on different Steedos environments for various purposes (development, testing, staging).
-- Ensures isolation between production and non-production environments.
+作为开发者，你可以接管系统的任何层面：
 
-### 5. Package and Dependency Management
-- Organize metadata and settings into logical units (packages) that are easy to manage and deploy.
-- Handle dependencies cleanly, ensuring coordinated functioning and deployment when necessary.
+### 1\. 后端扩展 (Node.js)
 
-### 6. Modular Deployment
-- Allows for deploying specific features or updates without a full-scale deployment.
-- Enhances agility and responsiveness to business requirements.
+  * **触发器 (Triggers)**：在数据保存前/后拦截请求，执行复杂校验或计算（例如：写入合同前，自动去 ERP 系统查一下库存）。
+  * **自定义 API**：编写标准的 REST 或 GraphQL API，供第三方系统调用。
+  * **微服务集成**：利用 Moleculer 框架，编写独立的微服务模块，与 Steedos 核心解耦。
 
-## No-Code Development
+### 2\. 前端扩展 (React + Amis)
 
-Steedos is a powerful low-code development platform, offering extensive no-code development capabilities enabling even non-technical users to create complex business applications. Here are some core features of Steedos in no-code development:
+  * **自定义组件**：用 React 写一个炫酷的“3D 模型展示组件”，并在页面设计器里拖拽使用。
+  * **复杂交互逻辑**：编写 JavaScript 脚本来控制表单的联动、校验和动态效果。
+  * **主题定制**：使用 CSS/SASS 深度定制系统 UI，甚至重写整个登录页。
 
-### [Custom Objects](/no-code/customize/)
+### 3\. 工程化与 DevOps
 
-- Steedos allows users to create custom business objects through its intuitive interface, without writing any code. These custom objects can represent any entity in business operations (e.g., customers, projects, contracts, etc.).
-- Users can define their own fields for these objects, accommodating various data types (such as text, numbers, dates, etc.), ensuring structured and organized data.
-- By establishing relationships between objects, one can simulate real-world business relationships, enhancing data coherence and usability.
+  * **代码即配置**：所有的对象、字段、权限配置都可以导出为 `.yml` 文件。
+  * **版本控制**：将这些配置文件提交到 Git 仓库，进行 Code Review 和版本回滚。
+  * **CI/CD**：通过 GitHub Actions 或 Jenkins 自动部署应用到生产环境。
 
-### [Custom User Interface](/no-code/application/app)
+-----
 
-- Steedos offers various tools and components, allowing users to customize the user interface of applications. For example, users can use "Page Builders" to control how information is presented and the layout of interfaces.
-- The "Page Builder" also allows users to create attractive and responsive page designs by dragging and dropping interface components, without needing professional front-end development skills.
-- Additionally, users can create custom navigation menus, buttons, and actions, enhancing application interactivity and user experience.
+## 开发工作流 (The Workflow)
 
-### [Automated Workflows](/automation/)
+Steedos 采用 **"Metadata Driven" (元数据驱动)** 的开发模式。你的工作流通常是这样的：
 
-- With Steedos's "Automation Actions" and "Workflow Rules," users can design and automate business processes, such as sending automated email notifications, updating record fields, assigning tasks, etc.
-- The "Process Designer" is a powerful tool providing a visual interface where users can set trigger conditions and define automated sequences of steps (known as processes).
-- Besides standard automation features, users can also introduce complex business logic through formulas and business rules, ensuring the flexibility and accuracy of processes.
+1.  **拉取 (Retrieve)**：使用 CLI 工具，将线上的配置（对象、权限等）拉取到本地，变成 `.yml` 文件。
+2.  **开发 (Code)**：
+      * 在 VS Code 中修改 `.yml` 文件。
+      * 新建 `.js` 文件编写触发器逻辑。
+      * 新建 `.tsx` 文件编写 React 组件。
+3.  **调试 (Debug)**：在本地启动 Steedos 服务，实时预览修改效果。
+4.  **推送 (Deploy)**：代码测试通过后，使用 CLI 将元数据和代码推送到测试环境或生产环境。
 
-## Source-Driven Development with Steedos DX
+-----
 
-Steedos DX changes the way low-code application development lifecycle management is approached, offering a more modern, source-driven development method. It includes a whole set of tools enabling developers to collaborate more efficiently, and to build Steedos apps in a more organized manner, more in line with best practices.
 
-### [Project Setup](/developer/setup/)
+## 必备技能清单
 
-The Steedos Developer Experience (DX) is a new approach for managing and developing applications on the Steedos low-code platform, spanning the entire application lifecycle. It brings together the best features of low-code platforms, enabling source-driven development, governed team collaboration, and a new level of custom application development on Steedos.
+在开始之前，我们建议您具备以下基础知识：
 
-### [Package Development](/developer/package/)
+  * **JavaScript (ES6+) / TypeScript**：这是 Steedos 开发的通用语言。
+  * **JSON & YAML**：配置文件的主要格式。
+  * **Node.js 基础**：理解 `npm/yarn`，模块导入导出。
+  * **React 基础**：(仅前端开发需要) 理解组件、Props 和 State。
+  * **MongoDB 查询语法**：(可选) 有助于编写复杂的数据库查询。
 
-Steedos packages store custom objects and custom object translations in intuitive subdirectories. The source format makes it easier for you to find what you want to change or update. Say goodbye to messy merges.
+-----
 
-### [Package Microservice Development](/developer/service/)
-
-The Steedos platform is based on the Moleculer microservices architecture, where each package is a [Moleculer Service](https://moleculer.services/docs/0.14/services). You can define REST APIs, triggers, actions, methods, and subscribe to events in the service.
-
-### [Micro Page Builder](/developer/micro-page/)
-
-Introducing **Steedos Micro Page Builder**, a powerful micro page development toolkit rooted in Baidu's AMIS technology. this platform facilitates the creation of custom pages and components and makes it easier with its visual design tool.
-
-### [API Integration](/developer/api/)
-
-Steedos offers a rich set of APIs allowing integration with external systems and third-party applications. This ensures that your Steedos instance can seamlessly connect with your entire enterprise technology stack.
+:::tip 给开发者的建议
+不要试图用代码去重新发明轮子。
+在开始写代码之前，先问自己：**“这个功能用无代码配置能实现吗？”**
+  * 如果能，请优先使用配置（因为配置更稳定、更容易维护）。
+  * 如果不能，或者配置极其别扭，那么——**Show me the code\!**
+:::
