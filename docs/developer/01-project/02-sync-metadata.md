@@ -1,74 +1,132 @@
----
-title: 同步元数据
-sidebar_position: 50
----
+# 元数据同步
 
-通过 VS Code 插件，可以将可视化开发的元数据同步为项目源码，实现元数据的版本管理，并进一步利用传统开发中的DevOps工具实现团队开发和自动化。
+:::info 学习目标
 
-## 配置元数据同步
+  * 安装并配置 Steedos VS Code 扩展。
+  * **核心技能**：在编辑器侧边栏直接浏览服务器上的元数据。
+  * **核心技能**：一键“拉取 (Retrieve)”和“部署 (Deploy)”。
+  * 掌握多软件包 (Packages) 环境下的路径配置。
+:::
 
-以下是要使用元数据同步功能需要在本地开发环境中进行的必要配置操作，在我们推荐的远程开发环境中可以跳过这些配置过程 ，因为我们已经在Gitpod远程开发环境中预先处理好了这些配置。
+**Steedos VS Code 扩展** 提供了可视化的元数据管理面板，让你无需记忆命令即可完成同步。
 
-### 安装steedos命令
+## 1\. 安装与准备
 
-安装或更新Steedos CLI命令工具
+### 安装 VS Code 插件
 
-```bash
-npm i steedos-cli --global
-```
+1.  打开 Visual Studio Code。
+2.  点击左侧的 **扩展 (Extensions)** 图标（或按 `Ctrl+Shift+X`）。
+3.  搜索 `Steedos`。
+4.  选择 **Steedos Extension Pack** 并点击 **Install**。
+    *(注：该扩展包会自动安装核心的 "Steedos CLI Integration" 插件)*
 
-### 安装 vs code 及插件
+-----
 
-[参考官方文件下载并安装 VS Code](https://code.visualstudio.com/)。
+## 2\. 连接到服务器
 
-打开 VS Code，在扩展商城中搜索 Steedos，选择`Steedos Extension Pack`”，并点击`Install`”开始安装，默认该扩展会同时安装“Steedos CLI Integration”扩展，所以不需要单独安装CLI扩展。
-
- ![](https://console.steedos.cn/api/files/images/QEtoyPozXdRDbWocP)
+插件安装后，需要告诉它去连接哪个 Steedos 服务。我们推荐使用 **环境变量** 来配置，以保证安全。
 
 ### 配置环境变量
 
-建议在 `.env.local` 中配置本地环境变量。环境变量中可能会有 API_KEY等保密信息，而此文件默认不会被提交到 git 仓库中。
+在你的项目根目录下，创建或编辑 `.env.local` 文件（此文件通常不会被提交到 Git，适合存放敏感信息）。
 
-创建或修改 `.env.local` 文件，设置环境变量。
+添加以下两行：
 
 ```bash
-METADATA_SERVER=#Steedos服务器URL
-METADATA_APIKEY=#Steedos API Key
+# 你的 Steedos 服务地址 (本地开发通常是 http://localhost:3000)
+METADATA_SERVER=http://localhost:3000
+
+# 你的 API Key (用于身份验证)
+METADATA_APIKEY=这里填入你的API_Key
 ```
 
-## 同步元数据
+:::tip 如何获取 API Key?
 
-### 浏览并下载元数据
+1.  登录 Steedos 系统。
+2.  点击右上角头像 -\> **个人设置**。
+3.  在“API 密钥”部分可以查看或生成新的 Key。
+:::
 
-前述配置完成后，在 VS Code 的左侧工具栏会出现下图的图标，单击该图标，则会自动展示可以下载的元数据清单，您只需要点击所需文件的右边下载图标便可将其下载到本地文件。
+### 验证连接
 
-需要注意的是，如果本地已经存在改文件则会直接覆盖，所以下载元数据前，应先将现有代码提交到git仓库，以便查看本次下载修改的文件。
+配置完成后，点击 VS Code 左侧活动栏中新增的 **Steedos 图标**（通常是一个 S 形图标）。
 
- ![](https://console.steedos.cn/api/files/images/8o3JqQDox4Gijxorn)如果未配置元数据同步相关的环境变量的话，点击右上角的刷新按钮、下载按钮等都会报错`Please run command, steedos source:config`，我们只要按上面“配置环境变量”小节把相关环境变量配置上，或者在项目命令行上运行指令`steedos source:config`在向导中配置相关环境变量即可。
+  * 如果能看到元数据列表（如 Objects, Layouts），说明连接成功。
+  * 如果提示报错，请尝试在项目根目录运行命令生成配置：
+    ```bash
+    npx steedos source:config
+    ```
 
-### 上传元数据
+-----
 
-如果从 git 仓库更新到其他人修改的元数据，或是直接修改了元数据的配置文件，可以通过上传命令将元数据上传到Steedos服务器中。
+## 3\. 拉取：从服务器下载 (Retrieve)
 
-在项目文件夹中选择需要上传的元数据，点击右键，并选择`Steedos: Deploy Source` 菜单。
+**场景**：你在浏览器里通过“设置”界面修改了“合同”对象的字段，现在想把这些修改保存到本地代码里。
 
- ![](https://console.steedos.cn/api/files/images/ju5NqucSwB3H6EtKu)使用SteedosVS Code代码同步插件不但可以通过“Deploy Source”来把本地的代码发布到数据库中，也可以通过“Retrieve Source”操作来把在界面上可视化开发的元数据同步成代码下载到本地，对于可以通过在界面上进行可视化开发来维护的元数据，我们推荐开发人员不要在本地VS Code中开发，以尽量保证系统中的元数据配置始终来源于同一个方向，这样可以避免元数据重复等问题的发生。
+1.  点击 VS Code 左侧的 **Steedos 图标**。
+2.  在面板中，你会看到服务器上所有的元数据分类（Objects, Apps, Tabs 等）。
+3.  展开 `Objects`，找到 `contracts (合同)`。
+4.  点击该项右侧的 **下载图标 (Cloud Download)**。
 
-### 同步指定文件或文件夹
+:::warning 覆盖警告
+**拉取操作会直接覆盖本地文件！**
+如果你的本地代码中有未提交的修改，拉取后这些修改将丢失。
+**最佳实践**：在执行 Retrieve 之前，永远先将本地代码 **Commit** 到 Git 仓库。
+:::
 
-元数据已经同步到本地后，可以浏览项目文件夹，点击对应的元数据文件或文件夹，上传或下载对应元数据。
+-----
 
- ![](https://console.steedos.cn/api/files/images/t8sHRTEsPFr2PL8JZ)
+## 4\. 部署：上传到服务器 (Deploy)
 
-### 设置元数据同步路径
+**场景**：你在 VS Code 里手动修改了 `contracts.object.yml` 文件，或者从 Git 拉取了同事的代码，现在想让它在系统里生效。
 
-需要注意的是默认情况下上面的操作会把代码同步到默认软件包`steedos-app`目录中，如果需要把界面上配置的元数据同步到`steedos-packages`文件夹下的软件包目录中，我们需要先配置下以下环境变量来变更默认软件包的位置，或者您也可以按上面“切换默认软件包”小节提到的使用VSCODE编辑器的“查看→命令面板”中的`setDefaultPackagePath`命令来自动创建相关环境变量：
+1.  在 VS Code 的 **资源管理器 (Explorer)** 中，找到你要上传的文件（例如 `steedos-app/main/default/objects/contracts.object.yml`）。
+2.  在文件（或文件夹）上点击 **鼠标右键**。
+3.  选择菜单中的 **Steedos: Deploy Source**。
+
+VS Code 右下角会提示“Deploying...”，成功后会提示“Source deployed successfully”。
+
+-----
+
+## 5\. 进阶配置 (多软件包支持)
+
+默认情况下，同步下来的文件会放在 `steedos-app` 目录下。如果你的项目比较复杂，使用了多个软件包（例如 `steedos-packages/finance`, `steedos-packages/hr`），你需要告诉插件当前要把代码同步到哪里。
+
+### 设置默认同步路径
+
+你可以通过配置环境变量 `DEFAULT_PACKAGE_PATH` 来指定当前工作的软件包目录。
+
+**方法 A：通过命令面板切换（推荐）**
+
+1.  按 `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`) 打开命令面板。
+2.  输入并选择 `Steedos: Set Default Package Path`。
+3.  选择你想要同步的文件夹（例如 `steedos-packages/my-custom-pkg`）。
+
+**方法 B：手动配置 .env.local**
 
 ```bash
 [package]
-DEFAULT_PACKAGE_PATH=steedos-packages/xxx #配置为相关软件包目录
+DEFAULT_PACKAGE_PATH=steedos-packages/my-custom-pkg
 ```
 
-在配置该环境变量后，再点击Steedos插件面板上相关元数据右侧的下载按钮即可把代码同步到`xxx`这个软件包的目录下，而不是同步到默认软件包目录下。
+配置生效后：
 
-同样的在配置上面默认软件包环境变量后，只能在该软件包目录下的文件或文件夹上才可以执行`Deploy Source`，`Retrieve Source`等右键操作。
+  * 点击侧边栏的“下载”按钮，元数据会下载到你指定的这个目录下。
+  * **注意**：只有位于该目录下的文件，右键菜单中的 `Deploy Source` 才会生效。
+
+-----
+
+## 常见问题 (FAQ)
+
+**Q: 侧边栏一直转圈加载不出来？**
+A: 请检查：
+
+1.  Steedos 服务是否已启动？
+2.  `.env.local` 中的 `METADATA_SERVER` 地址是否正确？
+3.  API Key 是否过期？
+
+**Q: 报错 `Connection refused`？**
+A: 这通常是因为服务没起起来。请确保在终端运行了 `yarn start` 或 `docker-compose up`。
+
+**Q: 为什么我右键菜单里没有 `Steedos: Deploy Source`？**
+A: 请检查你点击的文件是否位于有效的 Steedos 项目结构中（通常需要在 `steedos-app` 或你配置的 `DEFAULT_PACKAGE_PATH` 目录下）。插件会自动检测当前文件路径是否合法。
