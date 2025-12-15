@@ -1,98 +1,74 @@
+# 核心术语表 (Glossary)
 
-# Basic Concepts
+:::info 导读
+Steedos 的许多概念源自 Salesforce。如果您觉得某些词汇（如“对象”、“简档”）听起来很陌生，不要慌。
+请把这份文档当作一本 **“汉汉词典”**，随时查阅。
+:::
 
-Understanding the core concepts of Steedos Platform is the key to mastering low-code development. Unlike traditional development where you define database schemas and write separate backend code, Steedos uses a **Metadata Driven** architecture.
+## 📚 数据模型 (Data Model)
 
-This means you describe *what* your application should look like (Metadata), and the platform handles *how* to build, render, and execute it.
+*这是系统的骨架，决定了数据长什么样。*
 
-![Steedos Overview](/img/platform/steedos-dx.png)
-
-## 1\. Metadata
-
-Metadata is "data about data." In Steedos, metadata is the source code of your business application. It defines the data model, user interface layouts, permission rules, and automation logic.
-
-  * **Format**: Metadata is stored as simple YAML or JSON files.
-  * **Benefits**: Because your app is defined by configuration files, it is easy to version control (Git), easy to migrate between environments, and readable by both humans and machines.
-
-
-## 2\. Objects
-
-The **Object** is the fundamental building block of Steedos. If you are coming from a SQL background, an Object is similar to a Database Table, but it is much more powerful.
-
-An Object definition includes:
-
-  * **Database Schema**: How data is stored (in MongoDB).
-  * **API Definitions**: GraphQL and REST endpoints are automatically generated.
-  * **UI Configuration**: How the data looks in List Views and Forms.
-
-**Standard Objects vs. Custom Objects:**
-
-  * **Standard Objects**: Out-of-the-box objects provided by the platform (e.g., `users`, `organizations`, `space`).
-  * **Custom Objects**: Objects you create to meet specific business needs (e.g., `project`, `contract`, `vehicle`).
-
-Example of a simple Object definition (`car.object.yml`):
-
-```yaml
-name: car
-label: Vehicle
-icon: car
-fields: ...
-```
-
-## 3\. Fields
-
-**Fields** define the individual data points within an Object. They correspond to "Columns" in a spreadsheet or database table.
-
-Steedos provides rich field types that go beyond simple text:
-
-  * **Basic Types**: Text, Number, Date, Boolean, Select.
-  * **Relational Types**:
-      * **Lookup**: Links to a record in another object (e.g., A *Project* looks up a *Manager*).
-      * **Master-Detail**: A strong parent-child relationship (e.g., *Order Items* belong to an *Order*).
-  * **Advanced Types**: Grid (Table within a form), Image, File, Formula, Summary.
-
-## 4\. Apps
-
-An **App** in Steedos is a container that groups related Objects and Tabs together to solve a specific business problem. It acts as a navigational wrapper.
-
-For example:
-
-  * **Sales CRM App**: Contains *Leads*, *Opportunities*, *Accounts*, and *Contacts*.
-  * **Project Management App**: Contains *Projects*, *Tasks*, and *Timesheets*.
-
-Users can switch between Apps using the App Launcher (the 9-dot menu) in the top-left corner of the interface.
-
-## 5\. Records
-
-**Records** are the actual data instances stored in the database. If an Object is a table, a Record is a "Row".
-
-  * Each record is automatically assigned a unique `_id`.
-  * Records respect permission rules defined in the metadata.
-  * Records can be accessed via the UI or the API.
-
-## 6\. Automation
-
-Logic in Steedos allows you to automate business processes without constant manual intervention.
-
-  * **Workflow Rules**: Automate standard actions like sending email alerts or updating fields when a record is created or updated.
-  * **Approval Processes**: Define complex approval chains (e.g., "If budget \> $5000, require VP approval").
-  * **Triggers**: Write custom Node.js code that executes `before` or `after` database operations (insert, update, delete).
-
-## 7\. Permissions (Security)
-
-Steedos employs a robust security model to ensure the right people see the right data.
-
-  * **Profiles**: Define what a user can *do* (e.g., "System Admin" vs. "Standard User"). It controls object-level permissions (Create, Read, Update, Delete).
-  * **Roles**: Define the hierarchy of the organization (e.g., Manager above Employee).
-  * **Sharing Rules**: Define which individual records a user can *see*. (e.g., "Users can only see records they own" or "Managers can see records owned by their subordinates").
-
-
-### Summary
-
-| Concept | Traditional Dev Equivalent | Steedos Role |
+| 术语 (Term) | 俗称 / 类比 | 解释 |
 | :--- | :--- | :--- |
-| **Object** | SQL Table + API Controller | Defines data & behavior |
-| **Field** | SQL Column | Defines data attributes |
-| **Record** | SQL Row | The actual data |
-| **Metadata** | Source Code / Config | The DNA of the app |
-| **Trigger** | Database Trigger / Hook | Backend logic |
+| **Object (对象)** | 数据表 / Table | **类比 Excel 的“工作表 (Sheet)”**。<br/>它是存储数据的容器。例如：“客户”是一个对象，“合同”也是一个对象。 |
+| **Field (字段)** | 列 / Column | **类比 Excel 的“列”**。<br/>它是对象中的属性。例如：客户的“姓名”、“电话”、“地址”就是字段。 |
+| **Record (记录)** | 行 / Row | **类比 Excel 的“行”**。<br/>它是具体的一条数据。例如：“张三”这个客户的所有信息，就是一条记录。 |
+| **Standard Object (标准对象)** | 内置表 | 系统出厂自带的对象。例如：`users` (人员)、`organizations` (部门)、`space_users` (成员)。 |
+| **Custom Object (自定义对象)** | 自建表 | 您根据业务需求创建的对象。例如：`projects` (项目)、`invoices` (发票)。 |
+| **Lookup (引用/相关表)** | 外键 / 弱关联 | 两个对象之间的连接。例如：在“合同”里选“客户”。删除客户时，合同通常**不会**被删除。 |
+| **Master-Detail (主子明细)** | 强关联 / 父子关系 | 两个对象之间的**强绑定**。例如：“报销单”和“报销明细”。删除报销单（主），明细（子）会**自动消失**。 |
+| **\_id (记录ID)** | 身份证号 | 每一条记录在数据库中唯一的、乱码一样的编号。例如 `64f1a2b3c...`。系统靠它来区分数据。 |
+
+-----
+
+## 🖥️ 用户界面 (User Interface)
+
+*这是系统的面孔，决定了用户怎么操作。*
+
+| 术语 (Term) | 俗称 / 类比 | 解释 |
+| :--- | :--- | :--- |
+| **App (应用)** | 工作台 / 文件夹 | **类比手机桌面的“文件夹”**。<br/>它不是一个独立的软件，而是一组常用菜单（选项卡）的集合。例如：“销售应用”包含客户、商机、合同。 |
+| **Tab (选项卡)** | 菜单入口 | 点击后能打开一个对象列表的按钮。**注意：** 创建了对象必须创建选项卡，用户才能在菜单里看见它。 |
+| **List View (列表视图)** | 筛选器 | **类比 Excel 的“筛选”**。<br/>保存好的过滤条件。例如：“我的待办任务”、“本周新增合同”。 |
+| **Amis** | 渲染引擎 | Steedos 使用的前端 UI 框架（百度开源）。它允许通过 JSON 配置来生成页面，支持拖拽设计。 |
+
+-----
+
+## 🤖 自动化 (Automation)
+
+*这是系统的大脑，决定了业务逻辑。*
+
+| 术语 (Term) | 俗称 / 类比 | 解释 |
+| :--- | :--- | :--- |
+| **Workflow Rule (工作流规则)** | 机器人 / IFTTT | **“如果...就...”**。<br/>全自动逻辑。例如：**如果**金额 \> 100万，**就**自动发邮件给老板。 |
+| **Approval Process (批准过程)** | 审批流 | 需要人工介入的流程。提交 -\> 锁定 -\> 经理审批 -\> 财务审批 -\> 结束。 |
+| **Trigger (触发器)** | 拦截器 / 钩子 | **程序员专用的高级逻辑**。<br/>一段代码脚本 (Node.js)。它可以在数据保存**前**拦截下来进行复杂校验（如：去库存系统查一下货够不够），或者保存**后**执行复杂计算。 |
+| **WebHook** | 消息推送 | 当数据变化时，系统向外部网址发送一个通知。常用于对接钉钉机器人、企业微信。 |
+
+-----
+
+## 🛡️ 权限与安全 (Security)
+
+*这是系统的门卫，决定了谁能看什么。*
+
+| 术语 (Term) | 俗称 / 类比 | 解释 |
+| :--- | :--- | :--- |
+| **User (用户)** | 账号 | 能够登录系统的人。 |
+| **Profile (简档)** | 职能 / 驾照 | **决定你能“做什么”**。<br/>例如：你有权“导出数据”吗？你有权“看到设置菜单”吗？每个用户必须有一个简档。 |
+| **Permission Set (权限集)** | 补充包 / VIP卡 | **决定你能“多做什么”**。<br/>一种灵活的权限补充。例如：张三只有普通权限，但我临时给他发一个“招聘管理权限集”，他就能面试人了。 |
+| **Sharing Rule (共享规则)** | 豁免权 | 一种特殊的规则，允许把原本保密的数据，共享给特定的人群查看。 |
+
+-----
+
+## ⚙️ 开发与架构 (Development)
+
+*这是系统的底层，开发者需要了解。*
+
+| 术语 (Term) | 俗称 | 解释 |
+| :--- | :--- | :--- |
+| **Metadata (元数据)** | 配置文件 / 图纸 | Steedos 的核心灵魂。所有对象、字段、权限的定义，都以 `.yml` 或 JSON 文件的形式存在。 |
+| **API Name (API 名称)** | 唯一标识符 | 对象或字段的英文代号（如 `contracts`, `amount`）。写代码或公式时，必须用这个名字，不能用中文名。 |
+| **GraphQL** | 万能接口 | Steedos 提供的一种查询语言。前端可以用它向后端一次性索取任何想要的数据组合。 |
+| **OData** | 标准接口 | 另一种标准的 REST API 协议。允许 Excel、Power BI 等外部工具直接连接 Steedos 数据库。 |
+| **Package (软件包)** | 插件 / 模块 | 一组相关功能的打包。例如将“进销存”功能打包成一个 Package，可以安装到其他 Steedos 系统中。 |
