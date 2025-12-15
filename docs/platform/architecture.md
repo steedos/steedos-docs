@@ -1,26 +1,103 @@
----
-title: Architecture
-sidebar_position: 40
----
+# 技术架构
 
-# Technical Architecture
+:::info 学习目标
 
-Steedos Platform is an open-source alternative to the Salesforce low-code platform, designed to provide similar capabilities with a flexible and scalable architecture. The backend is built on Node.js, the frontend uses Amis and React, and the database is powered by MongoDB. Here's an overview of Steedos Platform's technical architecture:
+  * 理解 Steedos 的核心灵魂：**元数据驱动 (Metadata Driven)**。
+  * 了解 **Node.js** 和 **MongoDB** 如何保证系统的速度和灵活性。
+  * 明白 **React + Amis** 如何实现“改配置即改界面”。
+  * 读懂为什么这种架构比传统开发更快、更稳。
+:::
 
-- **Backend with Node.js**: The backend of Steedos Platform is developed using Node.js, a widely adopted technology for server-side development. This choice allows Steedos to leverage Node.js's asynchronous, event-driven architecture, providing scalability and performance. Node.js is known for its extensive library support and robust community, ensuring that Steedos remains up-to-date with the latest features and best practices.
+Steedos 并不是一个传统的软件，它更像是一个 **“会读图纸的机器人”**。
 
-- **Frontend with Amis and React**: The frontend of Steedos Platform is built using Amis, a low-code framework, and React, a popular JavaScript library for building user interfaces. Amis allows for rapid development with minimal coding, while React provides the flexibility to create complex and interactive UI components. This combination enables users to build custom interfaces quickly and efficiently.
+传统软件开发像是在 **“画油画”** ——程序员一笔一画地把界面写死在代码里，想改一个按钮的位置，必须刮掉重画（修改代码、编译、发布）。
 
-- **Database with MongoDB**: Steedos Platform uses MongoDB as its primary database. MongoDB is a NoSQL database that offers high performance, scalability, and flexibility. Its document-oriented structure aligns well with Steedos's data-centric architecture, allowing for easy storage and retrieval of complex data. MongoDB's support for horizontal scaling ensures that Steedos can handle large datasets and high traffic volumes.
+而 Steedos 是 **“搭积木”** ——我们只写下“图纸”（元数据），系统引擎会自动读取图纸，瞬间生成软件。
 
-- **Low-Code Development**: The platform's low-code approach empowers users to create applications with minimal coding, making it accessible to a broader range of developers. This approach reduces the time required to develop applications and enables rapid iteration and prototyping.
+-----
 
-- **Workflow and Automation**: Steedos Platform includes robust workflow and automation capabilities, allowing users to create business processes without extensive custom coding. The platform supports both visual workflow design and automation rules, providing flexibility in defining business logic.
+## 1\. 核心灵魂：元数据驱动 (Metadata Driven)
 
-- **Integration and APIs**: Steedos Platform offers a comprehensive set of APIs for integration with external systems. These APIs allow for seamless data exchange and interoperability with other software applications. The platform also supports custom API development for more specialized integration needs.
+这是 Steedos 最重要的概念。
 
-- **Security and Compliance**: Security is a top priority for Steedos Platform. It provides role-based access control, data encryption, and compliance with industry standards to ensure data protection and privacy. The platform also includes audit logs and security features for enhanced accountability.
+### 什么是元数据？
 
-- **Scalability and Flexibility**: With its cloud-based architecture, Steedos Platform is designed to scale as business needs grow. The platform's modular design and support for both SaaS and on-premises deployments provide flexibility in terms of infrastructure and compliance requirements.
+  * **数据 (Data)**：是“张三”、“1000元”、“2025-01-01”这些具体的内容。
+  * **元数据 (Metadata)**：是描述数据的数据。比如“‘金额’字段必须是数字”、“‘客户’表有三个列”。
 
-Overall, Steedos Platform's technical architecture is designed to provide a robust, scalable, and flexible foundation for building business applications. Its use of Node.js for the backend, Amis and React for the frontend, and MongoDB for the database creates a modern and efficient environment for low-code development. The platform's focus on workflow automation, integration, and security ensures that it can meet the needs of a wide range of business scenarios, from small-scale applications to complex enterprise solutions.
+在 Steedos 中，**一切皆配置**。对象、字段、菜单、权限、甚至页面布局，都是以 **YAML** 或 **JSON** 格式的文本文件存在的。
+
+### 核心优势：代码与配置分离
+
+  * **传统开发**：业务逻辑和底层代码混在一起。升级底层框架时，业务功能容易崩。
+  * **Steedos 架构**：
+      * **底层引擎 (Engine)**：由 Steedos 官方维护，负责解析图纸。
+      * **业务配置 (Metadata)**：由您维护，定义业务逻辑。
+      * **好处**：当 Steedos 升级内核时，您的业务配置不受影响，甚至会自动获得新特性（比如官方优化了表格性能，您的所有表格都会立刻变快）。
+
+-----
+
+## 2\. 强大的大脑：后端架构 (Node.js + MongoDB)
+
+Steedos 的服务端采用当下最流行的 **Node.js** 技术栈，这与 Netflix、Uber、淘宝（部分）的技术选型一致。
+
+### 引擎：Node.js
+
+  * **特点**：非阻塞、高并发。
+  * **通俗理解**：传统的服务器像是一个**只有一个窗口的银行**，办完一个业务才能叫下一个号。Node.js 像是一个**自助服务大厅**，它可以同时处理成千上万个请求，谁的数据准备好了就处理谁，不会傻等。这让 Steedos 运行速度非常快。
+
+### 记忆体：MongoDB
+
+Steedos 默认使用 **MongoDB** 作为数据库。
+
+  * **为什么不用 SQL (MySQL/Oracle)？**
+      * SQL 数据库像 **Excel 表格**，结构非常死板。想加一列？由于数据量大，可能导致数据库卡死。
+      * MongoDB 像 **文件夹**，每一条数据是一个独立的文档（JSON）。
+  * **低代码的绝配**：
+    在低代码平台，用户经常今天加个字段，明天改个类型。MongoDB 的**无模式 (Schema-less)** 特性，允许您随意增删字段，而不需要重启数据库，也不需要进行复杂的数据库迁移。
+
+-----
+
+## 3\. 灵动的面孔：前端架构 (React + Amis)
+
+用户在浏览器里看到的一切，是由 **React** 和百度开源的 **Amis** 框架驱动的。
+
+### 渲染器：Amis
+
+还记得我们说的“图纸”吗？Amis 就是那个**“读图纸的建筑师”**。
+
+  * 后端发送一段 JSON 配置给前端：
+    ```json
+    { "type": "page", "title": "合同管理", "body": "表格..." }
+    ```
+  * Amis 接收到后，瞬间在浏览器里把它画成一个漂亮的页面。
+  * **所见即所得**：这就是为什么您在设计器里拖拽组件，界面能实时变化的原因。
+
+### 响应式设计
+
+得益于这套架构，Steedos 的界面天生支持**响应式**。您配置好的一套界面，在电脑宽屏上显示为三栏，在 iPad 上自动变为两栏，在手机上自动变为单栏，无需为手机端单独开发。
+
+-----
+
+## 4\. 总结：一个请求的旅程
+
+为了帮您串联起来，让我们看看当用户点击“保存”按钮时，系统内部发生了什么：
+
+1.  **前端 (Amis)**：收集用户在表单里填的数据，打包成 JSON。
+2.  **网络层 (API)**：通过 GraphQL 或 REST API 将数据发送给服务器。
+3.  **后端 (Node.js)**：
+      * **身份核验**：你是谁？（调用认证微服务）
+      * **权限核验**：你有没有权改这个字段？（读取权限元数据）
+      * **业务校验**：金额是否小于 0？（执行触发器逻辑）
+4.  **数据库 (MongoDB)**：将经过检查的干净数据写入硬盘。
+5.  **自动化 (Workflow)**：数据写入成功后，触发工作流引擎：“嘿，有新合同了，给经理发条通知！”
+
+-----
+
+## 常见问题 (FAQ)
+
+**Q: 元数据文件 (.yml) 存在哪里？**
+A: 在开发模式下，它们是您项目文件夹里的一个个文件，您可以上传到 GitHub 进行版本控制。在运行模式下，它们会被加载到数据库中缓存起来，以保证极高的读取速度。
+
+**Q: 我可以用 Java 或 C\# 开发 Steedos 吗？**
+A: Steedos 的核心是用 Node.js 写的。但由于它基于**微服务**和**标准 API**，您完全可以用 Java 写一个外部服务，然后通过 Webhook 或 API 与 Steedos 进行交互。语言不再是障碍。
