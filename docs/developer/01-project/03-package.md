@@ -1,81 +1,86 @@
-# 软件包 (Packages)
+# Packages
 
-:::info 学习目标
+:::info Learning Objectives
 
-  * 理解什么是软件包（模块化的容器）。
-  * 掌握 Steedos 项目的文件结构（`steedos-app` vs `steedos-packages`）。
-  * **核心技能**：创建一个新的软件包来隔离业务逻辑。
-  * 学会配置 `package.json` 以声明包的属性。
+* Understand what a Package is (a modular container).
+* Master the Steedos project file structure (`steedos-app` vs `steedos-packages`).
+* **Core Skill**: Create a new package to isolate business logic.
+* Learn how to configure `package.json` to declare package properties.
 :::
 
-## 什么是软件包？
+## What is a Package?
 
-如果说你的 Steedos 项目是一座**城堡**，那么**软件包 (Package)** 就是组成城堡的\*\*“积木套装”\*\*。
+If your Steedos project is a **castle**, then a **Package** is a **"Lego set"** used to build it.
 
-  * **项目 (Project)**：是整个应用容器。
-  * **软件包 (Package)**：是功能模块。例如：
-      * `finance-pkg`：包含财务相关的对象（发票、付款）、报表和审批流。
-      * `hr-pkg`：包含人力相关的对象（员工、请假）和前端组件。
+* **Project**: The entire application container.
+* **Package**: A functional module. For example:
+* `finance-pkg`: Contains finance-related objects (invoices, payments), reports, and approval flows.
+* `hr-pkg`: Contains HR-related objects (employees, leaves) and frontend components.
 
-通过将功能拆分到不同的包中，你可以实现：
 
-1.  **隔离性**：财务模块的修改不会意外弄坏 HR 模块。
-2.  **复用性**：你可以把开发好的 `hr-pkg` 直接复制到另一个项目中使用。
-3.  **团队协作**：团队 A 负责财务包，团队 B 负责 HR 包，互不干扰。
 
------
+By splitting functionality into different packages, you achieve:
 
-## 项目结构与包的位置
+1. **Isolation**: Changes in the Finance module won't accidentally break the HR module.
+2. **Reusability**: You can copy the developed `hr-pkg` directly into another project for immediate use.
+3. **Team Collaboration**: Team A can work on the Finance package while Team B works on the HR package without interference.
 
-在一个标准的 Steedos 项目中，你会看到以下结构：
+---
+
+## Project Structure and Package Location
+
+In a standard Steedos project, you will see the following structure:
 
 ```text
 my-steedos-project/
-├── package.json            # 项目级的依赖管理
-└── steedos-packages/       # [扩展软件包目录]
-    ├── finance-app/        # 自定义包 A (财务)
+├── package.json            # Project-level dependency management
+└── steedos-packages/       # [Extended Packages Directory]
+    ├── finance-app/        # Custom Package A (Finance)
     │   ├── package.json
     │   └── main/default/...
     │
-    └── hr-app/             # 自定义包 B (人力)
+    └── hr-app/             # Custom Package B (HR)
         ├── package.json
         └── main/default/...
+
 ```
 
-  * **`steedos-packages`**：这是存放扩展包的地方。如果你想或者拆分自己的业务，请放在这里。
+* **`steedos-packages`**: This is where you store your extended packages. If you want to develop or decouple your own business logic, place it here.
 
------
+---
 
-## 实战：创建一个“财务”软件包
+## Hands-on: Creating a "Finance" Package
 
-假设我们需要开发一个财务模块，为了保持整洁，我们不希望把它和默认代码混在一起。
+Assume we need to develop a Finance module. To keep it organized, we don't want to mix it with the default system code.
 
-### 第 1 步：创建目录
+### Step 1: Create the Directory
 
-在项目根目录下的 `steedos-packages` 文件夹中，创建一个名为 `finance-app` 的文件夹。
+Inside the `steedos-packages` folder in your project root, create a folder named `finance-app`.
 
 ```bash
 mkdir -p steedos-packages/finance-app
 cd steedos-packages/finance-app
+
 ```
 
-### 第 2 步：初始化 package.json
+### Step 2: Initialize package.json
 
-Steedos 的软件包本质上就是一个标准的 **NPM 包**。运行初始化命令：
+A Steedos package is essentially a standard **NPM package**. Run the initialization command:
 
 ```bash
 npm init -y
+
 ```
 
-### 第 3 步：配置 Steedos 属性 (关键)
+### Step 3: Configure Steedos Properties (Critical)
 
-打开生成的 `package.json`，你需要添加一个 `steedos` 属性，告诉系统“嘿，我是一个 Steedos 业务包，请加载我”。
+Open the generated `package.json`. You need to add a `steedos` property to tell the system, "Hey, I am a Steedos business package, please load me."
 
 ```json
 {
   "name": "@my-company/finance-app",
   "version": "1.0.0",
-  "description": "企业财务管理模块",
+  "description": "Enterprise Finance Management Module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -83,70 +88,82 @@ npm init -y
   "keywords": [],
   "author": "",
   "license": "ISC",
-  
-  // --- 关键配置结束 ---
+  "steedos": {
+    "isPackage": true
+  }
 }
+
 ```
 
------
+---
 
-## 软件包加载机制
+## Package Loading Mechanism
 
-你可能会问：*“系统怎么知道我加了一个包？”*
+You might wonder: *"How does the system know I added a package?"*
 
-Steedos 启动时会扫描以下两个位置：
+When Steedos starts, it scans two primary locations:
 
-1.  **项目依赖 (`node_modules`)**：如果你的 `package.json` 依赖了一些发布的 npm 包（且这些包里有 `steedos` 属性），它们会被自动加载。
-2.  **本地包目录 (`steedos-packages`)**：系统会自动扫描该目录下的所有子文件夹，如果发现合法的 `package.json`，就会加载。
+1. **Project Dependencies (`node_modules`)**: If your root `package.json` depends on published NPM packages that contain the `steedos` property, they are automatically loaded.
+2. **Local Package Directory (`steedos-packages`)**: The system automatically scans all sub-folders in this directory. If it finds a valid `package.json` with the Steedos property, it loads the metadata and code.
 
-:::tip 依赖管理
-如果你的“财务包”依赖了“基础包”，你可以在 `finance-app/package.json` 的 `dependencies` 中声明它。Steedos 会尝试按顺序加载（虽然元数据通常是松耦合的，顺序影响较小）。
+:::tip Dependency Management
+If your "Finance Package" depends on a "Base Package," you can declare it in the `dependencies` section of `finance-app/package.json`. Steedos will attempt to load them in order (though metadata is usually loosely coupled, making order less critical).
 :::
 
------
+---
 
-## 进阶：引用第三方 NPM 包
+## Advanced: Referencing Third-party NPM Packages
 
-有时候你的业务逻辑需要用到第三方的算法库（例如 `moment.js` 处理时间，或者 `lodash` 处理数据）。
+Sometimes your business logic requires third-party libraries (e.g., `moment.js` for time handling or `lodash` for data manipulation).
 
-1.  **进入你的软件包目录**：
-    ```bash
-    cd steedos-packages/finance-app
-    ```
-2.  **安装依赖**：
-    ```bash
-    yarn add moment
-    ```
-3.  **在触发器中使用**：
-    在你的 `triggers/calculate_date.trigger.js` 中：
-    ```javascript
-    const moment = require('moment'); // 直接引用
+1. **Enter your package directory**:
+```bash
+cd steedos-packages/finance-app
 
-    module.exports = {
-        beforeInsert: async function (doc) {
-            doc.due_date = moment().add(7, 'days').toDate();
-        }
+```
+
+
+2. **Install the dependency**:
+```bash
+yarn add moment
+
+```
+
+
+3. **Use it in a Trigger**:
+In your `triggers/calculate_date.trigger.js`:
+```javascript
+const moment = require('moment'); // Direct reference
+
+module.exports = {
+    beforeInsert: async function (doc) {
+        // Set due date to 7 days from now
+        doc.due_date = moment().add(7, 'days').toDate();
     }
-    ```
+}
 
-**这就是微服务化架构的雏形**：每个包都有自己独立的依赖，互不污染。
+```
 
------
 
-## 常见问题 (FAQ)
 
-**Q: 我在 VS Code 插件里怎么看到新创建的包？**
-A: 如果你在 `steedos-packages` 下创建了新包，记得先在项目根目录运行 `yarn install` 或重启 VS Code。插件会自动识别并列出所有包。记得在同步时设置正确的路径（参考 [VS Code 插件指南](https://www.google.com/search?q=../02-cli/03-vscode-extension.md)）。
+**This is the prototype of a microservices-style architecture**: each package has its own independent dependencies, preventing version conflicts (pollution).
 
-**Q: 多个包里如果有同名的对象会怎样？**
-A: **会冲突！** Steedos 中对象的 API Name 是全局唯一的。
+---
 
-  * 如果包 A 有 `contract` 对象，包 B 也有 `contract` 对象，系统启动时会报错或覆盖。
-  * **最佳实践**：为你的自定义包加上命名空间前缀。例如财务包的对象命名为 `fin_invoice`，HR 包的对象命名为 `hr_leave`。
+## FAQ
 
-**Q: 我能把做好的包发布给别人用吗？**
-A:当然可以。因为它是标准的 NPM 包。
+**Q: How do I see the newly created package in the VS Code extension?**
+A: After creating a new package under `steedos-packages`, remember to run `yarn install` at the project root or restart VS Code. The extension will automatically recognize and list all packages. Ensure you set the correct path when synchronizing.
 
-1.  `npm publish` 发布到 npm 仓库。
-2.  别人在他们的项目中 `yarn add @your-company/finance-app`。
-3.  重启服务，你的功能就集成进去了。
+**Q: What happens if multiple packages have objects with the same name?**
+A: **A conflict will occur!** The API Name of an object in Steedos must be globally unique.
+
+* If Package A has a `contract` object and Package B also has a `contract` object, the system will throw an error or overwrite one during startup.
+* **Best Practice**: Use a namespace prefix for your custom packages. For example, name objects in the Finance package as `fin_invoice` and in the HR package as `hr_leave`.
+
+**Q: Can I publish my completed package for others to use?**
+A: Absolutely. Since it is a standard NPM package:
+
+1. Run `npm publish` to push it to an NPM registry.
+2. Others can then run `yarn add @your-company/finance-app` in their own projects.
+3. Restart the service, and your functionality is integrated.

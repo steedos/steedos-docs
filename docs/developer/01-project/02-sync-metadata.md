@@ -1,132 +1,138 @@
-# 元数据同步
+# Metadata Synchronization
 
-:::info 学习目标
+:::info Learning Objectives
 
-  * 安装并配置 Steedos VS Code 扩展。
-  * **核心技能**：在编辑器侧边栏直接浏览服务器上的元数据。
-  * **核心技能**：一键“拉取 (Retrieve)”和“部署 (Deploy)”。
-  * 掌握多软件包 (Packages) 环境下的路径配置。
+* Install and configure the **Steedos VS Code extension**.
+* **Core Skill**: Browse server-side metadata directly from the editor sidebar.
+* **Core Skill**: Master one-click **"Retrieve"** and **"Deploy"** operations.
+* Configure paths for **Multi-package** environments.
 :::
 
-**Steedos VS Code 扩展** 提供了可视化的元数据管理面板，让你无需记忆命令即可完成同步。
+The **Steedos VS Code Extension** provides a visual metadata management panel, allowing you to synchronize configurations between your local environment and the server without memorizing CLI commands.
 
-## 1\. 安装与准备
+---
 
-### 安装 VS Code 插件
+## 1. Installation
 
-1.  打开 Visual Studio Code。
-2.  点击左侧的 **扩展 (Extensions)** 图标（或按 `Ctrl+Shift+X`）。
-3.  搜索 `Steedos`。
-4.  选择 **Steedos Extension Pack** 并点击 **Install**。
-    *(注：该扩展包会自动安装核心的 "Steedos CLI Integration" 插件)*
+### Install the VS Code Extension
 
------
+1. Open **Visual Studio Code**.
+2. Click the **Extensions** icon on the left sidebar (or press `Ctrl+Shift+X`).
+3. Search for `Steedos`.
+4. Select **Steedos Extension Pack** and click **Install**.
+*(Note: This pack automatically includes the core "Steedos CLI Integration" plugin).*
 
-## 2\. 连接到服务器
+---
 
-插件安装后，需要告诉它去连接哪个 Steedos 服务。我们推荐使用 **环境变量** 来配置，以保证安全。
+## 2. Connecting to the Server
 
-### 配置环境变量
+Once installed, you must point the extension to your Steedos service. We recommend using **Environment Variables** for a secure configuration.
 
-在你的项目根目录下，创建或编辑 `.env.local` 文件（此文件通常不会被提交到 Git，适合存放敏感信息）。
+### Configure Environment Variables
 
-添加以下两行：
+In your project root, create or edit the `.env.local` file (this file is typically ignored by Git and is ideal for sensitive information).
+
+Add the following lines:
 
 ```bash
-# 你的 Steedos 服务地址 (本地开发通常是 http://localhost:3000)
+# Your Steedos Service URL (usually http://localhost:3000 for local dev)
 METADATA_SERVER=http://localhost:3000
 
-# 你的 API Key (用于身份验证)
-METADATA_APIKEY=这里填入你的API_Key
+# Your API Key (used for authentication)
+METADATA_APIKEY=your_api_key_here
+
 ```
 
-:::tip 如何获取 API Key?
+:::tip How to get an API Key?
 
-1.  登录 Steedos 系统。
-2.  点击右上角头像 -\> **个人设置**。
-3.  在“API 密钥”部分可以查看或生成新的 Key。
+1. Log in to the Steedos system.
+2. Click your avatar in the top right -> **Personal Settings**.
+3. Navigate to the **API Key** section to view or generate a new key.
 :::
 
-### 验证连接
+### Verify Connection
 
-配置完成后，点击 VS Code 左侧活动栏中新增的 **Steedos 图标**（通常是一个 S 形图标）。
+Click the **Steedos Icon** (typically an "S" shape) in the VS Code Activity Bar on the left.
 
-  * 如果能看到元数据列表（如 Objects, Layouts），说明连接成功。
-  * 如果提示报错，请尝试在项目根目录运行命令生成配置：
-    ```bash
-    npx steedos source:config
-    ```
+* If you see a list of metadata categories (e.g., Objects, Layouts, Apps), the connection is successful.
+* If an error appears, try running the following command in your project root to initialize the config:
+```bash
+npx steedos source:config
 
------
+```
 
-## 3\. 拉取：从服务器下载 (Retrieve)
 
-**场景**：你在浏览器里通过“设置”界面修改了“合同”对象的字段，现在想把这些修改保存到本地代码里。
 
-1.  点击 VS Code 左侧的 **Steedos 图标**。
-2.  在面板中，你会看到服务器上所有的元数据分类（Objects, Apps, Tabs 等）。
-3.  展开 `Objects`，找到 `contracts (合同)`。
-4.  点击该项右侧的 **下载图标 (Cloud Download)**。
+---
 
-:::warning 覆盖警告
-**拉取操作会直接覆盖本地文件！**
-如果你的本地代码中有未提交的修改，拉取后这些修改将丢失。
-**最佳实践**：在执行 Retrieve 之前，永远先将本地代码 **Commit** 到 Git 仓库。
+## 3. Retrieve: Download from Server
+
+**Scenario**: You modified fields of the "Contract" object via the "Setup" UI in the browser and now want to save those changes to your local source code.
+
+1. Open the **Steedos Provider** in the VS Code sidebar.
+2. Expand the metadata categories (Objects, Apps, Tabs, etc.).
+3. Find `contracts` under the `Objects` section.
+4. Click the **Cloud Download icon** to the right of the item.
+
+:::warning Overwrite Warning
+**Retrieving will overwrite local files!**
+If you have uncommitted changes in your local code, they will be lost upon retrieval.
+**Best Practice**: Always **Commit** your local changes to Git before performing a Retrieve operation.
 :::
 
------
+---
 
-## 4\. 部署：上传到服务器 (Deploy)
+## 4. Deploy: Upload to Server
 
-**场景**：你在 VS Code 里手动修改了 `contracts.object.yml` 文件，或者从 Git 拉取了同事的代码，现在想让它在系统里生效。
+**Scenario**: You manually edited a `.object.yml` file in VS Code or pulled a colleague's code from Git, and you want to apply those changes to the running system.
 
-1.  在 VS Code 的 **资源管理器 (Explorer)** 中，找到你要上传的文件（例如 `steedos-app/main/default/objects/contracts.object.yml`）。
-2.  在文件（或文件夹）上点击 **鼠标右键**。
-3.  选择菜单中的 **Steedos: Deploy Source**。
+1. In the VS Code **Explorer**, locate the file or folder you wish to upload (e.g., `steedos-packages/main/default/objects/contracts.object.yml`).
+2. **Right-click** on the file or folder.
+3. Select **Steedos: Deploy Source** from the context menu.
 
-VS Code 右下角会提示“Deploying...”，成功后会提示“Source deployed successfully”。
+A notification saying "Deploying..." will appear in the bottom right, followed by "Source deployed successfully" upon completion.
 
------
+---
 
-## 5\. 进阶配置 (多软件包支持)
+## 5. Advanced: Multi-package Support
 
-默认情况下，同步下来的文件会放在 `steedos-app` 目录下。如果你的项目比较复杂，使用了多个软件包（例如 `steedos-packages/finance`, `steedos-packages/hr`），你需要告诉插件当前要把代码同步到哪里。
+By default, retrieved files are placed in the `steedos-app` directory. If your project uses multiple packages (e.g., `steedos-packages/finance`, `steedos-packages/hr`), you must specify which package is the current target for synchronization.
 
-### 设置默认同步路径
+### Set Default Package Path
 
-你可以通过配置环境变量 `DEFAULT_PACKAGE_PATH` 来指定当前工作的软件包目录。
+You can define the target directory via the `DEFAULT_PACKAGE_PATH` variable.
 
-**方法 A：通过命令面板切换（推荐）**
+**Option A: Using the Command Palette (Recommended)**
 
-1.  按 `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`) 打开命令面板。
-2.  输入并选择 `Steedos: Set Default Package Path`。
-3.  选择你想要同步的文件夹（例如 `steedos-packages/my-custom-pkg`）。
+1. Press `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).
+2. Type and select `Steedos: Set Default Package Path`.
+3. Select your target folder (e.g., `steedos-packages/my-custom-pkg`).
 
-**方法 B：手动配置 .env.local**
+**Option B: Manual Configuration in .env.local**
 
 ```bash
-[package]
 DEFAULT_PACKAGE_PATH=steedos-packages/my-custom-pkg
+
 ```
 
-配置生效后：
+Once configured:
 
-  * 点击侧边栏的“下载”按钮，元数据会下载到你指定的这个目录下。
-  * **注意**：只有位于该目录下的文件，右键菜单中的 `Deploy Source` 才会生效。
+* Clicking the **Retrieve** icon will download metadata into this specific directory.
+* **Note**: The `Deploy Source` context menu item only appears for files located within a valid Steedos project structure or your defined package path.
 
------
+---
 
-## 常见问题 (FAQ)
+## FAQ
 
-**Q: 侧边栏一直转圈加载不出来？**
-A: 请检查：
+**Q: The sidebar keeps loading or stays empty.**
+A: Please check the following:
 
-1.  Steedos 服务是否已启动？
-2.  `.env.local` 中的 `METADATA_SERVER` 地址是否正确？
-3.  API Key 是否过期？
+1. Is the Steedos service actually running?
+2. Is the `METADATA_SERVER` address in `.env.local` correct?
+3. Has your API Key expired?
 
-**Q: 报错 `Connection refused`？**
-A: 这通常是因为服务没起起来。请确保在终端运行了 `yarn start` 或 `docker-compose up`。
+**Q: I get a `Connection refused` error.**
+A: This usually means the server is down. Ensure you have run `yarn start` or `docker-compose up` in your terminal.
 
-**Q: 为什么我右键菜单里没有 `Steedos: Deploy Source`？**
-A: 请检查你点击的文件是否位于有效的 Steedos 项目结构中（通常需要在 `steedos-app` 或你配置的 `DEFAULT_PACKAGE_PATH` 目录下）。插件会自动检测当前文件路径是否合法。
+**Q: Why is "Steedos: Deploy Source" missing from my right-click menu?**
+A: The extension only shows this option for files within recognized Steedos package directories (like `steedos-app` or your configured `DEFAULT_PACKAGE_PATH`). Ensure your file structure follows the standard Steedos conventions.

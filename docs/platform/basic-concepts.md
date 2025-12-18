@@ -1,74 +1,93 @@
-# 核心术语表 (Glossary)
 
-:::info 导读
-Steedos 的许多概念源自 Salesforce。如果您觉得某些词汇（如“对象”、“简档”）听起来很陌生，不要慌。
-请把这份文档当作一本 **“汉汉词典”**，随时查阅。
+# Glossary
+
+:::info Introduction
+Many Steedos concepts are derived from Salesforce. If certain terms like "Object" or "Profile" seem unfamiliar, don't worry.
+Think of this document as a **"Steedos-to-Human Dictionary"** for your quick reference.
 :::
 
-## 📚 数据模型 (Data Model)
+## 📚 Data Model
 
-*这是系统的骨架，决定了数据长什么样。*
+*The skeleton of the system; it determines what your data looks like.*
 
-| 术语 (Term) | 俗称 / 类比 | 解释 |
-| :--- | :--- | :--- |
-| **Object (对象)** | 数据表 / Table | **类比 Excel 的“工作表 (Sheet)”**。<br/>它是存储数据的容器。例如：“客户”是一个对象，“合同”也是一个对象。 |
-| **Field (字段)** | 列 / Column | **类比 Excel 的“列”**。<br/>它是对象中的属性。例如：客户的“姓名”、“电话”、“地址”就是字段。 |
-| **Record (记录)** | 行 / Row | **类比 Excel 的“行”**。<br/>它是具体的一条数据。例如：“张三”这个客户的所有信息，就是一条记录。 |
-| **Standard Object (标准对象)** | 内置表 | 系统出厂自带的对象。例如：`users` (人员)、`organizations` (部门)、`space_users` (成员)。 |
-| **Custom Object (自定义对象)** | 自建表 | 您根据业务需求创建的对象。例如：`projects` (项目)、`invoices` (发票)。 |
-| **Lookup (引用/相关表)** | 外键 / 弱关联 | 两个对象之间的连接。例如：在“合同”里选“客户”。删除客户时，合同通常**不会**被删除。 |
-| **Master-Detail (主子明细)** | 强关联 / 父子关系 | 两个对象之间的**强绑定**。例如：“报销单”和“报销明细”。删除报销单（主），明细（子）会**自动消失**。 |
-| **\_id (记录ID)** | 身份证号 | 每一条记录在数据库中唯一的、乱码一样的编号。例如 `64f1a2b3c...`。系统靠它来区分数据。 |
+| Term | Analogy | Description |
+| --- | --- | --- |
+| **Object** | Spreadsheet / Table | **Like a "Sheet" in Excel.**<br/>
 
------
+<br/>A container for storing data. For example, "Customer" and "Contract" are both Objects. |
+| **Field** | Column | **Like a "Column" in Excel.**<br/>
 
-## 🖥️ 用户界面 (User Interface)
+<br/>An attribute within an object. Examples include "Name," "Phone," and "Address." |
+| **Record** | Row | **Like a "Row" in Excel.**<br/>
 
-*这是系统的面孔，决定了用户怎么操作。*
+<br/>A specific entry of data. For example, all information belonging to the customer "John Doe" is a single Record. |
+| **Standard Object** | Built-in Table | Out-of-the-box objects provided by the system, such as `users`, `organizations`, and `space_users`. |
+| **Custom Object** | User-defined Table | Objects you create based on business needs, such as `projects` or `invoices`. |
+| **Lookup** | Foreign Key / Weak Link | A connection between two objects. For example, selecting a "Customer" within a "Contract." Deleting the customer usually **does not** delete the contract. |
+| **Master-Detail** | Parent-Child / Strong Link | A **tight coupling** between two objects. For example, "Expense Report" and "Line Items." Deleting the report (Master) causes the items (Detail) to be **automatically deleted**. |
+| **_id (Record ID)** | Unique ID / SSN | A unique, system-generated alphanumeric string for every record (e.g., `64f1a2b3c...`). The system uses this to distinguish between data entries. |
 
-| 术语 (Term) | 俗称 / 类比 | 解释 |
-| :--- | :--- | :--- |
-| **App (应用)** | 工作台 / 文件夹 | **类比手机桌面的“文件夹”**。<br/>它不是一个独立的软件，而是一组常用菜单（选项卡）的集合。例如：“销售应用”包含客户、商机、合同。 |
-| **Tab (选项卡)** | 菜单入口 | 点击后能打开一个对象列表的按钮。**注意：** 创建了对象必须创建选项卡，用户才能在菜单里看见它。 |
-| **List View (列表视图)** | 筛选器 | **类比 Excel 的“筛选”**。<br/>保存好的过滤条件。例如：“我的待办任务”、“本周新增合同”。 |
-| **Amis** | 渲染引擎 | Steedos 使用的前端 UI 框架（百度开源）。它允许通过 JSON 配置来生成页面，支持拖拽设计。 |
+---
 
------
+## 🖥️ User Interface (UI)
 
-## 🤖 自动化 (Automation)
+*The face of the system; it determines how users interact with the data.*
 
-*这是系统的大脑，决定了业务逻辑。*
+| Term | Analogy | Description |
+| --- | --- | --- |
+| **App** | Workbench / Folder | **Like a "Folder" on a smartphone home screen.**<br/>
 
-| 术语 (Term) | 俗称 / 类比 | 解释 |
-| :--- | :--- | :--- |
-| **Workflow Rule (工作流规则)** | 机器人 / IFTTT | **“如果...就...”**。<br/>全自动逻辑。例如：**如果**金额 \> 100万，**就**自动发邮件给老板。 |
-| **Approval Process (批准过程)** | 审批流 | 需要人工介入的流程。提交 -\> 锁定 -\> 经理审批 -\> 财务审批 -\> 结束。 |
-| **Trigger (触发器)** | 拦截器 / 钩子 | **程序员专用的高级逻辑**。<br/>一段代码脚本 (Node.js)。它可以在数据保存**前**拦截下来进行复杂校验（如：去库存系统查一下货够不够），或者保存**后**执行复杂计算。 |
-| **WebHook** | 消息推送 | 当数据变化时，系统向外部网址发送一个通知。常用于对接钉钉机器人、企业微信。 |
+<br/>It is not standalone software, but a collection of related menus (Tabs). e.g., a "Sales App" containing Customers, Leads, and Contracts. |
+| **Tab** | Menu Entry | A button that opens an object's list. **Note:** You must create a Tab for an Object before users can see it in the navigation menu. |
+| **List View** | Filter / Saved Search | **Like "Filtering" in Excel.**<br/>
 
------
+<br/>A saved set of filter criteria, such as "My Pending Tasks" or "Contracts Added This Week." |
+| **Amis** | Rendering Engine | The frontend UI framework (open-sourced by Baidu) used by Steedos. It generates pages via JSON configurations and supports drag-and-drop design. |
 
-## 🛡️ 权限与安全 (Security)
+---
 
-*这是系统的门卫，决定了谁能看什么。*
+## 🤖 Automation
 
-| 术语 (Term) | 俗称 / 类比 | 解释 |
-| :--- | :--- | :--- |
-| **User (用户)** | 账号 | 能够登录系统的人。 |
-| **Profile (简档)** | 职能 / 驾照 | **决定你能“做什么”**。<br/>例如：你有权“导出数据”吗？你有权“看到设置菜单”吗？每个用户必须有一个简档。 |
-| **Permission Set (权限集)** | 补充包 / VIP卡 | **决定你能“多做什么”**。<br/>一种灵活的权限补充。例如：张三只有普通权限，但我临时给他发一个“招聘管理权限集”，他就能面试人了。 |
-| **Sharing Rule (共享规则)** | 豁免权 | 一种特殊的规则，允许把原本保密的数据，共享给特定的人群查看。 |
+*The brain of the system; it determines the business logic.*
 
------
+| Term | Analogy | Description |
+| --- | --- | --- |
+| **Workflow Rule** | Robot / IFTTT | **"If This, Then That."**<br/>
 
-## ⚙️ 开发与架构 (Development)
+<br/>Fully automated logic. For example: **If** Amount > $1M, **Then** automatically email the CEO. |
+| **Approval Process** | Approval Flow | A process requiring human intervention: Submit -> Lock -> Manager Approval -> Finance Approval -> Finish. |
+| **Trigger** | Interceptor / Hook | **Advanced logic for programmers.**<br/>
 
-*这是系统的底层，开发者需要了解。*
+<br/>A script (Node.js) that can intercept data **before** saving for validation or execute complex calculations **after** saving. |
+| **WebHook** | Push Notification | Sends a notification to an external URL when data changes. Commonly used to integrate with Slack, Microsoft Teams, or custom external systems. |
 
-| 术语 (Term) | 俗称 | 解释 |
-| :--- | :--- | :--- |
-| **Metadata (元数据)** | 配置文件 / 图纸 | Steedos 的核心灵魂。所有对象、字段、权限的定义，都以 `.yml` 或 JSON 文件的形式存在。 |
-| **API Name (API 名称)** | 唯一标识符 | 对象或字段的英文代号（如 `contracts`, `amount`）。写代码或公式时，必须用这个名字，不能用中文名。 |
-| **GraphQL** | 万能接口 | Steedos 提供的一种查询语言。前端可以用它向后端一次性索取任何想要的数据组合。 |
-| **OData** | 标准接口 | 另一种标准的 REST API 协议。允许 Excel、Power BI 等外部工具直接连接 Steedos 数据库。 |
-| **Package (软件包)** | 插件 / 模块 | 一组相关功能的打包。例如将“进销存”功能打包成一个 Package，可以安装到其他 Steedos 系统中。 |
+---
+
+## 🛡️ Security & Permissions
+
+*The gatekeeper of the system; it determines who can see what.*
+
+| Term | Analogy | Description |
+| --- | --- | --- |
+| **User** | Account | An individual who can log into the system. |
+| **Profile** | Job Role / Driver's License | **Determines "What you can do."**<br/>
+
+<br/>For example: Do you have the right to "Export Data"? Can you see the "Setup Menu"? Every user must have one Profile. |
+| **Permission Set** | Expansion Pack / VIP Card | **Determines "What else you can do."**<br/>
+
+<br/>A flexible supplement to permissions. If a user has standard permissions, you can assign a "Recruitment Permission Set" to allow them to view resumes temporarily. |
+| **Sharing Rule** | Exception / Access Grant | A rule that allows records that are normally private to be shared with specific groups of people. |
+
+---
+
+## ⚙️ Development & Architecture
+
+*The foundation of the system; essential for developers.*
+
+| Term | Analogy | Description |
+| --- | --- | --- |
+| **Metadata** | Configuration / Blueprint | The soul of Steedos. Definitions for all objects, fields, and permissions exist as `.yml` or JSON files. |
+| **API Name** | Unique Identifier | The programmatic name for an object or field (e.g., `contracts`, `amount`). This name must be used in code and formulas instead of the display label. |
+| **GraphQL** | Universal API | A query language provided by Steedos that allows the frontend to request specific combinations of data from the backend in one go. |
+| **OData** | Standard Protocol | A REST-based protocol that allows external tools like Excel or Power BI to connect directly to the Steedos database. |
+| **Package** | Plugin / Module | A bundle of related functionalities. For example, "Inventory Management" can be bundled as a Package and installed into other Steedos instances. |

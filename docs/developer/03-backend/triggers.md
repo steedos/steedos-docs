@@ -1,133 +1,143 @@
-# 对象触发器 (Object Triggers)
 
-在 Steedos 3.0 中，触发器开发变得更加便捷。您无需通过代码文件部署，直接在**系统界面**上即可为对象编写后端逻辑代码。
+# Object Triggers
 
-触发器主要用于处理比工作流更复杂的业务需求，例如：跨对象的数据校验、级联更新、或者在数据查询前后进行拦截过滤。
+In Steedos 3.0, developing triggers is more efficient than ever. You no longer need to deploy code files; you can write backend logic scripts directly within the **System UI**.
 
-## 1\. 管理触发器
+Triggers are primarily used for complex business requirements that go beyond standard workflows, such as cross-object data validation, cascading updates, or intercepting/filtering data during queries.
 
-管理员可以在对象设置中直接管理触发器。
+---
 
-### 进入入口
+## 1. Trigger Types and Lifecycle
 
-1.  点击右上角 **“⚙ 设置”**，进入设置应用。
-2.  选择菜单 **“对象设置”** \> **“对象”**。
-3.  点击需要配置的对象（例如“合同”）。
-4.  在对象详情页的 **“对象触发器”** 子表栏中，您可以进行新建、编辑、删除或查看详情操作。
+Steedos triggers are divided into **Before Events** and **After Events** based on when they execute relative to the database operation.
 
-## 2\. 创建触发器
+### A. Before Events (Interceptors)
 
-### 配置步骤
+Functions prefixed with `before` are used to intercept operations **before** they reach the database.
 
-1.  在对象触发器子表中，点击 **“新建”**。
-2.  填写基础信息：
-      * **API 名称**：触发器的唯一标识符。
-          * *规则*：只能包含小写字母、数字，必须以字母开头，不能以下划线结尾或包含连续下划线。
-      * **已启用**：勾选后立即生效。
-      * **运行时 (Events)**：选择触发的时机（可多选），如 `beforeInsert`（新增前）、`afterUpdate`（修改后）。
-3.  **代码内容**：在脚本编辑框中输入 JavaScript 代码。
-4.  点击 **“保存”**。
+* **Purpose**: Validate user input, sanitize data, and enforce custom permission logic.
+* **Error Handling**: If the code throws an error, the database operation is rolled back, and the error message is displayed directly on the frontend.
+* **Events**:
+* `beforeInsert`: Triggered before a new record is created.
+* `beforeUpdate`: Triggered before an existing record is modified.
+* `beforeDelete`: Triggered before a record is deleted (useful for preventing deletion of protected data).
+* `beforeFind`: Triggered before a query is executed (useful for adding mandatory filters).
 
-## 3\. 代码编写指南
 
-在界面编写触发器时，系统自动注入了 `ctx`、`global`、`objects` 等上下文变量，您可以直接使用。
 
-### 3.1 核心上下文 `ctx`
+### B. After Events (Side Effects)
 
-`ctx` 是触发器执行时的上下文对象，包含当前请求的所有信息。
+Functions prefixed with `after` are executed **after** the database operation has successfully completed.
 
-#### `ctx.params` (常用变量)
+* **Purpose**: Execute associated tasks such as sending notifications, updating related records, or logging audit trails.
+* **Events**:
+* `afterInsert`: Triggered after a record is successfully created.
+* `afterUpdate`: Triggered after a record is successfully modified.
+* `afterDelete`: Triggered after a record is deleted.
 
-通过 `const { doc, previousDoc } = ctx.params` 可以获取数据变更内容：
 
-| 变量 | 类型 | 用途说明 |
-| :--- | :--- | :--- |
-| **isInsert** | Boolean | 是否为新增操作。 |
-| **isUpdate** | Boolean | 是否为更新操作。 |
-| **isDelete** | Boolean | 是否为删除操作。 |
-| **isFind** | Boolean | 是否为查询操作。 |
-| **isBefore** | Boolean | 是否在数据库操作**之前**触发（常用于校验）。 |
-| **isAfter** | Boolean | 是否在数据库操作**之后**触发（常用于关联更新）。 |
-| **doc** | JSON | **新数据**。需要添加或修改的记录内容。 |
-| **previousDoc**| JSON | **旧数据**。修改或删除前的原始记录（仅在 update/delete 存在）。 |
-| **id** | String | 记录的唯一标识符。 |
-| **userId** | String | 当前操作用户的 ID。 |
-| **spaceId** | String | 当前工作空间 ID。 |
-| **objectName** | String | 当前对象名称。 |
-| **query** | JSON | 查询参数（仅在 `beforeFind` 存在）。 |
-| **data** | Array | 查询结果集（仅在 `afterFind` 存在）。 |
 
-#### 其他 `ctx` 方法
+---
 
-  * **`ctx.getObject(objectName)`**：获取对象实例，用于执行增删改查。
-    ```javascript
-    // 示例：查询合同对象
-    const contractsObj = ctx.getObject("contracts");
-    const contract = await contractsObj.findOne(contractId);
-    ```
-  * **`ctx.getUser(userId, spaceId)`**：获取当前用户的详细会话信息。
-  * **`ctx.broker`**：Moleculer Broker 实例，用于调用微服务 Action。
+## 2. Managing Triggers
 
------
+Administrators can manage triggers directly within the **Object Setup** interface.
 
-### 3.3 内置工具库 `global`
+### Access Path
 
-为了提高开发效率，环境内置了常用的 JavaScript 工具库，无需 `require` 即可直接使用：
+1. Click the **Settings (Gear Icon)** in the top right.
+2. Navigate to **Object Settings** -> **Objects**.
+3. Select the object you want to configure (e.g., "Contracts").
+4. In the object detail page, find the **Object Triggers** sub-tab. Here you can create, edit, or delete triggers.
 
-  * **`global._` (Lodash)**：
-      * 功能：处理数组、数字、对象、字符串等。
-      * *文档*：[Lodash Docs](https://lodash.com/docs/)
-  * **`global.moment` (Moment.js)**：
-      * 功能：强大的日期处理库。
-      * *文档*：[Moment.js Docs](https://momentjs.com/docs/)
-      * *示例*：`const now = moment().format('YYYY-MM-DD');`
-  * **`global.validator`**：
-      * 功能：字符串验证（如邮箱、URL格式验证）。
-      * *文档*：[Validator Docs](https://www.npmjs.com/package/validator)
+---
 
-## 4\. 实战示例
+## 3. Creating a Trigger
 
-### 场景：付款金额校验
+### Configuration Steps
 
-**需求**：在“付款”对象发起付款申请时，校验付款金额不能超过关联合同的总金额。
+1. Click **New** in the Object Triggers list.
+2. Fill in the basic information:
+* **API Name**: Unique identifier (e.g., `validate_amount`).
+* **Enabled**: Check this to make the trigger active immediately.
+* **Events**: Select the timing (e.g., `beforeInsert`, `afterUpdate`).
 
-  * **触发对象**：付款 (payments)
-  * **API 名称**：`check_pay_amount`
-  * **运行时**：`beforeInsert` (新增前), `beforeUpdate` (修改前)
 
-**代码实现**：
+3. **Code Content**: Enter your JavaScript logic in the script editor.
+4. Click **Save**.
+
+---
+
+## 4. Coding Guide
+
+Steedos automatically injects context variables like `ctx`, `global`, and `objects` into the script environment.
+
+### 4.1 The `ctx` Context
+
+`ctx` contains all relevant information about the current request.
+
+#### `ctx.params` (Common Variables)
+
+Use `const { doc, previousDoc } = ctx.params` to access data changes:
+
+| Variable | Type | Description |
+| --- | --- | --- |
+| **isInsert / isUpdate** | Boolean | Identifies the operation type. |
+| **isDelete / isFind** | Boolean | Identifies the operation type. |
+| **isBefore / isAfter** | Boolean | Identifies if the trigger is running before or after the DB operation. |
+| **doc** | JSON | **New Data**. The record being created or the fields being updated. |
+| **previousDoc** | JSON | **Old Data**. The original record (available in update/delete). |
+| **id** | String | The unique ID of the record. |
+| **query** | JSON | The query criteria (available only in `beforeFind`). |
+| **data** | Array | The result set (available only in `afterFind`). |
+
+#### `ctx` Methods
+
+* **`ctx.getObject(objectName)`**: Returns an object instance for CRUD operations.
+* **`ctx.broker`**: The Moleculer Broker instance used to call other microservice actions.
+
+---
+
+## 5. Practical Example: Amount Validation
+
+**Requirement**: When creating a "Payment," validate that the payment amount does not exceed the total amount of the associated "Contract."
+
+* **Object**: Payments (`payments`)
+* **Events**: `beforeInsert`, `beforeUpdate`
+
+**Code Implementation**:
 
 ```javascript
-// 1. 获取当前提交的付款单数据
+// 1. Get the current document from params
 const { doc } = ctx.params;
 const { amount, contractId } = doc;
 
-// 2. 如果没有关联合同，跳过校验 (根据业务需求而定)
-if (!contractId) {
-    return;
-}
+// 2. Skip if no contract is linked
+if (!contractId) return;
 
-// 3. 获取关联的合同记录
-// 注意：需使用 await 异步等待查询结果
+// 3. Fetch the associated contract record
 const contractsObj = ctx.getObject("contracts");
 const contractDoc = await contractsObj.findOne(contractId);
 
 if (!contractDoc) {
-    throw new Error("未找到关联的合同记录");
+    throw new Error("Associated contract not found.");
 }
 
-// 4. 校验逻辑：付款金额 > 合同金额
+// 4. Validation logic
 if (amount > contractDoc.amount) {
-    // 5. 抛出错误，系统会拦截保存操作并在前端弹出此提示
-    throw new Error("付款金额不能大于合同金额");
+    // 5. Throwing an error stops the save and alerts the user
+    throw new Error("Payment amount cannot exceed the Contract total.");
 }
+
 ```
 
-## 5\. 调试与日志
+---
 
-在编写过程中，您可以使用标准控制台日志进行调试。
-日志输出将显示在 Steedos 服务的后台控制台（Docker Logs 或 PM2 Logs）中。
+## 6. Debugging
+
+You can use standard `console.log` for debugging. Output will appear in the Steedos service backend logs (Docker logs or PM2 logs).
 
 ```javascript
-console.log("当前触发器执行中，Doc数据为：", JSON.stringify(ctx.params.doc));
+console.log("Trigger executing for record:", ctx.params.id);
+
 ```

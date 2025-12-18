@@ -1,166 +1,175 @@
+# Project Initialization
 
-# 初始化项目
+:::info Learning Objectives
 
-:::info 学习目标
-
-  * 准备 Node.js 开发环境 (v22)。
-  * 使用脚手架 (`create-steedos-app`) 初始化项目。
-  * **核心技能**：理解基于 Workspaces 的项目目录结构。
-  * **核心技能**：掌握使用 Yarn 脚本启动数据库和服务的流程。
+* Set up the Node.js development environment (v22).
+* Initialize a project using the scaffolding tool (`create-steedos-app`).
+* **Core Skill**: Understand the project directory structure based on **Yarn Workspaces**.
+* **Core Skill**: Master the workflow of starting databases and services using Yarn scripts.
 :::
 
-Steedos 3.0 采用标准的 Node.js 微服务架构，项目结构清晰，内置了完整的运行环境。
+Steedos 3.0 adopts a standard Node.js microservices architecture with a clear project structure and a fully built-in runtime environment.
 
-## 1\. 基础环境准备 (Prerequisites)
+---
 
-在开始之前，请确保你的电脑（Windows/Mac/Linux）已安装以下软件：
+## 1. Prerequisites
+
+Before you begin, ensure your machine (Windows/Mac/Linux) has the following software installed:
 
 ### Node.js & Yarn
 
-Steedos 依赖 Node.js 运行。
+Steedos relies on Node.js to run.
 
-  * **Node.js**: 推荐版本 **v22 LTS**。
-      * [下载 Node.js](https://nodejs.org/)
-  * **Yarn**: 项目依赖 Yarn Workspaces 管理多软件包，**必须安装 Yarn**。
-    ```bash
-    npm install -g yarn
-    ```
+* **Node.js**: Recommended version is **v22 LTS**.
+* [Download Node.js](https://nodejs.org/)
 
-### 数据库服务 (Docker)
 
-Steedos 需要 MongoDB 存储数据，Redis 存储缓存。
-您可以在本机直接安装这些数据库软件，或者使用 **Docker** 运行它们。
+* **Yarn**: The project uses Yarn Workspaces to manage multiple packages. **Yarn is mandatory**.
+```bash
+npm install -g yarn
 
-  * [下载 Docker Desktop](https://www.docker.com/products/docker-desktop)
+```
 
------
 
-## 2\. 开发工具 (VS Code)
 
-Visual Studio Code 是开发 Steedos 项目的最佳伴侣。
+### Database Services (Docker)
 
-### 推荐插件
+Steedos requires MongoDB for data storage and Redis for caching. You can install these databases locally or run them using **Docker** (highly recommended).
 
-为了获得最佳的开发体验（语法高亮、代码补全），建议安装：
+* [Download Docker Desktop](https://www.docker.com/products/docker-desktop)
 
-1.  **ESLint & Prettier**: 保证代码格式规范。
-2.  **Steedos Extensions**: (官方插件) 提供元数据代码补全和可视化同步功能。
+---
 
------
+## 2. Development Tools (VS Code)
 
-## 3\. 初始化项目 (Scaffolding)
+**Visual Studio Code** is the best companion for Steedos development.
 
-我们提供了一个脚手架工具，只需一行命令即可生成标准的工程目录。
+### Recommended Extensions
 
-### 第一步：创建项目
+To ensure the best development experience (syntax highlighting, code completion), we suggest installing:
 
-打开终端，运行以下命令：
+1. **ESLint & Prettier**: For code linting and formatting.
+2. **Steedos Extensions**: (Official) Provides metadata code completion and visual synchronization features.
+
+---
+
+## 3. Scaffolding (Initialization)
+
+We provide a scaffolding tool that generates a standard project directory with a single command.
+
+### Step 1: Create the Project
+
+Open your terminal and run:
 
 ```bash
 npx create-steedos-app my-steedos-project
+
 ```
 
-### 第二步：安装依赖
+### Step 2: Install Dependencies
 
-进入项目目录并安装依赖包。由于使用了 Workspaces，这一步会同时安装主项目和所有子软件包的依赖。
+Navigate into the project directory and install dependencies. Because the project uses Workspaces, this step installs dependencies for the main project and all sub-packages simultaneously.
 
 ```bash
 cd my-steedos-project
 yarn install
+
 ```
 
------
+---
 
-## 4\. 目录结构详解 (Anatomy)
+## 4. Project Anatomy
 
-生成的项目是一个 **Monorepo (单体仓库)** 结构，核心逻辑位于 `steedos-packages` 目录下：
+The generated project uses a **Monorepo** structure. All core business logic is located within the `steedos-packages` directory:
 
 ```text
 my-steedos-project/
-├── .vscode/               # VS Code 推荐配置
-├── steedos-packages/      # [核心] 工作区目录，存放所有的业务软件包
-│   └── example-app/       # 示例业务包 (你可以复制它创建新包)
-│       ├── package.json   # 定义包名和依赖
+├── .vscode/               # Recommended VS Code configurations
+├── steedos-packages/      # [Core] Workspace directory containing all business packages
+│   └── example-app/       # Sample business package (copy this to create new ones)
+│       ├── package.json   # Package name and dependencies
 │       └── main/
 │           └── default/
-│               ├── objects/   # 对象定义 (.object.yml)
-│               ├── triggers/  # 后端触发器代码 (.js)
-│               └── apps/      # 应用菜单定义 (.app.yml)
-├── services/              # 微服务配置 (moleculer.config.js)
-├── steedos-config.yml     # 系统主配置文件 (数据库链接、端口等)
-├── package.json           # 项目主文件，定义了启动脚本
-├── docker-compose.yml     # 数据库编排文件
+│               ├── objects/   # Object definitions (.object.yml)
+│               ├── triggers/  # Backend trigger logic (.js)
+│               └── apps/      # Application menu definitions (.app.yml)
+├── services/              # Microservice configurations (moleculer.config.js)
+├── steedos-config.yml     # Main system config (DB links, ports, etc.)
+├── package.json           # Main project file defining startup scripts
+├── docker-compose.yml     # Database orchestration file
 └── .gitignore
+
 ```
 
-:::tip 开发指南
-**你的代码应该写在哪里？**
-请在 `steedos-packages/` 目录下工作。
+:::tip Development Tip
+**Where should you write your code?**
+Always work within the `steedos-packages/` directory.
 
-  * Steedos 启动时会自动扫描该目录下所有声明为 `steedos-package` 的子文件夹。
-  * 你可以在这里创建多个文件夹（如 `finance-pkg`, `hr-pkg`）来隔离不同的业务模块。
+* When Steedos starts, it automatically scans all sub-folders in this directory declared as a `steedos-package`.
+* You can create multiple folders here (e.g., `finance-pkg`, `hr-pkg`) to isolate different business modules.
 :::
 
------
+---
 
-## 5\. 启动开发服务 (Run & Debug)
+## 5. Run & Debug
 
-我们在 `package.json` 中内置了快捷命令，你不需要记忆复杂的 Docker 指令。
+We have built-in shortcut commands in `package.json`, so you don't need to memorize complex Docker instructions.
 
-### 第一步：启动数据库
+### Step 1: Start the Databases
 
-项目内置了 `start:db` 脚本，它会自动调用 Docker Compose 启动 MongoDB 和 Redis。
+The project includes a `start:db` script which calls Docker Compose to launch MongoDB and Redis.
 
 ```bash
 yarn start:db
+
 ```
 
-*(注意：请确保 Docker Desktop 已启动。此命令会占用本机的 27017 和 6379 端口)*
+*(Note: Ensure Docker Desktop is running. This command occupies local ports 27017 and 6379.)*
 
-### 第二步：启动 Steedos 服务
+### Step 2: Start Steedos Services
 
-运行以下命令启动主程序（基于 `@steedos/server`）：
+Run the following command to start the main application (based on `@steedos/server`):
 
 ```bash
 yarn start
+
 ```
 
-当终端看到以下日志时，说明启动成功：
+When you see the following log in your terminal, the system is ready:
 
 > 🚀 Application is running on: http://localhost:5100
 
-### 第三步：访问系统
+### Step 3: Access the System
 
-打开浏览器访问：
+Open your browser and visit:
 
 **`http://localhost:5100`**
 
-*(注：默认端口通常为 5100，具体请以控制台打印的日志为准。)*
+---
 
------
+## 6. Version Control (Git)
 
-## 6\. 版本控制 (Git)
+### What to Commit
 
-### 应该提交什么？(Commit)
+* All business code under `steedos-packages/` (.yml, .js, .tsx).
+* `package.json` and `yarn.lock`.
+* Configuration files like `steedos-config.yml`.
 
-  * `steedos-packages/` 下的所有业务代码 (.yml, .js)。
-  * `package.json` 和 `yarn.lock`。
+### What to Ignore
 
-### 不应该提交什么？(Ignore)
+* `node_modules/`
+* `.steedos/` (Temporary system cache—**never commit this**).
+* `steedos-storage/` (Locally uploaded attachments).
 
-  * `node_modules/`
-  * `.steedos/` (系统运行时生成的临时缓存，**绝对不要提交**)
-  * `steedos-storage/` (本地上传的附件)
+---
 
------
+## FAQ
 
-## 常见问题 (FAQ)
+**Q: `yarn install` is failing?**
+A: Check if your Node.js version is v18 or v22.
 
-**Q: `yarn install` 报错？**
-A: 请检查 Node.js 版本是否为 v18 或 v22。
+**Q: `yarn start:db` does nothing?**
+A: Ensure Docker Desktop is running. You can also run `docker-compose up -d` manually to troubleshoot detailed errors.
 
-**Q: `yarn start:db` 没反应？**
-A: 请确认 Docker Desktop 是否正在运行。你也可以手动执行 `docker-compose up -d` 来排查详细错误。
-
-**Q: 为什么我修改了 `package.json` 里的依赖，代码里引用不到？**
-A: 在 Workspaces 模式下，如果你是在 `steedos-packages/my-app` 里使用依赖，建议进入该目录执行 `yarn add xxx`，或者在根目录使用 `yarn workspace @my-app/name add xxx`。
+**Q: Why can't I import a dependency I added to `package.json`?**
+A: In Workspaces mode, if you are using a dependency within `steedos-packages/my-app`, you should either run `yarn add xxx` inside that directory or use `yarn workspace @my-app/name add xxx` from the root.

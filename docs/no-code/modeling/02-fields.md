@@ -1,206 +1,212 @@
-# 字段与数据类型
 
-:::info 学习目标
+# Fields and Data Types
 
-  * 理解字段的概念（类比 Excel 列）。
-  * **掌握核心技术指标**：字符长度限制、数字精度、舍入规则。
-  * **攻克难点**：彻底理清 Lookup (引用) 与 Master-Detail (主子明细) 的区别。
-  * 了解各字段在**报表**和**数据导入**时的特殊格式。
+:::info Learning Objectives
+
+* Understand the concept of Fields (analogous to Excel columns).
+* **Master Core Technical Specs**: Character limits, numeric precision, and rounding rules.
+* **Master Complex Concepts**: Clearly distinguish between **Lookup** and **Master-Detail** relationships.
+* Learn the specific data formats used in **Reports** and **Data Import**.
 :::
 
-## 什么是字段？
+## What is a Field?
 
-如果说 **对象 (Object)** 是 Excel 中的一个工作表（Sheet），那么 **字段 (Field)** 就是表头的那一排 **列 (Column)**。
+If an **Object** is a Sheet in Excel, then a **Field** is a **Column** in that sheet.
 
-字段决定了数据的**格式**（是文字还是数字？）和**规则**（最长能写多少字？）。
-
------
-
-## 1\. 文本与输入类 (Text & Input)
-
-用于存储名称、描述、备注等非结构化信息。
-
-| 字段类型 | 图标 | 适用场景 | 关键技术限制 (Specs) |
-| :--- | :--- | :--- | :--- |
-| **文本 (Text)** | 🅰️ | 姓名、标题 | • 最大 **255** 个字符。<br/>• 支持 Shield 平台加密。 |
-| **长文本 (Long Text)** | 📝 | 详细描述、备注 | • **容量**：默认 32,768 字符，管理员最大可调至 **131,072** 字符。<br/>• **换行**：每次按下 Enter 键换行，会占用 **2个字符** 的额度。<br/>• **报表**：标准报表中只显示前 **999** 个字符（要看完整内容需导出为“仅详细信息”）。 |
-| **富文本 (Rich Text)** | 📰 | 公告、文章 | • 提供类似 Word 的工具栏（加粗、颜色、列表）。<br/>• **容量**：最大 **131,072** 字符（包含隐藏的 HTML 代码）。<br/>• **图片**：支持上传 gif, jpeg, png，最大 **1 MB**。 |
-| **电子邮件 (Email)** | 📧 | 客户邮箱 | • 最大 **80** 字符，自动校验格式。<br/>• **注意**：向此字段发邮件**不会**自动记录到系统的“活动历史”中。 |
-| **网址 (URL)** | 🔗 | 官网链接 | • 最大 255 字符。<br/>• **显示**：详情页仅显示前 **50** 个字符，点击可跳转完整地址。 |
-
------
-
-## 2\. 数字与货币类 (Numbers)
-
-涉及金额、数量、统计的数据。
-
-:::warning 精度警告
-所有数字类字段（数字、货币、百分比）在 **15 位小数**后会丢失精度。如果您输入过多小数位，系统可能会截断。
-:::
-
-### 数字 (Number)
-
-  * **场景**：库存数量、年龄、排序号。
-  * **规则**：
-      * **前导零**：系统自动移除（如输入 `007` 会变成 `7`）。
-      * **舍入规则**：采用 **“四舍五入 (Round half up)”**。
-          * `12.345` -\> `12.35`
-          * `-12.345` -\> `-12.35`
-
-### 货币 (Currency)
-
-  * **场景**：合同金额、单价。系统自动添加货币符号 (¥, $)。
-  * **规则**：
-      * **舍入规则**：采用 **“银行家舍入法 (Round-half-to-even)”**。这是财务系统的标准算法，即“四舍六入五成双”，为了在大规模计算中减少累积误差。
-          * `23.5` -\> `24` (5后无数字，向偶数进位)
-          * `22.5` -\> `22` (5后无数字，向偶数舍去)
-
-### 百分比 (Percent)
-
-  * **场景**：折扣率、完成度。
-  * **规则**：输入小数（如 `0.10`），系统显示为百分比（`10%`）。
-
------
-
-## 3\. 日期与时间类 (Date & Time)
-
-| 字段类型 | 说明 | 示例格式 |
-| :--- | :--- | :--- |
-| **日期 (Date)** | 仅包含年月日。是报表筛选的主要依据。 | `2025-12-31` |
-| **日期/时间 (DateTime)** | 包含年月日和具体时刻。 | `2025-12-31 14:30` |
-| **时间 (Time)** | 仅时间。支持毫秒。末尾加 `Z` 代表 GMT 时间。 | `17:30:45.125Z` |
-
------
-
-## 4\. 逻辑与选择类 (Choice)
-
-用于规范输入，防止用户乱填。
-
-### 复选框 (Checkbox)
-
-  * **定义**：只有“是/否”两个状态（如：是否已离职）。
-  * **数据表现（重要）**：
-      * **在界面上**：显示为勾选框 ☑️。
-      * **在报表筛选中**：使用 `True` (选中) 和 `False` (未选)。
-      * **在数据导入/导出时**：使用 `1` (选中) 和 `0` (未选)。
-
-### 选择列表 (Picklist)
-
-  * **定义**：单选下拉菜单。
-  * **配置**：需预先定义好选项值（Label）和代码值（Value）。
-
-### 多选列表 (Multi-select)
-
-  * **定义**：可同时选择多个标签。
-  * **存储格式**：在数据库和导出文件中，多个值之间用**分号** `;` 隔开（例如：`Java;Python;C++`）。
-
------
-
-## 5\. 关系类 (Relationships) —— **核心必读**
-
-Steedos 的核心能力在于处理表与表之间的关系。这是初学者最容易混淆的地方。
-
-### 引用关系 (Lookup) —— “弱关联”
-
-**"你可以指向它，但你们是独立的。"**
-
-  * **场景**：**工单** 关联 **客户**；**员工** 归属 **部门**。
-  * **UI 表现**：显示为放大镜图标 🔍，点击弹出选择窗口。
-  * **行为特征**：
-      * **独立性**：如果删除了“客户”（父），“工单”（子）通常**不会**被删除（仅仅是关联字段变空）。
-      * **灵活性**：这个字段通常是**非必填**的（例如：一个潜在客户可能还没有所属公司）。
-
-### 主子明细关系 (Master-Detail) —— “强关联”
-
-**"同生共死，主控一切。"**
-
-  * **场景**：**报销单** 和 **报销明细**；**订单** 和 **商品行**。
-  * **行为特征**：
-    1.  **级联删除 (Cascade Delete)**：如果删除了“报销单”（主），下面所有的“明细”（子）会被系统**自动删除**。
-    2.  **安全性继承**：子记录的权限完全依赖主记录。如果你没权限看“报销单”，你就绝对看不了它的“明细”。
-    3.  **必填性**：子记录必须始终关联一个主记录，不能存在“孤儿”数据。
-    4.  **累计汇总**：只有建立了主子关系，才能使用下面的“累计汇总”功能。
-
-没问题。这三个字段类型是低代码平台“自动化”能力的精髓，确实值得提升层级，作为独立章节详细介绍。对于非开发人员来说，掌握这三样工具，就等于学会了让系统“自己动起来”。
-
-以下是为您调整后的文档内容，请将其替换或添加到 `02-fields.md` 的相应位置：
+Fields define the **Data Format** (text, number, etc.) and the **Validation Rules** (e.g., maximum character length) for your records.
 
 ---
 
-## 6\. 公式 (Formula)
-**“像 Excel 公式一样，自动计算结果。”**
+## 1. Text and Input Types
 
-公式字段是**只读**的，用户不能手动填写它。它的值是由系统根据你写的表达式，实时计算出来的。当源数据发生变化时，公式的结果也会立即自动更新。
+Used for storing names, descriptions, notes, and other unstructured information.
 
-[公式编写说明](./03-formula.md)
+| Field Type | Icon | Use Case | Technical Specs |
+| --- | --- | --- | --- |
+| **Text** | 🅰️ | Names, Titles | • Max **255** characters.<br/>
 
-* **适用场景**：
-    * **简单运算**：`总价 = 单价 * 数量`
-    * **文本拼接**：`全名 = 姓氏 + " " + 名字`
-    * **逻辑判断**：`状态 = (结束日期 < 今天) ? "已过期" : "正常"`
-    * **跨表取值**：直接显示关联对象的字段（例如：在“合同”上直接显示“客户”的等级）。
+<br/>• Supports Shield Platform Encryption. |
+| **Long Text** | 📝 | Descriptions, Notes | • **Capacity**: Default 32,768 characters, adjustable up to **131,072**.<br/>
 
-* **技术限制 (Specs)**：
-    * **舍入规则**：公式中的数字计算采用 **“四舍五入 (Round half up)”** 规则。
-        * `12.345` ➔ `12.35`
-        * `-12.345` ➔ `-12.35`
-    * **数据类型**：创建公式时，必须指定返回值的类型（是返回一个数字、一个日期，还是一个布尔值？）。
+<br/>• **Line Breaks**: Every Enter key counts as **2 characters**.<br/>
+
+<br/>• **Reports**: Displays only the first **999** characters (export for full details). |
+| **Rich Text** | 📰 | Announcements, Articles | • WYSIWYG editor (bold, color, lists).<br/>
+
+<br/>• **Capacity**: Max **131,072** characters (including hidden HTML tags).<br/>
+
+<br/>• **Images**: Supports gif, jpeg, png up to **1 MB**. |
+| **Email** | 📧 | Customer Emails | • Max **80** characters; automatic format validation.<br/>
+
+<br/>• **Note**: Sending emails to this field does not automatically log activity history. |
+| **URL** | 🔗 | Website Links | • Max 255 characters.<br/>
+
+<br/>• **Display**: Shows first **50** characters; clickable to open full URL. |
 
 ---
 
-## 7\. 累计汇总 (Roll-Up Summary)
-**“不仅能看明细，还能自动算总账。”**
+## 2. Numbers and Currency
 
-这是 Steedos 最强大的统计功能之一。它允许主记录（父）自动统计其名下所有子记录的数据。
+Used for amounts, quantities, and statistical data.
 
-:::danger 核心前提
-**必须建立“主子明细关系 (Master-Detail)”！**
-如果两个对象之间只是普通的“引用关系 (Lookup)”，是无法使用累计汇总字段的。这是最常见的配置错误。
+:::warning Precision Warning
+All numeric field types (Number, Currency, Percent) lose precision after **15 decimal places**. Excess decimal places may be truncated by the system.
 :::
 
-* **支持的四种运算**：
-    1.  **计数 (Count)**：
-        * *例子*：在这个“项目”下，一共有多少个“任务”？
-    2.  **求和 (Sum)**：
-        * *例子*：这个“客户”的所有“已成交订单”的总金额是多少？
-    3.  **最小值 (Min)**：
-        * *例子*：该项目的“任务”中，最早的开始日期是哪天？
-    4.  **最大值 (Max)**：
-        * *例子*：该销售的所有“回款”中，最大的一笔金额是多少？
+### Number
 
-* **技术限制 (Specs)**：
-    * **实时性**：当子记录被添加、删除或修改数值时，主记录上的汇总字段会**立即**自动更新。
-    * **字段类型限制**：只能对子表中的**数字**、**货币**、**百分比**、**日期**字段进行汇总计算（文本字段无法求和）。
+* **Use Case**: Inventory counts, age, sort orders.
+* **Rules**:
+* **Leading Zeros**: Automatically removed (e.g., `007` becomes `7`).
+* **Rounding Rule**: Uses **"Round half up"**.
+* `12.345` ➔ `12.35`
+* `-12.345` ➔ `-12.35`
+
+
+
+
+
+### Currency
+
+* **Use Case**: Contract amounts, unit prices. Automatically adds symbols (¥, $).
+* **Rules**:
+* **Rounding Rule**: Uses **"Round-half-to-even"** (Banker's Rounding). This is the financial standard to reduce cumulative errors in large-scale calculations.
+* `23.5` ➔ `24` (Ends in 5, rounds to the nearest even number).
+* `22.5` ➔ `22` (Ends in 5, rounds to the nearest even number).
+
+
+
+
+
+### Percent
+
+* **Use Case**: Discount rates, completion progress.
+* **Rules**: Input as a decimal (e.g., `0.10`), displayed as a percentage (`10%`).
 
 ---
 
-## 8\. 自动编号 (Auto Number)
-**“给每一条数据一个独一无二的身份证号。”**
+## 3. Date and Time
 
-在 Excel 中，我们经常需要手动输入“序号”。而在 Steedos 中，**自动编号**字段可以替你完成这项工作。它会自动生成递增的序列号，确保永远不会重复。
+| Field Type | Description | Example Format |
+| --- | --- | --- |
+| **Date** | Year, month, and day only. Primary for report filtering. | `2025-12-31` |
+| **Date/Time** | Includes year, month, day, and specific time. | `2025-12-31 14:30` |
+| **Time** | Time only. Supports milliseconds. `Z` suffix denotes GMT. | `17:30:45.125Z` |
 
-* **适用场景**：
-    * **订单编号** (如：`ORD-20251201-001`)
-    * **工单号** (如：`TICKET-0056`)
-    * **客户编码** (如：`C-10086`)
+---
 
-* **格式语法**：
-    * 你需要定义一个显示格式。
-    * `{0000}` 代表数字位。
-    * `{YYYY}`、`{MM}`、`{DD}` 代表当前的年、月、日。
-    * **示例**：设置格式为 `INV-{YYYY}-{0000}`，系统生成的编号将是 `INV-2025-0001`，下一条是 `INV-2025-0002`。
+## 4. Logic and Choice Types
 
-* **技术限制 (Specs)**：
-    * **最大长度**：**30** 个字符。
-    * **前缀/后缀限制**：其中最多 **20** 个字符可用于非数字的前缀或后缀文本。
-    * **不可修改**：一旦生成，用户无法手动修改这个编号（这是为了保证数据的严谨性）。
+Standardize input to ensure data quality.
 
------
+### Checkbox
 
-## 常见问题 (FAQ)
+* **Definition**: A boolean state (Yes/No, True/False).
+* **Data Representation**:
+* **In UI**: Displayed as a checkbox ☑️.
+* **In Report Filters**: Uses `True` (checked) and `False` (unchecked).
+* **In Import/Export**: Uses `1` (checked) and `0` (unchecked).
 
-**Q: 字段类型创建后能修改吗？**
-A: **风险很高！** 虽然系统允许修改，但这通常会导致数据丢失或截断。例如，将“长文本”改为“文本”，超过 255 字的内容会被切断；将“文本”改为“数字”，非数字内容会被清空。
 
-**Q: 如何设置字段为“必填”？**
-A: 在创建或编辑字段时，勾选 **Required (必填)** 属性。注意：这会应用到所有层面（API、导入、页面录入），请谨慎使用。
+
+### Picklist (Dropdown)
+
+* **Definition**: A single-select dropdown menu.
+* **Configuration**: Requires pre-defined Labels (what users see) and Values (what the database stores).
+
+### Picklist (Multi-select)
+
+* **Definition**: Allows selecting multiple tags from a list.
+* **Storage Format**: Values are separated by **semicolons** `;` in the database and export files (e.g., `Java;Python;C++`).
+
+---
+
+## 5. Relationships — **Essential Reading**
+
+The core power of Steedos lies in handling relationships between tables. This is the most critical concept for new developers.
+
+### Lookup Relationship — "Weak Association"
+
+**"You can point to it, but you remain independent."**
+
+* **Scenario**: **Work Order** linked to a **Customer**; **Employee** belonging to a **Department**.
+* **UI**: Represented by a magnifying glass icon 🔍 which opens a selection modal.
+* **Behavior**:
+* **Independence**: If the "Parent" (Customer) is deleted, the "Child" (Work Order) is **not** deleted (the field is simply cleared).
+* **Flexibility**: Usually optional; a record doesn't necessarily need a lookup value.
+
+
+
+### Master-Detail Relationship — "Strong Association"
+
+**"United in existence, controlled by the Master."**
+
+* **Scenario**: **Expense Report** and **Line Items**; **Order** and **Order Products**.
+* **Behavior**:
+1. **Cascade Delete**: If the "Master" (Expense Report) is deleted, all "Detail" records (Line Items) are **automatically deleted**.
+2. **Security Inheritance**: Permissions for the detail record are entirely dependent on the master record.
+3. **Required**: A detail record must always be linked to a master; "orphan" records are not allowed.
+4. **Roll-Up Summaries**: This relationship is a prerequisite for using Roll-Up Summary fields.
+
+
+
+---
+
+## 6. Formula
+
+**"Automated results, just like Excel formulas."**
+
+Formula fields are **read-only**. The system calculates the value in real-time based on the expression you define. When the source data changes, the formula result updates instantly.
+
+* **Use Cases**:
+* **Math**: `Total_Price = Unit_Price * Quantity`
+* **Text Concatenation**: `Full_Name = Last_Name + " " + First_Name`
+* **Logic**: `Status = (End_Date < Today) ? "Expired" : "Active"`
+* **Cross-object**: Display fields from a related object (e.g., showing "Customer Tier" on a "Contract" page).
+
+
+
+---
+
+## 7. Roll-Up Summary
+
+**"Automating the totals from child records."**
+
+This allows a Master record to automatically calculate data from its Detail records.
+
+:::danger Core Prerequisite
+**Requires a Master-Detail Relationship!**
+Roll-Up Summary fields cannot be used with standard Lookup relationships.
+:::
+
+* **Supported Operations**:
+1. **Count**: Total number of child records.
+2. **Sum**: Total value of a specific numeric field across child records.
+3. **Min/Max**: The lowest or highest value (e.g., earliest start date).
+
+
+
+---
+
+## 8. Auto Number
+
+**"A unique ID for every record."**
+
+Instead of manual entry, **Auto Number** fields generate a sequential ID automatically to ensure uniqueness.
+
+* **Format Syntax**:
+* `{0000}`: Represents the numeric sequence.
+* `{YYYY}`, `{MM}`, `{DD}`: Represents current Year, Month, or Day.
+* **Example**: A format of `INV-{YYYY}-{0000}` produces `INV-2025-0001`.
+
+
+
+---
+
+## FAQ
+
+**Q: Can I change a field type after it has been created?**
+A: **High Risk.** While permitted, it often leads to data loss or truncation (e.g., changing "Long Text" to "Text" will cut off data beyond 255 characters).
+
+**Q: How do I make a field mandatory?**
+A: Check the **Required** attribute in the field settings. This applies across the API, imports, and the UI.

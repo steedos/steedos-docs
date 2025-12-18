@@ -1,154 +1,143 @@
-# 业务对象
 
-:::info 学习目标
+# Business Objects
 
-  * 理解什么是“对象”，以及它与 Excel 表格的区别。
-  * 学会创建一个新的自定义对象（例如：“项目”或“合同”）。
-  * 掌握对象名称（API Name）与显示名称的区别。
+:::info Learning Objectives
+
+* Understand what an "Object" is and how it differs from an Excel spreadsheet.
+* Learn how to create a new Custom Object (e.g., "Project" or "Contract").
+* Master the difference between an Object's Display Label and its **API Name**.
 :::
 
-## 什么是“对象”？
+## What is an "Object"?
 
-在 Steedos 中，**对象 (Object)** 是存储数据的核心容器。
+In Steedos, an **Object** is the core container used to store data.
 
-如果您熟悉 Excel，那么理解“对象”非常简单：
+If you are familiar with Excel, understanding "Objects" is quite simple:
 
-  * **对象**就像 Excel 文件中的一个 **Sheet（工作表）**（例如：“客户表”、“合同表”）。
-  * 对象中的 **字段 (Field)** 就像 Excel 的 **列**（例如：“客户名称”、“联系电话”）。
-  * 对象中的 **记录 (Record)** 就像 Excel 的 **行**（例如：具体的某一位客户“张三”的信息）。
+* An **Object** is like a **Sheet** in an Excel file (e.g., "Customers," "Contracts").
+* **Fields** within an object are like the **Columns** in Excel (e.g., "Customer Name," "Phone Number").
+* **Records** within an object are like the **Rows** in Excel (e.g., the specific data for a customer named "John Doe").
 
-### 为什么要用对象，而不是继续用 Excel？
+### Why use Objects instead of Excel?
 
-虽然 Excel 很灵活，但在多人协作和复杂业务中，Steedos 对象具有明显优势：
+While Excel is flexible, Steedos Objects offer significant advantages for multi-user collaboration and complex business logic:
 
-1.  **结构化**：强制规定“金额”栏只能填数字，“日期”栏只能选日期，避免数据混乱。
-2.  **关联性**：您可以轻松地将“合同”对象与“客户”对象关联起来，点击客户就能看到他所有的合同。
-3.  **安全性**：您可以控制谁能看这张表，甚至谁能看表里的某一列（例如：隐藏“成本”字段）。
+1. **Structured Data**: You can enforce rules (e.g., the "Amount" field must be a number, "Date" must be a valid date), preventing data inconsistency.
+2. **Relational Power**: You can easily link a "Contract" object to a "Customer" object. Clicking a customer allows you to see all associated contracts instantly.
+3. **Granular Security**: You can control who sees the table, or even specific columns (e.g., hiding the "Cost" field from certain roles).
 
-## 系统对象 vs. 自定义对象
+---
 
-在 Steedos 中，您会遇到两种对象：
+## Standard Objects vs. Custom Objects
 
-1.  **标准对象 (Standard Objects)**：Steedos 平台自带的、开箱即用的对象。
-      * 例如：**人员 (Users)**、**部门 (Organizations)**、**文件 (Space Users)** 等。
-2.  **自定义对象 (Custom Objects)**：根据您的业务需求，由您亲自创建的对象。
-      * 例如：您需要管理公司的车辆，您可以创建一个 **“车辆 (Vehicle)”** 对象；您需要管理项目，可以创建一个 **“项目 (Project)”** 对象。
+In Steedos, you will encounter two types of objects:
+
+1. **Standard Objects**: Out-of-the-box objects provided by the Steedos platform.
+* Examples: **Users**, **Organizations**, **Space Users**, etc.
 
 
-## 对象配置项详解
+2. **Custom Objects**: Objects created by you to meet specific business requirements.
+* Example: If you need to manage company vehicles, you create a **"Vehicle"** object; to manage projects, you create a **"Project"** object.
 
-在创建或编辑对象时，您会看到许多配置选项。为了帮助您理解，我们将这些设置分为“基本身份”、“功能开关”、“界面表现”和“高级设置”四个部分。
 
-### 1\. 基本身份 (Identity)
 
-定义对象是谁，以及系统如何识别它。
+[Image illustrating a platform with pre-built system objects and a toolbox for creating custom business objects]
 
-| 字段名称 (Label) | 关键配置项 | 说明 |
-| :--- | :--- | :--- |
-| **显示名称** | `label` | **必填**。用户在界面上看到的名称（如“合同”、“客户”）。建议使用中文。 |
-| **API 名称** | `name` | **必填**。系统的唯一标识符（如 `contract`, `account`）。<br/>⚠️ **注意**：创建后请勿随意修改，建议使用纯英文小写单词，不要使用拼音。 |
-| **图标** | `icon` | 为对象选择一个辨识度高的图标，它会显示在菜单栏和对象的头部。 |
-| **备注** | `description` | 仅管理员可见。用于记录该对象的用途、维护注意事项等。 |
+---
 
-### 2\. 功能开关 (Features)
+## Detailed Configuration Items
 
-决定这个对象具备哪些内置能力。Steedos 预置了许多模块，通过勾选即可启用，无需开发。
+When creating or editing an object, you will see various configuration options. We have categorized these settings into four sections:
 
-| 功能名称 | 对应字段 | 场景与作用 |
-| :--- | :--- | :--- |
-| **允许上传附件** | `enable_files` | 勾选后，记录详情页会出现“附件”栏，允许用户上传 Word、PDF、图片等文件。 |
-| **允许在记录中评论** | `enable_chatter` | 开启社交化协作。用户可以在记录下方留言、@同事，类似微信朋友圈的互动。 |
-| **允许创建相关任务** | `enable_tasks` | 启用后，可以在该记录下指派“待办任务”给同事（例如：在“合同”下创建一个“催款”任务）。 |
-| **允许创建相关日程** | `enable_events` | 启用后，可以在日历中安排与该记录相关的会议或活动。 |
-| **显示审批单子表** | `enable_instances` | **核心功能**。如果您希望这个对象的数据能发起审批流程（如“请假申请”、“合同审批”），必须勾选此项。 |
-| **数据修改日志** | `enable_audit` | **安全审计**。勾选后，系统会记录该对象的每一次修改（谁、什么时间、把什么字段从A改成了B）。 |
-| **已锁定** | `locked` | 通常由审批流程自动控制。当记录处于“审批中”或“已归档”状态时，系统会勾选此项，防止普通用户修改数据。 |
+### 1. Identity
 
-### 3\. 界面表现 (User Interface)
+Defines the object's identity and how the system recognizes it.
 
-控制用户在浏览数据列表或详情页时的交互体验。
+| Label | Key Configuration | Description |
+| --- | --- | --- |
+| **Display Label** | `label` | **Required**. The name users see in the UI (e.g., "Contract"). |
+| **API Name** | `name` | **Required**. The unique identifier for the system (e.g., `contract`). <br/>
 
-| 配置项 | 对应字段 | 说明 |
-| :--- | :--- | :--- |
-| **允许在列表中编辑** | `enable_inline_edit` | **效率神器**。勾选后，用户不需要点进详情页，直接在列表视图像 Excel 一样双击单元格即可修改数据。 |
-| **列表分屏模式** | `enable_split` | 勾选后，列表页左侧显示清单，右侧直接显示详情。适合需要快速浏览大量详情的场景（如“招聘简历”浏览）。 |
-| **树状结构显示** | `enable_tree` | 仅适用于具有层级关系的数据（如“部门”、“地区”）。勾选后，列表将以树形（文件夹形式）展示。 |
-| **弹出窗口查找** | `enable_enhanced_lookup` | 当其他表关联此对象时，默认是下拉框选择。勾选此项后，会变成点击放大镜弹出弹窗选择，适合数据量非常大的对象（如“产品库”）。 |
-| **选项卡样式表单** | `enable_form_tabs` | 如果字段非常多，勾选此项可以将详情页的表单分组显示为 Tab 标签页，而不是长长的一页滚到底。 |
+<br/>⚠️ **Note**: Avoid changing this after creation. Use lowercase English; do not use Pinyin. |
+| **Icon** | `icon` | Choose a recognizable icon for the menu and object headers. |
+| **Description** | `description` | Visible to admins only. Used to document the purpose of the object. |
 
-### 4\. 高级设置 (Advanced)
+### 2. Features
 
-通常由架构师或资深开发者配置，初级管理员保持默认即可。
+Decides which built-in capabilities the object possesses. Steedos provides many modules that can be enabled with a simple checkbox.
 
-| 配置项 | 对应字段 | 解释 |
-| :--- | :--- | :--- |
-| **数据源** | `datasource` | 默认为 `default`（Steedos 内置数据库）。如果您需要连接外部的 Oracle/MySQL 数据库，在此处选择。 |
-| **数据库表名称** | `table_name` | 指定该对象在数据库中实际存储的物理表名。通常留空，系统会自动根据 API 名称生成。 |
-| **自定义** | `is_customize` | 标识该对象是否为用户自定义创建。系统标准对象此项未勾选。 |
+| Feature | Key | Usage & Effect |
+| --- | --- | --- |
+| **Allow Attachments** | `enable_files` | Adds an "Attachments" section to the record detail page for uploading PDFs, images, etc. |
+| **Enable Chatter** | `enable_chatter` | Enables social collaboration. Users can leave comments and @ colleagues directly on a record. |
+| **Enable Tasks** | `enable_tasks` | Allows users to assign "To-do Tasks" related to the record (e.g., a "Follow-up" task under a Contract). |
+| **Enable Events** | `enable_events` | Allows scheduling meetings or activities in the calendar related to this record. |
+| **Show Approval Sub-tab** | `enable_instances` | **Core Feature**. Must be enabled if you want to initiate approval workflows (e.g., "Expense Claims") from this object. |
+| **Audit Trails** | `enable_audit` | **Security**. Records every change made to the object (who, when, and what was changed). |
 
-## 实战演练：创建一个“项目”对象
+### 3. User Interface (UI)
 
-假设我们需要一个系统来管理公司的所有项目信息。让我们从零开始创建一个名为 **“项目 (Project)”** 的对象。
+Controls the interactive experience when users browse lists or detail pages.
 
-### 第 1 步：进入对象管理器
+| Configuration | Key | Description |
+| --- | --- | --- |
+| **Inline Edit** | `enable_inline_edit` | **Efficiency Pro**. Allows users to double-click cells in a list view to edit data without opening the detail page. |
+| **Split View** | `enable_split` | Displays a list on the left and details on the right. Perfect for quick browsing (e.g., reviewing Resumes). |
+| **Tree View** | `enable_tree` | Suitable for hierarchical data (e.g., Departments or Regions). |
+| **Enhanced Lookup** | `enable_enhanced_lookup` | Replaces the dropdown menu with a searchable popup window for selecting related records. |
 
-1.  登录 Steedos 系统。
-2.  点击右上角的 **设置 (Settings)** 齿轮图标。
-3.  在左侧菜单中选择 **“对象设置”** -\> **“对象”**。
-4.  点击右上角的 **“新建 (New)”** 按钮。
+---
 
-### 第 2 步：填写基本信息
+## Hands-on: Creating a "Project" Object
 
-在新建页面，我们需要填写对象的核心身份信息。这是最关键的一步。
+Let’s create a **"Project"** object from scratch to manage company project information.
 
-| 配置项 | 填写建议 / 解释 | 示例填写 |
-| :--- | :--- | :--- |
-| **显示名称 (Label)** | 用户在界面上看到的名称，通常使用中文。 | `项目` |
-| **对象名称 (API Name)** | **重点**：这是系统内部使用的唯一标识符。建议使用**纯英文**，不含空格和特殊字符。一旦创建，尽量不要修改。 | `project` |
-| **图标 (Icon)** | 为您的对象选一个代表性的图标，用于菜单和列表页展示。 | (选择一个公文包图标) |
-| **描述 (Description)** | 选填。给其他管理员看的备注。 | `用于管理公司内部及交付型项目的主数据。` |
+### Step 1: Access the Object Manager
 
-:::tip 命名最佳实践
-**对象名称 (API Name)** 就像每个人的身份证号，而 **显示名称 (Label)** 就像人的昵称。
+1. Log in to Steedos.
+2. Click the **Settings (Gear Icon)** in the top right.
+3. In the left sidebar, go to **"Object Settings"** -> **"Objects"**.
+4. Click the **"New"** button.
 
-  * **推荐**：使用有意义的英文单词，如 `contract`, `purchase_order`。
-  * **避免**：使用拼音 `xiangmu` (不专业) 或无意义的字符 `obj_001` (难以维护)。
-:::
+### Step 2: Define Identity
 
-### 第 3 步：可选功能开关 (Optional Features)
+Fill in the core identification information. This is the most critical step.
 
-在下方的高级设置中，勾选您需要的功能（按需勾选，以后也可以改）：
+| Field | Suggestion | Example |
+| --- | --- | --- |
+| **Display Label** | User-friendly name. | `Project` |
+| **API Name** | **Crucial**: Internal unique ID. Use pure English, no spaces. | `project` |
+| **Icon** | A representative icon. | (Select a briefcase icon) |
+| **Description** | Internal note for admins. | `Used to manage internal and delivery projects.` |
 
-  * [x] **允许搜索 (Allow Search)**：勾选后，用户可以在全局搜索框中搜到项目数据。
-  * [x] **启用附件 (Enable Attachments)**：允许用户在项目中上传文档、图片。
-  * [x] **启用任务 (Enable Tasks)**：允许在这个项目下创建待办任务。
+### Step 3: Enable Optional Features
 
-### 第 4 步：保存
+Under the advanced settings, check the features you need:
 
-点击 **“保存”** 按钮。
+* [x] **Allow Search**: Makes project data searchable via the global search bar.
+* [x] **Enable Attachments**: Allows document/image uploads.
+* [x] **Enable Tasks**: Allows creating to-do items under a project.
 
-🎉 **恭喜！您已经成功创建了第一个业务对象。**
+### Step 4: Save
 
------
+Click **"Save"**.
 
-## 接下来做什么？
+🎉 **Congratulations! You have successfully created your first Business Object.**
 
-现在您已经拥有了一个空的“项目”表（对象），但它除了“项目名称”外，还没有其他列。
+---
 
-您可以点击新创建的“项目”对象，进入详情页进行以下操作：
+## What’s Next?
 
-1.  **新建字段**：添加“开始时间”、“结束时间”、“项目经理”、“预算金额”等列。（请阅读下一章：[字段与数据类型](./02-fields.md)）
-2.  **调整视图**：设计列表视图、记录查看页面的布局。
-3.  **创建数据**：回到主界面，尝试录入一条项目数据。
+You now have an empty "Project" table. To make it functional, you should:
 
------
+1. **Add Fields**: Add columns like "Start Date," "Budget," or "Project Manager." (Read: [Fields and Data Types](https://www.google.com/search?q=./02-fields.md))
+2. **Adjust Layouts**: Design the list views and record detail page layouts.
+3. **Enter Data**: Go back to the main interface and try creating your first project record.
 
-## 常见问题 (FAQ)
+---
 
-**Q: 对象名称 (API Name) 可以修改吗？**
+## FAQ
 
-A: 理论上可以，但**强烈不建议**。因为如果您已经在报表、代码或公式中引用了这个名称，修改它会导致系统报错。请在创建时深思熟虑。
+**Q: Can I change the API Name later?** A: Technically yes, but **strongly discouraged**. If you have referenced this name in reports, code, or formulas, changing it will break those references.
 
-**Q: 我能删除不需要的对象吗？**
-
-A: 可以。但在删除前，需检查是否有其他对象关联了它。如果存在关联关系，需要先解除关联才能删除。
+**Q: Can I delete objects I no longer need?** A: Yes. However, check for relationships first. If other objects are linked to it, those relationships must be removed before deletion.

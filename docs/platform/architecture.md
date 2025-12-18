@@ -1,103 +1,113 @@
-# 技术架构
 
-:::info 学习目标
+# Technical Architecture
 
-  * 理解 Steedos 的核心灵魂：**元数据驱动 (Metadata Driven)**。
-  * 了解 **Node.js** 和 **MongoDB** 如何保证系统的速度和灵活性。
-  * 明白 **React + Amis** 如何实现“改配置即改界面”。
-  * 读懂为什么这种架构比传统开发更快、更稳。
+:::info Learning Objectives
+
+* Understand the soul of Steedos: **Metadata Driven**.
+* Learn how **Node.js** and **MongoDB** ensure system speed and flexibility.
+* Understand how **React + Amis** achieve "Configuration as UI".
+* Discover why this architecture is faster and more stable than traditional development.
 :::
 
-Steedos 并不是一个传统的软件，它更像是一个 **“会读图纸的机器人”**。
+Steedos is not a traditional software; it is more like a **"Blueprint-Reading Robot."**
 
-传统软件开发像是在 **“画油画”** ——程序员一笔一画地把界面写死在代码里，想改一个按钮的位置，必须刮掉重画（修改代码、编译、发布）。
+Traditional software development is like **"Oil Painting"**—programmers painstakingly hardcode the interface. To change the position of a button, you must "scrape it off and repaint" (modify code, compile, and redeploy).
 
-而 Steedos 是 **“搭积木”** ——我们只写下“图纸”（元数据），系统引擎会自动读取图纸，瞬间生成软件。
+Steedos, however, is like **"Building Blocks"**—we simply define the **"Blueprints" (Metadata)**, and the system engine automatically reads them to generate the software instantly.
 
------
+---
 
-## 1\. 核心灵魂：元数据驱动 (Metadata Driven)
+## 1. The Core Soul: Metadata Driven
 
-这是 Steedos 最重要的概念。
+This is the most critical concept in Steedos.
 
-### 什么是元数据？
+### What is Metadata?
 
-  * **数据 (Data)**：是“张三”、“1000元”、“2025-01-01”这些具体的内容。
-  * **元数据 (Metadata)**：是描述数据的数据。比如“‘金额’字段必须是数字”、“‘客户’表有三个列”。
+* **Data**: Specific content like "John Doe," "$1,000," or "2025-01-01."
+* **Metadata**: Data that describes other data. For example: "The 'Amount' field must be a number" or "The 'Customer' table has three columns."
 
-在 Steedos 中，**一切皆配置**。对象、字段、菜单、权限、甚至页面布局，都是以 **YAML** 或 **JSON** 格式的文本文件存在的。
+In Steedos, **Everything is Configuration**. Objects, fields, menus, permissions, and even page layouts exist as text files in **YAML** or **JSON** format.
 
-### 核心优势：代码与配置分离
+### Core Advantage: Decoupling Code from Configuration
 
-  * **传统开发**：业务逻辑和底层代码混在一起。升级底层框架时，业务功能容易崩。
-  * **Steedos 架构**：
-      * **底层引擎 (Engine)**：由 Steedos 官方维护，负责解析图纸。
-      * **业务配置 (Metadata)**：由您维护，定义业务逻辑。
-      * **好处**：当 Steedos 升级内核时，您的业务配置不受影响，甚至会自动获得新特性（比如官方优化了表格性能，您的所有表格都会立刻变快）。
+* **Traditional Development**: Business logic is tightly coupled with the underlying code. Upgrading the framework often breaks business functions.
+* **Steedos Architecture**:
+* **Engine**: Maintained by the Steedos team, responsible for parsing blueprints.
+* **Business Metadata**: Maintained by you, defining business logic.
+* **The Benefit**: When Steedos upgrades its core engine, your business configurations remain unaffected and may even gain new features automatically (e.g., if we optimize table performance, all your tables get faster immediately).
 
------
 
-## 2\. 强大的大脑：后端架构 (Node.js + MongoDB)
 
-Steedos 的服务端采用当下最流行的 **Node.js** 技术栈，这与 Netflix、Uber、淘宝（部分）的技术选型一致。
+---
 
-### 引擎：Node.js
+## 2. The Powerful Brain: Backend Architecture (Node.js + MongoDB)
 
-  * **特点**：非阻塞、高并发。
-  * **通俗理解**：传统的服务器像是一个**只有一个窗口的银行**，办完一个业务才能叫下一个号。Node.js 像是一个**自助服务大厅**，它可以同时处理成千上万个请求，谁的数据准备好了就处理谁，不会傻等。这让 Steedos 运行速度非常快。
+Steedos uses the modern **Node.js** stack, consistent with the technology choices of companies like Netflix, Uber, and PayPal.
 
-### 记忆体：MongoDB
+### The Engine: Node.js
 
-Steedos 默认使用 **MongoDB** 作为数据库。
+* **Characteristics**: Non-blocking, high concurrency.
+* **The Analogy**: A traditional server is like a **bank with only one teller window**—one customer must finish before the next is called. Node.js is like a **self-service hall**—it can handle thousands of requests simultaneously, processing whoever’s data is ready first without waiting. This makes Steedos exceptionally fast.
 
-  * **为什么不用 SQL (MySQL/Oracle)？**
-      * SQL 数据库像 **Excel 表格**，结构非常死板。想加一列？由于数据量大，可能导致数据库卡死。
-      * MongoDB 像 **文件夹**，每一条数据是一个独立的文档（JSON）。
-  * **低代码的绝配**：
-    在低代码平台，用户经常今天加个字段，明天改个类型。MongoDB 的**无模式 (Schema-less)** 特性，允许您随意增删字段，而不需要重启数据库，也不需要进行复杂的数据库迁移。
+### The Memory: MongoDB
 
------
+Steedos uses **MongoDB** as its default database.
 
-## 3\. 灵动的面孔：前端架构 (React + Amis)
+* **Why not SQL (MySQL/Oracle)?**
+* SQL databases are like **fixed Excel spreadsheets** with rigid structures. Adding a column to a massive table can freeze the database.
+* MongoDB is like a **folder system** where every piece of data is an independent document (JSON).
 
-用户在浏览器里看到的一切，是由 **React** 和百度开源的 **Amis** 框架驱动的。
 
-### 渲染器：Amis
+* **The Perfect Match for Low-Code**:
+In a low-code environment, users frequently add fields or change types. MongoDB’s **Schema-less** nature allows you to add or remove fields on the fly without restarting the database or performing complex migrations.
 
-还记得我们说的“图纸”吗？Amis 就是那个**“读图纸的建筑师”**。
+---
 
-  * 后端发送一段 JSON 配置给前端：
-    ```json
-    { "type": "page", "title": "合同管理", "body": "表格..." }
-    ```
-  * Amis 接收到后，瞬间在浏览器里把它画成一个漂亮的页面。
-  * **所见即所得**：这就是为什么您在设计器里拖拽组件，界面能实时变化的原因。
+## 3. The Dynamic Interface: Frontend Architecture (React + Amis)
 
-### 响应式设计
+Everything the user sees in the browser is driven by **React** and the **Amis** framework (open-sourced by Baidu).
 
-得益于这套架构，Steedos 的界面天生支持**响应式**。您配置好的一套界面，在电脑宽屏上显示为三栏，在 iPad 上自动变为两栏，在手机上自动变为单栏，无需为手机端单独开发。
+### The Renderer: Amis
 
------
+Remember the "blueprint" we mentioned? Amis is the **"Architect who reads the blueprint."**
 
-## 4\. 总结：一个请求的旅程
+* The backend sends a JSON configuration to the frontend:
+```json
+{ "type": "page", "title": "Contract Management", "body": "Table..." }
 
-为了帮您串联起来，让我们看看当用户点击“保存”按钮时，系统内部发生了什么：
+```
 
-1.  **前端 (Amis)**：收集用户在表单里填的数据，打包成 JSON。
-2.  **网络层 (API)**：通过 GraphQL 或 REST API 将数据发送给服务器。
-3.  **后端 (Node.js)**：
-      * **身份核验**：你是谁？（调用认证微服务）
-      * **权限核验**：你有没有权改这个字段？（读取权限元数据）
-      * **业务校验**：金额是否小于 0？（执行触发器逻辑）
-4.  **数据库 (MongoDB)**：将经过检查的干净数据写入硬盘。
-5.  **自动化 (Workflow)**：数据写入成功后，触发工作流引擎：“嘿，有新合同了，给经理发条通知！”
 
------
+* Amis receives this and instantly renders a beautiful page in the browser.
+* **What You See Is What You Get (WYSIWYG)**: This is why changes appear in real-time when you drag and drop components in the Page Designer.
 
-## 常见问题 (FAQ)
+### Responsive Design
 
-**Q: 元数据文件 (.yml) 存在哪里？**
-A: 在开发模式下，它们是您项目文件夹里的一个个文件，您可以上传到 GitHub 进行版本控制。在运行模式下，它们会被加载到数据库中缓存起来，以保证极高的读取速度。
+Thanks to this architecture, Steedos interfaces are **responsive by default**. A single configuration will display as three columns on a desktop, two columns on an iPad, and a single column on a smartphone—no separate mobile development required.
 
-**Q: 我可以用 Java 或 C\# 开发 Steedos 吗？**
-A: Steedos 的核心是用 Node.js 写的。但由于它基于**微服务**和**标准 API**，您完全可以用 Java 写一个外部服务，然后通过 Webhook 或 API 与 Steedos 进行交互。语言不再是障碍。
+---
+
+## 4. Summary: The Journey of a Request
+
+To put it all together, let’s look at what happens when a user clicks the "Save" button:
+
+1. **Frontend (Amis)**: Collects form data and packages it into a JSON object.
+2. **Network Layer (API)**: Sends data to the server via GraphQL or REST API.
+3. **Backend (Node.js)**:
+* **Authentication**: Who are you? (Identity microservice).
+* **Authorization**: Do you have permission to modify this field? (Checks Permission Metadata).
+* **Validation**: Is the amount less than 0? (Executes Trigger logic).
+
+
+4. **Database (MongoDB)**: Writes the validated, "clean" data to the disk.
+5. **Automation (Workflow)**: After a successful write, the engine triggers: "Hey, there's a new contract; notify the manager!"
+
+---
+
+## FAQ
+
+**Q: Where are the metadata files (.yml) stored?**
+A: In **Development Mode**, they are individual files in your project folder, allowing for version control via GitHub. In **Production Mode**, they are loaded into a database cache to ensure high-speed access.
+
+**Q: Can I develop for Steedos using Java or C#?**
+A: The Steedos core is written in Node.js. However, because it is built on **Microservices** and **Standard APIs**, you can write external services in Java and interact with Steedos via Webhooks or APIs. Language is no longer a barrier.

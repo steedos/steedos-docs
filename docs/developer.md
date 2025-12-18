@@ -1,74 +1,77 @@
-# 开发者指南
 
-:::info 核心理念
-**低代码 (Low-Code) + 专业代码 (Pro-Code) = 无限可能**
+# Developer Guide
 
-  * 使用 **无代码** 能力解决 80% 的通用需求（CRUD、简单流程、报表），实现“快”。
-  * 使用 **专业代码** 能力解决 20% 的核心差异化需求（复杂算法、系统集成、定制 UI），实现“深”。
+:::info Core Philosophy
+**Low-Code + Pro-Code = Infinite Possibilities**
+
+* Use **No-Code** capabilities to handle 80% of common requirements (CRUD, simple workflows, reports) for maximum **speed**.
+* Use **Pro-Code** capabilities to tackle the 20% core differentiation (complex algorithms, system integrations, custom UI) for maximum **depth**.
 :::
 
-欢迎来到 Steedos 的代码世界。
+Welcome to the world of Steedos development.
 
-如果你是一名程序员，你可能对“低代码平台”心存疑虑：*“它会不会限制我的发挥？”*、*“我是不是要学习一堆私有的、古怪的语法？”*
+If you are a programmer, you might have reservations about "Low-Code platforms": *"Will it limit my creativity?"* or *"Will I have to learn a bunch of proprietary, quirky syntax?"*
 
-请放心。Steedos 3.0 是建立在标准技术栈 (**Node.js, MongoDB, React**) 之上的。在这里，你依然是你熟悉的那个全栈工程师，只是你的工具箱里多了一套强大的加速引擎。
+Rest assured. Steedos 3.0 is built on a standard technology stack (**Node.js, MongoDB, React**). Here, you are still the full-stack engineer you know and love—you just have a powerful acceleration engine added to your toolbox.
 
------
+---
 
-## 你能在这里做什么？
+## What Can You Do Here?
 
-作为开发者，你可以接管系统的任何层面：
+As a developer, you can take control of any layer of the system:
 
-### 1\. 后端扩展 (Node.js)
+### 1. Backend Extensions (Node.js)
 
-  * **触发器 (Triggers)**：在数据保存前/后拦截请求，执行复杂校验或计算（例如：写入合同前，自动去 ERP 系统查一下库存）。
-  * **自定义 API**：编写标准的 REST 或 GraphQL API，供第三方系统调用。
-  * **微服务集成**：利用 Moleculer 框架，编写独立的微服务模块，与 Steedos 核心解耦。
+* **Triggers**: Intercept requests before or after data is saved to perform complex validations or calculations (e.g., automatically checking inventory in an ERP system before a contract is finalized).
+* **Custom APIs**: Write standard REST or GraphQL APIs for third-party system consumption.
+* **Microservices**: Leverage the **Moleculer** framework to write independent microservice modules that are decoupled from the Steedos core.
 
-### 2\. 前端扩展 (React + Amis)
+### 2. Frontend Extensions (React + Amis)
 
-  * **自定义组件**：用 React 写一个炫酷的“3D 模型展示组件”，并在页面设计器里拖拽使用。
-  * **复杂交互逻辑**：编写 JavaScript 脚本来控制表单的联动、校验和动态效果。
-  * **主题定制**：使用 CSS/SASS 深度定制系统 UI，甚至重写整个登录页。
+* **Custom Components**: Build a stunning "3D model viewer" in React and use it via drag-and-drop within the Page Designer.
+* **Complex Interaction Logic**: Write JavaScript snippets to control form linkages, validations, and dynamic visual effects.
+* **Theme Customization**: Use CSS/SASS for deep UI customization, or even rewrite the entire login page.
 
-### 3\. 工程化与 DevOps
+### 3. Engineering & DevOps
 
-  * **代码即配置**：所有的对象、字段、权限配置都可以导出为 `.yml` 文件。
-  * **版本控制**：将这些配置文件提交到 Git 仓库，进行 Code Review 和版本回滚。
-  * **CI/CD**：通过 GitHub Actions 或 Jenkins 自动部署应用到生产环境。
+* **Code as Configuration**: All objects, fields, and permission settings can be exported as `.yml` files.
+* **Version Control**: Commit these configuration files to a Git repository for Code Review and version rollbacks.
+* **CI/CD**: Automate application deployment to production environments using GitHub Actions or Jenkins.
 
------
+---
 
-## 开发工作流 (The Workflow)
+## The Workflow
 
-Steedos 采用 **"Metadata Driven" (元数据驱动)** 的开发模式。你的工作流通常是这样的：
+Steedos adopts a **"Metadata Driven"** development model. Your typical workflow looks like this:
 
-1.  **拉取 (Retrieve)**：使用 CLI 工具，将线上的配置（对象、权限等）拉取到本地，变成 `.yml` 文件。
-2.  **开发 (Code)**：
-      * 在 VS Code 中修改 `.yml` 文件。
-      * 新建 `.js` 文件编写触发器逻辑。
-      * 新建 `.tsx` 文件编写 React 组件。
-3.  **调试 (Debug)**：在本地启动 Steedos 服务，实时预览修改效果。
-4.  **推送 (Deploy)**：代码测试通过后，使用 CLI 将元数据和代码推送到测试环境或生产环境。
-
------
+1. **Retrieve**: Use the CLI tool to pull online configurations (objects, permissions, etc.) to your local machine, converting them into `.yml` files.
+2. **Code**:
+* Modify `.yml` files in **VS Code**.
+* Create `.js` files to write Trigger logic.
+* Create `.tsx` files to build React components.
 
 
-## 必备技能清单
+3. **Debug**: Start the Steedos service locally to preview your changes in real-time.
+4. **Deploy**: Once testing passes, use the CLI to push metadata and code to your staging or production environments.
 
-在开始之前，我们建议您具备以下基础知识：
+---
 
-  * **JavaScript (ES6+) / TypeScript**：这是 Steedos 开发的通用语言。
-  * **JSON & YAML**：配置文件的主要格式。
-  * **Node.js 基础**：理解 `npm/yarn`，模块导入导出。
-  * **React 基础**：(仅前端开发需要) 理解组件、Props 和 State。
-  * **MongoDB 查询语法**：(可选) 有助于编写复杂的数据库查询。
+## Prerequisite Skills
 
------
+Before you dive in, we recommend having a foundation in the following:
 
-:::tip 给开发者的建议
-不要试图用代码去重新发明轮子。
-在开始写代码之前，先问自己：**“这个功能用无代码配置能实现吗？”**
-  * 如果能，请优先使用配置（因为配置更稳定、更容易维护）。
-  * 如果不能，或者配置极其别扭，那么——**Show me the code\!**
+* **JavaScript (ES6+) / TypeScript**: The universal languages for Steedos development.
+* **JSON & YAML**: The primary formats for configuration files.
+* **Node.js Basics**: Understanding `npm/yarn` and module imports/exports.
+* **React Basics**: (Required for frontend tasks) Understanding components, Props, and State.
+* **MongoDB Query Syntax**: (Optional) Helpful for writing complex database queries.
+
+---
+
+:::tip Advice for Developers
+Don't try to reinvent the wheel with code.
+Before you start coding, ask yourself: **"Can this feature be achieved through no-code configuration?"**
+
+* If yes, prioritize configuration (as it is more stable and easier to maintain).
+* If no, or if the configuration feels extremely forced, then—**Show me the code!**
 :::
