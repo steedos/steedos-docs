@@ -3,20 +3,38 @@ title: Getting Started
 sidebar_position: 5
 ---
 
-# Welcome to Steedos Platform
+# Welcome to Steedos 3.0
 
-**Steedos Platform** is an open-source enterprise low-code development platform. Built on a **Metadata Driven** architecture, it empowers developers to build, deploy, and manage complex enterprise applications at 10x speed.
+**Steedos is the leading open-source, AI-native alternative to Salesforce.**
 
-Whether you are building a CRM, ERP, or a highly customized business system, Steedos provides full-stack capabilities ranging from data modeling and UI generation to process automation.
+By leveraging a **Metadata-Driven** architecture, we enable enterprises to build mission-critical applications with the speed of low-code and the flexibility of pro-code.
 
 ![steedos overview](/diagrams/steedos-overview.svg)
-## 🌟 Key Features
 
-  * **🚀 Rapid Development**: Define data objects using simple JSON/YAML configuration files to automatically generate CRUD APIs and user interfaces.
-  * **🔧 Code-Centric Low-Code**: Supports visual design tools while remaining developer-friendly by allowing direct editing of metadata code in VS Code.
-  * **⚛️ Modern Tech Stack**: Built on Node.js and MongoDB on the backend, and React on the frontend, making it easy to extend and integrate.
-  * **🔗 Powerful Integration**: Built-in GraphQL and REST APIs allow for seamless connection with third-party systems.
-  * **🛡️ Enterprise Security**: A granular permission control system supporting field-level security and record-level sharing rules.
+## Core Value Propositions
+
+* **Metadata-Driven Speed**: Define your business objects, fields, and logic via YAML or UI. Steedos automatically generates the database schema, standard APIs, and management interfaces.
+* **Enterprise-Grade Security**: Unlike basic low-code tools, Steedos features a robust security model with **Field-Level Permissions** and **Record-Level Sharing Rules**.
+* **AI-Native Automation**: Steedos 3.0 integrates **AI Copilots** and **AI Agents** directly into your business logic to automate complex decision-making processes.
+
+## The 6 Functional Pillars
+
+| Pillar | Key Capabilities |
+| --- | --- |
+| **Modeling** | Custom Objects, Master-Detail relationships, and Roll-up summaries. |
+| **Automation** | Multi-level Approvals, Workflow Rules, and Node.js Triggers. |
+| **UI Designer** | High-performance, dynamic interfaces powered by Amis. |
+| **Insights** | Real-time multi-dimensional reports and BI dashboards. |
+| **Security** | RBAC, Sharing Rules, Data Encryption, and Audit Trails. |
+| **DevOps** | Steedos CLI, VS Code integration, and Git-based version control. |
+
+## Pro-Code Extensibility
+
+Steedos is not a "Black Box." It is built for professional developers:
+
+* **API-First**: Native support for **GraphQL**, REST, and **OData**.
+* **Microservices**: Distributed architecture built on the **Moleculer** framework.
+* **Cloud-Native**: Deploy anywhere—Private, Public, or Hybrid Cloud—using Docker and K8s.
 
 ## ⚡ Quick Start
 
