@@ -1,117 +1,137 @@
-# 工作流规则
+# Workflow Rules
 
-:::info 学习目标
-* 理解自动化的核心逻辑：**IF (条件) + THEN (动作)**。
-* 学会创建一个规则：当合同金额大于 100 万时，自动标记为“重点客户”。
-* 掌握三种核心动作：**字段更新**、**邮件提醒**、**WebHook (发送给钉钉/企业微信)**。
-* 理解“立即执行”与“时间触发（3天后执行）”的区别。
+:::info Learning Objectives
+
+* Understand the core logic of automation: **IF (Condition) + THEN (Action)**.
+* Learn how to create a rule: Automatically mark a contract as "High Priority" when the amount exceeds $1M.
+* Master the three core actions: **Field Updates**, **Email Alerts**, and **Webhooks (for Slack/Teams/WeChat)**.
+* Understand the difference between **Immediate Actions** and **Time-Dependent Actions** (e.g., triggering 3 days later).
 :::
 
-## 什么是工作流规则？
+## What is a Workflow Rule?
 
-在没有系统之前，业务通过“人盯人”来运转：
-> 销售员张三签了一个大单，他需要手动发微信告诉经理，然后手动去修改客户表里的状态，最后还要记得 3 天后去催款。
+Before automation, business operations relied on "manual monitoring":
 
-如果张三忘了怎么办？
+> A salesperson, John, signs a big deal. He manually notifies his manager via message, manually updates the customer's status in the system, and has to remember to send a follow-up invoice 3 days later.
 
-**工作流规则**就是系统的**“24小时值班机器人”**。你只要告诉它规则，它就会盯着每一条数据，一旦符合条件，立即自动干活。
+What if John forgets?
 
-它的逻辑非常简单，就像知名的 IFTTT：
-* **IF (触发条件)**：当“合同金额”大于 100 万时。
-* **THEN (执行动作)**：自动发送邮件给总经理，并将客户等级改为“VIP”。
+**Workflow Rules** act as the system's **"24-hour robot assistant."** Once you define the rules, the robot monitors every piece of data. As soon as a record meets the criteria, it gets to work automatically.
+
+Its logic is simple, much like the popular IFTTT (If This Then That):
+
+* **IF (Criteria)**: The "Contract Amount" is greater than $1,000,000.
+* **THEN (Action)**: Automatically email the General Manager and change the Customer Level to "VIP."
+
+---
+
+## The Three Core Elements
+
+Before configuring any rule, you only need to answer three questions:
+
+1. **Object**: Who is this happening to? (Is it a Contract? A Leave Request?)
+2. **Evaluation Criteria**: Under what conditions should it trigger? (Amount > $1M? Status = Rejected?)
+3. **Action**: What should be done after it's triggered? (Send an email? Update a field? Send a webhook notification?)
+
+---
+
+## Practical Exercise: Automatic Marking of High-Value Contracts
+
+**Scenario**: We need an automated rule. Whenever a salesperson creates or updates a contract with an amount exceeding **$1,000,000**, the system should automatically set the "Priority" field to **"High."**
+
+### Step 1: Create a New Rule
+
+1. Go to **Settings** -> **Automation** -> **Workflow Rules**.
+2. Click **New**.
+3. Select **Object**: `Contract`.
+
+### Step 2: Configure Evaluation Criteria
+
+This is the part that often confuses beginners. Please choose carefully:
+
+* **Created**:
+* Triggered only when the record is first created. Future edits won't trigger it again.
+
+
+* **Created, and every time it's edited**:
+* **Most Common**. Triggers whether the record is brand new or if someone changes a $500k amount to $1M later.
+
+
+* **Created, and any time it's edited to subsequently meet criteria**:
+* Triggers only at the "moment of transition" from not meeting the criteria to meeting them. Useful for "Notification" scenarios to avoid spamming emails every time a name is edited.
+
+
+
+**For this example, choose: `Created, and every time it's edited`.**
+
+### Step 3: Set Rule Criteria
+
+Define what counts as a "Big Deal" for the robot.
+
+* **Field**: `Contract: Amount`
+* **Operator**: `greater than`
+* **Value**: `1000000`
+
+### Step 4: Add Action
+
+The criteria are met; what's next?
+
+1. In the "Immediate Workflow Actions" area, click **Add Workflow Action** -> **New Field Update**.
+2. **Name**: `Update to High Priority`.
+3. **Field to Update**: Select `Priority`.
+4. **New Value**: Select `High`.
+5. Click **Save**.
+
+🎉 **Done!** Now try creating a contract for $2,000,000. After saving, you’ll see the "Priority" has been automatically set to "High."
+
+---
+
+## What Else Can the Robot Do? (Action Types)
+
+Beyond "Field Updates," workflows can handle much more:
+
+### 1. Email Alert
+
+* **Scenario**: Remind a customer to renew 30 days before a contract expires.
+* **Config**: You need to set up an "Email Template" first, then select recipients (can be a specific manager or the dynamic "Contract Owner").
+
+### 2. Outbound Message (Webhook)
+
+* **Scenario**: Push a notification to a **Slack** or **Discord** bot when a new order arrives.
+* **Config**: Enter the external system's URL. Steedos will package the data details and send them over.
+
+### 3. Time-Dependent Actions
+
+This is one of the most powerful features—**"Setting a timer."**
+
+* **Scenario**: Remind me **"7 days before the contract end date."**
+* **How to configure**:
+In the Workflow Rule page, you will see a **"Time Triggers"** section.
+1. Add a Time Trigger: Select `Contract: End Date` -> `Before` -> `7 Days`.
+2. Add an action under this trigger: Send an Email Alert.
+
+
+* *The system will automatically check at that specific time. If the contract hasn't been renewed by then, the reminder will fire.*
 
 
 
 ---
 
-## 核心三要素
+## FAQ
 
-在配置任何规则之前，你只需要想清楚三个问题：
+**Q: I created a rule, but why didn't my old data change?**
+A: Workflow rules are **event-driven**. They only run the moment data is **"Created"** or **"Saved."**
 
-1.  **对象 (Object)**：这事发生在谁身上？（是合同？还是请假单？）
-2.  **规则标准 (Criteria)**：什么情况下才触发？（金额 > 100万？还是状态 = 审核驳回？）
-3.  **动作 (Action)**：触发后干什么？（发邮件？改字段？还是发钉钉通知？）
+* If you want old data to be updated, you need to trigger a "Save" on those records (even a bulk edit without changing content will work).
 
----
+**Q: Can rules conflict? (Infinite Loops)**
+A: Yes.
 
-## 实战演练：大额合同自动标记
+* Example: Rule A says "Amount > $1M, set to VIP." Rule B says "For VIP customers, set Amount to $500k."
+* This creates a loop. Always keep your logic clear to avoid "fights" between rules.
 
-**场景**：我们需要一个自动化规则。当任何销售员创建一个金额超过 **1,000,000 元** 的合同时，系统自动将该合同的“重要级别”字段修改为 **“高”**。
+**Q: What is the execution order for multiple rules?**
+A: The system does not guarantee a specific order. Avoid having two different rules modify the same field.
 
-### 第 1 步：新建规则
-1.  进入 **设置** -> **自动化** -> **工作流规则**。
-2.  点击 **新建**。
-3.  **对象**选择：`合同 (Contract)`。
-
-### 第 2 步：配置触发时机 (Evaluation Criteria)
-这是新手最容易晕的地方，请仔细选择：
-
-* **仅在创建时 (Created)**：
-    * 只有新建那一下会触发。以后再修改金额，不会触发。
-* **创建，以及每次编辑时 (Created, and every time it's edited)**：
-    * **最常用**。不管是新建，还是后来把 50 万改成 100 万，都会触发。
-* **创建，以及每次编辑后满足条件时 (Created, and any time it's edited to subsequently meet criteria)**：
-    * 比较绕。简单说就是“从不满足变成满足”的那一刻才触发。通常用于“发送通知”场景（避免改一次名字就发一次重复邮件）。
-
-**本例选择：`创建，以及每次编辑时`。**
-
-### 第 3 步：设置规则条件 (Rule Criteria)
-告诉机器人，什么样的合同才算“大单”。
-
-* **字段**：`合同: 金额`
-* **运算符**：`大于`
-* **值**：`1000000`
-
-### 第 4 步：添加动作 (Add Action)
-条件满足了，接下来做什么？
-
-1.  在“立即工作流操作”区域，点击 **添加工作流操作** -> **新建字段更新 (Field Update)**。
-2.  **名称**：`更新为高优先级`。
-3.  **要更新的字段**：选择 `重要级别`。
-4.  **新值**：选择 `高`。
-5.  点击 **保存**。
-
-🎉 **完成！** 现在你可以去尝试新建一个 200 万的合同，保存后你会发现，“重要级别”已经被系统自动改为“高”了。
-
----
-
-## 这个机器人还能做什么？ (动作类型)
-
-除了“自动修改字段”，工作流还能做更多事：
-
-### 1. 邮件提醒 (Email Alert)
-* **场景**：合同到期前 30 天，给客户发邮件提醒续费。
-* **配置**：需要先配置好“邮件模版”，然后在这里选择收件人（可以是固定的经理，也可以是动态的“合同所有者”）。
-
-### 2. 发送 WebHook (Outbound Message)
-* **场景**：有新订单时，推送到公司的 **钉钉群** 或 **企业微信群** 机器人。
-* **配置**：填写外部系统的 URL 地址。Steedos 会把这条数据的详情打包发过去。
-
-### 3. 时间触发的操作 (Time-Dependent Actions)
-这是 CRM 最性感的特性之一——**“让子弹飞一会儿”**。
-
-* **场景**：**“合同到期前 7 天”** 提醒我。
-* **如何配置**：
-    在工作流规则页面，你会看到一个 **“时间触发器”** 区域。
-    1.  添加时间触发器：选择 `合同结束日期` -> `之前` -> `7 天`。
-    2.  在这个触发器下添加动作：发送邮件提醒。
-    * *系统会自动在这个时间点检查，如果到时候合同还没续签，它就会发出提醒。*
-
----
-
-## 常见问题 (FAQ)
-
-**Q: 我创建了规则，为什么以前的老数据没有变化？**
-A: 工作流规则是**事件驱动**的。它只会在数据 **“被创建”** 或 **“被保存”** 的那一瞬间运行。
-* 如果你想让老数据也生效，需要手动把那些老数据批量编辑保存一下（哪怕不改内容，点一下保存也能触发）。
-
-**Q: 规则会有冲突吗？（死循环）**
-A: 会。
-* 例如：规则 A 说“金额 > 100 万，设为 VIP”；规则 B 说“VIP 客户，金额设为 50 万”。
-* 这就乱套了。在设计规则时，请务必保持逻辑清晰，避免互相打架。
-
-**Q: 多个规则的执行顺序是什么？**
-A: 系统不保证特定的顺序。所以尽量不要让两个规则去修改同一个字段。
-
-**Q: 怎么暂时停用一个规则？**
-A: 在规则列表中，点击该规则旁的 **“激活 (Active)”** 勾选框，取消勾选即可。不需要删除规则。
+**Q: How do I temporarily stop a rule?**
+A: In the rule list, uncheck the **"Active"** box. You don't need to delete the rule.

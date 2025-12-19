@@ -1,103 +1,126 @@
-# 简档 (Profiles)
+# Profiles
 
-**简档 (Profile)** 是 Steedos 权限体系的基石。每一个用户必须且只能被分配一个简档。简档决定了用户在系统中的**基础身份**和**基准权限**。
+A **Profile** is the cornerstone of the Steedos permission system. Every user must be assigned exactly one profile. The profile determines a user's **foundational identity** and **baseline permissions** within the system.
 
-如果把用户比作一名员工，**简档**就是他的“岗位说明书”——定义了他能看到哪些应用、能操作哪些对象以及拥有哪些系统级特权。
+If a user is like an employee, a **Profile** is their "Job Description"—defining which apps they can see, which objects they can operate, and which system-level privileges they possess.
 
-## 1\. 核心概念
+---
 
-简档主要控制以下三个层面的权限：
+## 1. Core Concepts
 
-1.  **对象权限 (Object Permissions)**：
-      * 用户能否**创建 (Create)**、**读取 (Read)**、**编辑 (Update)** 或 **删除 (Delete)** 某类数据（即 CRUD 权限）。
-      * *例如：销售人员可以“创建”商机，但只能“读取”合同。*
-2.  **字段权限 (Field Permissions)**：
-      * 即使有权查看“合同”对象，用户是否能看到“合同金额”这个字段？
-      * 字段级安全可以设置为“隐藏”或“只读”。
-3.  **系统权限 (System Permissions)**：
-      * 用户能否登录系统？
-      * 用户能否进入后台“设置”界面？
-      * 用户能否导出报表？
+Profiles primarily control permissions across three layers:
 
-## 2\. 内置标准简档
+1. **Object Permissions**:
+* Whether a user can **Create**, **Read**, **Update**, or **Delete** a specific type of data (commonly known as **CRUD** permissions).
+* *Example: A salesperson can "Create" opportunities but may only "Read" contracts.*
 
-Steedos 系统预置了几个标准简档，涵盖了最基础的角色需求：
 
-  * **System Administrator (管理员)**：
-      * 拥有所有数据的“查看全部”和“修改全部”权限。
-      * 拥有所有系统配置权限。
-      * *注意：请勿随意修改此简档，以免管理员锁死自己。*
-  * **User (标准用户)**：
-      * 最常用的员工简档。通常拥有基础业务对象的读写权限，但无法进入后台设置。
-  * **Guest (访客)**：
-      * 用于未登录用户的公开访问（如对外公开的知识库或官网）。权限应极其严格，通常只读。
+2. **Field Permissions**:
+* Even if a user can see the "Contract" object, can they see the "Contract Amount" field?
+* Field-level security can be set to "Hidden" or "Read-Only."
 
-## 3\. 管理简档
 
-管理员可以在设置中创建自定义简档，以满足特定的业务需求。
+3. **System Permissions**:
+* Can the user log in?
+* Can the user access the "Setup" (admin) interface?
+* Can the user export reports?
 
-### 3.1 创建/克隆简档
 
-:::tip 最佳实践
-**不要直接修改标准简档（如 User）**。如果您需要微调权限（例如：禁止普通用户删除记录），建议**克隆 (Clone)** 一个标准简档，命名为“标准业务员”，然后在新简档上进行修改。
+
+---
+
+## 2. Standard Built-in Profiles
+
+Steedos comes pre-configured with several standard profiles that cover basic role requirements:
+
+* **System Administrator**:
+* Has "View All" and "Modify All" permissions for all data.
+* Has full system configuration privileges.
+* *Note: Do not modify this profile unnecessarily to avoid locking yourself out of administrative functions.*
+
+
+* **User**:
+* The most common profile for employees. Typically has read/write access to basic business objects but cannot access backend settings.
+
+
+* **Guest**:
+* Used for public access by unauthenticated users (e.g., a public knowledge base or official website). Permissions should be extremely strict, usually read-only.
+
+
+
+---
+
+## 3. Managing Profiles
+
+Administrators can create custom profiles to meet specific business needs.
+
+### 3.1 Creating/Cloning Profiles
+
+:::tip Best Practice
+**Avoid modifying standard profiles (like "User") directly.** If you need to fine-tune permissions (e.g., preventing standard users from deleting records), it is recommended to **Clone** a standard profile, name it (e.g., "Standard Sales Rep"), and then apply your changes.
 :::
 
-1.  进入 **“设置”** \> **“权限”** \> **“简档 (Profiles)”**。
-2.  找到一个现有的简档（如 `User`），点击 **“克隆 (Clone)”**。
-3.  输入新简档名称（如 `Sales Rep` - 销售代表）。
-4.  保存。
+1. Go to **Settings** > **Permissions** > **Profiles**.
+2. Find an existing profile (e.g., `User`) and click **Clone**.
+3. Enter a new profile name (e.g., `Sales Rep`).
+4. Click **Save**.
 
-### 3.2 配置对象权限
+### 3.2 Configuring Object Permissions
 
-进入简档详情页，您可以精细控制每个对象（如“客户”、“订单”）的权限：
+On the Profile detail page, you can exert granular control over every object (e.g., "Accounts," "Orders"):
 
-| 权限项 | 含义 | 风险提示 |
-| :--- | :--- | :--- |
-| **读 (Read)** | 可以查看该对象的数据。 | 基础权限。 |
-| **写 (Create)** | 可以新建记录。 | |
-| **编 (Update)** | 可以修改记录。 | |
-| **删 (Delete)** | 可以删除记录。 | **慎用**。建议仅授权给主管。 |
-| **查看全部 (View All)** | 无视共享规则，查看该对象表中的**所有**数据。 | **高风险**。通常用于审计员或数据分析师。 |
-| **修改全部 (Modify All)** | 无视共享规则，修改/删除该对象表中的**所有**数据。 | **极高风险**。通常仅限管理员。 |
+| Permission | Meaning | Risk Note |
+| --- | --- | --- |
+| **Read** | Can view data of this object. | Basic access. |
+| **Create** | Can create new records. |  |
+| **Edit (Update)** | Can modify existing records. |  |
+| **Delete** | Can delete records. | **Use with caution**. Usually reserved for managers. |
+| **View All** | Can view **all** data in this object's table, regardless of sharing rules. | **High Risk**. Typically for auditors or data analysts. |
+| **Modify All** | Can modify/delete **all** data in this object's table, regardless of sharing rules. | **Extremely High Risk**. Usually restricted to admins. |
 
-### 3.3 配置字段权限
+### 3.3 Configuring Field Permissions
 
-在简档的对象设置中，您还可以控制特定字段的可见性：
+Within the object settings for a profile, you can also control the visibility of specific fields:
 
-  * **可见 (Visible)**：用户可以看到该字段。
-  * **只读 (Read-Only)**：用户可以看到，但即便在编辑模式下也无法修改该字段（例如：审批状态、计算后的提成金额）。
-  * **不可见**：该字段在界面、报表、API 中对该用户彻底消失。
+* **Visible**: The user can see and interact with the field.
+* **Read-Only**: The user can see the field but cannot modify it, even in edit mode (e.g., Approval Status or calculated commission amounts).
+* **Invisible**: The field is completely hidden from the UI, reports, and APIs for that user.
 
-## 4\. 简档 vs. 权限集 (Profile vs. Permission Set)
+---
 
-这是 Steedos/Salesforce 权限模型中最容易混淆，也最重要的部分。
+## 4. Profile vs. Permission Set
 
-  * **简档 (Profile)**：是**基线**。用户**必须有且仅有一个**。它定义了“最基本的访问能力”。
-  * **权限集 (Permission Set)**：是**增量**。用户可以拥有**多个**。它用于“临时加权”或“特殊授权”。
+This is the most common point of confusion in the Steedos/Salesforce permission model, yet it is the most important.
 
-### 权限分配策略：最小权限原则
+* **Profile**: This is the **Baseline**. A user **must have exactly one**. It defines "minimum essential access."
+* **Permission Set**: This is an **Add-on**. A user can have **multiple**. It is used for "incremental authorization" or "special grants."
 
-**建议做法**：
+### Allocation Strategy: The Principle of Least Privilege
 
-1.  **简档**设置得越“抠门”越好。只给该类用户最基本的、大家都有的权限。
-2.  **权限集**用来做加法。
+**Recommended approach**:
 
-> **场景示例**：
-> 公司有 100 个销售员。
->
->   * **简档**：分配给所有 100 人 `Sales User` 简档（只能看和写，不能删，不能导出）。
->   * **权限集**：创建一个名为 `Export Data` 的权限集。
->   * **分配**：只把这个权限集分配给 5 个销售经理。
->
-> 这样做的好处是，如果以后要收回导出权限，只需从权限集中移除用户，而不需要修改简档影响所有人。
+1. Keep the **Profile** as restrictive as possible. Grant only the basic permissions that everyone in that role truly needs.
+2. Use **Permission Sets** to handle the "pluses."
 
-## 5\. 常见问题
+> **Scenario Example**:
+> A company has 100 sales reps.
+> * **Profile**: Assign all 100 people the `Sales User` profile (can read/write, but cannot delete or export).
+> * **Permission Set**: Create a permission set named `Export Data`.
+> * **Assignment**: Assign this permission set only to the 5 Sales Managers.
+> 
+> 
+> The benefit: If you need to revoke export rights later, you simply remove the user from the Permission Set without affecting the Profile or other users.
 
-**Q: 我修改了简档里的“应用”可见性，为什么用户还是看不到某个菜单？**
-A: 请检查该菜单对应的**对象权限**。如果用户对该对象没有“读取”权限，即使菜单开启，他也看不到任何数据。
+---
 
-**Q: 为什么找不到“删除”按钮？**
-A: 请检查当前用户的简档，确认在对应对象上是否勾选了 **“删除 (Delete)”** 权限。出于安全考虑，标准 User 简档通常默认关闭删除权限。
+## 5. FAQ
 
+**Q: I updated "App Visibility" in the profile, but the user still can't see the menu?**
+A: Check the **Object Permissions** for that menu item. If the user does not have "Read" permission for the underlying object, the menu will not appear even if it is enabled.
 
-**下一步**： 既然您已经了解了如何通过简档设置“基准权限”，接下来我们将学习如何使用 [权限集 (Permission Sets)](./02-permission-sets.md) 来灵活地为特定用户“开小灶”增加权限。
+**Q: Why is the "Delete" button missing?**
+A: Check the user's profile and ensure the **Delete** permission is checked for that specific object. For security reasons, the standard "User" profile typically has delete permissions disabled by default.
+
+---
+
+**Next Step**: Now that you understand how to set "baseline permissions" via profiles, let's learn how to use **[Permission Sets](https://www.google.com/search?q=./02-permission-sets.md)** to flexibly grant additional privileges to specific users.

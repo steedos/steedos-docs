@@ -1,93 +1,102 @@
-# 权限集 (Permission Sets)
+# Permission Sets
 
-如果说 **简档 (Profile)** 决定了用户的“基本身份”，那么 **权限集 (Permission Set)** 就是用户的“特殊通行证”。
+If a **Profile** determines a user's "basic identity," then a **Permission Set** is a user's "special pass."
 
-权限集是一种灵活的权限管理工具，用于向用户授予**额外**的权限，而无需修改其简档。
+A Permission Set is a flexible permission management tool used to grant users **additional** privileges without having to modify their assigned Profile.
 
-## 1\. 核心逻辑：做加法，不做减法
+## 1. Core Logic: Additive, Not Restrictive
 
-关于权限集，最重要的规则只有一条：**权限集只能扩展权限，不能限制权限。**
+The most important rule regarding Permission Sets is: **Permission Sets can only extend permissions; they cannot restrict them.**
 
-Steedos 的权限计算公式如下：
+In Steedos, the permission calculation formula is as follows:
 
-> **最终权限 = 简档权限 + 权限集 A + 权限集 B + ...**
+> **Final Permissions = Profile Permissions + Permission Set A + Permission Set B + ...**
 
-### 场景比喻
+### The Analogy
 
-  * **简档 (Profile)**：像是员工的**工牌**。所有“销售部员工”的工牌都一样，能刷开大门和办公区的门。
-  * **权限集 (Permission Set)**：像是**临时钥匙**。
-      * 如果某位销售员工需要临时去“财务室”对账，你不需要给他换一张“财务部工牌”（改简档），也不需要把“销售部工牌”的权限改大（影响所有人）。
-      * 你只需要给他一把“财务室钥匙”（分配权限集）。用完后，收回钥匙即可。
+* **Profile**: Like an employee's **ID Badge**. Every "Sales Department" employee has the same badge, allowing them to swipe through the front door and the office area.
+* **Permission Set**: Like a **Temporary Key**.
+* If a specific sales employee needs to enter the "Finance Room" to reconcile accounts, you don't need to change their "Sales Badge" to a "Finance Badge" (changing the Profile), nor do you need to expand the permissions of the "Sales Badge" (which would affect everyone).
+* You simply give them a "Finance Room Key" (assign a Permission Set). Once they are done, you take the key back.
 
-## 2\. 简档 vs. 权限集
 
-| 特性 | 简档 (Profile) | 权限集 (Permission Set) |
-| :--- | :--- | :--- |
-| **数量限制** | 每个用户**必须且只能**有一个。 | 每个用户可以有 **0 个或多个**。 |
-| **设计目的** | 定义基准权限（大家都一样的部分）。 | 定义功能性权限（少数人有的部分）。 |
-| **灵活性** | 较低。修改简档会影响所有属于该简档的用户。 | 极高。可以随意组合分配给不同部门的人。 |
-| **典型应用** | 标准用户、系统管理员。 | 数据导入员、招聘面试官、价格审批员。 |
 
-## 3\. 创建与配置
+---
 
-### 第一步：创建权限集
+## 2. Profile vs. Permission Set
 
-1.  进入 **“设置”** \> **“权限”** \> **“权限集 (Permission Sets)”**。
-2.  点击 **“新建 (New)”**。
-3.  **标签**：输入易于识别的名称（例如 `Import Leads` - 导入线索权限）。
-4.  **许可证**：通常留空，除非该权限集特定于某个特定的许可证类型。
-5.  点击 **“保存”**。
+| Feature | Profile | Permission Set |
+| --- | --- | --- |
+| **Quantity Limit** | Each user **must and can only** have one. | Each user can have **zero or multiple**. |
+| **Design Purpose** | Defines baseline permissions (what everyone shares). | Defines functional permissions (what only a few need). |
+| **Flexibility** | Lower. Modifying a Profile affects all users assigned to it. | Extremely High. Can be combined and assigned freely. |
+| **Typical Use** | Standard User, System Administrator. | Data Importer, Recruitment Interviewer, Price Approver. |
 
-### 第二步：定义权限
+---
 
-保存后，界面与简档的配置界面非常相似。您可以配置：
+## 3. Creation and Configuration
 
-  * **对象设置**：授予特定对象（如商机）的“删除”权限，或“查看全部”权限。
-  * **字段权限**：授予特定敏感字段（如“预计毛利”）的可见性。
-  * **系统权限**：勾选“API 启用”、“管理报表”等系统级功能。
+### Step 1: Create the Permission Set
 
-## 4\. 分配权限集
+1. Navigate to **Settings** > **Permissions** > **Permission Sets**.
+2. Click **New**.
+3. **Label**: Enter an easily identifiable name (e.g., `Import Leads` — Permission to import lead data).
+4. **License**: Usually left blank unless the set is specific to a certain license type.
+5. Click **Save**.
 
-创建好“钥匙”后，需要把它发给具体的人。
+### Step 2: Define Permissions
 
-### 方法一：从权限集视角分配（批量）
+Once saved, the interface is very similar to the Profile configuration. You can configure:
 
-1.  在权限集详情页，点击顶部的 **“管理分配 (Manage Assignments)”** 按钮。
-2.  点击 **“添加分配 (Add Assignments)”**。
-3.  勾选需要赋予该权限的用户列表（支持跨部门、跨简档勾选）。
-4.  点击 **“分配”**。
+* **Object Settings**: Grant "Delete" or "View All" permissions for specific objects (e.g., Opportunities).
+* **Field Permissions**: Grant visibility to sensitive fields (e.g., "Estimated Gross Profit").
+* **System Permissions**: Enable system-level features like "API Enabled" or "Manage Reports."
 
-### 方法二：从用户视角分配（单个）
+---
 
-1.  进入 **“用户”** 列表，点击某位用户的姓名。
-2.  向下滚动到 **“权限集分配”** 相关列表。
-3.  点击 **“编辑分配”**。
-4.  将左侧可用的权限集添加到右侧已启用的列表中。
+## 4. Assigning Permission Sets
 
-## 5\. 最佳实践场景
+Once the "key" is created, you need to issue it to specific individuals.
 
-为了保持系统的整洁和安全，建议遵循 **“简档最小化，权限集模块化”** 的原则。
+### Method 1: Assigning via Permission Set (Batch)
 
-### 场景 A：数据导入权限
+1. On the Permission Set detail page, click the **Manage Assignments** button at the top.
+2. Click **Add Assignments**.
+3. Select the users you want to grant this permission to (supports selecting users across different departments or profiles).
+4. Click **Assign**.
 
-**问题**：公司规定只有少数几个资深销售助理可以批量导入客户数据，其他销售只能逐条录入。
-**错误做法**：克隆一个“资深销售”简档，把“导入”权限开给他们。会导致简档爆炸。
-**正确做法**：
+### Method 2: Assigning via User (Individual)
 
-1.  所有销售保持 `Sales User` 简档（无导入权限）。
-2.  创建一个 `Import Data Capability` 权限集，勾选“导入个人线索”等系统权限。
-3.  只把这个权限集分配给那几个资深助理。
+1. Navigate to the **Users** list and click a specific user's name.
+2. Scroll down to the **Permission Set Assignments** related list.
+3. Click **Edit Assignments**.
+4. Move the available Permission Sets from the left column to the "Enabled" column on the right.
 
-### 场景 B：跨部门的项目协作
+---
 
-**问题**：研发部的某位经理临时加入“上市筹备组”，需要查看财务部的“审计报告”对象。
-**正确做法**：
+## 5. Best Practice Scenarios
 
-1.  该经理保留 `R&D Manager` 简档。
-2.  创建一个 `IPO Project Access` 权限集，赋予“审计报告”对象的读取权限。
-3.  分配给该经理。项目结束后，移除该分配。
+To keep your system clean and secure, it is recommended to follow the principle: **"Minimize Profiles, Modularize Permission Sets."**
 
------
+### Scenario A: Data Import Permissions
 
-**下一步**： 简档和权限集解决的是“对象”和“字段”级别的权限（即：能不能看这张表，能不能看这一列）。
-如果您需要控制**记录级别**的权限（即：能不能看这一行数据，比如“只能看自己创建的数据”），请阅读 [共享规则 (Sharing Rules)](./03-sharing-rules.md)。
+**Problem**: The company dictates that only a few senior sales assistants can bulk-import customer data; all other sales reps must enter data one by one.
+**The Wrong Way**: Clone a "Senior Sales" profile and enable "Import" for it. This leads to "Profile Explosion."
+**The Right Way**:
+
+1. All sales reps keep the `Sales User` Profile (no import permissions).
+2. Create an `Import Data Capability` Permission Set and check "Import Leads" in System Permissions.
+3. Assign this Permission Set only to those senior assistants.
+
+### Scenario B: Cross-Department Collaboration
+
+**Problem**: An R&D Manager is temporarily joining the "IPO Preparation Group" and needs to view "Audit Report" objects in the Finance Department.
+**The Right Way**:
+
+1. The manager keeps the `R&D Manager` Profile.
+2. Create an `IPO Project Access` Permission Set, granting "Read" access to the "Audit Report" object.
+3. Assign it to the manager. Once the project concludes, remove the assignment.
+
+---
+
+**Next Step**: Profiles and Permission Sets solve "Object" and "Field" level permissions (i.e., whether you can see a table or a column). If you need to control permissions at the **record level** (i.e., whether you can see a specific row of data, such as "only seeing data I created"), please read [Sharing Rules](./03-sharing-rules.md).

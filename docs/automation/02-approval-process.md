@@ -1,137 +1,159 @@
-# 批准过程 
 
-:::info 学习目标
-* 理解批准过程与工作流的区别（人治 vs 法治）。
-* **关键前置**：如何让一个对象具备“被审批”的资格。
-* **核心技能**：配置一个多级审批流（经理审批 -> 总监审批）。
-* **进阶**：掌握**会签**（多人投票）与**转交**。
+# Approval Processes
+
+:::info Learning Objectives
+
+* Understand the difference between Workflow and Approval (Automation vs. Human Decision).
+* **Key Prerequisite**: Learn how to qualify an object for the approval process.
+* **Core Skill**: Configure a multi-level approval flow (e.g., Manager -> Director).
+* **Advanced**: Master **Unanimous Approval** (voting) and **Reassignment**.
 :::
 
-## 什么是批准过程？
+## What is an Approval Process?
 
-如果说 **工作流 (Workflow)** 是全自动的“自动贩卖机”（投币 -> 出货），那么 **批准过程 (Approval Process)** 就是需要盖章的“签证申请”。
+If a **Workflow** is like a fully automated vending machine (Insert coin -> Product drops), then an **Approval Process** is like a visa application requiring a stamp.
 
-它定义了一张单据在公司内部的**流转路线图**：
-1.  **提交**：员工张三点击“提交审批”。
-2.  **锁定**：单据变成只读，防止审批期间被篡改。
-3.  **流转**：系统通知张三的经理李四。
-4.  **决策**：李四点击“同意”或“拒绝”。
-5.  **结果**：单据状态变更，或者进入下一级找王总审批。
+It defines the **routing map** for a record within the company:
+
+1. **Submission**: Employee (e.g., John) clicks "Submit for Approval."
+2. **Locking**: The record becomes read-only to prevent tampering during the process.
+3. **Routing**: The system notifies John's manager, Lee.
+4. **Decision**: Lee clicks "Approve" or "Reject."
+5. **Result**: The record status changes, or it proceeds to the next level (e.g., the CEO) for final sign-off.
+
+---
+
+## Step 0: Enable Approval Capability (Crucial!)
+
+In Steedos, not all objects are "approval-ready" by default. If you cannot find your object in the approval configuration interface, it is likely because this step was skipped.
+
+1. Go to **Settings** -> **Object Settings**.
+2. Select the object you want to approve (e.g., "Contracts").
+3. Check the box **"Enable Instances" (显示审批单子表)**.
+4. Click **Save**.
+
+---
+
+## Practical Exercise: Two-Level Contract Approval
+
+**Scenario**:
+
+* All contracts must first be approved by the **Department Manager**.
+* If the amount exceeds **$50,000**, it requires a second approval by the **Finance Director**.
+* Upon final approval, the status changes to "Approved"; if rejected, it changes to "Rejected."
+
+### 1. Create the Process
+
+1. Go to **Settings** -> **Automation** -> **Approval Processes**.
+2. Select the **Manage Object**: `Contract`.
+3. Click **New Approval Process**.
+4. **Name**: `High-Value Contract Standard Approval`.
+
+### 2. Set Entry Criteria
+
+Which contracts are eligible for this process?
+
+* Not every contract needs a formal review. For instance, only those in "Draft" status should be submitted.
+* **Criteria**: `Contract: Status` equals `Draft`.
+
+### 3. Define "Initial Submission Actions"
+
+What happens the moment a user clicks the "Submit" button?
+
+* **Record Lock**: The system locks the record by default. It is recommended to keep this enabled to prevent data changes during review.
+* **Field Update**: Automatically change `Contract Status` to `In Approval`.
+
+### 4. Define Approval Steps — **The Core Logic**
+
+#### Step 1: Manager Approval
+
+1. Click **New Approval Step**.
+2. **Name**: `Step 1: Manager Approval`.
+3. **Entry Criteria**: `All records enter this step` (since all contracts require manager review).
+4. **Assign Approver**:
+* Instead of picking a specific person, choose **"Related User"** -> `Contract Owner` -> `Manager`.
+* *(Note: This assumes you have maintained the reporting structure in the User table.)*
+
+
+
+#### Step 2: Finance Director Review
+
+1. Click **New Approval Step**.
+2. **Name**: `Step 2: Finance Director Review`.
+3. **Entry Criteria**: Filter by amount.
+* Select `Enter this step if the following criteria are met`.
+* Criteria: `Contract: Amount` greater than `50,000`.
+* *(Logic: If the amount is below $50k, the system skips this step and treats it as approved.)*
+
+
+4. **Assign Approver**:
+* Select **"Automatically assign to approver(s)"** -> Specify the Finance Director (e.g., `User: Alice`).
+
+
+
+### 5. Define "Final Actions"
+
+What is the "Grand Finale" once the process ends?
+
+* **Final Approval Actions**:
+* **Field Update**: Change `Contract Status` to `Approved`.
+* **Record Unlock**: Allow for subsequent archiving or execution.
+
+
+* **Final Rejection Actions**:
+* **Field Update**: Change `Contract Status` to `Rejected`.
+* **Record Unlock**: Allow the employee to modify and resubmit.
 
 
 
 ---
 
-## 第 0 步：开启审批能力 (重要！)
+## Advanced: Unanimous vs. First-Response Approval
 
-在 Steedos 中，并不是所有的对象天生就能审批。如果你在配置界面找不到你的对象，一定是因为**这一步没做**。
+Sometimes, a step requires **multiple people** to review (e.g., Technical and Legal departments). When assigning to multiple users or a queue, you have two choices:
 
-1.  进入 **设置** -> **对象设置**。
-2.  找到你想审批的对象（例如“合同”）。
-3.  勾选 **“显示审批单子表 (Enable Instances)”**。
-4.  点击保存。
+1. **First Response (First one to approve wins)**:
+* **Scenario**: Anyone in the group can decide.
+* **Logic**: If Legal has 3 staff members, the request goes to all 3. As soon as **any one** of them clicks "Approve," it moves to the next step.
 
----
 
-## 实战演练：二级合同审批
+2. **Unanimous (Everyone must approve)**:
+* **Scenario**: Total consensus is required.
+* **Logic**: All assigned approvers must click "Approve." If even **one** person clicks "Reject," the entire process is terminated.
 
-**场景**：
-* 所有合同必须先由 **部门经理** 审批。
-* 如果金额超过 **50 万**，还需要 **财务总监** 二次审批。
-* 审批通过后，状态改为“已批准”；被拒后，状态改为“已驳回”。
 
-### 1. 创建流程
-1.  进入 **设置** -> **自动化** -> **批准过程**。
-2.  **管理对象**选择：`合同`。
-3.  点击 **新建批准过程**。
-4.  **名称**：`大额合同标准审批`。
-
-### 2. 设置准入条件 (Entry Criteria)
-什么样的合同才配进这个流程？
-* 并不是所有合同都要审。比如“草稿”状态的才允许提交。
-* **条件**：`合同: 状态` 等于 `草稿`。
-
-### 3. 定义“初始提交操作” (Initial Submission Actions)
-当用户刚点击“提交”按钮那一瞬间，系统要做什么？
-* **锁定记录 (Record Lock)**：系统默认会加锁。推荐保留，防止审批中途有人改金额。
-* **字段更新**：将 `合同状态` 自动改为 `审批中`。
-
-### 4. 定义审批步骤 (Approval Steps) —— **核心戏肉**
-
-#### 步骤 1：部门经理审批
-1.  点击 **新建批准步骤**。
-2.  **名称**：`步骤1_经理审批`。
-3.  **进入条件**：`所有记录进入此步骤`（因为所有合同都要过经理这一关）。
-4.  **指派审批人**：
-    * 这里不要选具体的“张三”，因为每个员工的经理不一样。
-    * 选择 **“相关用户”** -> `Contract Owner (合同拥有者)` -> `Manager (上级经理)`。
-    * *(注：前提是你在用户表里维护好了每个人的上下级关系)*
-
-#### 步骤 2：财务总监审批
-1.  点击 **新建批准步骤**。
-2.  **名称**：`步骤2_财务总监复核`。
-3.  **进入条件**：这里需要卡金额。
-    * 选择 `如果满足下列条件，则进入此步骤`。
-    * 条件：`合同: 金额` 大于 `500,000`。
-    * *(意思是：如果不到 50 万，系统会自动跳过这一步，直接视为通过)*
-4.  **指派审批人**：
-    * 选择 **“自动分配给批准人”** -> 指定具体的财务总监用户（例如 `User: Alice`）。
-
-### 5. 定义“最终批准/拒绝操作” (Final Actions)
-流程走完了，大结局是什么？
-
-* **最终批准操作**：
-    * **字段更新**：将 `合同状态` 改为 `已批准`。
-    * **解锁记录**：允许后续的归档操作。
-* **最终拒绝操作**：
-    * **字段更新**：将 `合同状态` 改为 `已驳回`。
-    * **解锁记录**：允许员工修改后重新提交。
 
 ---
 
-## 进阶：会签与并行审批 (Parallel Approval)
+## User Experience: How it Looks
 
-有时候，一个步骤需要**多个人**一起审（例如：技术部、法务部同时审）。
+Once configured, here is what changes for the user:
 
-在设置审批步骤时，如果是指派给**多个人**或**队列**，你会看到两个选项：
+1. **Submission**: A **"Submit for Approval"** button appears at the top-right of the Contract detail page.
+2. **Notification**: When it is Lee’s turn, he receives a notification (Bell icon/Email).
+3. **Action Bar**: When Lee opens the contract, an action bar appears with:
+* **Approve**
+* **Reject**
+* **Reassign**: Lee can delegate the decision to someone else (e.g., Wang).
 
-1.  **批准人中的一人批准即可 (UNANIMOUS - False)**
-    * **场景**：找谁都行。
-    * **逻辑**：法务部有 3 个人，推给这 3 个人。只要其中**任何一个**点了同意，就进入下一步。
-2.  **所有批准人都必须批准 (UNANIMOUS - True)** —— **这就是“会签”**
-    * **场景**：必须全员通过。
-    * **逻辑**：推给 3 个人。必须 3 个人**全部**点击同意，才能进入下一步。只要有 1 个人点击拒绝，整个流程直接被毙掉。
 
----
-
-## 用户怎么用？
-
-配置好后，用户界面上会发生什么变化？
-
-1.  **提交**：合同详情页右上角会出现一个 **“提交审批”** 按钮。
-2.  **审批**：轮到李四审批时，他会收到通知（铃铛图标/邮件）。
-3.  **操作**：李四打开合同，右上角会出现操作栏：
-    * **批准 (Approve)**
-    * **拒绝 (Reject)**
-    * **转交 (Reassign)**：李四觉得自己定不了，转给王五审。
 
 ---
 
-## 常见问题 (FAQ)
+## FAQ
 
-**Q: 提交审批按钮是灰色的或者是没出现？**
-A: 请检查：
-1.  该记录是否符合“准入条件”？（比如你设置了必须是“草稿”状态，但你试图提交一个“已签约”的合同）。
-2.  当前用户是否有权限提交？（通常是记录拥有者才能提交）。
-3.  **最常见原因**：忘了在对象设置里勾选“显示审批单子表”。
+**Q: Why is the "Submit for Approval" button missing or grayed out?**
+A: Check the following:
 
-**Q: 我能撤回审批吗？**
-A: 可以。作为提交人，如果发现填错了，在审批被最终通过之前，通常可以在“审批历史”列表中点击 **“撤回 (Recall)”**。撤回后记录会解锁。
+1. Does the record meet the **Entry Criteria**? (e.g., you set it to "Draft" but tried to submit a "Signed" contract).
+2. Does the user have permission to submit? (Usually, only the record owner can submit).
+3. **Most common**: Did you forget to check "Enable Instances" in Step 0?
 
-**Q: 拒绝后是回到上一步，还是彻底重来？**
-A: 这可以在步骤配置中设置。
-* **退回上一步**：经理拒绝了总监的意见，退回给经理重改。（类似乒乓球）
-* **退回给申请人**：直接毙掉，流程结束。（默认行为）
+**Q: Can I recall a submission?**
+A: Yes. As the submitter, if you realize you made a mistake, you can usually click **"Recall"** in the Approval History list before it is finalized. This unlocks the record.
 
-**Q: 审批人出差了怎么办？**
-A: 管理员可以代理审批，或者用户自己在个人设置中配置 **“代理审批人 (Delegate Approver)”**，并设置代理时间段。
+**Q: Does a rejection go back one step or start over?**
+A: This is configurable in the step settings.
+
+* **Back to Previous Step**: Sends the request back to the previous approver (like ping-pong).
+* **Back to Submitter**: Terminates the flow (Default behavior).

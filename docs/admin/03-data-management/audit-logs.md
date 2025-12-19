@@ -1,81 +1,105 @@
 
-# 审计日志与历史追踪
+# Audit Logs and History Tracking
 
-为了满足企业的数据合规性要求（如审计追踪、责权认定），Steedos 提供了完善的“后悔药”机制。管理员可以追踪“谁、在什么时间、修改了什么数据”，以及数据修改前后的具体值。
+To meet enterprise compliance requirements—such as audit trails and accountability—Steedos provides a robust "Safety Net" mechanism. Administrators can track **who** modified **what** data and **when**, including a side-by-side comparison of old and new values.
 
-Steedos 的审计体系主要分为两部分：
+The Steedos audit system is divided into two primary categories:
 
-1.  **字段历史追踪 (Field History Tracking)**：记录业务数据的变更（如：合同金额从 10万 变为 20万）。
-2.  **系统操作日志 (System Audit Logs)**：记录登录与敏感操作（如：谁导出了数据、谁修改了权限）。
+1. **Field History Tracking**: Records changes to business data (e.g., a Contract Amount changing from $100k to $200k).
+2. **System Audit Logs**: Records logins and sensitive administrative actions (e.g., who exported data or who modified permissions).
 
-## 1\. 字段历史追踪
+---
 
-这是最常用的审计功能，用于追踪某个具体业务记录的生命周期变化。
+## 1. Field History Tracking
 
-### 1.1 启用追踪
+This is the most frequently used audit feature, allowing you to track the lifecycle of a specific business record.
 
-默认情况下，对象不仅不会追踪历史，开启后也不会追踪所有字段（以节省存储空间）。管理员需要显式配置。
+### 1.1 Enabling Tracking
 
-1.  **进入对象设置**：
-      * 进入 **“设置”** \> **“对象设置”**。
-      * 点击需要追踪的对象（例如“合同 Contract”）。
-2.  **开启历史记录**：
-      * 在对象的基本属性中，勾选 **“启用历史记录 (Track History)”**。
-3.  **选择追踪字段**：
-      * 进入该对象的 **“字段”** 设置页。
-      * 点击右上角的 **“设置历史追踪 (Set History Tracking)”** 按钮。
-      * 在弹出的列表中，勾选那些敏感且重要的字段。
-          * *建议追踪*：金额、状态、所有者、截止日期。
-          * *不建议追踪*：长文本描述、公式字段（通常不可追踪）、频繁变动的非关键字段。
+By default, field history is disabled to optimize storage performance. Administrators must explicitly configure which fields to track.
 
-### 1.2 查看历史记录
+1. **Enter Object Setup**:
+* Go to **Settings** > **Object Settings**.
+* Select the object you want to track (e.g., **Contract**).
 
-配置生效后，系统会自动在后台记录变更。要让最终用户看到这些记录，需要将历史列表添加到页面布局中。
 
-1.  **调整页面布局**：
-      * 在对象设置中，点击 **“页面布局 (Page Layouts)”**。
-      * 在 **“相关列表 (Related Lists)”** 区域，将 **“合同历史 (Contract History)”** 拖拽到页面下方。
-2.  **前台效果**：
-      * 打开任意一条合同记录，在详情页底部的“历史”相关列表中，您可以看到如下信息：
-          * **日期**：2023-10-01 10:00
-          * **用户**：张三
-          * **操作**：将 **金额** 从 `10,000` 修改为 `20,000`。
+2. **Enable History Tracking**:
+* In the object's basic properties, check the **Track History** box.
 
-:::warning 注意
-历史追踪功能记录的数据通常是只读的，管理员也无法修改历史审计记录，以确保审计的公正性。
+
+3. **Select Fields to Track**:
+* Navigate to the **Fields** tab of that object.
+* Click the **Set History Tracking** button in the top right.
+* Select the sensitive or critical fields you wish to monitor.
+* *Recommended*: Amount, Status, Owner, Due Date.
+* *Not Recommended*: Long Text descriptions, formula fields (usually non-trackable), or high-frequency non-essential fields.
+
+
+
+
+
+### 1.2 Viewing History Records
+
+Once configured, the system automatically logs changes in the background. To make these visible to end-users, you must add the history list to the page layout.
+
+1. **Adjust Page Layout**:
+* In Object Settings, click **Page Layouts**.
+* In the **Related Lists** section, drag **Contract History** onto the page.
+
+
+2. **User Experience**:
+* Open any contract record. In the "History" related list at the bottom, you will see:
+* **Date**: 2023-10-01 10:00
+* **User**: John Doe
+* **Action**: Changed **Amount** from `$10,000` to `$20,000`.
+
+
+
+
+
+:::warning Data Integrity
+Audit logs are **read-only**. Even administrators cannot modify historical audit records, ensuring the impartiality and legal validity of the audit trail.
 :::
 
-## 2\. 登录审计日志
+---
 
-管理员需要监控系统的访问安全性，了解是否有异常登录行为。
+## 2. Login Audit Logs
 
-### 查看登录历史
+Administrators need to monitor system access security to detect abnormal login behavior.
 
-1.  进入 **“设置”** \> **“组织”** \> **“用户”**。
-2.  点击某个具体用户（如 Admin）。
-3.  在用户详情页的 **“登录历史 (Login History)”** 相关列表中，可以看到：
-      * **登录时间**
-      * **源 IP 地址**
-      * **登录状态**（成功、密码错误、受限IP等）
-      * **浏览器/设备信息**
+### Viewing Login History
 
-> **场景应用**：如果发现某个账号在深夜通过陌生的异地 IP 频繁尝试登录且失败，管理员应立即冻结该账号并重置密码。
+1. Go to **Settings** > **Organization** > **Users**.
+2. Click on a specific user (e.g., Admin).
+3. In the **Login History** related list, you can view:
+* **Login Time**
+* **Source IP Address**
+* **Login Status** (Success, Invalid Password, Restricted IP, etc.)
+* **Browser/Device Info**
 
-## 3\. 最佳实践
 
-### 3.1 追踪策略
 
-不要追踪所有字段。
+> **Security Scenario**: If an account shows frequent failed login attempts from an unknown overseas IP at midnight, the administrator should immediately freeze the account and force a password reset.
 
-  * **性能考量**：虽然 Steedos 能够处理大量数据，但无意义的追踪（如追踪一个“备注”字段里的标点符号修改）会迅速消耗数据库存储空间，并干扰查阅关键信息。
-  * **合规考量**：重点追踪涉及 **“钱、权、状态”** 的字段。
+---
 
-### 3.2 数据保留
+## 3. Best Practices
 
-审计日志也是数据的一种。随着系统运行年份增加，审计表会变得非常巨大。
+### 3.1 Tracking Strategy
 
-  * 建议定期（如每年）通过 **数据导出** 功能将两年前的历史审计记录导出冷备份，然后从生产数据库中清除，以保持系统轻量。
+Do not track every single field.
 
-### 3.3 审计不是万能的
+* **Performance**: While Steedos is highly scalable, tracking meaningless changes (like punctuation in a "Notes" field) consumes database storage and clutters the audit view.
+* **Compliance**: Focus your tracking on **"Money, Power, and Status"**—any field that impacts financial totals, ownership, or business stages.
 
-字段历史追踪只能记录“修改了什么”。如果需要知道“谁查看了这条数据（但未修改）”，这属于更高级的 **“访问日志 (Access Logs)”** 范畴，通常需要通过系统底层日志或定制开发来实现，会产生海量日志数据，请根据实际安全级别需求开启。
+### 3.2 Data Retention
+
+Audit logs grow over time and can become massive.
+
+* **Recommendation**: Periodically (e.g., annually) use the **Data Export** tool to back up audit records older than two years to cold storage, then purge them from the production database to maintain system agility.
+
+### 3.3 Audit vs. Access Logs
+
+Field History Tracking records **what was changed**. If your requirement is to know "Who viewed this data without changing it," that falls under **Access Logs**.
+
+* Access logs generate significantly more data than audit logs. These are usually handled at the infrastructure level (e.g., MongoDB logs or middleware) rather than the application UI unless strictly required by high-security regulations.

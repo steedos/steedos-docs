@@ -1,115 +1,130 @@
-# 列表视图
+# List Views
 
-:::info 学习目标
-* 理解什么是列表视图，以及它与 Excel 筛选的区别。
-* 学会创建一个高效的视图（例如：“我的待办任务”）。
-* 掌握 **看板 (Kanban)**、**日历 (Calendar)** 和 **分屏** 等多种展示模式。
-* 了解如何与团队共享视图。
+:::info Learning Objectives
+
+* Understand what a List View is and how it differs from Excel filtering.
+* Learn how to create an efficient view (e.g., "My Pending Tasks").
+* Master various display modes including **Table**, **Split View**, and **Calendar**.
+* Understand how to share views with your team.
 :::
 
-## 什么是列表视图？
+## What is a List View?
 
-如果说 **对象** 是一个存储了成千上万条数据的“大仓库”，那么 **列表视图 (List View)** 就是你查看这些数据的“窗口”。
+If an **Object** is a "warehouse" storing thousands of data entries, then a **List View** is a "window" through which you see that data.
 
-想象一下 Excel 表格：
-1.  你有一个包含 10,000 条客户数据的总表。
-2.  你想看“所有北京的客户”。你会在 Excel 里点击“筛选” -> “城市” -> 勾选“北京”。
-3.  你想看“本月新增的 VIP 客户”。你会再次叠加筛选条件。
+Think of an Excel spreadsheet:
 
-在 Steedos 中，我们将这些**筛选条件**和**显示的列**保存下来，就变成了一个 **“列表视图”**。
+1. You have a master sheet with 10,000 customer entries.
+2. You want to see "All customers in Beijing." You would click "Filter" -> "City" -> "Beijing."
+3. You want to see "New VIP customers this month." You would add another layer of filtering.
 
-* **默认视图**：通常系统会自带“所有项目”、“最近查看”等视图。
-* **常用场景**：
-    * 销售人员只看 **“分配给我的客户”**。
-    * 经理查看 **“本月即将到期的合同”**。
-    * 项目经理查看 **“状态为进行中的项目”**。
+In Steedos, we save these **filter criteria** and the **visible columns** as a **"List View."**
 
----
+* **Default Views**: Systems usually come with views like "All Records" or "Recently Viewed."
+* **Common Scenarios**:
+* Sales reps only seeing **"My Leads."**
+* Managers viewing **"Contracts Expiring This Month."**
+* Project managers viewing **"Active Projects."**
 
-## 实战：创建一个自定义视图
 
-假设我们想在“项目”对象中，创建一个名为 **“我负责的高优项目”** 的视图。
-
-### 第 1 步：新建视图
-1.  进入“项目”列表页。
-2.  点击左上角的视图名称（通常默认显示“所有项目”或“最近查看”）。
-3.  在下拉菜单中点击 **“新建 (New)”** 或齿轮图标中的 **“新建列表视图”**。
-
-### 第 2 步：命名
-* **列表名称**：输入 `我负责的高优项目`。
-* **API 名称**：输入 `my_high_priority_projects`（建议英文）。
-
-### 第 3 步：设置筛选器 (Filters) —— **核心步骤**
-这是决定“显示哪些行”的关键。
-
-1.  在右侧的筛选面板中，设置过滤逻辑：
-    * **范围**：选择 `我的项目` (只看负责人的我) 或 `所有项目`。此处选 `我的项目`。
-    * **添加过滤条件**：
-        * 字段: `优先级`
-        * 运算符: `等于`
-        * 值: `高`
-2.  点击 **保存**。此时列表里的数据变少了，只剩下了你关心的内容。
-
-### 第 4 步：选择显示的字段 (Columns)
-这是决定“显示哪些列”的步骤。
-
-1.  点击列表右上角的 **设置 (齿轮图标)** -> **“选择要显示的字段”**。
-2.  从左侧“可用字段”中，将 `项目名称`、`状态`、`截止日期`、`预算` 拖拽到右侧“可见字段”。
-3.  点击保存。
-
-🎉 **完成！** 你现在拥有了一个量身定制的工作台。
 
 ---
 
-## 进阶：不止是表格 (多视图模式)
+## Hands-on: Creating a Custom View
 
-Steedos 的强大之处在于，同一份数据，可以有多种看法。你可以在列表右上角切换显示模式。
+Let's create a view named **"My High-Priority Projects"** within the Project object.
 
-### 1. 表格视图 (Table)
+### Step 1: Create a New View
 
-* **最经典**：像 Excel 一样展示。
-* **适用**：需要浏览大量数据、进行排序或批量编辑时。
+1. Navigate to the Project list page.
+2. Click the current view name in the top left (e.g., "All Projects").
+3. Select **"New"** from the dropdown menu or click the gear icon and choose **"New List View."**
 
-### 2. 分屏视图 (Split View)
+### Step 2: Naming
 
-* **最高效**：左侧显示列表清单，右侧直接显示详情页。
-* **适用**：需要快速逐个处理数据的场景。例如：销售打电话，打完一个，点左边列表的下一个，右边立即切换，无需频繁的“后退 - 点击 - 后退”。
+* **List Name**: Enter `My High-Priority Projects`.
+* **API Name**: Enter `my_high_priority_projects` (English recommended).
 
-### 3. 日历视图 (Calendar)
+### Step 3: Configure Filters — **Core Step**
 
-* **最清晰**：按时间维度展示数据。
-* **适用**：任何带日期的对象（如：会议、任务截止、合同到期）。
+This determines *which rows* are displayed.
+
+1. In the Filter panel on the right, set the logic:
+* **Filter by Owner**: Choose `My projects` (only records where you are the owner).
+* **Add Filter Criteria**:
+* Field: `Priority`
+* Operator: `equals`
+* Value: `High`
+
+
+
+
+2. Click **Save**. The list will update to show only relevant data.
+
+### Step 4: Choose Columns to Display
+
+This determines *which columns* are displayed.
+
+1. Click the **Settings (Gear Icon)** in the top right -> **"Select Fields to Display."**
+2. Move fields like `Project Name`, `Status`, `Due Date`, and `Budget` from "Available Fields" to "Visible Fields."
+3. Click **Save**.
+
+🎉 **Done!** You now have a tailor-made workspace.
 
 ---
 
-## 共享与权限 (Sharing)
+## Advanced: Beyond Tables (Multi-View Modes)
 
-你创建的视图，默认可能只有你能看到。如果你做了一个非常棒的“本月业绩大盘”，想给老板看，该怎么办？
+The power of Steedos lies in viewing the same data in multiple formats. You can switch modes in the top right corner of the list.
 
-在视图的 **共享设置 (Sharing Settings)** 中，通常有三种级别：
+### 1. Table View
 
-1.  **仅只有我 (Private)**：
-    * 这是你的私人草稿，别人看不到。适合个人工作习惯的视图。
-2.  **所有用户 (Public)**：
-    * 公司里的每个人都能看到这个视图。请谨慎使用，以免大家菜单里充斥着垃圾视图。
-3.  **共享给特定组 (Share with Groups/Roles)**：
-    * 例如：只共享给“销售部”或“财务经理”。
+* **Classic**: The Excel-like layout.
+* **Best for**: Browsing large amounts of data, sorting, or performing bulk edits.
+
+### 2. Split View
+
+* **Productivity Pro**: Displays a list on the left and record details on the right.
+* **Best for**: Rapidly processing a list. For example, a salesperson making calls can click down the list on the left while viewing details on the right without navigating back and forth.
+
+### 3. Calendar View
+
+* **Time-centric**: Displays records on a calendar.
+* **Best for**: Any object with dates, such as Meetings, Task Deadlines, or Contract Expirations.
 
 ---
 
-## 常见操作技巧 (Tips)
+## Sharing and Permissions
 
-### 📌 固定视图 (Pinning)
-每次点进来都是“最近查看”，很烦？
-* 切换到你最常用的视图（例如“我负责的高优项目”）。
-* 点击视图名称旁边的 **图钉图标 📌**。
-* 下次进入该对象，系统会直接打开这个视图。
+By default, views you create may be private. If you've built a great "Monthly Performance Dashboard" and want to show it to your manager, you need to adjust the settings.
 
-### ✏️ 列表内编辑 (Inline Edit)
-想修改数据的“状态”，不需要点进详情页。
-* 在表格视图下，把鼠标移到某个单元格上，如果看到 **铅笔图标 ✏️**，说明支持直接编辑。
-* 修改完后，别忘了点击列表底部的 **“保存”** 按钮（注意：列表编辑通常需要手动保存）。
+In **Sharing Settings**, there are usually three levels:
 
-### 🔍 列表内搜索
-视图的数据还是太多？
-* 使用列表上方的搜索框。**注意**：这个搜索框通常只搜索当前视图范围内的数据，而不是全库搜索。
+1. **Only I can see this (Private)**: Your personal draft or specific workflow.
+2. **All users can see this (Public)**: Everyone in the company can access it. Use sparingly to avoid cluttering others' menus.
+3. **Share with specific groups (Roles/Groups)**: Share only with "Sales Department" or "Finance Managers."
+
+---
+
+## Pro-Tips
+
+### 📌 Pinning a View
+
+Tired of seeing "Recently Viewed" every time you click a tab?
+
+* Switch to your favorite view (e.g., "My High-Priority Projects").
+* Click the **Pin icon 📌** next to the view name.
+* The system will now open this view by default whenever you enter this object.
+
+### ✏️ Inline Editing
+
+Update data without opening the record.
+
+* In Table View, hover over a cell. If a **Pencil icon ✏️** appears, you can edit it directly.
+* After editing, click **"Save"** at the bottom of the list.
+
+### 🔍 Search Within List
+
+If the view still has too much data:
+
+* Use the search bar above the list. **Note**: This usually searches only within the scope of the current view's filters, not the entire database.

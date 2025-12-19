@@ -1,93 +1,107 @@
-# 数据导入
+# Data Import
 
-Steedos 提供了强大的数据导入引擎。为了规范数据录入并简化最终用户的操作，Steedos 采用 **“预定义导入模版”** 的机制。
+Steedos provides a powerful data import engine. To standardize data entry and simplify operations for end-users, Steedos utilizes a **"Predefined Import Template"** mechanism.
 
-管理员需要先在后台配置好“对象导入设置”（包括字段映射关系、唯一性校验规则等），普通用户在操作时，只需选择管理员配好的模版上传 Excel 即可，无需关心复杂的字段对应关系。
+Administrators first configure "Object Import Settings" (including field mapping, uniqueness validation rules, etc.) in the backend. Users then simply select the prepared template and upload their Excel file, without needing to worry about complex field correlations.
 
-## 1\. 导入配置 (管理员侧)
+---
 
-在用户执行导入前，管理员必须先创建导入配置。
+## 1. Import Configuration (Admin Side)
 
-### 进入配置入口
+Before users can perform an import, an administrator must create an import configuration.
 
-1.  点击右上角的 **“⚙” (设置)** 图标，进入设置界面。
-2.  在左侧菜单中展开 **“高级设置 (Advanced Settings)”**，点击 **“数据导入 (Data Import)”**。
-3.  点击右上角的 **“新建 (New)”** 按钮，开始定义一个新的导入规则。
+### Accessing the Configuration
 
-### 基础信息配置
+1. Click the **"⚙" (Settings)** icon in the top right to enter the Setup interface.
+2. In the left sidebar, expand **"Advanced Settings"** and click **"Data Import"**.
+3. Click the **"New"** button in the top right to define a new import rule.
 
-在新建界面，填写以下核心参数：
+### Basic Information
 
-  * **导入描述**：给这个配置起一个易懂的名字（例如：“客户导入-标准模版”），方便用户选择。
-  * **导入对象**：选择数据要存入的目标对象（如 `Accounts`, `Contacts`）。
-  * **导入操作**：定义数据处理逻辑：
-      * **新增 (Insert)**：仅插入新数据。
-      * **更新 (Update)**：仅更新已有数据（需结合唯一性字段）。
-      * **存在则更新，不存在则新增 (Upsert)**：最常用的数据同步模式。
-  * **表示数据唯一性字段**：指定一个字段（如“工号”、“手机号”或“外部ID”）作为“查重”依据。系统将根据此字段判断是新建记录还是更新旧记录。
+Fill in the following core parameters:
 
-### 字段映射 (Field Mapping)
+* **Description**: Give the configuration a clear name (e.g., "Customer Import - Standard Template") for users to identify.
+* **Object**: Select the target object where the data will be stored (e.g., `Accounts`, `Contacts`).
+* **Operation**: Define the data processing logic:
+* **Insert**: Only insert new records.
+* **Update**: Only update existing records (requires a uniqueness field).
+* **Upsert**: The most common mode; updates existing records or inserts new ones if they don't exist.
 
-这是配置中最关键的步骤。点击 **“+新建”** 按钮，逐行定义 Excel 列与数据库字段的对应关系。
 
-| 配置项 | 说明 |
-| :--- | :--- |
-| **表头 (Excel Header)** | 填写 Excel 表格第一行的列标题（如：`姓名`、`手机号`）。 |
-| **导入对象的字段** | 选择 Steedos 对象中对应的字段（如：`name`、`mobile`）。 |
-| **关联对象的 Key** | **(仅针对关联字段 Lookup/Master-Detail)**<br/>指定 Excel 中的值对应关联对象上的哪个属性。 |
-| **关联失败时保存 Key** | **(高级选项)**<br/>如果勾选，当系统找不到关联记录时，会将 Excel 中的原始值强制保存到数据库中（通常用于容错）。 |
+* **Uniqueness Field**: Specify a field (e.g., "Employee ID," "Mobile," or "External ID") to serve as the basis for duplicate checking.
 
------
+### Field Mapping
 
-### 💡 重点：如何配置关联字段 (Lookup)？
+This is the most critical part of the configuration. Click **"+ New"** to define the relationship between Excel columns and database fields line by line.
 
-在导入关联字段时（例如：导入“用户”时需要指定“简档 Profile”），Excel 中填写的通常是**名称**，而数据库存储的是 **ID**。
+| Configuration Item | Description |
+| --- | --- |
+| **Excel Header** | The exact column title in the first row of your Excel file (e.g., `Full Name`, `Mobile`). |
+| **Object Field** | The corresponding field in the Steedos object (e.g., `name`, `mobile`). |
+| **Related Key** | **(For Lookup/Master-Detail fields only)** <br/><br/> Specify which attribute in the related object matches the value in the Excel cell. |
+| **Save Key if Failed** | **(Advanced)** <br/><br/> If checked, if the system cannot find a matching related record, it will save the raw Excel value to the database (used for fault tolerance). |
+---
 
-**场景示例**：用户 Excel 中有一列“职位等级”，填写的直是 `Admin`，需要关联到 `Profile` 对象。
+### 💡 Key Concept: Configuring Lookup Fields
 
-1.  **导入对象的字段**：选择 `Profile (profile)`。
-2.  **关联对象的 Key**：填写 `name`。
-      * *含义*：告诉系统拿着 Excel 里的 "Admin" 去 Profile 对象中查找 `name` 等于 "Admin" 的记录 ID。
-3.  **关联失败时保存 Key**：
-      * *不勾选*：如果系统里没有叫 "Test" 的简档，Excel 里填了 "Test"，则该条数据报错跳过。
-      * *勾选*：即使没找到对应的简档，也强制把 "Test" 这个值写入字段（需确保字段本身允许存储非 ID 值，或用于临时数据清洗）。
-        :::
+When importing lookup fields (e.g., assigning a "Profile" to a "User"), the Excel file usually contains a **Name**, while the database stores an **ID**.
 
------
+**Example Scenario**: The Excel has a "Position Level" column containing `Admin`, which needs to link to the `Profile` object.
 
-## 2\. 执行数据导入 (用户侧)
+1. **Object Field**: Select `Profile (profile)`.
+2. **Related Key**: Enter `name`.
+* *Meaning*: You are telling the system to take the value "Admin" from Excel and find the record in the `Profile` object where the `name` equals "Admin," then save that record's ID.
 
-配置完成后，任何拥有新增权限的用户均可在前台执行导入。
 
-### 操作步骤
+3. **Save Key if Failed**:
+* *Unchecked*: If there is no profile named "Admin," the row will fail and return an error.
+* *Checked*: Even if no match is found, the system will force the string "Admin" into the field (ensure the field allows non-ID values or use this for data cleansing).
 
-1.  **进入列表页**：进入相关对象（如“联系人”）的列表视图界面。
-2.  **点击导入**：在右上角工具栏点击 **“导入数据”** 按钮。
-3.  **选择模版**：
-      * 在弹出的对话框中，选择管理员预先配置好的导入记录（即上文配置的规则）。
-      * 点击 **“下载模版”**：系统会根据管理员的配置，生成一份包含正确表头的空 Excel 文件。
-4.  **上传并提交**：
-      * 在本地 Excel 中填好数据。
-      * 将文件上传到对话框中，点击 **“提交”**。
 
-## 3\. 结果验证与排错
 
-数据提交后，系统将在后台异步执行导入任务。
+---
 
-### 查看结果
+## 2. Executing the Import (User Side)
 
-  * **前台提示**：导入完成后，页面顶部会弹出提示信息（成功数量、失败数量）。
-  * **查看明细**：
-    1.  管理员可以回到 **“设置” \> “数据导入”** 列表。
-    2.  点击对应的导入记录编号。
-    3.  在详情页的 **“导入明细”** 子表中，可以看到每一行数据的处理结果。
+Once configured, any user with "Create" permissions can execute the import.
 
-### 常见错误处理
+### Steps
 
-若导入有失败记录，请检查明细中的 **“错误信息”** 字段：
+1. **Enter List View**: Navigate to the list view of the relevant object (e.g., "Contacts").
+2. **Click Import**: Click the **"Import"** button in the top-right toolbar.
+3. **Select Template**:
+* Choose the predefined configuration created by the admin.
+* Click **"Download Template"**: The system generates an empty Excel file with the correct headers based on the admin's configuration.
 
-| 错误类型 | 常见原因 | 解决方法 |
-| :--- | :--- | :--- |
-| **Required field missing** | 必填字段为空 | 检查 Excel 中是否遗漏了必填列（如姓名、状态）。 |
-| **Duplicate value** | 违反唯一性规则 | 检查数据是否重复，或调整“导入操作”为“更新”。 |
-| **Lookup validation failed** | 关联查找失败 | 检查 Excel 中填写的关联名称（如部门名、简档名）是否与系统内完全一致（注意空格）。 |
+
+4. **Upload and Submit**:
+* Fill in the data in the local Excel file.
+* Upload the file and click **"Submit"**.
+
+
+
+---
+
+## 3. Results and Troubleshooting
+
+Data is processed asynchronously in the background.
+
+### Viewing Results
+
+* **UI Notification**: Once finished, a notification will appear at the top of the page showing the count of successful and failed records.
+* **Detailed Logs**:
+1. Admins can return to **"Settings" > "Data Import"**.
+2. Click the specific import record ID.
+3. In the **"Import Details"** related list, you can see the processing result for every single row.
+
+
+
+### Common Errors
+
+If there are failed records, check the **"Error Message"** field:
+
+| Error Type | Common Cause | Solution |
+| --- | --- | --- |
+| **Required field missing** | A mandatory field is empty. | Check if the Excel is missing required columns like Name or Status. |
+| **Duplicate value** | Violation of uniqueness rules. | Check for duplicates in the file or change the operation to "Update/Upsert." |
+| **Lookup validation failed** | Could not find the related record. | Ensure the name in Excel (e.g., Department name) matches the system record exactly (check for spaces). |

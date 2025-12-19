@@ -1,89 +1,101 @@
-# 部门与分部结构 
+# Department and Company Structure
 
-在 Steedos 中，构建清晰的组织架构是系统实施的基础。组织架构不仅展示了公司的层级关系（如总公司、分公司、部门、科室），更直接决定了**数据权限的范围**（谁能看到谁的数据）以及**审批流的走向**（逐级审批）。
+In Steedos, constructing a clear organizational structure is the foundation of system implementation. The organizational architecture does more than just display the company's hierarchy (such as headquarters, branches, departments, and offices); it directly determines the **scope of data permissions** (who can see whose data) and the **direction of approval workflows** (level-by-level approvals).
 
-## 1\. 核心概念
+---
 
-Steedos 采用**树状结构**来管理组织单元。
+## 1. Core Concepts
 
-### 组织机构 (Organizations)
+Steedos utilizes a **tree structure** to manage organizational units.
 
-在系统中，无论是“总公司”、“分公司”还是“财务部”、“销售一组”，统一被称为 **组织机构 (Organizations)**。它们通过**父子关系**连接成一棵树。
+### Organizations
 
-  * **根节点 (Root)**：通常代表整个集团或总公司。
-  * **分部 (Company)**：通常指具有独立核算能力的子公司或大型分支机构。
-  * **部门 (Department)**：指功能性的职能单元，如“研发部”、“市场部”。
+In the system, whether it is "Headquarters," "Branch Office," "Finance Department," or "Sales Team A," they are collectively referred to as **Organizations**. They are connected through **Parent-Child relationships** to form a tree.
 
-> **示例结构**：
->
+* **Root Node**: Usually represents the entire group or headquarters.
+* **Company (Branch)**: Typically refers to a subsidiary or a large branch with independent accounting capabilities.
+* **Department**: Refers to a functional unit, such as "R&D" or "Marketing."
+
+> **Example Structure**:
 > ```text
-> 华炎软件 (根节点)
-> ├── 上海总公司 (分部)
-> │   ├── 研发中心 (部门)
-> │   │   ├── 后端组
-> │   │   └── 前端组
-> │   └── 销售部 (部门)
-> └── 北京分公司 (分部)
->     └── 销售办事处
+> Steedos Software (Root)
+> ├── Shanghai HQ (Company)
+> │   ├── R&D Center (Department)
+> │   │   ├── Backend Team
+> │   │   └── Frontend Team
+> │   └── Sales Department (Department)
+> └── Beijing Branch (Company)
+>     └── Sales Office
+> 
 > ```
+> 
+> 
 
-## 2\. 管理组织架构
+---
 
-管理员可以在设置界面维护这棵“树”。
+## 2. Managing the Organizational Structure
 
-### 创建/编辑组织
+Administrators can maintain this "tree" within the Settings interface.
 
-1.  进入 **“设置 (Settings)”** 应用。
-2.  选择 **“组织 (Organization)”** \> **“组织机构 (Organizations)”**。
-3.  点击 **“新建”** 或点击现有组织名称进行 **“编辑”**。
+### Creating/Editing an Organization
 
-### 关键字段说明
+1. Enter the **Settings** app.
+2. Navigate to **Organization** > **Organizations**.
+3. Click **New** or click on an existing organization name to **Edit**.
 
-| 字段名称 | 说明 | 作用 |
-| :--- | :--- | :--- |
-| **名称 (Name)** | 组织的显示名称，如“财务部”。 | 用于界面显示。 |
-| **上级组织 (Parent)** | **构建层级的关键**。选择该部门归属的上级。 | 如果留空，该节点将成为根节点。 |
-| **分部 (Company)** | 标记该节点是否为一个独立的法律实体或分公司。 | 在某些财务或隔离场景下使用。 |
-| **部门负责人 (Manager)** | 指定该部门的管理者（关联到用户）。 | **非常重要**。用于审批流中“自动寻找上级”功能。 |
-| **分管领导** | 指定该部门的分管高层。 | 用于跨级审批或特殊权限判定。 |
+### Key Field Descriptions
 
-## 3\. 人员归属管理
+| Field Name | Description | Impact/Role |
+| --- | --- | --- |
+| **Name** | The display name, e.g., "Finance Department." | Used for UI display. |
+| **Parent** | **The key to building hierarchy.** Select the parent unit this department belongs to. | If left blank, this node becomes a Root Node. |
+| **Company** | Marks whether this node is an independent legal entity or branch. | Used in financial scenarios or data isolation. |
+| **Manager** | Assigns the leader of the department (linked to a User). | **Crucial.** Used for the "Automatically find manager" function in approval flows. |
+| **Director** | Specifies the high-level executive in charge of the department. | Used for cross-level approvals or special permission logic. |
 
-将用户放入正确的“格子”里是权限管理的第一步。一个用户必须归属于组织架构中。
+---
 
-### 设置用户的主部门
+## 3. Managing Personnel Affiliation
 
-在 **[用户管理](https://www.google.com/search?q=./01-users.md)** 中，通过编辑用户的 **“主所属部门”** 字段，将其挂载到组织树的特定叶子节点上。
+Placing users into the correct "slots" is the first step of permission management. Every user must be assigned within the organizational structure.
 
-### 一人多岗 (多部门归属)
+### Setting a Primary Department
 
-如果某个员工身兼数职（例如：张三既是“研发部经理”，又是“架构委员会成员”），Steedos 支持设置**辅助部门**或**多重身份**：
+In **User Management**, edit the user's **Primary Department** field to attach them to a specific leaf node of the organizational tree.
 
-  * 在用户详情页的 **“所属组织”** 列表中，可以添加额外的部门关联。
-  * 这意味着该用户可以同时查看这两个部门内部共享的数据。
+### One Person, Multiple Positions (Multi-Department Affiliation)
 
-## 4\. 组织架构的应用场景
+If an employee holds multiple roles (e.g., John is both the "R&D Manager" and a "Architecture Committee Member"), Steedos supports **Auxiliary Departments**:
 
-配置好组织架构后，系统会在以下方面自动生效：
+* In the user's detail page, under the **Organizations** related list, you can add additional department associations.
+* This means the user can simultaneously view shared data within both departments.
 
-### A. 数据权限 (上下级可见性)
+---
 
-如果系统的共享规则设置为“私有”，通常遵循 **“上级可见下级”** 的原则：
+## 4. Application Scenarios
 
-  * **下级**：普通员工通常只能看到自己的数据。
-  * **上级**：“销售一部经理”天然可以看到“销售一部”所有员工创建的数据。
-  * **隔代上级**：“销售总监”可以看到“销售一部”和“销售二部”的所有数据。
+Once the organizational structure is configured, the system automatically applies it in the following areas:
 
-### B. 审批流程 (自动化路由)
+### A. Data Permissions (Vertical Visibility)
 
-在配置工作流或审批流时，无需指定具体的审批人姓名（如“张三”），而是指定 **角色关系**。
+If the system's sharing rules are set to "Private," the principle of **"Superiors see Subordinates"** is generally followed:
 
-  * **场景**：员工提交请假申请。
-  * **配置**：审批步骤设置为 `提交人的部门负责人`。
-  * **效果**：系统会自动查找申请人所在部门的 `Manager` 字段对应的用户。如果人员发生变动（换了经理），无需修改流程配置，审批会自动路由给新经理。
+* **Subordinates**: Regular employees can usually only see their own data.
+* **Superiors**: The "Sales Team 1 Manager" can naturally see all data created by employees in "Sales Team 1."
+* **Executive Superiors**: The "Sales Director" can see all data from both "Sales Team 1" and "Sales Team 2."
 
-## 5\. 最佳实践
+### B. Approval Workflows (Automated Routing)
 
-1.  **保持层级适度**：不要创建过深的层级（建议控制在 5 层以内），否则会导致权限计算变慢，且增加管理复杂度。
-2.  **及时维护负责人**：**“部门负责人”** 字段是审批流自动化的核心，一旦人事变动，务必第一时间更新此字段，否则审批单会卡住。
-3.  **先框架后细节**：实施初期，先搭建大的部门框架（如一级、二级部门），项目稳定后再细分小组（三级部门）。
+When configuring workflows or approval processes, you don't need to specify a specific person's name (like "John"). Instead, you specify a **Role Relationship**.
+
+* **Scenario**: An employee submits a leave request.
+* **Configuration**: The approval step is set to `Submitter's Department Manager`.
+* **Effect**: The system automatically looks up the user in the `Manager` field of the applicant's department. If personnel change (a new manager is hired), you don't need to modify the workflow; the approval will automatically route to the new manager.
+
+---
+
+## 5. Best Practices
+
+1. **Maintain Moderate Hierarchy**: Avoid creating excessively deep hierarchies (aim for 5 levels or fewer). Deep trees can slow down permission calculations and increase management complexity.
+2. **Keep Managers Updated**: The **Manager** field is the core of approval automation. Ensure this is updated immediately during personnel changes to prevent approval requests from getting stuck.
+3. **Framework First**: During initial implementation, build the major departmental framework (Level 1 and 2 departments) first. Subdivide into smaller teams (Level 3) once the project is stable.

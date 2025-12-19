@@ -1,89 +1,100 @@
-# 用户管理
+# User Management
 
-用户是能够登录 Steedos 系统并访问数据的个人。每个用户都有一个用户账户。作为管理员，您可以创建新用户、修改用户信息、重置密码以及控制用户的激活状态。
+Users are individuals who can log in to the Steedos system and access data. Each user is associated with a specific account. As an administrator, you are responsible for creating new users, modifying user information, resetting passwords, and managing the activation status of accounts.
 
-## 1\. 用户概念
+---
 
-在 Steedos 中，**用户 (User)** 代表一个自然人账号。即使该员工离职，为了保证系统历史数据的完整性（例如：该员工曾经创建或审批过的记录），我们通常**不会删除**用户，而是将其**停用**。
+## 1. User Concepts
 
-## 2\. 新建用户
+In Steedos, a **User** represents the account of a natural person. To maintain the integrity of historical data (such as records previously created or approved by an employee), we generally **do not delete** users when they leave the company. Instead, we **deactivate** them.
 
-管理员可以通过设置界面手动添加新用户。
+* **Active Users**: Occupy a system license and can log in.
+* **Deactivated Users**: Do not occupy a license and cannot log in, but their historical footprints (records, approvals, logs) remain intact for auditing.
 
-### 操作步骤
+---
 
-1.  点击左下角应用启动器，进入 **“设置 (Settings)”** 应用。
-2.  在左侧菜单中选择 **“组织 (Organization)”** \> **“用户 (Users)”**。
-3.  点击右上角的 **“新建 (New)”** 按钮。
-4.  填写用户的基本信息（见下文核心字段说明）。
-5.  点击 **“保存”**。
+## 2. Creating New Users
 
-### 核心字段说明
+Administrators can manually add new users through the setup interface.
 
-在创建或编辑用户时，以下字段至关重要：
+### Step-by-Step Instructions
 
-| 字段名称 | 必填 | 说明 |
-| :--- | :--- | :--- |
-| **姓名 (Name)** | 是 | 用户的真实姓名，将在系统中显示（如审批记录、所有者字段）。 |
-| **用户名 (Username)** | 是 | 用户的唯一登录标识，通常建议设置为**邮箱地址**或**员工工号**。全系统唯一。 |
-| **邮箱 (Email)** | 否 | 用于接收系统通知（如审批提醒、密码重置邮件）。 |
-| **手机 (Mobile)** | 否 | 用于接收短信验证码（如开启了双因子认证）。 |
-| **简档 (Profile)** | 是 | **关键字段**。决定了用户的基本权限（例如：系统管理员、标准用户）。<br/>默认情况下，赋予 `user` (标准用户) 即可。 |
-| **有效 (Active)** | 是 | 勾选表示该用户处于**激活**状态，可以登录系统；取消勾选则表示**冻结**。 |
-| **主所属部门** | 否 | 用户主要归属的部门，用于组织架构树的显示。 |
+1. Click the **App Launcher** (nine-dot icon) in the top-left corner and enter the **Settings** app.
+2. In the left sidebar, navigate to **Organization** > **Users**.
+3. Click the **New** button in the top-right corner.
+4. Fill in the user's basic information (see the Core Fields table below).
+5. Click **Save**.
 
-> **提示**：如果系统配置了 LDAP/AD 或企业微信/钉钉集成，用户通常会自动同步创建，无需管理员手动新建。
+### Core Field Descriptions
 
-## 3\. 编辑与维护
+When creating or editing a user, the following fields are critical:
 
-### 修改用户信息
+| Field Name | Required | Description |
+| --- | --- | --- |
+| **Name** | Yes | The user's real name, displayed throughout the system (e.g., in approval logs and record owner fields). |
+| **Username** | Yes | The unique identifier for login. We recommend using an **email address** or **employee ID**. It must be unique across the entire system. |
+| **Email** | No | Used for system notifications such as approval alerts and password reset links. |
+| **Mobile** | No | Used for SMS notifications or Multi-Factor Authentication (MFA). |
+| **Profile** | Yes | **Critical Field**. Determines the user's base permissions (e.g., System Admin, Standard User). Usually set to `user` by default. |
+| **Active** | Yes | When checked, the user is **activated** and can log in. When unchecked, the account is **frozen/deactivated**. |
+| **Primary Department** | No | The main department the user belongs to, used for displaying the organizational hierarchy. |
 
-当员工职位变动或个人信息变更时，管理员可以编辑用户记录：
+> **Note**: If your system is integrated with LDAP/AD, WeCom (Work WeChat), or DingTalk, users are typically synchronized automatically, and manual creation is not required.
 
-1.  在用户列表页点击对应的 **用户姓名**。
-2.  点击 **“编辑”** 按钮。
-3.  修改相应信息（如更改所属部门、修改手机号）并保存。
+---
 
-### 重置密码
+## 3. Maintenance and Updates
 
-如果用户忘记密码，管理员可以强制重置：
+### Modifying User Information
 
-1.  进入用户详情页。
-2.  点击右上角的 **“重置密码”** 按钮。
-3.  输入新密码并确认。用户下次登录时将使用此新密码。
+When an employee’s role changes or personal details are updated, administrators can edit the user record:
 
-> **安全建议**：建议勾选“用户下次登录时必须修改密码”选项（如系统支持），以确保账户安全。
+1. Click the user's **Name** in the user list.
+2. Click the **Edit** button.
+3. Update the necessary information (e.g., change department or mobile number) and save.
 
-## 4\. 冻结（停用）用户
+### Resetting Passwords
 
-当员工离职或不再需要系统访问权限时，管理员必须停用该用户。
+If a user forgets their password, an administrator can manually reset it:
 
-### 为什么不删除用户？
+1. Navigate to the user's detail page.
+2. Click the **Reset Password** button in the top-right corner.
+3. Enter and confirm the new password. The user will use this new password for their next login.
 
-Steedos 系统中，数据之间存在复杂的关联关系。例如，该用户可能是某个历史合同的“所有者”，或者在某个审批流中留下了“已同意”的记录。
+---
 
-  * **删除用户**：会导致关联数据丢失、报表报错或历史记录无法追溯。
-  * **停用用户**：保留历史数据，但阻止该用户再次登录。
+## 4. Deactivating Users
 
-### 如何停用
+When an employee leaves the company or no longer requires access, administrators must deactivate the account.
 
-1.  在用户列表找到该用户，点击 **“编辑”**。
-2.  **取消勾选** “有效 (Active)” 复选框。
-3.  点击 **“保存”**。
+### Why Deactivate instead of Delete?
 
-停用后：
+Steedos records have complex relational dependencies. For instance, a user might be the "Owner" of a historical contract or have "Approved" a specific workflow step.
 
-  * 该用户无法再登录系统。
-  * 该用户将不再占用系统的 **许可证 (License)** 名额。
-  * 该用户创建的历史数据依然保留。
+* **Deleting a User**: Causes data inconsistency, breaks reports, and makes historical records untraceable.
+* **Deactivating a User**: Prevents login while preserving all historical data and audit trails.
 
-## 5\. 常见问题 (FAQ)
+### How to Deactivate
 
-**Q: 用户反馈无法登录，提示“账号已锁定”？**
-A: 通常是因为密码输错次数过多。管理员可以在用户详情页解锁账号，或重置密码。
+1. Find the user in the list and click **Edit**.
+2. **Uncheck** the "Active" checkbox.
+3. Click **Save**.
 
-**Q: 新建用户时提示“用户名已存在”？**
-A: 用户名在全系统中必须唯一。请尝试在用户名后增加后缀或使用公司邮箱作为用户名。
+**Post-Deactivation Effects:**
 
-**Q: 如何批量导入用户？**
-A: 请参考 数据管理/数据导入 章节，使用 Excel/CSV 模板进行批量导入。
+* The user is immediately blocked from logging in.
+* The user’s **License** is released for use by another person.
+* All historical data created by the user is retained for reference.
+
+---
+
+## 5. Frequently Asked Questions (FAQ)
+
+**Q: A user reports they can't log in and see a "Account Locked" message.**
+A: This usually happens after too many failed password attempts. An administrator can unlock the account or reset the password from the user's detail page.
+
+**Q: I get a "Username already exists" error when creating a new user.**
+A: Usernames must be unique system-wide. Try adding a suffix or using the corporate email address as the username.
+
+**Q: How do I import users in bulk?**
+A: Please refer to the **Data Management > Data Import** section to learn how to use Excel/CSV templates for batch imports.

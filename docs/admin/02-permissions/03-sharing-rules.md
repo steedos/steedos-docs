@@ -1,84 +1,85 @@
-# 共享规则 (Sharing Rules)
+# Sharing Rules
 
-在 Steedos 中，**记录级权限**（即用户能看到表中的哪几行数据）主要由 **简档/权限集** 中的“数据范围”决定。
+In Steedos, **record-level permissions** (i.e., which specific rows in a table a user can see) are primarily determined by the "Data Scope" defined in **Profiles** or **Permission Sets**.
 
-当“简档”中定义的基础范围（如“仅查看自己的”）无法满足复杂的业务需求时，我们才使用 **共享规则 (Sharing Rules)** 进行额外的授权。
+When the baseline scope defined in a Profile (such as "View Own Only") is too restrictive for complex business needs, we use **Sharing Rules** to grant additional access.
 
-## 1\. 基础权限：数据范围 (Scope)
+---
 
-**“能看多少数据”直接定义在对象权限中。**
+## 1. The Foundation: Data Scope
 
-在配置 **简档 (Profile)** 或 **权限集 (Permission Set)** 时，针对每个对象（如“合同”），除了勾选“允许读取”、“允许编辑”外，管理员必须指定 **数据范围**。
+**"How much data a user can see" is defined directly within Object Permissions.**
 
-### 常见的权限范围选项
+When configuring a **Profile** or **Permission Set**, administrators must specify a **Data Scope** for each object (e.g., "Contracts") in addition to checking "Read" or "Edit" permissions.
 
-Steedos 通常提供以下几个层级的可见性控制：
+### Common Data Scope Levels
 
-| 范围级别 | 含义 | 适用场景 |
-| :--- | :--- | :--- |
-| **全部 (All)** | **公开**。用户可以查看/修改该对象表中的**所有**记录，无论属于谁。 | 管理员、数据审核员、公开的知识库。 |
-| **本单位 (Company)** | **分部级**。用户可以看到其所属分部（及其子部门）下的所有数据。 | 分公司总经理、行政人员。 |
-| **本部门 (Organization)** | **部门级**。用户可以看到其所属部门（及其子部门）下的所有数据。 | 部门经理。 |
-| **仅所有者 (Owner)** | **私有**。用户只能看到**自己创建的**，或**所有者是自己**的记录。 | 普通销售员、普通员工。 |
+Steedos typically provides the following levels of visibility control:
 
-:::tip 核心逻辑
-如果您希望某类对象的默认权限是“私有”，请在该用户的简档中，将该对象的数据范围设置为 **“仅所有者 (Owner)”**。
+| Scope Level | Meaning | Use Case |
+| --- | --- | --- |
+| **All** | **Public**. The user can view/modify **all** records in the table, regardless of ownership. | Administrators, Auditors, Public Knowledge Bases. |
+| **Company** | **Branch Level**. The user can see all data belonging to their assigned company/branch (and its sub-departments). | Branch Managers, Administrative Staff. |
+| **Organization** | **Department Level**. The user can see all data belonging to their specific department (and its sub-departments). | Department Heads / Managers. |
+| **Owner** | **Private**. The user can only see records **they created** or records where they are the **assigned Owner**. | Individual Sales Reps, Standard Employees. |
+
+:::tip Core Logic
+If you want the default permission for an object to be "Private," set the Data Scope to **"Owner"** in that user's Profile.
 :::
 
-## 2\. 共享规则 (Sharing Rules)
+---
 
-当简档中的权限范围（如“仅所有者”）过于严格，但又不能直接开通“全部”权限时，我们需要使用 **共享规则** 来打通特定的数据壁垒。
+## 2. Sharing Rules: Opening Exceptions
 
-**共享规则的原则：** 只能在现有权限基础上做“加法”，不能做“减法”。
+When the Profile scope (e.g., "Owner") is too strict, but you cannot grant "All" access due to security risks, you use **Sharing Rules** to bridge specific data gaps.
 
-### 适用场景
+**The Golden Rule of Sharing:** Sharing rules can only perform "addition" on existing permissions; they can never perform "subtraction."
 
-  * **跨部门协作**：北京分公司的销售虽然只能看自己的单子，但需要把“已签约”的合同共享给“总部财务部”查看。
-  * **特定项目组**：某个特定的 VIP 客户记录，需要共享给“上市筹备组”的所有成员，无论这些成员属于哪个部门。
+### Use Cases
 
-### 规则类型
+* **Cross-Department Collaboration**: A sales rep in the Beijing branch can normally only see their own leads but needs to share "Signed" contracts with the "Headquarters Finance Department" for review.
+* **Special Project Groups**: A specific high-value customer record needs to be shared with all members of the "IPO Preparation Team," regardless of which department those members belong to.
 
-#### A. 基于属性的共享 (Criteria-Based)
+### Types of Sharing Rules
 
-根据记录的具体字段值进行自动分享。
+#### A. Criteria-Based Sharing
 
-  * **规则**：当 `合同金额` \> 1,000,000 时。
-  * **动作**：共享给 `风险控制部`。
-  * **权限**：`只读`。
+Sharing is triggered automatically based on specific field values within a record.
 
-#### B. 基于组织的共享 (Organization-Based)
+* **Rule**: If `Contract Amount` > 1,000,000.
+* **Action**: Share with the `Risk Control Department`.
+* **Access Level**: `Read-Only`.
 
-根据记录的归属部门进行分享。
+#### B. Organization-Based Sharing
 
-  * **规则**：属于 `上海研发部` 的所有记录。
-  * **动作**：共享给 `北京产品部`。
-  * **权限**：`只读`。
+Sharing is based on the department the record belongs to.
 
-## 3\. 权限排查实战
+* **Rule**: All records belonging to the `Shanghai R&D Department`.
+* **Action**: Share with the `Beijing Product Team`.
+* **Access Level**: `Read-Only`.
 
-当用户反馈“我看不到数据”或“我看到了不该看的数据”时，请按以下逻辑排查：
+---
 
-1.  **第一步：检查简档/权限集 (The Base)**
+## 3. Troubleshooting Access: A Step-by-Step Logic
 
-      * 找到该用户的简档。
-      * 检查对应对象的 **“允许读取”** 是否勾选？
-      * 检查 **“数据范围”** 选的是什么？
-          * 如果是 `Owner`，通过；
-          * 如果是 `All`，那他自然能看到所有，无需排查后续。
+When a user reports they "cannot see data" or "see data they shouldn't," follow this troubleshooting path:
 
-2.  **第二步：检查记录所有者 (The Owner)**
+1. **Step 1: Check the Profile/Permission Set (The Base)**
+* Find the user's Profile.
+* Is **"Allow Read"** checked for the object?
+* What is the **"Data Scope"** set to?
+* If it's `All`, they can see everything (no further troubleshooting needed).
+* If it's `Owner`, move to Step 2.
 
-      * 这条记录的 `Owner` 是谁？
-      * 如果是用户自己，那肯定能看。
-      * 如果不是用户自己，检查用户是否属于 `Owner` 所在部门的上级部门（且简档范围包含子部门）。
 
-3.  **第三步：检查共享规则 (Sharing Rules)**
 
-      * 是否有特定的共享规则将这条数据“投喂”给了该用户（或用户所在的部门/群组）。
 
------
+2. **Step 2: Check the Record Owner**
+* Who is the `Owner` of this record?
+* If it's the user themselves, they should have access.
+* If not, does the user belong to a parent department of the Owner (and does their Profile scope include sub-departments)?
 
-**本章总结**：
 
-  * **简档/权限集** 既决定了**功能**（能不能改），也决定了**基础视野**（能看多少）。
-  * **共享规则** 是处理**例外情况**的工具。
+3. **Step 3: Check Sharing Rules**
+* Is there a specific Sharing Rule "feeding" this data to the user or their department/group?
+

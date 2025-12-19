@@ -12,15 +12,9 @@ Think of this document as a **"Steedos-to-Human Dictionary"** for your quick ref
 
 | Term | Analogy | Description |
 | --- | --- | --- |
-| **Object** | Spreadsheet / Table | **Like a "Sheet" in Excel.**<br/>
-
-<br/>A container for storing data. For example, "Customer" and "Contract" are both Objects. |
-| **Field** | Column | **Like a "Column" in Excel.**<br/>
-
-<br/>An attribute within an object. Examples include "Name," "Phone," and "Address." |
-| **Record** | Row | **Like a "Row" in Excel.**<br/>
-
-<br/>A specific entry of data. For example, all information belonging to the customer "John Doe" is a single Record. |
+| **Object** | Spreadsheet / Table | **Like a "Sheet" in Excel.**<br/><br/>A container for storing data. For example, "Customer" and "Contract" are both Objects. |
+| **Field** | Column | **Like a "Column" in Excel.**<br/><br/>An attribute within an object. Examples include "Name," "Phone," and "Address." |
+| **Record** | Row | **Like a "Row" in Excel.**<br/><br/>A specific entry of data. For example, all information belonging to the customer "John Doe" is a single Record. |
 | **Standard Object** | Built-in Table | Out-of-the-box objects provided by the system, such as `users`, `organizations`, and `space_users`. |
 | **Custom Object** | User-defined Table | Objects you create based on business needs, such as `projects` or `invoices`. |
 | **Lookup** | Foreign Key / Weak Link | A connection between two objects. For example, selecting a "Customer" within a "Contract." Deleting the customer usually **does not** delete the contract. |

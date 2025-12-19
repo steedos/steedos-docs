@@ -1,66 +1,51 @@
-
 # Fields and Data Types
 
 :::info Learning Objectives
 
-* Understand the concept of Fields (analogous to Excel columns).
+* Understand the concept of Fields (analogy to Excel columns).
 * **Master Core Technical Specs**: Character limits, numeric precision, and rounding rules.
-* **Master Complex Concepts**: Clearly distinguish between **Lookup** and **Master-Detail** relationships.
-* Learn the specific data formats used in **Reports** and **Data Import**.
+* **Key Difficulty**: Thoroughly clarify the difference between **Lookup** and **Master-Detail** relationships.
+* Understand the special formats of various fields in **Reports** and **Data Import**.
 :::
 
 ## What is a Field?
 
-If an **Object** is a Sheet in Excel, then a **Field** is a **Column** in that sheet.
+If an **Object** is a worksheet (Sheet) in Excel, then a **Field** is the row of **Columns** in the header.
 
-Fields define the **Data Format** (text, number, etc.) and the **Validation Rules** (e.g., maximum character length) for your records.
-
----
-
-## 1. Text and Input Types
-
-Used for storing names, descriptions, notes, and other unstructured information.
-
-| Field Type | Icon | Use Case | Technical Specs |
-| --- | --- | --- | --- |
-| **Text** | 🅰️ | Names, Titles | • Max **255** characters.<br/>
-
-<br/>• Supports Shield Platform Encryption. |
-| **Long Text** | 📝 | Descriptions, Notes | • **Capacity**: Default 32,768 characters, adjustable up to **131,072**.<br/>
-
-<br/>• **Line Breaks**: Every Enter key counts as **2 characters**.<br/>
-
-<br/>• **Reports**: Displays only the first **999** characters (export for full details). |
-| **Rich Text** | 📰 | Announcements, Articles | • WYSIWYG editor (bold, color, lists).<br/>
-
-<br/>• **Capacity**: Max **131,072** characters (including hidden HTML tags).<br/>
-
-<br/>• **Images**: Supports gif, jpeg, png up to **1 MB**. |
-| **Email** | 📧 | Customer Emails | • Max **80** characters; automatic format validation.<br/>
-
-<br/>• **Note**: Sending emails to this field does not automatically log activity history. |
-| **URL** | 🔗 | Website Links | • Max 255 characters.<br/>
-
-<br/>• **Display**: Shows first **50** characters; clickable to open full URL. |
+Fields determine the **format** of the data (Is it text or a number?) and the **rules** (What is the maximum number of characters allowed?).
 
 ---
 
-## 2. Numbers and Currency
+## 1. Text & Input
 
-Used for amounts, quantities, and statistical data.
+Used to store unstructured information such as names, descriptions, and notes.
+
+| Field Type | Icon | Use Case |
+| --- | --- | --- |
+| **Text** | 🅰️ | Names, Titles |
+| **Long Text** | 📝 | Detailed descriptions, notes |
+| **Rich Text** | 📰 | Announcements, Articles |
+| **Email** | 📧 | Customer email addresses |
+| **URL** | 🔗 | Official website links |
+
+---
+
+## 2. Numbers & Currency
+
+Data involving amounts, quantities, and statistics.
 
 :::warning Precision Warning
-All numeric field types (Number, Currency, Percent) lose precision after **15 decimal places**. Excess decimal places may be truncated by the system.
+All numeric fields (Number, Currency, Percent) lose precision after **15 decimal places**. If you enter too many decimal places, the system may truncate them.
 :::
 
 ### Number
 
-* **Use Case**: Inventory counts, age, sort orders.
+* **Scenario**: Inventory quantity, age, sort order.
 * **Rules**:
-* **Leading Zeros**: Automatically removed (e.g., `007` becomes `7`).
+* **Leading Zeros**: Automatically removed by the system (e.g., `007` becomes `7`).
 * **Rounding Rule**: Uses **"Round half up"**.
-* `12.345` ➔ `12.35`
-* `-12.345` ➔ `-12.35`
+* `12.345` -> `12.35`
+* `-12.345` -> `-12.35`
 
 
 
@@ -68,11 +53,11 @@ All numeric field types (Number, Currency, Percent) lose precision after **15 de
 
 ### Currency
 
-* **Use Case**: Contract amounts, unit prices. Automatically adds symbols (¥, $).
+* **Scenario**: Contract amount, unit price. The system automatically adds currency symbols (¥, $).
 * **Rules**:
-* **Rounding Rule**: Uses **"Round-half-to-even"** (Banker's Rounding). This is the financial standard to reduce cumulative errors in large-scale calculations.
-* `23.5` ➔ `24` (Ends in 5, rounds to the nearest even number).
-* `22.5` ➔ `22` (Ends in 5, rounds to the nearest even number).
+* **Rounding Rule**: Uses **"Banker's Rounding" (Round-half-to-even)**. This is a standard algorithm for financial systems (rounding to the nearest even number when the fraction is exactly .5) to reduce cumulative errors in large-scale calculations.
+* `23.5` -> `24` (5 follows no digits, rounds up to even)
+* `22.5` -> `22` (5 follows no digits, rounds down to even)
 
 
 
@@ -80,73 +65,68 @@ All numeric field types (Number, Currency, Percent) lose precision after **15 de
 
 ### Percent
 
-* **Use Case**: Discount rates, completion progress.
-* **Rules**: Input as a decimal (e.g., `0.10`), displayed as a percentage (`10%`).
+* **Scenario**: Discount rate, completion percentage.
+* **Rule**: Enter a decimal (e.g., `0.10`), and the system displays it as a percentage (`10%`).
 
 ---
 
-## 3. Date and Time
+## 3. Date & Time
 
 | Field Type | Description | Example Format |
 | --- | --- | --- |
-| **Date** | Year, month, and day only. Primary for report filtering. | `2025-12-31` |
+| **Date** | Year, month, and day only. Primary basis for report filtering. | `2025-12-31` |
 | **Date/Time** | Includes year, month, day, and specific time. | `2025-12-31 14:30` |
-| **Time** | Time only. Supports milliseconds. `Z` suffix denotes GMT. | `17:30:45.125Z` |
+| **Time** | Time only. Supports milliseconds. `Z` at the end represents GMT. | `17:30:45.125Z` |
 
 ---
 
-## 4. Logic and Choice Types
+## 4. Logic & Choice
 
-Standardize input to ensure data quality.
+Used to standardize input and prevent users from entering invalid data.
 
 ### Checkbox
 
-* **Definition**: A boolean state (Yes/No, True/False).
-* **Data Representation**:
+* **Definition**: Only two states: "Yes/No" (e.g., Is Resigned?).
+* **Data Representation (Important)**:
 * **In UI**: Displayed as a checkbox ☑️.
 * **In Report Filters**: Uses `True` (checked) and `False` (unchecked).
-* **In Import/Export**: Uses `1` (checked) and `0` (unchecked).
+* **In Data Import/Export**: Uses `1` (checked) and `0` (unchecked).
 
 
 
-### Picklist (Dropdown)
+### Select (Picklist)
 
-* **Definition**: A single-select dropdown menu.
-* **Configuration**: Requires pre-defined Labels (what users see) and Values (what the database stores).
-
-### Picklist (Multi-select)
-
-* **Definition**: Allows selecting multiple tags from a list.
-* **Storage Format**: Values are separated by **semicolons** `;` in the database and export files (e.g., `Java;Python;C++`).
+* **Definition**: Single-select dropdown menu.
+* **Configuration**: Requires pre-defined **Labels** (Display values) and **Values** (Code values). Supports multi-select.
 
 ---
 
-## 5. Relationships — **Essential Reading**
+## 5. Relationships — **Core Reading**
 
-The core power of Steedos lies in handling relationships between tables. This is the most critical concept for new developers.
+Steedos' core capability lies in handling relationships between tables. This is the area most prone to confusion for beginners.
 
 ### Lookup Relationship — "Weak Association"
 
-**"You can point to it, but you remain independent."**
+**"You can point to it, but you are independent."**
 
-* **Scenario**: **Work Order** linked to a **Customer**; **Employee** belonging to a **Department**.
-* **UI**: Represented by a magnifying glass icon 🔍 which opens a selection modal.
-* **Behavior**:
-* **Independence**: If the "Parent" (Customer) is deleted, the "Child" (Work Order) is **not** deleted (the field is simply cleared).
-* **Flexibility**: Usually optional; a record doesn't necessarily need a lookup value.
+* **Scenario**: **Work Order** linked to **Customer**; **Employee** belonging to a **Department**.
+* **UI**: Displayed as a magnifying glass icon 🔍, clicking it pops up a selection window.
+* **Behavioral Characteristics**:
+* **Independence**: If the "Customer" (Parent) is deleted, the "Work Order" (Child) is usually **not** deleted (the relationship field simply becomes empty).
+* **Flexibility**: This field is usually **optional** (e.g., a lead might not belong to a company yet).
 
 
 
 ### Master-Detail Relationship — "Strong Association"
 
-**"United in existence, controlled by the Master."**
+**"United in life and death; the Master controls everything."**
 
-* **Scenario**: **Expense Report** and **Line Items**; **Order** and **Order Products**.
-* **Behavior**:
-1. **Cascade Delete**: If the "Master" (Expense Report) is deleted, all "Detail" records (Line Items) are **automatically deleted**.
-2. **Security Inheritance**: Permissions for the detail record are entirely dependent on the master record.
-3. **Required**: A detail record must always be linked to a master; "orphan" records are not allowed.
-4. **Roll-Up Summaries**: This relationship is a prerequisite for using Roll-Up Summary fields.
+* **Scenario**: **Expense Report** and **Expense Items**; **Order** and **Order Line Items**.
+* **Behavioral Characteristics**:
+1. **Cascade Delete**: If the "Expense Report" (Master) is deleted, all "Items" (Detail) are **automatically deleted** by the system.
+2. **Security Inheritance**: The permissions of the detail record depend entirely on the master record. If you don't have permission to view the "Expense Report," you cannot view its "Items."
+3. **Required**: A detail record must always be linked to a master; "orphan" data cannot exist.
+4. **Roll-Up Summary**: Roll-up summary functions can only be used if a Master-Detail relationship is established.
 
 
 
@@ -154,15 +134,15 @@ The core power of Steedos lies in handling relationships between tables. This is
 
 ## 6. Formula
 
-**"Automated results, just like Excel formulas."**
+**"Calculate results automatically, just like Excel formulas."**
 
-Formula fields are **read-only**. The system calculates the value in real-time based on the expression you define. When the source data changes, the formula result updates instantly.
+Formula fields are **read-only**; users cannot fill them in manually. Values are calculated in real-time based on expressions you write. When source data changes, the formula result updates immediately.
 
 * **Use Cases**:
-* **Math**: `Total_Price = Unit_Price * Quantity`
-* **Text Concatenation**: `Full_Name = Last_Name + " " + First_Name`
-* **Logic**: `Status = (End_Date < Today) ? "Expired" : "Active"`
-* **Cross-object**: Display fields from a related object (e.g., showing "Customer Tier" on a "Contract" page).
+* **Simple Math**: `Total Price = Unit Price * Quantity`
+* **Text Concatenation**: `Full Name = Last Name + " " + First Name`
+* **Logic**: `Status = (End Date < Today) ? "Expired" : "Normal"`
+* **Cross-object Value**: Display fields of a related object directly (e.g., displaying the "Customer Tier" directly on the "Contract" page).
 
 
 
@@ -170,19 +150,20 @@ Formula fields are **read-only**. The system calculates the value in real-time b
 
 ## 7. Roll-Up Summary
 
-**"Automating the totals from child records."**
+**"Automate the totals by looking at the details."**
 
-This allows a Master record to automatically calculate data from its Detail records.
+This is one of Steedos' most powerful statistical features. It allows the master record (Parent) to automatically summarize data from all its detail records (Children).
 
 :::danger Core Prerequisite
-**Requires a Master-Detail Relationship!**
-Roll-Up Summary fields cannot be used with standard Lookup relationships.
+**A "Master-Detail Relationship" must be established!**
+If the relationship between two objects is just a standard "Lookup Relationship," you cannot use Roll-Up Summary fields. This is the most common configuration error.
 :::
 
-* **Supported Operations**:
-1. **Count**: Total number of child records.
-2. **Sum**: Total value of a specific numeric field across child records.
-3. **Min/Max**: The lowest or highest value (e.g., earliest start date).
+* **Four Supported Operations**:
+1. **Count**: How many "Tasks" are under this "Project"?
+2. **Sum**: What is the total amount of all "Closed Orders" for this "Customer"?
+3. **Min**: What is the earliest start date among the "Tasks" of this project?
+4. **Max**: What is the largest amount among all "Payments" for this salesperson?
 
 
 
@@ -190,14 +171,14 @@ Roll-Up Summary fields cannot be used with standard Lookup relationships.
 
 ## 8. Auto Number
 
-**"A unique ID for every record."**
+**"Give every piece of data a unique ID number."**
 
-Instead of manual entry, **Auto Number** fields generate a sequential ID automatically to ensure uniqueness.
+Instead of manual entry, the **Auto Number** field generates incremental sequence numbers automatically to ensure they are never duplicated.
 
 * **Format Syntax**:
-* `{0000}`: Represents the numeric sequence.
-* `{YYYY}`, `{MM}`, `{DD}`: Represents current Year, Month, or Day.
-* **Example**: A format of `INV-{YYYY}-{0000}` produces `INV-2025-0001`.
+* `{0000}` represents the numeric sequence.
+* `{YYYY}`, `{MM}`, `{DD}` represent the current year, month, and day.
+* **Example**: Setting the format to `INV-{YYYY}-{0000}` will generate `INV-2025-0001`, followed by `INV-2025-0002`.
 
 
 
@@ -205,8 +186,8 @@ Instead of manual entry, **Auto Number** fields generate a sequential ID automat
 
 ## FAQ
 
-**Q: Can I change a field type after it has been created?**
-A: **High Risk.** While permitted, it often leads to data loss or truncation (e.g., changing "Long Text" to "Text" will cut off data beyond 255 characters).
+**Q: Can I change a field type after it's created?**
+A: **High Risk!** Although allowed, it often leads to data loss or truncation. For example, changing "Long Text" to "Text" will cut off data exceeding 255 characters; changing "Text" to "Number" will clear non-numeric content.
 
-**Q: How do I make a field mandatory?**
-A: Check the **Required** attribute in the field settings. This applies across the API, imports, and the UI.
+**Q: How do I make a field "Mandatory"?**
+A: Check the **Required** attribute when creating or editing a field. Note: This applies to all layers (API, Import, UI entry), so use it carefully.

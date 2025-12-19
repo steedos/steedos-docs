@@ -1,127 +1,150 @@
-# 应用与菜单
 
-:::info 学习目标
-* 理解 Steedos 中“应用 (App)”的概念（它不是一个独立下载的软件，而是一个“工作台”）。
-* **核心技能**：学会创建一个新的应用（例如“工程管理 App”）。
-* **常见坑点**：理解为什么创建了对象却在菜单里找不到（因为没创建“选项卡”）。
-* 掌握如何为不同部门定制专属的菜单导航。
+# Apps and Menus
+
+:::info Learning Objectives
+
+* Understand the concept of an "App" in Steedos (it is a "Workbench," not a standalone downloadable software).
+* **Core Skill**: Learn how to create a new app (e.g., "Project Management App").
+* **Common Pitfall**: Understand why an object might be missing from the menu (The "Missing Tab" issue).
+* Master how to customize exclusive navigation menus for different departments.
 :::
 
-## 什么是“应用 (App)”？
+## What is an "App"?
 
-在 Steedos中，“应用”这个词可能会让你产生误解。它并不是指一个需要下载安装的 `.exe` 或 `.apk` 文件。
+In Steedos, the word "App" might be slightly misleading. It does not refer to a `.exe` or `.apk` file that you need to download and install.
 
-**你可以把 Steedos 想象成一部智能手机：**
-* **对象 (Objects)** 就像是手机里的各种功能（电话功能、短信功能、相机功能）。
-* **应用 (Apps)** 就像是手机桌面上的**“文件夹”**。
-* **菜单 (Menus)** 就像是文件夹里的**“快捷方式”**。
+**Think of Steedos as a smartphone:**
 
-**场景示例：**
-* **销售人员**上班时，打开 **“销售应用”**。他的菜单里是：`线索`、`客户`、`商机`、`合同`。他不关心员工考勤。
-* **HR 经理**上班时，打开 **“人力资源应用”**。她的菜单里是：`员工`、`招聘`、`薪资`、`请假`。她不关心销售商机。
+* **Objects** are like the various features or functions (Phone, Messages, Camera).
+* **Apps** are like the **"Folders"** on your home screen.
+* **Menus** are like the **"Shortcuts"** inside those folders.
 
-通过创建不同的“应用”，我们可以让不同岗位的员工拥有一个干净、专注的**工作台**。
+**Scenario Examples:**
+
+* When a **Sales Rep** starts work, they open the **"Sales App."** Their menu consists of `Leads`, `Accounts`, `Opportunities`, and `Contracts`. They don't need to see employee attendance.
+* When an **HR Manager** starts work, she opens the **"Human Resources App."** Her menu consists of `Employees`, `Recruitment`, `Payroll`, and `Leave Requests`. She doesn't need to see sales opportunities.
+
+By creating different "Apps," we provide employees in different roles with a clean, focused **Workbench**.
 
 ---
 
-## 第一步：理解“选项卡 (Tabs)”
+## Step 1: Understanding "Tabs"
 
-在组装“应用”之前，我们需要先准备好零件。这些零件在 Steedos 中被称为 **选项卡 (Tabs)**。
+Before assembling an "App," we need to prepare the parts. In Steedos, these parts are called **Tabs**.
 
-:::danger 为什么我看不到我的对象？
-这是新手最常遇到的问题。
-**规则**：仅仅创建一个“对象”是不够的。如果这个对象没有对应的“选项卡”，它就无法被挂载到菜单上。
-*(注：如果在创建对象时勾选了“在选项卡中显示”，系统会自动帮你创建好。)*
+:::danger Why can't I see my Object?
+This is the most common issue for beginners.
+**The Rule**: Simply creating an "Object" is not enough. If that object does not have a corresponding **"Tab,"** it cannot be mounted onto a menu.
+*(Note: If you checked "Show in Tab" when creating the object, the system automatically creates this for you.)*
 :::
 
-### 常见的选项卡类型
-1.  **对象选项卡**：点击后进入某个对象的列表页（如“合同”列表）。这是最常用的。
-2.  **Web 选项卡**：点击后在系统内嵌入一个外部网页（例如：嵌入百度的搜索页，或 Tableau 的报表页）。
-3.  **页面选项卡**：点击后进入一个完全自定义设计的页面（例如：一个复杂的“驾驶舱”大屏）。
+### Common Tab Types
+
+1. **Object Tab**: Clicking this opens a list view of an object (e.g., the "Contracts" list). This is the most common type.
+2. **Web Tab**: Clicking this embeds an external webpage within the system (e.g., embedding a Google search page or a Tableau dashboard).
+3. **Page Tab**: Clicking this opens a completely custom-designed page (e.g., a complex "Management Cockpit" dashboard).
 
 ---
 
-## 实战：搭建一个“项目管理”应用
+## Hands-on: Building a "Project Management" App
 
-假设我们已经创建好了“项目”、“任务”、“工时”这三个对象。现在要把它们打包成一个 App 给项目部使用。
+Assume we have already created three objects: "Projects," "Tasks," and "Work Logs." Now, we want to bundle them into an App for the Project Department.
 
-### 1. 创建应用 (Create App)
-1.  进入 **设置** -> **应用设置** -> **应用**。
-2.  点击 **新建**。
-3.  填写基本信息：
-    * **显示名称**：`项目管理系统`
-    * **API 名称**：`project_management`
-    * **Logo**：上传一个代表项目的图标（显示在左上角）。
-    * **描述**：`用于项目部管理全公司的交付项目。`
+### 1. Create App
 
-### 2. 设计菜单 (Design Menu)
-这是决定用户能看见什么的关键步骤。
+1. Go to **Settings** -> **App Settings** -> **Apps**.
+2. Click **New**.
+3. Fill in the basic info:
+* **Display Label**: `Project Management System`
+* **API Name**: `project_management`
+* **Logo**: Upload an icon representing projects (displayed in the top-left corner).
+* **Description**: `Used by the Project Department to manage delivery projects across the company.`
 
-在新建/编辑应用的界面中，找到 **“选择菜单项 (Select Items)”** 或 **“导航项”** 区域：
 
-1.  **左侧列表 (可用项目)**：列出了系统中所有的选项卡。
-2.  **右侧列表 (已选项目)**：这是当前 App 的菜单。
-3.  **操作**：
-    * 在左侧找到 `项目`、`任务`、`工时`。
-    * 点击 **向右箭头 (Add)** 将它们移入右侧。
-    * **重要**：别忘了把 `首页 (Home)` 也加进去，作为第一项。
-4.  **排序**：在右侧列表中，选中 `项目`，点击 **向上/向下箭头** 调整它在菜单栏的顺序。
 
-### 3. 分配权限 (Assign Profiles)
-这个 App 是给谁用的？
+### 2. Design Menu
 
-在 **“用户简档 (Profiles)”** 区域：
-1.  勾选 `System Administrator` (管理员必须能看到，方便维护)。
-2.  勾选 `Project Manager` (项目经理)。
-3.  **不要**勾选 `Sales` (销售人员不需要看到这个 App，避免干扰)。
+This is the critical step that determines what the user sees.
 
-### 4. 保存
-点击 **保存**。
+In the New/Edit App interface, find the **"Select Items"** or **"Navigation Items"** section:
 
----
+1. **Left List (Available Items)**: Lists all available Tabs in the system.
+2. **Right List (Selected Items)**: This is the menu for the current App.
+3. **Action**:
+* Find `Projects`, `Tasks`, and `Work Logs` on the left.
+* Click the **Right Arrow (Add)** to move them to the right.
+* **Important**: Don't forget to add `Home` as the first item.
 
-## 用户如何切换应用？
 
-配置完成后，用户该怎么使用呢？
+4. **Sorting**: In the right list, select an item and use the **Up/Down Arrows** to adjust its order in the navigation bar.
 
-1.  刷新浏览器页面。
-2.  点击系统左上角的 **九个小点图标 (App Launcher / 应用启动器)**。
-    
-3.  在弹出的面板中，就能看到刚才创建的 **“项目管理系统”**。
-4.  点击它，系统的顶部菜单栏就会瞬间变成你配置的样子（首页、项目、任务、工时）。
+### 3. Assign Profiles
+
+Who is this App for?
+
+In the **"Profiles"** section:
+
+1. Check `System Administrator` (Admins must see it for maintenance).
+2. Check `Project Manager`.
+3. **Do Not** check `Sales` (Sales reps don't need to see this App, avoiding unnecessary clutter).
+
+### 4. Save
+
+Click **Save**.
 
 ---
 
-## 进阶技巧
+## How Do Users Switch Apps?
 
-### 1. 嵌入外部系统 (Web Tab)
-假设项目组每天都要访问公司的“报销系统”（这是一个旧的网页）。你可以把它集成进来，让用户感觉不到切换了系统。
+Once configured, how does a user access it?
 
-1.  **新建 Web 选项卡**：
-    * 设置 -> 选项卡 -> 新建 Web 选项卡。
-    * 链接地址 (URL)：输入旧系统的网址。
-    * 显示方式：选择“全屏”或“嵌入”。
-2.  **添加到应用**：
-    * 回到刚才的“项目管理 App”设置，把这个新的 Web 选项卡加入菜单。
-3.  **效果**：用户点击菜单上的“报销”，直接在 Steedos 内部打开旧系统页面。
-
-### 2. 移动端菜单
-Steedos 的手机端 App 会自动同步这些配置。
-* 你在电脑端配置的“应用”和“菜单顺序”，在手机端底部的导航栏和工作台里会自动生效。
-* **建议**：手机屏幕小，建议在配置 App 时，将最重要的 4-5 个菜单项放在最前面，次要的放在后面（手机上会被折叠进“更多”里）。
+1. Refresh the browser page.
+2. Click the **nine-dot icon (App Launcher)** in the top-left corner of the system.
+3. In the panel that appears, you will see the **"Project Management System"** you just created.
+4. Click it, and the top navigation bar will instantly transform into your configured layout (Home, Projects, Tasks, Work Logs).
 
 ---
 
-## 常见问题 (FAQ)
+## Advanced Tips
 
-**Q: 我把对象加入菜单了，为什么普通用户还是看不见？**
-A: 这通常是**双重锁**的问题。
-1.  第一把锁（App 级）：用户是否有权访问这个 App？（本章讲的内容）
-2.  第二把锁（Object 级）：用户是否有权访问这个对象？（需要在 **权限集/简档** 中，给予该用户对“项目”对象的“读取”权限）。
-    * *如果用户有 App 权限但没对象权限，他能看到菜单按钮，但点进去会提示“无权访问”。*
+### 1. Embedding External Systems (Web Tab)
 
-**Q: 只有管理员能创建 App 吗？**
-A: 是的。这是一项系统级配置，只有拥有 `admin` 权限的用户才能操作。
+Suppose the project team needs to access the company’s legacy "Reimbursement System" every day. You can integrate it so users don't feel like they are switching systems.
 
-**Q: 我可以修改系统自带的“标准应用”吗？**
-A: 可以，但不建议删除核心功能。你可以编辑标准应用，隐藏掉你们公司不用的标准模块（比如不卖产品，就隐藏“产品”菜单），让界面更清爽。
+1. **Create a Web Tab**:
+* Settings -> Tabs -> New Web Tab.
+* URL: Enter the address of the legacy system.
+* Display Mode: Choose "Full Screen" or "Embedded."
+
+
+2. **Add to App**:
+* Go back to the "Project Management App" settings and add this new Web Tab to the menu.
+
+
+3. **Effect**: When users click "Reimbursement," the legacy system opens directly inside Steedos.
+
+### 2. Mobile Menu
+
+The Steedos mobile app automatically syncs these configurations.
+
+* The "Apps" and "Menu Order" you configure on the desktop will automatically take effect in the mobile navigation bar and workbench.
+* **Tip**: Since mobile screens are small, place the 4–5 most important menu items at the top; secondary items will be tucked into the "More" menu on mobile.
+
+---
+
+## FAQ
+
+**Q: I added the object to the menu, but regular users still can't see it?**
+A: This is usually a **Double-Lock** issue.
+
+1. **Lock 1 (App Level)**: Does the user have permission to access this App? (Covered in this chapter).
+2. **Lock 2 (Object Level)**: Does the user have permission to access the data? (You need to grant "Read" permission for the "Project" object in **Permission Sets/Profiles**).
+* *If a user has App access but no Object access, they will see the menu button, but clicking it will result in an "Access Denied" message.*
+
+
+
+**Q: Can only Admins create Apps?**
+A: Yes. This is a system-level configuration that requires `admin` privileges.
+
+**Q: Can I modify the "Standard Apps" provided by the system?**
+A: Yes, though we don't recommend deleting core features. You can edit standard apps to hide modules your company doesn't use (e.g., if you don't sell physical products, hide the "Products" menu) to keep the interface clean.

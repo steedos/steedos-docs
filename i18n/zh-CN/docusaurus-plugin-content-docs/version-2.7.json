@@ -1,11 +1,11 @@
 {
   "version.label": {
     "message": "2.7",
-    "description": "The label for version current"
+    "description": "The label for version 2.7"
   },
   "sidebar.platform.category.Self Hosting": {
     "message": "私有部署",
-    "description": "The label for category Self Hosting in sidebar platform"
+    "description": "The label for category 'Self Hosting' in sidebar 'platform'"
   },
   "sidebar.platform.category.Getting Started": {
     "message": "快速向导",
@@ -13,11 +13,11 @@
   },
   "sidebar.platform.category.Setup Your Organization": {
     "message": "设置您的组织",
-    "description": "The label for category Setup Your Organization in sidebar platform"
+    "description": "The label for category 'Setup Your Organization' in sidebar 'platform'"
   },
   "sidebar.platform.category.Manage Data Access": {
     "message": "管理数据访问权限",
-    "description": "The label for category Manage Data Access in sidebar platform"
+    "description": "The label for category 'Manage Data Access' in sidebar 'platform'"
   },
   "sidebar.platform.category.Extend with Clicks": {
     "message": "可视化开发",
@@ -53,15 +53,15 @@
   },
   "sidebar.platform.category.Automate Your Processes": {
     "message": "自动化工作流程",
-    "description": "The label for category Automate Your Processes in sidebar platform"
+    "description": "The label for category 'Automate Your Processes' in sidebar 'platform'"
   },
   "sidebar.platform.category.Approval King": {
     "message": "审批王",
-    "description": "The label for category Approval King in sidebar platform"
+    "description": "The label for category 'Approval King' in sidebar 'platform'"
   },
   "sidebar.platform.category.Plugins": {
     "message": "插件",
-    "description": "The label for category Plugins in sidebar platform"
+    "description": "The label for category 'Plugins' in sidebar 'platform'"
   },
   "sidebar.platform.category.API Guide": {
     "message": "API 向导",
@@ -117,11 +117,11 @@
   },
   "sidebar.platform.category.Data Model and Management": {
     "message": "数据模型和管理",
-    "description": "The label for category Data Model and Management in sidebar platform"
+    "description": "The label for category 'Data Model and Management' in sidebar 'platform'"
   },
   "sidebar.platform.category.Building Applications": {
     "message": "构建应用程序",
-    "description": "The label for category Building Applications in sidebar platform"
+    "description": "The label for category 'Building Applications' in sidebar 'platform'"
   },
   "sidebar.developer.category.Getting Started": {
     "message": "快速向导",
@@ -133,7 +133,7 @@
   },
   "sidebar.developer.category.Service Development": {
     "message": "微服务软件包",
-    "description": "The label for category Service Development in sidebar developer"
+    "description": "The label for category 'Service Development' in sidebar 'developer'"
   },
   "sidebar.developer.category.System Services": {
     "message": "系统微服务",
@@ -145,7 +145,7 @@
   },
   "sidebar.developer.category.Components Reference": {
     "message": "平台组件",
-    "description": "The label for category Components Reference in sidebar developer"
+    "description": "The label for category 'Components Reference' in sidebar 'developer'"
   },
   "sidebar.developer.category.API Reference": {
     "message": "API 指南",
@@ -177,19 +177,19 @@
   },
   "sidebar.developer.category.Micro Page Builder": {
     "message": "微页面构建器",
-    "description": "The label for category Micro Page Builder in sidebar developer"
+    "description": "The label for category 'Micro Page Builder' in sidebar 'developer'"
   },
   "sidebar.developer.category.Steedos API": {
     "message": "API",
-    "description": "The label for category Steedos API in sidebar developer"
+    "description": "The label for category 'Steedos API' in sidebar 'developer'"
   },
   "sidebar.developer.category.Setup Project": {
     "message": "设置项目",
-    "description": "The label for category Setup Project in sidebar developer"
+    "description": "The label for category 'Setup Project' in sidebar 'developer'"
   },
   "sidebar.developer.category.Package Development": {
     "message": "软件包",
-    "description": "The label for category Package Development in sidebar developer"
+    "description": "The label for category 'Package Development' in sidebar 'developer'"
   },
   "sidebar.developer.category.Package Advanced Development": {
     "message": "软件包高级开发",
@@ -217,7 +217,7 @@
   },
   "sidebar.platform.category.User Guide": {
     "message": "用户向导",
-    "description": "The label for category User Guide in sidebar platform"
+    "description": "The label for category 'User Guide' in sidebar 'platform'"
   },
   "sidebar.apps.category.支出管理": {
     "message": "支出管理",
@@ -237,43 +237,43 @@
   },
   "sidebar.platform.category.Tutorials": {
     "message": "教程",
-    "description": "The label for category Tutorials in sidebar platform"
+    "description": "The label for category 'Tutorials' in sidebar 'platform'"
   },
   "sidebar.platform.category.The Basics": {
     "message": "入门教程",
-    "description": "The label for category The Basics in sidebar platform"
+    "description": "The label for category 'The Basics' in sidebar 'platform'"
   },
   "sidebar.platform.category.Field Types": {
     "message": "字段类型",
-    "description": "The label for category Field Types in sidebar platform"
+    "description": "The label for category 'Field Types' in sidebar 'platform'"
   },
   "sidebar.platform.category.Calculate Field Values with Formulas": {
     "message": "使用公式计算字段值",
-    "description": "The label for category Calculate Field Values with Formulas in sidebar platform"
+    "description": "The label for category 'Calculate Field Values with Formulas' in sidebar 'platform'"
   },
   "sidebar.developer.category.Metadata": {
     "message": "元数据",
-    "description": "The label for category Metadata in sidebar developer"
+    "description": "The label for category 'Metadata' in sidebar 'developer'"
   },
   "sidebar.developer.category.Moleculer Microservices Framework": {
     "message": "Moleculer 微服务框架",
-    "description": "The label for category Moleculer Microservices Framework in sidebar developer"
+    "description": "The label for category 'Moleculer Microservices Framework' in sidebar 'developer'"
   },
   "sidebar.developer.category.Platform Service Reference": {
     "message": "系统微服务",
-    "description": "The label for category Platform Service Reference in sidebar developer"
+    "description": "The label for category 'Platform Service Reference' in sidebar 'developer'"
   },
   "sidebar.developer.category.AMIS Low-Code Framework": {
     "message": "AMIS 低代码框架",
-    "description": "The label for category AMIS Low-Code Framework in sidebar developer"
+    "description": "The label for category 'AMIS Low-Code Framework' in sidebar 'developer'"
   },
   "sidebar.developer.category.Plugins": {
     "message": "插件",
-    "description": "The label for category Plugins in sidebar developer"
+    "description": "The label for category 'Plugins' in sidebar 'developer'"
   },
   "sidebar.developer.category.Integration": {
     "message": "系统集成",
-    "description": "The label for category Integration in sidebar developer"
+    "description": "The label for category 'Integration' in sidebar 'developer'"
   },
   "sidebar.apps.category.Spend Management": {
     "message": "支出管理",
@@ -301,14 +301,14 @@
   },
   "sidebar.platform.category.Steedos Docs": {
     "message": "Steedos 平台",
-    "description": "The label for category Steedos Docs in sidebar platform"
+    "description": "The label for category 'Steedos Docs' in sidebar 'platform'"
   },
   "sidebar.developer.category.Steedos Developer": {
     "message": "Steedos 开发文档",
-    "description": "The label for category Steedos Developer in sidebar developer"
+    "description": "The label for category 'Steedos Developer' in sidebar 'developer'"
   },
   "sidebar.platform.category.Features": {
     "message": "功能",
-    "description": "The label for category Features in sidebar platform"
+    "description": "The label for category 'Features' in sidebar 'platform'"
   }
 }

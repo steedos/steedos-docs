@@ -1,4 +1,4 @@
-# 权限集 (Permission Sets)
+# 权限集
 
 如果说 **简档 (Profile)** 决定了用户的“基本身份”，那么 **权限集 (Permission Set)** 就是用户的“特殊通行证”。
 

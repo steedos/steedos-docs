@@ -1,187 +1,192 @@
-# 自定义按钮
+# Custom Buttons
 
-:::info 学习目标
+:::info Learning Objectives
 
-  * 理解按钮的作用：不仅仅是“增删改查”，还能触发业务逻辑。
-  * **核心技能**：掌握按钮的 6 种显示位置（列表页、详情页、下拉菜单）。
-  * **Amis 交互**：学会配置点击按钮后的动作（弹窗、确认、发送请求）。
+* Understand the purpose of buttons: Moving beyond standard CRUD to triggering business logic.
+* **Core Skill**: Master the 6 display locations (List view, Record page, dropdown menus).
+* **Amis Interaction**: Learn to configure actions triggered by button clicks (Dialogs, Confirmations, Ajax requests).
 :::
 
-## 什么是自定义按钮？
+## What are Custom Buttons?
 
-系统默认提供了“新建”、“编辑”、“删除”等标准按钮。但在实际业务中，我们往往需要更个性化的操作，例如：
+By default, the system provides standard buttons like "New," "Edit," and "Delete." However, real-world business scenarios often require more personalized operations, such as:
 
-  * **一键审核**：在合同详情页，点击“审核通过”，自动改变状态。
-  * **填写跟进**：在客户列表的每一行，点击“写跟进”，弹出一个小窗口快速记录。
-  * **打印预览**：点击按钮跳转到打印页面。
+* **One-click Approval**: Clicking "Approve" on a contract page to automatically update its status.
+* **Quick Follow-up**: Clicking a button on a customer list row to pop up a small window for recording activity.
+* **Print Preview**: Jumping to a formatted print page with a single click.
 
-在 Steedos 中，这些都可以通过**自定义按钮**来实现，而且你可以用 **Amis 动作 (Action)** 来定义按钮点击后发生的一切。
+In Steedos, these are achieved through **Custom Buttons**. You can define exactly what happens after a click using **Amis Actions**.
 
------
+---
 
-## 1\. 按钮显示在哪里？ (Button Locations)
+## 1. Button Locations
 
-这是配置按钮的第一步。Steedos 提供了极高自由度的位置控制。为了不让大家晕头转向，我们将这些位置分为\*\*“针对整个表（列表级）”**和**“针对单条数据（记录级）”\*\*。
+This is the first step in configuration. Steedos provides high-level control over where a button appears. We categorize these into **"List-level"** (targeting the whole table) and **"Record-level"** (targeting a specific row).
 
-### 核心位置对照表
+### Location Reference Table
 
-| 显示位置 (Label) | 对应代码 (Value) | 场景说明 | 图解 |
-| :--- | :--- | :--- | :--- |
-| **列表右上角** | `list` | **全局操作**。不针对某一行数据，而是针对整个对象。例如：“导入”、“导出”、“新建”。 | 列表页眉 |
-| **记录页右上角 + 列表项下拉** | `record` | **最常用**。既要在详情页显眼位置看到，也要在列表里能快速操作。例如：“提交审批”、“变更状态”。 | 详情页顶栏 + 列表行菜单 |
-| **记录页“更多” + 列表项下拉** | `record_more` | **次要操作**。不想占用详情页顶部的宝贵空间，藏在“更多”里，但在列表里可以直接点。 | 详情页更多 + 列表行菜单 |
-| **仅列表项下拉** | `list_item` | **快捷操作**。只在列表浏览时使用，没必要放进详情页。例如：“快速预览”、“标星”。 | 列表行菜单 |
-| **仅记录页右上角** | `record_only` | **详情页专属**。操作很复杂，必须点进来看清楚详情才能点的按钮。 | 详情页顶栏 |
-| **仅记录页“更多”** | `record_only_more` | **低频操作**。例如：“查看历史版本”、“归档”。 | 详情页更多 |
+| Display Location (Label) | Code Value | Scenario Description | Illustration |
+| --- | --- | --- | --- |
+| **List Top Right** | `list` | **Global Operations**. Not for a specific row, but for the whole object (e.g., Import, Export, New). | List Header |
+| **Record Top Right + Row Menu** | `record` | **Most Common**. Visible on the detail page and accessible as a shortcut in the list row menu. | Record Header + Row Menu |
+| **Record "More" + Row Menu** | `record_more` | **Secondary Operations**. Keeps the header clean but remains accessible in the row menu. | Record "More" + Row Menu |
+| **Row Menu Only** | `list_item` | **Shortcut Operations**. Only used when browsing a list; unnecessary inside the detail page. | List Row Menu |
+| **Record Top Right Only** | `record_only` | **Detail-specific**. For complex operations that require viewing the record details first. | Record Header |
+| **Record "More" Only** | `record_only_more` | **Low-frequency**. For actions like "View Version History" or "Archive." | Record "More" Menu |
 
-:::tip 选错位置会怎样？
+:::tip What happens if I choose the wrong location?
 
-  * 如果你把按钮设为 `list`（列表右上角），但在按钮逻辑里试图获取“当前选中行的 ID”，就会失败，因为那个位置默认是不知道你选了哪一行的。
-  * 如果你选择了 `record` 类位置，系统会自动将当前记录的 `record_id` 传给按钮，方便你处理数据。
+* If you set a button to `list` (List Top Right) but try to access a specific record ID in your logic, it will fail because that location doesn't "know" which row you are targeting.
+* If you choose a `record` type location, the system automatically passes the `record_id` (usually `${_id}`) to the button context.
 :::
 
------
+---
 
-## 2\. 定义按钮的行为 (Amis Actions)
+## 2. Defining Button Behavior (Amis Actions)
 
-位置选好了，点击按钮后发生什么呢？Steedos 使用 **Amis 渲染器** 来处理交互。
+Once the location is set, what happens when it's clicked? Steedos uses the **Amis Renderer** to handle interactions. When configuring a button, you will see an **Amis Schema** section where you define the behavior using JSON.
 
-在配置按钮时，你通常会看到一个 **Amis Schema** 配置区。这里不需要写复杂的代码，只需要配置 JSON 片段。
+### Three Common Interaction Patterns
 
-### 常见的三种交互模式
+#### Pattern A: Dialog
 
-#### 模式 A：弹框 (Dialog)
+The most common interaction. It pops up a form for the user to fill out before confirming.
 
-最常见的交互。点击按钮，弹出一个表单让用户填写，填完点确认。
-
-  * **场景**：点击“驳回”按钮，弹窗询问“驳回原因”。
-  * **Amis 类型**：`dialog`
-  * **配置示例**：
-    ```json
-    {
-      "type": "button",
-      "actionType": "dialog",
-      "dialog": {
-        "title": "请填写驳回原因",
-        "body": {
-          "type": "form",
-          "controls": [
-            {
-              "type": "textarea",
-              "name": "reason",
-              "label": "原因"
-            }
-          ]
+* **Scenario**: Clicking "Reject" pops up a box asking for the "Rejection Reason."
+* **Amis Type**: `dialog`
+* **Example**:
+```json
+{
+  "type": "button",
+  "actionType": "dialog",
+  "dialog": {
+    "title": "Please provide a reason",
+    "body": {
+      "type": "form",
+      "controls": [
+        {
+          "type": "textarea",
+          "name": "reason",
+          "label": "Reason"
         }
-      }
+      ]
     }
-    ```
+  }
+}
 
-#### 模式 B：抽屉 (Drawer)
+```
 
-与弹框类似，但从屏幕侧边滑出。适合内容较多的表单。
 
-  * **场景**：点击“完善资料”，侧边滑出一个长表单。
-  * **Amis 类型**：`drawer`
 
-#### 模式 C：发送请求 (Ajax)
+#### Pattern B: Drawer
 
-静默执行。点击按钮后，直接告诉服务器办事，不需要用户再填什么。
+Similar to a dialog but slides out from the side of the screen. Ideal for longer forms.
 
-  * **场景**：点击“签到”，直接在后台记录一条签到数据，并提示“签到成功”。
-  * **Amis 类型**：`ajax`
-  * **配置示例**：
-    ```json
-    {
-      "type": "button",
-      "actionType": "ajax",
-      "confirmText": "确定要执行此操作吗？",
-      "api": {
-        "method": "post",
-        "url": "/api/custom/check_in",
-        "data": {
-          "record_id": "${_id}"
-        }
-      }
+* **Scenario**: Clicking "Complete Profile" slides out a comprehensive form.
+* **Amis Type**: `drawer`
+
+#### Pattern C: Ajax Request
+
+Silent execution. It tells the server to perform a task directly without further user input.
+
+* **Scenario**: Clicking "Check-in" records the time in the background and shows a "Success" message.
+* **Amis Type**: `ajax`
+* **Example**:
+```json
+{
+  "type": "button",
+  "actionType": "ajax",
+  "confirmText": "Are you sure you want to proceed?",
+  "api": {
+    "method": "post",
+    "url": "/api/custom/check_in",
+    "data": {
+      "record_id": "${_id}"
     }
-    ```
+  }
+}
 
------
+```
 
-## 实战演练：创建一个“变更状态”按钮
 
-假设在“项目”对象中，我们需要一个按钮，点击后将项目状态直接改为“已完成”。
 
-### 第 1 步：新建按钮
+---
 
-1.  进入 **设置** -\> **对象设置** -\> **项目** -\> **按钮**。
-2.  点击 **新建**。
+## Practical Exercise: Create a "Complete Project" Button
 
-### 第 2 步：配置基本属性
+Let's create a button for the "Project" object that changes the status to "Completed" instantly.
 
-  * **显示名称**：`一键完成`
-  * **API 名称**：`btn_finish_project`
-  * **位置**：选择 `显示在记录查看页右上角 (record_only)`。
-  * **颜色**：`Primary` (主色/蓝色)。
+### Step 1: Create New Button
 
-### 第 3 步：配置 Amis 行为
+1. Go to **Settings** -> **Object Settings** -> **Project** -> **Buttons**.
+2. Click **New**.
 
-在 **Amis Schema** 或 **动作配置** 区域，输入以下逻辑（利用 Steedos 标准的 GraphQL 接口）：
+### Step 2: Configure Basic Attributes
+
+* **Display Label**: `Mark Completed`
+* **API Name**: `btn_finish_project`
+* **Location**: Select `Record Top Right Only (record_only)`.
+* **Color**: `Primary` (Blue).
+
+### Step 3: Configure Amis Behavior
+
+In the **Amis Schema** or **Action Configuration** area, enter the following logic (using the standard Steedos GraphQL API):
 
 ```json
 {
   "type": "button",
-  "label": "一键完成",
+  "label": "Mark Completed",
   "actionType": "ajax",
-  "confirmText": "确定要将此项目标记为完成吗？",
+  "confirmText": "Are you sure you want to mark this project as completed?",
   "api": {
     "method": "post",
     "url": "/graphql",
     "data": {
-      "query": "mutation{ project__update(id: \"${_id}\", doc: { status: \"completed\" }){ _id } }"
+      "query": "mutation { project__update(id: \"${_id}\", doc: { status: \"completed\" }) { _id } }"
     },
     "messages": {
-      "success": "项目已标记为完成！"
+      "success": "Project marked as completed!"
     }
   }
 }
+
 ```
 
-### 第 4 步：保存并测试
+### Step 4: Save and Test
 
-保存后，进入任意一个项目的详情页，右上角就会出现一个蓝色的“一键完成”按钮。点击它，系统会弹出确认框，确认后状态自动更新。
+Save the configuration and open any Project record. A blue "Mark Completed" button will appear in the header. Click it, confirm, and watch the status update automatically.
 
------
+---
 
-## 进阶技巧
+## Advanced Tips
 
-### 1\. 显隐控制 (Visible On)
+### 1. Visibility Control (Visible On)
 
-你不希望“已完成”的项目还能点击“一键完成”按钮，对吧？
+You likely don't want the "Mark Completed" button to show up on projects that are already finished.
 
-  * 在按钮配置中找到 **“显示条件 (Visible On)”**。
-  * 输入表达式：`this.status !== 'completed'`
-  * **效果**：只有状态不是“已完成”时，按钮才显示。
+* Find the **"Visible On"** field in the button configuration.
+* Enter the expression: `this.status !== 'completed'`
+* **Result**: The button only appears if the status is not "Completed."
 
-### 2\. 批量操作 (Bulk Actions)
+### 2. Bulk Actions
 
-如果你选择了 `list` (列表右上角) 位置，你可能希望选中多行数据，然后批量处理。
+If you choose the `list` location, you might want to process multiple rows at once.
 
-  * 这种情况下，Amis 上下文中会包含 `ids` (选中行的 ID 列表)。
-  * 你可以将这些 ID 传给后端 API 进行批量更新。
+* In this context, the Amis environment provides `ids` (a list of selected record IDs).
+* You can pass this array to your backend API to perform batch updates.
 
------
+---
 
-## 常见问题 (FAQ)
+## FAQ
 
-**Q: 我配置了按钮，为什么点击没反应？**
-A: 请检查浏览器的 **控制台 (F12 -\> Console)**。通常是因为 API 地址写错了，或者 Amis JSON 格式有语法错误。
+**Q: I configured a button, but nothing happens when I click it.**
+A: Check the browser **Console (F12 -> Console)**. This is usually due to an incorrect API URL or a syntax error in your Amis JSON.
 
-**Q: 怎么给按钮加图标？**
-A: 在按钮配置中有一个 **图标 (Icon)** 字段，支持 FontAwesome 图标库。例如输入 `fa fa-check`。
+**Q: How do I add an icon to a button?**
+A: Use the **Icon** field in the configuration. It supports FontAwesome. For example, enter `fa fa-check`.
 
-**Q: 按钮能跳转到外部网页吗？**
-A: 可以。将 `actionType` 设置为 `url`，然后在 `url` 属性中填入网址即可。
+**Q: Can a button link to an external website?**
+A: Yes. Set the `actionType` to `url` and provide the link in the `url` property.
 
 ```json
 {
@@ -189,4 +194,5 @@ A: 可以。将 `actionType` 设置为 `url`，然后在 `url` 属性中填入�
   "url": "https://www.google.com/search?q=${name}",
   "blank": true
 }
+
 ```
