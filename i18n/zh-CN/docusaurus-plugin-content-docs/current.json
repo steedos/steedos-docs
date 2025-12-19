@@ -124,7 +124,7 @@
     "description": "The label for category Building Applications in sidebar platform"
   },
   "sidebar.developer.category.Getting Started": {
-    "message": "快速向导",
+    "message": "快速入门",
     "description": "The label for category Getting Started in sidebar developer"
   },
   "sidebar.developer.category.Steedos Package": {
@@ -170,10 +170,6 @@
   "sidebar.developer.category.Steedos Package Service": {
     "message": "微服务软件包",
     "description": "The label for category Steedos Package Service in sidebar developer"
-  },
-  "sidebar.developer.category.系统微服务": {
-    "message": "系统微服务",
-    "description": "The label for category 系统微服务 in sidebar developer"
   },
   "sidebar.developer.category.Micro Page Builder": {
     "message": "微页面构建器",
@@ -322,10 +318,6 @@
   "sidebar.platform.category.Data Management": {
     "message": "数据管理",
     "description": "The label for category 'Data Management' in sidebar 'platform'"
-  },
-  "sidebar.developer.category.Projects and Version Management": {
-    "message": "项目和版本管理",
-    "description": "The label for category 'Projects and Version Management' in sidebar 'developer'"
   },
   "sidebar.developer.category.Backend Development": {
     "message": "后台开发",
