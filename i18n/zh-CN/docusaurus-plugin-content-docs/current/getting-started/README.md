@@ -7,7 +7,7 @@ sidebar_position: 5
 
 **华炎魔方（Steedos）是领先的开源低代码开发平台，是 Salesforce 的国内最佳开源替代方案。**
 
-我们采用先进的**元数据驱动（Metadata-Driven）**架构，通过 AI 原生能力，帮助企业以传统开发 **1/10** 的成本，快速构建安全、可扩展的数字化核心应用。
+我们采用先进的 **元数据驱动（Metadata-Driven）** 架构，通过 AI 原生能力，帮助企业以传统开发 **1/10** 的成本，快速构建安全、可扩展的数字化核心应用。
 
 ![steedos overview](/diagrams/steedos-overview-zh-CN.svg)
 
