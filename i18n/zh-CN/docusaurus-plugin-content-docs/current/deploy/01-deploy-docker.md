@@ -49,8 +49,6 @@ services:
       - "5100:80"
     environment:
       - ROOT_URL=http://localhost:5100
-    volumes:
-      - "./steedos-storage:/steedos-storage"
 ```
 
 :::tip 这段代码在做什么？
