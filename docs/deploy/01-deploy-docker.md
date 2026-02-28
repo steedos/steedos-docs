@@ -50,8 +50,6 @@ services:
       - "5100:80"
     environment:
       - ROOT_URL=http://localhost:5100
-    volumes:
-      - "./steedos-storage:/steedos-storage"
 
 ```
 
