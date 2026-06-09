@@ -73,7 +73,7 @@ Use the Steedos objects and fields skills. Design a contract management data mod
 ```
 
 ```text
-Use the Steedos dev-testing skill. Test the CRM module at http://localhost:5100 with the account I provide, and iterate until the core create/edit/list workflow passes.
+Use the Steedos dev-testing skill. Test the CRM module at http://localhost:5100 with a temporary, low-privilege local or staging test account, and iterate until the core create/edit/list workflow passes.
 ```
 
 Keep the assistant grounded in your actual project files. Steedos Skills provide platform knowledge, but your project requirements and review decisions still come from your team.

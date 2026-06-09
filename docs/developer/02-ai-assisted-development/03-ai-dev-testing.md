@@ -90,15 +90,15 @@ The opportunity save action fails. Here is the terminal error and the object fil
 
 For complex workflows, provide a test URL, account, password, and target page so the assistant can use Playwright MCP or another browser automation tool.
 
-Use a local or staging disposable test account with least privilege. Avoid sharing production secrets, real customer data, reusable passwords, or unsanitized logs and screenshots with AI tools.
+Use a local or staging temporary, low-privilege test account with a short-lived password. Avoid sharing production secrets, real customer data, reusable passwords, or unsanitized logs and screenshots with AI tools.
 
 Example:
 
 ```text
 Use browser automation to test the CRM module.
 URL: http://localhost:5100
-Account: test-user@example.com
-Password: temporary-test-password
+Account: <temporary-test-account>
+Password: <short-lived-test-password>
 Target workflow: create an account, create a contact, create an opportunity, then verify they appear in the list views.
 ```
 

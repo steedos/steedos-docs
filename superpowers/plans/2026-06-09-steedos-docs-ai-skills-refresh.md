@@ -751,7 +751,7 @@ docs/developer/02-ai-assisted-development/01-overview.md
 docs/developer/02-ai-assisted-development/02-steedos-skills.md
 docs/developer/02-ai-assisted-development/03-ai-dev-testing.md
 docs/developer/02-ai-assisted-development/_category_.yml
-docs/superpowers/specs/2026-06-09-steedos-docs-ai-skills-refresh-design.md
+superpowers/specs/2026-06-09-steedos-docs-ai-skills-refresh-design.md
 i18n/zh-CN/docusaurus-plugin-content-docs/current/developer.md
 i18n/zh-CN/docusaurus-plugin-content-docs/current/developer/02-ai-assisted-development/01-overview.md
 i18n/zh-CN/docusaurus-plugin-content-docs/current/developer/02-ai-assisted-development/02-steedos-skills.md
