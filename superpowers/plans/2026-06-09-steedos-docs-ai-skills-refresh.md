@@ -188,7 +188,7 @@ Use the Steedos objects and fields skills. Design a contract management data mod
 ```
 
 ```text
-Use the Steedos dev-testing skill. Test the CRM module at http://localhost:5100 with the account I provide, and iterate until the core create/edit/list workflow passes.
+Use the Steedos dev-testing skill. Test the CRM module at http://localhost:5100 with a temporary, low-privilege local or staging test account, and iterate until the core create/edit/list workflow passes.
 ```
 
 Keep the assistant grounded in your actual project files. Steedos Skills provide platform knowledge, but your project requirements and review decisions still come from your team.
@@ -289,15 +289,17 @@ The opportunity save action fails. Here is the terminal error and the object fil
 
 ## 6. Optional Browser Automation
 
-For complex workflows, provide a test URL, account, password, and target page so the assistant can use Playwright MCP or another browser automation tool.
+For complex workflows, provide a test URL, temporary test account, short-lived password, and target page so the assistant can use Playwright MCP or another browser automation tool.
+
+Use a local or staging temporary, low-privilege test account with a short-lived password. Avoid sharing production secrets, real customer data, reusable passwords, or unsanitized logs and screenshots with AI tools.
 
 Example:
 
 ```text
 Use browser automation to test the CRM module.
 URL: http://localhost:5100
-Account: admin@example.com
-Password: admin123
+Account: <temporary-test-account>
+Password: <short-lived-test-password>
 Target workflow: create an account, create a contact, create an opportunity, then verify they appear in the list views.
 ```
 
@@ -604,15 +606,17 @@ http://localhost:5100
 
 ## 6. 可选浏览器自动化
 
-复杂流程可以提供测试地址、账号、密码和目标页面，让 AI 助手使用 Playwright MCP 或其他浏览器自动化工具测试。
+复杂流程可以提供测试地址、临时测试账号、短期有效密码和目标页面，让 AI 助手使用 Playwright MCP 或其他浏览器自动化工具测试。
+
+只使用本地或测试环境中的临时、低权限测试账号，并使用短期有效的测试账号密码。日志和截图应先脱敏，不要包含生产凭据、真实管理员账号、真实客户数据、长期复用密码或其他敏感信息。
 
 示例：
 
 ```text
 请使用浏览器自动化测试 CRM 模块。
 地址：http://localhost:5100
-账号：admin@example.com
-密码：admin123
+账号：<临时测试账号>
+密码：<短期有效的测试账号密码>
 目标流程：新建客户、新建联系人、新建商机，然后确认它们出现在列表视图中。
 ```
 
