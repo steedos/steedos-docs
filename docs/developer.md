@@ -58,7 +58,7 @@ Steedos adopts a **"Metadata Driven"** development model. Your typical workflow 
 
 ## AI-Assisted Development
 
-Steedos projects are metadata-driven, which makes them well suited for AI-assisted development. Use the [AI-Assisted Development](./developer/02-ai-assisted-development/01-overview) guide to learn how to install Steedos Skills, plan changes with an AI coding assistant, and test generated metadata safely.
+Steedos projects are metadata-driven, which makes them well suited for AI-assisted development. Use the [AI-Assisted Development](./developer/02-ai-assisted-development/01-overview.md) guide to learn how to install Steedos Skills, plan changes with an AI coding assistant, and test generated metadata safely.
 
 ---
 
