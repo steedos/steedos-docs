@@ -31,3 +31,9 @@
 - Do not modify `/Users/tujiajun/Documents/Github/steedos-platform-3`.
 - Prefer small, bilingual current-docs changes and run the relevant Docusaurus build before reporting completion.
 - Unless there is a specific reason to use another language, write human-reviewed design docs, plans, and work summaries in Chinese. Keep code, commands, paths, and English published docs in their required language.
+
+## Agent Workflow
+
+- For non-trivial documentation changes, use Superpowers workflows when available: brainstorm before changing scope, write or confirm a plan before implementation, use subagents or review workflows for larger changes, and verify before completion.
+- If Superpowers is not available in the current AI tool, tell the human before proceeding and either ask them to install or enable Superpowers, or follow the same lightweight process manually.
+- Do not install global AI tools, plugins, or skills without explicit human approval.
