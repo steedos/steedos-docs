@@ -18,7 +18,7 @@
 
 ## Commands
 
-- Install with Node 18 and Yarn: `nvm use 18`, then `yarn`.
+- Install with Node 20+ and Yarn. The preferred local/Netlify version is pinned in `.nvmrc`: `nvm install`, `nvm use`, then `yarn`.
 - English preview: `yarn start`.
 - Chinese preview: `yarn start:cn`.
 - English build: `yarn build`.
