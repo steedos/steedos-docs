@@ -12,6 +12,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
       - name: Install dependencies
         run: yarn install
 
@@ -37,5 +43,3 @@ jobs:
       - name: Invalidate CloudFront distribution
         run: |
           aws cloudfront create-invalidation --distribution-id E3PZXWVY8YMW6P --paths "/*"
-
-      
