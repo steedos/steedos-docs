@@ -7,8 +7,8 @@ This is the source of documentation for [Steedos Platform](https://steedos.com),
 ### Installation
 
 ```shell
-nvm i 18
-nvm use 18
+nvm install
+nvm use
 yarn
 ```
 

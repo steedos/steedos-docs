@@ -303,6 +303,10 @@
     "message": "Steedos 开发文档",
     "description": "The label for category 'Steedos Developer' in sidebar 'developer'"
   },
+  "sidebar.developer.category.AI-Assisted Development": {
+    "message": "AI 辅助开发",
+    "description": "The label for category 'AI-Assisted Development' in sidebar 'developer'"
+  },
   "sidebar.platform.category.Features": {
     "message": "功能",
     "description": "The label for category Features in sidebar platform"
